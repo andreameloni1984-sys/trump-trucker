@@ -22,6 +22,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check Telegram configuration
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "Telegram token: PRESENTE"
+          else
+            echo "Telegram token: ASSENTE"
+          fi
+          if [ -n "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram chat ID: PRESENTE"
+          else
+            echo "Telegram chat ID: ASSENTE"
+          fi
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "ERRORE: configura entrambi i GitHub Secrets TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID."
+            exit 1
+          fi
+
       - name: Run SPUTNIK
         env:
           SEC_USER_AGENT: "SPUTNIK/3.0 contact-configured-in-github"
