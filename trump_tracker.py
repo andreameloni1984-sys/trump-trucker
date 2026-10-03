@@ -367,6 +367,8 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
 
     active = bool(state.get("telegram_active", False))
     updates = payload.get("result", [])
+    print(f"SPUTNIK: Telegram updates ricevuti: {len(updates)}")
+    accepted = 0
     for update in updates:
         update_id = int(update.get("update_id", 0))
         state["telegram_update_offset"] = max(offset, update_id + 1)
@@ -374,8 +376,10 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         message = update.get("message") or {}
         incoming_chat = str((message.get("chat") or {}).get("id", ""))
         if incoming_chat != str(chat_id):
+            print("SPUTNIK: ricevuto un comando da una chat non autorizzata.")
             continue
 
+        accepted += 1
         text = str(message.get("text", "")).strip().lower()
         if text == "/start":
             active = True
@@ -399,6 +403,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         elif text == "/test":
             send_telegram(telegram_test_message())
 
+    print(f"SPUTNIK: Telegram comandi autorizzati: {accepted}")
     state["telegram_active"] = active
     return active
 
