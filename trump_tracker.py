@@ -1,4 +1,4 @@
-"""SPUTNIK v3 — document intelligence engine.
+"""SPUTNIK v4 — public filing intelligence engine.
 
 SPUTNIK is deliberately separate from GAGARIN.
 It monitors only publicly documented SEC filings configured through CIKs,
@@ -13,6 +13,7 @@ import json
 import os
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import asdict, dataclass
@@ -156,7 +157,7 @@ def collect() -> list[FilingEvent]:
         item.strip()
         for item in os.getenv(
             "SPUTNIK_SEC_FORMS",
-            "3,4,5,13D,13G,13F-HR,13F-HR/A,144",
+            "3,4,5,8-K,13D,13G,13F-HR,13F-HR/A,144",
         ).split(",")
         if item.strip()
     }
@@ -217,11 +218,20 @@ def send_telegram(message: str) -> bool:
     try:
         with urllib.request.urlopen(request, timeout=20) as response:
             payload = json.loads(response.read().decode("utf-8"))
-        if payload.get("ok"):
+        if payload.get("ok") is True:
             return True
-        print(f"SPUTNIK: Telegram error: {payload}")
+        print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
+    except urllib.error.HTTPError as exc:
+        print(f"SPUTNIK: Telegram HTTP error {exc.code}.")
+        try:
+            payload = json.loads(exc.read().decode("utf-8", errors="replace"))
+            print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
+        except Exception:
+            pass
+    except urllib.error.URLError as exc:
+        print(f"SPUTNIK: Telegram network error: {exc.reason}")
     except Exception as exc:
-        print(f"SPUTNIK: Telegram exception: {exc}")
+        print(f"SPUTNIK: Telegram exception: {type(exc).__name__}")
     return False
 
 
