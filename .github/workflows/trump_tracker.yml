@@ -37,9 +37,12 @@ jobs:
           else
             echo "Telegram chat ID: ASSENTE"
           fi
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "ERRORE: configura entrambi i GitHub Secrets TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID."
+          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "ERRORE: configura il GitHub Secret TELEGRAM_BOT_TOKEN."
             exit 1
+          fi
+          if [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram chat ID: AUTO-DISCOVERY ATTIVO"
           fi
 
       - name: Run SPUTNIK
