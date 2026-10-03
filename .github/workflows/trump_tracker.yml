@@ -47,6 +47,7 @@ jobs:
           SEC_USER_AGENT: "SPUTNIK/4.0 contact-configured-in-github"
           SPUTNIK_CIKS: "1849635"
           SPUTNIK_SEC_FORMS: "3,4,5,8-K,13D,13G,13F-HR,13F-HR/A,144"
+          SPUTNIK_SOCIAL_ENABLED: "1"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SPUTNIK_TELEGRAM_TEST: ${{ inputs.test_telegram }}
