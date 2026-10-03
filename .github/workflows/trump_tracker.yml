@@ -9,7 +9,7 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/15 * * * *"
 
 permissions:
   contents: write
@@ -56,14 +56,20 @@ jobs:
           SPUTNIK_TELEGRAM_TEST: ${{ inputs.test_telegram }}
         run: python trump_tracker.py
 
-      - name: Persist SPUTNIK state
+      - name: Validate SPUTNIK state
         if: always()
         run: |
           if [ -f sputnik_state.json ]; then
-            git config user.name "SPUTNIK Bot"
-            git config user.email "sputnik-bot@users.noreply.github.com"
-            git add sputnik_state.json
-            git diff --cached --quiet || git commit -m "chore: persist Sputnik state"
-            git pull --rebase origin main
-            git push
+            python - <<'PY'
+import json
+from pathlib import Path
+try:
+    data=json.loads(Path("sputnik_state.json").read_text())
+    print("SPUTNIK state valido.")
+    print("Telegram active:", bool(data.get("telegram_active")))
+    print("Telegram chat discovered:", bool(data.get("telegram_chat_id")))
+    print("Telegram offset:", data.get("telegram_update_offset", 0))
+except Exception as exc:
+    print("SPUTNIK state error:", type(exc).__name__)
+PY
           fi
