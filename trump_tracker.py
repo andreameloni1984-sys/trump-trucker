@@ -16,6 +16,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from html.parser import HTMLParser
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -42,6 +43,100 @@ class FilingEvent:
     status: str = "CONFIRMED"
     transaction_type: str = "DISCLOSURE_ONLY"
 
+
+class TextExtractor(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.parts: list[str] = []
+    def handle_data(self, data: str) -> None:
+        text = re.sub(r"\\s+", " ", data).strip()
+        if text:
+            self.parts.append(text)
+
+    def text(self) -> str:
+        return " ".join(self.parts)
+
+
+INTELLIGENCE_SOURCES = {
+    "WHITE_HOUSE": "https://www.whitehouse.gov/",
+    "TRUTH_ARCHIVE": "https://www.trumpstruth.org/",
+    "OGE": "https://www.oge.gov/",
+}
+
+ASSET_KEYWORDS = {
+    "ENERGY": ["oil", "crude", "brent", "wti", "natural gas", "lng", "energy", "petroleum"],
+    "METALS": ["gold", "silver", "copper", "aluminum", "steel", "uranium"],
+    "AGRICULTURE": ["corn", "wheat", "soybean", "sugar", "coffee", "cocoa", "cotton"],
+    "DEFENSE": ["defense", "drone", "missile", "military", "aerospace", "weapons"],
+    "AI_TECH": ["artificial intelligence", "ai", "semiconductor", "chip", "data center", "cloud"],
+    "SPACE": ["spacex", "rocket", "satellite", "space"],
+    "CRYPTO": ["bitcoin", "ethereum", "crypto", "digital asset", "stablecoin"],
+    "MEDIA": ["truth social", "truth", "media", "streaming"],
+    "REAL_ESTATE": ["real estate", "property", "hotel", "resort"],
+}
+
+def fetch_public_text(url: str) -> str:
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": os.getenv("SEC_USER_AGENT", "SPUTNIK/4.0 public-source-monitor"),
+            "Accept": "text/html,application/xhtml+xml,text/plain",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        raw = response.read()
+    parser = TextExtractor()
+    parser.feed(raw.decode("utf-8", errors="replace"))
+    return parser.text()
+
+def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
+    if os.getenv("SPUTNIK_SOCIAL_ENABLED", "1").strip().lower() not in {"1", "true", "yes"}:
+        return []
+
+    known = state.setdefault("intelligence", {})
+    findings: list[dict[str, Any]] = []
+
+    for source, url in INTELLIGENCE_SOURCES.items():
+        try:
+            body = fetch_public_text(url)
+        except Exception as exc:
+            print(f"SPUTNIK: source {source} unavailable: {type(exc).__name__}")
+            continue
+
+        normalized = body.lower()
+        domains = []
+        for domain, keywords in ASSET_KEYWORDS.items():
+            if any(keyword in normalized for keyword in keywords):
+                domains.append(domain)
+
+        digest = hashlib.sha256((source + "|" + body[:200000]).encode("utf-8")).hexdigest()[:24]
+        if known.get(source) == digest:
+            continue
+        known[source] = digest
+
+        if domains:
+            findings.append({
+                "source": source,
+                "url": url,
+                "domains": domains,
+                "evidence": "PUBLIC_SOURCE_TEXT",
+                "status": "POTENTIAL_CORRELATION",
+            })
+
+    return findings
+
+def intelligence_message(item: dict[str, Any]) -> str:
+    return (
+        "🛰️ SPUTNIK — INTELLIGENCE\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        f"📡 Fonte: {item['source']}\n"
+        f"🧩 Aree citate: {', '.join(item['domains'])}\n"
+        f"🔎 Evidenza: {item['evidence']}\n"
+        "⚠️ Stato: CORRELAZIONE DA VERIFICARE\n"
+        f"🔗 {item['url']}\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "ℹ️ Una menzione social o una correlazione non prova un investimento."
+    )
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
@@ -337,12 +432,19 @@ def main() -> None:
 
     events = collect()
     fresh = new_events(events, state)
+    intelligence = intelligence_snapshot(state)
     save_state(state)
 
     print(f"SPUTNIK: {len(events)} filing trovati, {len(fresh)} nuovi.")
+    print(f"SPUTNIK: {len(intelligence)} nuove correlazioni da fonti pubbliche.")
 
     for event in fresh:
         message = telegram_message(event)
+        print(message)
+        send_telegram(message)
+
+    for item in intelligence:
+        message = intelligence_message(item)
         print(message)
         send_telegram(message)
 
