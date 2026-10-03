@@ -429,11 +429,12 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         chat_type = str(chat.get("type", ""))
         command = str(message.get("text", "")).strip().lower()
 
-        # First /start from a private chat automatically establishes the chat.
-        if not state.get("telegram_chat_id") and chat_type == "private" and command == "/start":
+        # /start from a private chat establishes or refreshes the authorized chat.
+        # This also repairs a stale TELEGRAM_CHAT_ID secret automatically.
+        if chat_type == "private" and command == "/start":
             chat_id = incoming_chat
             state["telegram_chat_id"] = chat_id
-            print("SPUTNIK: Chat ID Telegram scoperto automaticamente.")
+            print("SPUTNIK: Chat ID Telegram scoperto/aggiornato automaticamente.")
         elif incoming_chat != chat_id:
             print("SPUTNIK: comando ricevuto da una chat non autorizzata.")
             continue
