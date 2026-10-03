@@ -430,7 +430,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         command = str(message.get("text", "")).strip().lower()
 
         # First /start from a private chat automatically establishes the chat.
-        if not chat_id and chat_type == "private" and command == "/start":
+        if not state.get("telegram_chat_id") and chat_type == "private" and command == "/start":
             chat_id = incoming_chat
             state["telegram_chat_id"] = chat_id
             print("SPUTNIK: Chat ID Telegram scoperto automaticamente.")
