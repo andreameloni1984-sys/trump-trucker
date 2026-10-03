@@ -225,7 +225,25 @@ def send_telegram(message: str) -> bool:
     return False
 
 
+def telegram_test_message() -> str:
+    return (
+        "🛰️ SPUTNIK — TELEGRAM ONLINE\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "✅ Connessione Telegram verificata.\n"
+        "🔐 Token e Chat ID ricevuti da GitHub Secrets.\n"
+        "📡 SPUTNIK resta separato da GAGARIN.\n"
+        "ℹ️ Messaggio di test: nessuna operazione di mercato."
+    )
+
+
 def main() -> None:
+    if os.getenv("SPUTNIK_TELEGRAM_TEST", "").strip().lower() in {"1", "true", "yes"}:
+        print("SPUTNIK: esecuzione test Telegram.")
+        if not send_telegram(telegram_test_message()):
+            raise SystemExit("SPUTNIK: test Telegram fallito.")
+        print("SPUTNIK: test Telegram riuscito.")
+        return
+
     state = load_state()
     events = collect()
     fresh = new_events(events, state)
