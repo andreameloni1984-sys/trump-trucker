@@ -9,10 +9,15 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
+
+# Telegram polling and state commits must never overlap.
+concurrency:
+  group: sputnik-telegram
+  cancel-in-progress: false
 
 jobs:
   sputnik:
@@ -73,3 +78,16 @@ except Exception as exc:
     print("SPUTNIK state error:", type(exc).__name__)
 PY
           fi
+
+      - name: Persist SPUTNIK state
+        if: always()
+        run: |
+          if git diff --quiet -- sputnik_state.json; then
+            echo "SPUTNIK state invariato."
+            exit 0
+          fi
+          git config user.name "SPUTNIK Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sputnik_state.json
+          git commit -m "chore: persist SPUTNIK Telegram state"
+          git push
