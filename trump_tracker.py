@@ -372,13 +372,18 @@ def ensure_polling_mode(token: str) -> None:
 
 
 def poll_telegram_commands(state: dict[str, Any]) -> bool:
-    """Process /start, /stop, /status and /test without exposing secrets."""
+    """Process Telegram commands and auto-discover the first private chat."""
     token = os.getenv("TELEGRAM_BOT_TOKEN")
-    chat_id = os.getenv("TELEGRAM_CHAT_ID")
-    if not token or not chat_id:
+    configured_chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    if not token:
+        print("SPUTNIK: Telegram token non configurato.")
         return bool(state.get("telegram_active", False))
 
     ensure_polling_mode(token)
+
+    # A previously discovered chat ID takes priority. The repository secret is
+    # only a fallback; this lets SPUTNIK discover the chat from /start.
+    chat_id = str(state.get("telegram_chat_id") or configured_chat_id).strip()
 
     offset = int(state.get("telegram_update_offset", 0) or 0)
     try:
@@ -390,8 +395,8 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
     except urllib.error.HTTPError as exc:
         print(f"SPUTNIK: Telegram polling HTTP error {exc.code}.")
         try:
-            payload = json.loads(exc.read().decode("utf-8", errors="replace"))
-            print(f"SPUTNIK: Telegram polling API error: {payload.get('description', 'unknown error')}")
+            error_payload = json.loads(exc.read().decode("utf-8", errors="replace"))
+            print(f"SPUTNIK: Telegram polling API error: {error_payload.get('description', 'unknown error')}")
         except Exception:
             pass
         return bool(state.get("telegram_active", False))
@@ -410,6 +415,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
     updates = payload.get("result", [])
     print(f"SPUTNIK: Telegram updates ricevuti: {len(updates)}")
     accepted = 0
+
     for update in updates:
         update_id = int(update.get("update_id", 0))
         state["telegram_update_offset"] = max(
@@ -418,38 +424,50 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         )
 
         message = update.get("message") or {}
-        incoming_chat = str((message.get("chat") or {}).get("id", ""))
-        if incoming_chat != str(chat_id):
-            print("SPUTNIK: ricevuto un comando da una chat non autorizzata.")
+        chat = message.get("chat") or {}
+        incoming_chat = str(chat.get("id", ""))
+        chat_type = str(chat.get("type", ""))
+        command = str(message.get("text", "")).strip().lower()
+
+        # First /start from a private chat automatically establishes the chat.
+        if not chat_id and chat_type == "private" and command == "/start":
+            chat_id = incoming_chat
+            state["telegram_chat_id"] = chat_id
+            print("SPUTNIK: Chat ID Telegram scoperto automaticamente.")
+        elif incoming_chat != chat_id:
+            print("SPUTNIK: comando ricevuto da una chat non autorizzata.")
             continue
 
         accepted += 1
-        text = str(message.get("text", "")).strip().lower()
-        if text == "/start":
+
+        if command == "/start":
             active = True
             send_telegram(
-                "🛰️ SPUTNIK ATTIVO\n━━━━━━━━━━━━━━━━━━\n"
-                "✅ Monitoraggio attivato.\n"
-                "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\n"
-                "⏱️ Frequenza: ogni 5 minuti.\n"
+                "🛰️ SPUTNIK ATTIVO\\n━━━━━━━━━━━━━━━━━━\\n"
+                "✅ Monitoraggio attivato.\\n"
+                "🔐 Chat Telegram riconosciuta automaticamente.\\n"
+                "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\\n"
+                "⏱️ Frequenza: ogni 5 minuti.\\n"
                 "⏱️ Comandi: /status /stop /test"
             )
-        elif text == "/stop":
+        elif command == "/stop":
             active = False
-            send_telegram("🛰️ SPUTNIK FERMATO\n━━━━━━━━━━━━━━━━━━\n⛔ Monitoraggio sospeso.")
-        elif text == "/status":
+            send_telegram("🛰️ SPUTNIK FERMATO\\n━━━━━━━━━━━━━━━━━━\\n⛔ Monitoraggio sospeso.")
+        elif command == "/status":
             status = "ATTIVO" if active else "FERMO"
             send_telegram(
-                f"🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n"
-                f"📡 Monitoraggio: {status}\n"
-                "⏱️ Frequenza: ogni 5 minuti\n"
+                f"🛰️ SPUTNIK — STATO\\n━━━━━━━━━━━━━━━━━━\\n"
+                f"📡 Monitoraggio: {status}\\n"
+                "⏱️ Frequenza: ogni 5 minuti\\n"
                 "🔎 Fonte: SEC EDGAR"
             )
-        elif text == "/test":
+        elif command == "/test":
             send_telegram(telegram_test_message())
 
     print(f"SPUTNIK: Telegram comandi autorizzati: {accepted}")
     state["telegram_active"] = active
+    if chat_id:
+        state["telegram_chat_id"] = chat_id
     return active
 
 def telegram_test_message() -> str:
