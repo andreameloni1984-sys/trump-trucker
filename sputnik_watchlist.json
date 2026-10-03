@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "purpose": "Public-source intelligence watchlist for SPUTNIK. No private-data inference.",
+  "subjects": [
+    {
+      "id": "president",
+      "label": "President of the United States",
+      "role": "president"
+    },
+    {
+      "id": "family",
+      "label": "Immediate family",
+      "role": "family"
+    },
+    {
+      "id": "white_house",
+      "label": "White House senior officials",
+      "role": "white_house"
+    },
+    {
+      "id": "cabinet",
+      "label": "Cabinet and senior executive officials",
+      "role": "cabinet"
+    },
+    {
+      "id": "entourage",
+      "label": "Publicly documented close associates",
+      "role": "entourage"
+    }
+  ],
+  "sources": [
+    {
+      "id": "sec_edgar",
+      "type": "primary",
+      "url": "https://www.sec.gov/edgar/search/"
+    },
+    {
+      "id": "oge",
+      "type": "primary",
+      "url": "https://www.oge.gov/"
+    },
+    {
+      "id": "white_house",
+      "type": "primary",
+      "url": "https://www.whitehouse.gov/"
+    },
+    {
+      "id": "truth_social",
+      "type": "primary",
+      "url": "https://truthsocial.com/"
+    },
+    {
+      "id": "truth_archive",
+      "type": "secondary",
+      "url": "https://www.trumpstruth.org/"
+    }
+  ],
+  "correlation_domains": [
+    "stocks",
+    "etfs",
+    "bonds",
+    "crypto",
+    "commodities",
+    "energy",
+    "metals",
+    "agriculture",
+    "defense",
+    "technology",
+    "ai",
+    "semiconductors",
+    "space",
+    "media",
+    "real_estate"
+  ],
+  "rules": {
+    "social_is_signal_not_proof": true,
+    "disclosure_is_primary_evidence": true,
+    "form_144_is_proposed_sale": true,
+    "form_13f_is_quarterly_snapshot": true,
+    "cot_is_aggregate_not_person_attributed": true,
+    "no_private_trade_inference": true,
+    "no_motive_inference": true
+  }
+}
