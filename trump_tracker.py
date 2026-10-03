@@ -340,23 +340,64 @@ def telegram_api(method: str, token: str, params: dict[str, Any] | None = None) 
         return json.loads(response.read().decode("utf-8"))
 
 
-def poll_telegram_commands(state: dict[str, Any]) -> bool:
-    """Process /start, /stop, /status and /test without exposing secrets.
+def ensure_polling_mode(token: str) -> None:
+    """Ensure SPUTNIK uses Telegram long polling rather than a webhook."""
+    try:
+        info = telegram_api("getWebhookInfo", token)
+        result = info.get("result") or {}
+        webhook_url = str(result.get("url") or "")
+        if webhook_url:
+            print("SPUTNIK: Telegram webhook rilevato; lo rimuovo per usare il polling.")
+            deleted = telegram_api("deleteWebhook", token, {"drop_pending_updates": "false"})
+            if deleted.get("ok"):
+                print("SPUTNIK: webhook rimosso; aggiornamenti pendenti conservati.")
+            else:
+                print(
+                    "SPUTNIK: impossibile rimuovere il webhook: "
+                    f"{deleted.get('description', 'unknown error')}"
+                )
+        else:
+            print("SPUTNIK: Telegram webhook assente; long polling disponibile.")
+    except urllib.error.HTTPError as exc:
+        print(f"SPUTNIK: Telegram webhook HTTP error {exc.code}.")
+        try:
+            payload = json.loads(exc.read().decode("utf-8", errors="replace"))
+            print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
+        except Exception:
+            pass
+    except urllib.error.URLError as exc:
+        print(f"SPUTNIK: Telegram webhook network error: {exc.reason}")
+    except Exception as exc:
+        print(f"SPUTNIK: Telegram webhook check error: {type(exc).__name__}")
 
-    Returns whether monitoring should be active after processing commands.
-    """
+
+def poll_telegram_commands(state: dict[str, Any]) -> bool:
+    """Process /start, /stop, /status and /test without exposing secrets."""
     token = os.getenv("TELEGRAM_BOT_TOKEN")
     chat_id = os.getenv("TELEGRAM_CHAT_ID")
     if not token or not chat_id:
         return bool(state.get("telegram_active", False))
+
+    ensure_polling_mode(token)
 
     offset = int(state.get("telegram_update_offset", 0) or 0)
     try:
         payload = telegram_api(
             "getUpdates",
             token,
-            {"offset": offset, "timeout": TELEGRAM_POLL_TIMEOUT, "allowed_updates": '["message"]'},
+            {"offset": offset, "timeout": TELEGRAM_POLL_TIMEOUT, "allowed_updates": '[\"message\"]'},
         )
+    except urllib.error.HTTPError as exc:
+        print(f"SPUTNIK: Telegram polling HTTP error {exc.code}.")
+        try:
+            payload = json.loads(exc.read().decode("utf-8", errors="replace"))
+            print(f"SPUTNIK: Telegram polling API error: {payload.get('description', 'unknown error')}")
+        except Exception:
+            pass
+        return bool(state.get("telegram_active", False))
+    except urllib.error.URLError as exc:
+        print(f"SPUTNIK: Telegram polling network error: {exc.reason}")
+        return bool(state.get("telegram_active", False))
     except Exception as exc:
         print(f"SPUTNIK: Telegram polling error: {type(exc).__name__}")
         return bool(state.get("telegram_active", False))
@@ -371,7 +412,10 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
     accepted = 0
     for update in updates:
         update_id = int(update.get("update_id", 0))
-        state["telegram_update_offset"] = max(offset, update_id + 1)
+        state["telegram_update_offset"] = max(
+            int(state.get("telegram_update_offset", 0) or 0),
+            update_id + 1,
+        )
 
         message = update.get("message") or {}
         incoming_chat = str((message.get("chat") or {}).get("id", ""))
@@ -387,6 +431,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 "🛰️ SPUTNIK ATTIVO\n━━━━━━━━━━━━━━━━━━\n"
                 "✅ Monitoraggio attivato.\n"
                 "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\n"
+                "⏱️ Frequenza: ogni 5 minuti.\n"
                 "⏱️ Comandi: /status /stop /test"
             )
         elif text == "/stop":
@@ -397,7 +442,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
             send_telegram(
                 f"🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n"
                 f"📡 Monitoraggio: {status}\n"
-                "⏱️ Frequenza: ogni 15 minuti\n"
+                "⏱️ Frequenza: ogni 5 minuti\n"
                 "🔎 Fonte: SEC EDGAR"
             )
         elif text == "/test":
@@ -406,7 +451,6 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
     print(f"SPUTNIK: Telegram comandi autorizzati: {accepted}")
     state["telegram_active"] = active
     return active
-
 
 def telegram_test_message() -> str:
     return (
