@@ -1,22 +1,37 @@
-name: Trump Tracker
+name: SPUTNIK
 
 on:
   workflow_dispatch:
   schedule:
     - cron: "*/15 * * * *"
 
+permissions:
+  contents: write
+
 jobs:
-  tracker:
+  sputnik:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
 
     steps:
-      - name: Scarica repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Esegui Trump Tracker
+      - name: Run SPUTNIK
         env:
+          SEC_USER_AGENT: "SPUTNIK/3.0 contact-configured-in-github"
+          SPUTNIK_CIKS: ${{ vars.SPUTNIK_CIKS }}
+          SPUTNIK_SEC_FORMS: "3,4,5,13D,13G,13F-HR,13F-HR/A,144"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python trump_tracker.py
+
+      - name: Persist SPUTNIK state
+        if: always()
+        run: |
+          if [ -f sputnik_state.json ]; then
+            git config user.name "SPUTNIK Bot"
+            git config user.email "sputnik-bot@users.noreply.github.com"
+            git add sputnik_state.json
+            git diff --cached --quiet || git commit -m "chore: persist Sputnik state"
+            git push
+          fi
