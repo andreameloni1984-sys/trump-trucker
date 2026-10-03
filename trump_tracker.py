@@ -25,7 +25,7 @@ from typing import Any
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
 MAX_STATE_EVENTS = 5000
-TELEGRAM_POLL_TIMEOUT = 5
+TELEGRAM_POLL_TIMEOUT = 20
 
 
 @dataclass
@@ -174,7 +174,20 @@ def load_state() -> dict[str, Any]:
 
 
 def save_state(state: dict[str, Any]) -> None:
-    state["updated_at"] = utc_now().isoformat()
+    # Persist only when substantive state changed. This avoids a Git commit
+    # every 5 minutes just because updated_at changed.
+    current: dict[str, Any] = {}
+    if STATE_FILE.exists():
+        try:
+            current = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            current = {}
+
+    def comparable(value: dict[str, Any]) -> dict[str, Any]:
+        copy = dict(value)
+        copy.pop("updated_at", None)
+        return copy
+
     events = state.get("events", {})
     if len(events) > MAX_STATE_EVENTS:
         keep = sorted(
@@ -183,6 +196,11 @@ def save_state(state: dict[str, Any]) -> None:
             reverse=True,
         )[:MAX_STATE_EVENTS]
         state["events"] = dict(keep)
+
+    if comparable(current) == comparable(state):
+        return
+
+    state["updated_at"] = utc_now().isoformat()
     tmp = STATE_FILE.with_suffix(".tmp")
     tmp.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
     tmp.replace(STATE_FILE)
