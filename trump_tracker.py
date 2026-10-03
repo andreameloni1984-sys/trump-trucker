@@ -24,6 +24,7 @@ from typing import Any
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
 MAX_STATE_EVENTS = 5000
+TELEGRAM_POLL_TIMEOUT = 5
 
 
 @dataclass
@@ -235,6 +236,78 @@ def send_telegram(message: str) -> bool:
     return False
 
 
+def telegram_api(method: str, token: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
+    url = f"https://api.telegram.org/bot{token}/{method}"
+    data = urllib.parse.urlencode(params or {}).encode("utf-8")
+    request = urllib.request.Request(url, data=data, method="POST")
+    request.add_header("Content-Type", "application/x-www-form-urlencoded")
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def poll_telegram_commands(state: dict[str, Any]) -> bool:
+    """Process /start, /stop, /status and /test without exposing secrets.
+
+    Returns whether monitoring should be active after processing commands.
+    """
+    token = os.getenv("TELEGRAM_BOT_TOKEN")
+    chat_id = os.getenv("TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        return bool(state.get("telegram_active", False))
+
+    offset = int(state.get("telegram_update_offset", 0) or 0)
+    try:
+        payload = telegram_api(
+            "getUpdates",
+            token,
+            {"offset": offset, "timeout": TELEGRAM_POLL_TIMEOUT, "allowed_updates": '["message"]'},
+        )
+    except Exception as exc:
+        print(f"SPUTNIK: Telegram polling error: {type(exc).__name__}")
+        return bool(state.get("telegram_active", False))
+
+    if not payload.get("ok"):
+        print(f"SPUTNIK: Telegram polling API error: {payload.get('description', 'unknown error')}")
+        return bool(state.get("telegram_active", False))
+
+    active = bool(state.get("telegram_active", False))
+    updates = payload.get("result", [])
+    for update in updates:
+        update_id = int(update.get("update_id", 0))
+        state["telegram_update_offset"] = max(offset, update_id + 1)
+
+        message = update.get("message") or {}
+        incoming_chat = str((message.get("chat") or {}).get("id", ""))
+        if incoming_chat != str(chat_id):
+            continue
+
+        text = str(message.get("text", "")).strip().lower()
+        if text == "/start":
+            active = True
+            send_telegram(
+                "🛰️ SPUTNIK ATTIVO\n━━━━━━━━━━━━━━━━━━\n"
+                "✅ Monitoraggio attivato.\n"
+                "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\n"
+                "⏱️ Comandi: /status /stop /test"
+            )
+        elif text == "/stop":
+            active = False
+            send_telegram("🛰️ SPUTNIK FERMATO\n━━━━━━━━━━━━━━━━━━\n⛔ Monitoraggio sospeso.")
+        elif text == "/status":
+            status = "ATTIVO" if active else "FERMO"
+            send_telegram(
+                f"🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n"
+                f"📡 Monitoraggio: {status}\n"
+                "⏱️ Frequenza: ogni 15 minuti\n"
+                "🔎 Fonte: SEC EDGAR"
+            )
+        elif text == "/test":
+            send_telegram(telegram_test_message())
+
+    state["telegram_active"] = active
+    return active
+
+
 def telegram_test_message() -> str:
     return (
         "🛰️ SPUTNIK — TELEGRAM ONLINE\n"
@@ -255,6 +328,13 @@ def main() -> None:
         return
 
     state = load_state()
+    active = poll_telegram_commands(state)
+
+    if not active:
+        save_state(state)
+        print("SPUTNIK: monitoraggio fermo. Usa /start su Telegram.")
+        return
+
     events = collect()
     fresh = new_events(events, state)
     save_state(state)
