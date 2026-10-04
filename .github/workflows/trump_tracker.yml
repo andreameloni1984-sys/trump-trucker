@@ -1,12 +1,6 @@
 name: SPUTNIK
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "trump_tracker.py"
-      - ".github/workflows/trump_tracker.yml"
   workflow_dispatch:
     inputs:
       test_telegram:
@@ -88,12 +82,11 @@ PY
       - name: Persist SPUTNIK state
         if: always()
         run: |
-          if git diff --quiet -- sputnik_state.json; then
-            echo "SPUTNIK state invariato."
-            exit 0
+          if [ -f sputnik_state.json ]; then
+            git config user.name "SPUTNIK Bot"
+            git config user.email "sputnik-bot@users.noreply.github.com"
+            git add sputnik_state.json
+            git diff --cached --quiet || git commit -m "chore: persist Sputnik state"
+            git pull --rebase origin main
+            git push
           fi
-          git config user.name "SPUTNIK Bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sputnik_state.json
-          git commit -m "chore: persist SPUTNIK Telegram state"
-          git push
