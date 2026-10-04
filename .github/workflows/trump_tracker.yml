@@ -1,6 +1,12 @@
 name: SPUTNIK
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "trump_tracker.py"
+      - ".github/workflows/trump_tracker.yml"
   workflow_dispatch:
     inputs:
       test_telegram:
