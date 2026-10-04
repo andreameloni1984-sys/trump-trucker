@@ -1,12 +1,6 @@
 name: SPUTNIK
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "trump_tracker.py"
-      - ".github/workflows/trump_tracker.yml"
   workflow_dispatch:
     inputs:
       test_telegram:
@@ -19,11 +13,6 @@ on:
 
 permissions:
   contents: write
-
-# Telegram polling and state commits must never overlap.
-concurrency:
-  group: sputnik-telegram
-  cancel-in-progress: false
 
 jobs:
   sputnik:
@@ -66,24 +55,6 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SPUTNIK_TELEGRAM_TEST: ${{ inputs.test_telegram }}
         run: python trump_tracker.py
-
-      - name: Validate SPUTNIK state
-        if: always()
-        run: |
-          if [ -f sputnik_state.json ]; then
-            python - <<'PY'
-import json
-from pathlib import Path
-try:
-    data=json.loads(Path("sputnik_state.json").read_text())
-    print("SPUTNIK state valido.")
-    print("Telegram active:", bool(data.get("telegram_active")))
-    print("Telegram chat discovered:", bool(data.get("telegram_chat_id")))
-    print("Telegram offset:", data.get("telegram_update_offset", 0))
-except Exception as exc:
-    print("SPUTNIK state error:", type(exc).__name__)
-PY
-          fi
 
       - name: Persist SPUTNIK state
         if: always()
