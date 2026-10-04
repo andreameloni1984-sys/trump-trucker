@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-04T08:39:23.288242+00:00",
+  "updated_at": "2026-10-04T14:23:28.070347+00:00",
   "telegram_update_offset": 275590724,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "9a3bfe05d7e9bf1ee2762a15",
-    "TRUTH_ARCHIVE": "7852a8f9399daf8def858179",
+    "TRUTH_ARCHIVE": "b9e5e71f1f304db7d1de1460",
     "OGE": "dcec3bf4b88b0395e8f2497a"
   }
 }
