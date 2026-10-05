@@ -300,6 +300,15 @@ def save_state(state: dict[str, Any]) -> None:
         return copy
 
     events = state.get("events", {})
+    transactions = state.get("transactions", {})
+    if len(transactions) > MAX_STATE_EVENTS:
+        keep_transactions = sorted(
+            transactions.items(),
+            key=lambda item: item[1].get("transaction_date", ""),
+            reverse=True,
+        )[:MAX_STATE_EVENTS]
+        state["transactions"] = dict(keep_transactions)
+
     if len(events) > MAX_STATE_EVENTS:
         keep = sorted(
             events.items(),
@@ -656,6 +665,7 @@ def telegram_brief_message(state: dict[str, Any]) -> str:
         "━━━━━━━━━━━━━━━━━━\n"
         f"📡 Stato: {'ATTIVO' if state.get('telegram_active') else 'FERMO'}\n"
         f"📄 Filing archiviati: {len(events)}\n"
+        f"💰 Operazioni documentate: {len(state.get('transactions') or {})}\n"
         f"🧩 Correlazioni archiviate: {len(items)}\n"
         f"📊 Form principali: {', '.join(f'{k}={v}' for k, v in list(forms.items())[:5]) or 'N/D'}\n"
         f"📄 Ultimo filing: {(latest or {}).get('company', 'N/D')} {(latest or {}).get('form', '')}\n"
@@ -755,11 +765,21 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
             send_telegram("🛰️ SPUTNIK — SCAN AVVIATA\n━━━━━━━━━━━━━━━━━━\n🔎 Controllo SEC in corso...", chat_id=chat_id)
             scan_events = collect()
             fresh_scan = new_events(scan_events, state)
+            scan_transactions = extract_transactions(scan_events)
+            stored_transactions = state.setdefault("transactions", {})
+            fresh_transactions: list[TransactionRecord] = []
+            for tx in scan_transactions:
+                key = transaction_key(tx)
+                if key not in stored_transactions:
+                    stored_transactions[key] = asdict(tx)
+                    fresh_transactions.append(tx)
             save_state(state)
             send_telegram(
-                f"🛰️ SPUTNIK — SCAN COMPLETATA\n━━━━━━━━━━━━━━━━━━\n📄 Filing trovati: {len(scan_events)}\n🆕 Nuovi: {len(fresh_scan)}",
+                f"🛰️ SPUTNIK — SCAN COMPLETATA\n━━━━━━━━━━━━━━━━━━\n📄 Filing trovati: {len(scan_events)}\n🆕 Nuovi filing: {len(fresh_scan)}\n💰 Nuove operazioni documentate: {len(fresh_transactions)}",
                 chat_id=chat_id,
             )
+            for tx in fresh_transactions:
+                send_telegram(telegram_transaction_message(tx), chat_id=chat_id)
             for event in fresh_scan:
                 send_telegram(telegram_message(event), chat_id=chat_id)
         elif command == "/start":
