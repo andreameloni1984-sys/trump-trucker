@@ -20,6 +20,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: sputnik-main
+  cancel-in-progress: true
+
 jobs:
   sputnik:
     runs-on: ubuntu-latest
