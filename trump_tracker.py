@@ -423,19 +423,19 @@ def new_events(events: list[FilingEvent], state: dict[str, Any]) -> list[FilingE
 def telegram_transaction_message(tx: TransactionRecord) -> str:
     emoji = "🟢" if tx.action == "ACQUISTATO" else "🔴"
     return (
-        f"{emoji} SPUTNIK — {tx.action} DOCUMENTATO\\n"
-        "━━━━━━━━━━━━━━━━━━\\n"
-        f"🏢 {tx.company}\\n"
-        f"👤 Soggetto: {tx.reporting_owner or 'N/D'}\\n"
-        f"📌 Titolo: {tx.security}\\n"
-        f"📦 Quantità: {tx.shares or 'N/D'}\\n"
-        f"💵 Prezzo: {tx.price or 'N/D'}\\n"
-        f"📅 Data operazione: {tx.transaction_date or 'N/D'}\\n"
-        f"📄 Form: {tx.form}\\n"
-        "🔎 Evidenza: PRIMARY_DOCUMENT\\n"
-        f"🔗 {tx.source_url}\\n"
-        "━━━━━━━━━━━━━━━━━━\\n"
-        "✅ Operazione documentata pubblicamente.\\n"
+        f"{emoji} SPUTNIK — {tx.action} DOCUMENTATO\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        f"🏢 {tx.company}\n"
+        f"👤 Soggetto: {tx.reporting_owner or 'N/D'}\n"
+        f"📌 Titolo: {tx.security}\n"
+        f"📦 Quantità: {tx.shares or 'N/D'}\n"
+        f"💵 Prezzo: {tx.price or 'N/D'}\n"
+        f"📅 Data operazione: {tx.transaction_date or 'N/D'}\n"
+        f"📄 Form: {tx.form}\n"
+        "🔎 Evidenza: PRIMARY_DOCUMENT\n"
+        f"🔗 {tx.source_url}\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "✅ Operazione documentata pubblicamente.\n"
         "ℹ️ La presenza nel filing non implica che la posizione sia ancora detenuta."
     )
 
@@ -445,21 +445,21 @@ def telegram_transactions_message(state: dict[str, Any]) -> str:
     items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
     if not items:
         return (
-            "🛰️ SPUTNIK — OPERAZIONI\\n"
-            "━━━━━━━━━━━━━━━━━━\\n"
+            "🛰️ SPUTNIK — OPERAZIONI\n"
+            "━━━━━━━━━━━━━━━━━━\n"
             "Nessun acquisto/vendita documentato disponibile."
         )
     lines = ["🛰️ SPUTNIK — ACQUISTI / VENDITE DOCUMENTATI", "━━━━━━━━━━━━━━━━━━"]
     for item in items[:10]:
         emoji = "🟢" if item.get("action") == "ACQUISTATO" else "🔴"
         lines.append(
-            f"{emoji} {item.get('action', 'N/D')} — {item.get('security', 'N/D')}\\n"
-            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\\n"
-            f"📦 {item.get('shares', 'N/D')} | 💵 {item.get('price', 'N/D')}\\n"
-            f"📅 {item.get('transaction_date', 'N/D')} | 📄 Form {item.get('form', 'N/D')}\\n"
+            f"{emoji} {item.get('action', 'N/D')} — {item.get('security', 'N/D')}\n"
+            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\n"
+            f"📦 {item.get('shares', 'N/D')} | 💵 {item.get('price', 'N/D')}\n"
+            f"📅 {item.get('transaction_date', 'N/D')} | 📄 Form {item.get('form', 'N/D')}\n"
             f"🔗 {item.get('source_url', '')}"
         )
-    return "\\n━━━━━━━━━━━━━━━━━━\\n".join(lines)
+    return "\n━━━━━━━━━━━━━━━━━━\n".join(lines)
 
 
 def telegram_purchases_message(state: dict[str, Any]) -> str:
@@ -469,17 +469,17 @@ def telegram_purchases_message(state: dict[str, Any]) -> str:
     ]
     items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
     if not items:
-        return "🟢 SPUTNIK — ACQUISTI\\n━━━━━━━━━━━━━━━━━━\\nNessun acquisto documentato disponibile."
+        return "🟢 SPUTNIK — ACQUISTI\n━━━━━━━━━━━━━━━━━━\nNessun acquisto documentato disponibile."
     lines = ["🟢 SPUTNIK — COSA È STATO ACQUISTATO", "━━━━━━━━━━━━━━━━━━"]
     for item in items[:10]:
         lines.append(
-            f"📌 {item.get('security', 'N/D')}\\n"
-            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\\n"
-            f"📦 Quantità: {item.get('shares', 'N/D')} | 💵 Prezzo: {item.get('price', 'N/D')}\\n"
-            f"📅 Data operazione: {item.get('transaction_date', 'N/D')}\\n"
+            f"📌 {item.get('security', 'N/D')}\n"
+            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\n"
+            f"📦 Quantità: {item.get('shares', 'N/D')} | 💵 Prezzo: {item.get('price', 'N/D')}\n"
+            f"📅 Data operazione: {item.get('transaction_date', 'N/D')}\n"
             f"📄 Form {item.get('form', 'N/D')} | 🔗 {item.get('source_url', '')}"
         )
-    return "\\n━━━━━━━━━━━━━━━━━━\\n".join(lines)
+    return "\n━━━━━━━━━━━━━━━━━━\n".join(lines)
 
 
 def telegram_sales_message(state: dict[str, Any]) -> str:
@@ -489,17 +489,17 @@ def telegram_sales_message(state: dict[str, Any]) -> str:
     ]
     items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
     if not items:
-        return "🔴 SPUTNIK — VENDITE\\n━━━━━━━━━━━━━━━━━━\\nNessuna vendita documentata disponibile."
+        return "🔴 SPUTNIK — VENDITE\n━━━━━━━━━━━━━━━━━━\nNessuna vendita documentata disponibile."
     lines = ["🔴 SPUTNIK — COSA È STATO VENDUTO", "━━━━━━━━━━━━━━━━━━"]
     for item in items[:10]:
         lines.append(
-            f"📌 {item.get('security', 'N/D')}\\n"
-            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\\n"
-            f"📦 Quantità: {item.get('shares', 'N/D')} | 💵 Prezzo: {item.get('price', 'N/D')}\\n"
-            f"📅 Data operazione: {item.get('transaction_date', 'N/D')}\\n"
+            f"📌 {item.get('security', 'N/D')}\n"
+            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\n"
+            f"📦 Quantità: {item.get('shares', 'N/D')} | 💵 Prezzo: {item.get('price', 'N/D')}\n"
+            f"📅 Data operazione: {item.get('transaction_date', 'N/D')}\n"
             f"📄 Form {item.get('form', 'N/D')} | 🔗 {item.get('source_url', '')}"
         )
-    return "\\n━━━━━━━━━━━━━━━━━━\\n".join(lines)
+    return "\n━━━━━━━━━━━━━━━━━━\n".join(lines)
 
 
 def transaction_key(tx: TransactionRecord) -> str:
@@ -785,26 +785,26 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         elif command == "/start":
             active = True
             send_telegram(
-                "🛰️ SPUTNIK ATTIVO\\n━━━━━━━━━━━━━━━━━━\\n"
-                "✅ Monitoraggio attivato.\\n"
-                "🔐 Chat Telegram riconosciuta automaticamente.\\n"
-                "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\\n"
-                "⏱️ Frequenza: ogni 5 minuti.\\n"
+                "🛰️ SPUTNIK ATTIVO\n━━━━━━━━━━━━━━━━━━\n"
+                "✅ Monitoraggio attivato.\n"
+                "🔐 Chat Telegram riconosciuta automaticamente.\n"
+                "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\n"
+                "⏱️ Frequenza: ogni 5 minuti.\n"
                 "⏱️ Comandi: /status /scan /filings /transactions /purchases /sales /news /brief /help /stop /test",
                 chat_id=chat_id,
             )
         elif command == "/stop":
             active = False
             send_telegram(
-                "🛰️ SPUTNIK FERMATO\\n━━━━━━━━━━━━━━━━━━\\n⛔ Monitoraggio sospeso.",
+                "🛰️ SPUTNIK FERMATO\n━━━━━━━━━━━━━━━━━━\n⛔ Monitoraggio sospeso.",
                 chat_id=chat_id,
             )
         elif command == "/status":
             status = "ATTIVO" if active else "FERMO"
             send_telegram(
-                f"🛰️ SPUTNIK — STATO\\n━━━━━━━━━━━━━━━━━━\\n"
-                f"📡 Monitoraggio: {status}\\n"
-                "⏱️ Frequenza: ogni 5 minuti\\n"
+                f"🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n"
+                f"📡 Monitoraggio: {status}\n"
+                "⏱️ Frequenza: ogni 5 minuti\n"
                 "🔎 Fonte: SEC EDGAR",
                 chat_id=chat_id,
             )
