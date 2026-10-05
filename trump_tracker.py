@@ -238,7 +238,7 @@ class TextExtractor(HTMLParser):
         super().__init__()
         self.parts: list[str] = []
     def handle_data(self, data: str) -> None:
-        text = re.sub(r"\\s+", " ", data).strip()
+        text = re.sub(r"\s+", " ", data).strip()
         if text:
             self.parts.append(text)
 
@@ -1042,23 +1042,25 @@ def main() -> None:
         return
 
     state = load_state()
-    ensure_polling_mode(os.getenv("TELEGRAM_BOT_TOKEN", ""))
-    active = poll_telegram_commands(state)
-    save_state(state)
+    telegram_polling_enabled = os.getenv("SPUTNIK_TELEGRAM_POLLING", "1").strip().lower() in {"1", "true", "yes"}
+    if telegram_polling_enabled:
+        ensure_polling_mode(os.getenv("TELEGRAM_BOT_TOKEN", ""))
+        active = poll_telegram_commands(state)
+        save_state(state)
 
-    # GitHub Actions cannot provide a permanent Telegram listener. Keep this
-    # job in long-polling mode for most of the 5-minute schedule interval so
-    # commands are caught reliably instead of only during a 20-second window.
-    if active:
-        deadline = time.monotonic() + max(0, TELEGRAM_LISTEN_SECONDS)
-        while time.monotonic() < deadline:
-            previous_active = active
-            active = poll_telegram_commands(state)
-            save_state(state)
-            if not active:
-                break
-            if not previous_active:
-                break
+        # Legacy fallback only. Production Telegram polling is handled by the
+        # dedicated persistent listener service when SPUTNIK_TELEGRAM_POLLING=0.
+        if active:
+            deadline = time.monotonic() + max(0, TELEGRAM_LISTEN_SECONDS)
+            while time.monotonic() < deadline:
+                previous_active = active
+                active = poll_telegram_commands(state)
+                save_state(state)
+                if not active or not previous_active:
+                    break
+    else:
+        active = bool(state.get("telegram_active", True))
+        print("SPUTNIK: Telegram polling GitHub Actions disabilitato; listener dedicato attivo.")
 
     if not active:
         save_state(state)
