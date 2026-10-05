@@ -43,6 +43,9 @@ class FilingEvent:
     event_id: str
     evidence: str = "PRIMARY_DOCUMENT"
     status: str = "CONFIRMED"
+    transaction_code: str = ""
+    filing_date: str = ""
+    source_kind: str = "FORM4_TRANSACTION"
     transaction_type: str = "DISCLOSURE_ONLY"
 
 
@@ -95,7 +98,8 @@ def extract_form4_transactions(event: FilingEvent, user_agent: str) -> list[Tran
         import xml.etree.ElementTree as ET
         raw = fetch_public_document(event.source_url, user_agent)
         root = ET.fromstring(raw)
-    except Exception:
+    except Exception as exc:
+        print(f"SPUTNIK: impossibile leggere Form {event.form} {event.accession}: {type(exc).__name__}")
         return []
 
     owners = []
@@ -107,15 +111,17 @@ def extract_form4_transactions(event: FilingEvent, user_agent: str) -> list[Tran
     owner = owners[0] if owners else ""
 
     records: list[TransactionRecord] = []
-    for node in root.iter():
-        if local_name(str(node.tag)) != "nonDerivativeTransaction":
-            continue
+    transaction_nodes = [
+        node for node in root.iter()
+        if local_name(str(node.tag)) in {"nonDerivativeTransaction", "derivativeTransaction"}
+    ]
+    for node in transaction_nodes:
         code = xml_text(node, "transactionCode").upper()
         if code not in {"P", "S"}:
             continue
-        security = xml_text(node, "securityTitle")
-        shares = xml_text(node, "transactionShares")
-        price = xml_text(node, "transactionPricePerShare")
+        security = xml_text(node, "securityTitle") or xml_text(node, "underlyingSecurityTitle")
+        shares = xml_text(node, "transactionShares") or xml_text(node, "transactionUnits")
+        price = xml_text(node, "transactionPricePerShare") or xml_text(node, "transactionPricePerUnit")
         date = xml_text(node, "transactionDate")
         action = "ACQUISTATO" if code == "P" else "VENDUTO"
         records.append(
@@ -131,10 +137,100 @@ def extract_form4_transactions(event: FilingEvent, user_agent: str) -> list[Tran
                 transaction_date=date,
                 reporting_owner=owner,
                 source_url=event.source_url,
+                transaction_code=code,
+                filing_date=event.filed_at,
+                source_kind="FORM4_TRANSACTION",
             )
         )
     return records
 
+
+def filing_index_documents(event: FilingEvent, user_agent: str) -> list[dict[str, Any]]:
+    index_url = (
+        f"https://www.sec.gov/Archives/edgar/data/"
+        f"{int(event.cik)}/{event.accession.replace('-', '')}/index.json"
+    )
+    try:
+        payload = json.loads(fetch_public_document(index_url, user_agent).decode("utf-8"))
+        return list((payload.get("directory") or {}).get("item") or [])
+    except Exception as exc:
+        print(f"SPUTNIK: SEC index non disponibile {event.accession}: {type(exc).__name__}")
+        return []
+
+
+def extract_13f_positions(event: FilingEvent, user_agent: str) -> list[TransactionRecord]:
+    if event.form not in {"13F-HR", "13F-HR/A"}:
+        return []
+
+    documents = filing_index_documents(event, user_agent)
+    candidates = [
+        str(item.get("name") or "")
+        for item in documents
+        if str(item.get("name") or "").lower().endswith((".xml", ".txt"))
+    ]
+    candidates.sort(key=lambda name: ("infotable" not in name.lower(), len(name)))
+
+    for name in candidates:
+        url = (
+            f"https://www.sec.gov/Archives/edgar/data/"
+            f"{int(event.cik)}/{event.accession.replace('-', '')}/{name}"
+        )
+        try:
+            import xml.etree.ElementTree as ET
+            root = ET.fromstring(fetch_public_document(url, user_agent))
+        except Exception:
+            continue
+
+        if not any(local_name(str(node.tag)) == "infoTable" for node in root.iter()):
+            continue
+
+        records: list[TransactionRecord] = []
+        for node in root.iter():
+            if local_name(str(node.tag)) != "infoTable":
+                continue
+            issuer = xml_text(node, "nameOfIssuer")
+            class_name = xml_text(node, "titleOfClass")
+            cusip = xml_text(node, "cusip")
+            value = xml_text(node, "value")
+            shares = xml_text(node, "sshPrnamt")
+            security = " ".join(x for x in [issuer, class_name] if x).strip()
+            if not security:
+                continue
+            records.append(
+                TransactionRecord(
+                    event_id=event.event_id,
+                    cik=event.cik,
+                    company=event.company,
+                    form=event.form,
+                    action="POSIZIONE_DICHIARATA",
+                    security=security,
+                    shares=shares,
+                    price=value,
+                    transaction_date=event.filed_at,
+                    reporting_owner=event.company,
+                    source_url=url,
+                    evidence="PRIMARY_13F_INFORMATION_TABLE",
+                    status="CONFIRMED_POSITION",
+                    transaction_code="13F",
+                    filing_date=event.filed_at,
+                    source_kind="13F_POSITION",
+                )
+            )
+        return records
+
+    return []
+
+
+def extract_transactions(events: list[FilingEvent]) -> list[TransactionRecord]:
+    user_agent = os.getenv(
+        "SEC_USER_AGENT",
+        "SPUTNIK document monitor / contact not configured",
+    )
+    records: list[TransactionRecord] = []
+    for event in events:
+        records.extend(extract_form4_transactions(event, user_agent))
+        records.extend(extract_13f_positions(event, user_agent))
+    return records
 
 def extract_transactions(events: list[FilingEvent]) -> list[TransactionRecord]:
     user_agent = os.getenv(
@@ -441,7 +537,10 @@ def telegram_transaction_message(tx: TransactionRecord) -> str:
 
 
 def telegram_transactions_message(state: dict[str, Any]) -> str:
-    items = list((state.get("transactions") or {}).values())
+    items = [
+        x for x in (state.get("transactions") or {}).values()
+        if x.get("source_kind") == "FORM4_TRANSACTION"
+    ]
     items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
     if not items:
         return (
@@ -465,7 +564,7 @@ def telegram_transactions_message(state: dict[str, Any]) -> str:
 def telegram_purchases_message(state: dict[str, Any]) -> str:
     items = [
         x for x in (state.get("transactions") or {}).values()
-        if x.get("action") == "ACQUISTATO"
+        if x.get("action") == "ACQUISTATO" and x.get("source_kind") == "FORM4_TRANSACTION"
     ]
     items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
     if not items:
@@ -482,10 +581,30 @@ def telegram_purchases_message(state: dict[str, Any]) -> str:
     return "\n━━━━━━━━━━━━━━━━━━\n".join(lines)
 
 
+
+def telegram_positions_message(state: dict[str, Any]) -> str:
+    items = [
+        x for x in (state.get("transactions") or {}).values()
+        if x.get("source_kind") == "13F_POSITION"
+    ]
+    items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
+    if not items:
+        return "📊 SPUTNIK — POSIZIONI 13F\\n━━━━━━━━━━━━━━━━━━\\nNessuna posizione 13F disponibile."
+    lines = ["📊 SPUTNIK — POSIZIONI DICHIARATE", "━━━━━━━━━━━━━━━━━━"]
+    for item in items[:10]:
+        lines.append(
+            f"📌 {item.get('security', 'N/D')}\\n"
+            f"📦 Quantità: {item.get('shares', 'N/D')}\\n"
+            f"💰 Valore 13F: {item.get('price', 'N/D')}\\n"
+            f"📅 Filing: {item.get('filing_date', 'N/D')}\\n"
+            f"🔗 {item.get('source_url', '')}"
+        )
+    return "\\n━━━━━━━━━━━━━━━━━━\\n".join(lines)
+
 def telegram_sales_message(state: dict[str, Any]) -> str:
     items = [
         x for x in (state.get("transactions") or {}).values()
-        if x.get("action") == "VENDUTO"
+        if x.get("action") == "VENDUTO" and x.get("source_kind") == "FORM4_TRANSACTION"
     ]
     items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
     if not items:
@@ -757,6 +876,8 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
             send_telegram(telegram_purchases_message(state), chat_id=chat_id)
         elif command == "/sales":
             send_telegram(telegram_sales_message(state), chat_id=chat_id)
+        elif command == "/positions":
+            send_telegram(telegram_positions_message(state), chat_id=chat_id)
         elif command == "/news":
             send_telegram(telegram_news_message(state), chat_id=chat_id)
         elif command == "/brief":
@@ -790,7 +911,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 "🔐 Chat Telegram riconosciuta automaticamente.\n"
                 "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\n"
                 "⏱️ Frequenza: ogni 5 minuti.\n"
-                "⏱️ Comandi: /status /scan /filings /transactions /purchases /sales /news /brief /help /stop /test",
+                "⏱️ Comandi: /status /scan /filings /transactions /purchases /sales /positions /news /brief /help /stop /test",
                 chat_id=chat_id,
             )
         elif command == "/stop":
