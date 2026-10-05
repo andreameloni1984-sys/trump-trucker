@@ -123,8 +123,16 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "domains": domains,
                 "evidence": "PUBLIC_SOURCE_TEXT",
                 "status": "POTENTIAL_CORRELATION",
+                "detected_at": utc_now().isoformat(),
+                "event_id": digest,
             })
 
+    history = state.setdefault("intelligence_history", {})
+    for item in findings:
+        history[item["event_id"]] = item
+    if len(history) > 500:
+        keep = sorted(history.items(), key=lambda item: item[1].get("detected_at", ""), reverse=True)[:500]
+        state["intelligence_history"] = dict(keep)
     return findings
 
 def intelligence_message(item: dict[str, Any]) -> str:
@@ -566,7 +574,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 "🔐 Chat Telegram riconosciuta automaticamente.\\n"
                 "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\\n"
                 "⏱️ Frequenza: ogni 5 minuti.\\n"
-                "⏱️ Comandi: /status /stop /test",
+                "⏱️ Comandi: /status /scan /filings /news /brief /help /stop /test",
                 chat_id=chat_id,
             )
         elif command == "/stop":
