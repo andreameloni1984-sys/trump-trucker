@@ -787,6 +787,96 @@ def telegram_help_message_with_commands() -> str:
     return telegram_help_message()
 
 
+def telegram_trump_order_message(state: dict[str, Any]) -> str:
+    """Return a ranked, evidence-labeled BUY candidate view for the natural-language command."""
+    transactions = [
+        x for x in (state.get("transactions") or {}).values()
+        if x.get("source_kind") == "FORM4_TRANSACTION"
+    ]
+    purchases = [x for x in transactions if x.get("action") == "ACQUISTATO"]
+    purchases.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
+
+    asset_map = {
+        "ENERGY": ("PETROLIO / ENERGIA", "oil, crude, brent, wti, natural gas, lng, energy"),
+        "METALS": ("ORO / METALLI", "gold, silver, copper, metals"),
+        "AGRICULTURE": ("AGRICOLTURA", "corn, wheat, soybean, sugar, coffee, cocoa"),
+        "DEFENSE": ("DIFESA / AEROSPAZIO", "defense, aerospace, military"),
+        "AI_TECH": ("AI / SEMICONDUTTORI", "artificial intelligence, semiconductor, chip"),
+        "SPACE": ("SPAZIO", "space, satellite, rocket"),
+        "CRYPTO": ("CRYPTO", "bitcoin, ethereum, crypto"),
+        "MEDIA": ("MEDIA", "media, social"),
+        "REAL_ESTATE": ("REAL ESTATE", "property, real estate, hotel"),
+    }
+
+    scores: dict[str, dict[str, Any]] = {}
+    for item in purchases[:20]:
+        security = str(item.get("security") or "")
+        company = str(item.get("company") or "")
+        label = f"{security} — {company}".strip(" —")
+        scores.setdefault(label, {
+            "label": label,
+            "score": 70,
+            "reason": "acquisto documentato in Form 4",
+            "evidence": "FORM4_TRANSACTION",
+            "date": item.get("transaction_date") or item.get("filing_date") or "N/D",
+            "url": item.get("source_url") or "",
+        })
+        scores[label]["score"] = min(95, scores[label]["score"] + 5)
+
+    # Public-source correlations are weaker than an actual Form 4 transaction.
+    for item in sorted(
+        (state.get("intelligence_history") or {}).values(),
+        key=lambda x: x.get("detected_at", ""),
+        reverse=True,
+    )[:20]:
+        for domain in item.get("domains", []):
+            meta = asset_map.get(domain)
+            if not meta:
+                continue
+            label = meta[0]
+            entry = scores.setdefault(label, {
+                "label": label,
+                "score": 55,
+                "reason": "correlazione da fonte pubblica",
+                "evidence": item.get("evidence", "PUBLIC_SOURCE_TEXT"),
+                "date": item.get("detected_at", "N/D"),
+                "url": item.get("url", ""),
+            })
+            entry["score"] = min(69, entry["score"] + 2)
+
+    ranked = sorted(scores.values(), key=lambda x: x["score"], reverse=True)[:5]
+    lines = [
+        "🛰️ SPUTNIK — TRUMP ORDINA",
+        "━━━━━━━━━━━━━━━━━━",
+        "🎯 Cosa comprare secondo il motore:",
+    ]
+    if not ranked:
+        lines.extend([
+            "⚪ NESSUN BUY — dati insufficienti",
+            "",
+            "SPUTNIK non ha abbastanza evidenza pubblica per proporre un candidato.",
+        ])
+    else:
+        for idx, item in enumerate(ranked, 1):
+            lines.extend([
+                f"{idx}. 🟢 BUY CANDIDATO — {item['label']}",
+                f"   Score evidenza: {item['score']}/100",
+                f"   Motivo: {item['reason']}",
+                f"   Evidenza: {item['evidence']}",
+                f"   Data: {item['date']}",
+                f"   🔗 {item['url']}" if item["url"] else "",
+            ])
+
+    lines.extend([
+        "",
+        "⚠️ BUY CANDIDATO = valutazione analitica SPUTNIK, NON ordine di mercato.",
+        "⚠️ Un filing Form 4 documenta un'operazione del soggetto indicato; una correlazione pubblica non prova un acquisto.",
+        "ℹ️ SPUTNIK non esegue ordini.",
+    ])
+    return "\n".join(line for line in lines if line != "")
+
+
+
 def poll_telegram_commands(state: dict[str, Any]) -> bool:
     """Process Telegram commands and auto-discover the first private chat."""
     token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -843,6 +933,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         incoming_chat = str(chat.get("id", ""))
         chat_type = str(chat.get("type", ""))
         command = str(message.get("text", "")).strip().lower()
+        normalized_command = re.sub(r"\\s+", " ", command).strip()
 
         # /start from a private chat establishes or refreshes the authorized chat.
         # This also repairs a stale TELEGRAM_CHAT_ID secret automatically.
@@ -856,7 +947,9 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
 
         accepted += 1
 
-        if command == "/help":
+        if normalized_command in {"trump ordina", "trump cosa compro", "trump cosa comprare"}:
+            send_telegram(telegram_trump_order_message(state), chat_id=chat_id)
+        elif command == "/help":
             send_telegram(telegram_help_message(), chat_id=chat_id)
         elif command == "/filings":
             send_telegram(telegram_filings_message(state), chat_id=chat_id)
