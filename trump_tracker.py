@@ -26,6 +26,7 @@ SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
 MAX_STATE_EVENTS = 5000
 TELEGRAM_POLL_TIMEOUT = 20
+TELEGRAM_LISTEN_SECONDS = int(os.getenv("SPUTNIK_TELEGRAM_LISTEN_SECONDS", "240"))
 
 
 @dataclass
@@ -315,9 +316,9 @@ def telegram_message(event: FilingEvent) -> str:
     )
 
 
-def send_telegram(message: str) -> bool:
+def send_telegram(message: str, chat_id: str | None = None) -> bool:
     token = os.getenv("TELEGRAM_BOT_TOKEN")
-    chat_id = os.getenv("TELEGRAM_CHAT_ID")
+    chat_id = str(chat_id or os.getenv("TELEGRAM_CHAT_ID") or "").strip()
     if not token or not chat_id:
         print("SPUTNIK: Telegram non configurato.")
         return False
@@ -467,7 +468,8 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 "🔐 Chat Telegram riconosciuta automaticamente.\\n"
                 "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\\n"
                 "⏱️ Frequenza: ogni 5 minuti.\\n"
-                "⏱️ Comandi: /status /stop /test"
+                "⏱️ Comandi: /status /stop /test",
+                chat_id=chat_id,
             )
         elif command == "/stop":
             active = False
@@ -478,10 +480,11 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 f"🛰️ SPUTNIK — STATO\\n━━━━━━━━━━━━━━━━━━\\n"
                 f"📡 Monitoraggio: {status}\\n"
                 "⏱️ Frequenza: ogni 5 minuti\\n"
-                "🔎 Fonte: SEC EDGAR"
+                "🔎 Fonte: SEC EDGAR",
+                chat_id=chat_id,
             )
         elif command == "/test":
-            send_telegram(telegram_test_message())
+            send_telegram(telegram_test_message(), chat_id=chat_id)
 
     print(f"SPUTNIK: Telegram comandi autorizzati: {accepted}")
     state["telegram_active"] = active
@@ -510,6 +513,21 @@ def main() -> None:
 
     state = load_state()
     active = poll_telegram_commands(state)
+    save_state(state)
+
+    # GitHub Actions cannot provide a permanent Telegram listener. Keep this
+    # job in long-polling mode for most of the 5-minute schedule interval so
+    # commands are caught reliably instead of only during a 20-second window.
+    if active:
+        deadline = time.monotonic() + max(0, TELEGRAM_LISTEN_SECONDS)
+        while time.monotonic() < deadline:
+            previous_active = active
+            active = poll_telegram_commands(state)
+            save_state(state)
+            if not active:
+                break
+            if not previous_active:
+                break
 
     if not active:
         save_state(state)
@@ -527,12 +545,12 @@ def main() -> None:
     for event in fresh:
         message = telegram_message(event)
         print(message)
-        send_telegram(message)
+        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
     for item in intelligence:
         message = intelligence_message(item)
         print(message)
-        send_telegram(message)
+        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
 
 if __name__ == "__main__":
