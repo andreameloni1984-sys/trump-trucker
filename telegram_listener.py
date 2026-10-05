@@ -262,6 +262,7 @@ class Handler(BaseHTTPRequestHandler):
         with BOT_LOCK:
             BOT_TOKEN = token
             os.environ["TELEGRAM_BOT_TOKEN"] = token
+        print("SPUTNIK: Telegram bootstrap ricevuto; listener autorizzato.")
 
         body = b'{"status":"bootstrapped"}'
         self.send_response(200)
