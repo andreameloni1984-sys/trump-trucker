@@ -482,10 +482,6 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         print("SPUTNIK: Telegram token non configurato.")
         return bool(state.get("telegram_active", False))
 
-    if not state.get("telegram_polling_ready"):
-        ensure_polling_mode(token)
-        state["telegram_polling_ready"] = True
-
     # A previously discovered chat ID takes priority. The repository secret is
     # only a fallback; this lets SPUTNIK discover the chat from /start.
     chat_id = str(state.get("telegram_chat_id") or configured_chat_id).strip()
@@ -621,9 +617,8 @@ def main() -> None:
         return
 
     state = load_state()
-    state.pop("telegram_polling_ready", None)
+    ensure_polling_mode(os.getenv("TELEGRAM_BOT_TOKEN", ""))
     active = poll_telegram_commands(state)
-    state.pop("telegram_polling_ready", None)
     save_state(state)
 
     # GitHub Actions cannot provide a permanent Telegram listener. Keep this
@@ -634,7 +629,6 @@ def main() -> None:
         while time.monotonic() < deadline:
             previous_active = active
             active = poll_telegram_commands(state)
-            state.pop("telegram_polling_ready", None)
             save_state(state)
             if not active:
                 break
