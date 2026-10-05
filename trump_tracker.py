@@ -43,9 +43,6 @@ class FilingEvent:
     event_id: str
     evidence: str = "PRIMARY_DOCUMENT"
     status: str = "CONFIRMED"
-    transaction_code: str = ""
-    filing_date: str = ""
-    source_kind: str = "FORM4_TRANSACTION"
     transaction_type: str = "DISCLOSURE_ONLY"
 
 
@@ -64,6 +61,9 @@ class TransactionRecord:
     source_url: str = ""
     evidence: str = "PRIMARY_DOCUMENT"
     status: str = "CONFIRMED"
+    transaction_code: str = ""
+    filing_date: str = ""
+    source_kind: str = "FORM4_TRANSACTION"
 
 
 def local_name(tag: str) -> str:
@@ -230,16 +230,6 @@ def extract_transactions(events: list[FilingEvent]) -> list[TransactionRecord]:
     for event in events:
         records.extend(extract_form4_transactions(event, user_agent))
         records.extend(extract_13f_positions(event, user_agent))
-    return records
-
-def extract_transactions(events: list[FilingEvent]) -> list[TransactionRecord]:
-    user_agent = os.getenv(
-        "SEC_USER_AGENT",
-        "SPUTNIK document monitor / contact not configured",
-    )
-    records: list[TransactionRecord] = []
-    for event in events:
-        records.extend(extract_form4_transactions(event, user_agent))
     return records
 
 
