@@ -46,6 +46,107 @@ class FilingEvent:
     transaction_type: str = "DISCLOSURE_ONLY"
 
 
+@dataclass
+class TransactionRecord:
+    event_id: str
+    cik: str
+    company: str
+    form: str
+    action: str
+    security: str
+    shares: str = ""
+    price: str = ""
+    transaction_date: str = ""
+    reporting_owner: str = ""
+    source_url: str = ""
+    evidence: str = "PRIMARY_DOCUMENT"
+    status: str = "CONFIRMED"
+
+
+def local_name(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1]
+
+
+def xml_text(node: Any, name: str) -> str:
+    for child in node.iter():
+        if local_name(str(child.tag)) == name:
+            value = (child.text or "").strip()
+            if value:
+                return value
+    return ""
+
+
+def fetch_public_document(url: str, user_agent: str) -> bytes:
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": user_agent,
+            "Accept": "application/xml,text/xml,text/html,application/xhtml+xml,text/plain",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        return response.read()
+
+
+def extract_form4_transactions(event: FilingEvent, user_agent: str) -> list[TransactionRecord]:
+    if event.form not in {"3", "4", "5"}:
+        return []
+    try:
+        import xml.etree.ElementTree as ET
+        raw = fetch_public_document(event.source_url, user_agent)
+        root = ET.fromstring(raw)
+    except Exception:
+        return []
+
+    owners = []
+    for node in root.iter():
+        if local_name(str(node.tag)) == "rptOwnerName":
+            value = (node.text or "").strip()
+            if value:
+                owners.append(value)
+    owner = owners[0] if owners else ""
+
+    records: list[TransactionRecord] = []
+    for node in root.iter():
+        if local_name(str(node.tag)) != "nonDerivativeTransaction":
+            continue
+        code = xml_text(node, "transactionCode").upper()
+        if code not in {"P", "S"}:
+            continue
+        security = xml_text(node, "securityTitle")
+        shares = xml_text(node, "transactionShares")
+        price = xml_text(node, "transactionPricePerShare")
+        date = xml_text(node, "transactionDate")
+        action = "ACQUISTATO" if code == "P" else "VENDUTO"
+        records.append(
+            TransactionRecord(
+                event_id=event.event_id,
+                cik=event.cik,
+                company=event.company,
+                form=event.form,
+                action=action,
+                security=security or "Titolo non specificato",
+                shares=shares,
+                price=price,
+                transaction_date=date,
+                reporting_owner=owner,
+                source_url=event.source_url,
+            )
+        )
+    return records
+
+
+def extract_transactions(events: list[FilingEvent]) -> list[TransactionRecord]:
+    user_agent = os.getenv(
+        "SEC_USER_AGENT",
+        "SPUTNIK document monitor / contact not configured",
+    )
+    records: list[TransactionRecord] = []
+    for event in events:
+        records.extend(extract_form4_transactions(event, user_agent))
+    return records
+
+
 class TextExtractor(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
@@ -309,6 +410,96 @@ def new_events(events: list[FilingEvent], state: dict[str, Any]) -> list[FilingE
     return fresh
 
 
+
+def telegram_transaction_message(tx: TransactionRecord) -> str:
+    emoji = "🟢" if tx.action == "ACQUISTATO" else "🔴"
+    return (
+        f"{emoji} SPUTNIK — {tx.action} DOCUMENTATO\\n"
+        "━━━━━━━━━━━━━━━━━━\\n"
+        f"🏢 {tx.company}\\n"
+        f"👤 Soggetto: {tx.reporting_owner or 'N/D'}\\n"
+        f"📌 Titolo: {tx.security}\\n"
+        f"📦 Quantità: {tx.shares or 'N/D'}\\n"
+        f"💵 Prezzo: {tx.price or 'N/D'}\\n"
+        f"📅 Data operazione: {tx.transaction_date or 'N/D'}\\n"
+        f"📄 Form: {tx.form}\\n"
+        "🔎 Evidenza: PRIMARY_DOCUMENT\\n"
+        f"🔗 {tx.source_url}\\n"
+        "━━━━━━━━━━━━━━━━━━\\n"
+        "✅ Operazione documentata pubblicamente.\\n"
+        "ℹ️ La presenza nel filing non implica che la posizione sia ancora detenuta."
+    )
+
+
+def telegram_transactions_message(state: dict[str, Any]) -> str:
+    items = list((state.get("transactions") or {}).values())
+    items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
+    if not items:
+        return (
+            "🛰️ SPUTNIK — OPERAZIONI\\n"
+            "━━━━━━━━━━━━━━━━━━\\n"
+            "Nessun acquisto/vendita documentato disponibile."
+        )
+    lines = ["🛰️ SPUTNIK — ACQUISTI / VENDITE DOCUMENTATI", "━━━━━━━━━━━━━━━━━━"]
+    for item in items[:10]:
+        emoji = "🟢" if item.get("action") == "ACQUISTATO" else "🔴"
+        lines.append(
+            f"{emoji} {item.get('action', 'N/D')} — {item.get('security', 'N/D')}\\n"
+            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\\n"
+            f"📦 {item.get('shares', 'N/D')} | 💵 {item.get('price', 'N/D')}\\n"
+            f"📅 {item.get('transaction_date', 'N/D')} | 📄 Form {item.get('form', 'N/D')}\\n"
+            f"🔗 {item.get('source_url', '')}"
+        )
+    return "\\n━━━━━━━━━━━━━━━━━━\\n".join(lines)
+
+
+def telegram_purchases_message(state: dict[str, Any]) -> str:
+    items = [
+        x for x in (state.get("transactions") or {}).values()
+        if x.get("action") == "ACQUISTATO"
+    ]
+    items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
+    if not items:
+        return "🟢 SPUTNIK — ACQUISTI\\n━━━━━━━━━━━━━━━━━━\\nNessun acquisto documentato disponibile."
+    lines = ["🟢 SPUTNIK — COSA È STATO ACQUISTATO", "━━━━━━━━━━━━━━━━━━"]
+    for item in items[:10]:
+        lines.append(
+            f"📌 {item.get('security', 'N/D')}\\n"
+            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\\n"
+            f"📦 Quantità: {item.get('shares', 'N/D')} | 💵 Prezzo: {item.get('price', 'N/D')}\\n"
+            f"📅 Data operazione: {item.get('transaction_date', 'N/D')}\\n"
+            f"📄 Form {item.get('form', 'N/D')} | 🔗 {item.get('source_url', '')}"
+        )
+    return "\\n━━━━━━━━━━━━━━━━━━\\n".join(lines)
+
+
+def telegram_sales_message(state: dict[str, Any]) -> str:
+    items = [
+        x for x in (state.get("transactions") or {}).values()
+        if x.get("action") == "VENDUTO"
+    ]
+    items.sort(key=lambda x: x.get("transaction_date", ""), reverse=True)
+    if not items:
+        return "🔴 SPUTNIK — VENDITE\\n━━━━━━━━━━━━━━━━━━\\nNessuna vendita documentata disponibile."
+    lines = ["🔴 SPUTNIK — COSA È STATO VENDUTO", "━━━━━━━━━━━━━━━━━━"]
+    for item in items[:10]:
+        lines.append(
+            f"📌 {item.get('security', 'N/D')}\\n"
+            f"🏢 {item.get('company', 'N/D')} | 👤 {item.get('reporting_owner', 'N/D')}\\n"
+            f"📦 Quantità: {item.get('shares', 'N/D')} | 💵 Prezzo: {item.get('price', 'N/D')}\\n"
+            f"📅 Data operazione: {item.get('transaction_date', 'N/D')}\\n"
+            f"📄 Form {item.get('form', 'N/D')} | 🔗 {item.get('source_url', '')}"
+        )
+    return "\\n━━━━━━━━━━━━━━━━━━\\n".join(lines)
+
+
+def transaction_key(tx: TransactionRecord) -> str:
+    raw = "|".join((
+        tx.event_id, tx.action, tx.security, tx.shares,
+        tx.price, tx.transaction_date, tx.reporting_owner,
+    ))
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
 def telegram_message(event: FilingEvent) -> str:
     return (
         "🛰️ SPUTNIK — NUOVO DOCUMENTO\n"
@@ -410,6 +601,9 @@ def telegram_help_message() -> str:
         "/test — prova Telegram\n"
         "/scan — forza una scansione SEC\n"
         "/filings — ultimi filing rilevati\n"
+        "/transactions — acquisti e vendite documentati\n"
+        "/purchases — cosa è stato acquistato\n"
+        "/sales — cosa è stato venduto\n"
         "/news — ultime correlazioni pubbliche\n"
         "/brief — riepilogo intelligence\n"
         "/help — mostra i comandi"
@@ -547,6 +741,12 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
             send_telegram(telegram_help_message(), chat_id=chat_id)
         elif command == "/filings":
             send_telegram(telegram_filings_message(state), chat_id=chat_id)
+        elif command == "/transactions":
+            send_telegram(telegram_transactions_message(state), chat_id=chat_id)
+        elif command == "/purchases":
+            send_telegram(telegram_purchases_message(state), chat_id=chat_id)
+        elif command == "/sales":
+            send_telegram(telegram_sales_message(state), chat_id=chat_id)
         elif command == "/news":
             send_telegram(telegram_news_message(state), chat_id=chat_id)
         elif command == "/brief":
@@ -570,7 +770,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 "🔐 Chat Telegram riconosciuta automaticamente.\\n"
                 "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\\n"
                 "⏱️ Frequenza: ogni 5 minuti.\\n"
-                "⏱️ Comandi: /status /scan /filings /news /brief /help /stop /test",
+                "⏱️ Comandi: /status /scan /filings /transactions /purchases /sales /news /brief /help /stop /test",
                 chat_id=chat_id,
             )
         elif command == "/stop":
@@ -642,14 +842,29 @@ def main() -> None:
 
     events = collect()
     fresh = new_events(events, state)
+    all_transaction_events = events
+    transactions = extract_transactions(all_transaction_events)
+    stored_transactions = state.setdefault("transactions", {})
+    new_transactions: list[TransactionRecord] = []
+    for tx in transactions:
+        key = transaction_key(tx)
+        if key not in stored_transactions:
+            stored_transactions[key] = asdict(tx)
+            new_transactions.append(tx)
     intelligence = intelligence_snapshot(state)
     save_state(state)
 
     print(f"SPUTNIK: {len(events)} filing trovati, {len(fresh)} nuovi.")
+    print(f"SPUTNIK: {len(new_transactions)} nuove operazioni documentate.")
     print(f"SPUTNIK: {len(intelligence)} nuove correlazioni da fonti pubbliche.")
 
     for event in fresh:
         message = telegram_message(event)
+        print(message)
+        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+
+    for tx in new_transactions:
+        message = telegram_transaction_message(tx)
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
