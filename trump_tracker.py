@@ -724,6 +724,7 @@ def telegram_help_message() -> str:
         "/sales — cosa è stato venduto\n"
         "/news — ultime correlazioni pubbliche\n"
         "/brief — riepilogo intelligence\n"
+        "Trump ordina — cosa comprare secondo SPUTNIK\n"
         "/help — mostra i comandi"
     )
 
@@ -933,7 +934,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         incoming_chat = str(chat.get("id", ""))
         chat_type = str(chat.get("type", ""))
         command = str(message.get("text", "")).strip().lower()
-        normalized_command = re.sub(r"\\s+", " ", command).strip()
+        normalized_command = re.sub(r"\s+", " ", command).strip()
 
         # /start from a private chat establishes or refreshes the authorized chat.
         # This also repairs a stale TELEGRAM_CHAT_ID secret automatically.
