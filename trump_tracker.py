@@ -25,7 +25,8 @@ from typing import Any
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
 MAX_STATE_EVENTS = 5000
-TELEGRAM_POLL_TIMEOUT = 20
+TELEGRAM_POLL_TIMEOUT = int(os.getenv("SPUTNIK_TELEGRAM_POLL_TIMEOUT", "20"))
+TELEGRAM_HTTP_TIMEOUT = int(os.getenv("SPUTNIK_TELEGRAM_HTTP_TIMEOUT", "35"))
 TELEGRAM_LISTEN_SECONDS = int(os.getenv("SPUTNIK_TELEGRAM_LISTEN_SECONDS", "240"))
 
 
@@ -350,12 +351,13 @@ def send_telegram(message: str, chat_id: str | None = None) -> bool:
     return False
 
 
-def telegram_api(method: str, token: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
+def telegram_api(method: str, token: str, params: dict[str, Any] | None = None, http_timeout: float | None = None) -> dict[str, Any]:
     url = f"https://api.telegram.org/bot{token}/{method}"
     data = urllib.parse.urlencode(params or {}).encode("utf-8")
     request = urllib.request.Request(url, data=data, method="POST")
     request.add_header("Content-Type", "application/x-www-form-urlencoded")
-    with urllib.request.urlopen(request, timeout=20) as response:
+    timeout = TELEGRAM_HTTP_TIMEOUT if http_timeout is None else http_timeout
+    with urllib.request.urlopen(request, timeout=timeout) as response:
         return json.loads(response.read().decode("utf-8"))
 
 
@@ -398,7 +400,9 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         print("SPUTNIK: Telegram token non configurato.")
         return bool(state.get("telegram_active", False))
 
-    ensure_polling_mode(token)
+    if not state.get("telegram_polling_ready"):
+        ensure_polling_mode(token)
+        state["telegram_polling_ready"] = True
 
     # A previously discovered chat ID takes priority. The repository secret is
     # only a fallback; this lets SPUTNIK discover the chat from /start.
@@ -410,6 +414,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
             "getUpdates",
             token,
             {"offset": offset, "timeout": TELEGRAM_POLL_TIMEOUT, "allowed_updates": '[\"message\"]'},
+            http_timeout=max(TELEGRAM_HTTP_TIMEOUT, TELEGRAM_POLL_TIMEOUT + 10),
         )
     except urllib.error.HTTPError as exc:
         print(f"SPUTNIK: Telegram polling HTTP error {exc.code}.")
@@ -473,7 +478,10 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
             )
         elif command == "/stop":
             active = False
-            send_telegram("🛰️ SPUTNIK FERMATO\\n━━━━━━━━━━━━━━━━━━\\n⛔ Monitoraggio sospeso.")
+            send_telegram(
+                "🛰️ SPUTNIK FERMATO\\n━━━━━━━━━━━━━━━━━━\\n⛔ Monitoraggio sospeso.",
+                chat_id=chat_id,
+            )
         elif command == "/status":
             status = "ATTIVO" if active else "FERMO"
             send_telegram(
@@ -512,7 +520,9 @@ def main() -> None:
         return
 
     state = load_state()
+    state.pop("telegram_polling_ready", None)
     active = poll_telegram_commands(state)
+    state.pop("telegram_polling_ready", None)
     save_state(state)
 
     # GitHub Actions cannot provide a permanent Telegram listener. Keep this
@@ -523,6 +533,7 @@ def main() -> None:
         while time.monotonic() < deadline:
             previous_active = active
             active = poll_telegram_commands(state)
+            state.pop("telegram_polling_ready", None)
             save_state(state)
             if not active:
                 break
