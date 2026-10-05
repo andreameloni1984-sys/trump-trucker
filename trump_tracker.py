@@ -392,6 +392,80 @@ def ensure_polling_mode(token: str) -> None:
         print(f"SPUTNIK: Telegram webhook check error: {type(exc).__name__}")
 
 
+def telegram_help_message() -> str:
+    return (
+        "🛰️ SPUTNIK — COMANDI\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "/start — attiva il monitoraggio\n"
+        "/stop — ferma il monitoraggio\n"
+        "/status — stato del sistema\n"
+        "/test — prova Telegram\n"
+        "/scan — forza una scansione SEC\n"
+        "/filings — ultimi filing rilevati\n"
+        "/news — ultime correlazioni pubbliche\n"
+        "/brief — riepilogo intelligence\n"
+        "/help — mostra i comandi"
+    )
+
+
+def telegram_filings_message(state: dict[str, Any]) -> str:
+    events = list((state.get("events") or {}).values())
+    events.sort(key=lambda x: x.get("filed_at", ""), reverse=True)
+    if not events:
+        return "🛰️ SPUTNIK — FILING\n━━━━━━━━━━━━━━━━━━\nNessun filing disponibile nello stato locale."
+    lines = ["🛰️ SPUTNIK — ULTIMI FILING", "━━━━━━━━━━━━━━━━━━"]
+    for item in events[:5]:
+        lines.append(
+            f"📄 {item.get('form', '?')} — {item.get('company', 'N/D')}\n"
+            f"📅 {item.get('filed_at', 'N/D')}\n"
+            f"🔗 {item.get('source_url', '')}"
+        )
+    return "\n━━━━━━━━━━━━━━━━━━\n".join(lines)
+
+
+def telegram_news_message(state: dict[str, Any]) -> str:
+    items = list((state.get("intelligence_history") or {}).values())
+    items.sort(key=lambda x: x.get("detected_at", ""), reverse=True)
+    if not items:
+        return "🛰️ SPUTNIK — NEWS\n━━━━━━━━━━━━━━━━━━\nNessuna correlazione pubblica disponibile."
+    lines = ["🛰️ SPUTNIK — ULTIME NEWS", "━━━━━━━━━━━━━━━━━━"]
+    for item in items[:5]:
+        lines.append(
+            f"📡 {item.get('source', 'N/D')}\n"
+            f"🧩 {', '.join(item.get('domains', [])) or 'Nessuna area'}\n"
+            f"🔎 {item.get('evidence', 'N/D')}\n"
+            f"🔗 {item.get('url', '')}"
+        )
+    return "\n━━━━━━━━━━━━━━━━━━\n".join(lines)
+
+
+def telegram_brief_message(state: dict[str, Any]) -> str:
+    events = list((state.get("events") or {}).values())
+    items = list((state.get("intelligence_history") or {}).values())
+    events.sort(key=lambda x: x.get("filed_at", ""), reverse=True)
+    items.sort(key=lambda x: x.get("detected_at", ""), reverse=True)
+    forms = {}
+    for event in events[:20]:
+        forms[event.get("form", "N/D")] = forms.get(event.get("form", "N/D"), 0) + 1
+    latest = events[0] if events else None
+    latest_news = items[0] if items else None
+    return (
+        "🛰️ SPUTNIK — BRIEF\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        f"📡 Stato: {'ATTIVO' if state.get('telegram_active') else 'FERMO'}\n"
+        f"📄 Filing archiviati: {len(events)}\n"
+        f"🧩 Correlazioni archiviate: {len(items)}\n"
+        f"📊 Form principali: {', '.join(f'{k}={v}' for k, v in list(forms.items())[:5]) or 'N/D'}\n"
+        f"📄 Ultimo filing: {(latest or {}).get('company', 'N/D')} {(latest or {}).get('form', '')}\n"
+        f"📡 Ultima fonte: {(latest_news or {}).get('source', 'N/D')}\n"
+        "⚠️ Le correlazioni non provano investimenti, intenzioni o transazioni private."
+    )
+
+
+def telegram_help_message_with_commands() -> str:
+    return telegram_help_message()
+
+
 def poll_telegram_commands(state: dict[str, Any]) -> bool:
     """Process Telegram commands and auto-discover the first private chat."""
     token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -465,7 +539,26 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
 
         accepted += 1
 
-        if command == "/start":
+        if command == "/help":
+            send_telegram(telegram_help_message(), chat_id=chat_id)
+        elif command == "/filings":
+            send_telegram(telegram_filings_message(state), chat_id=chat_id)
+        elif command == "/news":
+            send_telegram(telegram_news_message(state), chat_id=chat_id)
+        elif command == "/brief":
+            send_telegram(telegram_brief_message(state), chat_id=chat_id)
+        elif command == "/scan":
+            send_telegram("🛰️ SPUTNIK — SCAN AVVIATA\n━━━━━━━━━━━━━━━━━━\n🔎 Controllo SEC in corso...", chat_id=chat_id)
+            scan_events = collect()
+            fresh_scan = new_events(scan_events, state)
+            save_state(state)
+            send_telegram(
+                f"🛰️ SPUTNIK — SCAN COMPLETATA\n━━━━━━━━━━━━━━━━━━\n📄 Filing trovati: {len(scan_events)}\n🆕 Nuovi: {len(fresh_scan)}",
+                chat_id=chat_id,
+            )
+            for event in fresh_scan:
+                send_telegram(telegram_message(event), chat_id=chat_id)
+        elif command == "/start":
             active = True
             send_telegram(
                 "🛰️ SPUTNIK ATTIVO\\n━━━━━━━━━━━━━━━━━━\\n"
