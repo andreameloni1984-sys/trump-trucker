@@ -258,7 +258,7 @@ def dispatch(message: dict[str, Any]) -> None:
             ])
             send("\n".join(lines), chat_id)
     elif command in {"/help", "ℹ️ aiuto"}:
-        send(telegram_help_message(), chat_id, reply_markup=telegram_menu())
+        send(telegram_help_message(), chat_id, reply_markup=menu_markup())
     elif command == "/filings":
         send(telegram_filings_message(state), chat_id)
     elif command == "/transactions":
