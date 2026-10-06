@@ -242,6 +242,7 @@ def dispatch(message: dict[str, Any]) -> None:
         return
 
     command = " ".join(str(message.get("text", "")).strip().lower().split())
+    command_key = command.rstrip("?!.,:;")
     if not command:
         return
 
@@ -279,7 +280,22 @@ def dispatch(message: dict[str, Any]) -> None:
 
     if command in {"carrello cfd", "carrello cfd 300"}:
         send(cfd_cart_message(state, 300.0), chat_id, reply_markup=telegram_menu())
-    elif command in {"trump ordina", "trump cosa compro", "trump cosa comprare", "/ranking"}:
+    elif command_key in {
+        "cosa compro",
+        "cosa compro oggi",
+        "cosa comprare",
+        "cosa comprare oggi",
+        "cosa acquistare",
+        "cosa acquistare oggi",
+        "quale compro",
+        "quale compro oggi",
+        "quale azione compro",
+        "quale azione comprare",
+        "trump ordina",
+        "trump cosa compro",
+        "trump cosa comprare",
+        "/ranking",
+    }:
         rows = rank_purchase_candidates(
             list((state.get("transactions") or {}).values()),
             limit=5,
