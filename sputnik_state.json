@@ -1,13 +1,13 @@
 {
   "events": {},
-  "updated_at": "2026-10-06T18:52:54.190093+00:00",
+  "updated_at": "2026-10-06T19:10:04.442861+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "f7bbb6ca75767054fc4b1086",
     "TRUTH_ARCHIVE": "689a03f1bfea81cfa0fe79ed",
-    "OGE": "1428d67658f8dd8abd683dff"
+    "OGE": "882d73403e1ae0be4236b97e"
   },
   "intelligence_history": {
     "95ae7d8592d09521659c4776": {
@@ -249,6 +249,17 @@
       "status": "POTENTIAL_CORRELATION",
       "detected_at": "2026-10-06T18:31:29.836864+00:00",
       "event_id": "76e3df8bbf2a67c97eb2f725"
+    },
+    "882d73403e1ae0be4236b97e": {
+      "source": "OGE",
+      "url": "https://www.oge.gov/",
+      "domains": [
+        "AI_TECH"
+      ],
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-06T19:10:04.442749+00:00",
+      "event_id": "882d73403e1ae0be4236b97e"
     }
   },
   "transactions": {}
