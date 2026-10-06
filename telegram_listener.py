@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any
 
 from sputnik_ranking import rank_purchase_candidates
+from sputnik_cfd import build_cfd_cart
 from trump_tracker import (
     telegram_brief_message,
     telegram_filings_message,
@@ -97,6 +98,7 @@ def telegram_menu() -> dict[str, Any]:
     return {
         "keyboard": [
             [{"text": "🏆 CLASSIFICA"}, {"text": "🟢 COSA COMPRARE"}],
+            [{"text": "🛒 CARRELLO CFD"}],
             [{"text": "📰 NEWS"}, {"text": "🏛️ TRUMP / WHITE HOUSE"}],
             [{"text": "💰 ACQUISTI"}, {"text": "🧾 FILINGS SEC"}],
             [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
@@ -110,12 +112,40 @@ def telegram_menu() -> dict[str, Any]:
 
 
 
+
+def cfd_cart_message(state: dict[str, Any], capital: float = 300.0) -> str:
+    rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=5)
+    quotes = state.get("market_quotes") or state.get("quotes") or {}
+    cart = build_cfd_cart(rows, quotes, capital=capital, risk_pct=1.0, limit=3)
+    lines = [
+        "🛒 SPUTNIK — CARRELLO CFD (€{:.0f})".format(capital),
+        "━━━━━━━━━━━━━━━━━━",
+        "🎯 Base: evidenze pubbliche SPUTNIK",
+        "⚠️ Un CFD entra nel carrello solo con prezzo + SL + TP forniti dal motore dati.",
+    ]
+    if not cart:
+        lines.append("⚪ Nessun candidato disponibile.")
+        return "\n".join(lines)
+    for i, item in enumerate(cart, 1):
+        status = "🟢 TRADE" if item["status"] == "TRADE" else "🟡 WAIT"
+        lines.append("{} {} — {} / {}".format(i, status, item["security"], item["company"]))
+        lines.append("   Evidenza: {}/100 | {}".format(item["score"], item["evidence_signal"]))
+        if item["status"] == "TRADE":
+            lines.append("   LONG | Entry {} | SL {} | TP {} | R/R {} | Size {}".format(item["entry"], item["stop"], item["target"], item["rr"], item["units"]))
+            lines.append("   Rischio massimo modello: €{:.2f}".format(item["risk_eur"]))
+        else:
+            lines.append("   {}".format(item["reason"]))
+    lines.extend(["", "ℹ️ Il carrello non trasforma una notizia politica in un ordine automatico.", "ℹ️ Nessuna posizione SHORT viene inferita da acquisti Form 4."])
+    return "\n".join(lines)
+
+
 def menu_markup() -> dict[str, Any]:
     """SPUTNIK dashboard: native Telegram inline interface."""
     return {
         "inline_keyboard": [
             [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"},
              {"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
+            [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"}],
             [{"text": "💰 ACQUISTI INSIDER", "callback_data": "purchases"},
              {"text": "🧾 FILINGS SEC", "callback_data": "filings"}],
             [{"text": "🏛️ TRUMP / WHITE HOUSE", "callback_data": "brief"},
@@ -130,6 +160,8 @@ def menu_markup() -> dict[str, Any]:
 
 
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
+    if callback == "cfd":
+        return cfd_cart_message(state)
     if callback in {"ranking", "buy"}:
         rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=5)
         if not rows:
@@ -225,7 +257,9 @@ def dispatch(message: dict[str, Any]) -> None:
     if not state:
         state = {"telegram_active": True}
 
-    if command in {"trump ordina", "trump cosa compro", "trump cosa comprare", "/ranking"}:
+    if command in {"carrello cfd", "carrello cfd 300"}:
+        send(cfd_cart_message(state, 300.0), chat_id, reply_markup=telegram_menu())
+    elif command in {"trump ordina", "trump cosa compro", "trump cosa comprare", "/ranking"}:
         rows = rank_purchase_candidates(
             list((state.get("transactions") or {}).values()),
             limit=5,
@@ -258,6 +292,8 @@ def dispatch(message: dict[str, Any]) -> None:
                 "⚠️ Non prova rendimento futuro, intenzioni o transazioni private.",
             ])
             send("\n".join(lines), chat_id, reply_markup=telegram_menu())
+    elif command == "🛒 carrello cfd":
+        send(cfd_cart_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🏆 classifica":
         send(answer_for_callback("ranking", state), chat_id, reply_markup=telegram_menu())
     elif command == "🟢 cosa comprare":
