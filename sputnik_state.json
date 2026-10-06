@@ -1,11 +1,11 @@
 {
   "events": {},
-  "updated_at": "2026-10-06T15:37:23.323784+00:00",
+  "updated_at": "2026-10-06T18:31:30.759857+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "f7bbb6ca75767054fc4b1086",
+    "WHITE_HOUSE": "76e3df8bbf2a67c97eb2f725",
     "TRUTH_ARCHIVE": "689a03f1bfea81cfa0fe79ed",
     "OGE": "1428d67658f8dd8abd683dff"
   },
@@ -232,6 +232,23 @@
       "status": "POTENTIAL_CORRELATION",
       "detected_at": "2026-10-06T15:37:23.099931+00:00",
       "event_id": "689a03f1bfea81cfa0fe79ed"
+    },
+    "76e3df8bbf2a67c97eb2f725": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-06T18:31:29.836864+00:00",
+      "event_id": "76e3df8bbf2a67c97eb2f725"
     }
   },
   "transactions": {}
