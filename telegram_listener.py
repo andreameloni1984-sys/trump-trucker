@@ -143,7 +143,7 @@ def sputnik_home_message(state: dict[str, Any]) -> str:
         "🛒 CFD: Entry/SL/TP/Size solo con dati di mercato verificabili.",
         "⚠️ Nessuna inferenza di transazioni private o intenzioni personali.",
     ])
-    return "\\n".join(lines)
+    return "\n".join(lines)
 
 
 def catalyst_watch_message(state: dict[str, Any]) -> str:
