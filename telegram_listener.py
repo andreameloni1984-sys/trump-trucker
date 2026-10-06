@@ -212,7 +212,7 @@ def dispatch(message: dict[str, Any]) -> None:
         send(telegram_positions_message(state), chat_id)
     elif command in {"/news", "📰 news"}:
         send(telegram_news_message(state), chat_id)
-    elif command in {"/brief", "📊 brief"}:
+    elif command in {"/brief", "📊 brief", "🏛️ trump / white house"}:
         send(telegram_brief_message(state), chat_id)
     elif command in {"/status", "⚙️ stato"}:
         send(
