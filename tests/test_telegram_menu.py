@@ -25,6 +25,8 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         )
         for label in required_labels:
             self.assertIn(label, source)
+        self.assertIn('"POLITICA → SETTORI → STRUMENTI → CFD"', source)
+        self.assertIn('def sputnik_home_message', source)
 
         self.assertIn('"is_persistent": True', source)
         self.assertIn('reply_markup=telegram_menu()', source)
@@ -33,6 +35,8 @@ class SputnikTelegramMenuTests(unittest.TestCase):
     def test_home_buttons_have_dispatch_paths(self):
         source = Path("telegram_listener.py").read_text(encoding="utf-8")
         for command in (
+            'command == "🏠 home"',
+            'command in {"🧾 filings sec", "🧾 sec / oge"}',
             'command_key in {',
             '"cosa compro oggi"',
             '"cosa comprare oggi"',
