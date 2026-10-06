@@ -72,7 +72,7 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
 
     source_quality = 25       # SEC primary document.
     event_strength = 25       # Form 4 purchase code P.
-    confirmations = min(15, max(0, (distinct_filings - 1) * 5))
+    confirmations = min(15, distinct_filings * 5)
     documented_relationship = 0
     recency = _recency_score(str(latest.get("transaction_date") or ""), today)
     sector_impact = 0
