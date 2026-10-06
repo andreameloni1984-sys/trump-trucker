@@ -110,13 +110,23 @@ def telegram_menu() -> dict[str, Any]:
 
 
 def menu_markup() -> dict[str, Any]:
-    return {"inline_keyboard": [
-        [{"text":"🏆 Classifica","callback_data":"ranking"},{"text":"🟢 Cosa comprare","callback_data":"buy"}],
-        [{"text":"📰 News","callback_data":"news"},{"text":"🏛️ Trump / White House","callback_data":"brief"}],
-        [{"text":"💰 Acquisti","callback_data":"purchases"},{"text":"📊 Brief","callback_data":"brief"}],
-        [{"text":"🔄 Aggiorna","callback_data":"scan"},{"text":"⚙️ Stato","callback_data":"status"}],
-        [{"text":"ℹ️ Guida","callback_data":"help"}],
-    ]}
+    """SPUTNIK dashboard: native Telegram inline interface."""
+    return {
+        "inline_keyboard": [
+            [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"},
+             {"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
+            [{"text": "💰 ACQUISTI INSIDER", "callback_data": "purchases"},
+             {"text": "🧾 FILINGS SEC", "callback_data": "filings"}],
+            [{"text": "🏛️ TRUMP / WHITE HOUSE", "callback_data": "brief"},
+             {"text": "📰 NEWS", "callback_data": "news"}],
+            [{"text": "📊 SETTORI / IMPATTO", "callback_data": "sectors"},
+             {"text": "🔎 ANALISI", "callback_data": "analysis"}],
+            [{"text": "🔄 AGGIORNA", "callback_data": "scan"},
+             {"text": "⚙️ STATO", "callback_data": "status"}],
+            [{"text": "ℹ️ GUIDA", "callback_data": "help"}],
+        ]
+    }
+
 
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
     if callback in {"ranking", "buy"}:
@@ -132,6 +142,25 @@ def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
     if callback=="news": return telegram_news_message(state)
     if callback=="brief": return telegram_brief_message(state)
     if callback=="purchases": return telegram_purchases_message(state)
+    if callback=="filings": return telegram_filings_message(state)
+    if callback=="sectors":
+        return (
+            "🛰️ SPUTNIK — SETTORI / IMPATTO\n━━━━━━━━━━━━━━━━━━\n"
+            "🏛️ Trump / White House → eventi documentati\n"
+            "↓\n"
+            "🏭 Settori esposti → società interessate\n"
+            "↓\n"
+            "📈 Prezzo + insider + filing → verifica del segnale\n\n"
+            "ℹ️ L'impatto settoriale viene mostrato come analisi, non come previsione certa."
+        )
+    if callback=="analysis":
+        rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=3)
+        if not rows:
+            return "🛰️ SPUTNIK — ANALISI\n━━━━━━━━━━━━━━━━━━\n⚪ Dati insufficienti per un'analisi verificabile."
+        lines=["🛰️ SPUTNIK — ANALISI","━━━━━━━━━━━━━━━━━━","🔎 Incrocio: SEC + filing + recenza"]
+        for row in rows:
+            lines.append(f'{row["security"]} — {row["company"]}: {row["score"]}/100 ({row["signal"]})')
+        return "\n".join(lines)
     if callback=="status": return "🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n📡 Telegram: ONLINE\n🟢 Listener: PERMANENTE\n🔎 Motore: GitHub Actions\n📡 Fonte: SEC EDGAR"
     if callback=="help": return telegram_help_message()
     if callback=="scan": return "🔄 SPUTNIK — AGGIORNAMENTO\n━━━━━━━━━━━━━━━━━━\n📡 Raccolta dati affidata al motore GitHub Actions.\n⏳ Attendi il prossimo snapshot."
