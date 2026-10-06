@@ -92,6 +92,7 @@ def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[
             "sources": sorted(row["sources"]),
             "events": len(row["events"]),
             "domains": sorted(row["domains"]),
+            "primary_source": row["primary_source"],
             "reason": "Catalizzatore pubblico da verificare; nessuna direzione BUY/SELL inferita.",
         })
     result.sort(key=lambda x: (-x["score"], x["instrument"]))
