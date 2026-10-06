@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-06T02:54:52.128727+00:00",
+  "updated_at": "2026-10-06T03:14:52.054365+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "f7bbb6ca75767054fc4b1086",
-    "TRUTH_ARCHIVE": "3ca39b745129b900acacb3c6",
+    "TRUTH_ARCHIVE": "cfa9a7cb6811de314521d6ef",
     "OGE": "1428d67658f8dd8abd683dff"
   },
   "intelligence_history": {
@@ -154,6 +154,21 @@
       "status": "POTENTIAL_CORRELATION",
       "detected_at": "2026-10-06T02:54:51.906844+00:00",
       "event_id": "3ca39b745129b900acacb3c6"
+    },
+    "cfa9a7cb6811de314521d6ef": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-06T03:14:51.751679+00:00",
+      "event_id": "cfa9a7cb6811de314521d6ef"
     }
   },
   "transactions": {}
