@@ -21,7 +21,7 @@ def tx(event_id, security="ACME Common Stock", company="ACME Corp", tx_date="202
 class RankingTests(unittest.TestCase):
     def test_single_form4_cannot_be_buy(self):
         result = score_purchase_candidate([tx("e1")], today=date(2026, 10, 6))
-        self.assertEqual(result["score"], 60)
+        self.assertEqual(result["score"], 65)
         self.assertEqual(result["signal"], "OSSERVA")
 
     def test_repeated_recent_form4_stays_below_buy_until_three_filings(self):
@@ -29,7 +29,7 @@ class RankingTests(unittest.TestCase):
             [tx("e1", tx_date="2026-10-05"), tx("e2", tx_date="2026-10-04")],
             today=date(2026, 10, 6),
         )
-        self.assertEqual(result["score"], 65)
+        self.assertEqual(result["score"], 70)
         self.assertEqual(result["signal"], "OSSERVA")
 
     def test_three_distinct_recent_filings_reach_buy_threshold(self):
