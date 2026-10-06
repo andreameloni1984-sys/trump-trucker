@@ -116,31 +116,55 @@ def telegram_menu() -> dict[str, Any]:
 
 
 def sputnik_home_message(state: dict[str, Any]) -> str:
-    rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=3)
+    rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=5)
+    quotes = state.get("market_quotes") or state.get("quotes") or {}
     findings = list((state.get("intelligence_history") or {}).values())
-    catalysts = catalyst_watchlist(findings, limit=3)
+    catalysts = catalyst_watchlist(findings, limit=5)
+
+    # Build an operational dashboard without fabricating market levels.
+    cart = build_cfd_cart(rows, quotes, capital=300.0, risk_pct=1.0, limit=5)
+    by_security = {item.get("security"): item for item in cart}
+
     lines = [
-        "🛰️ SPUTNIK",
+        "🛰️ SPUTNIK — DASHBOARD",
         "━━━━━━━━━━━━━━━━━━",
-        "POLITICA → SETTORI → STRUMENTI → CFD",
+        "POLITICA → EVIDENZA → CATALIZZATORE → CFD",
         "",
-        "🏆 TOP EVIDENZE",
+        "🏆 CLASSIFICA OPERATIVA",
     ]
+
     if rows:
         for row in rows:
-            emoji = "🟢" if row["signal"] == "COMPRA" else "🟡"
-            lines.append(f'{emoji} {row["security"]} — {row["score"]}/100 | {row["signal"]}')
+            item = by_security.get(row.get("security"))
+            status = "🟢 TRADE" if item and item.get("status") == "TRADE" else "🟡 WAIT"
+            lines.append(f'{row["rank"]}. {status} {row["security"]} — {row["score"]}/100')
+            lines.append(f'   {row["signal"]} | Filing {row["filings"]} | Recenza {row["recency"]}/10')
+            if item and item.get("status") == "TRADE":
+                lines.append(
+                    f'   Entry {item["entry"]} | SL {item["stop"]} | TP {item["target"]} | '
+                    f'R/R {item["rr"]} | Size {item["units"]}'
+                )
+            elif item:
+                lines.append(f'   WAIT: {item["reason"]}')
+            else:
+                lines.append("   WAIT: quotazione CFD non disponibile.")
     else:
         lines.append("⚪ Nessun candidato SEC verificabile.")
+
     lines.extend(["", "🎯 CATALIZZATORI"])
     if catalysts:
         for row in catalysts:
-            lines.append(f'🟡 {row["instrument"]} — {row["score"]}/100 | WATCH')
+            lines.append(
+                f'🟡 {row["instrument"]} — {row["score"]}/100 | WATCH | '
+                f'{", ".join(row["domains"])}'
+            )
     else:
         lines.append("⚪ Nessun catalizzatore verificabile.")
+
     lines.extend([
         "",
-        "🛒 CFD: Entry/SL/TP/Size solo con dati di mercato verificabili.",
+        "🛒 CARRELLO CFD: €300 | rischio modello 1% per candidato.",
+        "⚠️ Entry/SL/TP/Size compaiono solo con dati verificabili.",
         "⚠️ Nessuna inferenza di transazioni private o intenzioni personali.",
     ])
     return "\n".join(lines)
