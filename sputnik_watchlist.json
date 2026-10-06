@@ -53,6 +53,16 @@
       "id": "truth_archive",
       "type": "secondary",
       "url": "https://www.trumpstruth.org/"
+    },
+    {
+      "id": "white_house_actions",
+      "type": "primary",
+      "url": "https://www.whitehouse.gov/presidential-actions/"
+    },
+    {
+      "id": "oge_disclosure_faq",
+      "type": "primary",
+      "url": "https://extapps2.oge.gov/web/OGE.nsf/accessdocs_disclosure-faq"
     }
   ],
   "correlation_domains": [
@@ -80,5 +90,10 @@
     "cot_is_aggregate_not_person_attributed": true,
     "no_private_trade_inference": true,
     "no_motive_inference": true
+  },
+  "source_policy": {
+    "primary_sources_preferred": true,
+    "truth_social_unverified_api": false,
+    "secondary_sources_must_not_override_primary": true
   }
 }
