@@ -77,16 +77,35 @@ def api(method: str, payload: dict[str, Any], timeout: int = 35) -> dict[str, An
         return json.loads(response.read().decode("utf-8"))
 
 
-def send(text: str, chat_id: str | None = None) -> bool:
+def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | None = None) -> bool:
     target = str(chat_id or LOCAL_STATE.get("chat_id") or "").strip()
     if not target:
         return False
     try:
-        result = api("sendMessage", {"chat_id": target, "text": text}, timeout=20)
+        payload = {"chat_id": target, "text": text}
+        if reply_markup:
+            payload["reply_markup"] = reply_markup
+        result = api("sendMessage", payload, timeout=20)
         return bool(result.get("ok"))
     except Exception as exc:
         print(f"SPUTNIK Telegram send error: {type(exc).__name__}: {exc}")
         return False
+
+
+
+def telegram_menu() -> dict[str, Any]:
+    return {
+        "keyboard": [
+            [{"text": "🏆 CLASSIFICA"}, {"text": "🟢 COSA COMPRARE"}],
+            [{"text": "📰 NEWS"}, {"text": "🏛️ TRUMP / WHITE HOUSE"}],
+            [{"text": "💰 ACQUISTI"}, {"text": "📊 BRIEF"}],
+            [{"text": "🔄 AGGIORNA"}, {"text": "⚙️ STATO"}],
+            [{"text": "ℹ️ AIUTO"}],
+        ],
+        "resize_keyboard": True,
+        "is_persistent": True,
+        "input_field_placeholder": "Scegli una sezione SPUTNIK",
+    }
 
 
 def remote_state() -> dict[str, Any]:
@@ -124,8 +143,9 @@ def dispatch(message: dict[str, Any]) -> None:
             "📡 Motore dati: GitHub Actions.\n"
             "🔐 Questa chat privata è autorizzata.\n"
             "⏱️ Puoi usare /status /test /brief /filings /transactions /purchases /sales /positions /news /help\n"
-            "🎯 Oppure scrivi: Trump ordina",
+            "🎯 Usa il menu qui sotto oppure scrivi: Trump ordina",
             chat_id,
+            reply_markup=telegram_menu(),
         )
         return
 
@@ -145,7 +165,7 @@ def dispatch(message: dict[str, Any]) -> None:
     if not state:
         state = {"telegram_active": True}
 
-    if command in {"trump ordina", "trump cosa compro", "trump cosa comprare", "/ranking"}:
+    if command in {"trump ordina", "trump cosa compro", "trump cosa comprare", "/ranking", "🏆 classifica", "🟢 cosa comprare"}:
         rows = rank_purchase_candidates(
             list((state.get("transactions") or {}).values()),
             limit=5,
@@ -178,23 +198,23 @@ def dispatch(message: dict[str, Any]) -> None:
                 "⚠️ Non prova rendimento futuro, intenzioni o transazioni private.",
             ])
             send("\n".join(lines), chat_id)
-    elif command == "/help":
-        send(telegram_help_message(), chat_id)
+    elif command in {"/help", "ℹ️ aiuto"}:
+        send(telegram_help_message(), chat_id, reply_markup=telegram_menu())
     elif command == "/filings":
         send(telegram_filings_message(state), chat_id)
     elif command == "/transactions":
         send(telegram_transactions_message(state), chat_id)
-    elif command == "/purchases":
+    elif command in {"/purchases", "💰 acquisti"}:
         send(telegram_purchases_message(state), chat_id)
     elif command == "/sales":
         send(telegram_sales_message(state), chat_id)
     elif command == "/positions":
         send(telegram_positions_message(state), chat_id)
-    elif command == "/news":
+    elif command in {"/news", "📰 news"}:
         send(telegram_news_message(state), chat_id)
-    elif command == "/brief":
+    elif command in {"/brief", "📊 brief"}:
         send(telegram_brief_message(state), chat_id)
-    elif command == "/status":
+    elif command in {"/status", "⚙️ stato"}:
         send(
             "🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n"
             "📡 Telegram: ONLINE\n"
@@ -206,7 +226,7 @@ def dispatch(message: dict[str, Any]) -> None:
         )
     elif command == "/test":
         send(telegram_test_message(), chat_id)
-    elif command == "/scan":
+    elif command in {"/scan", "🔄 aggiorna"}:
         send(
             "🛰️ SPUTNIK — SCAN\n━━━━━━━━━━━━━━━━━━\n"
             "🔎 Il comando è ricevuto dal listener.\n"
