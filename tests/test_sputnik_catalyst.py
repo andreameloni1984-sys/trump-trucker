@@ -14,7 +14,7 @@ class CatalystWatchlistTests(unittest.TestCase):
         instruments = {row["instrument"] for row in rows}
         self.assertEqual({"WTI", "BRENT"}, instruments)
         self.assertTrue(all(row["status"] == "WATCH" for row in rows))
-        self.assertTrue(all(row["primary_source"] if "primary_source" in row else True for row in rows))
+        self.assertTrue(all(row["primary_source"] for row in rows))
 
     def test_multiple_public_events_raise_evidence_score_without_creating_buy(self):
         rows = catalyst_watchlist([
