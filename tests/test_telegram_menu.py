@@ -25,7 +25,7 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         )
         for label in required_labels:
             self.assertIn(label, source)
-        self.assertIn('"POLITICA → SETTORI → STRUMENTI → CFD"', source)
+        self.assertIn('"POLITICA → EVIDENZA → CATALIZZATORE → CFD"', source)
         self.assertIn('def sputnik_home_message', source)
         self.assertIn('🏆 CLASSIFICA OPERATIVA', source)
         self.assertIn('Entry {item["entry"]}', source)
