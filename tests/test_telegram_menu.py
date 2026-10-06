@@ -33,6 +33,9 @@ class SputnikTelegramMenuTests(unittest.TestCase):
     def test_home_buttons_have_dispatch_paths(self):
         source = Path("telegram_listener.py").read_text(encoding="utf-8")
         for command in (
+            'command_key in {',
+            '"cosa compro oggi"',
+            '"cosa comprare oggi"',
             'command == "🏆 classifica"',
             'command == "🟢 cosa comprare"',
             'command == "🧾 filings sec"',
