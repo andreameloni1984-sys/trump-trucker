@@ -98,21 +98,52 @@ def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | N
 def telegram_menu() -> dict[str, Any]:
     return {
         "keyboard": [
-            [{"text": "🏆 CLASSIFICA"}, {"text": "🟢 COSA COMPRARE"}],
-            [{"text": "🛒 CARRELLO CFD"}, {"text": "🎯 CATALIZZATORI"}],
-            [{"text": "📰 NEWS"}, {"text": "🏛️ TRUMP / WHITE HOUSE"}],
-            [{"text": "💰 ACQUISTI"}, {"text": "🧾 FILINGS SEC"}],
+            [{"text": "🏠 HOME"}, {"text": "🏆 CLASSIFICA"}],
+            [{"text": "🟢 COSA COMPRARE"}, {"text": "🛒 CARRELLO CFD"}],
+            [{"text": "🎯 CATALIZZATORI"}, {"text": "🏛️ TRUMP / WHITE HOUSE"}],
+            [{"text": "📰 NEWS"}, {"text": "🧾 SEC / OGE"}],
             [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
-            [{"text": "🔄 AGGIORNA"}, {"text": "⚙️ STATO"}],
-            [{"text": "ℹ️ AIUTO"}],
+            [{"text": "💰 ACQUISTI"}, {"text": "🔄 AGGIORNA"}],
+            [{"text": "⚙️ STATO"}, {"text": "ℹ️ AIUTO"}],
         ],
         "resize_keyboard": True,
         "is_persistent": True,
-        "input_field_placeholder": "Scegli una sezione SPUTNIK",
+        "input_field_placeholder": "SPUTNIK • scegli un'operazione",
     }
 
 
 
+
+
+def sputnik_home_message(state: dict[str, Any]) -> str:
+    rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=3)
+    findings = list((state.get("intelligence_history") or {}).values())
+    catalysts = catalyst_watchlist(findings, limit=3)
+    lines = [
+        "🛰️ SPUTNIK",
+        "━━━━━━━━━━━━━━━━━━",
+        "POLITICA → SETTORI → STRUMENTI → CFD",
+        "",
+        "🏆 TOP EVIDENZE",
+    ]
+    if rows:
+        for row in rows:
+            emoji = "🟢" if row["signal"] == "COMPRA" else "🟡"
+            lines.append(f'{emoji} {row["security"]} — {row["score"]}/100 | {row["signal"]}')
+    else:
+        lines.append("⚪ Nessun candidato SEC verificabile.")
+    lines.extend(["", "🎯 CATALIZZATORI"])
+    if catalysts:
+        for row in catalysts:
+            lines.append(f'🟡 {row["instrument"]} — {row["score"]}/100 | WATCH')
+    else:
+        lines.append("⚪ Nessun catalizzatore verificabile.")
+    lines.extend([
+        "",
+        "🛒 CFD: Entry/SL/TP/Size solo con dati di mercato verificabili.",
+        "⚠️ Nessuna inferenza di transazioni private o intenzioni personali.",
+    ])
+    return "\\n".join(lines)
 
 
 def catalyst_watch_message(state: dict[str, Any]) -> str:
@@ -161,7 +192,7 @@ def menu_markup() -> dict[str, Any]:
     """SPUTNIK dashboard: native Telegram inline interface."""
     return {
         "inline_keyboard": [
-            [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"},
+            [{"text": "🏠 HOME", "callback_data": "home"}, {"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
              {"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
             [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"}, {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
             [{"text": "💰 ACQUISTI INSIDER", "callback_data": "purchases"},
@@ -178,6 +209,8 @@ def menu_markup() -> dict[str, Any]:
 
 
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
+    if callback == "home":
+        return sputnik_home_message(state)
     if callback == "cfd":
         return cfd_cart_message(state)
     if callback == "catalysts":
@@ -332,13 +365,15 @@ def dispatch(message: dict[str, Any]) -> None:
         send(catalyst_watch_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🛒 carrello cfd":
         send(cfd_cart_message(state), chat_id, reply_markup=telegram_menu())
+    elif command == "🏠 home":
+        send(sputnik_home_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🏆 classifica":
         send(answer_for_callback("ranking", state), chat_id, reply_markup=telegram_menu())
     elif command == "🟢 cosa comprare":
         send(answer_for_callback("buy", state), chat_id, reply_markup=telegram_menu())
     elif command == "💰 acquisti":
         send(telegram_purchases_message(state), chat_id, reply_markup=telegram_menu())
-    elif command == "🧾 filings sec":
+    elif command in {"🧾 filings sec", "🧾 sec / oge"}:
         send(answer_for_callback("filings", state), chat_id, reply_markup=telegram_menu())
     elif command == "📊 settori / impatto":
         send(answer_for_callback("sectors", state), chat_id, reply_markup=telegram_menu())
