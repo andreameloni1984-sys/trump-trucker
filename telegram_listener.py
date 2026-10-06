@@ -17,6 +17,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+from sputnik_ranking import rank_purchase_candidates
 from trump_tracker import (
     telegram_brief_message,
     telegram_filings_message,
@@ -144,8 +145,39 @@ def dispatch(message: dict[str, Any]) -> None:
     if not state:
         state = {"telegram_active": True}
 
-    if command in {"trump ordina", "trump cosa compro", "trump cosa comprare"}:
-        send(telegram_trump_order_message(state), chat_id)
+    if command in {"trump ordina", "trump cosa compro", "trump cosa comprare", "/ranking"}:
+        rows = rank_purchase_candidates(
+            list((state.get("transactions") or {}).values()),
+            limit=5,
+        )
+        if not rows:
+            send(
+                "🛰️ SPUTNIK — CLASSIFICA\\n━━━━━━━━━━━━━━━━━━\\n"
+                "⚪ NESSUN CANDIDATO\\n"
+                "Dati pubblici insufficienti per costruire una classifica verificabile.",
+                chat_id,
+            )
+        else:
+            lines = [
+                "🛰️ SPUTNIK — CLASSIFICA",
+                "━━━━━━━━━━━━━━━━━━",
+                "🎯 Cosa osservare secondo le evidenze pubbliche:",
+            ]
+            for row in rows:
+                emoji = "🟢" if row["signal"] == "COMPRA" else ("🟡" if row["signal"] == "OSSERVA" else "🔴")
+                lines.extend([
+                    f'{row["rank"]}. {emoji} {row["security"]} — {row["company"]}',
+                    f'   Voto: {row["score"]}/100 | {row["signal"]}',
+                    f'   Fonti: SEC primaria | Filing distinti: {row["filings"]}',
+                    f'   Recenza: {row["recency"]}/10',
+                    f'   {row["reason"]}',
+                ])
+            lines.extend([
+                "",
+                "⚠️ Il voto misura solo evidenza pubblica disponibile.",
+                "⚠️ Non prova rendimento futuro, intenzioni o transazioni private.",
+            ])
+            send("\\n".join(lines), chat_id)
     elif command == "/help":
         send(telegram_help_message(), chat_id)
     elif command == "/filings":
@@ -169,7 +201,7 @@ def dispatch(message: dict[str, Any]) -> None:
             "🟢 Listener: PERMANENTE\n"
             "🔎 Motore: GitHub Actions\n"
             "📡 Fonte principale: SEC EDGAR\n"
-            "🎯 Comando naturale: Trump ordina",
+            "🎯 Comando naturale: Trump ordina /ranking",
             chat_id,
         )
     elif command == "/test":
