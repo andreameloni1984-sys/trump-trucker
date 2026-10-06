@@ -22,6 +22,8 @@ on:
       - "sputnik_cfd.py"
       - "tests/test_sputnik_cfd.py"
       - "tests/test_sputnik_ranking.py"
+      - "sputnik_catalyst.py"
+      - "tests/test_sputnik_catalyst.py"
       - ".github/workflows/sputnik_menu_tests.yml"
 
 permissions:
