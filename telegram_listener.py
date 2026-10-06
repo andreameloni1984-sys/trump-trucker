@@ -108,6 +108,36 @@ def telegram_menu() -> dict[str, Any]:
     }
 
 
+
+def menu_markup() -> dict[str, Any]:
+    return {"inline_keyboard": [
+        [{"text":"🏆 Classifica","callback_data":"ranking"},{"text":"🟢 Cosa comprare","callback_data":"buy"}],
+        [{"text":"📰 News","callback_data":"news"},{"text":"🏛️ Trump / White House","callback_data":"brief"}],
+        [{"text":"💰 Acquisti","callback_data":"purchases"},{"text":"📊 Brief","callback_data":"brief"}],
+        [{"text":"🔄 Aggiorna","callback_data":"scan"},{"text":"⚙️ Stato","callback_data":"status"}],
+        [{"text":"ℹ️ Guida","callback_data":"help"}],
+    ]}
+
+def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
+    if callback in {"ranking", "buy"}:
+        rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=5)
+        if not rows:
+            return "🛰️ SPUTNIK — CLASSIFICA\n━━━━━━━━━━━━━━━━━━\n⚪ Nessun candidato verificabile con i dati pubblici disponibili."
+        lines=["🛰️ SPUTNIK — " + ("COSA COMPRARE" if callback=="buy" else "CLASSIFICA"),"━━━━━━━━━━━━━━━━━━"]
+        for row in rows:
+            emoji="🟢" if row["signal"]=="COMPRA" else ("🟡" if row["signal"]=="OSSERVA" else "🔴")
+            lines += [f'{row["rank"]}. {emoji} {row["security"]} — {row["company"]}',f'   {row["score"]}/100 | {row["signal"]}',f'   Filing: {row["filings"]} | Recenza: {row["recency"]}/10',f'   {row["reason"]}']
+        lines += ["","⚠️ Classifica basata solo su evidenze pubbliche verificabili."]
+        return "\n".join(lines)
+    if callback=="news": return telegram_news_message(state)
+    if callback=="brief": return telegram_brief_message(state)
+    if callback=="purchases": return telegram_purchases_message(state)
+    if callback=="status": return "🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n📡 Telegram: ONLINE\n🟢 Listener: PERMANENTE\n🔎 Motore: GitHub Actions\n📡 Fonte: SEC EDGAR"
+    if callback=="help": return telegram_help_message()
+    if callback=="scan": return "🔄 SPUTNIK — AGGIORNAMENTO\n━━━━━━━━━━━━━━━━━━\n📡 Raccolta dati affidata al motore GitHub Actions.\n⏳ Attendi il prossimo snapshot."
+    return "🛰️ SPUTNIK"
+
+
 def remote_state() -> dict[str, Any]:
     try:
         req = urllib.request.Request(
@@ -145,7 +175,7 @@ def dispatch(message: dict[str, Any]) -> None:
             "⏱️ Puoi usare /status /test /brief /filings /transactions /purchases /sales /positions /news /help\n"
             "🎯 Usa il menu qui sotto oppure scrivi: Trump ordina",
             chat_id,
-            reply_markup=telegram_menu(),
+            reply_markup=menu_markup(),
         )
         return
 
@@ -235,6 +265,23 @@ def dispatch(message: dict[str, Any]) -> None:
         )
 
 
+
+def dispatch_callback(query: dict[str, Any]) -> None:
+    data = str(query.get("data") or "")
+    message = query.get("message") or {}
+    chat = message.get("chat") or {}
+    chat_id = str(chat.get("id", ""))
+    if not chat_id or chat_id != str(LOCAL_STATE.get("chat_id") or ""):
+        return
+    try:
+        api("answerCallbackQuery", {"callback_query_id": str(query.get("id"))}, timeout=10)
+        state = remote_state() or {"telegram_active": True}
+        text = answer_for_callback(data, state)
+        api("editMessageText", {"chat_id": chat_id, "message_id": message.get("message_id"), "text": text, "reply_markup": menu_markup()}, timeout=20)
+    except Exception as exc:
+        print(f"SPUTNIK callback error: {type(exc).__name__}: {exc}")
+
+
 def poll_loop() -> None:
     global BOT_TOKEN
     last_token = ""
@@ -259,7 +306,7 @@ def poll_loop() -> None:
                 {
                     "offset": int(LOCAL_STATE.get("offset", 0) or 0),
                     "timeout": POLL_TIMEOUT,
-                    "allowed_updates": ["message"],
+                    "allowed_updates": ["message", "callback_query"],
                 },
                 timeout=POLL_TIMEOUT + 10,
             )
@@ -273,7 +320,11 @@ def poll_loop() -> None:
                 update_id = int(update.get("update_id", 0))
                 LOCAL_STATE["offset"] = max(int(LOCAL_STATE.get("offset", 0) or 0), update_id + 1)
                 save_local_state(LOCAL_STATE)
-                dispatch(update.get("message") or {})
+                
+                if update.get("callback_query"):
+                    dispatch_callback(update["callback_query"])
+                else:
+                    dispatch(update.get("message") or {})
         except urllib.error.HTTPError as exc:
             print(f"SPUTNIK: Telegram HTTP {exc.code}")
             time.sleep(3)
