@@ -7,6 +7,8 @@ on:
       - "tests/test_telegram_menu.py"
       - "sputnik_ranking.py"
       - "sputnik_cfd.py"
+      - "sputnik_catalyst.py"
+      - "tests/test_sputnik_catalyst.py"
       - "tests/test_sputnik_cfd.py"
       - "tests/test_sputnik_ranking.py"
       - ".github/workflows/sputnik_menu_tests.yml"
