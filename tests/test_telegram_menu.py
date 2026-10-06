@@ -12,6 +12,7 @@ class SputnikTelegramMenuTests(unittest.TestCase):
             "🏆 CLASSIFICA",
             "🟢 COSA COMPRARE",
             "🛒 CARRELLO CFD",
+            "🎯 CATALIZZATORI",
             "📰 NEWS",
             "🏛️ TRUMP / WHITE HOUSE",
             "💰 ACQUISTI",
