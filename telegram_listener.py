@@ -217,7 +217,7 @@ def menu_markup() -> dict[str, Any]:
     return {
         "inline_keyboard": [
             [{"text": "🏠 HOME", "callback_data": "home"}, {"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
-             {"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
+            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
             [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"}, {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
             [{"text": "💰 ACQUISTI INSIDER", "callback_data": "purchases"},
              {"text": "🧾 FILINGS SEC", "callback_data": "filings"}],
