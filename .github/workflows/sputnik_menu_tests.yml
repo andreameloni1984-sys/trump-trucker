@@ -6,6 +6,8 @@ on:
       - "telegram_listener.py"
       - "tests/test_telegram_menu.py"
       - "sputnik_ranking.py"
+      - "sputnik_cfd.py"
+      - "tests/test_sputnik_cfd.py"
       - "tests/test_sputnik_ranking.py"
       - ".github/workflows/sputnik_menu_tests.yml"
   push:
@@ -28,4 +30,4 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m unittest tests/test_telegram_menu.py tests/test_sputnik_ranking.py -v
+      - run: python -m unittest tests/test_telegram_menu.py tests/test_sputnik_ranking.py tests/test_sputnik_cfd.py -v
