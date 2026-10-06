@@ -19,6 +19,7 @@ from typing import Any
 
 from sputnik_ranking import rank_purchase_candidates
 from sputnik_cfd import build_cfd_cart
+from sputnik_catalyst import catalyst_watchlist
 from trump_tracker import (
     telegram_brief_message,
     telegram_filings_message,
@@ -98,7 +99,7 @@ def telegram_menu() -> dict[str, Any]:
     return {
         "keyboard": [
             [{"text": "🏆 CLASSIFICA"}, {"text": "🟢 COSA COMPRARE"}],
-            [{"text": "🛒 CARRELLO CFD"}],
+            [{"text": "🛒 CARRELLO CFD"}, {"text": "🎯 CATALIZZATORI"}],
             [{"text": "📰 NEWS"}, {"text": "🏛️ TRUMP / WHITE HOUSE"}],
             [{"text": "💰 ACQUISTI"}, {"text": "🧾 FILINGS SEC"}],
             [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
@@ -111,6 +112,23 @@ def telegram_menu() -> dict[str, Any]:
     }
 
 
+
+
+
+def catalyst_watch_message(state: dict[str, Any]) -> str:
+    findings = list((state.get("intelligence_history") or {}).values())
+    rows = catalyst_watchlist(findings, limit=8)
+    lines = ["🛰️ SPUTNIK — CATALIZZATORI CFD", "━━━━━━━━━━━━━━━━━━"]
+    if not rows:
+        lines.append("⚪ Nessun catalizzatore verificabile disponibile.")
+        return "\n".join(lines)
+    for i, row in enumerate(rows, 1):
+        lines.append("{} 🟡 {} — {}/100".format(i, row["instrument"], row["score"]))
+        lines.append("   {} | {}".format(row["description"], ", ".join(row["domains"])))
+        lines.append("   Fonti: {} | Eventi: {}".format(", ".join(row["sources"]), row["events"]))
+        lines.append("   {}".format(row["reason"]))
+    lines.extend(["", "⚠️ WATCHLIST: non è un ordine e non implica BUY/SELL.", "🎯 Il passaggio a CFD richiede poi una quotazione verificabile + SL + TP."])
+    return "\n".join(lines)
 
 
 def cfd_cart_message(state: dict[str, Any], capital: float = 300.0) -> str:
@@ -145,7 +163,7 @@ def menu_markup() -> dict[str, Any]:
         "inline_keyboard": [
             [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"},
              {"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
-            [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"}],
+            [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"}, {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
             [{"text": "💰 ACQUISTI INSIDER", "callback_data": "purchases"},
              {"text": "🧾 FILINGS SEC", "callback_data": "filings"}],
             [{"text": "🏛️ TRUMP / WHITE HOUSE", "callback_data": "brief"},
@@ -162,6 +180,8 @@ def menu_markup() -> dict[str, Any]:
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
     if callback == "cfd":
         return cfd_cart_message(state)
+    if callback == "catalysts":
+        return catalyst_watch_message(state)
     if callback in {"ranking", "buy"}:
         rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=5)
         if not rows:
@@ -292,6 +312,8 @@ def dispatch(message: dict[str, Any]) -> None:
                 "⚠️ Non prova rendimento futuro, intenzioni o transazioni private.",
             ])
             send("\n".join(lines), chat_id, reply_markup=telegram_menu())
+    elif command == "🎯 catalizzatori":
+        send(catalyst_watch_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🛒 carrello cfd":
         send(cfd_cart_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🏆 classifica":
