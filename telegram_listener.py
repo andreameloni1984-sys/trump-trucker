@@ -152,8 +152,8 @@ def dispatch(message: dict[str, Any]) -> None:
         )
         if not rows:
             send(
-                "🛰️ SPUTNIK — CLASSIFICA\\n━━━━━━━━━━━━━━━━━━\\n"
-                "⚪ NESSUN CANDIDATO\\n"
+                "🛰️ SPUTNIK — CLASSIFICA\n━━━━━━━━━━━━━━━━━━\n"
+                "⚪ NESSUN CANDIDATO\n"
                 "Dati pubblici insufficienti per costruire una classifica verificabile.",
                 chat_id,
             )
@@ -177,7 +177,7 @@ def dispatch(message: dict[str, Any]) -> None:
                 "⚠️ Il voto misura solo evidenza pubblica disponibile.",
                 "⚠️ Non prova rendimento futuro, intenzioni o transazioni private.",
             ])
-            send("\\n".join(lines), chat_id)
+            send("\n".join(lines), chat_id)
     elif command == "/help":
         send(telegram_help_message(), chat_id)
     elif command == "/filings":
