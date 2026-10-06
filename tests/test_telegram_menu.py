@@ -27,6 +27,9 @@ class SputnikTelegramMenuTests(unittest.TestCase):
             self.assertIn(label, source)
         self.assertIn('"POLITICA → SETTORI → STRUMENTI → CFD"', source)
         self.assertIn('def sputnik_home_message', source)
+        self.assertIn('🏆 CLASSIFICA OPERATIVA', source)
+        self.assertIn('Entry {item["entry"]}', source)
+        self.assertIn('WAIT: quotazione CFD non disponibile.', source)
 
         self.assertIn('"is_persistent": True', source)
         self.assertIn('reply_markup=telegram_menu()', source)
