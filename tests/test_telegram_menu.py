@@ -36,6 +36,8 @@ class SputnikTelegramMenuTests(unittest.TestCase):
             'command_key in {',
             '"cosa compro oggi"',
             '"cosa comprare oggi"',
+            '"cosa acquisto oggi"',
+            '"quale compro oggi"',
             'command == "🏆 classifica"',
             'command == "🟢 cosa comprare"',
             'command == "🧾 filings sec"',
