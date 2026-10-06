@@ -98,7 +98,8 @@ def telegram_menu() -> dict[str, Any]:
         "keyboard": [
             [{"text": "🏆 CLASSIFICA"}, {"text": "🟢 COSA COMPRARE"}],
             [{"text": "📰 NEWS"}, {"text": "🏛️ TRUMP / WHITE HOUSE"}],
-            [{"text": "💰 ACQUISTI"}, {"text": "📊 BRIEF"}],
+            [{"text": "💰 ACQUISTI"}, {"text": "🧾 FILINGS SEC"}],
+            [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
             [{"text": "🔄 AGGIORNA"}, {"text": "⚙️ STATO"}],
             [{"text": "ℹ️ AIUTO"}],
         ],
@@ -204,7 +205,7 @@ def dispatch(message: dict[str, Any]) -> None:
             "⏱️ Puoi usare /status /test /brief /filings /transactions /purchases /sales /positions /news /help\n"
             "🎯 Usa il menu qui sotto oppure scrivi: Trump ordina",
             chat_id,
-            reply_markup=menu_markup(),
+            reply_markup=telegram_menu(),
         )
         return
 
@@ -224,7 +225,7 @@ def dispatch(message: dict[str, Any]) -> None:
     if not state:
         state = {"telegram_active": True}
 
-    if command in {"trump ordina", "trump cosa compro", "trump cosa comprare", "/ranking", "🏆 classifica", "🟢 cosa comprare"}:
+    if command in {"trump ordina", "trump cosa compro", "trump cosa comprare", "/ranking"}:
         rows = rank_purchase_candidates(
             list((state.get("transactions") or {}).values()),
             limit=5,
@@ -256,8 +257,32 @@ def dispatch(message: dict[str, Any]) -> None:
                 "⚠️ Il voto misura solo evidenza pubblica disponibile.",
                 "⚠️ Non prova rendimento futuro, intenzioni o transazioni private.",
             ])
-            send("\n".join(lines), chat_id)
-    elif command in {"/help", "ℹ️ aiuto"}:
+            send("\n".join(lines), chat_id, reply_markup=telegram_menu())
+    elif command == "🏆 classifica":
+        send(answer_for_callback("ranking", state), chat_id, reply_markup=telegram_menu())
+    elif command == "🟢 cosa comprare":
+        send(answer_for_callback("buy", state), chat_id, reply_markup=telegram_menu())
+    elif command == "💰 acquisti":
+        send(telegram_purchases_message(state), chat_id, reply_markup=telegram_menu())
+    elif command == "🧾 filings sec":
+        send(answer_for_callback("filings", state), chat_id, reply_markup=telegram_menu())
+    elif command == "📊 settori / impatto":
+        send(answer_for_callback("sectors", state), chat_id, reply_markup=telegram_menu())
+    elif command == "🔎 analisi":
+        send(answer_for_callback("analysis", state), chat_id, reply_markup=telegram_menu())
+    elif command == "📰 news":
+        send(telegram_news_message(state), chat_id, reply_markup=telegram_menu())
+    elif command == "🏛️ trump / white house":
+        send(telegram_brief_message(state), chat_id, reply_markup=telegram_menu())
+    elif command == "📊 brief":
+        send(telegram_brief_message(state), chat_id, reply_markup=telegram_menu())
+    elif command == "🔄 aggiorna":
+        send(answer_for_callback("scan", state), chat_id, reply_markup=telegram_menu())
+    elif command == "⚙️ stato":
+        send(answer_for_callback("status", state), chat_id, reply_markup=telegram_menu())
+    elif command == "ℹ️ aiuto":
+        send(telegram_help_message(), chat_id, reply_markup=telegram_menu())
+    elif command in {"/help"}:
         send(telegram_help_message(), chat_id, reply_markup=menu_markup())
     elif command == "/filings":
         send(telegram_filings_message(state), chat_id)
