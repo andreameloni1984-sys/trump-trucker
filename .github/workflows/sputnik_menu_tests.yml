@@ -13,6 +13,8 @@ on:
     paths:
       - "telegram_listener.py"
       - "tests/test_telegram_menu.py"
+      - "sputnik_ranking.py"
+      - "tests/test_sputnik_ranking.py"
       - ".github/workflows/sputnik_menu_tests.yml"
 
 permissions:
