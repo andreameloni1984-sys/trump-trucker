@@ -11,6 +11,7 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         required_labels = (
             "🏆 CLASSIFICA",
             "🟢 COSA COMPRARE",
+            "🛒 CARRELLO CFD",
             "📰 NEWS",
             "🏛️ TRUMP / WHITE HOUSE",
             "💰 ACQUISTI",
