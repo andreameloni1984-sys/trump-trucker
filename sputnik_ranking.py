@@ -45,6 +45,29 @@ def _recency_score(transaction_date: str, today: date | None = None) -> int:
     return 0
 
 
+def disclosure_lag(transaction_date: str, filing_date: str) -> int | None:
+    """Return calendar days between the documented transaction and filing dates."""
+    tx = _parse_date(transaction_date)
+    filing = _parse_date(filing_date)
+    if tx is None or filing is None:
+        return None
+    return (filing - tx).days
+
+
+def disclosure_lag_bucket(transaction_date: str, filing_date: str) -> str:
+    """Classify disclosure timing without treating timing as proof of intent."""
+    lag = disclosure_lag(transaction_date, filing_date)
+    if lag is None or lag < 0:
+        return "N/D"
+    if lag == 0:
+        return "SAME_DAY"
+    if lag <= 3:
+        return "1-3_GIORNI"
+    if lag <= 45:
+        return "4-45_GIORNI"
+    return "OLTRE_45_GIORNI"
+
+
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     """Score one documented security candidate from Form 4 purchases.
 
@@ -111,6 +134,15 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
         "social_confirmation": social_confirmation,
         "filings": distinct_filings,
         "date": latest.get("transaction_date") or latest.get("filing_date") or "N/D",
+        "filing_date": latest.get("filing_date") or "N/D",
+        "disclosure_lag_days": disclosure_lag(
+            str(latest.get("transaction_date") or ""),
+            str(latest.get("filing_date") or ""),
+        ),
+        "disclosure_lag_bucket": disclosure_lag_bucket(
+            str(latest.get("transaction_date") or ""),
+            str(latest.get("filing_date") or ""),
+        ),
         "url": latest.get("source_url") or "",
         "reason": (
             f"Form 4 P documentato; {distinct_filings} filing distinti; "
