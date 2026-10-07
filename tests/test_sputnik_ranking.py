@@ -1,6 +1,8 @@
 import unittest
 from datetime import date
 
+from sputnik_ranking import disclosure_business_days
+
 from sputnik_ranking import disclosure_lag, disclosure_lag_bucket, rank_purchase_candidates, score_purchase_candidate
 
 
@@ -49,6 +51,14 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(result["recency"], 0)
 
 
+
+    def test_disclosure_business_days_weekend_aware(self):
+        self.assertEqual(disclosure_business_days("2026-10-09", "2026-10-12"), 1)
+        self.assertEqual(disclosure_business_days("2026-10-10", "2026-10-12"), 1)
+        self.assertEqual(disclosure_business_days("2026-10-05", "2026-10-08"), 3)
+        self.assertEqual(disclosure_business_days("2026-10-05", "2026-10-05"), 0)
+        self.assertIsNone(disclosure_business_days("2026-10-08", "2026-10-07"))
+
     def test_disclosure_lag_same_day(self):
         self.assertEqual(disclosure_lag("2026-10-05", "2026-10-05"), 0)
         self.assertEqual(disclosure_lag_bucket("2026-10-05", "2026-10-05"), "SAME_DAY")
@@ -70,6 +80,7 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(result["score"], 60)
         self.assertEqual(result["disclosure_lag_days"], 15)
         self.assertEqual(result["disclosure_lag_bucket"], "4-45_GIORNI")
+        self.assertEqual(result["disclosure_business_days"], 11)
 
     def test_non_purchase_is_excluded(self):
         item = tx("e1")
