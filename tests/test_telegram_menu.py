@@ -31,6 +31,8 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         self.assertIn('"inline_keyboard":', source)
         self.assertIn('"callback_data": "buy"', source)
         self.assertIn('"callback_data": "cfd"', source)
+        self.assertIn('"callback_data": "anticipation"', source)
+        self.assertIn('def anticipation_message', source)
         self.assertIn('🏆 CLASSIFICA OPERATIVA', source)
         self.assertIn('Entry {item["entry"]}', source)
         self.assertIn('WAIT: quotazione CFD non disponibile.', source)
