@@ -64,6 +64,21 @@ def save_local_state(state: dict[str, Any]) -> None:
 
 LOCAL_STATE = load_local_state()
 
+def bootstrap_state(token: str, chat_id: str = "") -> None:
+    """Apply trusted bootstrap credentials without logging secrets."""
+    global BOT_TOKEN
+    token = str(token or "").strip()
+    chat_id = str(chat_id or "").strip()
+    with BOT_LOCK:
+        BOT_TOKEN = token
+        if token:
+            os.environ["TELEGRAM_BOT_TOKEN"] = token
+    if chat_id:
+        LOCAL_STATE["chat_id"] = chat_id
+        LOCAL_STATE["active"] = True
+        save_local_state(LOCAL_STATE)
+
+
 
 def api(method: str, payload: dict[str, Any], timeout: int = 35) -> dict[str, Any]:
     token = BOT_TOKEN
