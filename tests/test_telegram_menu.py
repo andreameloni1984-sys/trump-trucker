@@ -55,6 +55,13 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         ):
             self.assertIn(command, source)
 
+    def test_help_contains_complete_command_list(self):
+        help_source = Path("trump_tracker.py").read_text(encoding="utf-8")
+        for label in ("🏠 HOME", "🏆 CLASSIFICA", "🟢 COSA COMPRARE", "🛒 CARRELLO CFD", "🎯 CATALIZZATORI", "🏛️ TRUMP / WHITE HOUSE", "📰 NEWS", "🧾 SEC / OGE", "📊 SETTORI / IMPATTO", "🔎 ANALISI", "💰 ACQUISTI", "🔄 AGGIORNA", "⚙️ STATO", "ℹ️ AIUTO"):
+            self.assertIn(label, help_source)
+        for command in ("/start", "/stop", "/status", "/test", "/scan", "/filings", "/transactions", "/purchases", "/sales", "/news", "/brief", "/help"):
+            self.assertIn(command, help_source)
+
 
 if __name__ == "__main__":
     unittest.main()
