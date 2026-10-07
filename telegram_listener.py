@@ -35,7 +35,7 @@ from trump_tracker import (
     telegram_trump_order_message,
 )
 
-BOT_TOKEN = ""
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 BOT_LOCK = threading.Lock()
 STOP_EVENT = threading.Event()
 LOCAL_STATE_FILE = Path(os.getenv("SPUTNIK_TELEGRAM_LOCAL_STATE", "telegram_listener_state.json"))
@@ -568,7 +568,12 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:
         if self.path in {"/", "/health"}:
-            body = b'{"status":"ok","service":"sputnik-telegram-listener"}'
+            body = json.dumps({
+                "status": "ok",
+                "service": "sputnik-telegram-listener",
+                "telegram_configured": bool(BOT_TOKEN),
+                "authorized_chat": bool(str(LOCAL_STATE.get("chat_id") or "").strip()),
+            }).encode("utf-8")
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Content-Length", str(len(body)))
@@ -586,15 +591,18 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         token = self.headers.get("X-Telegram-Bot-Token", "").strip()
+        chat_id = self.headers.get("X-Telegram-Chat-Id", "").strip()
         if not token or ":" not in token:
             self.send_response(400)
             self.end_headers()
             return
 
-        with BOT_LOCK:
-            BOT_TOKEN = token
-            os.environ["TELEGRAM_BOT_TOKEN"] = token
-        print("SPUTNIK: Telegram bootstrap ricevuto; listener autorizzato.")
+        bootstrap_state(token, chat_id)
+        print(
+            "SPUTNIK: Telegram bootstrap ricevuto; "
+            f"listener autorizzato; chat_configured={bool(chat_id)}",
+            flush=True,
+        )
 
         body = b'{"status":"bootstrapped"}'
         self.send_response(200)
@@ -608,7 +616,7 @@ def main() -> None:
     thread = threading.Thread(target=poll_loop, daemon=True)
     thread.start()
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
-    print(f"SPUTNIK: Telegram listener HTTP online on port {PORT}.")
+    print(f"SPUTNIK: Telegram listener HTTP online on port {PORT}.", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
