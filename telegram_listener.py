@@ -213,21 +213,23 @@ def cfd_cart_message(state: dict[str, Any], capital: float = 300.0) -> str:
 
 
 def menu_markup() -> dict[str, Any]:
-    """SPUTNIK dashboard: native Telegram inline interface."""
+    """SPUTNIK dashboard: Commodities-style inline control panel."""
     return {
         "inline_keyboard": [
-            [{"text": "🏠 HOME", "callback_data": "home"}, {"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
-            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
-            [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"}, {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
-            [{"text": "💰 ACQUISTI INSIDER", "callback_data": "purchases"},
-             {"text": "🧾 FILINGS SEC", "callback_data": "filings"}],
+            [{"text": "🏠 HOME", "callback_data": "home"}],
+            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"},
+             {"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
+            [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"},
+             {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
             [{"text": "🏛️ TRUMP / WHITE HOUSE", "callback_data": "brief"},
              {"text": "📰 NEWS", "callback_data": "news"}],
+            [{"text": "🧾 SEC / OGE", "callback_data": "filings"},
+             {"text": "💰 ACQUISTI", "callback_data": "purchases"}],
             [{"text": "📊 SETTORI / IMPATTO", "callback_data": "sectors"},
              {"text": "🔎 ANALISI", "callback_data": "analysis"}],
             [{"text": "🔄 AGGIORNA", "callback_data": "scan"},
              {"text": "⚙️ STATO", "callback_data": "status"}],
-            [{"text": "ℹ️ GUIDA", "callback_data": "help"}],
+            [{"text": "ℹ️ AIUTO", "callback_data": "help"}],
         ]
     }
 
