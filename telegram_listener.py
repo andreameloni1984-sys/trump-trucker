@@ -436,7 +436,9 @@ def dispatch(message: dict[str, Any]) -> None:
         send(anticipation_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "💰 acquisti":
         send(telegram_purchases_message(state), chat_id, reply_markup=telegram_menu())
-    elif command in {"🧾 filings sec", "🧾 sec / oge"}:
+    elif command == "🧾 filings sec":
+        send(answer_for_callback("filings", state), chat_id, reply_markup=telegram_menu())
+    elif command == "🧾 sec / oge":
         send(answer_for_callback("filings", state), chat_id, reply_markup=telegram_menu())
     elif command == "📊 settori / impatto":
         send(answer_for_callback("sectors", state), chat_id, reply_markup=telegram_menu())
