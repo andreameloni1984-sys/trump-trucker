@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "scope": "documented_public_administration_history",
+  "note": "Seed registry of publicly documented principal administration figures. Extend from official White House/OGE records; no private relationships or motives.",
+  "source": "WHITE_HOUSE",
+  "last_verified": "2026-10-07",
+  "administration": "Trump 2025-",
+  "people": [
+    {
+      "name": "Donald J. Trump",
+      "role": "President",
+      "start": "2025-01-20"
+    },
+    {
+      "name": "JD Vance",
+      "role": "Vice President",
+      "start": "2025-01-20"
+    },
+    {
+      "name": "Scott Bessent",
+      "role": "Secretary of the Treasury",
+      "start": "2025"
+    },
+    {
+      "name": "Howard Lutnick",
+      "role": "Secretary of Commerce",
+      "start": "2025"
+    },
+    {
+      "name": "Brooke Rollins",
+      "role": "Secretary of Agriculture",
+      "start": "2025"
+    },
+    {
+      "name": "Pete Hegseth",
+      "role": "Secretary of War",
+      "start": "2025"
+    },
+    {
+      "name": "Marco Rubio",
+      "role": "Secretary of State",
+      "start": "2025"
+    },
+    {
+      "name": "Jamieson Greer",
+      "role": "United States Trade Representative",
+      "start": "2025"
+    },
+    {
+      "name": "Stephen Miller",
+      "role": "Deputy Chief of Staff",
+      "start": "2025"
+    },
+    {
+      "name": "Steven Cheung",
+      "role": "Director of Communications",
+      "start": "2025"
+    }
+  ],
+  "events": []
+}
