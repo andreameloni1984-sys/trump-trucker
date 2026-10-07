@@ -74,10 +74,20 @@ def local_name(tag: str) -> str:
 
 def xml_text(node: Any, name: str) -> str:
     for child in node.iter():
-        if local_name(str(child.tag)) == name:
-            value = (child.text or "").strip()
-            if value:
-                return value
+        if local_name(str(child.tag)) != name:
+            continue
+        value = (child.text or "").strip()
+        if value:
+            return value
+        # SEC ownership XML commonly stores the actual value in a nested
+        # <value> element inside fields such as securityTitle/transactionDate.
+        nested = " ".join(
+            (part.text or "").strip()
+            for part in child.iter()
+            if part is not child and (part.text or "").strip()
+        ).strip()
+        if nested:
+            return nested
     return ""
 
 
