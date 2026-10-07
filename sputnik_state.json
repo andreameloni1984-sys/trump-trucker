@@ -1,6 +1,6 @@
 {
   "events": {},
-  "updated_at": "2026-10-07T02:20:47.744102+00:00",
+  "updated_at": "2026-10-07T03:42:45.443056+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
@@ -276,5 +276,6 @@
       "event_id": "0c6d6316c84d29cb1ed0ad9b"
     }
   },
-  "transactions": {}
+  "transactions": {},
+  "morning_brief_date": "2026-10-07"
 }
