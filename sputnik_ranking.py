@@ -54,6 +54,24 @@ def disclosure_lag(transaction_date: str, filing_date: str) -> int | None:
     return (filing - tx).days
 
 
+def disclosure_business_days(transaction_date: str, filing_date: str) -> int | None:
+    """Count weekdays strictly after transaction date through filing date.
+
+    Informational only: this does not model federal holidays or SEC exceptions.
+    """
+    tx = _parse_date(transaction_date)
+    filing = _parse_date(filing_date)
+    if tx is None or filing is None or filing < tx:
+        return None
+    days = 0
+    cursor = tx
+    while cursor < filing:
+        cursor = cursor.fromordinal(cursor.toordinal() + 1)
+        if cursor.weekday() < 5:
+            days += 1
+    return days
+
+
 def disclosure_lag_bucket(transaction_date: str, filing_date: str) -> str:
     """Classify disclosure timing without treating timing as proof of intent."""
     lag = disclosure_lag(transaction_date, filing_date)
@@ -136,6 +154,10 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
         "date": latest.get("transaction_date") or latest.get("filing_date") or "N/D",
         "filing_date": latest.get("filing_date") or "N/D",
         "disclosure_lag_days": disclosure_lag(
+            str(latest.get("transaction_date") or ""),
+            str(latest.get("filing_date") or ""),
+        ),
+        "disclosure_business_days": disclosure_business_days(
             str(latest.get("transaction_date") or ""),
             str(latest.get("filing_date") or ""),
         ),
