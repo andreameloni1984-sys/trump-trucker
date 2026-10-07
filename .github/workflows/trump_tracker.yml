@@ -60,6 +60,7 @@ jobs:
       - name: Keep Telegram listener online
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SPUTNIK_TELEGRAM_SERVICE_URL: https://sputnik-telegram-listener.onrender.com
         run: |
           curl --fail --silent --show-error --retry 5 --retry-delay 3 \
