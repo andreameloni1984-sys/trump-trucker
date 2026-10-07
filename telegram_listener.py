@@ -222,7 +222,11 @@ def anticipation_message(state: dict[str, Any]) -> str:
         lines.append("⚪ Nessun segnale anticipatorio verificabile sopra soglia.")
     else:
         for i, row in enumerate(rows, 1):
-            lines.extend([f"{i}. 🔵 {row["domain"]} — {row["score"]}/100 | ANTICIPA", f"   Eventi: {row["events"]} | Fonti: {", ".join(row["sources"])}", f"   {row["reason"]}"])
+            lines.extend([
+                f'{i}. 🔵 {row["domain"]} — {row["score"]}/100 | ANTICIPA',
+                f'   Eventi: {row["events"]} | Fonti: {", ".join(row["sources"])}',
+                f'   {row["reason"]}',
+            ])
     lines.extend(["", "⚠️ ANTICIPA ≠ COMPRA: il selettore può segnalare prima del Form 4, ma non inventa Entry/SL/TP.", "⚠️ Storico basato solo su informazioni pubbliche documentate."])
     return "\n".join(lines)
 
