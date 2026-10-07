@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "trump_tracker.py"
+      - "sputnik_action_reaction.py"
       - "telegram_listener.py"
       - ".github/workflows/trump_tracker.yml"
   workflow_dispatch:
@@ -74,6 +75,7 @@ jobs:
           SPUTNIK_CIKS: "1849635"
           SPUTNIK_SEC_FORMS: "3,4,5,8-K,13D,13G,13F-HR,13F-HR/A,144"
           SPUTNIK_SOCIAL_ENABLED: "1"
+          SPUTNIK_MORNING_HOUR: "5"
           SPUTNIK_TELEGRAM_POLLING: "0"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
