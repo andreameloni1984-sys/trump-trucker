@@ -16,7 +16,7 @@ class SputnikTelegramMenuTests(unittest.TestCase):
             "📰 NEWS",
             "🏛️ TRUMP / WHITE HOUSE",
             "💰 ACQUISTI",
-            "🧾 FILINGS SEC",
+            "🧾 SEC / OGE",
             "📊 SETTORI / IMPATTO",
             "🔎 ANALISI",
             "🔄 AGGIORNA",
