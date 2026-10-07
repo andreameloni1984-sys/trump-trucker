@@ -27,6 +27,11 @@ class SputnikTelegramMenuTests(unittest.TestCase):
             self.assertIn(label, source)
         self.assertIn('"POLITICA → EVIDENZA → CATALIZZATORE → CFD"', source)
         self.assertIn('def sputnik_home_message', source)
+        self.assertIn('def bootstrap_state', source)
+        self.assertIn('X-Telegram-Bot-Token', source)
+        self.assertIn('X-Telegram-Chat-Id', source)
+        self.assertIn('"telegram_configured"', source)
+        self.assertIn('"authorized_chat"', source)
         self.assertIn('def menu_markup', source)
         self.assertIn('"inline_keyboard":', source)
         self.assertIn('"callback_data": "buy"', source)
@@ -45,7 +50,8 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         source = Path("telegram_listener.py").read_text(encoding="utf-8")
         for command in (
             'command == "🏠 home"',
-            'command in {"🧾 filings sec", "🧾 sec / oge"}',
+            'command == "🧾 filings sec"',
+            'command == "🧾 sec / oge"',
             'command_key in {',
             '"cosa compro oggi"',
             '"cosa comprare oggi"',
