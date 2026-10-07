@@ -6,7 +6,11 @@ on:
       - "trump_tracker.py"
       - "sputnik_ranking.py"
       - "tests/test_sputnik_ranking.py"
+      - "tests/test_sputnik_action_reaction.py"
+      - "sputnik_action_reaction.py"
       - "tests/test_trump_tracker_form4.py"
+      - "tests/test_sputnik_action_reaction.py"
+      - "sputnik_action_reaction.py"
       - ".github/workflows/sputnik_tests.yml"
   push:
     branches:
