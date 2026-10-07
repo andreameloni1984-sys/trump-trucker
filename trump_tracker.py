@@ -91,15 +91,55 @@ def fetch_public_document(url: str, user_agent: str) -> bytes:
         return response.read()
 
 
+def _form4_xml_urls(event: FilingEvent, user_agent: str) -> list[str]:
+    """Return verified XML candidates for a Form 3/4/5 filing.
+    
+    SEC submissions can expose an HTML primary document while the structured
+    transaction data is stored in a sibling XML document. Never treat the HTML
+    filing page as XML; discover the sibling from the SEC filing index.
+    """
+    candidates: list[str] = []
+    if str(event.primary_document).lower().endswith(".xml"):
+        candidates.append(event.source_url)
+    index_url = (
+        f"https://www.sec.gov/Archives/edgar/data/"
+        f"{int(event.cik)}/{event.accession.replace('-', '')}/index.json"
+    )
+    try:
+        documents = filing_index_documents(event, user_agent)
+        names = [
+            str(item.get("name") or "")
+            for item in documents
+            if str(item.get("name") or "").lower().endswith(".xml")
+        ]
+        names.sort(key=lambda name: (name.lower() != str(event.primary_document).lower(), len(name)))
+        for name in names:
+            candidates.append(
+                f"https://www.sec.gov/Archives/edgar/data/"
+                f"{int(event.cik)}/{event.accession.replace('-', '')}/{name}"
+            )
+    except Exception as exc:
+        print(f"SPUTNIK: Form {event.form} XML index unavailable {event.accession}: {type(exc).__name__}")
+    return list(dict.fromkeys(candidates))
+
+
 def extract_form4_transactions(event: FilingEvent, user_agent: str) -> list[TransactionRecord]:
     if event.form not in {"3", "4", "5"}:
         return []
-    try:
-        import xml.etree.ElementTree as ET
-        raw = fetch_public_document(event.source_url, user_agent)
-        root = ET.fromstring(raw)
-    except Exception as exc:
-        print(f"SPUTNIK: impossibile leggere Form {event.form} {event.accession}: {type(exc).__name__}")
+    import xml.etree.ElementTree as ET
+    root = None
+    last_error: Exception | None = None
+    for url in _form4_xml_urls(event, user_agent):
+        try:
+            root = ET.fromstring(fetch_public_document(url, user_agent))
+            break
+        except Exception as exc:
+            last_error = exc
+    if root is None:
+        print(
+            f"SPUTNIK: impossibile leggere Form {event.form} "
+            f"{event.accession}: {type(last_error).__name__ if last_error else 'XML non trovato'}"
+        )
         return []
 
     owners = []
