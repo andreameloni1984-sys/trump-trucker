@@ -20,6 +20,7 @@ from typing import Any
 from sputnik_ranking import rank_purchase_candidates
 from sputnik_cfd import build_cfd_cart
 from sputnik_catalyst import catalyst_watchlist
+from sputnik_action_reaction import action_reaction_message
 from sputnik_history import anticipatory_selector, build_public_history, CORE_ADMINISTRATION
 from trump_tracker import (
     telegram_brief_message,
@@ -101,7 +102,8 @@ def telegram_menu() -> dict[str, Any]:
         "keyboard": [
             [{"text": "🏠 HOME"}, {"text": "🏆 CLASSIFICA"}],
             [{"text": "🟢 COSA COMPRARE"}, {"text": "🛒 CARRELLO CFD"}],
-            [{"text": "🎯 CATALIZZATORI"}, {"text": "🏛️ TRUMP / WHITE HOUSE"}],
+            [{"text": "🎯 CATALIZZATORI"}, {"text": "🧠 AZIONE → REAZIONE"}],
+            [{"text": "🏛️ TRUMP / WHITE HOUSE"}],
             [{"text": "📰 NEWS"}, {"text": "🧾 SEC / OGE"}],
             [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
             [{"text": "💰 ACQUISTI"}, {"text": "🔄 AGGIORNA"}],
@@ -257,6 +259,12 @@ def menu_markup() -> dict[str, Any]:
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
     if callback == "home":
         return sputnik_home_message(state)
+    if callback == "action_reaction":
+        findings = list((state.get("intelligence_history") or {}).values())
+        if not findings:
+            return "🛰️ SPUTNIK — AZIONE → REAZIONE\\n━━━━━━━━━━━━━━━━━━\\n⚪ Nessun analogo storico disponibile."
+        latest = sorted(findings, key=lambda x: str(x.get("detected_at") or ""), reverse=True)[0]
+        return action_reaction_message(" ".join([str(latest.get("source") or ""), " ".join(latest.get("domains") or [])]))
     if callback == "cfd":
         return cfd_cart_message(state)
     if callback == "catalysts":
@@ -411,6 +419,10 @@ def dispatch(message: dict[str, Any]) -> None:
             send("\n".join(lines), chat_id, reply_markup=telegram_menu())
     elif command == "🎯 catalizzatori":
         send(catalyst_watch_message(state), chat_id, reply_markup=telegram_menu())
+    elif command == "🧠 azione → reazione":
+        findings = list((state.get("intelligence_history") or {}).values())
+        latest = sorted(findings, key=lambda x: str(x.get("detected_at") or ""), reverse=True)[0] if findings else {}
+        send(action_reaction_message(" ".join([str(latest.get("source") or ""), " ".join(latest.get("domains") or [])])), chat_id, reply_markup=telegram_menu())
     elif command == "🛒 carrello cfd":
         send(cfd_cart_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🏠 home":
