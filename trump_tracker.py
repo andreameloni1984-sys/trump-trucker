@@ -550,6 +550,42 @@ def new_events(events: list[FilingEvent], state: dict[str, Any]) -> list[FilingE
 
 
 
+def telegram_morning_message(state: dict[str, Any]) -> str:
+    """Concrete morning briefing: documented activity + historical reaction."""
+    transactions = [x for x in (state.get("transactions") or {}).values() if x.get("source_kind") == "FORM4_TRANSACTION"]
+    transactions.sort(key=lambda x: str(x.get("transaction_date") or ""), reverse=True)
+    findings = list((state.get("intelligence_history") or {}).values())
+    findings.sort(key=lambda x: str(x.get("detected_at") or ""), reverse=True)
+    lines = ["🛰️ SPUTNIK — BRIEF ORE 05:00", "━━━━━━━━━━━━━━━━━━", "🎯 RISULTATO"]
+    if transactions:
+        lines.append("🟢 OPERAZIONI FORM 4 DOCUMENTATE")
+        for tx in transactions[:5]:
+            emoji = "🟢" if tx.get("action") == "ACQUISTATO" else "🔴"
+            lines.append(f"{emoji} {tx.get('security') or 'Titolo N/D'} — {tx.get('action')} — {tx.get('transaction_date') or 'N/D'}")
+            lines.append(f"   Soggetto filing: {tx.get('reporting_owner') or 'N/D'} | Fonte SEC")
+    else:
+        lines.append("⚪ Nessuna operazione Form 4 documentata nel dataset.")
+    directions: dict[str, int] = {}
+    latest = None
+    for item in findings[:50]:
+        ar = item.get("action_reaction") or {}
+        for asset, direction in (ar.get("historical_directions") or {}).items():
+            key = f"{asset}:{direction}"
+            directions[key] = directions.get(key, 0) + 1
+        if ar.get("historical_matches") and latest is None:
+            latest = ar
+    lines.extend(["", "🧠 AZIONE → REAZIONE STORICA"])
+    if directions:
+        for key, count in sorted(directions.items(), key=lambda x: x[1], reverse=True)[:6]:
+            asset, direction = key.split(":", 1)
+            lines.append(f"• {asset}: {direction} ({count} analoghi)")
+        if latest:
+            lines.append(f"• Analogo: {latest['historical_matches'][0]}")
+    else:
+        lines.append("⚪ Nessun analogo storico sufficientemente documentato.")
+    lines.extend(["", "📌 Solo eventi pubblici e reazioni storiche documentate.", "⚠️ Non è una garanzia sul prossimo movimento."])
+    return "\n".join(lines)
+
 def telegram_transaction_message(tx: TransactionRecord) -> str:
     emoji = "🟢" if tx.action == "ACQUISTATO" else "🔴"
     return (
@@ -1139,6 +1175,13 @@ def main() -> None:
             stored_transactions[key] = asdict(tx)
             new_transactions.append(tx)
     intelligence = intelligence_snapshot(state)
+    from zoneinfo import ZoneInfo
+    local_now = utc_now().astimezone(ZoneInfo("Europe/Rome"))
+    morning_hour = int(os.getenv("SPUTNIK_MORNING_HOUR", "5"))
+    morning_key = local_now.date().isoformat()
+    morning_due = local_now.hour == morning_hour and state.get("morning_brief_date") != morning_key
+    if morning_due:
+        state["morning_brief_date"] = morning_key
     save_state(state)
 
     print(f"SPUTNIK: {len(events)} filing trovati, {len(fresh)} nuovi.")
@@ -1157,6 +1200,11 @@ def main() -> None:
 
     for item in intelligence:
         message = intelligence_message(item)
+        print(message)
+        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+
+    if morning_due:
+        message = telegram_morning_message(state)
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
