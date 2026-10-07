@@ -240,6 +240,7 @@ def menu_markup() -> dict[str, Any]:
             [{"text": "🏠 HOME", "callback_data": "home"}],
             [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"},
              {"text": "🔵 ANTICIPO", "callback_data": "anticipation"}],
+            [{"text": "🧠 AZIONE → REAZIONE", "callback_data": "action_reaction"}],
             [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
             [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"},
              {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
