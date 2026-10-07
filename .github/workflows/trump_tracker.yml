@@ -65,6 +65,7 @@ jobs:
           curl --fail --silent --show-error --retry 5 --retry-delay 3 \
             -X POST \
             -H "X-Telegram-Bot-Token: $TELEGRAM_BOT_TOKEN" \
+            -H "X-Telegram-Chat-Id: $TELEGRAM_CHAT_ID"
             "$SPUTNIK_TELEGRAM_SERVICE_URL/bootstrap"
           curl --fail --silent --show-error --retry 5 --retry-delay 3 \
             "$SPUTNIK_TELEGRAM_SERVICE_URL/health"
