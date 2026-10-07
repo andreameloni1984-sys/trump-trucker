@@ -6,6 +6,7 @@ not a private-relationship graph and not a claim about motives.
 from __future__ import annotations
 from collections import Counter
 from typing import Any
+from sputnik_catalyst import DOMAIN_INSTRUMENTS
 
 CORE_ADMINISTRATION = [
     {"name": "Donald J. Trump", "role": "President", "period": "2025-", "source": "WHITE_HOUSE"},
@@ -66,6 +67,8 @@ def anticipatory_selector(findings: list[dict[str, Any]], limit: int = 5) -> lis
             continue
         rows.append({
             "domain": row["domain"],
+            "instrument": (DOMAIN_INSTRUMENTS.get(row["domain"], [])[0][0] if DOMAIN_INSTRUMENTS.get(row["domain"]) else row["domain"]),
+            "alternatives": [code for code, _ in DOMAIN_INSTRUMENTS.get(row["domain"], [])[1:]],
             "score": score,
             "events": events,
             "sources": sorted(row["sources"]),
