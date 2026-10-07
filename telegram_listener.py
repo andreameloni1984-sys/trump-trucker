@@ -20,6 +20,7 @@ from typing import Any
 from sputnik_ranking import rank_purchase_candidates
 from sputnik_cfd import build_cfd_cart
 from sputnik_catalyst import catalyst_watchlist
+from sputnik_history import anticipatory_selector, build_public_history, CORE_ADMINISTRATION
 from trump_tracker import (
     telegram_brief_message,
     telegram_filings_message,
@@ -212,13 +213,28 @@ def cfd_cart_message(state: dict[str, Any], capital: float = 300.0) -> str:
     return "\n".join(lines)
 
 
+def anticipation_message(state: dict[str, Any]) -> str:
+    findings = list((state.get("intelligence_history") or {}).values())
+    rows = anticipatory_selector(findings, limit=5)
+    history = build_public_history(findings, state.get("public_history") or [])
+    lines = ["🛰️ SPUTNIK — ANTICIPO", "━━━━━━━━━━━━━━━━━━", f"📚 Storico eventi pubblici: {len(history)} | Amministrazione core: {len(CORE_ADMINISTRATION)}", ""]
+    if not rows:
+        lines.append("⚪ Nessun segnale anticipatorio verificabile sopra soglia.")
+    else:
+        for i, row in enumerate(rows, 1):
+            lines.extend([f"{i}. 🔵 {row["domain"]} — {row["score"]}/100 | ANTICIPA", f"   Eventi: {row["events"]} | Fonti: {", ".join(row["sources"])}", f"   {row["reason"]}"])
+    lines.extend(["", "⚠️ ANTICIPA ≠ COMPRA: il selettore può segnalare prima del Form 4, ma non inventa Entry/SL/TP.", "⚠️ Storico basato solo su informazioni pubbliche documentate."])
+    return "\n".join(lines)
+
+
 def menu_markup() -> dict[str, Any]:
     """SPUTNIK dashboard: Commodities-style inline control panel."""
     return {
         "inline_keyboard": [
             [{"text": "🏠 HOME", "callback_data": "home"}],
             [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"},
-             {"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
+             {"text": "🔵 ANTICIPO", "callback_data": "anticipation"}],
+            [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
             [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"},
              {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
             [{"text": "🏛️ TRUMP / WHITE HOUSE", "callback_data": "brief"},
@@ -241,6 +257,8 @@ def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
         return cfd_cart_message(state)
     if callback == "catalysts":
         return catalyst_watch_message(state)
+    if callback == "anticipation":
+        return anticipation_message(state)
     if callback in {"ranking", "buy"}:
         rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=5)
         if not rows:
@@ -397,6 +415,8 @@ def dispatch(message: dict[str, Any]) -> None:
         send(answer_for_callback("ranking", state), chat_id, reply_markup=telegram_menu())
     elif command == "🟢 cosa comprare":
         send(answer_for_callback("buy", state), chat_id, reply_markup=telegram_menu())
+    elif command == "🔵 anticipo":
+        send(anticipation_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "💰 acquisti":
         send(telegram_purchases_message(state), chat_id, reply_markup=telegram_menu())
     elif command in {"🧾 filings sec", "🧾 sec / oge"}:
