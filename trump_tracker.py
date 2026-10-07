@@ -22,6 +22,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from sputnik_action_reaction import build_action_reaction_record
+
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
 MAX_STATE_EVENTS = 5000
@@ -344,7 +346,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         known[source] = digest
 
         if domains:
-            findings.append({
+            finding = {
                 "source": source,
                 "url": url,
                 "domains": domains,
@@ -352,7 +354,9 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "status": "POTENTIAL_CORRELATION",
                 "detected_at": utc_now().isoformat(),
                 "event_id": digest,
-            })
+            }
+            finding["action_reaction"] = build_action_reaction_record(finding, body)
+            findings.append(finding)
 
     history = state.setdefault("intelligence_history", {})
     for item in findings:
