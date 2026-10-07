@@ -37,4 +37,4 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m unittest tests/test_telegram_menu.py tests/test_sputnik_ranking.py tests/test_sputnik_cfd.py tests/test_sputnik_catalyst.py -v
+      - run: python -m unittest tests/test_telegram_menu.py tests/test_sputnik_ranking.py tests/test_sputnik_cfd.py tests/test_sputnik_catalyst.py tests/test_sputnik_history.py -v
