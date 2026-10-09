@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-09T15:13:26.081382+00:00",
+  "updated_at": "2026-10-09T20:08:44.521386+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "f7bbb6ca75767054fc4b1086",
-    "TRUTH_ARCHIVE": "87da2b1acbaf2e7ce75d4d7b",
+    "WHITE_HOUSE": "06e6c0158335b733981e3f5d",
+    "TRUTH_ARCHIVE": "5b3607a8ce43558ca4d11c44",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -462,6 +462,55 @@
       "event_id": "87da2b1acbaf2e7ce75d4d7b",
       "action_reaction": {
         "event_id": "87da2b1acbaf2e7ce75d4d7b",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "06e6c0158335b733981e3f5d": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-09T20:08:43.563807+00:00",
+      "event_id": "06e6c0158335b733981e3f5d",
+      "action_reaction": {
+        "event_id": "06e6c0158335b733981e3f5d",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [
+          "tariff_pause_2025_04"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "UP",
+          "RISK_ASSETS": "UP"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "5b3607a8ce43558ca4d11c44": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-09T20:08:43.997224+00:00",
+      "event_id": "5b3607a8ce43558ca4d11c44",
+      "action_reaction": {
+        "event_id": "5b3607a8ce43558ca4d11c44",
         "event_type": "GEOPOLITICAL_ESCALATION",
         "historical_matches": [],
         "historical_directions": {},
