@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-10T16:19:42.804847+00:00",
+  "updated_at": "2026-10-10T20:11:49.953051+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "06e6c0158335b733981e3f5d",
-    "TRUTH_ARCHIVE": "d95cf9d389d1a9a2a63a31ea",
+    "TRUTH_ARCHIVE": "b7f240415746b7d4a4fbe384",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -598,6 +598,26 @@
       "event_id": "d95cf9d389d1a9a2a63a31ea",
       "action_reaction": {
         "event_id": "d95cf9d389d1a9a2a63a31ea",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b7f240415746b7d4a4fbe384": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-10T20:11:49.397102+00:00",
+      "event_id": "b7f240415746b7d4a4fbe384",
+      "action_reaction": {
+        "event_id": "b7f240415746b7d4a4fbe384",
         "event_type": "GEOPOLITICAL_ESCALATION",
         "historical_matches": [],
         "historical_directions": {},
