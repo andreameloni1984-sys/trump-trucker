@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-10T05:43:17.663359+00:00",
+  "updated_at": "2026-10-10T11:24:49.439223+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "06e6c0158335b733981e3f5d",
-    "TRUTH_ARCHIVE": "1711c7addb9a01bd2a368f00",
+    "TRUTH_ARCHIVE": "4d0b8873fe613af18c5522bd",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -564,6 +564,24 @@
           "OIL": "DOWN"
         },
         "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "4d0b8873fe613af18c5522bd": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "MEDIA"
+      ],
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-10T11:24:48.904245+00:00",
+      "event_id": "4d0b8873fe613af18c5522bd",
+      "action_reaction": {
+        "event_id": "4d0b8873fe613af18c5522bd",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
       }
     }
   },
