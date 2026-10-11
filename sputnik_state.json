@@ -1,11 +1,11 @@
 {
   "events": {},
-  "updated_at": "2026-10-11T15:31:48.987684+00:00",
+  "updated_at": "2026-10-11T19:41:36.317709+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "fb5fee4bd8d5868b48fd2c24",
+    "WHITE_HOUSE": "06e6c0158335b733981e3f5d",
     "TRUTH_ARCHIVE": "2f646381797d27701af01296",
     "OGE": "bb8797b576c86fb2929bae06"
   },
@@ -482,7 +482,7 @@
       ],
       "evidence": "PUBLIC_SOURCE_TEXT",
       "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-09T20:08:43.563807+00:00",
+      "detected_at": "2026-10-11T19:41:35.360079+00:00",
       "event_id": "06e6c0158335b733981e3f5d",
       "action_reaction": {
         "event_id": "06e6c0158335b733981e3f5d",
