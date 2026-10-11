@@ -1,11 +1,11 @@
 {
   "events": {},
-  "updated_at": "2026-10-11T02:11:09.605850+00:00",
+  "updated_at": "2026-10-11T08:56:30.968702+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "06e6c0158335b733981e3f5d",
+    "WHITE_HOUSE": "80600b78eceb180a7313d0fe",
     "TRUTH_ARCHIVE": "b74916778e4c30ffdd671a2c",
     "OGE": "bb8797b576c86fb2929bae06"
   },
@@ -642,6 +642,35 @@
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
+      }
+    },
+    "80600b78eceb180a7313d0fe": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-11T08:56:29.476542+00:00",
+      "event_id": "80600b78eceb180a7313d0fe",
+      "action_reaction": {
+        "event_id": "80600b78eceb180a7313d0fe",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [
+          "tariff_pause_2025_04"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "UP",
+          "RISK_ASSETS": "UP"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
       }
     }
   },
