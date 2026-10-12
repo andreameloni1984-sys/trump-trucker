@@ -97,7 +97,7 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
             "In parole semplici: prepara lo strumento, ma entra solo se la notizia è confermata e il mercato dà il segnale richiesto.",
             "Prezzi, stop e obiettivi non vengono inventati: servono quotazioni aggiornate.",
         ])
-        return "\\n".join(lines)
+        return "\n".join(lines)
 
     fallback = _fallback_watch(text)
     if fallback:
@@ -117,4 +117,4 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
             "Il testo non contiene un evento riconoscibile collegato in modo affidabile a un mercato.",
             "Azione pratica: non forzare un acquisto; attendere una notizia identificabile o dati di mercato pertinenti.",
         ])
-    return "\\n".join(lines)
+    return "\n".join(lines)
