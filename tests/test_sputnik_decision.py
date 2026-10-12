@@ -1,6 +1,7 @@
 import unittest
 
 from sputnik_decision import conditional_plans, decision_message
+from sputnik_decision_engine import conditional_plans as engine_conditional_plans, decision_message as engine_message
 
 
 class ConditionalDecisionTests(unittest.TestCase):
@@ -22,6 +23,10 @@ class ConditionalDecisionTests(unittest.TestCase):
         message = decision_message("A new tariff announcement")
         self.assertIn("Conferma richiesta", message)
         self.assertIn("Annulla lo scenario", message)
+
+    def test_operational_engine_does_not_trade_on_a_generic_mention(self):
+        self.assertEqual(engine_conditional_plans("A speech mentioned tariffs and trade."), [])
+        self.assertIn("MONITORARE", engine_message("Markets discuss tariffs and trade tensions."))
 
 
 if __name__ == "__main__":
