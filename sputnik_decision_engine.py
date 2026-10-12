@@ -54,13 +54,67 @@ def conditional_plans(text: str, limit: int = 3) -> list[dict[str, Any]]:
     rows.sort(key=lambda row: (row["match_count"], row["id"]), reverse=True)
     return rows[:limit]
 
+def _fallback_watch(text: str) -> dict[str, str] | None:
+    """Broad watch mode: always return a useful result without turning mentions into trades."""
+    body = " ".join(str(text or "").lower().split())
+    topics = [
+        (("tariff", "tariffs", "dazi", "trade war", "trade deal", "accordo commerciale"),
+         "COMMERCIO / DAZI", "NASDAQ-100 e oro", "Una notizia commerciale può muovere sia gli asset rischiosi sia i beni rifugio; la direzione dipende dai dettagli e dalla reazione dei prezzi."),
+        (("oil", "petrol", "brent", "wti", "hormuz", "iran", "tanker", "petrolio", "energia"),
+         "PETROLIO / OFFERTA ENERGETICA", "Brent e WTI", "Il petrolio è da monitorare se la notizia riguarda davvero produzione, trasporti o flussi fisici; una semplice menzione non prova una carenza."),
+        (("fed", "federal reserve", "interest rate", "rates", "inflation", "inflazione", "tassi", "rendimenti", "treasury", "dollar", "dollaro"),
+         "TASSI / DOLLARO", "USD, Treasury e Nasdaq", "La reazione dipende da come cambiano le aspettative sui tassi; verificare rendimenti e dollaro prima di concludere la direzione."),
+        (("defense", "defence", "military", "missile", "war", "guerra", "difesa", "militare", "sanction", "sanzioni"),
+         "GEOPOLITICA / DIFESA", "Settore difesa, petrolio e oro", "L'impatto dipende da conseguenze concrete su spesa, approvvigionamenti e rischio; non basta il tono della notizia."),
+        (("sec", "form 4", "insider", "shares", "stock", "azioni", "ogE", "ethics", "disclosure"),
+         "DISCLOSURE / SOCIETÀ", "Titolo citato nella disclosure, se identificabile", "Distinguere operazioni effettivamente documentate da opzioni, piani, intenzioni o semplici menzioni."),
+    ]
+    for keywords, label, instruments, explanation in topics:
+        if any(word in body for word in keywords):
+            return {"topic": label, "instruments": instruments, "explanation": explanation}
+    return None
+
+
 def decision_message(text: str, source: str = "Fonte pubblica") -> str:
     plans = conditional_plans(text)
-    lines = ["🛰️ SPUTNIK — RISULTATO OPERATIVO", "━━━━━━━━━━━━━━━━━━", f"📰 Fonte analizzata: {source}", ""]
-    if not plans:
-        lines.extend(["🟡 NESSUN CATALIZZATORE OPERATIVO RILEVATO", "Serve un'azione concreta nella singola notizia, non una semplice menzione.", "Non genero un piano quando il testo non supera il filtro."])
-        return "\n".join(lines)
-    for index, plan in enumerate(plans, 1):
-        lines.extend([f"{index}. 🎯 {plan['event']}", f"➡️ Strumento da preparare: {plan['candidate']}", f"📈 Scenario: {plan['bias']}", f"🧾 Evidenza rilevata: {plan['evidence']}", f"🧭 REGOLA: {plan['if_then']}", f"✅ Conferma richiesta: {plan['confirmation']}", f"🛑 Annulla lo scenario se: {plan['invalidation']}", f"📎 Qualità della fonte: {plan['source_quality']}", ""])
-    lines.extend(["⚠️ Piano condizionale, non ordine immediato.", "Entry, stop-loss, target e size richiedono quotazioni aggiornate e verificabili."])
-    return "\n".join(lines)
+    lines = [
+        "🛰️ SPUTNIK — COSA SIGNIFICA",
+        "━━━━━━━━━━━━━━━━━━",
+        f"📰 Fonte: {source}",
+        "",
+    ]
+    if plans:
+        plan = plans[0]
+        lines.extend([
+            "🎯 RISULTATO: SCENARIO DA PREPARARE",
+            f"📌 Evento: {plan['event']}",
+            f"👀 Da osservare: {plan['candidate']}",
+            f"➡️ Possibile direzione: {plan['bias']}",
+            f"🧾 Perché: {plan.get('evidence', 'Catalizzatore rilevato nel testo')}",
+            f"✅ Per agire: {plan['confirmation']}",
+            f"🛑 Scenario da scartare se: {plan['invalidation']}",
+            "",
+            "In parole semplici: prepara lo strumento, ma entra solo se la notizia è confermata e il mercato dà il segnale richiesto.",
+            "Prezzi, stop e obiettivi non vengono inventati: servono quotazioni aggiornate.",
+        ])
+        return "\\n".join(lines)
+
+    fallback = _fallback_watch(text)
+    if fallback:
+        lines.extend([
+            "🟡 RISULTATO: MONITORARE, NON IGNORARE",
+            f"📌 Tema: {fallback['topic']}",
+            f"👀 Strumenti da tenere d'occhio: {fallback['instruments']}",
+            f"🧠 Perché: {fallback['explanation']}",
+            "✅ Prossimo passo: controllare la fonte originale e la reazione dei prezzi.",
+            "🛑 Non comprare o vendere soltanto perché il tema è menzionato.",
+            "",
+            "In parole semplici: SPUTNIK ha individuato un tema utile, ma nel testo non c'è ancora una prova abbastanza concreta per indicare una direzione.",
+        ])
+    else:
+        lines.extend([
+            "🟡 RISULTATO: NESSUN CATALIZZATORE CHIARO",
+            "Il testo non contiene un evento riconoscibile collegato in modo affidabile a un mercato.",
+            "Azione pratica: non forzare un acquisto; attendere una notizia identificabile o dati di mercato pertinenti.",
+        ])
+    return "\\n".join(lines)
