@@ -11,7 +11,7 @@ class _Text(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.parts = []
     def handle_data(self, data):
-        value = re.sub(r"\\s+", " ", data).strip()
+        value = " ".join(data.split()).strip()
         if value:
             self.parts.append(value)
 
