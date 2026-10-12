@@ -7,6 +7,8 @@ on:
     paths:
       - "trump_tracker.py"
       - "sputnik_action_reaction.py"
+      - "sputnik_decision.py"
+      - "tests/test_sputnik_decision.py"
       - "telegram_listener.py"
       - ".github/workflows/trump_tracker.yml"
   workflow_dispatch:
@@ -17,7 +19,7 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "2-59/5 * * * *"
 
 permissions:
   contents: write
