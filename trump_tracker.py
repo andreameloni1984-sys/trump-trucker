@@ -360,6 +360,9 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "source": source,
                 "url": url,
                 "domains": domains,
+                # Retain a bounded text excerpt so the decision engine can evaluate
+                # the actual collected public page content, not just topic labels.
+                "text": body[:6000],
                 "evidence": "PUBLIC_SOURCE_TEXT",
                 "status": "POTENTIAL_CORRELATION",
                 "detected_at": utc_now().isoformat(),
