@@ -21,3 +21,14 @@ class StrictDecisionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+    def test_broad_topic_gets_useful_watch_result(self):
+        message = decision_message("Markets discuss tariffs and trade tensions.")
+        self.assertIn("MONITORARE", message)
+        self.assertIn("NASDAQ-100", message)
+        self.assertIn("non comprare", message.lower())
+
+    def test_unrelated_text_still_returns_clear_result(self):
+        message = decision_message("Hello world, nothing market-related here.")
+        self.assertIn("NESSUN CATALIZZATORE CHIARO", message)
+
