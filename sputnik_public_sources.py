@@ -1,27 +1,40 @@
-"""Minimal, standard-library RSS/Atom parsing for public SPUTNIK sources."""
+"""Small, defensive RSS/Atom parser for public SPUTNIK sources.
+
+The parser keeps item-level provenance and refuses DTD/entity declarations so
+untrusted feed XML cannot expand entities inside the collector.
+"""
 from __future__ import annotations
+
 import hashlib
 import re
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from urllib.parse import urljoin
 
+MAX_FEED_BYTES = 2_000_000
+_UNSAFE_XML = re.compile(br"<!\s*(?:DOCTYPE|ENTITY)\b", re.IGNORECASE)
+
+
 class _Text(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.parts = []
+
     def handle_data(self, data):
         value = " ".join(data.split()).strip()
         if value:
             self.parts.append(value)
+
 
 def clean_public_text(value):
     parser = _Text()
     parser.feed(str(value or ""))
     return " ".join(parser.parts).strip()
 
+
 def _name(tag):
     return str(tag).rsplit("}", 1)[-1].split(":")[-1].lower()
+
 
 def _direct(node, names):
     for child in list(node):
@@ -29,15 +42,24 @@ def _direct(node, names):
             return child
     return None
 
+
 def _text(node, names):
     child = _direct(node, names)
     return "".join(child.itertext()).strip() if child is not None else ""
 
+
 def _link(node):
-    child = _direct(node, {"link"})
-    if child is None:
+    links = [child for child in list(node) if _name(child.tag) == "link"]
+    if not links:
         return ""
+    # Atom feeds may list self/enclosure links before the article permalink.
+    links.sort(key=lambda child: (
+        str(child.attrib.get("rel") or "alternate").lower() not in {"alternate", ""},
+        not bool(str(child.attrib.get("href") or "").strip()),
+    ))
+    child = links[0]
     return str(child.attrib.get("href") or "").strip() or "".join(child.itertext()).strip()
+
 
 def _descendant(node, names):
     for child in node.iter():
@@ -48,13 +70,23 @@ def _descendant(node, names):
             return value
     return ""
 
+
 def parse_public_feed(raw, base_url):
-    """Return individual RSS 2.0 or Atom entries with source metadata."""
+    """Return RSS 2.0 or Atom entries with stable IDs and original source URLs."""
+    if isinstance(raw, str):
+        raw = raw.encode("utf-8")
+    if not isinstance(raw, (bytes, bytearray)):
+        raise ValueError("Contenuto feed non valido")
+    if len(raw) > MAX_FEED_BYTES:
+        raise ValueError("Feed pubblico oltre il limite di dimensione")
+    if _UNSAFE_XML.search(bytes(raw)):
+        raise ValueError("Dichiarazioni DTD/ENTITY non consentite nei feed pubblici")
     try:
         root = ET.fromstring(raw)
     except (ET.ParseError, TypeError, ValueError) as exc:
         raise ValueError("Fonte pubblica priva di RSS/Atom XML valido") from exc
-    entries = [n for n in root.iter() if _name(n.tag) in {"item", "entry"}]
+
+    entries = [node for node in root.iter() if _name(node.tag) in {"item", "entry"}]
     result = []
     for index, entry in enumerate(entries):
         title = clean_public_text(_text(entry, {"title"}))
@@ -71,9 +103,13 @@ def parse_public_feed(raw, base_url):
         if original:
             original = urljoin(base_url, original)
         result.append({
-            "id": identity[:500], "title": title[:300], "text": body[:6000],
-            "published": published[:100], "url": link[:1000],
-            "primary_url": original[:1000], "feed_url": base_url[:1000],
+            "id": identity[:500],
+            "title": title[:300],
+            "text": body[:6000],
+            "published": published[:100],
+            "url": link[:1000],
+            "primary_url": original[:1000],
+            "feed_url": base_url[:1000],
             "item_index": str(index),
         })
     return result
