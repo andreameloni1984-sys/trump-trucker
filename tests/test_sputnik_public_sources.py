@@ -37,5 +37,23 @@ class PublicFeedParserTests(unittest.TestCase):
     def test_empty_feed_is_valid(self):
         self.assertEqual(parse_public_feed(b"<rss><channel/></rss>", "https://example.gov/feed"), [])
 
+    def test_rejects_dtd_and_entity_declarations(self):
+        payload = b'<!DOCTYPE rss [<!ENTITY x "expanded">]><rss><channel><item><title>&x;</title></item></channel></rss>'
+        with self.assertRaises(ValueError):
+            parse_public_feed(payload, "https://example.gov/feed")
+
+    def test_rejects_oversized_feed(self):
+        with self.assertRaises(ValueError):
+            parse_public_feed(b" " * 2_000_001, "https://example.gov/feed")
+
+    def test_atom_prefers_alternate_permalink(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><id>item-9</id><title>Tariff announcement</title>
+          <link rel="self" href="https://example.gov/feed"/>
+          <link rel="alternate" href="https://example.gov/news/9"/>
+          <summary>New tariff policy</summary></entry></feed>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed")
+        self.assertEqual(rows[0]["url"], "https://example.gov/news/9")
+
 if __name__ == "__main__":
     unittest.main()
