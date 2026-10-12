@@ -21,7 +21,7 @@ from sputnik_ranking import rank_purchase_candidates
 from sputnik_cfd import build_cfd_cart
 from sputnik_catalyst import catalyst_watchlist
 from sputnik_action_reaction import action_reaction_message
-from sputnik_decision import decision_message
+from sputnik_decision_engine import decision_message
 from sputnik_history import anticipatory_selector, build_public_history, CORE_ADMINISTRATION
 from trump_tracker import (
     telegram_brief_message,
@@ -443,7 +443,7 @@ def dispatch(message: dict[str, Any]) -> None:
     elif command == "🧠 azione → reazione":
         findings = list((state.get("intelligence_history") or {}).values())
         latest = sorted(findings, key=lambda x: str(x.get("detected_at") or ""), reverse=True)[0] if findings else {}
-        send(action_reaction_message(" ".join([str(latest.get("source") or ""), " ".join(latest.get("domains") or [])])), chat_id, reply_markup=telegram_menu())
+        send(decision_message(" ".join([str(latest.get("text") or latest.get("snippet") or ""), " ".join(latest.get("domains") or [])]), str(latest.get("source") or "Fonte pubblica")), chat_id, reply_markup=telegram_menu())
     elif command == "🛒 carrello cfd":
         send(cfd_cart_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🏠 home":
