@@ -19,8 +19,6 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("Conferma richiesta", message)
         self.assertIn("Annulla lo scenario", message)
 
-if __name__ == "__main__":
-    unittest.main()
 
     def test_broad_topic_gets_useful_watch_result(self):
         message = decision_message("Markets discuss tariffs and trade tensions.")
@@ -31,4 +29,7 @@ if __name__ == "__main__":
     def test_unrelated_text_still_returns_clear_result(self):
         message = decision_message("Hello world, nothing market-related here.")
         self.assertIn("NESSUN CATALIZZATORE CHIARO", message)
+
+if __name__ == "__main__":
+    unittest.main()
 
