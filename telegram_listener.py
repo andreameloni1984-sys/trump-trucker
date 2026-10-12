@@ -21,6 +21,7 @@ from sputnik_ranking import rank_purchase_candidates
 from sputnik_cfd import build_cfd_cart
 from sputnik_catalyst import catalyst_watchlist
 from sputnik_action_reaction import action_reaction_message
+from sputnik_decision import decision_message
 from sputnik_history import anticipatory_selector, build_public_history, CORE_ADMINISTRATION
 from trump_tracker import (
     telegram_brief_message,
@@ -278,9 +279,13 @@ def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
     if callback == "action_reaction":
         findings = list((state.get("intelligence_history") or {}).values())
         if not findings:
-            return "🛰️ SPUTNIK — AZIONE → REAZIONE\\n━━━━━━━━━━━━━━━━━━\\n⚪ Nessun analogo storico disponibile."
+            return "🛰️ SPUTNIK — RISULTATO OPERATIVO\\n━━━━━━━━━━━━━━━━━━\\n⚪ Nessun testo pubblico recente disponibile per generare uno scenario condizionale."
         latest = sorted(findings, key=lambda x: str(x.get("detected_at") or ""), reverse=True)[0]
-        return action_reaction_message(" ".join([str(latest.get("source") or ""), " ".join(latest.get("domains") or [])]))
+        evidence_text = " ".join([
+            str(latest.get("text") or latest.get("snippet") or ""),
+            " ".join(latest.get("domains") or []),
+        ])
+        return decision_message(evidence_text, str(latest.get("source") or "Fonte pubblica"))
     if callback == "cfd":
         return cfd_cart_message(state)
     if callback == "catalysts":
