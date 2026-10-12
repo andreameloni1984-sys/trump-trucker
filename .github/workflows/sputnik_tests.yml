@@ -5,6 +5,8 @@ on:
     paths:
       - "trump_tracker.py"
       - "sputnik_ranking.py"
+      - "sputnik_decision.py"
+      - "tests/test_sputnik_decision.py"
       - "tests/test_sputnik_ranking.py"
       - "tests/test_sputnik_action_reaction.py"
       - "sputnik_action_reaction.py"
