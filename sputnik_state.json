@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-12T11:51:43.914989+00:00",
+  "updated_at": "2026-10-12T20:34:48.457818+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "06e6c0158335b733981e3f5d",
-    "TRUTH_ARCHIVE": "bde258390d44693e4bbe0245",
+    "TRUTH_ARCHIVE": "398993a862b6de814491c6ca",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -795,6 +795,29 @@
       "action_reaction": {
         "event_id": "bde258390d44693e4bbe0245",
         "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "398993a862b6de814491c6ca": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 12, 2026, 3:23 PM Original Post Look what happened in Ohio since my last Rally, and I have another one today. It’s The Golden Age of America! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:17 PM Original Post Senator Roger Marshall is working incredibly hard for the Great State of Kansas, which I love and WON BIG in 2016, 2020, and 2024. Roger is one of my favorite Senators — He is absolutely GREAT, a wonderful person, given a “bum rap” because he was mandated by Law to request money owed from patients. If he didn’t make these requests, he would be breaking the Law, and subject to criminal liability and arrest. A judge ordering a patient’s arrest for not showing up to court many, many times is not Roger Marshall’s fault — IT IS THE LAW, and his Crooked Opponent is using that against him. Roger is running against a Radical Left Dumocrat named Adam Hamilton, a Trump Deranged Phony who pretends to be a “Moderate,” but he’s not! He gave money to Kamala Harris, Crooked Joe Biden, and Barack Hussein Obuma — What else needs to be said? Additionally, Adam Hamilton loves High Taxes, Open Borders, No Consequences for Violent Criminals, Men in Women’s Sports, the Transgender Mutilization of your Children, among other CRAZY ideas, and says that the Great People of Kansas need to repent for eating beef (much like James TalaFREAKo, a Vegan who is running for the United States Senate in Texas). I won the Evangelical Christian Vote IN A LANDSLIDE, a Record Number, the Highest in History, and am more popular with them now, than ever before, because of what I have done, and gotten them — And I wouldn’t want Adam Hamilton being my pastor. He’s caused nothing but turmoil in his church, which has broken up, and is virtually at war with each other because of him. In his church, he has caused great anger and dissension, setting it back decades with discord and vitriol that will never be healed. “Pastor” Hamilton hired a child PREDATOR as a camp counselor, who was caught sneaking into boys' cabins at night. Hamilton DISMISSED their concerns, REFUSED to call the police, and brought this person back to camp the next year — He was caught again. DISGUSTING! As someone who got a massive Majority of the Evangelical Vote, I can state unequivocally that Adam Hamilton is not one of us! He is a Radical Left LUNATIC Dumocrat, whose values are not those of the People of Kansas, or the United States of America, and now he’s trying to take out one of the best and most respected Senators in our Country — But the good news is that Senator Roger Marshall loves the U.S.A., and is a Truly Great American Patriot, who has my Complete and Total Endorsement — HE ALWAYS HAS, AND HE ALWAYS WILL. In the U.S. Senate, Roger is fighting hard to Champion our Great Farmers and American Agriculture, Grow our Economy, Unleash American Energy Dominance, Cut Taxes and Regulations, Keep our Border SECURE, Take Care of, and Protect, our fabulous Military and Vets, and Defend our always under siege Second Amendment. Additionally, Roger is working tirelessly to pass the Credit Card Competition Act, in order to stop the out of control Swipe Fee ripoff! ROGER LOVES KANSAS, AND WILL NEVER LET YOU DOWN! I will be having a Kansas Style Rally, in Roger’s Honor, very soon. See you there! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:00 PM Original Post Big Crowd at Ohio Rally. Tremendous Response to Radical Left Socialists, Communists, and Lunatics trying to take over our Country. See you later, Ohio! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 11:18 AM Original Post Look what The New York Times did to my beautiful Doral! They doctored the photo. They artificially put mold all over the building when referring to it in a story! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:25 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:23 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:18 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-12T20:34:47.844459+00:00",
+      "event_id": "398993a862b6de814491c6ca",
+      "action_reaction": {
+        "event_id": "398993a862b6de814491c6ca",
+        "event_type": "GEOPOLITICAL_ESCALATION",
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
