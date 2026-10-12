@@ -18,6 +18,8 @@ on:
     branches:
       - main
     paths:
+      - "sputnik_decision.py"
+      - "tests/test_sputnik_decision.py"
       - "trump_tracker.py"
       - "sputnik_ranking.py"
       - "tests/test_sputnik_ranking.py"
