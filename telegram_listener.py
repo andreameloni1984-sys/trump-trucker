@@ -542,12 +542,34 @@ def poll_loop() -> None:
             continue
 
         if token != last_token:
-            last_token = token
+            # A Telegram bot token can own exactly one update transport:
+            # either a webhook or getUpdates polling. Never let SPUTNIK
+            # silently delete GAGARIN's webhook if the two services were
+            # accidentally configured with the same bot token.
+            try:
+                webhook_info = api("getWebhookInfo", {}, timeout=15)
+                active_webhook = str((webhook_info.get("result") or {}).get("url") or "")
+                if "soyuz-gagarin-telegram-v2.onrender.com/telegram/webhook" in active_webhook:
+                    print(
+                        "SPUTNIK: CONFLICT — token già usato da GAGARIN webhook; "
+                        "non disattivo il webhook. Configurare un token Telegram distinto per SPUTNIK.",
+                        flush=True,
+                    )
+                    time.sleep(10)
+                    continue
+            except Exception as exc:
+                print(f"SPUTNIK: getWebhookInfo check failed: {type(exc).__name__}", flush=True)
+                time.sleep(3)
+                continue
+
             try:
                 api("deleteWebhook", {"drop_pending_updates": False}, timeout=15)
-                print("SPUTNIK: webhook Telegram disattivato; listener permanente pronto.")
+                print("SPUTNIK: webhook Telegram disattivato; listener permanente pronto.", flush=True)
+                last_token = token
             except Exception as exc:
-                print(f"SPUTNIK: deleteWebhook error: {type(exc).__name__}")
+                print(f"SPUTNIK: deleteWebhook error: {type(exc).__name__}", flush=True)
+                time.sleep(3)
+                continue
 
         try:
             result = api(
