@@ -26,9 +26,21 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("NASDAQ-100", message)
         self.assertIn("non comprare", message.lower())
 
-    def test_unrelated_text_still_returns_clear_result(self):
+    def test_unrelated_text_still_returns_operational_monitoring_result(self):
         message = decision_message("Hello world, nothing market-related here.")
-        self.assertIn("NESSUN CATALIZZATORE CHIARO", message)
+        self.assertIn("MONITORAGGIO OPERATIVO", message)
+        self.assertIn("Nasdaq-100, oro, Brent e USD", message)
+        self.assertIn("non una previsione direzionale", message)
+
+    def test_empty_legacy_snapshot_still_returns_result(self):
+        message = decision_message("")
+        self.assertIn("RISULTATO: MONITORARE, NON IGNORARE", message)
+        self.assertIn("DATI INSUFFICIENTI", message)
+
+    def test_legacy_domain_labels_produce_domain_watchlist(self):
+        message = decision_message("ENERGY METALS DEFENSE")
+        self.assertIn("GEOPOLITICA / DIFESA", message)
+        self.assertIn("Settore difesa, petrolio e oro", message)
 
 if __name__ == "__main__":
     unittest.main()

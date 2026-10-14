@@ -18,7 +18,9 @@ class _Text(HTMLParser):
 def clean_public_text(value):
     parser = _Text()
     parser.feed(str(value or ""))
-    return " ".join(parser.parts).strip()
+    joined = " ".join(parser.parts).strip()
+    # HTMLParser splits punctuation into separate data nodes; rejoin it.
+    return re.sub(r"\s+([.,!?;:])", r"\1", joined)
 
 def _name(tag):
     return str(tag).rsplit("}", 1)[-1].split(":")[-1].lower()
@@ -54,6 +56,8 @@ def parse_public_feed(raw, base_url):
         root = ET.fromstring(raw)
     except (ET.ParseError, TypeError, ValueError) as exc:
         raise ValueError("Fonte pubblica priva di RSS/Atom XML valido") from exc
+    if _name(root.tag) not in {"rss", "rdf", "feed"}:
+        raise ValueError("Fonte pubblica priva di RSS/Atom XML valido")
     entries = [n for n in root.iter() if _name(n.tag) in {"item", "entry"}]
     result = []
     for index, entry in enumerate(entries):
