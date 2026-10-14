@@ -22,6 +22,14 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("LONG", brent["bias"])
         self.assertIn("break", brent["confirmation"].lower())
 
+    def test_not_nice_does_not_suppress_real_attack_evidence(self):
+        rows = conditional_plans("The Houthis are hitting Saudi Arabia and trying to drive up oil prices — NOT NICE.")
+        self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
+
+    def test_explicit_negation_still_blocks_oil_disruption_signal(self):
+        rows = conditional_plans("The report confirms shipping was not disrupted and oil exports continue normally.")
+        self.assertEqual(rows, [])
+
     def test_message_has_confirmation_and_invalidation(self):
         message = decision_message("The President announces new tariffs on imports.")
         self.assertIn("Conferma richiesta", message)
