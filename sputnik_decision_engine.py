@@ -69,10 +69,37 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
         (("sec", "form 4", "insider", "shares", "stock", "azioni", "ogE", "ethics", "disclosure"),
          "DISCLOSURE / SOCIETÀ", "Titolo citato nella disclosure, se identificabile", "Distinguere operazioni effettivamente documentate da opzioni, piani, intenzioni o semplici menzioni."),
     ]
-    for keywords, label, instruments, explanation in topics:
+    # Older persisted findings contain only domain labels (no text/snippet).
+    # Map those labels to a watchlist without inferring direction or a trade.
+    domain_topics = [
+        (("energy", "petrol", "brent", "wti"), "ENERGIA", "Brent e WTI",
+         "L'archivio segnala il settore energia, ma non conserva il testo dell'evento. Verificare una notizia primaria su produzione, trasporti o scorte prima di attribuire una direzione."),
+        (("metals", "gold", "silver", "oro", "argento"), "METALLI", "Oro e argento",
+         "L'archivio segnala metalli, ma non conserva un catalizzatore specifico. Controllare rendimenti reali, dollaro e reazione dei prezzi."),
+        (("agriculture", "corn", "wheat", "sugar", "coffee", "cocoa"), "AGRICOLTURA", "Grano, zucchero e cacao",
+         "L'archivio segnala agricoltura, ma non dimostra uno shock dell'offerta. Verificare raccolti, meteo, scorte e prezzi."),
+        (("defense", "military", "missile", "difesa"), "DIFESA / GEOPOLITICA", "Settore difesa, petrolio e oro",
+         "L'archivio segnala difesa/geopolitica, ma manca un evento verificabile. Controllare comunicati ufficiali e reazione dei prezzi."),
+        (("ai_tech", "semiconductor", "technology", "tech"), "TECNOLOGIA", "Nasdaq-100 e semiconduttori",
+         "L'archivio segnala tecnologia, ma non identifica una società o un catalizzatore preciso. Verificare l'annuncio originale e la reazione del settore."),
+        (("crypto", "bitcoin", "ethereum"), "CRIPTO", "Bitcoin ed Ethereum",
+         "L'archivio segnala cripto, ma non identifica un catalizzatore preciso. Verificare la fonte primaria e i prezzi aggiornati."),
+        (("real_estate", "property", "immobiliare"), "IMMOBILIARE", "REIT e settore immobiliare",
+         "L'archivio segnala immobiliare, ma non dimostra un impatto economico. Verificare tassi, rendimenti e notizia primaria."),
+        (("media", "truth", "social"), "MEDIA / SOCIAL", "Titolo o settore citato nella fonte originale",
+         "Una menzione su un sito o social non dimostra un investimento né un impatto sul mercato. Recuperare il singolo post o comunicato originale."),
+    ]
+    for keywords, label, instruments, explanation in [*topics, *domain_topics]:
         if any(word in body for word in keywords):
             return {"topic": label, "instruments": instruments, "explanation": explanation}
-    return None
+
+    # Always return a transparent operational outcome, even for empty/stale feeds.
+    # This is a monitoring result, not a fabricated LONG/SHORT recommendation.
+    return {
+        "topic": "DATI INSUFFICIENTI — MONITORAGGIO OPERATIVO",
+        "instruments": "Nasdaq-100, oro, Brent e USD",
+        "explanation": "Non è stato recuperato un catalizzatore specifico. Questi strumenti sono una watchlist generale, non una previsione direzionale. Prossimo passo: recuperare una notizia item-level da fonte primaria e verificare prezzo e volume prima di valutare LONG o SHORT.",
+    }
 
 
 def decision_message(text: str, source: str = "Fonte pubblica") -> str:
