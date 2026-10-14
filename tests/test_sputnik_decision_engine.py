@@ -35,11 +35,11 @@ class StrictDecisionTests(unittest.TestCase):
     def test_empty_legacy_snapshot_still_returns_result(self):
         message = decision_message("")
         self.assertIn("RISULTATO: MONITORARE, NON IGNORARE", message)
-        self.assertIn("Dati insufficienti", message)
+        self.assertIn("DATI INSUFFICIENTI", message)
 
     def test_legacy_domain_labels_produce_domain_watchlist(self):
         message = decision_message("ENERGY METALS DEFENSE")
-        self.assertIn("ENERGIA", message)
+        self.assertIn("PETROLIO / OFFERTA ENERGETICA", message)
         self.assertIn("Brent e WTI", message)
 
 if __name__ == "__main__":
