@@ -24,6 +24,7 @@ from sputnik_action_reaction import action_reaction_message
 from sputnik_decision_engine import decision_message
 from sputnik_history import anticipatory_selector, build_public_history, CORE_ADMINISTRATION
 from trump_tracker import (
+    fetch_public_text,
     telegram_brief_message,
     telegram_filings_message,
     telegram_help_message,
@@ -273,19 +274,38 @@ def menu_markup() -> dict[str, Any]:
     }
 
 
+def action_reaction_result(state: dict[str, Any]) -> str:
+    """Build a useful result from persisted findings, including legacy rows without text."""
+    findings = list((state.get("intelligence_history") or {}).values())
+    findings.sort(key=lambda row: str(row.get("detected_at") or ""), reverse=True)
+    latest = findings[0] if findings else {}
+    # Prefer the newest finding that actually retained its source text.
+    evidence_row = next(
+        (row for row in findings if str(row.get("text") or row.get("snippet") or "").strip()),
+        latest,
+    )
+    body = str(evidence_row.get("text") or evidence_row.get("snippet") or "").strip()
+    url = str(evidence_row.get("url") or "")
+    # Legacy snapshots stored only domains and links. Refresh the public source
+    # on demand rather than interpreting domain labels as proof of an event.
+    if not body and url:
+        try:
+            body = fetch_public_text(url)[:12000]
+        except Exception as exc:
+            print(f"SPUTNIK decision source refresh failed: {type(exc).__name__}")
+    domains = evidence_row.get("domains") or []
+    evidence_text = " ".join([body, " ".join(str(x) for x in domains)]).strip()
+    source = str(evidence_row.get("source") or "Fonti pubbliche")
+    if url:
+        source = f"{source} — {url}"
+    return decision_message(evidence_text, source)
+
+
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
     if callback == "home":
         return sputnik_home_message(state)
     if callback == "action_reaction":
-        findings = list((state.get("intelligence_history") or {}).values())
-        if not findings:
-            return "🛰️ SPUTNIK — RISULTATO OPERATIVO\\n━━━━━━━━━━━━━━━━━━\\n⚪ Nessun testo pubblico recente disponibile per generare uno scenario condizionale."
-        latest = sorted(findings, key=lambda x: str(x.get("detected_at") or ""), reverse=True)[0]
-        evidence_text = " ".join([
-            str(latest.get("text") or latest.get("snippet") or ""),
-            " ".join(latest.get("domains") or []),
-        ])
-        return decision_message(evidence_text, str(latest.get("source") or "Fonte pubblica"))
+        return action_reaction_result(state)
     if callback == "cfd":
         return cfd_cart_message(state)
     if callback == "catalysts":
@@ -441,9 +461,7 @@ def dispatch(message: dict[str, Any]) -> None:
     elif command == "🎯 catalizzatori":
         send(catalyst_watch_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🧠 azione → reazione":
-        findings = list((state.get("intelligence_history") or {}).values())
-        latest = sorted(findings, key=lambda x: str(x.get("detected_at") or ""), reverse=True)[0] if findings else {}
-        send(decision_message(" ".join([str(latest.get("text") or latest.get("snippet") or ""), " ".join(latest.get("domains") or [])]), str(latest.get("source") or "Fonte pubblica")), chat_id, reply_markup=telegram_menu())
+        send(action_reaction_result(state), chat_id, reply_markup=telegram_menu())
     elif command == "🛒 carrello cfd":
         send(cfd_cart_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "🏠 home":
