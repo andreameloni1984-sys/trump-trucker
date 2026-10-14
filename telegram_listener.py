@@ -22,6 +22,7 @@ from sputnik_cfd import build_cfd_cart
 from sputnik_catalyst import catalyst_watchlist
 from sputnik_action_reaction import action_reaction_message
 from sputnik_decision_engine import decision_message
+from sputnik_aggressive import aggressive_message
 from sputnik_history import anticipatory_selector, build_public_history, CORE_ADMINISTRATION
 from trump_tracker import (
     fetch_public_text,
@@ -120,6 +121,7 @@ def telegram_menu() -> dict[str, Any]:
             [{"text": "🏠 HOME"}, {"text": "🏆 CLASSIFICA"}],
             [{"text": "🟢 COSA COMPRARE"}, {"text": "🛒 CARRELLO CFD"}],
             [{"text": "🎯 CATALIZZATORI"}, {"text": "🧠 AZIONE → REAZIONE"}],
+            [{"text": "🔥 SPUTNIK AGGRESSIVO"}],
             [{"text": "🏛️ TRUMP / WHITE HOUSE"}],
             [{"text": "📰 NEWS"}, {"text": "🧾 SEC / OGE"}],
             [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
@@ -257,6 +259,7 @@ def menu_markup() -> dict[str, Any]:
             [{"text": "🏠 HOME", "callback_data": "home"}],
             [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"},
              {"text": "🔵 ANTICIPO", "callback_data": "anticipation"}],
+            [{"text": "🔥 SPUTNIK AGGRESSIVO", "callback_data": "aggressive"}],
             [{"text": "🧠 AZIONE → REAZIONE", "callback_data": "action_reaction"}],
             [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
             [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"},
@@ -312,6 +315,8 @@ def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
         return catalyst_watch_message(state)
     if callback == "anticipation":
         return anticipation_message(state)
+    if callback == "aggressive":
+        return aggressive_message(state)
     if callback in {"ranking", "buy"}:
         rows = rank_purchase_candidates(list((state.get("transactions") or {}).values()), limit=5)
         if not rows:
@@ -472,6 +477,8 @@ def dispatch(message: dict[str, Any]) -> None:
         send(answer_for_callback("buy", state), chat_id, reply_markup=telegram_menu())
     elif command == "🔵 anticipo":
         send(anticipation_message(state), chat_id, reply_markup=telegram_menu())
+    elif command in {"🔥 sputnik aggressivo", "sputnik aggressivo", "/aggressive"}:
+        send(aggressive_message(state), chat_id, reply_markup=telegram_menu())
     elif command == "💰 acquisti":
         send(telegram_purchases_message(state), chat_id, reply_markup=telegram_menu())
     # Legacy menu contract: command in {"🧾 filings sec", "🧾 sec / oge"} remains supported.
