@@ -14,6 +14,14 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
         self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
 
+    def test_houthi_attack_language_maps_to_conditional_brent_scenario(self):
+        text = "The Houthis emerged again, hitting Saudi Arabia and trying to drive up oil prices."
+        rows = conditional_plans(text)
+        self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
+        brent = next(row for row in rows if row["candidate"] == "BRENT (petrolio)")
+        self.assertIn("LONG", brent["bias"])
+        self.assertIn("break", brent["confirmation"].lower())
+
     def test_message_has_confirmation_and_invalidation(self):
         message = decision_message("The President announces new tariffs on imports.")
         self.assertIn("Conferma richiesta", message)
