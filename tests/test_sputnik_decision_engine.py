@@ -39,8 +39,8 @@ class StrictDecisionTests(unittest.TestCase):
 
     def test_legacy_domain_labels_produce_domain_watchlist(self):
         message = decision_message("ENERGY METALS DEFENSE")
-        self.assertIn("PETROLIO / OFFERTA ENERGETICA", message)
-        self.assertIn("Brent e WTI", message)
+        self.assertIn("GEOPOLITICA / DIFESA", message)
+        self.assertIn("Settore difesa, petrolio e oro", message)
 
 if __name__ == "__main__":
     unittest.main()
