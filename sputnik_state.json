@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-15T05:22:08.760321+00:00",
+  "updated_at": "2026-10-15T10:09:36.055603+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "06e6c0158335b733981e3f5d",
-    "TRUTH_ARCHIVE": "b42f7fd3f17af167d0886d33",
+    "TRUTH_ARCHIVE": "0111f022b9588ff7333fc314",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1153,6 +1153,27 @@
       "action_reaction": {
         "event_id": "b42f7fd3f17af167d0886d33",
         "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "0111f022b9588ff7333fc314": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 15, 2026, 3:01 AM Original Post Donald J. Trump @realDonaldTrump · October 15, 2026, 3:01 AM Original Post Donald J. Trump @realDonaldTrump · October 15, 2026, 2:00 AM Original Post Jon Husted, who is running for the Senate in the Great State of Ohio, is an ALL AMERICAN FOOTBALL PLAYER! He played Safety and, in one season, had 17 Interceptions, a record. As everyone knows, he has, and always will have, my Complete and Total Endorsement! Jon is one of the Greatest Players in the History of the State of Ohio, and he will make a fabulous Senator, beating a guy, Sherrod Brown, who got thrown out by the people three years ago. He was beaten by a now fantastic Senator, Bernie Moreno. GET OUT AND VOTE FOR JON HUSTED! He will make Ohio proud, just like he made Jon Gruden and his teammates proud, in helping Dayton win so many Football games, some of which, they said, were unwinnable — Except for Jon Husted’s brilliant playing. In Politics, he will be even better than he was at Football. AGAIN, JON HUSTED HAS MY COMPLETE AND TOTAL ENDORSEMENT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post ↻ Image Previously posted October 13, 2026 Donald J. Trump @realDonaldTrump · October 15, 2026, 1:07 AM Original Post Gross Output Signals an Economic Surge: https://www. wsj.com/opinion/gross-output-s ignals-an-economic-surge-ee8e462e Read full post www.wsj.com Opinion | Gross Output Signals an Economic Surge Business-to-business spending is booming, and solely looking at gross domestic product misses this. Donald J. Trump @realDonaldTrump · October 15, 2026, 12:57 AM Original Post ↻ Image Previously posted September 13, 2026 Donald J. Trump @realDonaldTrump · October 15, 2026, 12:56 AM Original Post Actual pictures of our fully renovated White House facade, facing South, with the new South Entrance, and Heliport! Over the years, the facade, both North and South, suffered tremendous wear, tear, and damage. The exterior walls and ornamentation, both missing and in bad condition, has been fully restored to the Highest Level, giving the White House many decades of additional life! It had to be done, and I am very proud to be the President who did it! Likewise, the Ballroom and Military Complex, is on time, and on budget, and will make an unbelievably beautiful addition, the first since the West Wing in 1901, to the White House. President DONALD J. TRUMP Read full post ↻ Image Previously posted October 15, 2026 Donald J. Trump @realDonaldTrump · October 15, 2026, 12:54 AM Original Post ↻ Image Also posted October 15, 2026 Donald J. Trump @realDonaldTrump · October 15, 2026, 12:54 AM Original Post ↻ Image Also posted October 15, 2026 Donald J. Trump @realDonaldTrump · October 14, 2026, 11:18 PM Original Post Donald J. Trump @realDonaldTrump · October 14, 2026, 8:49 PM Original Post Donald J. Trump @realDonaldTrump · October 14, 2026, 6:48 PM Original Post I’m heading to Montana for a “PACKED HOUSE” Speech. It’s broadcast LIVE on Right Side Broadcasting Network (RSBN) — What a great job they do. See you soon! President DONALD J. TRUMP Read full post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-15T10:09:35.545368+00:00",
+      "event_id": "0111f022b9588ff7333fc314",
+      "action_reaction": {
+        "event_id": "0111f022b9588ff7333fc314",
+        "event_type": "OTHER",
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
