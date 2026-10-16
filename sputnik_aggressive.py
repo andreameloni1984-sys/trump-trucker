@@ -10,6 +10,7 @@ from typing import Any
 from sputnik_catalyst import catalyst_watchlist
 from sputnik_decision_engine import conditional_plans
 from sputnik_ranking import rank_purchase_candidates
+from sputnik_cfd import build_conditional_trade_plan
 
 
 def aggressive_message(state: dict[str, Any]) -> str:
@@ -17,6 +18,7 @@ def aggressive_message(state: dict[str, Any]) -> str:
     findings.sort(key=lambda row: str(row.get("detected_at") or ""), reverse=True)
     catalysts = catalyst_watchlist(findings, limit=8)
     transactions = list((state.get("transactions") or {}).values())
+    quotes = state.get("market_quotes") or state.get("quotes") or {}
     candidates = rank_purchase_candidates(transactions, limit=5)
 
     lines = [
@@ -70,6 +72,17 @@ def aggressive_message(state: dict[str, Any]) -> str:
             lines.append(f"  Invalidazione: {plan['invalidation']}")
             if finding.get("url"):
                 lines.append(f"  Fonte: {finding['url']}")
+            trade = build_conditional_trade_plan(plan, quotes)
+            if trade.get("entry") is not None:
+                lines.append(
+                    f"  📍 {trade['status']} {trade.get('direction', plan['bias'])} | "
+                    f"Prezzo {trade['entry']} | SL {trade['stop']} | "
+                    f"TP1 {trade['tp1']} | TP2 {trade['tp2']} | R/R 1:2"
+                )
+                lines.append(f"  ATR: {trade['atr']} | Quotazione: {trade['quote_time']}")
+                lines.append(f"  Nota: {trade['reason']}")
+            else:
+                lines.append(f"  🟡 SL/TP non calcolabili: {trade['reason']}")
     else:
         lines.append("Nessun testo salvato soddisfa le regole esplicite dei catalizzatori.")
 
