@@ -1,12 +1,10 @@
-"""SPUTNIK CFD cart engine.
+"""SPUTNIK CFD planning helpers.
 
-Builds a CFD watch/cart from already-ranked public-evidence candidates.
-It never invents a market price, stop or target: a trade is actionable only
-when a quote contains a current price plus explicit stop/target levels.
+Never fabricates quotes. Conditional plans use the current broker quote and ATR
+when both are available; they remain WAIT until a price trigger is confirmed.
 """
-
 from __future__ import annotations
-
+from datetime import datetime, timezone
 from typing import Any
 
 DEFAULT_RISK_PCT = 1.0
@@ -22,98 +20,113 @@ def _number(value: Any) -> float | None:
 
 
 def _quote_for(row: dict[str, Any], quotes: dict[str, Any]) -> dict[str, Any] | None:
-    keys = (
-        str(row.get("ticker") or "").strip().upper(),
-        str(row.get("security") or "").strip().upper(),
-    )
+    keys = (str(row.get("ticker") or "").strip().upper(),
+            str(row.get("security") or "").strip().upper())
     for key in keys:
-        if not key:
-            continue
         quote = quotes.get(key) or quotes.get(key.lower())
         if isinstance(quote, dict):
             return quote
     return None
 
 
-def build_cfd_cart(
-    ranked_rows: list[dict[str, Any]],
-    quotes: dict[str, Any] | None,
-    capital: float = DEFAULT_CAPITAL,
-    risk_pct: float = DEFAULT_RISK_PCT,
-    limit: int = 3,
-) -> list[dict[str, Any]]:
-    """Convert SPUTNIK evidence candidates into conservative CFD trade plans.
+def _quote_is_fresh(quote: dict[str, Any], max_age_minutes: int = 30) -> bool:
+    stamp = quote.get("timestamp") or quote.get("updated_at") or quote.get("as_of")
+    if not stamp:
+        return False
+    try:
+        dt = datetime.fromisoformat(str(stamp).replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        age = (datetime.now(timezone.utc) - dt.astimezone(timezone.utc)).total_seconds()
+        return -60 <= age <= max_age_minutes * 60
+    except (TypeError, ValueError):
+        return False
 
-    Purchase evidence maps only to LONG. SHORT is intentionally unsupported
-    here until a documented bearish event source is available. Missing quote,
-    stop or target data produces WAIT rather than an invented trade.
+
+def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | None,
+                                 risk_pct: float = DEFAULT_RISK_PCT) -> dict[str, Any]:
+    """Calculate indicative SL/TP from a fresh broker quote and ATR.
+
+    Uses 1.5 ATR stop and 1R/2R targets. It is only a PREPARE plan unless the
+    quote explicitly carries trigger_confirmed=True. No price or ATR is guessed.
     """
+    if not 0 < risk_pct <= 5:
+        raise ValueError("risk_pct must be between 0 and 5")
+    candidate = str(plan.get("candidate") or "").upper()
+    keys = []
+    if "BRENT" in candidate: keys = ["BRENT", "UKOIL", "BRN"]
+    elif "WTI" in candidate: keys = ["WTI", "USOIL", "CL"]
+    elif "ORO" in candidate or "GOLD" in candidate: keys = ["GOLD", "XAUUSD", "XAU/USD"]
+    elif "NASDAQ" in candidate: keys = ["NASDAQ100", "NAS100", "USTEC", "QQQ"]
+    quotes = quotes or {}
+    quote = next((quotes.get(k) or quotes.get(k.lower()) for k in keys
+                  if isinstance(quotes.get(k) or quotes.get(k.lower()), dict)), None)
+    result = {"candidate": candidate or "N/D", "status": "WAIT", "entry": None,
+              "stop": None, "tp1": None, "tp2": None, "rr_tp1": 1.0,
+              "rr_tp2": 2.0, "quote_time": None,
+              "reason": "Quotazione broker aggiornata o ATR non disponibili."}
+    if not quote:
+        return result
+    result["quote_time"] = quote.get("timestamp") or quote.get("updated_at") or quote.get("as_of")
+    if not _quote_is_fresh(quote):
+        result["reason"] = "Quotazione assente, senza timestamp o più vecchia di 30 minuti."
+        return result
+    entry = _number(quote.get("price"))
+    atr = _number(quote.get("atr") or quote.get("ATR") or quote.get("atr_14"))
+    if entry is None or atr is None:
+        return result
+    bias = str(plan.get("bias") or "").upper()
+    direction = "SHORT" if "SHORT" in bias else "LONG"
+    distance = 1.5 * atr
+    if direction == "LONG":
+        stop, tp1, tp2 = entry - distance, entry + distance, entry + 2 * distance
+    else:
+        stop, tp1, tp2 = entry + distance, entry - distance, entry - 2 * distance
+    result.update({"direction": direction, "entry": round(entry, 6),
+                   "stop": round(stop, 6), "tp1": round(tp1, 6), "tp2": round(tp2, 6),
+                   "atr": round(atr, 6),
+                   "status": "TRIGGER CONFIRMED" if quote.get("trigger_confirmed") is True else "PREPARE",
+                   "reason": "Livelli indicativi calcolati da prezzo broker e ATR; trigger tecnico da confermare."})
+    return result
+
+
+def build_cfd_cart(ranked_rows: list[dict[str, Any]], quotes: dict[str, Any] | None,
+                   capital: float = DEFAULT_CAPITAL, risk_pct: float = DEFAULT_RISK_PCT,
+                   limit: int = 3) -> list[dict[str, Any]]:
+    """Create a CFD cart only from verified prices and explicit SL/TP."""
     capital_value = _number(capital)
     if capital_value is None:
         raise ValueError("capital must be positive")
-    if risk_pct <= 0 or risk_pct > 5:
+    if not 0 < risk_pct <= 5:
         raise ValueError("risk_pct must be between 0 and 5")
     if limit <= 0:
         return []
-
-    quotes = quotes or {}
-    cart: list[dict[str, Any]] = []
-
+    cart = []
     for row in ranked_rows:
         signal = str(row.get("signal") or "")
-        item: dict[str, Any] = {
-            "security": row.get("security") or "N/D",
-            "company": row.get("company") or "N/D",
-            "score": row.get("score", 0),
-            "evidence_signal": signal,
-            "direction": "LONG" if signal == "COMPRA" else "WAIT",
-            "status": "WAIT",
-            "entry": None,
-            "stop": None,
-            "target": None,
-            "risk_eur": round(capital_value * risk_pct / 100, 2),
-            "units": None,
-            "reason": "",
-        }
-
+        item = {"security": row.get("security") or "N/D",
+                "company": row.get("company") or "N/D", "score": row.get("score", 0),
+                "evidence_signal": signal, "direction": "LONG" if signal == "COMPRA" else "WAIT",
+                "status": "WAIT", "entry": None, "stop": None, "target": None,
+                "risk_eur": round(capital_value * risk_pct / 100, 2), "units": None, "reason": ""}
         if signal != "COMPRA":
             item["reason"] = "Evidenza SPUTNIK sotto soglia BUY: nessun CFD."
-            cart.append(item)
-            continue
-
-        quote = _quote_for(row, quotes)
+            cart.append(item); continue
+        quote = _quote_for(row, quotes or {})
         if not quote:
             item["reason"] = "WAIT: quotazione corrente non disponibile."
-            cart.append(item)
-            continue
-
-        entry = _number(quote.get("price"))
-        stop = _number(quote.get("stop"))
-        target = _number(quote.get("target"))
-        if entry is None or stop is None or target is None:
-            item["reason"] = "WAIT: entry, stop e target devono essere forniti dal motore dati."
-            cart.append(item)
-            continue
-
-        if not (stop < entry < target):
+            cart.append(item); continue
+        entry, stop, target = (_number(quote.get(k)) for k in ("price", "stop", "target"))
+        if entry is None or stop is None or target is None or not _quote_is_fresh(quote):
+            item["reason"] = "WAIT: servono prezzo recente con timestamp e livelli SL/TP validi."
+            cart.append(item); continue
+        if not stop < entry < target:
             item["reason"] = "WAIT: livelli LONG non coerenti (stop < entry < target richiesto)."
-            cart.append(item)
-            continue
-
+            cart.append(item); continue
         risk_per_unit = entry - stop
-        reward_per_unit = target - entry
         units = (capital_value * risk_pct / 100) / risk_per_unit
-        item.update(
-            {
-                "status": "TRADE",
-                "entry": entry,
-                "stop": stop,
-                "target": target,
-                "units": round(units, 6),
-                "rr": round(reward_per_unit / risk_per_unit, 2),
-                "reason": "BUY SPUTNIK + quotazione e livelli verificabili.",
-            }
-        )
+        item.update({"status": "TRADE", "entry": entry, "stop": stop, "target": target,
+                     "units": round(units, 6), "rr": round((target-entry)/risk_per_unit, 2),
+                     "reason": "BUY SPUTNIK + quotazione recente e livelli verificabili."})
         cart.append(item)
-
     return cart[:limit]
