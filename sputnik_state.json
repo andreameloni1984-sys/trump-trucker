@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-16T14:05:45.232276+00:00",
+  "updated_at": "2026-10-16T20:56:21.159438+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "06e6c0158335b733981e3f5d",
-    "TRUTH_ARCHIVE": "37a5bced1fb0b135c90f8a03",
+    "WHITE_HOUSE": "437f503bd1e5ecb1ac36dcb2",
+    "TRUTH_ARCHIVE": "aac41acdeab2d8b1aa4b7d7b",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1300,6 +1300,57 @@
       "action_reaction": {
         "event_id": "37a5bced1fb0b135c90f8a03",
         "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "437f503bd1e5ecb1ac36dcb2": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "{\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"isPartOf\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\"},\"about\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"primaryImageOfPage\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"datePublished\":\"2026-01-22T14:00:00+00:00\",\"dateModified\":\"2026-10-02T01:17:56+00:00\",\"description\":\"President Donald J. Trump and Vice President JD Vance are committed to lowering costs for all Americans, securing our borders, unleashing American energy dominance, restoring peace through strength, and making all Americans safe and secure once again.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/www.whitehouse.gov\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"width\":800,\"height\":450},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"description\":\"\",\"publisher\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\\/\\/www.whitehouse.gov\\/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"},{\"@type\":\"GovernmentOrganization\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\",\"name\":\"The White House\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"width\":918,\"height\":918,\"caption\":\"The White House\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\"},\"sameAs\":[\"https:\\/\\/www.facebook.com\\/WhiteHouse\\/\",\"https:\\/\\/x.com\\/whitehouse\",\"https:\\/\\/www.instagram.com\\/whitehouse\\/\",\"https:\\/\\/www.youtube.com\\/@whitehouse\"]}]} The White House img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px} /*# sourceURL=wp-img-auto-sizes-contain-inline-css */ .wp-block-social-link{background:none!important;color:inherit!important}.wp-block-social-link-anchor{padding:0!important}.wp-block-social-link:focus,.wp-block-social-link:hover{transform:none!important} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-social-link.css */ .is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*=\"writing-mode:vertical-lr\"],p.has-text-align-right[style*=\"writing-mode:vertical-rl\"]{rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/paragraph/style.min.css */ .wp-block-spacer{clear:both} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/spacer/style.min.css */ .wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/group/style.min.css */ .wp-block-group.has-hyperlink{position:relative}.wp-block-group.has-hyperlink:not(.block-editor-block-list__block)>:nth-child(2){margin-block-start:0}.wp-block-group.has-hyperlink a.wp-block-group__action{height:100%;left:0;position:absolute;top:0;width:100%;z-index:3}.wp-block-group.has-hyperlink .wp-block-button,.wp-block-group.has-hyperlink a{position:relative;z-index:4} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-group.css */ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-inclu",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-16T20:56:17.110076+00:00",
+      "event_id": "437f503bd1e5ecb1ac36dcb2",
+      "action_reaction": {
+        "event_id": "437f503bd1e5ecb1ac36dcb2",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [
+          "tariff_pause_2025_04"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "UP",
+          "RISK_ASSETS": "UP"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "aac41acdeab2d8b1aa4b7d7b": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 16, 2026, 3:12 PM Original Post Just landed in Georgia, heading over to the Big Rally — Lots of people! See you soon. Will be broadcast LIVE on Right Side Broadcasting Network (RSBN)! We must get Congressman Mike Collins elected to the U.S. Senate — He is far superior to Pee Wee Herman (Jon Osoff). Likewise, Rick Jackson will be a fantastic Governor of the Peach State! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 16, 2026, 3:10 PM Original Post Video previously posted. View 3 matching posts. September 9, 2026, 4:29 PM — Visual match September 26, 2026, 9:25 AM — Identical file October 14, 2026, 12:15 AM — Identical file Donald J. Trump @realDonaldTrump · October 16, 2026, 3:09 PM Original Post ↻ Previously posted October 1, 2026 Donald J. Trump @realDonaldTrump · October 16, 2026, 3:03 PM Original Post Video previously posted. View 2 matching posts. October 12, 2026, 10:18 AM — Visual match October 14, 2026, 12:12 AM — Identical file Donald J. Trump ReTruthed Dan Scavino Jr. 🇺🇸🦅 @DanScavino · October 16, 2026, 2:23 PM Original Post 𝙂𝙚𝙩 𝙮𝙤𝙪𝙧 𝙩𝙞𝙘𝙠𝙚𝙩𝙨 𝙩𝙤𝙙𝙖𝙮 𝙛𝙤𝙧 𝙪𝙥𝙘𝙤𝙢𝙞𝙣𝙜 𝙏𝙧𝙪𝙢𝙥 𝙍𝙖𝙡𝙡𝙞𝙚𝙨 𝙞𝙣 𝙂𝙚𝙤𝙧𝙜𝙞𝙖, 𝙆𝙚𝙣𝙩𝙪𝙘𝙠𝙮, 𝙆𝙖𝙣𝙨𝙖𝙨, 𝙉𝙤𝙧𝙩𝙝 𝘾𝙖𝙧𝙤𝙡𝙞𝙣𝙖, 𝙎𝙤𝙪𝙩𝙝 𝘾𝙖𝙧𝙤𝙡𝙞𝙣𝙖, 𝙄𝙤𝙬𝙖, 𝙖𝙣𝙙 𝙁𝙡𝙤𝙧𝙞𝙙𝙖—𝙒𝙞𝙩𝙝 𝙢𝙤𝙧𝙚 𝙡𝙤𝙘𝙖𝙩𝙞𝙤𝙣𝙨 𝙗𝙚𝙞𝙣𝙜 𝙖𝙣𝙣𝙤𝙪𝙣𝙘𝙚𝙙 𝙨𝙤𝙤𝙣! 🚨𝙏𝙞𝙘𝙠𝙚𝙩 𝙖𝙣𝙙 𝙫𝙚𝙣𝙪𝙚 𝙞𝙣𝙛𝙤𝙧𝙢𝙖𝙩𝙞𝙤𝙣 𝙗𝙚𝙡𝙤𝙬🚨 🗓️🕒10/16/26 📍DALTON, GEORGIA 🎟️ https:// events.gop.com/events/midterm- rally-in-dalton-georgia-president-donald-j-trump 🗓️🕑10/17/26 📍 KENTUCKY 🎟️ https:// events.gop.com/events/midterm- rally-in-highland-heights-kentucky-president-donald-j-trump 🗓️ 🕕10/19/26 📍KANSAS https:// events.gop.com/events/midterm- rally-in-park-city-kansas-president-donald-j-trump-ks 🗓️🕖10/20/26 📍NORTH CAROLINA 🎟️ https:// events.gop.com/events/midterm- rally-in-greenville-north-carolina-president-donald-j-trump-djtnc ? 🗓️🕖10/21/26 📍SOUTH CAROLINA 🎟️ https:// events.gop.com/events/midterm- rally-in-clemson-sc-president-donald-j-trump-djt47 ? 🗓️🕕10/22/26 📍IOWA 🎟️ https:// events.gop.com/events/midterm- rally-in-sioux-city-ia-president-donald-j-trump-djt ? 🗓️🕑10/23/26 📍FLORIDA 🎟️ https:// events.gop.com/events/midterm- rally-in-fort-myers-fl-president-donald-j-trump-djt47 ? 🚨MORE STOPS COMING SOON🚨 STAY UPDATED AT: https:// events.djt47.co/ Read full post events.gop.com Midterm Rally in Dalton, Georgia featuring President Donald J. Trump Sign up for a ticket TODAY! Donald J. Trump @realDonaldTrump · October 16, 2026, 9:40 AM Original Post Donald J. Trump @realDonaldTrump · October 16, 2026, 4:47 AM Original Post A great man!!! President DJT Justice Alito confirms he is considering retirement: https://www. politico.com/news/2026/10/02/a lito-supreme-court-retirement-01105789 Read full post Donald J. Trump ReTruthed 🇺🇸 Mike Davis 🇺🇸 @mrddmia · August 14, 2026, 1:08 PM Original Post Sam Adkisson worked with me on the Senate Judiciary Committee for Justice Kavanaugh's confirmation. He is a friend, outstanding colleague, brilliant attorney, and committed constitutionalist. President Trump hit a grand-slam by picking Sam for a lifetime appointment to the federal bench in Tennessee. Read full post Donald J. Trump @realDonaldTrump · August 14, 2026, 11:51 AM Original Post I am pleased to announce the nomination of Samuel D. Adkisson to serve as a Judge on the U.S. District Court for the Eastern District of Tennessee. Sam is currently a Special Assistant in my White House Counsel’s Office, where he has done an incredible job, and worked on numerous important cases, including our Historic Win in the Slaughter case. Sam previously worked as an attorney in private practice, and for the Senate Judiciary Committee during Justice Kavanaugh’s successful confirmation. Sam was a top student at Vanderbilt University and Yale Law School, and clerked for the Chief Justice of the United States Supreme Court, John G. Roberts, Jr., and Federal Appeals Court Judges, Gregory Katsas and Amul Thapar. Sam has exemplified Wisdom and Courage, loves the Constitution, and will always defend the wonderful people of Tennessee. Congratulations Sam! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · October 16, 2026, 1:13 AM Original Post Great Pollster Matt Towery was fantastic on Sean Hannity tonight. Looking good for Republicans! President DJT Read full post Donald J. Trump @realDonaldTrump · October 16, 2026, 12:52 AM Original Post James TalaFREAKO, who is running for U.S. Senate against the greatest Attorney General in the history of Texas, recently stated, with a large mask covering his face as he spoke, that, “FOSSIL FUELS ARE DESTROYING THE PLANET.” In other words, no more drilling for Oil in Texas. That should be the end of his campaign!!! President DJT Read full post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social post",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-16T20:56:20.791330+00:00",
+      "event_id": "aac41acdeab2d8b1aa4b7d7b",
+      "action_reaction": {
+        "event_id": "aac41acdeab2d8b1aa4b7d7b",
+        "event_type": "ENERGY",
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
