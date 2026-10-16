@@ -1,5 +1,6 @@
 import unittest
 from sputnik_decision_engine import conditional_plans, decision_message
+from sputnik_cfd import build_conditional_trade_plan
 
 class StrictDecisionTests(unittest.TestCase):
     def test_tariff_action(self):
@@ -57,6 +58,32 @@ class StrictDecisionTests(unittest.TestCase):
         message = decision_message("ENERGY METALS DEFENSE")
         self.assertIn("GEOPOLITICA / DIFESA", message)
         self.assertIn("Settore difesa, petrolio e oro", message)
+
+class ConditionalTradePlanTests(unittest.TestCase):
+    def test_levels_require_fresh_quote_and_atr(self):
+        plan = {"candidate": "BRENT (petrolio)", "bias": "LONG condizionale"}
+        missing = build_conditional_trade_plan(plan, {})
+        self.assertEqual(missing["status"], "WAIT")
+        self.assertIsNone(missing["stop"])
+
+    def test_atr_levels_are_calculated_but_not_auto_confirmed(self):
+        from datetime import datetime, timezone
+        stamp = datetime.now(timezone.utc).isoformat()
+        plan = {"candidate": "BRENT (petrolio)", "bias": "LONG condizionale"}
+        quote = {"BRENT": {"price": 100.0, "atr": 2.0, "timestamp": stamp}}
+        result = build_conditional_trade_plan(plan, quote)
+        self.assertEqual(result["status"], "PREPARE")
+        self.assertEqual(result["entry"], 100.0)
+        self.assertEqual(result["stop"], 97.0)
+        self.assertEqual(result["tp1"], 103.0)
+        self.assertEqual(result["tp2"], 106.0)
+
+    def test_old_quote_is_rejected(self):
+        plan = {"candidate": "ORO (XAU/USD)", "bias": "LONG condizionale"}
+        quote = {"GOLD": {"price": 4200.0, "atr": 20.0, "timestamp": "2020-01-01T00:00:00+00:00"}}
+        result = build_conditional_trade_plan(plan, quote)
+        self.assertEqual(result["status"], "WAIT")
+        self.assertIsNone(result["entry"])
 
 if __name__ == "__main__":
     unittest.main()
