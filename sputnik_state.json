@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-17T01:22:30.256417+00:00",
+  "updated_at": "2026-10-17T05:49:08.868806+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "437f503bd1e5ecb1ac36dcb2",
-    "TRUTH_ARCHIVE": "0add3a78dca7d5f9b8ebe69d",
+    "TRUTH_ARCHIVE": "0c24bf13bbb446cf363a7950",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1370,6 +1370,26 @@
       "event_id": "0add3a78dca7d5f9b8ebe69d",
       "action_reaction": {
         "event_id": "0add3a78dca7d5f9b8ebe69d",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "0c24bf13bbb446cf363a7950": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 17, 2026, 12:11 AM Original Post Best in History! Read full post Donald J. Trump @realDonaldTrump · October 17, 2026, 12:10 AM Original Post Donald J. Trump @realDonaldTrump · October 16, 2026, 8:37 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 16, 2026, 8:36 PM Original Post Donald J. Trump @realDonaldTrump · October 16, 2026, 8:36 PM Original Post Donald J. Trump @realDonaldTrump · October 16, 2026, 8:28 PM Original Post They will all go to jail for a long period of time!!! Read full post Donald J. Trump @realDonaldTrump · October 16, 2026, 8:27 PM Original Post Donald J. Trump @realDonaldTrump · October 16, 2026, 8:27 PM Original Post Donald J. Trump @realDonaldTrump · October 16, 2026, 3:12 PM Original Post Just landed in Georgia, heading over to the Big Rally — Lots of people! See you soon. Will be broadcast LIVE on Right Side Broadcasting Network (RSBN)! We must get Congressman Mike Collins elected to the U.S. Senate — He is far superior to Pee Wee Herman (Jon Osoff). Likewise, Rick Jackson will be a fantastic Governor of the Peach State! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 16, 2026, 3:10 PM Original Post Video previously posted. View 3 matching posts. September 9, 2026, 4:29 PM — Visual match September 26, 2026, 9:25 AM — Identical file October 14, 2026, 12:15 AM — Identical file Donald J. Trump @realDonaldTrump · October 16, 2026, 3:09 PM Original Post ↻ Previously posted October 1, 2026 Donald J. Trump @realDonaldTrump · October 16, 2026, 3:03 PM Original Post Video previously posted. View 2 matching posts. October 12, 2026, 10:18 AM — Visual match October 14, 2026, 12:12 AM — Identical file Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-17T05:49:08.720556+00:00",
+      "event_id": "0c24bf13bbb446cf363a7950",
+      "action_reaction": {
+        "event_id": "0c24bf13bbb446cf363a7950",
         "event_type": "OTHER",
         "historical_matches": [],
         "historical_directions": {},
