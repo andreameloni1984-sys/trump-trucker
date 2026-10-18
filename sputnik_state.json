@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-18T16:58:17.473293+00:00",
+  "updated_at": "2026-10-18T19:21:46.198921+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "437f503bd1e5ecb1ac36dcb2",
-    "TRUTH_ARCHIVE": "37156c4f02f258c5f7702900",
+    "TRUTH_ARCHIVE": "a82188aabad17c1c489ce5fd",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1487,6 +1487,34 @@
       "event_id": "37156c4f02f258c5f7702900",
       "action_reaction": {
         "event_id": "37156c4f02f258c5f7702900",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "a82188aabad17c1c489ce5fd": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 18, 2026, 2:27 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 18, 2026, 2:26 PM Original Post Donald J. Trump @realDonaldTrump · October 18, 2026, 2:26 PM Original Post Donald J. Trump @realDonaldTrump · October 18, 2026, 1:39 PM Original Post Video previously posted. View 4 matching posts. August 26, 2026, 10:09 PM — Visual match August 27, 2026, 5:51 PM — Visual match October 1, 2026, 2:11 PM — Visual match October 10, 2026, 8:03 PM — Identical file Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 18, 2026, 10:45 AM Original Post To the Great People of Israel: Bibi Netanyahu has been a Great Warrior Prime Minister, and an even greater Partner for Peace in combatting the Islamic Republic of Iran, with its 51 year old chant, “Death to Israel, Death to America! We will destroy the Little Satan and the Big Satan.” What Country can survive when things such as this are allowed to be said, because eventually, they always end up being true? It would have been only a question of time until Iran would have put that ominous phrase into effect, but they have been systematically destroyed, both Militarily and Financially, and unless they change their ways, rapidly, we will soon finish the job. If Israel has the wrong Leader, which would be anyone other than Bibi, America will have to do this work ourselves, and I am not inclined to do so. Bibi Netanyahu has been Strong, Brave, and Brilliant in the face of tremendous opposition, including that coming from even Israel, itself. Despite all of that, he has endured and, in fact, he has thrived! I have watched Bibi under the most trying of times. Normal men or women in such situations would have wilted under the pressure — But Bibi did not wilt, he actually got stronger, and maintains that same Strength today. This is the kind of Partner that the United States of America is demanding of Israel, a Country for which it has done so much. Please let this Letter serve to represent my Complete and Total Endorsement of Bibi Netanyahu in his upcoming Race for Re-Election as Prime Minister of Israel. BIBI NETANYAHU WILL NEVER LET YOU DOWN! Thank you for your attention to this matter. DONALD J. TRUMP PRESIDENT OF THE UNITED STATES OF AMERICA Read full post Donald J. Trump @realDonaldTrump · October 18, 2026, 11:02 AM Original Post Doug Burgum, and the United States Department of the Interior, is very excited about the new Development of a Great Golf Course at the site of the old East Potomac Golf Links. We would like to thank Tom Fazio for his initial conceptual design and ideas, coupled with those of others from within the Golf World and the Department of the Interior. Any variance or changes will be made, depending on site conditions, by the Experts in Parks and Recreation, whose experience and knowledge in Seawalls, Landscaping, and Design are second to none. President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 18, 2026, 10:45 AM Original Post To the Great People of Israel: Bibi Netanyahu has been a Great Warrior Prime Minister, and an even greater Partner for Peace in combatting the Islamic Republic of Iran, with its 51 year old chant, “Death to Israel, Death to America! We will destroy the Little Satan and the Big Satan.” What Country can survive when things such as this are allowed to be said, because eventually, they always end up being true? It would have been only a question of time until Iran would have put that ominous phrase into effect, but they have been systematically destroyed, both Militarily and Financially, and unless they change their ways, rapidly, we will soon finish the job. If Israel has the wrong Leader, which would be anyone other than Bibi, America will have to do this work ourselves, and I am not inclined to do so. Bibi Netanyahu has been Strong, Brave, and Brilliant in the face of tremendous opposition, including that coming from even Israel, itself. Despite all of that, he has endured and, in fact, he has thrived! I have watched Bibi under the most trying of times. Normal men or women in such situations would have wilted under the pressure — But Bibi did not wilt, he actually got stronger, and maintains that same Strength today. This is the kind of Partner that the United States of America is demanding of Israel, a Country for which it has done so much. Please let this Letter serve to represent my Complete and Total Endorsement of Bibi Netanyahu in his upcoming Race for Re-Election as Prime Minister of Israel. BIBI NETANYAHU WILL NEVER LET YOU DOWN! Thank you for your attention to this matter. DONALD J. TRUMP PRESIDENT OF THE UNITED STATES OF AMERICA Read full post Donald J. Trump @realDonaldTrump · October 18, 2026, 10:09 AM Original Post I am pleased to announ",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-18T19:21:45.828566+00:00",
+      "event_id": "a82188aabad17c1c489ce5fd",
+      "action_reaction": {
+        "event_id": "a82188aabad17c1c489ce5fd",
         "event_type": "TRADE_ESCALATION",
         "historical_matches": [
           "china_tariff_escalation_2025_10"
