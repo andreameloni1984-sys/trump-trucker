@@ -1,7 +1,7 @@
 import json
 import os
 import unittest
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import trump_tracker
 from sputnik_catalyst import catalyst_watchlist
@@ -64,7 +64,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
 
     @patch("trump_tracker.urllib.request.urlopen")
     def test_gagarin_handoff_posts_only_item_level_catalysts(self, urlopen):
-        response = unittest.mock.MagicMock()
+        response = MagicMock()
         response.__enter__.return_value.read.return_value = json.dumps({
             "events": [{"event_id": "evt-1", "status": "WATCH_ONLY", "trade_placed": False}]
         }).encode("utf-8")
