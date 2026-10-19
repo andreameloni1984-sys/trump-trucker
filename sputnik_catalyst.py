@@ -42,6 +42,18 @@ DOMAIN_INSTRUMENTS = {
     "REAL_ESTATE": [
         ("US_REIT", "US real estate / REIT"),
     ],
+    # These are watch candidates only: headline direction must be confirmed by
+    # live price/volume before GAGARIN can consider an entry.
+    "TRADE_POLICY": [
+        ("NASDAQ100", "US technology / growth equities"),
+        ("GOLD", "Gold / defensive asset"),
+        ("USD", "US dollar"),
+    ],
+    "RATES_MACRO": [
+        ("GOLD", "Gold / metals"),
+        ("NASDAQ100", "US technology / growth equities"),
+        ("USD", "US dollar"),
+    ],
 }
 
 PRIMARY_SOURCES = {"WHITE_HOUSE", "OGE", "SEC"}
