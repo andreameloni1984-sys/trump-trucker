@@ -1,0 +1,28 @@
+name: SPUTNIK item intelligence tests
+
+on:
+  pull_request:
+    paths:
+      - "trump_tracker.py"
+      - "sputnik_catalyst.py"
+      - "sputnik_public_sources.py"
+      - "sputnik_action_reaction.py"
+      - "tests/test_sputnik_item_intelligence.py"
+      - "tests/test_sputnik_public_sources.py"
+      - "tests/test_sputnik_action_reaction.py"
+      - "tests/test_sputnik_catalyst.py"
+      - ".github/workflows/sputnik-item-intelligence-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  item-intelligence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run item intelligence tests
+        run: python -m unittest tests/test_sputnik_item_intelligence.py tests/test_sputnik_public_sources.py tests/test_sputnik_action_reaction.py tests/test_sputnik_catalyst.py -v
