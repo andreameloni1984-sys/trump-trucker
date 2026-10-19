@@ -1010,6 +1010,8 @@ def telegram_trump_order_message(state: dict[str, Any]) -> str:
         "CRYPTO": ("CRYPTO", "bitcoin, ethereum, crypto"),
         "MEDIA": ("MEDIA", "media, social"),
         "REAL_ESTATE": ("REAL ESTATE", "property, real estate, hotel"),
+        "TRADE_POLICY": ("DAZI / POLITICA COMMERCIALE", "tariffs, trade deal, sanctions"),
+        "RATES_MACRO": ("TASSI / DOLLARO", "interest rates, inflation, treasury yields, dollar"),
     }
 
     scores: dict[str, dict[str, Any]] = {}
