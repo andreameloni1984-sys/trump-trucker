@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
+from sputnik_public_sources import parse_public_feed
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -330,13 +331,45 @@ def fetch_public_text(url: str) -> str:
     parser.feed(raw.decode("utf-8", errors="replace"))
     return parser.text()
 
+def _domains_for_public_text(text: str) -> list[str]:
+    normalized = str(text or "").lower()
+    return [
+        domain for domain, keywords in ASSET_KEYWORDS.items()
+        if any(keyword in normalized for keyword in keywords)
+    ]
+
+
+def fetch_public_feed(url: str) -> bytes:
+    """Fetch a public RSS/Atom feed without requiring third-party packages."""
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": os.getenv("SEC_USER_AGENT", "SPUTNIK/4.1 public-feed-monitor"),
+            "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,*/*",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return response.read()
+
+
+def _configured_rss_feeds() -> list[str]:
+    raw = os.getenv("SPUTNIK_RSS_FEEDS", "").strip()
+    if raw:
+        return list(dict.fromkeys(url.strip() for url in raw.split(";") if url.strip()))
+    # Official White House feed: item-level title, date, URL and summary.
+    return ["https://www.whitehouse.gov/feed/"]
+
+
 def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     if os.getenv("SPUTNIK_SOCIAL_ENABLED", "1").strip().lower() not in {"1", "true", "yes"}:
         return []
 
     known = state.setdefault("intelligence", {})
+    known_items = state.setdefault("intelligence_items", {})
     findings: list[dict[str, Any]] = []
 
+    # Keep the legacy homepage scan for broad discovery, but do not treat its
+    # generic page-wide keywords as an individual news event.
     for source, url in INTELLIGENCE_SOURCES.items():
         try:
             body = fetch_public_text(url)
@@ -344,26 +377,62 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             print(f"SPUTNIK: source {source} unavailable: {type(exc).__name__}")
             continue
 
-        normalized = body.lower()
-        domains = []
-        for domain, keywords in ASSET_KEYWORDS.items():
-            if any(keyword in normalized for keyword in keywords):
-                domains.append(domain)
-
         digest = hashlib.sha256((source + "|" + body[:200000]).encode("utf-8")).hexdigest()[:24]
         if known.get(source) == digest:
             continue
         known[source] = digest
+        domains = _domains_for_public_text(body)
+        if not domains:
+            continue
+        finding = {
+            "source": source,
+            "url": url,
+            "title": "",
+            "published": "",
+            "domains": domains,
+            "text": body[:6000],
+            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            "status": "POTENTIAL_CORRELATION",
+            "detected_at": utc_now().isoformat(),
+            "event_id": digest,
+        }
+        finding["action_reaction"] = build_action_reaction_record(finding, body)
+        findings.append(finding)
 
-        if domains:
+    # Item-level feed scan: each article is deduplicated independently, so a
+    # page-level digest cannot hide a new post added to an otherwise unchanged
+    # archive. A feed item is a catalyst candidate, never an automatic trade.
+    for feed_url in _configured_rss_feeds():
+        source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
+        try:
+            rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
+        except Exception as exc:
+            print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
+            continue
+
+        for row in rows:
+            title = str(row.get("title") or "").strip()
+            body = " ".join(part for part in (title, str(row.get("text") or "").strip()) if part)
+            domains = _domains_for_public_text(body)
+            if not domains:
+                continue
+            identity = str(row.get("id") or row.get("url") or (title + "|" + str(row.get("published") or "")))
+            digest = hashlib.sha256(
+                (source + "|" + feed_url + "|" + identity).encode("utf-8")
+            ).hexdigest()[:24]
+            if digest in known_items:
+                continue
+            known_items[digest] = utc_now().isoformat()
             finding = {
                 "source": source,
-                "url": url,
+                "feed_url": feed_url,
+                "url": str(row.get("url") or feed_url),
+                "primary_url": str(row.get("primary_url") or ""),
+                "title": title[:300],
+                "published": str(row.get("published") or "")[:100],
                 "domains": domains,
-                # Retain a bounded text excerpt so the decision engine can evaluate
-                # the actual collected public page content, not just topic labels.
                 "text": body[:6000],
-                "evidence": "PUBLIC_SOURCE_TEXT",
+                "evidence": "PUBLIC_RSS_ITEM",
                 "status": "POTENTIAL_CORRELATION",
                 "detected_at": utc_now().isoformat(),
                 "event_id": digest,
@@ -371,6 +440,11 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
 
+    # Bound per-item deduplication state and history to prevent unbounded growth.
+    if len(known_items) > 2000:
+        state["intelligence_items"] = dict(
+            sorted(known_items.items(), key=lambda item: item[1], reverse=True)[:2000]
+        )
     history = state.setdefault("intelligence_history", {})
     for item in findings:
         history[item["event_id"]] = item
