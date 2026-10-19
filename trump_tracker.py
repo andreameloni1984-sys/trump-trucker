@@ -456,7 +456,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
 def intelligence_message(item: dict[str, Any]) -> str:
     title = str(item.get("title") or "").strip()
     published = str(item.get("published") or "").strip()
-    excerpt = re.sub(r"\\s+", " ", str(item.get("text") or "")).strip()[:420]
+    excerpt = re.sub(r"\s+", " ", str(item.get("text") or "")).strip()[:420]
     lines = [
         "🛰️ SPUTNIK — INTELLIGENCE",
         "━━━━━━━━━━━━━━━━━━",
@@ -478,7 +478,7 @@ def intelligence_message(item: dict[str, Any]) -> str:
         "━━━━━━━━━━━━━━━━━━",
         "ℹ️ Il tema non è un segnale LONG/SHORT. Gagarin deve verificare prezzo, volume e struttura.",
     ])
-    return "\\n".join(lines)
+    return "\n".join(lines)
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
