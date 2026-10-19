@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-19T14:24:47.022237+00:00",
+  "updated_at": "2026-10-19T20:05:01.226323+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "437f503bd1e5ecb1ac36dcb2",
-    "TRUTH_ARCHIVE": "73e16855f878bb44858ce011",
+    "TRUTH_ARCHIVE": "af8a99b8dffb54d6de584bac",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1652,6 +1652,34 @@
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
+      }
+    },
+    "af8a99b8dffb54d6de584bac": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 19, 2026, 3:07 PM Original Post A big WIN for Massapequa and DJT! NY plans to drop part of Native American logo ban in ‘huge victory’ for Massapequa: https:// nypost.com/2026/10/19/us-news/ nys-dropping-part-of-native-american-logo-ban-in-huge-victory-for-massapequa/ Read full post nypost.com Exclusive | NY plans to drop part of Native American logo ban in ‘huge victory’ for Massapequa New York is dropping part of its statewide school indigenous mascot ban days before long-anticipated verbal court arguments with the staunchly opposing Massapequa district. Donald J. Trump @realDonaldTrump · October 19, 2026, 3:06 PM Original Post New Mexico should immediately change its name to New America. We are not Mexico, we are the United States of America! The name would add great value and prestige to the State! Home Values and Incomes would rise, and you would be even prouder while saluting our beautiful American Flag! Maybe even the Crooked Elections, that New Mexico is known for, would become honest again! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 3:05 PM Original Post The Democrats gave us the Highest Inflation in History, and the Highest Prices to go with it and, as soon as l came into Office, they started screaming, \"AFFORDABILITY.\" They are the ones that created the Affordability Crisis. I'm the one who created the Greatest Economy, and am bringing the prices down. It's just another Fake News CON JOB! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 2:41 PM Original Post I am pleased to nominate Joseph Falvey to serve as Judge on the United States District Court for the Northern District of Indiana. Joe is currently an Assistant U.S. Attorney, where he has done an incredible job protecting Public Safety, and promoting Law and Order. Joe is a graduate of Yale Law School and the University of Notre Dame, and previously clerked for three esteemed Jurists, Chief Justice of the United States Supreme Court, John Roberts, Judge Thomas Griffith of the D.C. Circuit, and Judge Dabney Friedrich of The United States District Court for the District of Columbia. He is also a Marine Corps Veteran and Pat Tillman Scholar. Joe will strongly protect our cherished Constitution and Rule of Law in this important new role. Congratulations Joe! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 2:38 PM Original Post I am pleased to nominate Eric Hamilton to serve as Judge on the United States District Court for the District of Nebraska. Eric has done a phenomenal job as the Deputy Assistant Attorney General for the Federal Programs Branch, defending our Administration’s most important Policies in Court. A sixth generation Nebraskan, Eric previously served as Solicitor General of the State of Nebraska. He is a proud graduate of Stanford Law School and the University of Nebraska, and clerked for the highly respected Judge Thomas Hardiman of the Third Circuit. The incredible people of Nebraska are lucky to have a fighter like Eric join the Federal Bench. Congratulations Eric! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 2:13 PM Original Post Donald J. Trump @realDonaldTrump · October 19, 2026, 2:12 PM Original Post Donald J. Trump @realDonaldTrump · October 19, 2026, 1:18 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 1:17 PM Original Post Washington’s beautiful Reflecting Pool, which was badly damaged by Vandals despite the ridiculous writings of some Radical Left person in the D.C. U.S. Attorney’s Office who got it wrong and obviously didn’t investigate, witness, or see the attached tape, or the very inspiring Jesse Watters show which explained it all, or didn’t inspect the vast area of cut and slashed pool surface, or the grass that was scarred by poison with the numbers “86 47” massively inscribed in font 90 feet tall and encompassing the width of the entire Park (which grass has been fully replaced with new grass), is now, after repair, 70% filled with water and looking good. Interestingly, the Reflecting Pool has not worked properly since it was built in 1922 — It always leaked! This will be different, but any Vandals that try to prove the point otherwise, will GO TO JAIL! We are watching very closely, and security cameras have been installed. Reports are that it’s looking beautiful, and will only get better, subject to NO VANDALISM, with time. Thank you for your attention to this matter! President DONALD J. TRUMP ↻ Previously posted August 1, 2026 Donald J. Trump @realDonaldTrump · October 19, 2026, 1:17 PM Original Post Washington’s beautiful Reflecting Pool, which was badly damaged by Vanda",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-19T20:05:00.966976+00:00",
+      "event_id": "af8a99b8dffb54d6de584bac",
+      "action_reaction": {
+        "event_id": "af8a99b8dffb54d6de584bac",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
       }
     }
   },
