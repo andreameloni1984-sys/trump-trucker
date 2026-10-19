@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-19T06:55:56.938763+00:00",
+  "updated_at": "2026-10-19T14:24:47.022237+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "437f503bd1e5ecb1ac36dcb2",
-    "TRUTH_ARCHIVE": "61f4716155d02358d8d579ac",
+    "TRUTH_ARCHIVE": "73e16855f878bb44858ce011",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1628,6 +1628,26 @@
       "event_id": "61f4716155d02358d8d579ac",
       "action_reaction": {
         "event_id": "61f4716155d02358d8d579ac",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "73e16855f878bb44858ce011": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 19, 2026, 10:01 AM Original Post FBI smash huge voter fraud ring in California — days after feds issued ultimatum to state: https:// nypost.com/2026/10/19/us-news/ fbi-smash-huge-california-voter-fraud-ring-in-los-angeles-days-after-feds-issued-ultimatum-to-state/ Read full post nypost.com Exclusive | FBI smash huge voter fraud ring in California — days after feds issued ultimatum to state The arrests were the latest escalation in a federal effort to tackle electoral wrongdoing in California, something local officials have denied is a widespread problem. Donald J. Trump @realDonaldTrump · October 19, 2026, 9:14 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:14 AM Original Post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:14 AM Original Post Donald J. Trump @realDonaldTrump · October 19, 2026, 7:16 AM Original Post The migrants have taken over France. They must CLOSE THE BORDERS, FAST! President DJT Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 7:09 AM Original Post Big crowds today in Kansas. See you later! President DJT Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 7:08 AM Original Post Fox spends more time defending Dumocrats, and putting on their views versus their Republican opponent, than at any time in the History of FoxNews. It’s ridiculous! FoxNews is trying too hard to be Politically Correct! Watch my big Kansas Rally today on RSBN. Great early coverage! President DJT Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 6:51 AM Original Post I’m going to the Great State of Kansas today to Rally support for Roger Marshall, one of the absolutely best Senators in the U.S. Senate. His opponent is a Fake, and would be a DISASTER for Kansas, a State I won all three times, getting the highest vote in the history of Kansas - Such an honor! See you all later!!! President DJT Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 6:08 AM Original Post The United States Department of Interior wants to take a terrible and very unsafe golf course, and make it into a great, safe, and prestigious golf course. They have an absolute right to do so. It’s as simple as that! The judge on the case is a crazed lunatic whose courthouse tapes will reveal, may be insane? The tapes have been blocked from usage by the judge. The random golfer bringing the ridiculous lawsuit has ZERO STANDING! The experts at “Interior” are allowed to do this First Class renovation “as of right.” They do not need an approval. Work is scheduled to begin IMMEDIATELY! The finished product will be World Class, and bring income and great prestige back to D.C. Thank you for your attention to this matter! President DJT Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 5:22 AM Original Post How Trump defied the ‘experts’ — and pushed the UN toward post-Oct. 7 peace: https:// nypost.com/2026/10/08/opinion/ how-trump-defied-the-experts-and-pushed-the-un-to-post-oct-7-peace/ Read full post nypost.com How Trump defied the ‘experts’ — and pushed the UN toward post-Oct. 7 peace Thanks to President Donald Trump, the same UN that was part of the problem in 2023 now has an opportunity — indeed, a mandate — to be part of the solution. Donald J. Trump @realDonaldTrump · October 19, 2026, 5:14 AM Original Post Melania Trump makes history presiding over UN Security Council — remarking on Iran war deaths: https:// nypost.com/2026/03/02/us-news/ melania-trump-makes-history-presiding-over-un-security-council-acknowledges-challenging-times/ Read full post nypost.com Melania Trump makes history presiding over UN Security Council — remarking on Iran war deaths “You are in my thoughts and prayers during these challenging times,” Melania Trump said. Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-19T14:24:46.539850+00:00",
+      "event_id": "73e16855f878bb44858ce011",
+      "action_reaction": {
+        "event_id": "73e16855f878bb44858ce011",
         "event_type": "GEOPOLITICAL_ESCALATION",
         "historical_matches": [],
         "historical_directions": {},
