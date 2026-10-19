@@ -454,17 +454,31 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     return findings
 
 def intelligence_message(item: dict[str, Any]) -> str:
-    return (
-        "🛰️ SPUTNIK — INTELLIGENCE\n"
-        "━━━━━━━━━━━━━━━━━━\n"
-        f"📡 Fonte: {item['source']}\n"
-        f"🧩 Aree citate: {', '.join(item['domains'])}\n"
-        f"🔎 Evidenza: {item['evidence']}\n"
-        "⚠️ Stato: CORRELAZIONE DA VERIFICARE\n"
-        f"🔗 {item['url']}\n"
-        "━━━━━━━━━━━━━━━━━━\n"
-        "ℹ️ Una menzione social o una correlazione non prova un investimento."
-    )
+    title = str(item.get("title") or "").strip()
+    published = str(item.get("published") or "").strip()
+    excerpt = re.sub(r"\\s+", " ", str(item.get("text") or "")).strip()[:420]
+    lines = [
+        "🛰️ SPUTNIK — INTELLIGENCE",
+        "━━━━━━━━━━━━━━━━━━",
+        f"📡 Fonte: {item.get('source', 'N/D')}",
+    ]
+    if title:
+        lines.append(f"📰 Evento: {title}")
+    if published:
+        lines.append(f"🕒 Pubblicazione: {published}")
+    lines.extend([
+        f"🧩 Aree citate: {', '.join(item.get('domains') or [])}",
+        f"🔎 Evidenza: {item.get('evidence', 'N/D')}",
+    ])
+    if excerpt and not title:
+        lines.append(f"📝 Testo: {excerpt}")
+    lines.extend([
+        "⚠️ Stato: CATALIZZATORE DA VERIFICARE",
+        f"🔗 {item.get('url', '')}",
+        "━━━━━━━━━━━━━━━━━━",
+        "ℹ️ Il tema non è un segnale LONG/SHORT. Gagarin deve verificare prezzo, volume e struttura.",
+    ])
+    return "\\n".join(lines)
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
@@ -936,6 +950,8 @@ def telegram_news_message(state: dict[str, Any]) -> str:
     for item in items[:5]:
         lines.append(
             f"📡 {item.get('source', 'N/D')}\n"
+            f"📰 {item.get('title') or 'Pagina generale / titolo non disponibile'}\n"
+            f"🕒 {item.get('published') or item.get('detected_at', 'N/D')}\n"
             f"🧩 {', '.join(item.get('domains', [])) or 'Nessuna area'}\n"
             f"🔎 {item.get('evidence', 'N/D')}\n"
             f"🔗 {item.get('url', '')}"
