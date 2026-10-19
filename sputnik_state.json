@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-18T23:39:33.271614+00:00",
+  "updated_at": "2026-10-19T01:43:47.541273+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "437f503bd1e5ecb1ac36dcb2",
-    "TRUTH_ARCHIVE": "57673f53d0eeb69f63cb0c6b",
+    "TRUTH_ARCHIVE": "4f8d740e4edf82df72f393c3",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1591,6 +1591,26 @@
           "OIL": "DOWN"
         },
         "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "4f8d740e4edf82df72f393c3": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 18, 2026, 8:19 PM Original Post Governor Roy Cooper released this man, who then killed beautiful Iryna Zarutska. He then released 83 other murderers, so they wouldn’t catch COVID while in jail, who went on to kill 25 people! President DONALD J. TRUMP Read full post ↻ Image Previously posted October 15, 2026 Donald J. Trump @realDonaldTrump · October 18, 2026, 5:36 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 18, 2026, 5:36 PM Original Post Donald J. Trump @realDonaldTrump · October 18, 2026, 5:36 PM Original Post Donald J. Trump @realDonaldTrump · October 18, 2026, 4:36 PM Original Post My decision on Russia is a very simple one. I am in the process of negotiating Peace in the war between Russia and Ukraine, and don’t want to do anything that will drive, foolishly, Russia away from the bargaining table. Great progress is being made, and that includes current hostage negotiations! Signing that document at this time will do that, and I can sign it later, or any time that I want! Perhaps more importantly, Russia is doing very little, if anything, to help the Islamic Republic of Iran, compared to what they could be doing, and I want to keep it that way, and will, unless stupid people get in the way. Lastly, Zelenskyy is using Diesel Refineries in Russia as a target, knowing that these attacks are seriously hurting the world diesel markets, including those in the United States. Farmers, ranchers, and businesses of all kinds are suffering greatly from this, but Russia is, nevertheless, sending, at a low price, millions of barrels of diesel to the World. Zelenskyy doesn’t care, and frankly, with all of the money that Europe is famously giving him, and that Crooked Joe Biden gave him in the past, he doesn’t want to end this war, and probably never did. He could have made a better deal two years ago than he can now. His country is in shambles, a large portion of his land is lost, his oceans and seas are gone, and his male population is low, wounded, and/or dead. I WANT THIS WAR END! Thank you for your attention to this matter. President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 18, 2026, 2:27 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 18, 2026, 2:26 PM Original Post Donald J. Trump @realDonaldTrump · October 18, 2026, 2:26 PM Original Post Donald J. Trump @realDonaldTrump · October 18, 2026, 1:39 PM Original Post Video previously posted. View 4 matching posts. August 26, 2026, 10:09 PM — Visual match August 27, 2026, 5:51 PM — Visual match October 1, 2026, 2:11 PM — Visual match October 10, 2026, 8:03 PM — Identical file Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 18, 2026, 10:45 AM Original Post To the Great People of Israel: Bibi Netanyahu has been a Great Warrior Prime Minister, and an even greater Partner for Peace in combatting the Islamic Republic of Iran, with its 51 year old chant, “Death to Israel, Death to America! We will destroy the Little Satan and the Big Satan.” What Country can survive when things such as this are allowed to be said, because eventually, they always end up being true? It would have been only a question of time until Iran would have put that ominous phrase into effect, but they have been systematically destroyed, both Militarily and Financially, and unless they change their ways, rapidly, we will soon finish the job. If Israel has the wrong Leader, which would be anyone other than Bibi, America will have to do this work ourselves, and I am not inclined to do so. Bibi Netanyahu has been Strong, Brave, and Brilliant in the face of tremendous opposition, including that coming from even Israel, itself. Despite all of that, he has endured and, in fact, he has thrived! I have watched Bibi under the most trying of times. Normal men or women in such situations would have wilted under the pressure — But Bibi did not wilt, he actually got stronger, and maintains that same Strength today. This is the kind of Partner that the United States of America is demanding of Israel, a Country for which it has done so much. Please let this Letter serve to represent my Complete and Total Endorsement of Bibi Netanyahu in his upcoming Race for Re-Election as Prime Minister of Israel. BIBI NETANYAHU WILL NEVER LET YOU DOWN! Thank you for your attention to this matter. DONALD J. TRUMP PRESIDENT OF THE UNITED STATES OF AMERICA Read full post Donald J. Trump @realDonaldTrump · October 18, 2026, 11:02 AM Original Post Doug Burgum, and the United States Department of the Interior, is very excited about the new Development of a Great Golf Course at the site of the old East Potomac Golf Links. We would like to thank Tom Fazio for his initial conceptual design and ideas, coupled with tho",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-19T01:43:47.428644+00:00",
+      "event_id": "4f8d740e4edf82df72f393c3",
+      "action_reaction": {
+        "event_id": "4f8d740e4edf82df72f393c3",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
       }
     }
   },
