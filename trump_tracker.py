@@ -315,6 +315,10 @@ ASSET_KEYWORDS = {
     "CRYPTO": ["bitcoin", "ethereum", "crypto", "digital asset", "stablecoin"],
     "MEDIA": ["truth social", "truth", "media", "streaming"],
     "REAL_ESTATE": ["real estate", "property", "hotel", "resort"],
+    # Political and macro catalysts need their own labels; otherwise a tariff
+    # headline with no commodity keyword is silently discarded.
+    "TRADE_POLICY": ["tariff", "tariffs", "trade deal", "trade agreement", "export control", "import duty", "sanction", "sanctions", "dazi", "accordo commerciale"],
+    "RATES_MACRO": ["federal reserve", "interest rate", "interest rates", "treasury yield", "inflation", "policy rate", "dollar", "dollaro"],
 }
 
 def fetch_public_text(url: str) -> str:
