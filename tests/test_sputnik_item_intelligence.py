@@ -1,3 +1,4 @@
+import json
 import os
 import unittest
 from unittest.mock import patch
@@ -48,6 +49,58 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertTrue(rows)
         self.assertTrue(all(row["status"] == "WATCH" for row in rows))
         self.assertTrue(all("LONG" not in row["status"] and "BUY" not in row["status"] for row in rows))
+
+
+    def test_gagarin_handoff_is_disabled_without_credentials(self):
+        with patch.dict(os.environ, {}, clear=True):
+            result = trump_tracker.forward_findings_to_gagarin([{
+                "event_id": "evt-1",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Tariff headline",
+                "url": "https://example.gov/news/1",
+                "domains": ["TRADE_POLICY"],
+            }])
+        self.assertIsNone(result)
+
+    @patch("trump_tracker.urllib.request.urlopen")
+    def test_gagarin_handoff_posts_only_item_level_catalysts(self, urlopen):
+        response = unittest.mock.MagicMock()
+        response.__enter__.return_value.read.return_value = json.dumps({
+            "events": [{"event_id": "evt-1", "status": "WATCH_ONLY", "trade_placed": False}]
+        }).encode("utf-8")
+        urlopen.return_value = response
+        findings = [
+            {
+                "event_id": "evt-1",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Tariff headline",
+                "url": "https://example.gov/news/1",
+                "published": "2026-10-19",
+                "domains": ["TRADE_POLICY"],
+                "text": "Tariff headline details",
+            },
+            {
+                "event_id": "page-1",
+                "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+                "title": "",
+                "url": "https://example.gov/",
+                "domains": ["TRADE_POLICY"],
+            },
+        ]
+        with patch.dict(os.environ, {
+            "GAGARIN_CLOUD_API_URL": "https://gagarin.example",
+            "GAGARIN_CLOUD_API_KEY": "test-secret",
+        }):
+            result = trump_tracker.forward_findings_to_gagarin(findings)
+
+        self.assertFalse(result["events"][0]["trade_placed"])
+        request = urlopen.call_args.args[0]
+        self.assertEqual(request.full_url, "https://gagarin.example/api/sputnik/confirm")
+        self.assertEqual(request.get_header("X-api-key"), "test-secret")
+        payload = json.loads(request.data.decode("utf-8"))
+        self.assertEqual(len(payload["events"]), 1)
+        self.assertEqual(payload["events"][0]["event_id"], "evt-1")
+        self.assertNotIn("order", payload["events"][0])
 
 
 if __name__ == "__main__":
