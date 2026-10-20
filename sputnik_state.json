@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-20T12:53:48.886572+00:00",
+  "updated_at": "2026-10-20T17:44:35.365294+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "437f503bd1e5ecb1ac36dcb2",
-    "TRUTH_ARCHIVE": "fe49bca2bc2b500dc5fbd7ef",
+    "WHITE_HOUSE": "6bb2eb1bd6e29eeef593dd5a",
+    "TRUTH_ARCHIVE": "03586a72bb29619faec6a879",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1823,6 +1823,56 @@
           "OIL": "DOWN"
         },
         "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "6bb2eb1bd6e29eeef593dd5a": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "{\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"isPartOf\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\"},\"about\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"primaryImageOfPage\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"datePublished\":\"2026-01-22T14:00:00+00:00\",\"dateModified\":\"2026-10-02T01:17:56+00:00\",\"description\":\"President Donald J. Trump and Vice President JD Vance are committed to lowering costs for all Americans, securing our borders, unleashing American energy dominance, restoring peace through strength, and making all Americans safe and secure once again.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/www.whitehouse.gov\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"width\":800,\"height\":450},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"description\":\"\",\"publisher\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\\/\\/www.whitehouse.gov\\/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"},{\"@type\":\"GovernmentOrganization\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\",\"name\":\"The White House\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"width\":918,\"height\":918,\"caption\":\"The White House\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\"},\"sameAs\":[\"https:\\/\\/www.facebook.com\\/WhiteHouse\\/\",\"https:\\/\\/x.com\\/whitehouse\",\"https:\\/\\/www.instagram.com\\/whitehouse\\/\",\"https:\\/\\/www.youtube.com\\/@whitehouse\"]}]} The White House img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px} /*# sourceURL=wp-img-auto-sizes-contain-inline-css */ .wp-block-social-link{background:none!important;color:inherit!important}.wp-block-social-link-anchor{padding:0!important}.wp-block-social-link:focus,.wp-block-social-link:hover{transform:none!important} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-social-link.css */ .is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*=\"writing-mode:vertical-lr\"],p.has-text-align-right[style*=\"writing-mode:vertical-rl\"]{rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/paragraph/style.min.css */ .wp-block-spacer{clear:both} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/spacer/style.min.css */ .wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/group/style.min.css */ .wp-block-group.has-hyperlink{position:relative}.wp-block-group.has-hyperlink:not(.block-editor-block-list__block)>:nth-child(2){margin-block-start:0}.wp-block-group.has-hyperlink a.wp-block-group__action{height:100%;left:0;position:absolute;top:0;width:100%;z-index:3}.wp-block-group.has-hyperlink .wp-block-button,.wp-block-group.has-hyperlink a{position:relative;z-index:4} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-group.css */ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-inclu",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-20T17:44:34.525823+00:00",
+      "event_id": "6bb2eb1bd6e29eeef593dd5a",
+      "action_reaction": {
+        "event_id": "6bb2eb1bd6e29eeef593dd5a",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [
+          "tariff_pause_2025_04"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "UP",
+          "RISK_ASSETS": "UP"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "03586a72bb29619faec6a879": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 20, 2026, 1:09 PM Original Post Because of my belief in the Republican Party, and all of our Policies and Principles, and especially after witnessing what is taking place in France, and other locations throughout Europe, I am pleased to announce that, having to do with the Most Important Midterm Elections in our Country’s History, I have spent, or will be spending, over 400 Million Dollars by Election Day. More than 300 Million Dollars has already been spent on Advertising, Direct and Indirect Voter Contact, Rallies, Rally Arenas, Telerallies, Get Out the Vote Programs, Election Integrity, and more. It is my Great Honor to do so on behalf of the Republican Party, which has done so much to bring our Country back from the Edge of Oblivion. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 20, 2026, 8:51 AM Original Post Trump border enforcement cuts fiscal, criminal costs of illegal migration that amnesty would restore: https:// justthenews.com/politics-polic y/immigration-gangs-tren Read full post justthenews.com Trump border enforcement cuts fiscal, criminal costs of illegal migration that amnesty would restore The nation has recently seen measurable fiscal and public-safety dividends already accruing from sustained zero-release months and large-scale removals, set against socialist polices projected to cost billions to trillions. In addition, more than 157,000 migrant children previously unaccounted fo... Donald J. Trump @realDonaldTrump · October 20, 2026, 8:51 AM Original Post ↻ Image Previously posted October 17, 2026 Donald J. Trump @realDonaldTrump · October 20, 2026, 1:06 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 20, 2026, 1:00 AM Original Post Here are pictures of Trash Island for the Judge to study. This is just a small area, and better than some! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · October 20, 2026, 1:00 AM Original Post RT: https://truthsocial.com/users/realDonaldTrump/statuses/117471466710724607 Donald J. Trump @realDonaldTrump · October 20, 2026, 1:05 AM Original Post Collapsing Sea Wall — Very dangerous to one's health! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 20, 2026, 1:05 AM Original Post Donald J. Trump @realDonaldTrump · October 20, 2026, 1:05 AM Original Post Donald J. Trump @realDonaldTrump · October 20, 2026, 1:00 AM Original Post Here are pictures of Trash Island for the Judge to study. This is just a small area, and better than some! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 20, 2026, 1:00 AM Original Post RT: https://truthsocial.com/users/realDonaldTrump/statuses/117471466710724607 Donald J. Trump @realDonaldTrump · October 20, 2026, 1:00 AM Original Post RT: https://truthsocial.com/users/realDonaldTrump/statuses/117471466710724607 Read full post Donald J. Trump @realDonaldTrump · October 20, 2026, 12:58 AM Original Post RT: https://truthsocial.com/users/realDonaldTrump/statuses/117471464480692811 Read full post Donald J. Trump @realDonaldTrump · October 20, 2026, 12:58 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-20T17:44:34.862040+00:00",
+      "event_id": "03586a72bb29619faec6a879",
+      "action_reaction": {
+        "event_id": "03586a72bb29619faec6a879",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
       }
     }
   },
