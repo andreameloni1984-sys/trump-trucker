@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-19T23:35:05.155884+00:00",
+  "updated_at": "2026-10-20T02:03:49.841977+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "437f503bd1e5ecb1ac36dcb2",
-    "TRUTH_ARCHIVE": "e946d39c3fc7786271256499",
+    "TRUTH_ARCHIVE": "14f2d5bfa2c23d997f7b6688",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1709,6 +1709,28 @@
           "OIL": "DOWN"
         },
         "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "14f2d5bfa2c23d997f7b6688": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 19, 2026, 9:26 PM Original Post We must defeat Crazy Cindy Holscher, and elect Ty Masterson to be the next Governor of Kansas. Cindy Holscher is the Most Radical Candidate ever to run for Kansas Governor. Even Laura Kelly said Holscher is too extreme. Cindy Holscher supported RAISING your Property Taxes, and stripping Parents of their Parental Rights. She voted for Men in Women’s Sports, and Men in Girls’ Locker Rooms. She said that Jesus was gay and transgender, and that her role model, as Governor, would be Gavin Newscum, which means Homelessness, Corruption, High Crime, and High Costs. GET OUT AND VOTE FOR TY MASTERSON! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:21 PM Original Post Roger Marshall is all that stands between the people of Kansas and Communists controlling the United States Senate. Unlike Adam Hamilton, he is endorsed by the N.R.A. and the Kansas Farm Bureau. He will vote for Low Taxes, Less Regulations, a thriving Kansas Oil and Gas Industry, and NO Illegal Immigration! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:19 PM Original Post On Election Night, Kansas is going to prove that America does not belong to those who HATE IT, America belongs to those who LOVE IT! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:19 PM Original Post We achieved more in two years than any other presidency in the History of our Country, but now, the Radical Left Dumocrats want to burn it all down. Every single Dumocrat in Congress voted AGAINST our Record Tax Cuts, AGAINST No Tax on Tips, AGAINST No Tax on Overtime, and AGAINST No Tax on Social Security for our Great Seniors. They voted against VOTER I.D., against Proof of Citizenship, AGAINST securing the Border. They voted IN FAVOR of the Worst Inflation and Highest Energy Costs in American History, IN FAVOR of the Transgender mutilization of your Children, and IN FAVOR of Men in Women’s Sports! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:18 PM Original Post We abolished all discriminatory “Diversity, Equity, and Inclusion” policies throughout the Federal Government. We got Critical Race Theory and Transgender insanity out of our Schools, and we made ENGLISH the Official Language of the United States! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:18 PM Original Post Just today, I signed a Historic Executive Order on Women’s Health, supported by our incredible First Lady. With Melania’s leadership, we are creating a new Women’s Health Division at our National Institutes of Health, to promote new Research, Technology, and Treatments, and ensure American Women have access to the Best Healthcare anywhere in the World! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:18 PM Original Post Under my Most Favored Nation Agreements on Drug Prices, we went from paying the HIGHEST Drug Prices anywhere in the World, to paying the LOWEST Drug Prices, with Price Differences of 300, 400, 500, 600, or even 700%! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:17 PM Original Post Two weeks ago, I signed an Executive Order waiving the Off-Road requirement for Red-Dye Diesel, allowing Farmers, Truckers, and anyone else to fill up with Diesel totally TAX FREE. Here in Kansas, your Dumocrat Governor, Laura Kelly, is REFUSING to give you this much-needed relief. If you want low-cost Diesel Fuel, you must VOTE FOR TY MASTERSON FOR GOVERNOR! Tonight, I am also pleased to announce that the Department of Agriculture will be launching a new “Harvest Fuel Relief Program,” providing our Farmers with 8 BILLION DOLLARS in support to offset Diesel costs during this Harvest Season, and Roger Marshall is the Leader who fought for this to happen. When Republicans win, we will pass even more funding for our Great Farmers, and Fuel prices will come tumbling down as soon as the Iran War is over, which will happen very quickly! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:17 PM Original Post To protect Family Farms, we ended the unfair Estate Tax, or Death Tax. My Administration also announced the Highest Biofuel Production Targets in History, which will create 4 Billion Dollars in new Farm Income and demand for Kansas Farmers. I also gave Kansas a waiver to sell E-15 All-Year-Round and, with Roger Marshall in the Senate, we will make Year-Round E-15 PERMANENT! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 19, 2026, 9:17 PM Original Post Thanks to a Repu",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-20T02:03:49.528348+00:00",
+      "event_id": "14f2d5bfa2c23d997f7b6688",
+      "action_reaction": {
+        "event_id": "14f2d5bfa2c23d997f7b6688",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
       }
     }
   },
