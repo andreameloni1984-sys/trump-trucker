@@ -80,15 +80,18 @@ def aggressive_message(state: dict[str, Any]) -> str:
                     f"TP1 {trade['tp1']} | TP2 {trade['tp2']} | R/R 1:2"
                 )
                 lines.append(f"  ATR: {trade['atr']} | Quotazione: {trade['quote_time']}")
+                lines.append("  🧮 Gestione: SL = 1,5 × ATR; TP1 = 1R; TP2 = 2R. Dopo TP1, valutare SL a pareggio; dopo TP2, chiusura/gestione residua.")
                 lines.append(f"  Nota: {trade['reason']}")
             else:
-                lines.append(f"  🟡 SL/TP non calcolabili: {trade['reason']}")
+                lines.append(f"  🟡 SL/TP numerici in attesa: {trade['reason']}")
+                lines.append("  🧮 Regola prevista: SL = 1,5 × ATR; TP1 = 1R; TP2 = 2R. I prezzi saranno mostrati solo con quotazione broker fresca + ATR validi; nessun livello inventato.")
     else:
         lines.append("Nessun testo salvato soddisfa le regole esplicite dei catalizzatori.")
 
     lines.extend([
         "",
         "⚠️ AGGRESSIVO = ricerca più ampia e anticipata, NON leva più alta né ordini automatici.",
+        "Piano rischio: SL = 1,5 × ATR; TP1 = 1R; TP2 = 2R. Dopo TP1 valutare stop a pareggio; dopo TP2 chiudere o gestire il residuo.",
         "Prima di un CFD servono quotazione aggiornata, direzione confermata, Entry, SL, TP e size calcolata sul rischio.",
         "Un segnale politico senza conferma del prezzo resta PREPARARE/WATCH, non TRADE.",
     ])
