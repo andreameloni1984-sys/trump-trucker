@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-20T23:38:31.577453+00:00",
+  "updated_at": "2026-10-21T02:02:45.191089+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6bb2eb1bd6e29eeef593dd5a",
-    "TRUTH_ARCHIVE": "e243437d742840627355ae7b",
+    "TRUTH_ARCHIVE": "c61b437a601b5b75556b7fa6",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -1910,6 +1910,25 @@
       "action_reaction": {
         "event_id": "e243437d742840627355ae7b",
         "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c61b437a601b5b75556b7fa6": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 20, 2026, 9:53 PM Original Post ↻ Previously posted September 26, 2026 Donald J. Trump @realDonaldTrump · October 20, 2026, 9:46 PM Original Post ↻ Previously posted September 26, 2026 Donald J. Trump @realDonaldTrump · October 20, 2026, 9:46 PM Original Post ↻ Previously posted September 26, 2026 Donald J. Trump @realDonaldTrump · October 20, 2026, 9:45 PM Original Post Donald J. Trump @realDonaldTrump · October 20, 2026, 9:45 PM Original Post Donald J. Trump @realDonaldTrump · October 20, 2026, 9:44 PM Original Post Cook Political Report shifts Minnesota Senate race toward GOP: https:// justthenews.com/politics-polic y/cook-political-report-shifts-minnesota-senate-race-toward-gop Read full post justthenews.com Cook Political Report shifts Minnesota Senate race toward GOP Polling shows a close race, with Flanagan posting a 3.2% average lead, according to RealClearPolitics. Donald J. Trump @realDonaldTrump · October 20, 2026, 6:03 PM Original Post ↻ Previously posted October 20, 2026 Donald J. Trump @realDonaldTrump · October 20, 2026, 5:12 PM Original Post Overflow crowds greet President Trump as he urges Kansans to reelect Sen. Marshall: https:// kansas.com/news/politics-gover nment/election/article317692502.html Read full post Donald J. Trump @realDonaldTrump · October 20, 2026, 5:08 PM Original Post Melania Trump Announces White House Women’s Health Initiative: https://www. nytimes.com/2026/10/19/us/poli tics/melania-trump-women-health.html Read full post www.nytimes.com Melania Trump Announces White House Women’s Health Initiative The effort comes as Republicans are struggling to win over female voters two weeks before the midterm elections. Donald J. Trump @realDonaldTrump · October 20, 2026, 5:07 PM Original Post Trump and Republicans show a more female-friendly side of the story with new E.O. on women's health: https:// justthenews.com/government/whi te-house/trump-womens-health Read full post justthenews.com Trump and Republicans show a more female-friendly side of the story with new E.O. on women's health The order, led by First Lady Melania Trump and signed in the Rose Garden, creates a new Women’s Health Division at the NIH and a White House Women’s Health Task Force to confront what they say is a protracted shortfall in research and treatment for conditions that disproportionately affect women. Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-21T02:02:44.856118+00:00",
+      "event_id": "c61b437a601b5b75556b7fa6",
+      "action_reaction": {
+        "event_id": "c61b437a601b5b75556b7fa6",
+        "event_type": "GEOPOLITICAL_ESCALATION",
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
