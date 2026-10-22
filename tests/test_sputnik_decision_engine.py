@@ -43,6 +43,19 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("NASDAQ-100", message)
         self.assertIn("non comprare", message.lower())
 
+    def test_aggressive_tariff_screen_shows_multiple_directional_candidates(self):
+        message = decision_message("Markets discuss tariffs and trade tensions.")
+        self.assertIn("EARLY OPPORTUNITIES", message)
+        self.assertIn("ORO (XAU/USD)", message)
+        self.assertIn("LONG preliminare", message)
+        self.assertIn("NASDAQ-100", message)
+        self.assertIn("SHORT preliminare", message)
+
+    def test_aggressive_energy_screen_surfaces_brent_early(self):
+        message = decision_message("Reports discuss possible disruption to oil shipping near Hormuz.")
+        self.assertIn("BRENT (petrolio)", message)
+        self.assertIn("LONG preliminare", message)
+
     def test_unrelated_text_still_returns_operational_monitoring_result(self):
         message = decision_message("Hello world, nothing market-related here.")
         self.assertIn("MONITORAGGIO OPERATIVO", message)
