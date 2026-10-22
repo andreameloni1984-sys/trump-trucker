@@ -39,3 +39,10 @@ Purpose: preserve useful findings and turn them into tested changes instead of a
 **Limitations:** this is a conservative keyword guard, not full natural-language understanding; wording outside the marker list can still cause false positives. Review CI on the latest branch before merging.
 
 **Current verification:** PR #10 remains open. The previously observed item-intelligence workflow passed on an earlier commit; it does not verify these latest changes. Production deployment/Telegram behavior remains unconfirmed.
+
+## 2026-10-22 — CI regression follow-up
+**Finding:** the first false-positive guard exposed two regression cases in the broad ranking suite: a denied lawsuit still produced a negative candidate, and the merger wording test did not produce the expected ambiguous M&A candidate. CI also revealed that the guard's regular-expression escaping needed correction.
+
+**Implemented:** replaced substring-only uncertainty checks with clause-level regular-expression checks; clauses split at punctuation and semicolons; uncertainty patterns now use actual word boundaries. Added a regression case ensuring a confirmed acquisition clause can still be surfaced alongside a separate denial clause.
+
+**Verification:** new CI runs must pass on the latest branch head before considering the change verified. Earlier workflow failures are documented rather than hidden. Production deployment remains unconfirmed.
