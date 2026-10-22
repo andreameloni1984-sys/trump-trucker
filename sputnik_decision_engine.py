@@ -173,6 +173,7 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
         lines.extend([
             "⚡ RISULTATO: EARLY OPPORTUNITIES — SCREENING AGGRESSIVO",
             "Le direzioni sotto sono ipotesi iniziali: più opportunità, meno filtro, nessuna certezza.",
+            "🟡 Stato: MONITORARE — non comprare automaticamente; attendere conferma da prezzo e volume.",
             "",
         ])
         for index, row in enumerate(aggressive, 1):
