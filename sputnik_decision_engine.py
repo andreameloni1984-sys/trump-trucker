@@ -185,7 +185,7 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
                 "",
             ])
         lines.append("Entry, stop e target richiedono quotazioni aggiornate: non vengono inventati.")
-        return "\\n".join(lines)
+        return "\n".join(lines)
 
     fallback = _fallback_watch(text)
     if fallback:
