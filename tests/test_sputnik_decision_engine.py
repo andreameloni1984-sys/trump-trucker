@@ -70,6 +70,14 @@ class StrictDecisionTests(unittest.TestCase):
         message = decision_message("Company announces acquisition of a competitor.")
         self.assertIn("DIREZIONE DA DETERMINARE", message)
 
+    def test_denied_lawsuit_does_not_create_short_candidate(self):
+        message = decision_message("Company denies the lawsuit report; no evidence of an investigation.")
+        self.assertNotIn("SHORT preliminare", message)
+
+    def test_unconfirmed_acquisition_rumor_does_not_create_merger_candidate(self):
+        message = decision_message("Unconfirmed rumor says Company may acquire a competitor.")
+        self.assertNotIn("DIREZIONE DA DETERMINARE", message)
+
     def test_unrelated_text_still_returns_operational_monitoring_result(self):
         message = decision_message("Hello world, nothing market-related here.")
         self.assertIn("MONITORAGGIO OPERATIVO", message)
