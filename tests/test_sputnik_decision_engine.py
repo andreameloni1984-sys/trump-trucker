@@ -78,6 +78,10 @@ class StrictDecisionTests(unittest.TestCase):
         message = decision_message("Unconfirmed rumor says Company may acquire a competitor.")
         self.assertNotIn("DIREZIONE DA DETERMINARE", message)
 
+    def test_confirmed_acquisition_clause_survives_separate_denial_clause(self):
+        message = decision_message("Company denies the lawsuit; separately, another company announces acquisition of a competitor.")
+        self.assertIn("DIREZIONE DA DETERMINARE", message)
+
     def test_unrelated_text_still_returns_operational_monitoring_result(self):
         message = decision_message("Hello world, nothing market-related here.")
         self.assertIn("MONITORAGGIO OPERATIVO", message)
