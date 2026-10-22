@@ -30,3 +30,12 @@ Purpose: preserve useful findings and turn them into tested changes instead of a
 3. Add tests for negation, rumor vs official disclosure, post-earnings price reaction, duplicate stories, and conflicting catalysts.
 4. Record each signal and subsequent price outcome in a durable paper-trading journal; evaluate hit rate and expectancy only after a sufficient, timestamped sample.
 5. Add price/volume confirmation only through a verified, timestamped market-data source. Never fabricate quotes or technical levels.
+
+## 2026-10-22 — False-positive guard for denied/unconfirmed headlines
+**Finding:** broad keyword screening can misclassify a denial, rumor, or explicitly unconfirmed report as a directional catalyst.
+
+**Implemented:** the aggressive candidate screen now filters sentence-level denial/uncertainty markers before matching catalysts, so one denied sentence does not suppress a separate sentence that contains a positive event. Added regression tests for a denied lawsuit and an unconfirmed acquisition rumor.
+
+**Limitations:** this is a conservative keyword guard, not full natural-language understanding; wording outside the marker list can still cause false positives. Review CI on the latest branch before merging.
+
+**Current verification:** PR #10 remains open. The previously observed item-intelligence workflow passed on an earlier commit; it does not verify these latest changes. Production deployment/Telegram behavior remains unconfirmed.
