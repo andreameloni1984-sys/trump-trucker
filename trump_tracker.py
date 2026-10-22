@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
+from sputnik_public_sources import parse_public_feed
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -314,6 +315,10 @@ ASSET_KEYWORDS = {
     "CRYPTO": ["bitcoin", "ethereum", "crypto", "digital asset", "stablecoin"],
     "MEDIA": ["truth social", "truth", "media", "streaming"],
     "REAL_ESTATE": ["real estate", "property", "hotel", "resort"],
+    # Political and macro catalysts need their own labels; otherwise a tariff
+    # headline with no commodity keyword is silently discarded.
+    "TRADE_POLICY": ["tariff", "tariffs", "trade deal", "trade agreement", "export control", "import duty", "sanction", "sanctions", "dazi", "accordo commerciale"],
+    "RATES_MACRO": ["federal reserve", "interest rate", "interest rates", "treasury yield", "inflation", "policy rate", "dollar", "dollaro"],
 }
 
 def fetch_public_text(url: str) -> str:
@@ -330,13 +335,45 @@ def fetch_public_text(url: str) -> str:
     parser.feed(raw.decode("utf-8", errors="replace"))
     return parser.text()
 
+def _domains_for_public_text(text: str) -> list[str]:
+    normalized = str(text or "").lower()
+    return [
+        domain for domain, keywords in ASSET_KEYWORDS.items()
+        if any(keyword in normalized for keyword in keywords)
+    ]
+
+
+def fetch_public_feed(url: str) -> bytes:
+    """Fetch a public RSS/Atom feed without requiring third-party packages."""
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": os.getenv("SEC_USER_AGENT", "SPUTNIK/4.1 public-feed-monitor"),
+            "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,*/*",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return response.read()
+
+
+def _configured_rss_feeds() -> list[str]:
+    raw = os.getenv("SPUTNIK_RSS_FEEDS", "").strip()
+    if raw:
+        return list(dict.fromkeys(url.strip() for url in raw.split(";") if url.strip()))
+    # Official White House feed: item-level title, date, URL and summary.
+    return ["https://www.whitehouse.gov/feed/"]
+
+
 def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     if os.getenv("SPUTNIK_SOCIAL_ENABLED", "1").strip().lower() not in {"1", "true", "yes"}:
         return []
 
     known = state.setdefault("intelligence", {})
+    known_items = state.setdefault("intelligence_items", {})
     findings: list[dict[str, Any]] = []
 
+    # Keep the legacy homepage scan for broad discovery, but do not treat its
+    # generic page-wide keywords as an individual news event.
     for source, url in INTELLIGENCE_SOURCES.items():
         try:
             body = fetch_public_text(url)
@@ -344,26 +381,62 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             print(f"SPUTNIK: source {source} unavailable: {type(exc).__name__}")
             continue
 
-        normalized = body.lower()
-        domains = []
-        for domain, keywords in ASSET_KEYWORDS.items():
-            if any(keyword in normalized for keyword in keywords):
-                domains.append(domain)
-
         digest = hashlib.sha256((source + "|" + body[:200000]).encode("utf-8")).hexdigest()[:24]
         if known.get(source) == digest:
             continue
         known[source] = digest
+        domains = _domains_for_public_text(body)
+        if not domains:
+            continue
+        finding = {
+            "source": source,
+            "url": url,
+            "title": "",
+            "published": "",
+            "domains": domains,
+            "text": body[:6000],
+            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            "status": "POTENTIAL_CORRELATION",
+            "detected_at": utc_now().isoformat(),
+            "event_id": digest,
+        }
+        finding["action_reaction"] = build_action_reaction_record(finding, body)
+        findings.append(finding)
 
-        if domains:
+    # Item-level feed scan: each article is deduplicated independently, so a
+    # page-level digest cannot hide a new post added to an otherwise unchanged
+    # archive. A feed item is a catalyst candidate, never an automatic trade.
+    for feed_url in _configured_rss_feeds():
+        source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
+        try:
+            rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
+        except Exception as exc:
+            print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
+            continue
+
+        for row in rows:
+            title = str(row.get("title") or "").strip()
+            body = " ".join(part for part in (title, str(row.get("text") or "").strip()) if part)
+            domains = _domains_for_public_text(body)
+            if not domains:
+                continue
+            identity = str(row.get("id") or row.get("url") or (title + "|" + str(row.get("published") or "")))
+            digest = hashlib.sha256(
+                (source + "|" + feed_url + "|" + identity).encode("utf-8")
+            ).hexdigest()[:24]
+            if digest in known_items:
+                continue
+            known_items[digest] = utc_now().isoformat()
             finding = {
                 "source": source,
-                "url": url,
+                "feed_url": feed_url,
+                "url": str(row.get("url") or feed_url),
+                "primary_url": str(row.get("primary_url") or ""),
+                "title": title[:300],
+                "published": str(row.get("published") or "")[:100],
                 "domains": domains,
-                # Retain a bounded text excerpt so the decision engine can evaluate
-                # the actual collected public page content, not just topic labels.
                 "text": body[:6000],
-                "evidence": "PUBLIC_SOURCE_TEXT",
+                "evidence": "PUBLIC_RSS_ITEM",
                 "status": "POTENTIAL_CORRELATION",
                 "detected_at": utc_now().isoformat(),
                 "event_id": digest,
@@ -371,6 +444,11 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
 
+    # Bound per-item deduplication state and history to prevent unbounded growth.
+    if len(known_items) > 2000:
+        state["intelligence_items"] = dict(
+            sorted(known_items.items(), key=lambda item: item[1], reverse=True)[:2000]
+        )
     history = state.setdefault("intelligence_history", {})
     for item in findings:
         history[item["event_id"]] = item
@@ -379,18 +457,107 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         state["intelligence_history"] = dict(keep)
     return findings
 
-def intelligence_message(item: dict[str, Any]) -> str:
-    return (
-        "🛰️ SPUTNIK — INTELLIGENCE\n"
-        "━━━━━━━━━━━━━━━━━━\n"
-        f"📡 Fonte: {item['source']}\n"
-        f"🧩 Aree citate: {', '.join(item['domains'])}\n"
-        f"🔎 Evidenza: {item['evidence']}\n"
-        "⚠️ Stato: CORRELAZIONE DA VERIFICARE\n"
-        f"🔗 {item['url']}\n"
-        "━━━━━━━━━━━━━━━━━━\n"
-        "ℹ️ Una menzione social o una correlazione non prova un investimento."
+
+def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any] | None:
+    """Optionally send item-level public catalysts to GAGARIN for price confirmation."""
+    items = [
+        item for item in findings
+        if item.get("evidence") == "PUBLIC_RSS_ITEM" and item.get("event_id")
+    ]
+    if not items:
+        return None
+    base_url = os.getenv("GAGARIN_CLOUD_API_URL", "").strip().rstrip("/")
+    api_key = os.getenv("GAGARIN_CLOUD_API_KEY", "").strip()
+    if not base_url or not api_key:
+        print("SPUTNIK: GAGARIN handoff disabled; GAGARIN_CLOUD_API_URL/API_KEY not configured.")
+        return None
+
+    payload = {
+        "events": [
+            {
+                "event_id": str(item.get("event_id") or ""),
+                "title": str(item.get("title") or "")[:300],
+                "url": str(item.get("url") or "")[:1000],
+                "published": str(item.get("published") or "")[:100],
+                "domains": list(item.get("domains") or []),
+                "text": str(item.get("text") or "")[:1500],
+            }
+            for item in items[:20]
+        ]
+    }
+    request = urllib.request.Request(
+        base_url + "/api/sputnik/confirm",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "X-API-Key": api_key,
+            "User-Agent": "SPUTNIK/4.1 GAGARIN-catalyst-handoff",
+        },
+        method="POST",
     )
+    try:
+        with urllib.request.urlopen(request, timeout=45) as response:
+            result = json.loads(response.read().decode("utf-8"))
+        print(
+            "SPUTNIK: GAGARIN confirmation received for "
+            f"{len(result.get('events') or [])} catalyst event(s); no order requested."
+        )
+        return result if isinstance(result, dict) else None
+    except Exception as exc:
+        # News collection must continue even if the optional GAGARIN endpoint is down.
+        print(f"SPUTNIK: GAGARIN handoff failed: {type(exc).__name__}")
+        return None
+
+
+def gagarin_confirmation_message(result: dict[str, Any]) -> str:
+    lines = [
+        "🛰️ SPUTNIK → GAGARIN",
+        "━━━━━━━━━━━━━━━━━━",
+        "📊 Controllo prezzo/setup completato; nessun ordine inviato.",
+    ]
+    for event in (result.get("events") or [])[:5]:
+        lines.append("")
+        lines.append(f"📰 {event.get('title') or event.get('event_id') or 'Evento pubblico'}")
+        lines.append(f"🎯 Esito: {event.get('status', 'N/D')}")
+        matched = event.get("matched_instruments") or []
+        if not matched:
+            lines.append("⚪ Nessuno strumento corrispondente nell'universo Gagarin.")
+        for row in matched[:3]:
+            lines.append(
+                f"• {row.get('commodity') or row.get('symbol')}: "
+                f"{row.get('action', 'WAIT')} | prezzo {row.get('price', 'N/D')} | "
+                f"prob. {row.get('probability', 'N/D')}"
+            )
+    lines.append("ℹ️ L'evento è un contesto; Gagarin mantiene il proprio filtro tecnico.")
+    return "\n".join(lines)
+
+
+def intelligence_message(item: dict[str, Any]) -> str:
+    title = str(item.get("title") or "").strip()
+    published = str(item.get("published") or "").strip()
+    excerpt = re.sub(r"\s+", " ", str(item.get("text") or "")).strip()[:420]
+    lines = [
+        "🛰️ SPUTNIK — INTELLIGENCE",
+        "━━━━━━━━━━━━━━━━━━",
+        f"📡 Fonte: {item.get('source', 'N/D')}",
+    ]
+    if title:
+        lines.append(f"📰 Evento: {title}")
+    if published:
+        lines.append(f"🕒 Pubblicazione: {published}")
+    lines.extend([
+        f"🧩 Aree citate: {', '.join(item.get('domains') or [])}",
+        f"🔎 Evidenza: {item.get('evidence', 'N/D')}",
+    ])
+    if excerpt and not title:
+        lines.append(f"📝 Testo: {excerpt}")
+    lines.extend([
+        "⚠️ Stato: CATALIZZATORE DA VERIFICARE",
+        f"🔗 {item.get('url', '')}",
+        "━━━━━━━━━━━━━━━━━━",
+        "ℹ️ Il tema non è un segnale LONG/SHORT. Gagarin deve verificare prezzo, volume e struttura.",
+    ])
+    return "\n".join(lines)
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
@@ -862,6 +1029,8 @@ def telegram_news_message(state: dict[str, Any]) -> str:
     for item in items[:5]:
         lines.append(
             f"📡 {item.get('source', 'N/D')}\n"
+            f"📰 {item.get('title') or 'Pagina generale / titolo non disponibile'}\n"
+            f"🕒 {item.get('published') or item.get('detected_at', 'N/D')}\n"
             f"🧩 {', '.join(item.get('domains', [])) or 'Nessuna area'}\n"
             f"🔎 {item.get('evidence', 'N/D')}\n"
             f"🔗 {item.get('url', '')}"
@@ -916,6 +1085,8 @@ def telegram_trump_order_message(state: dict[str, Any]) -> str:
         "CRYPTO": ("CRYPTO", "bitcoin, ethereum, crypto"),
         "MEDIA": ("MEDIA", "media, social"),
         "REAL_ESTATE": ("REAL ESTATE", "property, real estate, hotel"),
+        "TRADE_POLICY": ("DAZI / POLITICA COMMERCIALE", "tariffs, trade deal, sanctions"),
+        "RATES_MACRO": ("TASSI / DOLLARO", "interest rates, inflation, treasury yields, dollar"),
     }
 
     scores: dict[str, dict[str, Any]] = {}
@@ -1188,6 +1359,12 @@ def main() -> None:
             stored_transactions[key] = asdict(tx)
             new_transactions.append(tx)
     intelligence = intelligence_snapshot(state)
+    gagarin_confirmation = forward_findings_to_gagarin(intelligence)
+    if gagarin_confirmation:
+        state["gagarin_confirmations"] = {
+            str(item.get("event_id") or index): item
+            for index, item in enumerate(gagarin_confirmation.get("events") or [])
+        }
     from zoneinfo import ZoneInfo
     local_now = utc_now().astimezone(ZoneInfo("Europe/Rome"))
     morning_hour = int(os.getenv("SPUTNIK_MORNING_HOUR", "5"))
@@ -1213,6 +1390,11 @@ def main() -> None:
 
     for item in intelligence:
         message = intelligence_message(item)
+        print(message)
+        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+
+    if gagarin_confirmation:
+        message = gagarin_confirmation_message(gagarin_confirmation)
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
