@@ -102,6 +102,39 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
     }
 
 
+def _aggressive_candidates(text: str) -> list[dict[str, str]]:
+    """Broader early-opportunity screen; directions are hypotheses, not confirmed trades."""
+    body = " ".join(str(text or "").lower().split())
+    candidates: list[dict[str, str]] = []
+    rules = [
+        (("tariff", "tariffs", "dazi", "trade war", "import duty", "import duties"),
+         ("ORO (XAU/USD)", "LONG preliminare", "Dazi/tensioni commerciali possono aumentare la domanda difensiva; verificare USD e rendimenti reali."),
+          ("NASDAQ-100", "SHORT preliminare", "L'escalation commerciale può pesare sulle aspettative di crescita e sui titoli growth; verificare futures e ampiezza di mercato.")),
+        (("trade deal", "trade agreement", "tariff pause", "pause tariffs", "accordo commerciale", "dazi sospesi", "negoziati commerciali"),
+         ("NASDAQ-100", "LONG preliminare", "Una distensione commerciale può sostenere gli asset rischiosi; verificare che l'accordo sia concreto e che i futures confermino."),
+          ("ORO (XAU/USD)", "SHORT preliminare", "Una riduzione del rischio può indebolire la domanda difensiva; USD e rendimenti possono però invertire la reazione.")),
+        (("hormuz", "oil supply", "oil exports", "crude", "brent", "wti", "iran", "tanker", "petroleum", "petrolio", "diesel", "shipping", "petroliere"),
+         ("BRENT (petrolio)", "LONG preliminare", "Un rischio concreto ai flussi fisici può sostenere il greggio; distinguere minacce da interruzioni effettive."),
+          ("ORO (XAU/USD)", "LONG preliminare", "Un aumento del rischio geopolitico può sostenere i beni rifugio; verificare USD e rendimenti.")),
+        (("fed", "federal reserve", "interest rate", "rates", "inflation", "inflazione", "tassi", "rendimenti", "treasury"),
+         ("ORO (XAU/USD)", "DIREZIONE DA DETERMINARE", "Tassi e inflazione possono muovere l'oro in direzioni opposte: distinguere sorpresa hawkish/dovish e controllare rendimenti reali."),
+          ("NASDAQ-100", "DIREZIONE DA DETERMINARE", "La sorpresa sui tassi può muovere i titoli growth; valutare il contenuto preciso e la reazione dei Treasury.")),
+        (("missile", "military strike", "defense spending", "defence spending", "military operation", "defense contract", "guerra", "attacco", "sanzioni", "sanctions"),
+         ("SETTORE DIFESA (ETF/azioni liquide)", "LONG preliminare", "Escalation o spesa militare può sostenere il settore, ma la reazione dipende da contratti, aspettative e prezzo già scontato."),
+          ("BRENT (petrolio)", "LONG preliminare", "Rischi geopolitici possono aumentare il premio sul greggio se coinvolgono aree o rotte energetiche.")),
+        (("semiconductor", "semiconductors", "artificial intelligence", " ai ", "chip", "technology stocks", "nasdaq"),
+         ("NASDAQ-100 / SEMICONDUTTORI", "DIREZIONE DA DETERMINARE", "Il tema può creare opportunità nel settore tech; servono nome della società, dettaglio dell'evento e reazione del mercato.")),
+    ]
+    for rule in rules:
+        keywords = rule[0]
+        if any(word in body for word in keywords):
+            for item in rule[1:]:
+                candidate, bias, reason = item
+                if not any(row["candidate"] == candidate for row in candidates):
+                    candidates.append({"candidate": candidate, "bias": bias, "reason": reason})
+    return candidates[:5]
+
+
 def decision_message(text: str, source: str = "Fonte pubblica") -> str:
     plans = conditional_plans(text)
     lines = [
@@ -126,22 +159,38 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
         ])
         return "\n".join(lines)
 
+    aggressive = _aggressive_candidates(text)
+    if aggressive:
+        lines.extend([
+            "⚡ RISULTATO: EARLY OPPORTUNITIES — SCREENING AGGRESSIVO",
+            "Le direzioni sotto sono ipotesi iniziali: più opportunità, meno filtro, nessuna certezza.",
+            "",
+        ])
+        for index, row in enumerate(aggressive, 1):
+            lines.extend([
+                f"{index}. 🎯 Strumento: {row['candidate']}",
+                f"➡️ Direzione preliminare: {row['bias']}",
+                f"🧠 Tesi: {row['reason']}",
+                "✅ Conferma: verificare la notizia originale e la reazione di prezzo/volume.",
+                "🛑 Invalidazione: reazione contraria, notizia smentita o catalizzatore già scontato.",
+                "",
+            ])
+        lines.append("Entry, stop e target richiedono quotazioni aggiornate: non vengono inventati.")
+        return "\\n".join(lines)
+
     fallback = _fallback_watch(text)
     if fallback:
         lines.extend([
-            "🟡 RISULTATO: MONITORARE, NON IGNORARE",
+            "🟡 RISULTATO: WATCHLIST AMPIA",
             f"📌 Tema: {fallback['topic']}",
             f"👀 Strumenti da tenere d'occhio: {fallback['instruments']}",
             f"🧠 Perché: {fallback['explanation']}",
-            "✅ Prossimo passo: controllare la fonte originale e la reazione dei prezzi.",
-            "🛑 Non comprare o vendere soltanto perché il tema è menzionato.",
-            "",
-            "In parole semplici: SPUTNIK ha individuato un tema utile, ma nel testo non c'è ancora una prova abbastanza concreta per indicare una direzione.",
+            "✅ Prossimo passo: verificare fonte originale e prezzi.",
+            "⚠️ Screening aggressivo: tema da approfondire, non ancora una direzione affidabile.",
         ])
     else:
         lines.extend([
-            "🟡 RISULTATO: NESSUN CATALIZZATORE CHIARO",
-            "Il testo non contiene un evento riconoscibile collegato in modo affidabile a un mercato.",
-            "Azione pratica: non forzare un acquisto; attendere una notizia identificabile o dati di mercato pertinenti.",
+            "🟡 RISULTATO: FEED SENZA CATALIZZATORE RICONOSCIBILE",
+            "La notizia non è abbastanza specifica per una tesi direzionale; controllare il feed e recuperare il contenuto dell'evento.",
         ])
     return "\n".join(lines)
