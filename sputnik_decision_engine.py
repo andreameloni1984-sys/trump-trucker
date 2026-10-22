@@ -191,7 +191,7 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
     fallback = _fallback_watch(text)
     if fallback:
         lines.extend([
-            "🟡 RISULTATO: WATCHLIST AMPIA",
+            "🟡 RISULTATO: MONITORARE, NON IGNORARE — WATCHLIST AMPIA",
             f"📌 Tema: {fallback['topic']}",
             f"👀 Strumenti da tenere d'occhio: {fallback['instruments']}",
             f"🧠 Perché: {fallback['explanation']}",
