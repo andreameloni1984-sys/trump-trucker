@@ -1,4 +1,5 @@
 import unittest
+from datetime import datetime, timezone
 
 from sputnik_cfd import build_cfd_cart
 
@@ -20,9 +21,10 @@ class CfdCartTests(unittest.TestCase):
         self.assertIn("quotazione", rows[0]["reason"])
 
     def test_valid_long_calculates_size_and_rr(self):
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart(
             [self.candidate()],
-            {"ACME": {"price": 100, "stop": 95, "target": 110}},
+            {"ACME": {"price": 100, "stop": 95, "target": 110, "timestamp": fresh_timestamp}},
             capital=300,
             risk_pct=1,
         )
@@ -33,19 +35,22 @@ class CfdCartTests(unittest.TestCase):
         self.assertEqual(rows[0]["rr"], 2.0)
 
     def test_invalid_levels_are_wait(self):
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart(
             [self.candidate()],
-            {"ACME": {"price": 100, "stop": 105, "target": 110}},
+            {"ACME": {"price": 100, "stop": 105, "target": 110, "timestamp": fresh_timestamp}},
         )
         self.assertEqual(rows[0]["status"], "WAIT")
 
     def test_watch_candidate_never_becomes_cfd(self):
-        rows = build_cfd_cart([self.candidate("OSSERVA")], {"ACME": {"price": 100, "stop": 95, "target": 110}})
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
+        rows = build_cfd_cart([self.candidate("OSSERVA")], {"ACME": {"price": 100, "stop": 95, "target": 110, "timestamp": fresh_timestamp}})
         self.assertEqual(rows[0]["status"], "WAIT")
         self.assertEqual(rows[0]["direction"], "WAIT")
 
     def test_short_is_not_inferred_from_purchase_evidence(self):
-        rows = build_cfd_cart([self.candidate("COMPRA")], {"ACME": {"price": 100, "stop": 105, "target": 90}})
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
+        rows = build_cfd_cart([self.candidate("COMPRA")], {"ACME": {"price": 100, "stop": 105, "target": 90, "timestamp": fresh_timestamp}})
         self.assertEqual(rows[0]["status"], "WAIT")
 
 
