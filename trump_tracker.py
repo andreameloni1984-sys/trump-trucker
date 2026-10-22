@@ -1,6 +1,6 @@
 """SPUTNIK v4 — public filing intelligence engine.
 
-SPUTNIK is deliberately separate from GAGARIN.
+SPUTNIK operates as an independent public-news intelligence service.
 It monitors only publicly documented SEC filings configured through CIKs,
 normalizes and deduplicates events, tracks filing timing, and sends
 informational Telegram alerts. It does not place trades or infer private activity.
@@ -476,9 +476,9 @@ def intelligence_message(item: dict[str, Any]) -> str:
         "",
         analysis,
         "",
-        "ℹ️ Analisi autonoma di SPUTNIK. Nessun collegamento a Gagarin e nessun ordine inviato.",
+        "ℹ️ Analisi autonoma di SPUTNIK. Nessun ordine inviato.",
     ])
-    return "\\n".join(lines)
+    return "\n".join(lines)
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
@@ -1229,7 +1229,7 @@ def telegram_test_message() -> str:
         "━━━━━━━━━━━━━━━━━━\n"
         "✅ Connessione Telegram verificata.\n"
         "🔐 Token e Chat ID ricevuti da GitHub Secrets.\n"
-        "📡 SPUTNIK resta separato da GAGARIN.\n"
+        "📡 SPUTNIK analizza le fonti pubbliche in autonomia.\n"
         "ℹ️ Messaggio di test: nessuna operazione di mercato."
     )
 
