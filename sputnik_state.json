@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-22T13:21:47.063928+00:00",
+  "updated_at": "2026-10-22T14:43:01.567279+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "28bcfe0e51bc6291fa475bb7",
-    "TRUTH_ARCHIVE": "800faba1ed294f1420c6f3f0",
+    "TRUTH_ARCHIVE": "08fa099de76d4bdb292149b0",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -2195,6 +2195,28 @@
       "event_id": "800faba1ed294f1420c6f3f0",
       "action_reaction": {
         "event_id": "800faba1ed294f1420c6f3f0",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "08fa099de76d4bdb292149b0": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 22, 2026, 10:11 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 22, 2026, 10:11 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 10:11 AM Original Post Donald J. Trump ReTruthed Roger Stone @RealRogerStone · October 22, 2026, 9:32 AM Original Post Donald Trump is a force of nature. He loves campaigning and gets strength from the American people. He is the GREATEST campaigner in our party since Theodore Roosevelt. He’s particularly adept at turning out marginal, lower-propensity voters. Read full post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:26 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:26 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:26 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:19 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:19 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:19 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:19 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:19 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:17 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:17 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 9:17 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-22T14:43:00.985788+00:00",
+      "event_id": "08fa099de76d4bdb292149b0",
+      "action_reaction": {
+        "event_id": "08fa099de76d4bdb292149b0",
         "event_type": "OTHER",
         "historical_matches": [],
         "historical_directions": {},
