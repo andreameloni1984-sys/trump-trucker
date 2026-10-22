@@ -104,7 +104,13 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
 
 def _aggressive_candidates(text: str) -> list[dict[str, str]]:
     """Broader early-opportunity screen; directions are hypotheses, not confirmed trades."""
-    body = " ".join(str(text or "").lower().split())
+    raw = str(text or "").lower()
+    # Avoid turning denied, unconfirmed, or explicitly negated reports into directional candidates.
+    # Evaluate sentence by sentence so a denial does not suppress a separate confirmed event.
+    sentences = re.split(r"(?<=[.!?])\\s+|[\\n]+", raw)
+    denial_markers = ("no evidence", "not confirmed", "unconfirmed", "rumou?r", "alleged", "denies", "denied", "rejects", "rejected", "false report", "did not", "does not", "do not", "will not", "was not", "were not", "is not", "are not", "has not", "have not", "not disrupted", "not imposed", "not approved", "not acquired", "nessun", "smentisce", "nega", "non conferm")
+    usable = [sentence for sentence in sentences if sentence.strip() and not any(marker in sentence for marker in denial_markers)]
+    body = " ".join(" ".join(sentence.split()) for sentence in usable)
     candidates: list[dict[str, str]] = []
     rules = [
         (("tariff", "tariffs", "dazi", "trade war", "import duty", "import duties"),
