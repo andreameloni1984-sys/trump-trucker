@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-22T09:42:56.193581+00:00",
+  "updated_at": "2026-10-22T13:21:47.063928+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "28bcfe0e51bc6291fa475bb7",
-    "TRUTH_ARCHIVE": "15dd5a74d5f5a3d11d52753c",
+    "TRUTH_ARCHIVE": "800faba1ed294f1420c6f3f0",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -2177,8 +2177,32 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "800faba1ed294f1420c6f3f0": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA",
+        "RATES_MACRO"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 22, 2026, 8:44 AM Original Post 🚨 SOUTH CAROLINA! Early Voting, in-person, is UNDERWAY NOW in the Great State of South Carolina. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In South Carolina, you can cast your early Vote, in-person, all the way through October 31st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP https:// swampthevoteusa.com/south-caro lina/ Read full post swampthevoteusa.com SOUTH CAROLINA: MAKE A PLAN TO VOTE! The Senate runoff in South Carolina is quickly approaching, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 22, 2026, 8:43 AM Original Post 🚨 GEORGIA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Georgia. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Georgia, you can cast your early Vote, in-person, all the way through October 30th. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP https:// swampthevoteusa.com/georgia/ Read full post swampthevoteusa.com GEORGIA: READY TO VOTE REPUBLICAN? Election Day in Georgia is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 22, 2026, 6:18 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 22, 2026, 6:18 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 6:18 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 6:17 AM Original Post Donald J. Trump @realDonaldTrump · October 22, 2026, 1:00 AM Original Post New York Times Bestselling Author, Andrew Klavan, has just written a great new book, “Find Me Nowhere.” It’s fantastic. Get it now! President DJT Read full post Donald J. Trump @realDonaldTrump · October 21, 2026, 11:47 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 21, 2026, 11:46 PM Original Post Donald J. Trump @realDonaldTrump · October 21, 2026, 11:46 PM Original Post Donald J. Trump @realDonaldTrump · October 21, 2026, 10:29 PM Original Post American Manufacturing is BOOMING. Jobs are coming HOME. We're breaking ALL Economic Estimates. Now Apple is committing to purchasing 100 MILLION DOLLARS of PENNSYLVANIA Titanium for its NEW iPhone. The Radical Left said it couldn't be done. We proved them wrong, AGAIN! I WILL ALWAYS FIGHT FOR THE WONDERFUL PEOPLE OF PENNSYLVANIA. This Investment will be incredible for the people of the 14th Congressional District (Guy Reschenthaler is doing an amazing job!), and the entire Commonwealth. Remember this Investment on Election Day! President DONALD J. TRUMP Apple commits up to $100 million for US titanium in domestic manufacturing push: https://www. reuters.com/business/retail-co nsumer/apple-commits-up-100-million-us-titanium-domestic-manufacturing-push-2026-10-20/ Read full post Donald J. Trump @realDonaldTrump · October 21, 2026, 10:28 PM Original Post I am very concerned about the Dan S. Sullivan Race for the U.S. Senate in Alaska in that it is totally confusing, with the Dumocrats putting up another man, totally unrelated to Politics, named Daniel J. Sullivan, Jr. It’s ridiculous that the Court didn’t stop this SCAM. Even 1, 2, or 3% could make the difference. Dan S. Sullivan is leading by a lot, but this is CHEATING in an Election, and the Judge that allowed this to happen should be ashamed of himself. We are looking at powerful legal options to remove the fraudulent Daniel J. Sullivan Jr. from the Ballot, and holding the Democrats accountable for their Election Interference, in the pursuit of Justice and Fairness. President DONALD J. TRUMP Read full post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-22T13:21:46.931736+00:00",
+      "event_id": "800faba1ed294f1420c6f3f0",
+      "action_reaction": {
+        "event_id": "800faba1ed294f1420c6f3f0",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
-  "morning_brief_date": "2026-10-14"
+  "morning_brief_date": "2026-10-14",
+  "intelligence_items": {}
 }
