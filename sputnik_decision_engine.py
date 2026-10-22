@@ -105,12 +105,21 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
 def _aggressive_candidates(text: str) -> list[dict[str, str]]:
     """Broader early-opportunity screen; directions are hypotheses, not confirmed trades."""
     raw = str(text or "").lower()
-    # Avoid turning denied, unconfirmed, or explicitly negated reports into directional candidates.
-    # Evaluate sentence by sentence so a denial does not suppress a separate confirmed event.
-    sentences = re.split(r"(?<=[.!?])\s+|[\n]+", raw)
-    denial_markers = ("no evidence", "not confirmed", "unconfirmed", "rumou?r", "alleged", "denies", "denied", "rejects", "rejected", "false report", "did not", "does not", "do not", "will not", "was not", "were not", "is not", "are not", "has not", "have not", "not disrupted", "not imposed", "not approved", "not acquired", "nessun", "smentisce", "nega", "non conferm")
-    usable = [sentence for sentence in sentences if sentence.strip() and not any(marker in sentence for marker in denial_markers)]
-    body = " ".join(" ".join(sentence.split()) for sentence in usable)
+    # Split clauses as well as sentences; a denial/rumor must not create a catalyst.
+    clauses = re.split(r"(?<=[.!?;])\\s+|[\\n]+", raw)
+    uncertainty_patterns = (
+        r"\\bno evidence\\b", r"\\bnot confirmed\\b", r"\\bunconfirmed\\b",
+        r"\\brumou?r\\b", r"\\balleged(?:ly)?\\b", r"\\bden(?:y|ies|ied|ial)\\b",
+        r"\\breject(?:s|ed|ion)?\\b", r"\\bfalse report\\b",
+        r"\\b(?:did|does|do|will|would|was|were|is|are|has|have|had) not\\b",
+        r"\\bnot (?:disrupted|imposed|approved|acquired|filed|launched)\\b",
+        r"\\bnessun\\b", r"\\bsmentisce\\b", r"\\bnega\\b", r"\\bnon confermat[oaie]\\b",
+    )
+    usable = [
+        clause for clause in clauses
+        if clause.strip() and not any(re.search(pattern, clause) for pattern in uncertainty_patterns)
+    ]
+    body = " ".join(" ".join(clause.split()) for clause in usable)
     candidates: list[dict[str, str]] = []
     rules = [
         (("tariff", "tariffs", "dazi", "trade war", "import duty", "import duties"),
