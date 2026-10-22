@@ -46,3 +46,7 @@ Purpose: preserve useful findings and turn them into tested changes instead of a
 **Implemented:** replaced substring-only uncertainty checks with clause-level regular-expression checks; clauses split at punctuation and semicolons; uncertainty patterns now use actual word boundaries. Added a regression case ensuring a confirmed acquisition clause can still be surfaced alongside a separate denial clause.
 
 **Verification:** new CI runs must pass on the latest branch head before considering the change verified. Earlier workflow failures are documented rather than hidden. Production deployment remains unconfirmed.
+
+**Latest CI result (2026-10-22):** both SPUTNIK ranking tests and SPUTNIK item-intelligence tests passed on branch head `0e5b9e8dcbe250b12cb5d85f39dd22daa8d05b0e` (workflow runs 39827131188 and 39827130960).
+
+**Production check:** Render service `sputnik-telegram-listener` is configured to deploy from `main`, not this development branch. Its latest listed deploy failed on commit `50851b0dc76f1b7ed0adaa872c47aa84793687f9`; the last listed live deploy is still commit `9e5204bf7d9074dba27637013b7d98933a91e733` from 2026-10-16. Therefore these branch changes are not confirmed live. Do not trigger a production deploy from the feature branch or claim Telegram has the changes until PR merge/deployment is deliberately handled and verified.
