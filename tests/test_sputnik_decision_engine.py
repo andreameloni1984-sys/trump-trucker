@@ -56,6 +56,20 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("BRENT (petrolio)", message)
         self.assertIn("LONG preliminare", message)
 
+    def test_equity_earnings_beat_surfaces_long_candidate(self):
+        message = decision_message("Company beats estimates and raises guidance after record revenue.")
+        self.assertIn("AZIONI DELLA SOCIETÀ CITATA", message)
+        self.assertIn("LONG preliminare", message)
+
+    def test_equity_earnings_miss_surfaces_short_candidate(self):
+        message = decision_message("Company misses estimates and cuts guidance in a profit warning.")
+        self.assertIn("AZIONI DELLA SOCIETÀ CITATA", message)
+        self.assertIn("SHORT preliminare", message)
+
+    def test_merger_news_is_not_forced_into_one_direction(self):
+        message = decision_message("Company announces acquisition of a competitor.")
+        self.assertIn("DIREZIONE DA DETERMINARE", message)
+
     def test_unrelated_text_still_returns_operational_monitoring_result(self):
         message = decision_message("Hello world, nothing market-related here.")
         self.assertIn("MONITORAGGIO OPERATIVO", message)
