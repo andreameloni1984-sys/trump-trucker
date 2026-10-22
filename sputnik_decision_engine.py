@@ -157,6 +157,15 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
             "In parole semplici: prepara lo strumento, ma entra solo se la notizia è confermata e il mercato dà il segnale richiesto.",
             "Prezzi, stop e obiettivi non vengono inventati: servono quotazioni aggiornate.",
         ])
+        aggressive = [row for row in _aggressive_candidates(text) if row["candidate"] != plan["candidate"]]
+        if aggressive:
+            lines.extend(["", "⚡ ALTRI SETUP ANTICIPATI (screening aggressivo)"])
+            for row in aggressive[:3]:
+                lines.extend([
+                    f"• {row['candidate']} — {row['bias']}",
+                    f"  Tesi: {row['reason']}",
+                ])
+            lines.append("Scenari anticipati: possibili falsi positivi; verificare fonte e prezzi.")
         return "\n".join(lines)
 
     aggressive = _aggressive_candidates(text)
