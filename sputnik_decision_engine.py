@@ -106,14 +106,14 @@ def _aggressive_candidates(text: str) -> list[dict[str, str]]:
     """Broader early-opportunity screen; directions are hypotheses, not confirmed trades."""
     raw = str(text or "").lower()
     # Split clauses as well as sentences; a denial/rumor must not create a catalyst.
-    clauses = re.split(r"(?<=[.!?;])\\s+|[\\n]+", raw)
+    clauses = re.split(r"(?<=[.!?;])\s+|[\n]+", raw)
     uncertainty_patterns = (
-        r"\\bno evidence\\b", r"\\bnot confirmed\\b", r"\\bunconfirmed\\b",
-        r"\\brumou?r\\b", r"\\balleged(?:ly)?\\b", r"\\bden(?:y|ies|ied|ial)\\b",
-        r"\\breject(?:s|ed|ion)?\\b", r"\\bfalse report\\b",
-        r"\\b(?:did|does|do|will|would|was|were|is|are|has|have|had) not\\b",
-        r"\\bnot (?:disrupted|imposed|approved|acquired|filed|launched)\\b",
-        r"\\bnessun\\b", r"\\bsmentisce\\b", r"\\bnega\\b", r"\\bnon confermat[oaie]\\b",
+        r"\bno evidence\b", r"\bnot confirmed\b", r"\bunconfirmed\b",
+        r"\brumou?r\b", r"\balleged(?:ly)?\b", r"\bden(?:y|ies|ied|ial)\b",
+        r"\breject(?:s|ed|ion)?\b", r"\bfalse report\b",
+        r"\b(?:did|does|do|will|would|was|were|is|are|has|have|had) not\b",
+        r"\bnot (?:disrupted|imposed|approved|acquired|filed|launched)\b",
+        r"\bnessun\b", r"\bsmentisce\b", r"\bnega\b", r"\bnon confermat[oaie]\b",
     )
     usable = [
         clause for clause in clauses
