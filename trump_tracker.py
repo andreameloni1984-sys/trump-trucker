@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
+from sputnik_decision_engine import decision_message as analyze_news_decision
 from sputnik_public_sources import parse_public_feed
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
@@ -388,20 +389,10 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         domains = _domains_for_public_text(body)
         if not domains:
             continue
-        finding = {
-            "source": source,
-            "url": url,
-            "title": "",
-            "published": "",
-            "domains": domains,
-            "text": body[:6000],
-            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-            "status": "POTENTIAL_CORRELATION",
-            "detected_at": utc_now().isoformat(),
-            "event_id": digest,
-        }
-        finding["action_reaction"] = build_action_reaction_record(finding, body)
-        findings.append(finding)
+        # Homepage-wide text is not a news item. Ignore it to prevent JSON-LD,
+        # navigation and generic archive metadata from becoming Telegram alerts.
+        print(f"SPUTNIK: ignored page-level metadata from {source}; awaiting item-level evidence.")
+        continue
 
     # Item-level feed scan: each article is deduplicated independently, so a
     # page-level digest cannot hide a new post added to an otherwise unchanged
@@ -458,106 +449,36 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     return findings
 
 
-def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any] | None:
-    """Optionally send item-level public catalysts to GAGARIN for price confirmation."""
-    items = [
-        item for item in findings
-        if item.get("evidence") == "PUBLIC_RSS_ITEM" and item.get("event_id")
-    ]
-    if not items:
-        return None
-    base_url = os.getenv("GAGARIN_CLOUD_API_URL", "").strip().rstrip("/")
-    api_key = os.getenv("GAGARIN_CLOUD_API_KEY", "").strip()
-    if not base_url or not api_key:
-        print("SPUTNIK: GAGARIN handoff disabled; GAGARIN_CLOUD_API_URL/API_KEY not configured.")
-        return None
-
-    payload = {
-        "events": [
-            {
-                "event_id": str(item.get("event_id") or ""),
-                "title": str(item.get("title") or "")[:300],
-                "url": str(item.get("url") or "")[:1000],
-                "published": str(item.get("published") or "")[:100],
-                "domains": list(item.get("domains") or []),
-                "text": str(item.get("text") or "")[:1500],
-            }
-            for item in items[:20]
-        ]
-    }
-    request = urllib.request.Request(
-        base_url + "/api/sputnik/confirm",
-        data=json.dumps(payload).encode("utf-8"),
-        headers={
-            "Content-Type": "application/json",
-            "X-API-Key": api_key,
-            "User-Agent": "SPUTNIK/4.1 GAGARIN-catalyst-handoff",
-        },
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(request, timeout=45) as response:
-            result = json.loads(response.read().decode("utf-8"))
-        print(
-            "SPUTNIK: GAGARIN confirmation received for "
-            f"{len(result.get('events') or [])} catalyst event(s); no order requested."
-        )
-        return result if isinstance(result, dict) else None
-    except Exception as exc:
-        # News collection must continue even if the optional GAGARIN endpoint is down.
-        print(f"SPUTNIK: GAGARIN handoff failed: {type(exc).__name__}")
-        return None
-
-
-def gagarin_confirmation_message(result: dict[str, Any]) -> str:
-    lines = [
-        "🛰️ SPUTNIK → GAGARIN",
-        "━━━━━━━━━━━━━━━━━━",
-        "📊 Controllo prezzo/setup completato; nessun ordine inviato.",
-    ]
-    for event in (result.get("events") or [])[:5]:
-        lines.append("")
-        lines.append(f"📰 {event.get('title') or event.get('event_id') or 'Evento pubblico'}")
-        lines.append(f"🎯 Esito: {event.get('status', 'N/D')}")
-        matched = event.get("matched_instruments") or []
-        if not matched:
-            lines.append("⚪ Nessuno strumento corrispondente nell'universo Gagarin.")
-        for row in matched[:3]:
-            lines.append(
-                f"• {row.get('commodity') or row.get('symbol')}: "
-                f"{row.get('action', 'WAIT')} | prezzo {row.get('price', 'N/D')} | "
-                f"prob. {row.get('probability', 'N/D')}"
-            )
-    lines.append("ℹ️ L'evento è un contesto; Gagarin mantiene il proprio filtro tecnico.")
-    return "\n".join(lines)
-
-
 def intelligence_message(item: dict[str, Any]) -> str:
+    """Publish an item-level news analysis produced entirely inside SPUTNIK."""
     title = str(item.get("title") or "").strip()
     published = str(item.get("published") or "").strip()
-    excerpt = re.sub(r"\s+", " ", str(item.get("text") or "")).strip()[:420]
+    source = str(item.get("source") or "Fonte pubblica")
+    body = re.sub(r"\\s+", " ", str(item.get("text") or "")).strip()
+    evidence = str(item.get("evidence") or "")
+
+    # A page snapshot or metadata blob is never promoted to a market catalyst.
+    if evidence != "PUBLIC_RSS_ITEM" or not title or not str(item.get("url") or "").strip():
+        return ""
+
+    analyzed_text = " ".join(part for part in (title, body) if part)
+    analysis = analyze_news_decision(analyzed_text, source=source)
     lines = [
-        "🛰️ SPUTNIK — INTELLIGENCE",
+        "🛰️ SPUTNIK — ANALISI NOTIZIA",
         "━━━━━━━━━━━━━━━━━━",
-        f"📡 Fonte: {item.get('source', 'N/D')}",
+        f"📡 Fonte: {source}",
+        f"📰 Evento: {title}",
     ]
-    if title:
-        lines.append(f"📰 Evento: {title}")
     if published:
         lines.append(f"🕒 Pubblicazione: {published}")
     lines.extend([
-        f"🧩 Aree citate: {', '.join(item.get('domains') or [])}",
-        f"🔎 Evidenza: {item.get('evidence', 'N/D')}",
+        f"🔗 Fonte originale: {item.get('url')}",
+        "",
+        analysis,
+        "",
+        "ℹ️ Analisi autonoma di SPUTNIK. Nessun collegamento a Gagarin e nessun ordine inviato.",
     ])
-    if excerpt and not title:
-        lines.append(f"📝 Testo: {excerpt}")
-    lines.extend([
-        "⚠️ Stato: CATALIZZATORE DA VERIFICARE",
-        f"🔗 {item.get('url', '')}",
-        "━━━━━━━━━━━━━━━━━━",
-        "ℹ️ Il tema non è un segnale LONG/SHORT. Gagarin deve verificare prezzo, volume e struttura.",
-    ])
-    return "\n".join(lines)
+    return "\\n".join(lines)
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
@@ -1359,12 +1280,6 @@ def main() -> None:
             stored_transactions[key] = asdict(tx)
             new_transactions.append(tx)
     intelligence = intelligence_snapshot(state)
-    gagarin_confirmation = forward_findings_to_gagarin(intelligence)
-    if gagarin_confirmation:
-        state["gagarin_confirmations"] = {
-            str(item.get("event_id") or index): item
-            for index, item in enumerate(gagarin_confirmation.get("events") or [])
-        }
     from zoneinfo import ZoneInfo
     local_now = utc_now().astimezone(ZoneInfo("Europe/Rome"))
     morning_hour = int(os.getenv("SPUTNIK_MORNING_HOUR", "5"))
@@ -1390,11 +1305,6 @@ def main() -> None:
 
     for item in intelligence:
         message = intelligence_message(item)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
-
-    if gagarin_confirmation:
-        message = gagarin_confirmation_message(gagarin_confirmation)
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
