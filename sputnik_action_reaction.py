@@ -78,7 +78,11 @@ def match_historical_reactions(text: str, limit: int = 3) -> list[dict[str, Any]
     for pattern in HISTORICAL_PATTERNS:
         keyword_hits = sum(1 for k in pattern["keywords"] if k in body)
         type_match = pattern["event_type"] == event_type
-        if keyword_hits == 0 and not type_match:
+        # A broad event-type match alone is not evidence of a comparable analogue.
+        # Require both the same event class and at least one pattern-specific phrase;
+        # otherwise an unrelated mention (for example, "tariff pause") can inherit
+        # the opposite escalation pattern and its historical market directions.
+        if keyword_hits == 0 or not type_match:
             continue
         matches.append({
             **pattern,
