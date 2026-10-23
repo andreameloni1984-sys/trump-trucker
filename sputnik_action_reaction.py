@@ -14,6 +14,7 @@ HISTORICAL_PATTERNS = [
     {
         "id": "china_tariff_escalation_2025_10",
         "keywords": ("massive increase", "tariff", "tariffs", "china", "xi"),
+        "required_any": ("massive increase", "increase tariffs", "raise tariffs", "tariff hike"),
         "event_type": "TRADE_ESCALATION",
         "date": "2025-10-10",
         "source": "Reuters",
@@ -44,6 +45,7 @@ HISTORICAL_PATTERNS = [
     {
         "id": "tariff_pause_2025_04",
         "keywords": ("pause", "tariff", "tariffs", "90 days"),
+        "required_any": ("pause", "90 days"),
         "event_type": "TRADE_DE_ESCALATION",
         "date": "2025-04-09",
         "source": "Reuters",
@@ -82,17 +84,20 @@ def match_historical_reactions(text: str, limit: int = 3) -> list[dict[str, Any]
     matches: list[dict[str, Any]] = []
     for pattern in HISTORICAL_PATTERNS:
         keyword_hits = sum(1 for k in pattern["keywords"] if k in body)
+        required_any = pattern.get("required_any", ())
+        required_match = not required_any or any(phrase in body for phrase in required_any)
         type_match = pattern["event_type"] == event_type
         # A broad event-type match alone is not evidence of a comparable analogue.
         # Require both the same event class and at least one pattern-specific phrase;
         # otherwise an unrelated mention (for example, "tariff pause") can inherit
         # the opposite escalation pattern and its historical market directions.
-        if keyword_hits == 0 or not type_match:
+        if keyword_hits == 0 or not type_match or not required_match:
             continue
         matches.append({
             **pattern,
             "keyword_hits": keyword_hits,
             "type_match": type_match,
+            "required_match": required_match,
         })
     matches.sort(key=lambda x: (x["type_match"], x["keyword_hits"]), reverse=True)
     return matches[:max(0, limit)]
