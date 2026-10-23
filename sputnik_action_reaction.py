@@ -148,6 +148,14 @@ def action_reaction_message(text: str, title: str = "SPUTNIK — AZIONE → REAZ
     event_type = classify_event(text)
     lines.append(f"🧩 Evento classificato: {event_type}")
     lines.append(f"🧾 Stato della formulazione: {classify_claim_status(text)}")
+    watchlist = select_watchlist(text)
+    if watchlist:
+        lines += ["", "🎯 STRUMENTI DA VALUTARE (selezione notizia)"]
+        for item in watchlist:
+            lines.append("• " + item["symbol"] + ": " + item["reason"])
+        lines.append("ℹ️ Watchlist preliminare: non equivale a un segnale LONG/SHORT.")
+    else:
+        lines += ["", "⚪ Nessuno strumento prioritario identificato dalle parole chiave."]
     if not matches:
         lines += ["", "⚪ Nessun analogo storico sufficientemente documentato.", "ℹ️ Nessuna direzione viene inventata."]
         return "\n".join(lines)
@@ -176,3 +184,24 @@ def build_action_reaction_record(finding: dict[str, Any], source_text: str = "")
         "historical_directions": infer_direction(matches),
         "evidence": "HISTORICAL_ANALOGUE" if matches else "NO_ANALOGUE",
     }
+
+
+# Narrow, event-driven watchlist; candidates are not trade instructions.
+def select_watchlist(text: str) -> list[dict[str, str]]:
+    body = _normalise(text)
+    candidates: list[dict[str, str]] = []
+    def add(symbol: str, reason: str, rank: int) -> None:
+        if not any(item['symbol'] == symbol for item in candidates):
+            candidates.append({'symbol': symbol, 'reason': reason, '_rank': str(rank)})
+    tech_trade = any(term in body for term in ('semiconductor', 'semiconductors', 'chip export', 'ai chip', 'artificial intelligence', 'technology stocks', 'nasdaq', 'china tariffs', 'tariffs on china', 'export controls'))
+    broad_macro = any(term in body for term in ('federal reserve', 'interest rate', 'inflation', 'jobs report', 'unemployment', 'recession', 'gdp', 'payrolls', 'treasury yield'))
+    energy_supply = any(term in body for term in ('oil supply', 'crude supply', 'opec', 'strait of hormuz', 'oil production', 'production cut', 'oil sanctions', 'brent', 'wti', 'pipeline attack', 'tanker attack'))
+    geopolitical = any(term in body for term in ('military strike', 'invasion', 'war', 'missile attack', 'geopolitical escalation', 'gold'))
+    deescalation = any(term in body for term in ('tariff pause', 'pause tariffs', 'withdraw tariffs', 'deal reached', 'trade deal', 'ceasefire', 'peace agreement'))
+    if tech_trade: add('NASDAQ-100', 'Catalizzatore su tecnologia, semiconduttori o commercio USA-Cina', 1)
+    if broad_macro: add('S&P 500', 'Catalizzatore macroeconomico statunitense ad ampio impatto', 2)
+    if energy_supply: add('WTI', 'Notizia specifica su offerta, produzione o trasporto del petrolio', 1)
+    if geopolitical: add('GOLD', 'Possibile domanda rifugio in presenza di tensione geopolitica', 2)
+    if deescalation and not any(item['symbol'] == 'NASDAQ-100' for item in candidates): add('NASDAQ-100', 'Possibile sollievo azionario dopo una distensione commerciale', 2)
+    candidates.sort(key=lambda item: int(item['_rank']))
+    return [{'symbol': item['symbol'], 'reason': item['reason']} for item in candidates[:2]]
