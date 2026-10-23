@@ -51,56 +51,30 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertTrue(all("LONG" not in row["status"] and "BUY" not in row["status"] for row in rows))
 
 
-    def test_gagarin_handoff_is_disabled_without_credentials(self):
-        with patch.dict(os.environ, {}, clear=True):
-            result = trump_tracker.forward_findings_to_gagarin([{
-                "event_id": "evt-1",
-                "evidence": "PUBLIC_RSS_ITEM",
-                "title": "Tariff headline",
-                "url": "https://example.gov/news/1",
-                "domains": ["TRADE_POLICY"],
-            }])
-        self.assertIsNone(result)
+    def test_item_level_news_message_contains_sputnik_market_analysis(self):
+        message = trump_tracker.intelligence_message({
+            "source": "WHITE_HOUSE_RSS",
+            "title": "President announces new tariffs on imports",
+            "published": "2026-10-22T12:00:00Z",
+            "url": "https://example.gov/news/tariffs",
+            "text": "The administration announces a concrete increase in import tariffs.",
+            "evidence": "PUBLIC_RSS_ITEM",
+        })
+        self.assertIn("SPUTNIK — ANALISI NOTIZIA", message)
+        self.assertIn("ORO (XAU/USD)", message)
+        self.assertIn("LONG condizionale", message)
+        self.assertIn("Conferma richiesta", message)
+        self.assertNotIn("GAGARIN", message.upper())
 
-    @patch("trump_tracker.urllib.request.urlopen")
-    def test_gagarin_handoff_posts_only_item_level_catalysts(self, urlopen):
-        response = MagicMock()
-        response.__enter__.return_value.read.return_value = json.dumps({
-            "events": [{"event_id": "evt-1", "status": "WATCH_ONLY", "trade_placed": False}]
-        }).encode("utf-8")
-        urlopen.return_value = response
-        findings = [
-            {
-                "event_id": "evt-1",
-                "evidence": "PUBLIC_RSS_ITEM",
-                "title": "Tariff headline",
-                "url": "https://example.gov/news/1",
-                "published": "2026-10-19",
-                "domains": ["TRADE_POLICY"],
-                "text": "Tariff headline details",
-            },
-            {
-                "event_id": "page-1",
-                "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-                "title": "",
-                "url": "https://example.gov/",
-                "domains": ["TRADE_POLICY"],
-            },
-        ]
-        with patch.dict(os.environ, {
-            "GAGARIN_CLOUD_API_URL": "https://gagarin.example",
-            "GAGARIN_CLOUD_API_KEY": "test-secret",
-        }):
-            result = trump_tracker.forward_findings_to_gagarin(findings)
-
-        self.assertFalse(result["events"][0]["trade_placed"])
-        request = urlopen.call_args.args[0]
-        self.assertEqual(request.full_url, "https://gagarin.example/api/sputnik/confirm")
-        self.assertEqual(request.get_header("X-api-key"), "test-secret")
-        payload = json.loads(request.data.decode("utf-8"))
-        self.assertEqual(len(payload["events"]), 1)
-        self.assertEqual(payload["events"][0]["event_id"], "evt-1")
-        self.assertNotIn("order", payload["events"][0])
+    def test_page_level_metadata_is_never_sent_as_news(self):
+        message = trump_tracker.intelligence_message({
+            "source": "TRUTH_ARCHIVE",
+            "title": "",
+            "url": "https://www.trumpstruth.org/",
+            "text": '{"@context":"https://schema.org","name":"Trump Truth","description":"archive"}',
+            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+        })
+        self.assertEqual(message, "")
 
 
 if __name__ == "__main__":

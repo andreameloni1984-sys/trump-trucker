@@ -43,6 +43,45 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("NASDAQ-100", message)
         self.assertIn("non comprare", message.lower())
 
+    def test_aggressive_tariff_screen_shows_multiple_directional_candidates(self):
+        message = decision_message("Markets discuss tariffs and trade tensions.")
+        self.assertIn("EARLY OPPORTUNITIES", message)
+        self.assertIn("ORO (XAU/USD)", message)
+        self.assertIn("LONG preliminare", message)
+        self.assertIn("NASDAQ-100", message)
+        self.assertIn("SHORT preliminare", message)
+
+    def test_aggressive_energy_screen_surfaces_brent_early(self):
+        message = decision_message("Reports discuss possible disruption to oil shipping near Hormuz.")
+        self.assertIn("BRENT (petrolio)", message)
+        self.assertIn("LONG preliminare", message)
+
+    def test_equity_earnings_beat_surfaces_long_candidate(self):
+        message = decision_message("Company beats estimates and raises guidance after record revenue.")
+        self.assertIn("AZIONI DELLA SOCIETÀ CITATA", message)
+        self.assertIn("LONG preliminare", message)
+
+    def test_equity_earnings_miss_surfaces_short_candidate(self):
+        message = decision_message("Company misses estimates and cuts guidance in a profit warning.")
+        self.assertIn("AZIONI DELLA SOCIETÀ CITATA", message)
+        self.assertIn("SHORT preliminare", message)
+
+    def test_merger_news_is_not_forced_into_one_direction(self):
+        message = decision_message("Company announces acquisition of a competitor.")
+        self.assertIn("DIREZIONE DA DETERMINARE", message)
+
+    def test_denied_lawsuit_does_not_create_short_candidate(self):
+        message = decision_message("Company denies the lawsuit report; no evidence of an investigation.")
+        self.assertNotIn("SHORT preliminare", message)
+
+    def test_unconfirmed_acquisition_rumor_does_not_create_merger_candidate(self):
+        message = decision_message("Unconfirmed rumor says Company may acquire a competitor.")
+        self.assertNotIn("DIREZIONE DA DETERMINARE", message)
+
+    def test_confirmed_acquisition_clause_survives_separate_denial_clause(self):
+        message = decision_message("Company denies the lawsuit; separately, another company announces acquisition of a competitor.")
+        self.assertIn("DIREZIONE DA DETERMINARE", message)
+
     def test_unrelated_text_still_returns_operational_monitoring_result(self):
         message = decision_message("Hello world, nothing market-related here.")
         self.assertIn("MONITORAGGIO OPERATIVO", message)
