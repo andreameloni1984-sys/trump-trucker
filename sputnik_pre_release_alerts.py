@@ -14,6 +14,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from sputnik_release_calendar import prepare_release_watch
+from sputnik_bea_calendar import parse_bea_release_dates
 
 BLS_ICS_URL = "https://www.bls.gov/schedule/news_release/bls.ics"
 STATE_PATH = Path(os.getenv("SPUTNIK_RELEASE_STATE_FILE", "sputnik_release_state.json"))
@@ -149,7 +150,14 @@ def run(now: datetime | None = None) -> int:
     request = urllib.request.Request(BLS_ICS_URL, headers={"User-Agent": "SputnikReleaseWatch/1.0"})
     with urllib.request.urlopen(request, timeout=25) as response:
         calendar_text = response.read().decode("utf-8-sig")
-    candidates = upcoming_classified_events(parse_bls_ics(calendar_text), now=now)
+    events = parse_bls_ics(calendar_text)
+    try:
+        bea_request = urllib.request.Request("https://apps.bea.gov/API/signup/release_dates.json", headers={"User-Agent": "SputnikReleaseWatch/1.0"})
+        with urllib.request.urlopen(bea_request, timeout=25) as response:
+            events.extend(parse_bea_release_dates(response.read().decode("utf-8-sig")))
+    except Exception as exc:
+        print("SPUTNIK: calendario BEA non disponibile (" + type(exc).__name__ + "); continuo con BLS.")
+    candidates = upcoming_classified_events(events, now=now)
     state = _load_state()
     sent = set(str(x) for x in state.get("sent", []))
     new_sent = list(sent)
