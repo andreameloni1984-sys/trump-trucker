@@ -13,7 +13,7 @@ ROME = ZoneInfo("Europe/Rome")
 EASTERN = ZoneInfo("America/New_York")
 
 RELEASE_RULES = (
-    (("consumer price index", "cpi", "producer price index", "ppi", "pce price", "inflation"), "HIGH", ("NASDAQ-100", "S&P 500", "GOLD", "DXY")),
+    (("consumer price index", "cpi", "producer price index", "ppi", "pce price", "personal income and outlays", "inflation"), "HIGH", ("NASDAQ-100", "S&P 500", "GOLD", "DXY")),
     (("employment situation", "nonfarm payroll", "unemployment rate", "employment cost index", "jobless claims"), "HIGH", ("NASDAQ-100", "S&P 500", "DXY", "GOLD")),
     (("fomc", "federal reserve", "interest rate decision", "fed funds rate"), "HIGH", ("NASDAQ-100", "S&P 500", "GOLD", "DXY")),
     (("gross domestic product", "gdp", "retail sales", "ism manufacturing", "ism services"), "MEDIUM", ("NASDAQ-100", "S&P 500", "DXY")),
