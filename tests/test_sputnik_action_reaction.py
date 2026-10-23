@@ -24,6 +24,19 @@ class ActionReactionTests(unittest.TestCase):
         self.assertNotIn("china_tariff_escalation_2025_10", [item["id"] for item in matches])
         self.assertEqual(infer_direction(matches).get("US_EQUITIES"), "UP")
 
+    def test_explicit_non_imposition_does_not_match_escalation(self):
+        text = "The president says the US will not impose new tariffs on China"
+        self.assertEqual(classify_event(text), "TRADE_DE_ESCALATION")
+        self.assertEqual(match_historical_reactions(text), [])
+
+    def test_denial_of_tariff_report_is_ambiguous(self):
+        text = "The administration denies reports of a new tariff hike on China"
+        self.assertEqual(classify_event(text), "TRADE_AMBIGUOUS")
+        self.assertEqual(match_historical_reactions(text), [])
+
+    def test_generic_tariff_mention_is_not_a_specific_historical_match(self):
+        text = "Officials discussed tariffs with China"
+        self.assertEqual(match_historical_reactions(text), [])
     def test_unknown_event_does_not_invent_direction(self):
         matches = match_historical_reactions("Trump discusses a topic with no documented analogue")
         self.assertEqual(matches, [])
