@@ -20,3 +20,20 @@ The historical reaction matcher in `sputnik_action_reaction.py` previously accep
 - Implementation commit: `01424f5d79d83e4723311a4699853c041534c651`
 - Regression-test commit: `79fb1d9b8ba8f0bfb3808cb8a3bdbaa3eb6d9a5a`
 - Follow-up: run the repository test suite/CI, then audit false positives around negation and keyword boundaries without broadening historical matches.
+
+
+## 2026-10-23 — Negation and generic trade mentions
+
+### Finding
+Keyword matching could confuse a denial of a reported policy change with confirmation, and generic tariff mentions could inherit a specific historical market reaction.
+
+### Implemented
+- Explicit non-imposition/withdrawal wording is classified separately from escalation.
+- Denials of reports are classified as TRADE_AMBIGUOUS and produce no directional historical analogue.
+- Historical patterns require a pattern-specific phrase, not only the word tariff.
+- Added regression tests for non-imposition, denied reports, and generic tariff mentions.
+
+### Evidence and limits
+- The tests encode concrete failure modes; they are not evidence of improved trading performance.
+- Phrase matching remains heuristic and may miss paraphrases, negation variants, or non-English wording. Classification alone does not prove that a policy changed.
+- Tests have not been executed in this session. CI must be checked. PAPER ONLY; no orders, no Gagarin integration, and no deployment implied.
