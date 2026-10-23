@@ -37,3 +37,19 @@ Keyword matching could confuse a denial of a reported policy change with confirm
 - The tests encode concrete failure modes; they are not evidence of improved trading performance.
 - Phrase matching remains heuristic and may miss paraphrases, negation variants, or non-English wording. Classification alone does not prove that a policy changed.
 - Tests have not been executed in this session. CI must be checked. PAPER ONLY; no orders, no Gagarin integration, and no deployment implied.
+
+
+## 2026-10-23 — Separate statement wording from formal-action wording
+
+### Finding
+An alert that identifies a political or trade event can still blur a threat, a reported statement, a disputed story, and wording that describes a formal action. These states have different evidentiary strength and should be visible before readers interpret a historical market analogue.
+
+### Implemented
+- Added a conservative `classify_claim_status` label: `PROPOSAL_OR_THREAT`, `STATEMENT_REPORTED`, `FORMAL_ACTION_WORDING`, `UNVERIFIED_OR_DISPUTED`, or `STATUS_UNCLEAR`.
+- Added the label to the action→reaction Telegram message.
+- Added regression tests for threats, formal-action wording, disputed reports, and message rendering.
+
+### Evidence and limits
+- This is a transparent phrase-based warning label, not independent fact-checking; “formal action wording” means the text contains one of the listed phrases, not that the action was independently verified or legally effective.
+- No new market direction or probability is invented. Historical analogue matching remains separate.
+- Tests have not been executed in this session; check CI before merge. PAPER ONLY; no orders, no deployment implied, and no Gagarin integration.
