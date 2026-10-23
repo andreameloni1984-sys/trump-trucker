@@ -551,11 +551,16 @@ def intelligence_message(item: dict[str, Any]) -> str:
     ])
     if excerpt and not title:
         lines.append(f"📝 Testo: {excerpt}")
+    page_level = str(item.get("evidence") or "") == "PUBLIC_SOURCE_TEXT_PAGE_LEVEL"
+    if page_level:
+        lines.append("⛔ EVIDENZA INSUFFICIENTE: pagina archivio/sito generico, non un post o articolo individuale.")
+        lines.append("🧭 Non trattare le parole chiave della pagina come notizia né come catalizzatore di mercato.")
+    else:
+        lines.append("⚠️ Stato: CATALIZZATORE DA VERIFICARE")
     lines.extend([
-        "⚠️ Stato: CATALIZZATORE DA VERIFICARE",
         f"🔗 {item.get('url', '')}",
         "━━━━━━━━━━━━━━━━━━",
-        "ℹ️ Il tema non è un segnale LONG/SHORT. Gagarin deve verificare prezzo, volume e struttura.",
+        "ℹ️ Nessun segnale LONG/SHORT automatico. Serve un evento individuale datato e verificabile; Gagarin deve poi confermare prezzo, volume e struttura.",
     ])
     return "\n".join(lines)
 
