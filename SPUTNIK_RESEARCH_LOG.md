@@ -67,3 +67,17 @@ An alert that identifies a political or trade event can still blur a threat, a r
 - Reused Sputnik's existing event-classification and evidence-first architecture rather than copying an unverified third-party trading bot. The selector is a transparent heuristic, not a backtested ranking or proof that Nasdaq reacts most.
 - Text keyword coverage is incomplete; actual direction, current price, confirmation, invalidation, stop loss and take profit require separately verified market data and technical rules.
 - Tests have not been executed in this session. CI must be checked. PAPER ONLY; no orders, deployment or Gagarin integration implied.
+
+
+## 2026-10-23 — Prepare for scheduled US economic releases
+
+### Implemented
+- Added `sputnik_release_calendar.py` to classify common scheduled macro releases by watch priority and likely affected instruments.
+- Added timezone-aware conversion to Europe/Rome using `zoneinfo`, so daylight-saving changes are handled by timezone rules rather than fixed hour offsets.
+- Unknown calendar titles remain unclassified; the module never invents LONG/SHORT direction.
+- Added six tests covering CPI, EIA oil inventories, unknown releases, timezone conversion, missing timezone and no directional inference.
+
+### Limits
+- This module does not yet fetch or schedule official calendars or send pre-release Telegram alerts. It is a reusable classification/conversion layer that must be connected to a trusted calendar feed in a subsequent change.
+- Instrument mapping is heuristic, not a measured causal ranking. Verify each release against the issuing agency's calendar before treating it as scheduled.
+- Tests have not been executed in this session; CI status must be checked. PAPER ONLY, no orders and no Gagarin integration.
