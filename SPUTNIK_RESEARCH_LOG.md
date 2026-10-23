@@ -53,3 +53,17 @@ An alert that identifies a political or trade event can still blur a threat, a r
 - This is a transparent phrase-based warning label, not independent fact-checking; “formal action wording” means the text contains one of the listed phrases, not that the action was independently verified or legally effective.
 - No new market direction or probability is invented. Historical analogue matching remains separate.
 - Tests have not been executed in this session; check CI before merge. PAPER ONLY; no orders, no deployment implied, and no Gagarin integration.
+
+
+## 2026-10-23 — Narrow Sputnik's candidate instruments by catalyst
+
+### Implemented
+- Added an event-driven watchlist selector with Nasdaq 100 as the first focus for technology and US-China trade catalysts.
+- Selects WTI only for oil-supply/production/shipping catalysts, gold for explicit geopolitical-risk wording, and S&P 500 for broad US macroeconomic catalysts.
+- Limits the displayed candidate list to two instruments and labels it as a preliminary watchlist, not a LONG/SHORT signal.
+- Added regression tests for tariff, oil, macro, unrelated text, and message output.
+
+### Limits and copying strategy
+- Reused Sputnik's existing event-classification and evidence-first architecture rather than copying an unverified third-party trading bot. The selector is a transparent heuristic, not a backtested ranking or proof that Nasdaq reacts most.
+- Text keyword coverage is incomplete; actual direction, current price, confirmation, invalidation, stop loss and take profit require separately verified market data and technical rules.
+- Tests have not been executed in this session. CI must be checked. PAPER ONLY; no orders, deployment or Gagarin integration implied.
