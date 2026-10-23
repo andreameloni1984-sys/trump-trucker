@@ -78,6 +78,33 @@ def classify_event(text: str) -> str:
         return "ENERGY"
     return "OTHER"
 
+def classify_claim_status(text: str) -> str:
+    """Conservative wording status; this is not independent fact verification."""
+    body = _normalise(text)
+    if any(phrase in body for phrase in (
+        "denies reports", "deny reports", "false report", "reports are false",
+        "not true", "fabricated claim", "unconfirmed report", "unverified report",
+        "reportedly", "according to sources",
+    )):
+        return "UNVERIFIED_OR_DISPUTED"
+    if any(phrase in body for phrase in (
+        "signed into law", "signed an executive order", "issued an executive order",
+        "officially imposed", "takes effect", "took effect", "effective immediately",
+        "entered into force", "published in the federal register",
+    )):
+        return "FORMAL_ACTION_WORDING"
+    if any(phrase in body for phrase in (
+        "threatens to", "threatened to", "plans to", "plan to", "could impose",
+        "may impose", "considering imposing", "proposes to", "proposed to",
+        "intends to", "vows to",
+    )):
+        return "PROPOSAL_OR_THREAT"
+    if any(phrase in body for phrase in (
+        "announced", "says", "said", "states", "stated", "pledges", "pledged",
+    )):
+        return "STATEMENT_REPORTED"
+    return "STATUS_UNCLEAR"
+
 def match_historical_reactions(text: str, limit: int = 3) -> list[dict[str, Any]]:
     body = _normalise(text)
     event_type = classify_event(body)
@@ -120,6 +147,7 @@ def action_reaction_message(text: str, title: str = "SPUTNIK — AZIONE → REAZ
     lines = [f"🛰️ {title}", "━━━━━━━━━━━━━━━━━━"]
     event_type = classify_event(text)
     lines.append(f"🧩 Evento classificato: {event_type}")
+    lines.append(f"🧾 Stato della formulazione: {classify_claim_status(text)}")
     if not matches:
         lines += ["", "⚪ Nessun analogo storico sufficientemente documentato.", "ℹ️ Nessuna direzione viene inventata."]
         return "\n".join(lines)
