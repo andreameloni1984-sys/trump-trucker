@@ -61,8 +61,13 @@ def _normalise(text: str) -> str:
 
 def classify_event(text: str) -> str:
     body = _normalise(text)
-    if any(k in body for k in ("tariff", "tariffs", "trade war", "china", "xi")):
-        if any(k in body for k in ("pause", "help china", "not hurt", "soften", "deal")):
+    trade_topic = any(k in body for k in ("tariff", "tariffs", "trade war", "china", "xi"))
+    if trade_topic:
+        denial_phrases = ("denies reports", "deny reports", "false report", "reports are false", "not true", "fabricated claim", "denies that")
+        if any(phrase in body for phrase in denial_phrases):
+            return "TRADE_AMBIGUOUS"
+        deescalation_phrases = ("will not impose", "won't impose", "will not raise", "won't raise", "not impose tariffs", "no new tariffs", "withdraw tariffs", "tariffs withdrawn", "remove tariffs", "tariffs removed", "pause", "suspend tariffs", "suspension of tariffs", "help china", "not hurt", "soften", "softening", "deal")
+        if any(phrase in body for phrase in deescalation_phrases):
             return "TRADE_DE_ESCALATION"
         return "TRADE_ESCALATION"
     if any(k in body for k in ("iran", "hormuz", "missile", "military strike", "war")):
