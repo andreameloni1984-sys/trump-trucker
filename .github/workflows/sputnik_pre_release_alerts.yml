@@ -1,0 +1,37 @@
+name: SPUTNIK Pre-Release Alerts
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sputnik-pre-release-alerts
+  cancel-in-progress: false
+
+jobs:
+  pre-release-alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run official BLS calendar watch
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SPUTNIK_RELEASE_ALERT_MINUTES: "30"
+        run: python sputnik_pre_release_alerts.py
+      - name: Persist deduplication state
+        if: always()
+        run: |
+          if [ -f sputnik_release_state.json ]; then
+            git config user.name "SPUTNIK Bot"
+            git config user.email "sputnik-bot@users.noreply.github.com"
+            git add sputnik_release_state.json
+            git diff --cached --quiet || git commit -m "chore: persist Sputnik release alert state"
+            git pull --rebase origin ${GITHUB_REF_NAME}
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
