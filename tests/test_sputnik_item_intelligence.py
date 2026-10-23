@@ -42,6 +42,19 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
 
+    def test_page_level_archive_message_warns_not_an_individual_catalyst(self):
+        message = trump_tracker.intelligence_message({
+            "source": "TRUTH_ARCHIVE",
+            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            "domains": ["METALS", "AI_TECH"],
+            "text": "Trump's Truth archive page with generic metadata",
+            "url": "https://www.trumpstruth.org/",
+        })
+        self.assertIn("EVIDENZA INSUFFICIENTE", message)
+        self.assertIn("non un post o articolo individuale", message)
+        self.assertIn("Non trattare le parole chiave della pagina come notizia", message)
+        self.assertNotIn("Stato: CATALIZZATORE DA VERIFICARE", message)
+
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
