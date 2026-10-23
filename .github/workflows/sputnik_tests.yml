@@ -4,6 +4,11 @@ on:
   pull_request:
     paths:
       - "trump_tracker.py"
+      - "sputnik_release_calendar.py"
+      - "sputnik_pre_release_alerts.py"
+      - "tests/test_sputnik_release_calendar.py"
+      - "tests/test_sputnik_pre_release_alerts.py"
+      - ".github/workflows/sputnik_pre_release_alerts.yml"
       - "sputnik_ranking.py"
       - "sputnik_decision.py"
       - "sputnik_decision_engine.py"
