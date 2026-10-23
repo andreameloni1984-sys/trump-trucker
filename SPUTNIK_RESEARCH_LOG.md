@@ -81,3 +81,19 @@ An alert that identifies a political or trade event can still blur a threat, a r
 - This module does not yet fetch or schedule official calendars or send pre-release Telegram alerts. It is a reusable classification/conversion layer that must be connected to a trusted calendar feed in a subsequent change.
 - Instrument mapping is heuristic, not a measured causal ranking. Verify each release against the issuing agency's calendar before treating it as scheduled.
 - Tests have not been executed in this session; CI status must be checked. PAPER ONLY, no orders and no Gagarin integration.
+
+
+## 2026-10-23 — Connect official BLS calendar to pre-release Telegram alerts
+
+### Implemented
+- Added `sputnik_pre_release_alerts.py`, which reads the official BLS iCalendar feed, parses timed events, classifies only known macro releases, converts event times with timezone-aware rules, and selects events in the next 30 minutes.
+- Added a Telegram message explicitly marked as a pre-release watch; it names instruments to watch but does not infer LONG/SHORT direction.
+- Added persistent UID-based deduplication state and a GitHub Actions workflow scheduled every five minutes. The workflow uses the existing `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` secrets.
+- Added regression tests for iCalendar parsing, the alert window, unknown-event rejection, and non-directional message wording.
+
+### Evidence and limits
+- BLS publishes an official public release calendar and a direct iCalendar feed. The parser defaults timezone-less BLS timed events to America/New_York, while honoring explicit TZID and UTC timestamps.
+- This is an initial BLS-only connector (e.g. CPI, PPI and employment releases); BEA, FOMC and EIA feeds are not connected in this change.
+- GitHub Actions runs every five minutes, but actual delivery depends on the workflow being enabled, secrets being configured, the official feed being reachable, and GitHub Actions being available. The code has not been executed in this session; do not treat alerts as live until a workflow run succeeds.
+- All-day and unclassified events are ignored. The 30-minute window and instrument mapping are heuristic; no price-based direction, stop loss, take profit or trade execution is generated.
+- PAPER/INFORMATION ONLY; no broker orders and no Gagarin integration.
