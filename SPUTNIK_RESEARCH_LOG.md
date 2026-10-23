@@ -97,3 +97,18 @@ An alert that identifies a political or trade event can still blur a threat, a r
 - GitHub Actions runs every five minutes, but actual delivery depends on the workflow being enabled, secrets being configured, the official feed being reachable, and GitHub Actions being available. The code has not been executed in this session; do not treat alerts as live until a workflow run succeeds.
 - All-day and unclassified events are ignored. The 30-minute window and instrument mapping are heuristic; no price-based direction, stop loss, take profit or trade execution is generated.
 - PAPER/INFORMATION ONLY; no broker orders and no Gagarin integration.
+
+
+## 2026-10-23 — Expand pre-release monitoring to the official BEA calendar
+
+### Implemented
+- Added a parser for the BEA public machine-readable release-date JSON feed, normalizing each event to an offset-aware timestamp and a stable UID.
+- Connected BEA events into Sputnik's existing pre-release watch alongside the BLS iCalendar feed. If BEA is temporarily unavailable, BLS monitoring continues and the degraded source is logged.
+- Added `Personal Income and Outlays` to the high-impact inflation classification so BEA PCE releases can enter the watchlist.
+- Added regression tests for BEA JSON normalization and invalid input; included the new files in the repository test workflow.
+
+### Evidence and limits
+- The official BEA site provides both a release schedule and a machine-readable JSON calendar: https://www.bea.gov/news/schedule and https://apps.bea.gov/API/signup/release_dates.json.
+- This adds BEA coverage for GDP and Personal Income and Outlays/PCE, but does not yet connect the Federal Reserve or EIA calendars. BLS and BEA source coverage is not a complete macro calendar.
+- Tests have not been executed in this session; no CI run or Telegram delivery has been confirmed. Verify the next workflow run before treating alerts as live.
+- Classification is heuristic, direction is not inferred, and no price-based entry, stop loss, take profit, broker order, or Gagarin integration is added.
