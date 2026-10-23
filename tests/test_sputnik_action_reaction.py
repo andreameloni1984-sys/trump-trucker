@@ -1,6 +1,6 @@
 import unittest
 
-from sputnik_action_reaction import classify_event, match_historical_reactions, infer_direction, action_reaction_message
+from sputnik_action_reaction import classify_event, classify_claim_status, match_historical_reactions, infer_direction, action_reaction_message
 
 
 class ActionReactionTests(unittest.TestCase):
@@ -37,6 +37,19 @@ class ActionReactionTests(unittest.TestCase):
     def test_generic_tariff_mention_is_not_a_specific_historical_match(self):
         text = "Officials discussed tariffs with China"
         self.assertEqual(match_historical_reactions(text), [])
+    def test_threat_is_not_labelled_formal_action(self):
+        self.assertEqual(classify_claim_status("Trump threatens to impose new tariffs"), "PROPOSAL_OR_THREAT")
+
+    def test_formal_action_wording_is_distinguished(self):
+        self.assertEqual(classify_claim_status("The president signed an executive order imposing tariffs"), "FORMAL_ACTION_WORDING")
+
+    def test_disputed_report_is_marked_unverified(self):
+        self.assertEqual(classify_claim_status("Officials deny reports of a new tariff hike"), "UNVERIFIED_OR_DISPUTED")
+
+    def test_alert_shows_claim_status(self):
+        message = action_reaction_message("Trump threatens to impose new tariffs")
+        self.assertIn("Stato della formulazione: PROPOSAL_OR_THREAT", message)
+
     def test_unknown_event_does_not_invent_direction(self):
         matches = match_historical_reactions("Trump discusses a topic with no documented analogue")
         self.assertEqual(matches, [])
