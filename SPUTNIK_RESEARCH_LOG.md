@@ -1,5 +1,30 @@
 # SPUTNIK Research and Implementation Log
 
+## 2026-10-24 — Normalize explicit official RSS source labels in catalyst scoring
+
+### Finding
+The catalyst watchlist's `PRIMARY_SOURCES` set contains `WHITE_HOUSE`, `OGE`, and `SEC`, but the item collector labels the White House feed as `WHITE_HOUSE_RSS` (and source-specific RSS labels can carry the same suffix). The scorer compared the full label directly to the set, so a known official source could lose the primary-source bonus despite coming through its configured official feed. This is a source-label mismatch, not evidence that the underlying event is independently corroborated.
+
+### Implemented
+- Added an exact alias map for `WHITE_HOUSE_RSS`, `OGE_RSS`, and `SEC_RSS` to their canonical source names.
+- Applied the alias map only to primary-source classification; unknown labels such as `TRUTH_ARCHIVE_RSS` are not promoted by substring matching.
+- Added a regression test checking the three explicit aliases, preserving the non-primary classification of `TRUTH_ARCHIVE_RSS`, and verifying the existing 20-point source bonus is applied consistently.
+
+### Evidence and limits
+- The mismatch is directly visible between the collector's `WHITE_HOUSE_RSS` source label and the scorer's exact `PRIMARY_SOURCES` membership check.
+- The change corrects a heuristic watchlist-priority input. The numeric score is not a probability, a calibrated confidence estimate, or a LONG/SHORT signal; it does not prove that a source's claim is true or that the event predicts a market move.
+- Regression test passed in GitHub Actions on implementation/test/log head `4e1423019d5f7275facf8aac83f4f13217bf1971`: [SPUTNIK item intelligence tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40108654402), [SPUTNIK ranking tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40108654398), and [SPUTNIK Telegram menu tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40108654395) all completed successfully. These are repository CI checks, not a local full-suite run or proof of live Telegram delivery.
+- PAPER ONLY: no prices, entries, stops, targets, broker connections, orders, Gagarin integration, or production deployment.
+
+### Change references
+- Implementation commit: `38896420de2b2d8ffb9928606bfe2452765df8e7`
+- Regression-test commit: `da72b96a9fcc9f229889771057ef34fe975e30ad`
+- Branch: `fix/sputnik-primary-source-scoring-20261024`, stacked on `fix/sputnik-public-url-validation-stacked-20261024`.
+- Follow-up: confirm the new regression test in GitHub Actions, then review the deployed Render branch separately.
+
+---
+
+
 ## 2026-10-24 — Exclude page metadata from generic source-text extraction
 
 ### Finding

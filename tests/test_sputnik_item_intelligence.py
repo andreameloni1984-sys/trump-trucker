@@ -286,6 +286,24 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("evt-1", state["intelligence_items"])
         save_state.assert_not_called()
 
+    def test_official_rss_source_aliases_keep_primary_source_weight(self):
+        def score_for(source):
+            rows = catalyst_watchlist([{
+                "source": source,
+                "domains": ["TRADE_POLICY"],
+                "event_id": "one-event",
+                "evidence": "PUBLIC_RSS_ITEM",
+            }])
+            return next(row for row in rows if row["instrument"] == "NASDAQ100")
+
+        for source in ("WHITE_HOUSE_RSS", "OGE_RSS", "SEC_RSS"):
+            with self.subTest(source=source):
+                self.assertTrue(score_for(source)["primary_source"])
+
+        archive = score_for("TRUTH_ARCHIVE_RSS")
+        self.assertFalse(archive["primary_source"])
+        self.assertEqual(score_for("WHITE_HOUSE_RSS")["score"], archive["score"] + 20)
+
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
