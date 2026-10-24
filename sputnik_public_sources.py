@@ -164,7 +164,10 @@ def public_item_identity(item):
     if permalink:
         return "url:" + permalink
     title = " ".join(str(item.get("title") or "").split()).casefold()
-    published = " ".join(str(item.get("published") or "").split())
+    # Equivalent timestamps often arrive with different offsets or date formats
+    # across syndicated feeds. Canonicalize to UTC before metadata fallback.
+    published_at = parse_publication_datetime(item.get("published"))
+    published = published_at.isoformat() if published_at is not None else ""
     if title and published:
         return "metadata:" + hashlib.sha256((title + "|" + published).encode("utf-8")).hexdigest()
     return ""
