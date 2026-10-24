@@ -102,9 +102,33 @@ def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | 
         stop, tp1, tp2 = entry - distance, entry + distance, entry + 2 * distance
     else:
         stop, tp1, tp2 = entry + distance, entry - distance, entry - 2 * distance
+
+    # Reject impossible/overflowed levels and levels that collapse after output
+    # rounding; otherwise an apparently valid plan could contain a negative
+    # stop/target or identical rounded prices.
+    raw_levels = (entry, stop, tp1, tp2)
+    if not all(math.isfinite(value) and value > 0 for value in raw_levels):
+        result["reason"] = "Livelli derivati non validi: prezzo, stop e target devono essere finiti e positivi."
+        return result
+    rounded_entry, rounded_stop, rounded_tp1, rounded_tp2 = (
+        round(value, 6) for value in raw_levels
+    )
+    if not all(math.isfinite(value) and value > 0 for value in
+               (rounded_entry, rounded_stop, rounded_tp1, rounded_tp2)):
+        result["reason"] = "Livelli derivati non validi dopo arrotondamento."
+        return result
+    ordered = (
+        rounded_stop < rounded_entry < rounded_tp1 < rounded_tp2
+        if direction == "LONG"
+        else rounded_tp2 < rounded_tp1 < rounded_entry < rounded_stop
+    )
+    if not ordered:
+        result["reason"] = "Livelli derivati incoerenti dopo arrotondamento: piano mantenuto in WAIT."
+        return result
+
     confirmed = _has_price_volume_confirmation(quote)
-    result.update({"direction": direction, "entry": round(entry, 6),
-                   "stop": round(stop, 6), "tp1": round(tp1, 6), "tp2": round(tp2, 6),
+    result.update({"direction": direction, "entry": rounded_entry,
+                   "stop": rounded_stop, "tp1": rounded_tp1, "tp2": rounded_tp2,
                    "atr": round(atr, 6),
                    "status": "TRIGGER CONFIRMED" if confirmed else "PREPARE",
                    "reason": (
