@@ -145,6 +145,21 @@ class PublicFeedParserTests(unittest.TestCase):
             "https://example.gov/news/story?id=7",
         )
 
+    def test_generic_original_homepage_is_not_used_for_cross_feed_identity(self):
+        raw = b'''<rss><channel>
+          <item><title>Story A</title><link>https://archive.example/story-a</link>
+          <pubDate>Sat, 24 Oct 2026 06:00:00 GMT</pubDate>
+          <originalUrl>https://social.example/</originalUrl></item>
+          <item><title>Story B</title><link>https://archive.example/story-b</link>
+          <pubDate>Sat, 24 Oct 2026 06:05:00 GMT</pubDate>
+          <originalUrl>https://social.example/</originalUrl></item>
+        </channel></rss>'''
+        rows = parse_public_feed(raw, "https://archive.example/feed")
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["primary_url"], "")
+        self.assertEqual(rows[1]["primary_url"], "")
+        self.assertNotEqual(public_item_identity(rows[0]), public_item_identity(rows[1]))
+
     def test_item_identity_prefers_original_permalink_across_archive_mirrors(self):
         first = {
             "url": "https://archive-a.example/post/9?utm_medium=rss",
