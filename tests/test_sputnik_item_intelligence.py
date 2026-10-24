@@ -220,6 +220,20 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(health["status"], "OK_NO_ELIGIBLE_ITEMS")
         self.assertIsNone(trump_tracker.public_feed_health_alert(state))
 
+    def test_intelligence_alert_includes_nonduplicated_source_excerpt_with_title(self):
+        message = trump_tracker.intelligence_message({
+            "source": "WHITE_HOUSE_RSS",
+            "title": "President announces new tariffs",
+            "published": "Sat, 24 Oct 2026 06:00:00 GMT",
+            "domains": ["TRADE_POLICY"],
+            "evidence": "PUBLIC_RSS_ITEM",
+            "url": "https://example.gov/news/tariffs",
+            "text": "President announces new tariffs New trade measures take effect next week.",
+        })
+        self.assertIn("📰 Evento: President announces new tariffs", message)
+        self.assertIn("📝 Estratto: New trade measures take effect next week.", message)
+        self.assertNotIn("📝 Estratto: President announces new tariffs", message)
+
     def test_intelligence_alert_shows_validated_original_permalink(self):
         message = trump_tracker.intelligence_message({
             "source": "TRUTH_ARCHIVE_RSS",
