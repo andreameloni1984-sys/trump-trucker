@@ -13,7 +13,7 @@ The catalyst watchlist's `PRIMARY_SOURCES` set contains `WHITE_HOUSE`, `OGE`, an
 ### Evidence and limits
 - The mismatch is directly visible between the collector's `WHITE_HOUSE_RSS` source label and the scorer's exact `PRIMARY_SOURCES` membership check.
 - The change corrects a heuristic watchlist-priority input. The numeric score is not a probability, a calibrated confidence estimate, or a LONG/SHORT signal; it does not prove that a source's claim is true or that the event predicts a market move.
-- Regression test added. GitHub Actions must be checked after the PR commit; no local test execution or CI pass is claimed until observed.
+- Regression test passed in GitHub Actions on implementation/test/log head `4e1423019d5f7275facf8aac83f4f13217bf1971`: [SPUTNIK item intelligence tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40108654402), [SPUTNIK ranking tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40108654398), and [SPUTNIK Telegram menu tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40108654395) all completed successfully. These are repository CI checks, not a local full-suite run or proof of live Telegram delivery.
 - PAPER ONLY: no prices, entries, stops, targets, broker connections, orders, Gagarin integration, or production deployment.
 
 ### Change references
