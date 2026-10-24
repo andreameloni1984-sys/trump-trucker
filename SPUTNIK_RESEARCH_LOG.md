@@ -389,11 +389,12 @@ The RSS/Atom parser checked that an item permalink used HTTP(S) and had a path, 
 ### Evidence and limits
 - The issue is supported by the parser's prior validation path and is now represented by explicit regression cases. These tests establish URL-handling behavior, not improved market returns or signal accuracy.
 - The parser still does not prove that an article's claims are true, that the source is authoritative, or that an event caused a market move. Source reputation, publication freshness and price/volume confirmation remain separate checks.
-- CI for this stacked change is pending at log-write time. No passing test result is claimed until the relevant GitHub Actions run is inspected. No live source fetch or Telegram delivery is claimed.
+- GitHub Actions on implementation/test head `036a60e6bff60d69856f0ccedf7c5675819d4244` completed successfully: ranking tests run `40106185629` and item-intelligence tests run `40106185723` (the latter runs `tests/test_sputnik_public_sources.py`). These validate repository tests only; no live source fetch or Telegram delivery is claimed.
 - PAPER ONLY: no LONG/SHORT signal, price, entry, stop, target, broker connection, real order, Gagarin integration, or production deployment was added.
 
 ### Change references
 - URL-validation implementation commit: `7581ace2f7834d860df8624ed37f7e24d8672d6a`
 - Regression-test commit: `bc4b533f43f46c93e65ff1ac26931332c747654f`
 - Branch: `fix/sputnik-public-url-validation-stacked-20261024` (stacked on `fix/sputnik-historical-match-gate`)
-- Follow-up: verify the new CI runs, then separately inspect Render/Telegram deployment state; the stacked PR must not be treated as production code before merge/deploy.
+- CI evidence: `40106185629` and `40106185723` both passed for implementation/test head `036a60e6bff60d69856f0ccedf7c5675819d4244`.
+- Follow-up: separately inspect Render/Telegram deployment state; the stacked PR must not be treated as production code before merge/deploy.
