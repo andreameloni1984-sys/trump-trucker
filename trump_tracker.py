@@ -406,7 +406,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         max_news_age_hours = float(os.getenv("SPUTNIK_MAX_NEWS_AGE_HOURS", "72"))
     except (TypeError, ValueError, OverflowError):
         max_news_age_hours = 72.0
-    if not 0 < max_news_age_hours <= 24 * 30:
+    if not 1 <= max_news_age_hours <= 24 * 30:
         max_news_age_hours = 72.0
 
     # Item-level feed scan: each article is deduplicated independently, so a
