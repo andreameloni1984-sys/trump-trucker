@@ -4,6 +4,7 @@ Never fabricates quotes. Conditional plans use the current broker quote and ATR
 when both are available; they remain WAIT until a price trigger is confirmed.
 """
 from __future__ import annotations
+import math
 from datetime import datetime, timezone
 from typing import Any
 
@@ -16,7 +17,7 @@ def _number(value: Any) -> float | None:
         number = float(value)
     except (TypeError, ValueError):
         return None
-    return number if number > 0 else None
+    return number if math.isfinite(number) and number > 0 else None
 
 
 def _quote_for(row: dict[str, Any], quotes: dict[str, Any]) -> dict[str, Any] | None:

@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime, timezone
 
-from sputnik_cfd import build_cfd_cart
+from sputnik_cfd import build_cfd_cart, build_conditional_trade_plan
 
 
 class CfdCartTests(unittest.TestCase):
@@ -75,6 +75,39 @@ class CfdCartTests(unittest.TestCase):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart([self.candidate("COMPRA")], {"ACME": {"price": 100, "stop": 105, "target": 90, "timestamp": fresh_timestamp, "trigger_confirmed": True, "price_confirmed": True, "volume_confirmed": True}})
         self.assertEqual(rows[0]["status"], "WAIT")
+
+
+    def test_non_finite_quote_values_cannot_create_cfd_trade(self):
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
+        for field in ("price", "stop", "target"):
+            with self.subTest(field=field):
+                quote = {
+                    "price": 100, "stop": 95, "target": 110,
+                    "timestamp": fresh_timestamp,
+                    "trigger_confirmed": True, "price_confirmed": True,
+                    "volume_confirmed": True,
+                }
+                quote[field] = float("inf")
+                rows = build_cfd_cart([self.candidate()], {"ACME": quote})
+                self.assertEqual(rows[0]["status"], "WAIT")
+                self.assertIsNone(rows[0]["units"])
+
+    def test_non_finite_price_or_atr_cannot_create_conditional_levels(self):
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
+        for field in ("price", "atr"):
+            with self.subTest(field=field):
+                quote = {
+                    "price": 100, "atr": 2, "timestamp": fresh_timestamp,
+                    "trigger_confirmed": True, "price_confirmed": True,
+                    "volume_confirmed": True,
+                }
+                quote[field] = float("inf")
+                result = build_conditional_trade_plan(
+                    {"candidate": "GOLD", "bias": "LONG"}, {"GOLD": quote}
+                )
+                self.assertEqual(result["status"], "WAIT")
+                self.assertIsNone(result["entry"])
+                self.assertIsNone(result["stop"])
 
 
 if __name__ == "__main__":
