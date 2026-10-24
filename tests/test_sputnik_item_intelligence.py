@@ -42,6 +42,20 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
 
+    @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
+    @patch.object(trump_tracker, "fetch_public_feed", return_value=FEED)
+    def test_same_permalink_in_two_feeds_is_emitted_once(self, _fetch_feed, _fetch_page):
+        state = {}
+        with patch.dict(os.environ, {
+            "SPUTNIK_SOCIAL_ENABLED": "1",
+            "SPUTNIK_RSS_FEEDS": "https://feed-a.example/rss;https://feed-b.example/rss",
+        }):
+            findings = trump_tracker.intelligence_snapshot(state)
+
+        self.assertEqual(len(findings), 1)
+        self.assertEqual(len(state["intelligence_items"]), 1)
+        self.assertEqual(findings[0]["url"], "https://example.gov/news/tariffs")
+
     def test_generic_homepages_are_not_emitted_as_individual_catalysts(self):
         with patch.dict(os.environ, {
             "SPUTNIK_SOCIAL_ENABLED": "1",
