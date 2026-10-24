@@ -180,5 +180,5 @@ Even an individual feed entry with a title, permalink and parseable date can be 
 ### Evidence and limits
 - The reproduced risk is in the feed collector's prior behavior: any parseable date could pass the parser regardless of age, and the item could then be treated as newly detected.
 - The freshness decision is deterministic and uses only the Python standard library. The 72-hour window is a safety default, not a claim that every older article is irrelevant; operators can widen it explicitly if their use case requires historical monitoring.
-- Tests have been added to the existing item-intelligence CI path. They were not executed locally in this run; the corresponding GitHub Actions result must be checked before claiming the new cases pass. No live feed or Telegram delivery was tested.
+- Tests have been added to the existing item-intelligence CI path. A local clone/test attempt was blocked because this environment could not resolve github.com; GitHub currently reports no status checks or workflow run for the latest commit, so the new cases are not verified as passing. No live feed or Telegram delivery was tested.
 - Informational only: no LONG/SHORT inference, price/SL/TP, broker orders, or direct GAGARIN integration was added.
