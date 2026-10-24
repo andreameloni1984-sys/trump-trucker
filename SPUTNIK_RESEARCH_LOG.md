@@ -465,7 +465,7 @@ The shared numeric parser rejected missing, non-numeric, zero, and negative valu
 
 ### Evidence and limits
 - The defect is directly reproducible from Python numeric semantics: float("inf") > 0 is true, while infinity is not a valid tradable price or volatility measurement.
-- Regression tests are committed. GitHub Actions results are pending until the pull request workflow completes; no local test run is claimed in this execution.
+- Regression tests passed in GitHub Actions on implementation/test head `62b7002b0437c46585450dbd7661b3f2ac7da368`: [SPUTNIK Telegram menu tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40119390370) — SUCCESS. That workflow explicitly runs `tests/test_sputnik_cfd.py`, including the new regressions. This is CI evidence, not a local full-suite run.
 - This defensive validation does not establish improved trading accuracy, predictive edge, or better returns. No live market data or performance metrics were used.
 
 ### Change references
