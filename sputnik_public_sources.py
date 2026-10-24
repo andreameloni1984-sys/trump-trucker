@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import re
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
@@ -52,20 +52,50 @@ def _link(node):
     return ""
 
 
-def _has_valid_publication_date(value):
+def parse_publication_datetime(value):
+    """Parse ISO-8601/RFC-2822 publication dates and normalize them to UTC."""
     raw = str(value or "").strip()
     if not raw:
-        return False
+        return None
     iso_value = raw[:-1] + "+00:00" if raw.endswith("Z") else raw
     try:
-        datetime.fromisoformat(iso_value)
-        return True
+        parsed = datetime.fromisoformat(iso_value)
     except (TypeError, ValueError):
-        pass
+        try:
+            parsed = parsedate_to_datetime(raw)
+        except (TypeError, ValueError, OverflowError):
+            return None
+    if parsed is None:
+        return None
+    # A timestamp without an explicit zone is treated as UTC, never as the
+    # runner's local timezone, so freshness decisions remain deterministic.
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def _has_valid_publication_date(value):
+    return parse_publication_datetime(value) is not None
+
+
+def publication_is_recent(value, now=None, max_age_hours=72, future_skew_minutes=10):
+    """Return False for unparseable, stale, or implausibly future-dated items."""
+    published_at = parse_publication_datetime(value)
+    if published_at is None:
+        return False
     try:
-        return parsedate_to_datetime(raw) is not None
+        age_limit = float(max_age_hours)
+        future_limit = float(future_skew_minutes)
     except (TypeError, ValueError, OverflowError):
         return False
+    if not 0 < age_limit <= 24 * 30 or not 0 <= future_limit <= 60:
+        return False
+    current = now or datetime.now(timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    current = current.astimezone(timezone.utc)
+    age = current - published_at
+    return timedelta(minutes=-future_limit) <= age <= timedelta(hours=age_limit)
 
 
 def _is_individual_permalink(link, base_url):
