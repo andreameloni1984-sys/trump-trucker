@@ -23,7 +23,7 @@ from pathlib import Path
 from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
-from sputnik_public_sources import parse_public_feed, public_item_identity, publication_is_recent
+from sputnik_public_sources import canonical_public_item_url, parse_public_feed, public_item_identity, publication_is_recent
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -632,6 +632,9 @@ def intelligence_message(item: dict[str, Any]) -> str:
     title = str(item.get("title") or "").strip()
     published = str(item.get("published") or "").strip()
     excerpt = re.sub(r"\s+", " ", str(item.get("text") or "")).strip()[:420]
+    item_url = str(item.get("url") or "").strip()
+    original_url = canonical_public_item_url(item.get("primary_url"))
+    canonical_item_url = canonical_public_item_url(item_url)
     lines = [
         "🛰️ SPUTNIK — INTELLIGENCE",
         "━━━━━━━━━━━━━━━━━━",
@@ -649,9 +652,13 @@ def intelligence_message(item: dict[str, Any]) -> str:
         lines.append(f"📝 Testo: {excerpt}")
     lines.extend([
         "⚠️ Stato: CATALIZZATORE DA VERIFICARE",
-        f"🔗 {item.get('url', '')}",
+        f"🔗 Articolo/archivio: {item_url}",
+    ])
+    if original_url and original_url != canonical_item_url:
+        lines.append(f"🔗 Post originale: {original_url}")
+    lines.extend([
         "━━━━━━━━━━━━━━━━━━",
-        "ℹ️ Il tema non è un segnale LONG/SHORT. Gagarin deve verificare prezzo, volume e struttura.",
+        "ℹ️ Il tema non è un segnale LONG/SHORT. Prezzo, volume e struttura richiedono verifica indipendente.",
     ])
     return "\n".join(lines)
 
