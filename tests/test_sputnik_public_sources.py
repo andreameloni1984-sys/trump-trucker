@@ -67,6 +67,14 @@ class PublicFeedParserTests(unittest.TestCase):
         self.assertEqual(rows[0]["updated"], "2026-10-13T06:00:00Z")
         self.assertEqual(rows[0]["text"], "Shipping halted")
 
+    def test_rejects_permalink_with_embedded_credentials(self):
+        raw = b'''<rss><channel>
+          <item><title>Credential-bearing URL</title>
+          <link>https://user:secret@example.gov/news/story</link>
+          <pubDate>Sat, 24 Oct 2026 06:00:00 GMT</pubDate></item>
+        </channel></rss>'''
+        self.assertEqual(parse_public_feed(raw, "https://example.gov/feed"), [])
+
     def test_invalid_xml_raises(self):
         with self.assertRaises(ValueError):
             parse_public_feed(b"<html>not a feed</html>", "https://example.gov/feed")
