@@ -373,3 +373,28 @@ The Atom link selector returned the first `rel="alternate"` URL and let the late
 - Implementation commit: `3b7e364176cf960f8ccec3e403f4251b9d3a04b3`
 - Regression-test commit: `a7b9f1d3b5696b117d96fa2827b9fcd94cfff6c1`
 - Follow-up: run `tests/test_sputnik_item_intelligence.py` in CI and inspect both new delivery-state tests before merge.
+
+
+## 2026-10-24 — Validate public feed URLs before accepting source evidence
+
+### Finding
+The RSS/Atom parser checked that an item permalink used HTTP(S) and had a path, but did not reject URL user-info such as `https://trusted.example@evil.example/story`. Such a URL can visually suggest one host while the browser navigates to another. The parser also copied `primary_url` into the finding without an equivalent safety check, and the configured feed URL was not validated at the parser boundary. Unsafe or misleading links weaken source provenance and can make a non-verifiable catalyst look documented.
+
+### Implemented
+- Extended `canonical_public_item_url` to reject whitespace, control characters and backslashes in addition to its existing checks for HTTP(S), host, user-info and valid ports.
+- Reused that canonical validation in the individual-permalink gate and validated the feed URL before parsing.
+- Dropped an unsafe `primary_url` while preserving an independently safe item permalink; unsafe item permalinks are rejected rather than silently relabelled as the feed URL.
+- Added five regression tests covering a `javascript:` item link, a user-info host-spoof URL, an unsafe primary URL, an invalid feed URL, and whitespace/backslash URLs.
+
+### Evidence and limits
+- The issue is supported by the parser's prior validation path and is now represented by explicit regression cases. These tests establish URL-handling behavior, not improved market returns or signal accuracy.
+- The parser still does not prove that an article's claims are true, that the source is authoritative, or that an event caused a market move. Source reputation, publication freshness and price/volume confirmation remain separate checks.
+- GitHub Actions on implementation/test head `036a60e6bff60d69856f0ccedf7c5675819d4244` completed successfully: ranking tests run `40106185629` and item-intelligence tests run `40106185723` (the latter runs `tests/test_sputnik_public_sources.py`). These validate repository tests only; no live source fetch or Telegram delivery is claimed.
+- PAPER ONLY: no LONG/SHORT signal, price, entry, stop, target, broker connection, real order, Gagarin integration, or production deployment was added.
+
+### Change references
+- URL-validation implementation commit: `7581ace2f7834d860df8624ed37f7e24d8672d6a`
+- Regression-test commit: `bc4b533f43f46c93e65ff1ac26931332c747654f`
+- Branch: `fix/sputnik-public-url-validation-stacked-20261024` (stacked on `fix/sputnik-historical-match-gate`)
+- CI evidence: `40106185629` and `40106185723` both passed for implementation/test head `036a60e6bff60d69856f0ccedf7c5675819d4244`.
+- Follow-up: separately inspect Render/Telegram deployment state; the stacked PR must not be treated as production code before merge/deploy.
