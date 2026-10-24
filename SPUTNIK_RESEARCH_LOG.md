@@ -146,3 +146,22 @@ The three recent notifications exposed a source-ingestion failure: the homepage 
 - The configured Trump archive feed endpoint has not been verified live in this repository-only run. If it does not serve RSS/Atom, Sputnik will log the feed failure and continue; the next step would be to implement a documented public archive item endpoint if available.
 - GitHub Actions completed successfully for the updated parser/collector code at commit `d628b7562c5754373e4071e763107f5e3c8fcb2e`; the item-intelligence suite reported 30 tests passing. That run preceded the two new regression-test commits, so those newly added cases are not yet confirmed by CI. No live Telegram delivery is claimed.
 - The collector remains informational: no LONG/SHORT inference, no prices/SL/TP, no orders, and no Gagarin integration.
+
+## 2026-10-24 — Deduplicate identical public posts across different feeds
+
+### Finding
+The item collector's deduplication key included the source label, feed URL, and feed-local GUID. The same public post syndicated or mirrored into two configured feeds could therefore be emitted twice, despite having the same underlying permalink. Tracking parameters and URL fragments could also make equivalent links appear different.
+
+### Implemented
+- Added canonical_public_item_url to normalize HTTP(S) item URLs, lowercase the host, remove default ports, fragments, trailing slashes, and known tracking query parameters while preserving meaningful query parameters.
+- Added public_item_identity, preferring an item's original/public permalink when present and otherwise its canonical article permalink.
+- Changed the collector's event hash to use that stable item identity rather than feed-local metadata, so the same item discovered from multiple feeds shares one deduplication key.
+- Added unit tests for tracking-parameter normalization and matching original permalinks, plus an integration-style regression test where two feeds return the same article.
+
+### Evidence and limits
+- The defect was visible in the previous hash expression, which explicitly incorporated source and feed_url; the new tests encode the cross-feed duplicate case.
+- The implementation is deterministic and uses only Python's standard library. URL canonicalization intentionally removes only known tracking parameters; it does not merge different article URLs merely because their titles look alike.
+- Tests have been added but have not yet been executed in this run. GitHub CI status must be checked after the final commit; no live feed fetch or Telegram delivery is claimed.
+- Existing persisted state uses the old hash format, so a previously seen item may be emitted once when first encountered under the new identity format. Subsequent discoveries use the stable cross-feed key.
+- Informational only: no LONG/SHORT inference, price/SL/TP, broker orders, or Gagarin integration was added.
+
