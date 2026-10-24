@@ -1,6 +1,7 @@
 import json
 import os
 import unittest
+from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
 import trump_tracker
@@ -11,12 +12,20 @@ FEED = b"""<rss><channel><item>
 <title>President announces new tariffs on China</title>
 <link>https://example.gov/news/tariffs</link>
 <guid>tariff-event-1</guid>
-<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>
+<pubDate>Sat, 24 Oct 2026 06:00:00 GMT</pubDate>
 <description><![CDATA[New trade measures announced.]]></description>
 </item></channel></rss>"""
 
 
 class SputnikItemIntelligenceTests(unittest.TestCase):
+    def setUp(self):
+        clock = patch.object(
+            trump_tracker, "utc_now",
+            return_value=datetime(2026, 10, 24, 7, 0, tzinfo=timezone.utc),
+        )
+        clock.start()
+        self.addCleanup(clock.stop)
+
     def test_tariff_headline_is_classified_as_a_market_catalyst(self):
         domains = trump_tracker._domains_for_public_text(
             "President announces new tariffs on China"
@@ -37,7 +46,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(second, [])
         item = first[0]
         self.assertEqual(item["title"], "President announces new tariffs on China")
-        self.assertEqual(item["published"], "Mon, 19 Oct 2026 06:00:00 GMT")
+        self.assertEqual(item["published"], "Sat, 24 Oct 2026 06:00:00 GMT")
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
@@ -89,6 +98,24 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(len(findings), 1)
         self.assertEqual(findings[0]["source"], "TRUTH_ARCHIVE_RSS")
         self.assertEqual(findings[0]["evidence"], "PUBLIC_RSS_ITEM")
+
+    @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
+    def test_stale_public_item_is_not_emitted_as_a_new_catalyst(self, _fetch_page):
+        stale_feed = FEED.replace(
+            b"Sat, 24 Oct 2026 06:00:00 GMT",
+            b"Mon, 19 Oct 2026 06:00:00 GMT",
+        )
+        state = {}
+        with patch.dict(os.environ, {
+            "SPUTNIK_SOCIAL_ENABLED": "1",
+            "SPUTNIK_RSS_FEEDS": "https://example.gov/feed.xml",
+            "SPUTNIK_MAX_NEWS_AGE_HOURS": "72",
+        }):
+            with patch.object(trump_tracker, "fetch_public_feed", return_value=stale_feed):
+                findings = trump_tracker.intelligence_snapshot(state)
+
+        self.assertEqual(findings, [])
+        self.assertEqual(state.get("intelligence_items", {}), {})
 
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
