@@ -126,3 +126,22 @@ An alert that identifies a political or trade event can still blur a threat, a r
 - This establishes a reproducible measurement contract for future forecast-vs-reaction evaluation; it does not prove predictive skill and does not fetch market prices automatically.
 - Sputnik still needs a verified price feed and a caller that writes a pre-event baseline and then a post-event observation. Until that connection exists, no measured result or accuracy score should be claimed.
 - Tests have not been executed in this session and CI has not returned a result. PAPER/INFORMATION ONLY; no orders and no Gagarin integration.
+
+
+## 2026-10-24 — Require dated individual items before emitting source intelligence
+
+### Finding
+The three recent notifications exposed a source-ingestion failure: the homepage scan found broad words such as metals, AI and rates on generic White House/Trump archive pages, then emitted them as page-level findings with no article title or publication date. The default item-feed path covered the White House only, so the Trump archive was not being collected through the same item-level route.
+
+### Implemented
+- Homepage scans now remain change-detection diagnostics only; generic page text is not emitted as a market catalyst or item-level Telegram intelligence finding.
+- Default RSS/Atom inputs now include the White House news feed and the Trump archive feed, with a distinct TRUTH_ARCHIVE_RSS source label.
+- The public feed parser now requires a non-empty title, a parseable publication date, and a real item permalink. It rejects missing/invalid dates, missing links, and links to the source homepage/feed endpoint instead of substituting the feed URL as the article URL.
+- Atom parsing prefers an alternate permalink over self links, which can otherwise point back to a feed representation rather than the article.
+- Added regression tests for generic homepage suppression, default source coverage, source labeling, missing/invalid item metadata, and Atom link selection.
+
+### Evidence and limits
+- Evidence is the reproduced code path and regression cases for the three failure modes; this is not evidence of improved trading returns.
+- The configured Trump archive feed endpoint has not been verified live in this repository-only run. If it does not serve RSS/Atom, Sputnik will log the feed failure and continue; the next step would be to implement a documented public archive item endpoint if available.
+- GitHub API writes do not execute Python tests. CI status must be checked after commit; no live Telegram delivery is claimed.
+- The collector remains informational: no LONG/SHORT inference, no prices/SL/TP, no orders, and no Gagarin integration.
