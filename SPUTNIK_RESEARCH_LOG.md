@@ -165,3 +165,20 @@ The item collector's deduplication key included the source label, feed URL, and 
 - Existing persisted state uses the old hash format, so a previously seen item may be emitted once when first encountered under the new identity format. Subsequent discoveries use the stable cross-feed key.
 - Informational only: no LONG/SHORT inference, price/SL/TP, broker orders, or Gagarin integration was added.
 
+## 2026-10-24 — Reject stale or future-dated public news before alerting
+
+### Finding
+Even an individual feed entry with a title, permalink and parseable date can be a poor market alert if it is several days old or implausibly future-dated. On a fresh runner or after state reset, such an archived item could be emitted as if it were a new catalyst.
+
+### Implemented
+- Added UTC-normalized parsing for ISO-8601 and RFC-2822 publication dates. Naive timestamps are explicitly interpreted as UTC instead of inheriting the runner's local timezone.
+- Added a publication freshness gate in `trump_tracker.py`: by default, item-level public catalysts older than 72 hours or more than 10 minutes in the future are skipped before deduplication and alert creation.
+- Added `SPUTNIK_MAX_NEWS_AGE_HOURS` as an optional override, validated to the range 1–720 hours; invalid values fall back to 72 hours.
+- Added regression tests for timezone normalization, recent dates, stale dates, implausible future dates, and end-to-end suppression of a stale feed item.
+- Fixed the collector tests to use a deterministic UTC clock and a recent publication fixture.
+
+### Evidence and limits
+- The reproduced risk is in the feed collector's prior behavior: any parseable date could pass the parser regardless of age, and the item could then be treated as newly detected.
+- The freshness decision is deterministic and uses only the Python standard library. The 72-hour window is a safety default, not a claim that every older article is irrelevant; operators can widen it explicitly if their use case requires historical monitoring.
+- Tests have been added to the existing item-intelligence CI path. They were not executed locally in this run; the corresponding GitHub Actions result must be checked before claiming the new cases pass. No live feed or Telegram delivery was tested.
+- Informational only: no LONG/SHORT inference, price/SL/TP, broker orders, or direct GAGARIN integration was added.
