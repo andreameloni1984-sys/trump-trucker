@@ -37,8 +37,8 @@ def _text(node, names):
     child = _direct(node, names)
     return "".join(child.itertext()).strip() if child is not None else ""
 
-def _link(node):
-    """Return an item permalink; never mistake an Atom self/feed link for one."""
+def _link(node, base_url=""):
+    """Return the first valid individual-item permalink, skipping bad alternates."""
     links = [child for child in list(node) if _name(child.tag) == "link"]
     for child in links:
         # In Atom, a missing rel means "alternate" by specification. RSS uses
@@ -46,8 +46,13 @@ def _link(node):
         rel_attr = child.attrib.get("rel")
         rel = str(rel_attr or "alternate").strip().lower()
         href = str(child.attrib.get("href") or "").strip()
-        if href and rel in {"alternate", ""}:
-            return href
+        if not href or rel not in {"alternate", ""}:
+            continue
+        if base_url and not _is_individual_permalink(urljoin(base_url, href), base_url):
+            # One malformed or feed-level alternate must not hide a later,
+            # valid article permalink in the same entry.
+            continue
+        return href
     for child in links:
         # Compatibility with RSS 2.0: <link>https://host/article</link>.
         # Do not fall back to Atom rel="self", "enclosure", or other typed links.
@@ -55,6 +60,8 @@ def _link(node):
             continue
         value = "".join(child.itertext()).strip()
         if value:
+            if base_url and not _is_individual_permalink(urljoin(base_url, value), base_url):
+                continue
             return value
     return ""
 
@@ -196,7 +203,7 @@ def parse_public_feed(raw, base_url):
     for index, entry in enumerate(entries):
         title = clean_public_text(_text(entry, {"title"}))
         body = clean_public_text(_text(entry, {"encoded", "description", "summary", "content"}))
-        raw_link = _link(entry)
+        raw_link = _link(entry, base_url)
         # `updated` is not a publication timestamp: an old article edited today
         # must not be promoted to a fresh market catalyst. Require an explicit
         # publication field (RSS pubDate / Atom published / date metadata).
