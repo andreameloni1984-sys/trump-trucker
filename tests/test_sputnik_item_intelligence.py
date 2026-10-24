@@ -193,7 +193,35 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(health["status"], "OK_NO_ELIGIBLE_ITEMS")
         self.assertIsNone(trump_tracker.public_feed_health_alert(state))
 
-    def test_trade_policy_maps_to_watch_candidates_not_orders(self):
+    def test_intelligence_alert_shows_validated_original_permalink(self):
+        message = trump_tracker.intelligence_message({
+            "source": "TRUTH_ARCHIVE_RSS",
+            "title": "Policy announcement",
+            "published": "2026-10-24T06:00:00Z",
+            "domains": ["TRADE_POLICY"],
+            "evidence": "PUBLIC_RSS_ITEM",
+            "url": "https://archive.example/posts/123",
+            "primary_url": "https://social.example/@public/123?utm_source=feed",
+        })
+        self.assertIn("🔗 Articolo/archivio: https://archive.example/posts/123", message)
+        self.assertIn("🔗 Post originale: https://social.example/@public/123", message)
+        self.assertIn("non è un segnale LONG/SHORT", message)
+
+    def test_intelligence_alert_omits_invalid_original_permalink(self):
+        message = trump_tracker.intelligence_message({
+            "source": "TRUTH_ARCHIVE_RSS",
+            "title": "Policy announcement",
+            "published": "2026-10-24T06:00:00Z",
+            "domains": ["TRADE_POLICY"],
+            "evidence": "PUBLIC_RSS_ITEM",
+            "url": "https://archive.example/posts/123",
+            "primary_url": "javascript:alert(1)",
+        })
+        self.assertIn("🔗 Articolo/archivio: https://archive.example/posts/123", message)
+        self.assertNotIn("javascript:", message)
+        self.assertNotIn("🔗 Post originale:", message)
+
+    def test_trade_policy_maps_to_watch_candidates_not_orders(selfelf):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
         )
