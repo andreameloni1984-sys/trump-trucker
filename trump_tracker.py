@@ -23,7 +23,7 @@ from pathlib import Path
 from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
-from sputnik_public_sources import parse_public_feed, public_item_identity
+from sputnik_public_sources import parse_public_feed, public_item_identity, publication_is_recent
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -399,6 +399,16 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         # It must never be emitted as a market catalyst or Telegram intelligence
         # event; only the dated, item-level feed path below may create findings.
 
+    # Do not present old archive entries as newly discovered market catalysts.
+    # The window is configurable for unusual workflows, but invalid settings
+    # fall back to a conservative 72-hour default.
+    try:
+        max_news_age_hours = float(os.getenv("SPUTNIK_MAX_NEWS_AGE_HOURS", "72"))
+    except (TypeError, ValueError, OverflowError):
+        max_news_age_hours = 72.0
+    if not 0 < max_news_age_hours <= 24 * 30:
+        max_news_age_hours = 72.0
+
     # Item-level feed scan: each article is deduplicated independently, so a
     # page-level digest cannot hide a new post added to an otherwise unchanged
     # archive. A feed item is a catalyst candidate, never an automatic trade.
@@ -416,7 +426,14 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
             continue
 
+        stale_or_future_count = 0
+        scan_now = utc_now()
         for row in rows:
+            if not publication_is_recent(
+                row.get("published"), now=scan_now, max_age_hours=max_news_age_hours
+            ):
+                stale_or_future_count += 1
+                continue
             title = str(row.get("title") or "").strip()
             body = " ".join(part for part in (title, str(row.get("text") or "").strip()) if part)
             domains = _domains_for_public_text(body)
@@ -431,7 +448,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             digest = hashlib.sha256(("PUBLIC_ITEM|" + identity).encode("utf-8")).hexdigest()[:24]
             if digest in known_items:
                 continue
-            known_items[digest] = utc_now().isoformat()
+            known_items[digest] = scan_now.isoformat()
             finding = {
                 "source": source,
                 "feed_url": feed_url,
@@ -443,11 +460,17 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "text": body[:6000],
                 "evidence": "PUBLIC_RSS_ITEM",
                 "status": "POTENTIAL_CORRELATION",
-                "detected_at": utc_now().isoformat(),
+                "detected_at": scan_now.isoformat(),
                 "event_id": digest,
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
+        if stale_or_future_count:
+            print(
+                f"SPUTNIK: {stale_or_future_count} item(s) outside the publication freshness "
+                f"window skipped from {feed_url}; max age {max_news_age_hours:g}h, "
+                "future tolerance 10m."
+            )
 
     # Bound per-item deduplication state and history to prevent unbounded growth.
     if len(known_items) > 2000:
