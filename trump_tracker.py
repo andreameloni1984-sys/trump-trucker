@@ -467,7 +467,12 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     # page-level digest cannot hide a new post added to an otherwise unchanged
     # archive. A feed item is a catalyst candidate, never an automatic trade.
     feed_health = state.setdefault("public_feed_health", {})
-    for feed_url in _configured_rss_feeds():
+    configured_feeds = _configured_rss_feeds()
+    configured_set = set(configured_feeds)
+    for obsolete_url in list(feed_health):
+        if obsolete_url not in configured_set:
+            feed_health.pop(obsolete_url, None)
+    for feed_url in configured_feeds:
         source = _public_feed_source_label(feed_url)
         try:
             rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
