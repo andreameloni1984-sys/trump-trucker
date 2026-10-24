@@ -130,9 +130,11 @@ def _is_individual_permalink(link, base_url):
     if not link:
         return False
     resolved = urljoin(base_url, link)
-    parsed = urlsplit(resolved)
-    if parsed.scheme.lower() not in {"http", "https"} or not parsed.netloc:
+    # The parser also uses this gate before publishing item links. Reuse the
+    # canonical validator so user-info, invalid ports and non-web schemes fail.
+    if not canonical_public_item_url(resolved):
         return False
+    parsed = urlsplit(resolved)
     # A source homepage or feed endpoint is not an individual article/post.
     if not parsed.path or parsed.path.rstrip("/") == "":
         return False
@@ -150,7 +152,13 @@ _TRACKING_QUERY_KEYS = {
 
 def canonical_public_item_url(value):
     """Normalize an individual public-item URL for cross-feed deduplication."""
-    parsed = urlsplit(str(value or "").strip())
+    raw = str(value or "").strip()
+    if not raw or "\\" in raw or any(ch.isspace() or ord(ch) < 32 or ord(ch) == 127 for ch in raw):
+        return ""
+    try:
+        parsed = urlsplit(raw)
+    except (TypeError, ValueError):
+        return ""
     scheme = parsed.scheme.lower()
     if scheme not in {"http", "https"} or not parsed.hostname:
         return ""
@@ -206,6 +214,8 @@ def _descendant(node, names):
 
 def parse_public_feed(raw, base_url):
     """Return individual RSS 2.0 or Atom entries with source metadata."""
+    if not canonical_public_item_url(base_url):
+        raise ValueError("URL del feed pubblico non valida: è richiesto HTTP/HTTPS")
     try:
         root = ET.fromstring(raw)
     except (ET.ParseError, TypeError, ValueError) as exc:
@@ -236,6 +246,8 @@ def parse_public_feed(raw, base_url):
         original = _descendant(entry, {"originalurl", "original_url", "truthoriginalurl"})
         if original:
             original = urljoin(base_url, original)
+            if not canonical_public_item_url(original):
+                original = ""
         result.append({
             "id": identity[:500], "title": title[:300], "text": body[:6000],
             "published": published[:100], "updated": updated[:100],
