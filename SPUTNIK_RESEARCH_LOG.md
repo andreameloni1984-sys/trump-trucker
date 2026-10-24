@@ -240,3 +240,25 @@ The feed parser accepted Atom `<updated>` as a fallback for `published`. An old 
 - This is a conservative quality gate. Some Atom publishers omit `published`; their entries will now be skipped rather than risk misrepresenting an edit timestamp as the original publication time. If a source documents a reliable publication-time mapping, it can be handled explicitly in a later source-specific adapter.
 - Regression tests were added, but their execution result must be checked in GitHub Actions before claiming they pass. No live feed fetch or Telegram delivery was tested.
 - Informational only: no LONG/SHORT inference, price/SL/TP, orders, or direct GAGARIN integration was added.
+
+
+## 2026-10-24 — Canonicalize publication timestamps in metadata deduplication fallback
+
+### Finding
+Cross-feed deduplication already preferred canonical item/permalink URLs. When a row had no usable URL, however, the fallback identity hashed the raw publication-date string. Two feeds could describe the same title and instant with different formats or timezone offsets (for example, ISO-8601 `+01:00` versus RFC-2822 `GMT`) and be emitted twice.
+
+### Implemented
+- The metadata fallback in `public_item_identity` now parses publication time with the existing timezone-aware parser and hashes its canonical UTC ISO-8601 representation alongside the whitespace-normalized, case-folded title.
+- Added a regression test proving equivalent publication instants in different formats and title whitespace/case produce the same fallback identity.
+- URL-based identity remains preferred; rows without a valid date still do not receive a metadata fallback identity.
+
+### Evidence and limits
+- The mismatch was visible in the prior fallback: it hashed the raw `published` text, while `parse_publication_datetime` already supports ISO-8601/RFC-2822 and normalizes to UTC.
+- This improves deduplication only for URL-less items with a parseable publication date and normalized-equal titles. It does not merge paraphrased headlines, and timestamps with materially different publication times remain distinct.
+- The new regression test was added but has **not been executed in this run**. Repository CI status and the full test suite must be checked before claiming the test passes. No live feed or Telegram delivery was verified.
+- Informational only: no LONG/SHORT signal, price, stop loss, take profit, order execution, or Gagarin integration was added.
+
+### Change references
+- Parser commit: `60aaf0dd1ddb8affcc8fce41fff307816f6ba7c8`
+- Regression test commit: `9ede1d3180cd2cd595ca61f46d8542764b176a42`
+- Follow-up: run the parser and item-intelligence test suites in GitHub Actions and inspect the run result.
