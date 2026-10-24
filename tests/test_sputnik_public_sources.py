@@ -34,6 +34,29 @@ class PublicFeedParserTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             parse_public_feed(b"<html>not a feed</html>", "https://example.gov/feed")
 
+    def test_requires_title_valid_date_and_individual_permalink(self):
+        raw = b'''<rss><channel>
+          <item><title>Missing link</title><pubDate>Mon, 12 Oct 2026 06:00:00 GMT</pubDate></item>
+          <item><title>Missing date</title><link>/briefings/no-date</link></item>
+          <item><title>Invalid date</title><link>/briefings/bad-date</link><pubDate>soon-ish</pubDate></item>
+          <item><title>Homepage only</title><link>https://example.gov/</link><pubDate>Mon, 12 Oct 2026 06:00:00 GMT</pubDate></item>
+          <item><title>Valid item</title><link>/briefings/valid</link><guid>valid-1</guid><pubDate>Mon, 12 Oct 2026 06:00:00 GMT</pubDate></item>
+        </channel></rss>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed/")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["title"], "Valid item")
+        self.assertEqual(rows[0]["url"], "https://example.gov/briefings/valid")
+
+    def test_atom_prefers_alternate_permalink_over_self_link(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><id>item-8</id><title>Tariff decision</title>
+          <link rel="self" href="https://example.gov/feed/item-8"/>
+          <link rel="alternate" href="https://example.gov/news/tariff-decision"/>
+          <updated>2026-10-12T06:00:00Z</updated><summary>Details</summary></entry></feed>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["url"], "https://example.gov/news/tariff-decision")
+
     def test_empty_feed_is_valid(self):
         self.assertEqual(parse_public_feed(b"<rss><channel/></rss>", "https://example.gov/feed"), [])
 
