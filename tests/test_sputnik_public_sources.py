@@ -55,13 +55,16 @@ class PublicFeedParserTests(unittest.TestCase):
         raw = b'''<feed xmlns="http://www.w3.org/2005/Atom" xmlns:truth="https://example.test/truth">
           <entry><id>status-7</id><title>Oil supply disruption</title>
           <link href="https://archive.example/statuses/7"/>
-          <updated>2026-10-12T06:00:00Z</updated>
+          <published>2026-10-12T06:00:00Z</published>
+          <updated>2026-10-13T06:00:00Z</updated>
           <summary type="html">&lt;p&gt;Shipping halted&lt;/p&gt;</summary>
           <truth:originalUrl>https://social.example/@public/7</truth:originalUrl>
           </entry></feed>'''
         rows = parse_public_feed(raw, "https://archive.example/feed")
         self.assertEqual(rows[0]["url"], "https://archive.example/statuses/7")
         self.assertEqual(rows[0]["primary_url"], "https://social.example/@public/7")
+        self.assertEqual(rows[0]["published"], "2026-10-12T06:00:00Z")
+        self.assertEqual(rows[0]["updated"], "2026-10-13T06:00:00Z")
         self.assertEqual(rows[0]["text"], "Shipping halted")
 
     def test_invalid_xml_raises(self):
@@ -86,10 +89,19 @@ class PublicFeedParserTests(unittest.TestCase):
           <entry><id>item-8</id><title>Tariff decision</title>
           <link rel="self" href="https://example.gov/feed/item-8"/>
           <link rel="alternate" href="https://example.gov/news/tariff-decision"/>
+          <published>2026-10-12T06:00:00Z</published>
           <updated>2026-10-12T06:00:00Z</updated><summary>Details</summary></entry></feed>'''
         rows = parse_public_feed(raw, "https://example.gov/feed")
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["url"], "https://example.gov/news/tariff-decision")
+
+    def test_atom_updated_only_is_not_misrepresented_as_publication_date(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><id>item-updated-only</id><title>Old story edited today</title>
+          <link rel="alternate" href="https://example.gov/news/old-story"/>
+          <updated>2026-10-24T06:00:00Z</updated><summary>Edited text</summary></entry></feed>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed")
+        self.assertEqual(rows, [])
 
     def test_atom_self_link_without_alternate_is_not_treated_as_article(self):
         raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
