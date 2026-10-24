@@ -23,7 +23,7 @@ from pathlib import Path
 from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
-from sputnik_public_sources import parse_public_feed
+from sputnik_public_sources import parse_public_feed, public_item_identity
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -422,10 +422,13 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             domains = _domains_for_public_text(body)
             if not domains:
                 continue
-            identity = str(row.get("id") or row.get("url") or (title + "|" + str(row.get("published") or "")))
-            digest = hashlib.sha256(
-                (source + "|" + feed_url + "|" + identity).encode("utf-8")
-            ).hexdigest()[:24]
+            # Deduplicate by canonical item permalink, not feed URL or feed-local
+            # GUID: the same public post may appear in multiple configured feeds.
+            identity = public_item_identity(row)
+            if not identity:
+                print(f"SPUTNIK: item skipped; no stable public identity in {feed_url}")
+                continue
+            digest = hashlib.sha256(("PUBLIC_ITEM|" + identity).encode("utf-8")).hexdigest()[:24]
             if digest in known_items:
                 continue
             known_items[digest] = utc_now().isoformat()
