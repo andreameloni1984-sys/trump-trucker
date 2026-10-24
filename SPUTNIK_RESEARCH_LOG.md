@@ -418,3 +418,24 @@ The feed parser preserved `originalUrl` metadata after URL-joining it to the arc
 - Parser commit: `e43bdb63fdd522fad4e0a68191a93c763c508e96`
 - Regression-test commit: `3a7335de804a3b47924405a386e87506da258271`
 - Follow-up: run `tests/test_sputnik_public_sources.py` and `tests/test_sputnik_item_intelligence.py` in CI and inspect the result before merging.
+
+
+## 2026-10-24 — Reject credential-bearing article permalinks
+
+### Finding
+The individual-permalink gate checked HTTP(S) scheme, host, and whether the URL differed from the feed endpoint, but it did not reject URLs containing embedded usernames/passwords or malformed ports. Such URLs are poor public evidence links: credentials can obscure the destination and malformed authority data should not pass extraction.
+
+### Implemented
+- `_is_individual_permalink` now rejects URLs with embedded credentials and catches invalid port syntax before treating a link as an individual public item.
+- Added a parser regression test with an RSS item whose permalink embeds credentials; the item must be excluded.
+
+### Evidence and limits
+- The check is placed at the extraction gate, before an item can be returned for alert generation or deduplication.
+- This validates URL structure only. It does not fetch the destination, prove the publisher's identity, or confirm that the page content matches the feed metadata.
+- The regression test was added but was not executed in this run. CI status and full-suite results must be checked before claiming it passes; no live feed or Telegram delivery was tested.
+- Informational only: no LONG/SHORT signal, price, stop loss, take profit, real order, or direct Gagarin integration was added.
+
+### Change references
+- Parser commit: `70d08c193cad3d6e9d527fd598f0c2e21310b4eb`
+- Regression-test commit: `a57a429b8f89701322d0af456d53f9048a7647d3`
+- Follow-up: run the parser and item-intelligence test suites in GitHub Actions and review the results.
