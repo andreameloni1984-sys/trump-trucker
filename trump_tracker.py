@@ -368,6 +368,60 @@ def _configured_rss_feeds() -> list[str]:
     ]
 
 
+def _public_feed_source_label(url: str) -> str:
+    lower_url = str(url or "").lower()
+    if "whitehouse.gov" in lower_url:
+        return "WHITE_HOUSE_RSS"
+    if "trumpstruth.org" in lower_url:
+        return "TRUTH_ARCHIVE_RSS"
+    return "PUBLIC_RSS"
+
+
+def public_feed_health_alert(state: dict[str, Any]) -> dict[str, str] | None:
+    """Build one deduplicated operational alert for unavailable/invalid feeds."""
+    health = state.get("public_feed_health", {})
+    failures = []
+    for url, row in health.items():
+        if not isinstance(row, dict) or row.get("status") != "ERROR":
+            continue
+        parsed = urllib.parse.urlsplit(str(url))
+        host = parsed.netloc or _public_feed_source_label(str(url))
+        failures.append((
+            _public_feed_source_label(str(url)),
+            host,
+            str(row.get("error_type") or "UnknownError"),
+            str(url),
+        ))
+
+    if not failures:
+        # Recovery clears the latch so a later outage can alert again.
+        state["public_feed_health_alert_signature"] = ""
+        return None
+
+    failures.sort()
+    signature_payload = "|".join(
+        f"{source}:{url}:{error_type}" for source, _host, error_type, url in failures
+    )
+    signature = hashlib.sha256(signature_payload.encode("utf-8")).hexdigest()[:16]
+    if state.get("public_feed_health_alert_signature") == signature:
+        return None
+
+    details = "\n".join(
+        f"• {source} ({host}): {error_type}"
+        for source, host, error_type, _url in failures
+    )
+    message = (
+        "🛰️ SPUTNIK — AVVISO SALUTE FONTI\n"
+        "━━━━━━━━━━━━━━━━━━\n"
+        "⚠️ Acquisizione RSS/Atom degradata:\n"
+        f"{details}\n"
+        "ℹ️ Una o più fonti non sono state acquisite o non hanno fornito un feed valido.\n"
+        "⛔ Nessun segnale di mercato è dedotto da questo problema tecnico.\n"
+        "━━━━━━━━━━━━━━━━━━"
+    )
+    return {"signature": signature, "message": message}
+
+
 def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     if os.getenv("SPUTNIK_SOCIAL_ENABLED", "1").strip().lower() not in {"1", "true", "yes"}:
         return []
@@ -412,22 +466,31 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     # Item-level feed scan: each article is deduplicated independently, so a
     # page-level digest cannot hide a new post added to an otherwise unchanged
     # archive. A feed item is a catalyst candidate, never an automatic trade.
+    feed_health = state.setdefault("public_feed_health", {})
     for feed_url in _configured_rss_feeds():
-        lower_feed_url = feed_url.lower()
-        if "whitehouse.gov" in lower_feed_url:
-            source = "WHITE_HOUSE_RSS"
-        elif "trumpstruth.org" in lower_feed_url:
-            source = "TRUTH_ARCHIVE_RSS"
-        else:
-            source = "PUBLIC_RSS"
+        source = _public_feed_source_label(feed_url)
         try:
             rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
         except Exception as exc:
+            feed_health[feed_url] = {
+                "source": source,
+                "status": "ERROR",
+                "checked_at": utc_now().isoformat(),
+                "parsed_items": 0,
+                "error_type": type(exc).__name__,
+            }
             print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
             continue
 
-        stale_or_future_count = 0
         scan_now = utc_now()
+        feed_health[feed_url] = {
+            "source": source,
+            "status": "OK" if rows else "OK_NO_ELIGIBLE_ITEMS",
+            "checked_at": scan_now.isoformat(),
+            "parsed_items": len(rows),
+            "error_type": "",
+        }
+        stale_or_future_count = 0
         for row in rows:
             if not publication_is_recent(
                 row.get("published"), now=scan_now, max_age_hours=max_news_age_hours
@@ -1387,6 +1450,7 @@ def main() -> None:
             stored_transactions[key] = asdict(tx)
             new_transactions.append(tx)
     intelligence = intelligence_snapshot(state)
+    feed_health_alert = public_feed_health_alert(state)
     gagarin_confirmation = forward_findings_to_gagarin(intelligence)
     if gagarin_confirmation:
         state["gagarin_confirmations"] = {
@@ -1420,6 +1484,17 @@ def main() -> None:
         message = intelligence_message(item)
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+
+    if feed_health_alert:
+        print(feed_health_alert["message"])
+        if send_telegram(
+            feed_health_alert["message"],
+            chat_id=str(state.get("telegram_chat_id") or "").strip() or None,
+        ):
+            # Only latch a warning after Telegram confirms delivery. If sending
+            # fails, the next run can retry instead of silently losing the alert.
+            state["public_feed_health_alert_signature"] = feed_health_alert["signature"]
+            save_state(state)
 
     if gagarin_confirmation:
         message = gagarin_confirmation_message(gagarin_confirmation)
