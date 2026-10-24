@@ -327,3 +327,27 @@ The Atom link selector returned the first `rel="alternate"` URL and let the late
 - Parser commit: `211d34bbf91a376fe329bc09b99d396f12ad2f60`
 - Regression-test commit: `7e90f690d57b0a66ef9fe57858ae0752403cd93f`
 - Follow-up: run `tests/test_sputnik_public_sources.py` and the full item-intelligence suite in GitHub Actions and inspect the result before merge.
+
+
+## 2026-10-24 — Retry item-level alerts when Telegram delivery fails
+
+### Finding
+`intelligence_snapshot` reserves each finding's deduplication key before the alert is sent, and the main loop persisted state before calling Telegram. If `send_telegram` returned `False` (for example, missing credentials or a temporary Telegram/network error), the item remained marked as seen and would be suppressed on the next scan. This could silently lose a valid dated source alert.
+
+### Implemented
+- Added `deliver_intelligence_findings` to centralize item-alert delivery.
+- On confirmed Telegram success, the deduplication key remains in state so the same item is not repeatedly sent.
+- On a failed send, the helper removes that item's `event_id` from `intelligence_items` and persists the rollback, allowing a later scan to rediscover and retry it.
+- Replaced the previous inline intelligence-send loop with the helper.
+- Added regression tests for both failure (key removed and state saved) and success (key retained).
+
+### Evidence and limits
+- `send_telegram` already returns a boolean success indicator. The previous caller ignored it, while the item key had already been added by `intelligence_snapshot` and saved before delivery; the new helper uses that existing return contract.
+- The behavior is designed for at-least-once delivery: if Telegram accepts a message but the process crashes before state persistence elsewhere, a duplicate may still occur. This change does not claim exactly-once delivery.
+- The code and tests were committed, then reread from GitHub to verify the helper, caller replacement, test cases and this log entry. The full Python test suite could not be executed in this run because this connector provides repository reads/writes but no workflow-dispatch action or local checkout. CI status must be checked after the final commit; no test pass is claimed. No live Telegram delivery was attempted.
+- Informational only: no LONG/SHORT inference, prices, stop loss, take profit, real orders, or new Gagarin integration was added.
+
+### Change references
+- Implementation commit: `3b7e364176cf960f8ccec3e403f4251b9d3a04b3`
+- Regression-test commit: `a7b9f1d3b5696b117d96fa2827b9fcd94cfff6c1`
+- Follow-up: run `tests/test_sputnik_item_intelligence.py` in CI and inspect both new delivery-state tests before merge.
