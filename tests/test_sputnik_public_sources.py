@@ -1,5 +1,5 @@
 import unittest
-from sputnik_public_sources import parse_public_feed
+from sputnik_public_sources import canonical_public_item_url, parse_public_feed, public_item_identity
 
 class PublicFeedParserTests(unittest.TestCase):
     def test_rss_keeps_title_date_url_and_plain_text(self):
@@ -56,6 +56,30 @@ class PublicFeedParserTests(unittest.TestCase):
         rows = parse_public_feed(raw, "https://example.gov/feed")
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["url"], "https://example.gov/news/tariff-decision")
+
+
+    def test_canonical_url_removes_tracking_query_and_fragment(self):
+        self.assertEqual(
+            canonical_public_item_url(
+                "HTTPS://Example.GOV/news/story/?utm_source=mail&fbclid=abc&id=7#section"
+            ),
+            "https://example.gov/news/story?id=7",
+        )
+
+    def test_item_identity_prefers_original_permalink_across_archive_mirrors(self):
+        first = {
+            "url": "https://archive-a.example/post/9?utm_medium=rss",
+            "primary_url": "https://social.example/@public/9?utm_source=feed",
+            "title": "Same public post",
+            "published": "2026-10-24T08:00:00Z",
+        }
+        second = {
+            "url": "https://archive-b.example/post/9",
+            "primary_url": "https://social.example/@public/9",
+            "title": "Same public post mirrored elsewhere",
+            "published": "2026-10-24T08:00:00Z",
+        }
+        self.assertEqual(public_item_identity(first), public_item_identity(second))
 
     def test_empty_feed_is_valid(self):
         self.assertEqual(parse_public_feed(b"<rss><channel/></rss>", "https://example.gov/feed"), [])
