@@ -287,10 +287,40 @@ def extract_transactions(events: list[FilingEvent]) -> list[TransactionRecord]:
 
 
 class TextExtractor(HTMLParser):
+    """Extract visible page text, excluding metadata and non-editorial chrome."""
+
+    _NON_CONTENT_TAGS = {"script", "style", "noscript", "svg", "nav", "header", "footer", "aside"}
+
     def __init__(self) -> None:
-        super().__init__()
+        super().__init__(convert_charrefs=True)
         self.parts: list[str] = []
+        self._ignored_depth = 0
+        self._ignored_tags: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        tag = tag.lower()
+        attr_map = {key.lower(): (value or "").lower() for key, value in attrs}
+        # JSON-LD and other scripts contain schema/site metadata, not article prose.
+        if self._ignored_depth or tag in self._NON_CONTENT_TAGS or (
+            tag == "script" and "ld+json" in attr_map.get("type", "")
+        ):
+            self._ignored_depth += 1
+            self._ignored_tags.append(tag)
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if self._ignored_depth:
+            # HTML may be imperfect; close the matching ignored element and any
+            # nested ignored tags above it instead of leaking metadata as text.
+            if tag in self._ignored_tags:
+                index = len(self._ignored_tags) - 1 - self._ignored_tags[::-1].index(tag)
+                removed = len(self._ignored_tags) - index
+                del self._ignored_tags[index:]
+                self._ignored_depth = max(0, self._ignored_depth - removed)
+
     def handle_data(self, data: str) -> None:
+        if self._ignored_depth:
+            return
         text = re.sub(r"\s+", " ", data).strip()
         if text:
             self.parts.append(text)
