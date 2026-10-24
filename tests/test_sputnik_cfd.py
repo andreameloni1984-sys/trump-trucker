@@ -94,5 +94,40 @@ class ConditionalPlanDirectionTests(unittest.TestCase):
                     self.assertGreater(result["entry"], result["tp1"])
 
 
+
+class ConditionalPlanInstrumentResolutionTests(unittest.TestCase):
+    def setUp(self):
+        self.quote = {
+            "price": 100,
+            "atr": 2,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "trigger_confirmed": True,
+        }
+
+    def test_company_name_is_not_misidentified_as_gold(self):
+        result = build_conditional_trade_plan(
+            {"candidate": "Goldman Sachs", "bias": "LONG"},
+            {"GOLD": self.quote},
+        )
+        self.assertEqual(result["status"], "WAIT")
+        self.assertIsNone(result["entry"])
+        self.assertIsNone(result["stop"])
+        self.assertIn("non riconosciuto", result["reason"])
+
+    def test_exact_supported_aliases_still_resolve(self):
+        cases = (
+            ("Gold", {"GOLD": self.quote}),
+            ("XAU/USD", {"GOLD": self.quote}),
+            ("NASDAQ-100", {"NASDAQ100": self.quote}),
+        )
+        for candidate, quotes in cases:
+            with self.subTest(candidate=candidate):
+                result = build_conditional_trade_plan(
+                    {"candidate": candidate, "bias": "LONG"}, quotes
+                )
+                self.assertEqual(result["direction"], "LONG")
+                self.assertEqual(result["status"], "TRIGGER CONFIRMED")
+
+
 if __name__ == "__main__":
     unittest.main()

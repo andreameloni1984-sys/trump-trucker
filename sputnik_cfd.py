@@ -43,6 +43,43 @@ def _quote_is_fresh(quote: dict[str, Any], max_age_minutes: int = 30) -> bool:
         return False
 
 
+def _normalize_instrument_label(value: Any) -> str:
+    """Normalize a candidate label without using substring-based identity guesses."""
+    import re
+    return " ".join(re.sub(r"[^A-Z0-9]+", " ", str(value or "").upper()).split())
+
+
+_CONDITIONAL_INSTRUMENTS = (
+    (frozenset({
+        "BRENT", "BRENT CRUDE", "BRENT CRUDE OIL", "BRENT OIL",
+        "BRENT CFD", "BRENT SPOT", "BRENT FUTURES", "BRENT CRUDE FUTURES",
+        "UKOIL", "BRN",
+    }), ("BRENT", "UKOIL", "BRN")),
+    (frozenset({
+        "WTI", "WTI CRUDE", "WTI CRUDE OIL", "WTI OIL",
+        "WTI CFD", "WTI SPOT", "WTI FUTURES", "WTI CRUDE FUTURES",
+        "USOIL", "CL",
+    }), ("WTI", "USOIL", "CL")),
+    (frozenset({
+        "GOLD", "GOLD SPOT", "GOLD CFD", "ORO", "ORO SPOT", "ORO CFD",
+        "XAUUSD", "XAU USD", "GOLD XAU USD", "ORO XAU USD",
+    }), ("GOLD", "XAUUSD", "XAU/USD")),
+    (frozenset({
+        "NASDAQ100", "NASDAQ 100", "NASDAQ 100 INDEX", "NASDAQ 100 CFD",
+        "NAS100", "USTEC", "QQQ", "NDX",
+    }), ("NASDAQ100", "NAS100", "USTEC", "QQQ", "NDX")),
+)
+
+
+def _conditional_quote_keys(candidate: str) -> list[str]:
+    """Return quote keys only for an exact supported instrument alias."""
+    label = _normalize_instrument_label(candidate)
+    for aliases, quote_keys in _CONDITIONAL_INSTRUMENTS:
+        if label in aliases:
+            return list(quote_keys)
+    return []
+
+
 def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | None,
                                  risk_pct: float = DEFAULT_RISK_PCT) -> dict[str, Any]:
     """Calculate indicative SL/TP from a fresh broker quote and ATR.
@@ -52,19 +89,18 @@ def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | 
     """
     if not 0 < risk_pct <= 5:
         raise ValueError("risk_pct must be between 0 and 5")
-    candidate = str(plan.get("candidate") or "").upper()
-    keys = []
-    if "BRENT" in candidate: keys = ["BRENT", "UKOIL", "BRN"]
-    elif "WTI" in candidate: keys = ["WTI", "USOIL", "CL"]
-    elif "ORO" in candidate or "GOLD" in candidate: keys = ["GOLD", "XAUUSD", "XAU/USD"]
-    elif "NASDAQ" in candidate: keys = ["NASDAQ100", "NAS100", "USTEC", "QQQ"]
+    candidate = str(plan.get("candidate") or "").strip().upper()
+    keys = _conditional_quote_keys(candidate)
     quotes = quotes or {}
-    quote = next((quotes.get(k) or quotes.get(k.lower()) for k in keys
-                  if isinstance(quotes.get(k) or quotes.get(k.lower()), dict)), None)
     result = {"candidate": candidate or "N/D", "status": "WAIT", "entry": None,
               "stop": None, "tp1": None, "tp2": None, "rr_tp1": 1.0,
               "rr_tp2": 2.0, "quote_time": None,
               "reason": "Quotazione broker aggiornata o ATR non disponibili."}
+    if not keys:
+        result["reason"] = "Strumento non riconosciuto o alias non supportato: nessuna quotazione abbinata."
+        return result
+    quote = next((quotes.get(k) or quotes.get(k.lower()) for k in keys
+                  if isinstance(quotes.get(k) or quotes.get(k.lower()), dict)), None)
     if not quote:
         return result
     result["quote_time"] = quote.get("timestamp") or quote.get("updated_at") or quote.get("as_of")
