@@ -200,3 +200,25 @@ The RSS/Atom collector logged a fetch or parse exception and continued. If a sou
 - The tests were added but have not yet been executed in this run. CI status must be checked after the last commit; no live source fetch or Telegram delivery is claimed.
 - This is source-health observability, not proof that a feed is authentic or that a market catalyst is predictive. A source may return a syntactically valid but incomplete feed; such a case still requires separate live-source validation.
 - Informational only: no LONG/SHORT inference, price/SL/TP, broker orders, or direct GAGARIN integration was added.
+
+## 2026-10-24 — Reject Atom self links as article permalinks
+
+### Finding
+The Atom parser selected the first available link when an entry had no `rel="alternate"` link. That fallback could treat `rel="self"` (a representation/feed endpoint) as the public article permalink, allowing a non-article URL to pass the item-level extraction gate.
+
+### Implemented
+- The link selector now accepts Atom alternate links (including Atom's default alternate relation when `rel` is omitted) and legacy RSS text-valued `<link>` elements.
+- It no longer falls back to explicitly typed Atom links such as `rel="self"` or `rel="enclosure"` when no alternate link exists.
+- Added a regression test proving an Atom entry with only a self link is excluded, while the existing alternate-over-self test remains in place.
+
+### Evidence and limits
+- The defect was identified directly in `sputnik_public_sources.py::_link`; the new test uses a minimal Atom feed fixture and requires no network access.
+- This reduces false article-permalink candidates but cannot independently verify that an alternate URL is reachable or that its article text matches the feed entry.
+- The test has been added but has **not yet been executed in this run**. Await the pull-request CI result before claiming it passes.
+- No LONG/SHORT signal, price, stop loss, or take profit is generated. No orders or new Gagarin integration are added.
+
+### Change references
+- Parser commit: `2507b9cc130684ec260a41df5e4d1620696cf5b9`
+- Regression-test commit: `a174f359fea0c7b9e9f282ab0890650778793f4c`
+- Follow-up: confirm CI runs the complete unittest suite and inspect any failures before merging.
+
