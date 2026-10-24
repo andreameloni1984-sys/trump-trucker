@@ -117,6 +117,62 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(findings, [])
         self.assertEqual(state.get("intelligence_items", {}), {})
 
+    def test_feed_failures_are_recorded_and_alerted_once_until_recovery(self):
+        state = {}
+        feed_url = "https://www.trumpstruth.org/feed"
+        env = {
+            "SPUTNIK_SOCIAL_ENABLED": "1",
+            "SPUTNIK_RSS_FEEDS": feed_url,
+        }
+        with patch.dict(os.environ, env), patch.object(
+            trump_tracker, "fetch_public_text", side_effect=OSError("offline in test")
+        ), patch.object(
+            trump_tracker, "fetch_public_feed", side_effect=OSError("feed offline")
+        ):
+            self.assertEqual(trump_tracker.intelligence_snapshot(state), [])
+
+        health = state["public_feed_health"][feed_url]
+        self.assertEqual(health["source"], "TRUTH_ARCHIVE_RSS")
+        self.assertEqual(health["status"], "ERROR")
+        self.assertEqual(health["error_type"], "OSError")
+
+        alert = trump_tracker.public_feed_health_alert(state)
+        self.assertIsNotNone(alert)
+        self.assertIn("TRUTH_ARCHIVE_RSS", alert["message"])
+        self.assertIn("OSError", alert["message"])
+        self.assertIn("Nessun segnale di mercato", alert["message"])
+        self.assertNotIn("LONG", alert["message"])
+        self.assertNotIn("SHORT", alert["message"])
+
+        # The caller records the signature only after Telegram confirms send.
+        state["public_feed_health_alert_signature"] = alert["signature"]
+        self.assertIsNone(trump_tracker.public_feed_health_alert(state))
+
+        with patch.dict(os.environ, env), patch.object(
+            trump_tracker, "fetch_public_text", side_effect=OSError("offline in test")
+        ), patch.object(trump_tracker, "fetch_public_feed", return_value=FEED):
+            trump_tracker.intelligence_snapshot(state)
+
+        self.assertEqual(state["public_feed_health"][feed_url]["status"], "OK")
+        self.assertIsNone(trump_tracker.public_feed_health_alert(state))
+        self.assertEqual(state["public_feed_health_alert_signature"], "")
+
+    def test_valid_empty_feed_is_not_misreported_as_an_outage(self):
+        state = {}
+        with patch.dict(os.environ, {
+            "SPUTNIK_SOCIAL_ENABLED": "1",
+            "SPUTNIK_RSS_FEEDS": "https://example.gov/feed.xml",
+        }), patch.object(
+            trump_tracker, "fetch_public_text", side_effect=OSError("offline in test")
+        ), patch.object(
+            trump_tracker, "fetch_public_feed", return_value=b"<rss><channel/></rss>"
+        ):
+            trump_tracker.intelligence_snapshot(state)
+
+        health = state["public_feed_health"]["https://example.gov/feed.xml"]
+        self.assertEqual(health["status"], "OK_NO_ELIGIBLE_ITEMS")
+        self.assertIsNone(trump_tracker.public_feed_health_alert(state))
+
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
