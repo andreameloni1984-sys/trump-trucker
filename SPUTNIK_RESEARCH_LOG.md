@@ -222,3 +222,21 @@ The Atom parser selected the first available link when an entry had no `rel="alt
 - Regression-test commit: `a174f359fea0c7b9e9f282ab0890650778793f4c`
 - Follow-up: confirm CI runs the complete unittest suite and inspect any failures before merging.
 
+
+
+## 2026-10-24 — Do not treat Atom update time as publication time
+
+### Finding
+The feed parser accepted Atom `<updated>` as a fallback for `published`. An old article edited recently could therefore pass the 72-hour freshness gate and be emitted as if it were a newly published market catalyst.
+
+### Implemented
+- The parser now requires an explicit publication field: RSS `pubDate`, Atom `published`, or a date metadata element.
+- Atom `updated` is preserved separately as `updated` metadata, but it is never substituted for `published` when checking freshness or constructing the event identity.
+- Added parser regression coverage for an Atom item that has only `updated`, and adjusted Atom fixtures to assert that publication and update timestamps remain distinct.
+- Added an end-to-end regression test where an old article has a recent `updated` timestamp; it must be rejected by the existing freshness gate and must not enter the deduplication state.
+
+### Evidence and limits
+- The defect was directly present in `parse_public_feed`, which previously searched `pubdate`, `published`, `updated`, and `date` in a single fallback list.
+- This is a conservative quality gate. Some Atom publishers omit `published`; their entries will now be skipped rather than risk misrepresenting an edit timestamp as the original publication time. If a source documents a reliable publication-time mapping, it can be handled explicitly in a later source-specific adapter.
+- Regression tests were added, but their execution result must be checked in GitHub Actions before claiming they pass. No live feed fetch or Telegram delivery was tested.
+- Informational only: no LONG/SHORT inference, price/SL/TP, orders, or direct GAGARIN integration was added.
