@@ -262,3 +262,25 @@ Cross-feed deduplication already preferred canonical item/permalink URLs. When a
 - Parser commit: `60aaf0dd1ddb8affcc8fce41fff307816f6ba7c8`
 - Regression test commit: `9ede1d3180cd2cd595ca61f46d8542764b176a42`
 - Follow-up: run the parser and item-intelligence test suites in GitHub Actions and inspect the run result.
+
+
+## 2026-10-24 — Surface the validated original permalink in intelligence alerts
+
+### Finding
+The item collector already retained both the archive/article permalink (`url`) and, when supplied by the feed, an original post permalink (`primary_url`). The Telegram intelligence formatter displayed only `url`, so readers could not directly open the original post even when the feed explicitly provided it. That reduced independent verification of archive-based items.
+
+### Implemented
+- The alert formatter now labels the feed/article link as `Articolo/archivio` and adds `Post originale` when a distinct, valid HTTP(S) original permalink is available.
+- Original links are passed through `canonical_public_item_url` before display; unsupported schemes and malformed URLs are omitted, and duplicate canonical links are not repeated.
+- Added regression tests for displaying both links and suppressing an invalid `javascript:` original link. The alert remains explicitly non-directional.
+
+### Evidence and limits
+- The collector already stores `primary_url` from recognized original-URL metadata, but the previous `intelligence_message` did not render it.
+- This improves source traceability only when a feed provides an original permalink. It does not independently prove the linked page is reachable or that its contents match the feed entry; that still requires live-source validation.
+- Regression tests were added but have **not been executed in this run**. No CI result, live feed access, or Telegram delivery is claimed.
+- No LONG/SHORT inference, price, stop loss, take profit, order execution, or new Gagarin integration was added.
+
+### Change references
+- Alert formatter commit: `40e916e4c3b1151ad8e42d739a104e13b2a8de40`
+- Regression tests commit: `147c0e9ff745db9c0b3f079ed924fa21de55029f`
+- Follow-up: run the repository unittest suite and verify actual Telegram rendering with a feed item that contains original-URL metadata.
