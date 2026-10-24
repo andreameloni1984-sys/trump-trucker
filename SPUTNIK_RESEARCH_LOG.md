@@ -139,6 +139,7 @@ The three recent notifications exposed a source-ingestion failure: the homepage 
 - The public feed parser now requires a non-empty title, a parseable publication date, and a real item permalink. It rejects missing/invalid dates, missing links, and links to the source homepage/feed endpoint instead of substituting the feed URL as the article URL.
 - Atom parsing prefers an alternate permalink over self links, which can otherwise point back to a feed representation rather than the article.
 - Added regression tests for generic homepage suppression, default source coverage, source labeling, missing/invalid item metadata, and Atom link selection.
+- Enabled manual dispatch for the item-intelligence test workflow so these checks can be rerun on demand.
 
 ### Evidence and limits
 - Evidence is the reproduced code path and regression cases for the three failure modes; this is not evidence of improved trading returns.
