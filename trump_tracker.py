@@ -665,7 +665,7 @@ def intelligence_message(item: dict[str, Any]) -> str:
     # Collector text starts with the headline; remove that prefix so the alert
     # can show useful source context without repeating the title.
     if title and excerpt.casefold().startswith(title.casefold()):
-        excerpt = excerpt[len(title):].lstrip(" \\t-–—:|.;")
+        excerpt = excerpt[len(title):].lstrip(" \t-–—:|.;")
     excerpt = excerpt[:420]
     item_url = str(item.get("url") or "").strip()
     original_url = canonical_public_item_url(item.get("primary_url"))
