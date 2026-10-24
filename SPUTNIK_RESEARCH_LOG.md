@@ -143,5 +143,5 @@ The three recent notifications exposed a source-ingestion failure: the homepage 
 ### Evidence and limits
 - Evidence is the reproduced code path and regression cases for the three failure modes; this is not evidence of improved trading returns.
 - The configured Trump archive feed endpoint has not been verified live in this repository-only run. If it does not serve RSS/Atom, Sputnik will log the feed failure and continue; the next step would be to implement a documented public archive item endpoint if available.
-- GitHub API writes do not execute Python tests. CI status must be checked after commit; no live Telegram delivery is claimed.
+- GitHub Actions completed successfully for the updated parser/collector code at commit `d628b7562c5754373e4071e763107f5e3c8fcb2e`; the item-intelligence suite reported 30 tests passing. That run preceded the two new regression-test commits, so those newly added cases are not yet confirmed by CI. No live Telegram delivery is claimed.
 - The collector remains informational: no LONG/SHORT inference, no prices/SL/TP, no orders, and no Gagarin integration.
