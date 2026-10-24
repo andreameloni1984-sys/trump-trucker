@@ -23,7 +23,7 @@ def clean_public_text(value):
     parser.feed(str(value or ""))
     joined = " ".join(parser.parts).strip()
     # HTMLParser splits punctuation into separate data nodes; rejoin it.
-    return re.sub(r"\\s+([.,!?;:])", r"\\1", joined)
+    return re.sub(r"\s+([.,!?;:])", r"\1", joined)
 
 
 def _name(tag):
