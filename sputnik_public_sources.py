@@ -236,6 +236,14 @@ def parse_public_feed(raw, base_url):
         original = _descendant(entry, {"originalurl", "original_url", "truthoriginalurl"})
         if original:
             original = urljoin(base_url, original)
+            # An archive's original-URL metadata may be missing or malformed.
+            # Do not let a generic homepage or unsupported URL become the
+            # preferred cross-feed identity and collapse unrelated articles.
+            if (
+                not canonical_public_item_url(original)
+                or not _is_individual_permalink(original, base_url)
+            ):
+                original = ""
         result.append({
             "id": identity[:500], "title": title[:300], "text": body[:6000],
             "published": published[:100], "updated": updated[:100],
