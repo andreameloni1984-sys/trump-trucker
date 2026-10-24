@@ -277,7 +277,7 @@ The item collector already retained both the archive/article permalink (`url`) a
 ### Evidence and limits
 - The collector already stores `primary_url` from recognized original-URL metadata, but the previous `intelligence_message` did not render it.
 - This improves source traceability only when a feed provides an original permalink. It does not independently prove the linked page is reachable or that its contents match the feed entry; that still requires live-source validation.
-- Regression tests were added but have **not been executed in this run**. No CI result, live feed access, or Telegram delivery is claimed.
+- The formatter logic was checked in an isolated smoke test: five assertions passed for archive/original-link rendering, tracking-parameter removal, invalid-scheme suppression, and non-directional wording. The full repository unittest suite and the newly added test methods have **not** been executed; no CI result, live feed access, or Telegram delivery is claimed.
 - No LONG/SHORT inference, price, stop loss, take profit, order execution, or new Gagarin integration was added.
 
 ### Change references
