@@ -396,3 +396,25 @@ The item collector stores the alert text as `title + body`, but `intelligence_me
 - Follow-up whitespace-trim correction: `f1c0b23154fcdc5d736a5040b6b492e7c6e46e24`
 - Regression-test commit: `b331ae10bbc0d9dd1dcc7e81cd093135f12be499`
 - Follow-up: run `tests/test_sputnik_item_intelligence.py` in CI and inspect the new excerpt assertion before merge.
+
+
+## 2026-10-24 — Reject generic original URLs before cross-feed deduplication
+
+### Finding
+The feed parser preserved `originalUrl` metadata after URL-joining it to the archive feed. `public_item_identity` prefers a canonical `primary_url` over the archive article permalink. If an archive incorrectly attached a generic homepage (or malformed/unsupported URL) as the original URL, multiple unrelated articles could therefore share the same preferred identity and one could be suppressed as a duplicate.
+
+### Implemented
+- The parser now validates the resolved original URL using the existing HTTP(S)/credential checks and individual-permalink gate before storing it as `primary_url`.
+- Invalid or homepage-only original references are cleared; the verified archive article permalink remains available as the fallback identity.
+- Added a regression test with two distinct dated articles that both carry the same generic social homepage. Both must remain distinct and neither may use that homepage as its primary URL.
+
+### Evidence and limits
+- The risk follows directly from the parser's prior unconditional assignment of `primary_url` and the identity function's documented preference for that field.
+- The change protects against generic homepages and malformed/unsupported URLs; it cannot prove that every non-root path is truly an individual post or that an original URL's page content matches the archived item. Those require live source verification.
+- The regression test is committed but **has not been executed in this run**. GitHub CI status and workflow execution must be checked before claiming it passes. No live feeds or Telegram delivery were tested.
+- Informational only: no LONG/SHORT inference, prices, stop loss, take profit, real orders, or direct Gagarin integration was added.
+
+### Change references
+- Parser commit: `e43bdb63fdd522fad4e0a68191a93c763c508e96`
+- Regression-test commit: `3a7335de804a3b47924405a386e87506da258271`
+- Follow-up: run `tests/test_sputnik_public_sources.py` and `tests/test_sputnik_item_intelligence.py` in CI and inspect the result before merging.
