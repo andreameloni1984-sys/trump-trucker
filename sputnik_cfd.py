@@ -5,6 +5,7 @@ when both are available; they remain WAIT until a price trigger is confirmed.
 """
 from __future__ import annotations
 from datetime import datetime, timezone
+import math
 from typing import Any
 
 DEFAULT_RISK_PCT = 1.0
@@ -14,9 +15,9 @@ DEFAULT_CAPITAL = 300.0
 def _number(value: Any) -> float | None:
     try:
         number = float(value)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return None
-    return number if number > 0 else None
+    return number if math.isfinite(number) and number > 0 else None
 
 
 def _quote_for(row: dict[str, Any], quotes: dict[str, Any]) -> dict[str, Any] | None:
