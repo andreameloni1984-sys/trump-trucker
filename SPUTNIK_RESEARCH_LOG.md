@@ -351,3 +351,23 @@ The Atom link selector returned the first `rel="alternate"` URL and let the late
 - Implementation commit: `3b7e364176cf960f8ccec3e403f4251b9d3a04b3`
 - Regression-test commit: `a7b9f1d3b5696b117d96fa2827b9fcd94cfff6c1`
 - Follow-up: run `tests/test_sputnik_item_intelligence.py` in CI and inspect both new delivery-state tests before merge.
+
+
+## 2026-10-24 — Abstain when historical direction votes are tied
+
+### Finding
+`infer_direction` previously sorted historical direction counts and selected the first item even when two directions had the same number of votes. In a tie, the chosen direction depended on insertion order, which can turn conflicting historical evidence into an apparently decisive result.
+
+### Implemented
+- Direction aggregation now emits a direction only when one direction has a strictly higher vote count for that instrument.
+- Tied instruments are omitted from the directional result; other instruments with a clear majority remain available.
+- Added a regression test covering a tied NASDAQ vote and an unambiguous GOLD vote.
+
+### Evidence and limits
+- The defect is deterministic in the aggregation logic; the regression test encodes the tie and non-tie cases.
+- This is a conservative conflict-handling rule, not evidence of improved market returns or predictive accuracy. Historical analogues remain a small heuristic sample.
+- Test execution and CI for this change are pending; no live Telegram delivery or Render deployment is claimed.
+- PAPER ONLY: no broker orders, no Gagarin integration.
+
+### Follow-up
+- Verify the new test in CI and review whether the Telegram message should explicitly display instruments omitted because of conflicting historical votes.
