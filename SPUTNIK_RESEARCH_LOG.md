@@ -450,3 +450,26 @@ In `sputnik_cfd.py`, `build_conditional_trade_plan` previously promoted a fresh 
 - Branch: `fix/sputnik-require-price-volume-confirmation-20261024`, stacked on PR #14.
 - Production check (separate from CI): Render service `sputnik-telegram-listener` is configured to deploy from `main`. Latest listed live deploy remains commit `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16); the 2026-10-22 attempt at `50851b0dc76f1b7ed0adaa872c47aa84793687f9` is `build_failed`. Render logs at 2026-10-24 16:55:23Z show the listener HTTP online, followed by Telegram bootstrap with `chat_configured=True` and permanent listener ready at 16:55:29Z. These logs indicate the existing main deployment was running then; they do not mean this PR is deployed.
 - Rollout: not merged, no production deployment. PAPER ONLY; no orders, broker connection, or Gagarin integration.
+
+
+## 2026-10-24 — Reject non-finite market values in CFD and conditional plans
+
+### Finding
+The shared numeric parser rejected missing, non-numeric, zero, and negative values, but Python accepts positive infinity as a float and the previous check (number > 0) allowed it. An infinite target could therefore pass the numeric stage and distort risk/reward or position sizing; infinite price/ATR could also leak into indicative plan fields. These are invalid market values, not usable quote evidence.
+
+### Implemented
+- Require math.isfinite(number) as well as positivity in the shared _number parser used by Sputnik CFD and conditional plans.
+- Added regression tests proving positive infinity in each CFD quote field (price, stop, target) keeps the row at WAIT with no units.
+- Added regression tests proving infinite price or ATR cannot produce conditional entry/stop levels.
+- Kept the existing strict price/volume-confirmation gate unchanged; this is numeric input validation, not a new market-direction rule.
+
+### Evidence and limits
+- The defect is directly reproducible from Python numeric semantics: float("inf") > 0 is true, while infinity is not a valid tradable price or volatility measurement.
+- Regression tests are committed. GitHub Actions results are pending until the pull request workflow completes; no local test run is claimed in this execution.
+- This defensive validation does not establish improved trading accuracy, predictive edge, or better returns. No live market data or performance metrics were used.
+
+### Change references
+- Implementation commit: 1133e69b6d32fcaa55b17e86428e9f62b2e7c2db
+- Regression-test commit: c0e88ea20508e2b41723342a194c10a417c3357d
+- Branch: fix/sputnik-reject-nonfinite-market-values-20261024, stacked on the price/volume-confirmation PR.
+- Rollout: PR/CI/Render state to be verified separately. PAPER ONLY; no orders, broker connection, or Gagarin integration.
