@@ -138,8 +138,12 @@ def infer_direction(matches: list[dict[str, Any]]) -> dict[str, str]:
             bucket[direction] = bucket.get(direction, 0) + 1
     result: dict[str, str] = {}
     for asset, counts in votes.items():
-        ordered = sorted(counts.items(), key=lambda item: item[1], reverse=True)
-        result[asset] = ordered[0][0]
+        # A tied vote is conflicting evidence, not a directional consensus.
+        # Abstain instead of letting insertion order arbitrarily choose LONG/SHORT.
+        highest = max(counts.values())
+        leaders = [direction for direction, count in counts.items() if count == highest]
+        if len(leaders) == 1:
+            result[asset] = leaders[0]
     return result
 
 def action_reaction_message(text: str, title: str = "SPUTNIK — AZIONE → REAZIONE") -> str:
