@@ -182,3 +182,21 @@ Even an individual feed entry with a title, permalink and parseable date can be 
 - The freshness decision is deterministic and uses only the Python standard library. The 72-hour window is a safety default, not a claim that every older article is irrelevant; operators can widen it explicitly if their use case requires historical monitoring.
 - Tests have been added to the existing item-intelligence CI path. A local clone/test attempt was blocked because this environment could not resolve github.com; GitHub currently reports no status checks or workflow run for the latest commit, so the new cases are not verified as passing. No live feed or Telegram delivery was tested.
 - Informational only: no LONG/SHORT inference, price/SL/TP, broker orders, or direct GAGARIN integration was added.
+
+## 2026-10-24 — Report public-feed outages without fabricating market events
+
+### Finding
+The RSS/Atom collector logged a fetch or parse exception and continued. If a source such as the Trump archive stopped serving a feed, the normal result could simply be zero findings, which is indistinguishable from a quiet market-news cycle in the Telegram output. Repeated failures were not preserved as structured source-health state.
+
+### Implemented
+- Added per-feed health state to `trump_tracker.py`: source label, status, UTC check time, parsed item count, and exception type. A valid feed with zero eligible entries is recorded as `OK_NO_ELIGIBLE_ITEMS`, not misclassified as an outage.
+- Added a deduplicated operational Telegram warning for feed fetch/parse failures. The warning contains source labels and exception types, explicitly says that no market signal is inferred, and is not formatted as a LONG/SHORT catalyst.
+- The warning signature is latched only after Telegram confirms delivery; a failed send can be retried on a later run. A successful feed scan clears the latch so a future outage can be reported again.
+- Health state is limited to currently configured feeds, preventing a removed feed from leaving a stale outage warning behind.
+- Added regression tests for failure recording, one-warning deduplication, recovery/reset behavior, and valid empty feeds. Updated the test workflow path filters so changes to the public-source parser and item-intelligence tests trigger CI.
+
+### Evidence and limits
+- The prior code printed the exception and continued without structured feed-health state or a Telegram operational warning. The new tests encode the outage/recovery and empty-feed distinctions.
+- The tests were added but have not yet been executed in this run. CI status must be checked after the last commit; no live source fetch or Telegram delivery is claimed.
+- This is source-health observability, not proof that a feed is authentic or that a market catalyst is predictive. A source may return a syntactically valid but incomplete feed; such a case still requires separate live-source validation.
+- Informational only: no LONG/SHORT inference, price/SL/TP, broker orders, or direct GAGARIN integration was added.
