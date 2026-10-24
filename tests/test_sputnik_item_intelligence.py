@@ -117,6 +117,26 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(findings, [])
         self.assertEqual(state.get("intelligence_items", {}), {})
 
+    def test_recent_atom_update_does_not_resurface_old_publication(self):
+        atom = b"""<feed xmlns="http://www.w3.org/2005/Atom"><entry>
+        <id>old-tariff-story</id><title>President announces new tariffs on China</title>
+        <link rel="alternate" href="https://example.gov/news/old-tariffs"/>
+        <published>Mon, 19 Oct 2026 06:00:00 GMT</published>
+        <updated>Sat, 24 Oct 2026 06:00:00 GMT</updated>
+        <summary>New trade measures announced.</summary></entry></feed>"""
+        state = {}
+        with patch.dict(os.environ, {
+            "SPUTNIK_SOCIAL_ENABLED": "1",
+            "SPUTNIK_RSS_FEEDS": "https://example.gov/feed.xml",
+            "SPUTNIK_MAX_NEWS_AGE_HOURS": "72",
+        }), patch.object(
+            trump_tracker, "fetch_public_text", side_effect=OSError("offline in test")
+        ), patch.object(trump_tracker, "fetch_public_feed", return_value=atom):
+            findings = trump_tracker.intelligence_snapshot(state)
+
+        self.assertEqual(findings, [])
+        self.assertEqual(state.get("intelligence_items", {}), {})
+
     def test_feed_failures_are_recorded_and_alerted_once_until_recovery(self):
         state = {}
         feed_url = "https://www.trumpstruth.org/feed"
