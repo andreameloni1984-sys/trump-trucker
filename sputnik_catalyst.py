@@ -57,6 +57,19 @@ DOMAIN_INSTRUMENTS = {
 }
 
 PRIMARY_SOURCES = {"WHITE_HOUSE", "OGE", "SEC"}
+# Feed collectors label official sources with transport suffixes. Normalize only
+# explicit, known aliases; do not infer authority from a fuzzy substring match.
+PRIMARY_SOURCE_ALIASES = {
+    "WHITE_HOUSE_RSS": "WHITE_HOUSE",
+    "OGE_RSS": "OGE",
+    "SEC_RSS": "SEC",
+}
+
+
+def is_primary_source(source: Any) -> bool:
+    normalized = str(source or "").strip().upper()
+    normalized = PRIMARY_SOURCE_ALIASES.get(normalized, normalized)
+    return normalized in PRIMARY_SOURCES
 
 
 def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[dict[str, Any]]:
@@ -88,7 +101,7 @@ def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[
                 if event_id:
                     row["events"].add(event_id)
                 row["domains"].add(domain)
-                row["primary_source"] |= source in PRIMARY_SOURCES
+                row["primary_source"] |= is_primary_source(source)
                 row["evidence"].append(evidence or "PUBLIC_SOURCE_TEXT")
 
     result = []
