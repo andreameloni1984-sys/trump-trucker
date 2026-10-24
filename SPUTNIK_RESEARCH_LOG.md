@@ -373,3 +373,25 @@ The Atom link selector returned the first `rel="alternate"` URL and let the late
 - Implementation commit: `3b7e364176cf960f8ccec3e403f4251b9d3a04b3`
 - Regression-test commit: `a7b9f1d3b5696b117d96fa2827b9fcd94cfff6c1`
 - Follow-up: run `tests/test_sputnik_item_intelligence.py` in CI and inspect both new delivery-state tests before merge.
+
+
+## 2026-10-24 — Include a concise source excerpt in titled intelligence alerts
+
+### Finding
+The item collector stores the alert text as `title + body`, but `intelligence_message` previously rendered the excerpt only when the title was empty. Since feed items normally have a title, most alerts showed metadata and a permalink without any short passage of source context, making it harder to judge why a headline matched a market-catalyst topic.
+
+### Implemented
+- The Telegram formatter now includes a concise `Estratto` whenever source text remains after removing an exact, case-insensitive headline prefix.
+- The excerpt is whitespace-normalized and capped at 420 characters, as before.
+- Added a regression test requiring the headline to remain visible, the body excerpt to appear, and the repeated headline not to be shown as the excerpt.
+
+### Evidence and limits
+- The defect is visible in the prior formatter condition `if excerpt and not title`; the collector constructs `text` with the title at the start, so the condition suppressed excerpts for normal titled feed items.
+- The change improves human verification of an alert's textual context; it does not independently fact-check the article or establish market impact. If source text does not begin with the exact normalized headline, some repetition may remain; no speculative content is generated.
+- The regression test has been committed but **has not been executed in this run**. The repository connector supports file reads/writes but provides no local checkout or workflow-dispatch action; CI status must be checked after the branch update. No live feed or Telegram delivery was tested.
+- Informational only: no LONG/SHORT inference, price, stop loss, take profit, order execution, or Gagarin integration was added.
+
+### Change references
+- Formatter implementation commit: `6ec09e1819b0a19e4ad39854a617a121f7eb2e37`
+- Regression-test commit: `b331ae10bbc0d9dd1dcc7e81cd093135f12be499`
+- Follow-up: run `tests/test_sputnik_item_intelligence.py` in CI and inspect the new excerpt assertion before merge.
