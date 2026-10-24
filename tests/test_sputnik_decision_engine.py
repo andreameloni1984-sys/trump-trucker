@@ -119,6 +119,12 @@ class ConditionalTradePlanTests(unittest.TestCase):
         self.assertEqual(result["status"], "TRIGGER CONFIRMED")
         self.assertIn("conferme esplicite", result["reason"])
 
+        string_flags = {"BRENT": {
+            **base, "price_confirmed": "true", "volume_confirmed": "true",
+        }}
+        result = build_conditional_trade_plan(plan, string_flags)
+        self.assertEqual(result["status"], "PREPARE")
+
 if __name__ == "__main__":
     unittest.main()
 
