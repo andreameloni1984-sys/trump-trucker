@@ -112,3 +112,17 @@ An alert that identifies a political or trade event can still blur a threat, a r
 - This adds BEA coverage for GDP and Personal Income and Outlays/PCE, but does not yet connect the Federal Reserve or EIA calendars. BLS and BEA source coverage is not a complete macro calendar.
 - Tests have not been executed in this session; no CI run or Telegram delivery has been confirmed. Verify the next workflow run before treating alerts as live.
 - Classification is heuristic, direction is not inferred, and no price-based entry, stop loss, take profit, broker order, or Gagarin integration is added.
+
+
+## 2026-10-24 — Measure post-release reactions without inventing forecasts
+
+### Implemented
+- Added `sputnik_event_outcomes.py` to preserve a pre-event scenario and, when supplied with trusted timestamped prices, calculate the observed percentage move after the scheduled release.
+- Enforced timezone-aware timestamps, positive prices, a baseline no later than the scheduled release, and a post-event observation no earlier than the release.
+- Added an idempotent JSONL upsert keyed by event ID so repeated runs replace the same event record instead of inflating the journal.
+- Added four regression tests and included the new module/test in the repository test workflow.
+
+### Evidence and limits
+- This establishes a reproducible measurement contract for future forecast-vs-reaction evaluation; it does not prove predictive skill and does not fetch market prices automatically.
+- Sputnik still needs a verified price feed and a caller that writes a pre-event baseline and then a post-event observation. Until that connection exists, no measured result or accuracy score should be claimed.
+- Tests have not been executed in this session and CI has not returned a result. PAPER/INFORMATION ONLY; no orders and no Gagarin integration.
