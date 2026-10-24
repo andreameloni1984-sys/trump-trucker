@@ -84,6 +84,19 @@ class PublicFeedParserTests(unittest.TestCase):
         self.assertEqual(rows[0]["title"], "Valid item")
         self.assertEqual(rows[0]["url"], "https://example.gov/briefings/valid")
 
+    def test_valid_publication_date_is_selected_independent_of_xml_child_order(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <entry><id>item-date-order</id><title>Published item</title>
+          <link rel="alternate" href="https://example.gov/news/published-item"/>
+          <dc:date>not-a-date</dc:date>
+          <published>2026-10-24T06:00:00Z</published>
+          <updated>2026-10-24T06:30:00Z</updated>
+          <summary>Details</summary></entry></feed>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["published"], "2026-10-24T06:00:00Z")
+        self.assertEqual(rows[0]["updated"], "2026-10-24T06:30:00Z")
+
     def test_atom_prefers_alternate_permalink_over_self_link(self):
         raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
           <entry><id>item-8</id><title>Tariff decision</title>
