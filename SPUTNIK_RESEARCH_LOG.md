@@ -515,11 +515,11 @@ Even when input price and ATR are finite and positive, derived levels can be unu
 - The invalid cases follow directly from the ATR formulas and six-decimal output rounding in build_conditional_trade_plan; no external quote or performance assumption is required.
 - Implementation commit: 6f47ab11cc1f4c638a4012bd55c03d2847389b50.
 - Regression-test commit: dee6d51794acf77c8f814ff15aa24c809b76b574.
-- CI status is pending verification for the implementation/test head; no pass is claimed in this entry until Actions is checked.
+- GitHub Actions run 40126991046 completed SUCCESS on the implementation/test head dee6d51794acf77c8f814ff15aa24c809b76b574. The job ran `python -m unittest tests/test_telegram_menu.py tests/test_sputnik_ranking.py tests/test_sputnik_cfd.py tests/test_sputnik_catalyst.py tests/test_sputnik_history.py -v`; `tests/test_sputnik_cfd.py` passed with the new regression cases. This is CI evidence, not a local full-suite run.
 - This is defensive validation, not evidence of improved direction prediction, profitability, or out-of-sample accuracy. No live market data was fetched.
 
 ### Rollout and safety
 - Branch: fix/sputnik-require-explicit-direction-20261024, stacked on the existing draft PR #17; not merged to main.
-- Production state must be checked separately; no deploy was performed.
+- Render service `sputnik-telegram-listener` was checked separately at 2026-10-24 19:48 UTC: latest listed live deploy remains commit `9e5204bf7d9074dba27637013b7d98933a91e733` from 2026-10-16; the 2026-10-22 attempt at `50851b0dc76f1b7ed0adaa872c47aa84793687f9` is `build_failed`. A Render log query for 19:20–19:48 UTC returned no entries, so no fresh listener activity is confirmed in that interval. This change is not deployed.
 - PAPER ONLY: no orders, broker connections, or Gagarin integration.
 
