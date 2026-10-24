@@ -473,3 +473,53 @@ The shared numeric parser rejected missing, non-numeric, zero, and negative valu
 - Regression-test commit: c0e88ea20508e2b41723342a194c10a417c3357d
 - Branch: fix/sputnik-reject-nonfinite-market-values-20261024, stacked on the price/volume-confirmation PR.
 - Rollout: PR/CI/Render state to be verified separately. PAPER ONLY; no orders, broker connection, or Gagarin integration.
+
+
+## 2026-10-24 — Reject missing or ambiguous direction in conditional plans
+
+### Finding
+In sputnik_cfd.py, build_conditional_trade_plan treated any bias containing the substring SHORT as SHORT and every other value as LONG. That meant a missing, neutral, waiting, or malformed bias (for example NEUTRAL, WAIT, LONG_SETUP, or NOT_SHORT) could silently become a directional plan; with fresh quote/ATR and confirmation flags it could even be labelled TRIGGER CONFIRMED. This is a false-positive path independent of quote freshness.
+
+### Implemented
+- Normalize the supplied bias with whitespace trimming and uppercase conversion.
+- Accept only exact LONG or SHORT values; return WAIT without entry/stop/targets for all other values.
+- Add regression coverage for missing, empty, neutral, waiting, suffixed-long, and negated-short values while the quote flags are deliberately all true. This ensures market-data flags cannot override an invalid direction.
+
+### Evidence and limits
+- The prior fallback was directly visible in the conditional-plan function: "SHORT if SHORT in bias else LONG". It made unknown values default to LONG.
+- Regression test added to tests/test_sputnik_cfd.py. GitHub Actions run 40125823735 completed SUCCESS on PR head 498ed3f797a8eca38041c9df80e1ada5d4e850f6; job tests ran `python -m unittest tests/test_telegram_menu.py tests/test_sputnik_ranking.py tests/test_sputnik_cfd.py tests/test_sputnik_catalyst.py tests/test_sputnik_history.py -v`. This is CI evidence, not a local full-suite run.
+- This change reduces malformed-direction false positives. It does not establish improved market prediction, profitability, or out-of-sample accuracy; no live market data or performance metrics were used.
+
+### Change references
+- Branch: fix/sputnik-require-explicit-direction-20261024, based on PR #16 head 47246bd3a0a1e0d6bee2eba865906368d71c8382.
+- Implementation commit: 327ce26240725c3ec8ed4967819ff2413228546f.
+- Regression-test commit: 7190025449d667cd82de787446636767f7ed38e5.
+- CI run: 40125823735, SUCCESS, tested code/test head 498ed3f797a8eca38041c9df80e1ada5d4e850f6.
+- Production check (separate from CI): Render latest listed live deploy remains commit 9e5204bf7d9074dba27637013b7d98933a91e733 from 2026-10-16; the 2026-10-22 attempt 50851b0dc76f1b7ed0adaa872c47aa84793687f9 is build_failed. Logs at 2026-10-24 19:16:27–19:16:39Z show the existing listener HTTP online, Telegram chat configured, and permanent listener ready. This is not deployment of this PR.
+- Rollout: not merged to main; production deployment not performed. PAPER ONLY; no orders, broker connections, or Gagarin integration.
+
+---
+
+## 2026-10-24 — Reject invalid or collapsed derived conditional price levels
+
+### Finding
+Even when input price and ATR are finite and positive, derived levels can be unusable: a large ATR relative to price can put a stop or target at/below zero, floating-point arithmetic can overflow during multiplication, and very small ATR values can cause distinct levels to collapse to the same price after the output's six-decimal rounding. Such plans are not actionable and must not carry entry/SL/TP fields.
+
+### Implemented
+- Validate the calculated entry, stop, TP1, and TP2 as finite positive values before formatting.
+- Validate the rounded values again and require strict ordering (stop < entry < TP1 < TP2 for LONG; TP2 < TP1 < entry < stop for SHORT).
+- If any check fails, keep the plan in WAIT and leave all levels unset.
+- Added regression cases for a LONG stop at/below zero, a SHORT target at/below zero, and levels that collapse after rounding. The fixtures deliberately set all three confirmation flags true to prove that confirmation flags cannot override invalid levels.
+
+### Evidence and limits
+- The invalid cases follow directly from the ATR formulas and six-decimal output rounding in build_conditional_trade_plan; no external quote or performance assumption is required.
+- Implementation commit: 6f47ab11cc1f4c638a4012bd55c03d2847389b50.
+- Regression-test commit: dee6d51794acf77c8f814ff15aa24c809b76b574.
+- GitHub Actions run 40126991046 completed SUCCESS on the implementation/test head dee6d51794acf77c8f814ff15aa24c809b76b574. The job ran `python -m unittest tests/test_telegram_menu.py tests/test_sputnik_ranking.py tests/test_sputnik_cfd.py tests/test_sputnik_catalyst.py tests/test_sputnik_history.py -v`; `tests/test_sputnik_cfd.py` passed with the new regression cases. This is CI evidence, not a local full-suite run.
+- This is defensive validation, not evidence of improved direction prediction, profitability, or out-of-sample accuracy. No live market data was fetched.
+
+### Rollout and safety
+- Branch: fix/sputnik-require-explicit-direction-20261024, stacked on the existing draft PR #17; not merged to main.
+- Render service `sputnik-telegram-listener` was checked separately at 2026-10-24 19:48 UTC: latest listed live deploy remains commit `9e5204bf7d9074dba27637013b7d98933a91e733` from 2026-10-16; the 2026-10-22 attempt at `50851b0dc76f1b7ed0adaa872c47aa84793687f9` is `build_failed`. A Render log query for 19:20–19:48 UTC returned no entries, so no fresh listener activity is confirmed in that interval. This change is not deployed.
+- PAPER ONLY: no orders, broker connections, or Gagarin integration.
+
