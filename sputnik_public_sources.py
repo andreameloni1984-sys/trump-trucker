@@ -3,8 +3,10 @@ from __future__ import annotations
 import hashlib
 import re
 import xml.etree.ElementTree as ET
+from datetime import datetime
+from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 class _Text(HTMLParser):
     def __init__(self):
@@ -36,10 +38,50 @@ def _text(node, names):
     return "".join(child.itertext()).strip() if child is not None else ""
 
 def _link(node):
-    child = _direct(node, {"link"})
-    if child is None:
-        return ""
-    return str(child.attrib.get("href") or "").strip() or "".join(child.itertext()).strip()
+    """Prefer an Atom alternate/permalink over self, enclosure or feed links."""
+    links = [child for child in list(node) if _name(child.tag) == "link"]
+    for child in links:
+        rel = str(child.attrib.get("rel") or "alternate").strip().lower()
+        href = str(child.attrib.get("href") or "").strip()
+        if href and rel in {"alternate", ""}:
+            return href
+    for child in links:
+        value = str(child.attrib.get("href") or "").strip() or "".join(child.itertext()).strip()
+        if value:
+            return value
+    return ""
+
+
+def _has_valid_publication_date(value):
+    raw = str(value or "").strip()
+    if not raw:
+        return False
+    iso_value = raw[:-1] + "+00:00" if raw.endswith("Z") else raw
+    try:
+        datetime.fromisoformat(iso_value)
+        return True
+    except (TypeError, ValueError):
+        pass
+    try:
+        return parsedate_to_datetime(raw) is not None
+    except (TypeError, ValueError, OverflowError):
+        return False
+
+
+def _is_individual_permalink(link, base_url):
+    if not link:
+        return False
+    resolved = urljoin(base_url, link)
+    parsed = urlsplit(resolved)
+    if parsed.scheme.lower() not in {"http", "https"} or not parsed.netloc:
+        return False
+    # A source homepage or feed endpoint is not an individual article/post.
+    if not parsed.path or parsed.path.rstrip("/") == "":
+        return False
+    base = urlsplit(base_url)
+    normalized_link = (parsed.scheme.lower(), parsed.netloc.lower(), parsed.path.rstrip("/"), parsed.query)
+    normalized_base = (base.scheme.lower(), base.netloc.lower(), base.path.rstrip("/"), base.query)
+    return normalized_link != normalized_base
 
 def _descendant(node, names):
     for child in node.iter():
@@ -63,11 +105,15 @@ def parse_public_feed(raw, base_url):
     for index, entry in enumerate(entries):
         title = clean_public_text(_text(entry, {"title"}))
         body = clean_public_text(_text(entry, {"encoded", "description", "summary", "content"}))
-        if not title and not body:
-            continue
-        link = _link(entry)
-        link = urljoin(base_url, link) if link else base_url
+        raw_link = _link(entry)
         published = _text(entry, {"pubdate", "published", "updated", "date"})
+        # Only keep a candidate that can be independently checked: title,
+        # parseable publication date and a permalink to an individual item.
+        if not title or not raw_link or not _has_valid_publication_date(published):
+            continue
+        link = urljoin(base_url, raw_link)
+        if not _is_individual_permalink(link, base_url):
+            continue
         identity = _text(entry, {"guid", "id"}) or link or hashlib.sha256(
             (title + "|" + published + "|" + body).encode("utf-8")
         ).hexdigest()
