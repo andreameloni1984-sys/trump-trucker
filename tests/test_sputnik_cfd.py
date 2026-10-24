@@ -110,5 +110,25 @@ class CfdCartTests(unittest.TestCase):
                 self.assertIsNone(result["stop"])
 
 
+    def test_invalid_or_ambiguous_bias_never_creates_directional_levels(self):
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
+        quote = {
+            "price": 100, "atr": 2, "timestamp": fresh_timestamp,
+            "trigger_confirmed": True, "price_confirmed": True,
+            "volume_confirmed": True,
+        }
+        for bias in (None, "", "NEUTRAL", "WAIT", "LONG_SETUP", "NOT_SHORT"):
+            with self.subTest(bias=bias):
+                result = build_conditional_trade_plan(
+                    {"candidate": "GOLD", "bias": bias}, {"GOLD": quote}
+                )
+                self.assertEqual(result["status"], "WAIT")
+                self.assertIsNone(result["entry"])
+                self.assertIsNone(result["stop"])
+                self.assertIsNone(result["tp1"])
+                self.assertIsNone(result["tp2"])
+                self.assertIn("LONG oppure SHORT", result["reason"])
+
+
 if __name__ == "__main__":
     unittest.main()
