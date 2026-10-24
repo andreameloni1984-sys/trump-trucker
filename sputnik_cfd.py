@@ -141,6 +141,9 @@ def build_cfd_cart(ranked_rows: list[dict[str, Any]], quotes: dict[str, Any] | N
         if entry is None or stop is None or target is None or not _quote_is_fresh(quote):
             item["reason"] = "WAIT: servono prezzo recente con timestamp e livelli SL/TP validi."
             cart.append(item); continue
+        if not _has_price_volume_confirmation(quote):
+            item["reason"] = "WAIT: servono conferme esplicite di prezzo e volume; una quotazione fresca non basta."
+            cart.append(item); continue
         if not stop < entry < target:
             item["reason"] = "WAIT: livelli LONG non coerenti (stop < entry < target richiesto)."
             cart.append(item); continue
