@@ -91,6 +91,14 @@ class PublicFeedParserTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["url"], "https://example.gov/news/tariff-decision")
 
+    def test_atom_self_link_without_alternate_is_not_treated_as_article(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><id>item-9</id><title>Generic feed item</title>
+          <link rel="self" href="https://example.gov/feed/item-9"/>
+          <updated>2026-10-24T06:00:00Z</updated><summary>Details</summary></entry></feed>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed")
+        self.assertEqual(rows, [])
+
 
     def test_canonical_url_removes_tracking_query_and_fragment(self):
         self.assertEqual(
