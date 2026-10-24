@@ -92,6 +92,20 @@ def _has_valid_publication_date(value):
     return parse_publication_datetime(value) is not None
 
 
+def _publication_text(node):
+    """Choose the first valid explicit publication date in stable field priority."""
+    # Prefer format-specific publication fields over generic date metadata,
+    # independent of XML child order. Never use Atom <updated> as publication.
+    for preferred_name in ("pubdate", "published", "date"):
+        for child in list(node):
+            if _name(child.tag) != preferred_name:
+                continue
+            value = "".join(child.itertext()).strip()
+            if _has_valid_publication_date(value):
+                return value
+    return ""
+
+
 def publication_is_recent(value, now=None, max_age_hours=72, future_skew_minutes=10):
     """Return False for unparseable, stale, or implausibly future-dated items."""
     published_at = parse_publication_datetime(value)
@@ -207,7 +221,7 @@ def parse_public_feed(raw, base_url):
         # `updated` is not a publication timestamp: an old article edited today
         # must not be promoted to a fresh market catalyst. Require an explicit
         # publication field (RSS pubDate / Atom published / date metadata).
-        published = _text(entry, {"pubdate", "published", "date"})
+        published = _publication_text(entry)
         updated = _text(entry, {"updated"})
         # Only keep a candidate that can be independently checked: title,
         # parseable publication date and a permalink to an individual item.
