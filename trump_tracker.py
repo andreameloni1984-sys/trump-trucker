@@ -662,6 +662,30 @@ def intelligence_message(item: dict[str, Any]) -> str:
     ])
     return "\n".join(lines)
 
+def deliver_intelligence_findings(
+    findings: list[dict[str, Any]],
+    state: dict[str, Any],
+    chat_id: str | None = None,
+) -> None:
+    """Deliver item alerts and release dedup keys when Telegram confirms failure.
+
+    The collector reserves each item before delivery to deduplicate across feeds.
+    If delivery fails, remove that reservation and persist the rollback so a later
+    scan can retry the alert instead of silently losing it.
+    """
+    known_items = state.setdefault("intelligence_items", {})
+    for item in findings:
+        message = intelligence_message(item)
+        print(message)
+        delivered = send_telegram(message, chat_id=chat_id)
+        if delivered:
+            continue
+        event_id = str(item.get("event_id") or "").strip()
+        if event_id and event_id in known_items:
+            known_items.pop(event_id, None)
+            save_state(state)
+
+
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
 
@@ -1492,10 +1516,11 @@ def main() -> None:
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
-    for item in intelligence:
-        message = intelligence_message(item)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+    deliver_intelligence_findings(
+        intelligence,
+        state,
+        chat_id=str(state.get("telegram_chat_id") or "").strip() or None,
+    )
 
     if feed_health_alert:
         print(feed_health_alert["message"])
