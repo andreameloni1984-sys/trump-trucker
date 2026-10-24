@@ -487,10 +487,13 @@ In sputnik_cfd.py, build_conditional_trade_plan treated any bias containing the 
 
 ### Evidence and limits
 - The prior fallback was directly visible in the conditional-plan function: "SHORT if SHORT in bias else LONG". It made unknown values default to LONG.
-- Regression test added to tests/test_sputnik_cfd.py. CI outcome is pending until GitHub Actions runs on this branch/PR; no local full-suite run is claimed.
+- Regression test added to tests/test_sputnik_cfd.py. GitHub Actions run 40125823735 completed SUCCESS on PR head 498ed3f797a8eca38041c9df80e1ada5d4e850f6; job tests ran `python -m unittest tests/test_telegram_menu.py tests/test_sputnik_ranking.py tests/test_sputnik_cfd.py tests/test_sputnik_catalyst.py tests/test_sputnik_history.py -v`. This is CI evidence, not a local full-suite run.
 - This change reduces malformed-direction false positives. It does not establish improved market prediction, profitability, or out-of-sample accuracy; no live market data or performance metrics were used.
 
 ### Change references
 - Branch: fix/sputnik-require-explicit-direction-20261024, based on PR #16 head 47246bd3a0a1e0d6bee2eba865906368d71c8382.
-- Implementation and regression-test commits: recorded in the PR history after CI starts.
+- Implementation commit: 327ce26240725c3ec8ed4967819ff2413228546f.
+- Regression-test commit: 7190025449d667cd82de787446636767f7ed38e5.
+- CI run: 40125823735, SUCCESS, tested code/test head 498ed3f797a8eca38041c9df80e1ada5d4e850f6.
+- Production check (separate from CI): Render latest listed live deploy remains commit 9e5204bf7d9074dba27637013b7d98933a91e733 from 2026-10-16; the 2026-10-22 attempt 50851b0dc76f1b7ed0adaa872c47aa84793687f9 is build_failed. Logs at 2026-10-24 19:16:27–19:16:39Z show the existing listener HTTP online, Telegram chat configured, and permanent listener ready. This is not deployment of this PR.
 - Rollout: not merged to main; production deployment not performed. PAPER ONLY; no orders, broker connections, or Gagarin integration.
