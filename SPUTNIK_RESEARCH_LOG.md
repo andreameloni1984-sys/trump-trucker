@@ -42,3 +42,9 @@ The conditional-plan resolver used substring checks such as `"GOLD" in candidate
 - Branch: `fix/sputnik-exact-instrument-aliases-20261024`, stacked on `fix/sputnik-explicit-direction-main-20261024`.
 - Implementation commit: `d6bd982d0b24bc07c759d018af7aeb42a2afe60d`.
 - Regression-test commit: `ea19c356e334df951c9fff11f26edd23aa4c5b83`.
+
+### Verification update — 2026-10-24 21:56 UTC
+- GitHub Actions run [40136367007](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40136367007) completed with `success` for head `c3751f57245674f1a71931509644da732eb64af2`. The `SPUTNIK Telegram menu tests` workflow ran `tests/test_sputnik_cfd.py` with the new instrument-resolution regressions.
+- Re-fetched `sputnik_cfd.py`, `tests/test_sputnik_cfd.py`, and this log from the feature branch; the exact-alias resolver, both regression tests, and log entry are present.
+- Render service `sputnik-telegram-listener` is configured to auto-deploy from `main`. Latest listed live deploy remains commit `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16); the 2026-10-22 deploy attempt for `50851b0dc76f1b7ed0adaa872c47aa84793687f9` is `build_failed`. Logs at 2026-10-24 21:40:44–21:40:52 UTC show the existing listener HTTP online and permanent listener ready, but do not show this PR's code in production. No deploy was attempted.
+- Pull request [#19](https://github.com/andreameloni1984-sys/trump-trucker/pull/19) remains draft/open and targets the direction-fix branch; no merge to `main`.
