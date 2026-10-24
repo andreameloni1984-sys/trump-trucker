@@ -174,5 +174,47 @@ class PublicFeedParserTests(unittest.TestCase):
     def test_empty_feed_is_valid(self):
         self.assertEqual(parse_public_feed(b"<rss><channel/></rss>", "https://example.gov/feed"), [])
 
+    def test_non_http_item_link_is_rejected(self):
+        raw = b'''<rss><channel><item>
+          <title>False market catalyst</title>
+          <link>javascript:alert(1)</link>
+          <pubDate>Sat, 24 Oct 2026 06:00:00 GMT</pubDate>
+          <guid>bad-link-1</guid><description>Untrusted item URL</description>
+        </item></channel></rss>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed.xml")
+        self.assertEqual(rows, [])
+
+    def test_user_info_item_link_is_rejected(self):
+        raw = b'''<rss><channel><item>
+          <title>Misleading source link</title>
+          <link>https://trusted.example@evil.example/story</link>
+          <pubDate>Sat, 24 Oct 2026 06:00:00 GMT</pubDate>
+          <guid>bad-link-2</guid><description>Source spoof attempt</description>
+        </item></channel></rss>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed.xml")
+        self.assertEqual(rows, [])
+
+    def test_unsafe_primary_url_is_dropped_but_safe_item_url_remains(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom"
+          xmlns:truth="https://example.test/truth">
+          <entry><id>status-8</id><title>Verified item headline</title>
+          <link href="https://archive.example/statuses/8"/>
+          <published>2026-10-24T06:00:00Z</published>
+          <summary>Item text</summary>
+          <truth:originalUrl>javascript:alert(1)</truth:originalUrl>
+          </entry></feed>'''
+        rows = parse_public_feed(raw, "https://archive.example/feed")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["url"], "https://archive.example/statuses/8")
+        self.assertEqual(rows[0]["primary_url"], "")
+
+    def test_invalid_feed_url_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "HTTP/HTTPS"):
+            parse_public_feed(b"<rss><channel/></rss>", "javascript:alert(1)")
+
+    def test_canonical_url_rejects_whitespace_and_backslashes(self):
+        self.assertEqual(canonical_public_item_url("https://example.gov/bad path"), "")
+        self.assertEqual(canonical_public_item_url(r"https://example.gov\\@evil.example/path"), "")
+
 if __name__ == "__main__":
     unittest.main()
