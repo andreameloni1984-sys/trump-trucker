@@ -103,6 +103,18 @@ class PublicFeedParserTests(unittest.TestCase):
         rows = parse_public_feed(raw, "https://example.gov/feed")
         self.assertEqual(rows, [])
 
+    def test_atom_skips_invalid_alternate_and_uses_later_valid_permalink(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><id>item-10</id><title>Valid alternate after bad link</title>
+          <link rel="alternate" href="javascript:alert(1)"/>
+          <link rel="alternate" href="https://example.gov/feed"/>
+          <link rel="alternate" href="https://example.gov/news/valid-item"/>
+          <published>2026-10-24T06:00:00Z</published>
+          <summary>Details</summary></entry></feed>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["url"], "https://example.gov/news/valid-item")
+
     def test_atom_self_link_without_alternate_is_not_treated_as_article(self):
         raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
           <entry><id>item-9</id><title>Generic feed item</title>
