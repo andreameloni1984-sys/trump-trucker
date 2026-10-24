@@ -423,3 +423,30 @@ The RSS/Atom parser checked that an item permalink used HTTP(S) and had a path, 
 - Branch: `fix/sputnik-public-url-validation-stacked-20261024` (stacked on `fix/sputnik-historical-match-gate`)
 - CI evidence: `40106185629` and `40106185723` both passed for implementation/test head `036a60e6bff60d69856f0ccedf7c5675819d4244`.
 - Follow-up: separately inspect Render/Telegram deployment state; the stacked PR must not be treated as production code before merge/deploy.
+
+
+---
+
+## 2026-10-24 — Require explicit price and volume evidence before confirming market triggers
+
+### Finding
+In `sputnik_cfd.py`, `build_conditional_trade_plan` previously promoted a fresh quote to `TRIGGER CONFIRMED` when a single `trigger_confirmed=True` flag was present, without requiring separate price and volume evidence. The CFD cart could also label a ranked `COMPRA` row as `TRADE` from a fresh quote and valid SL/TP alone. This left a gap between the strategy's stated price/volume-confirmation rule and the status actually emitted.
+
+### Implemented
+- Added one strict shared gate requiring literal boolean `trigger_confirmed=True`, `price_confirmed=True`, and `volume_confirmed=True`.
+- Applied it to both conditional trade plans and the CFD cart; a fresh price/ATR or a ranking label alone is insufficient.
+- Kept strings such as `"true"` invalid, rather than coercing untrusted data into confirmation.
+- Added regression tests for a bare trigger flag, missing individual flags, string-valued flags, and a fresh CFD quote without price/volume confirmation.
+
+### Evidence and limits
+- The prior status transition and CFD cart branch are visible in `sputnik_cfd.py`; new tests exercise both call paths.
+- GitHub PR #15 is open as a draft: https://github.com/andreameloni1984-sys/trump-trucker/pull/15. GitHub Actions passed on the final code/test/log head `17b0aa12941b3a218fd15d97ec85f468944075f4`: [SPUTNIK ranking tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40116590006) and [SPUTNIK Telegram menu tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40116589993) both completed successfully. The same two workflows also passed on the code/test head `cee73c4b8da662f174c6078e8a9e2ca7ce2c558c` (runs [40116558685](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40116558685) and [40116558634](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40116558634)). These are repository CI results, not a local run, live market-data verification, or proof of Telegram delivery.
+- Inspection of `telegram_listener.py` found reads of `market_quotes`/`quotes`, but no producer of `trigger_confirmed`, `price_confirmed`, or `volume_confirmed`. Until a trusted OHLCV/market-data producer populates these fields, the safe result remains `PREPARE`/`WAIT`; the flags are not fabricated here. Building a real breakout/relative-volume calculation requires verified candle data and a defined provider contract.
+- This is a safety/false-positive reduction, not evidence of improved returns or out-of-sample accuracy. No live quotes were fetched and no market prediction was scored.
+
+### Change references
+- Implementation commits: `44d09686870da04ec3c7b0e331189265414efb5b`, `e4040cb2a7c65fc0bc533742dad546c78d2a1e9b`
+- Test commits: `e8b3e46094fb7a685f2d8a4b9004b017b1dcf51c`, `88d9ae2b24bfd8ba5460d00994c98775e16d09dd`, `cee73c4b8da662f174c6078e8a9e2ca7ce2c558c`
+- Branch: `fix/sputnik-require-price-volume-confirmation-20261024`, stacked on PR #14.
+- Production check (separate from CI): Render service `sputnik-telegram-listener` is configured to deploy from `main`. Latest listed live deploy remains commit `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16); the 2026-10-22 attempt at `50851b0dc76f1b7ed0adaa872c47aa84793687f9` is `build_failed`. Render logs at 2026-10-24 16:55:23Z show the listener HTTP online, followed by Telegram bootstrap with `chat_configured=True` and permanent listener ready at 16:55:29Z. These logs indicate the existing main deployment was running then; they do not mean this PR is deployed.
+- Rollout: not merged, no production deployment. PAPER ONLY; no orders, broker connection, or Gagarin integration.

@@ -24,7 +24,7 @@ class CfdCartTests(unittest.TestCase):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart(
             [self.candidate()],
-            {"ACME": {"price": 100, "stop": 95, "target": 110, "timestamp": fresh_timestamp}},
+            {"ACME": {"price": 100, "stop": 95, "target": 110, "timestamp": fresh_timestamp, "trigger_confirmed": True, "price_confirmed": True, "volume_confirmed": True}},
             capital=300,
             risk_pct=1,
         )
@@ -38,9 +38,32 @@ class CfdCartTests(unittest.TestCase):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart(
             [self.candidate()],
-            {"ACME": {"price": 100, "stop": 105, "target": 110, "timestamp": fresh_timestamp}},
+            {"ACME": {"price": 100, "stop": 105, "target": 110, "timestamp": fresh_timestamp, "trigger_confirmed": True, "price_confirmed": True, "volume_confirmed": True}},
         )
         self.assertEqual(rows[0]["status"], "WAIT")
+
+    def test_fresh_quote_without_price_volume_confirmation_stays_wait(self):
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
+        rows = build_cfd_cart(
+            [self.candidate()],
+            {"ACME": {"price": 100, "stop": 95, "target": 110, "timestamp": fresh_timestamp}},
+        )
+        self.assertEqual(rows[0]["status"], "WAIT")
+        self.assertIsNone(rows[0]["units"])
+        self.assertIn("prezzo e volume", rows[0]["reason"])
+
+    def test_each_confirmation_flag_is_required_for_cfd_cart(self):
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
+        base = {
+            "price": 100, "stop": 95, "target": 110, "timestamp": fresh_timestamp,
+            "trigger_confirmed": True, "price_confirmed": True, "volume_confirmed": True,
+        }
+        for missing_flag in ("trigger_confirmed", "price_confirmed", "volume_confirmed"):
+            with self.subTest(missing_flag=missing_flag):
+                quote = dict(base)
+                quote.pop(missing_flag)
+                rows = build_cfd_cart([self.candidate()], {"ACME": quote})
+                self.assertEqual(rows[0]["status"], "WAIT")
 
     def test_watch_candidate_never_becomes_cfd(self):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
@@ -50,7 +73,7 @@ class CfdCartTests(unittest.TestCase):
 
     def test_short_is_not_inferred_from_purchase_evidence(self):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
-        rows = build_cfd_cart([self.candidate("COMPRA")], {"ACME": {"price": 100, "stop": 105, "target": 90, "timestamp": fresh_timestamp}})
+        rows = build_cfd_cart([self.candidate("COMPRA")], {"ACME": {"price": 100, "stop": 105, "target": 90, "timestamp": fresh_timestamp, "trigger_confirmed": True, "price_confirmed": True, "volume_confirmed": True}})
         self.assertEqual(rows[0]["status"], "WAIT")
 
 

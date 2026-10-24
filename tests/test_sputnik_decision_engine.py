@@ -85,6 +85,46 @@ class ConditionalTradePlanTests(unittest.TestCase):
         self.assertEqual(result["status"], "WAIT")
         self.assertIsNone(result["entry"])
 
+    def test_trigger_flag_alone_does_not_confirm_price_and_volume(self):
+        from datetime import datetime, timezone
+        stamp = datetime.now(timezone.utc).isoformat()
+        plan = {"candidate": "BRENT (petrolio)", "bias": "LONG condizionale"}
+        quote = {"BRENT": {
+            "price": 100.0, "atr": 2.0, "timestamp": stamp,
+            "trigger_confirmed": True,
+        }}
+        result = build_conditional_trade_plan(plan, quote)
+        self.assertEqual(result["status"], "PREPARE")
+        self.assertIn("prezzo e volume", result["reason"])
+
+    def test_trigger_confirmation_requires_strict_price_and_volume_flags(self):
+        from datetime import datetime, timezone
+        stamp = datetime.now(timezone.utc).isoformat()
+        plan = {"candidate": "BRENT (petrolio)", "bias": "LONG condizionale"}
+        base = {
+            "price": 100.0, "atr": 2.0, "timestamp": stamp,
+            "trigger_confirmed": True,
+        }
+        for missing_flag in ("price_confirmed", "volume_confirmed"):
+            with self.subTest(missing_flag=missing_flag):
+                quote = {"BRENT": {**base, "price_confirmed": True, "volume_confirmed": True}}
+                quote["BRENT"].pop(missing_flag)
+                result = build_conditional_trade_plan(plan, quote)
+                self.assertEqual(result["status"], "PREPARE")
+
+        confirmed = {"BRENT": {
+            **base, "price_confirmed": True, "volume_confirmed": True,
+        }}
+        result = build_conditional_trade_plan(plan, confirmed)
+        self.assertEqual(result["status"], "TRIGGER CONFIRMED")
+        self.assertIn("conferme esplicite", result["reason"])
+
+        string_flags = {"BRENT": {
+            **base, "price_confirmed": "true", "volume_confirmed": "true",
+        }}
+        result = build_conditional_trade_plan(plan, string_flags)
+        self.assertEqual(result["status"], "PREPARE")
+
 if __name__ == "__main__":
     unittest.main()
 
