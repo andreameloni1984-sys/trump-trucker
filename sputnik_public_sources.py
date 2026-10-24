@@ -133,6 +133,14 @@ def _is_individual_permalink(link, base_url):
     parsed = urlsplit(resolved)
     if parsed.scheme.lower() not in {"http", "https"} or not parsed.netloc:
         return False
+    # URLs containing embedded credentials are not suitable as public evidence
+    # links and can disguise the actual destination shown to the user.
+    if parsed.username is not None or parsed.password is not None:
+        return False
+    try:
+        parsed.port
+    except ValueError:
+        return False
     # A source homepage or feed endpoint is not an individual article/post.
     if not parsed.path or parsed.path.rstrip("/") == "":
         return False
