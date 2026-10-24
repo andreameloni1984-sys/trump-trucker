@@ -448,4 +448,5 @@ In `sputnik_cfd.py`, `build_conditional_trade_plan` previously promoted a fresh 
 - Implementation commits: `44d09686870da04ec3c7b0e331189265414efb5b`, `e4040cb2a7c65fc0bc533742dad546c78d2a1e9b`
 - Test commits: `e8b3e46094fb7a685f2d8a4b9004b017b1dcf51c`, `88d9ae2b24bfd8ba5460d00994c98775e16d09dd`, `cee73c4b8da662f174c6078e8a9e2ca7ce2c558c`
 - Branch: `fix/sputnik-require-price-volume-confirmation-20261024`, stacked on PR #14.
+- Production check (separate from CI): Render service `sputnik-telegram-listener` is configured to deploy from `main`. Latest listed live deploy remains commit `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16); the 2026-10-22 attempt at `50851b0dc76f1b7ed0adaa872c47aa84793687f9` is `build_failed`. Render logs at 2026-10-24 16:55:23Z show the listener HTTP online, followed by Telegram bootstrap with `chat_configured=True` and permanent listener ready at 16:55:29Z. These logs indicate the existing main deployment was running then; they do not mean this PR is deployed.
 - Rollout: not merged, no production deployment. PAPER ONLY; no orders, broker connection, or Gagarin integration.
