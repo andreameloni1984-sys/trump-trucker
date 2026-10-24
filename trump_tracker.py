@@ -360,8 +360,12 @@ def _configured_rss_feeds() -> list[str]:
     raw = os.getenv("SPUTNIK_RSS_FEEDS", "").strip()
     if raw:
         return list(dict.fromkeys(url.strip() for url in raw.split(";") if url.strip()))
-    # Official White House feed: item-level title, date, URL and summary.
-    return ["https://www.whitehouse.gov/feed/"]
+    # Prefer item feeds from the two sources that previously produced only
+    # generic homepage metadata. Invalid/unavailable feeds are skipped safely.
+    return [
+        "https://www.whitehouse.gov/news/feed/",
+        "https://www.trumpstruth.org/feed",
+    ]
 
 
 def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
@@ -386,28 +390,26 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             continue
         known[source] = digest
         domains = _domains_for_public_text(body)
-        if not domains:
-            continue
-        finding = {
-            "source": source,
-            "url": url,
-            "title": "",
-            "published": "",
-            "domains": domains,
-            "text": body[:6000],
-            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-            "status": "POTENTIAL_CORRELATION",
-            "detected_at": utc_now().isoformat(),
-            "event_id": digest,
-        }
-        finding["action_reaction"] = build_action_reaction_record(finding, body)
-        findings.append(finding)
+        if domains:
+            print(
+                f"SPUTNIK: {source} homepage keyword match ignored; "
+                "no dated individual item/permalink was extracted."
+            )
+        # Homepage text is retained only as a change-detection diagnostic.
+        # It must never be emitted as a market catalyst or Telegram intelligence
+        # event; only the dated, item-level feed path below may create findings.
 
     # Item-level feed scan: each article is deduplicated independently, so a
     # page-level digest cannot hide a new post added to an otherwise unchanged
     # archive. A feed item is a catalyst candidate, never an automatic trade.
     for feed_url in _configured_rss_feeds():
-        source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
+        lower_feed_url = feed_url.lower()
+        if "whitehouse.gov" in lower_feed_url:
+            source = "WHITE_HOUSE_RSS"
+        elif "trumpstruth.org" in lower_feed_url:
+            source = "TRUTH_ARCHIVE_RSS"
+        else:
+            source = "PUBLIC_RSS"
         try:
             rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
         except Exception as exc:

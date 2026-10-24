@@ -14,6 +14,7 @@ HISTORICAL_PATTERNS = [
     {
         "id": "china_tariff_escalation_2025_10",
         "keywords": ("massive increase", "tariff", "tariffs", "china", "xi"),
+        "required_any": ("massive increase", "increase tariffs", "raise tariffs", "tariff hike"),
         "event_type": "TRADE_ESCALATION",
         "date": "2025-10-10",
         "source": "Reuters",
@@ -44,6 +45,7 @@ HISTORICAL_PATTERNS = [
     {
         "id": "tariff_pause_2025_04",
         "keywords": ("pause", "tariff", "tariffs", "90 days"),
+        "required_any": ("pause", "90 days"),
         "event_type": "TRADE_DE_ESCALATION",
         "date": "2025-04-09",
         "source": "Reuters",
@@ -61,8 +63,13 @@ def _normalise(text: str) -> str:
 
 def classify_event(text: str) -> str:
     body = _normalise(text)
-    if any(k in body for k in ("tariff", "tariffs", "trade war", "china", "xi")):
-        if any(k in body for k in ("pause", "help china", "not hurt", "soften", "deal")):
+    trade_topic = any(k in body for k in ("tariff", "tariffs", "trade war", "china", "xi"))
+    if trade_topic:
+        denial_phrases = ("denies reports", "deny reports", "false report", "reports are false", "not true", "fabricated claim", "denies that")
+        if any(phrase in body for phrase in denial_phrases):
+            return "TRADE_AMBIGUOUS"
+        deescalation_phrases = ("will not impose", "won't impose", "will not raise", "won't raise", "not impose tariffs", "no new tariffs", "withdraw tariffs", "tariffs withdrawn", "remove tariffs", "tariffs removed", "pause", "suspend tariffs", "suspension of tariffs", "help china", "not hurt", "soften", "softening", "deal")
+        if any(phrase in body for phrase in deescalation_phrases):
             return "TRADE_DE_ESCALATION"
         return "TRADE_ESCALATION"
     if any(k in body for k in ("iran", "hormuz", "missile", "military strike", "war")):
@@ -71,19 +78,53 @@ def classify_event(text: str) -> str:
         return "ENERGY"
     return "OTHER"
 
+def classify_claim_status(text: str) -> str:
+    """Conservative wording status; this is not independent fact verification."""
+    body = _normalise(text)
+    if any(phrase in body for phrase in (
+        "denies reports", "deny reports", "false report", "reports are false",
+        "not true", "fabricated claim", "unconfirmed report", "unverified report",
+        "reportedly", "according to sources",
+    )):
+        return "UNVERIFIED_OR_DISPUTED"
+    if any(phrase in body for phrase in (
+        "signed into law", "signed an executive order", "issued an executive order",
+        "officially imposed", "takes effect", "took effect", "effective immediately",
+        "entered into force", "published in the federal register",
+    )):
+        return "FORMAL_ACTION_WORDING"
+    if any(phrase in body for phrase in (
+        "threatens to", "threatened to", "plans to", "plan to", "could impose",
+        "may impose", "considering imposing", "proposes to", "proposed to",
+        "intends to", "vows to",
+    )):
+        return "PROPOSAL_OR_THREAT"
+    if any(phrase in body for phrase in (
+        "announced", "says", "said", "states", "stated", "pledges", "pledged",
+    )):
+        return "STATEMENT_REPORTED"
+    return "STATUS_UNCLEAR"
+
 def match_historical_reactions(text: str, limit: int = 3) -> list[dict[str, Any]]:
     body = _normalise(text)
     event_type = classify_event(body)
     matches: list[dict[str, Any]] = []
     for pattern in HISTORICAL_PATTERNS:
         keyword_hits = sum(1 for k in pattern["keywords"] if k in body)
+        required_any = pattern.get("required_any", ())
+        required_match = not required_any or any(phrase in body for phrase in required_any)
         type_match = pattern["event_type"] == event_type
-        if keyword_hits == 0 and not type_match:
+        # A broad event-type match alone is not evidence of a comparable analogue.
+        # Require both the same event class and at least one pattern-specific phrase;
+        # otherwise an unrelated mention (for example, "tariff pause") can inherit
+        # the opposite escalation pattern and its historical market directions.
+        if keyword_hits == 0 or not type_match or not required_match:
             continue
         matches.append({
             **pattern,
             "keyword_hits": keyword_hits,
             "type_match": type_match,
+            "required_match": required_match,
         })
     matches.sort(key=lambda x: (x["type_match"], x["keyword_hits"]), reverse=True)
     return matches[:max(0, limit)]
@@ -106,6 +147,15 @@ def action_reaction_message(text: str, title: str = "SPUTNIK — AZIONE → REAZ
     lines = [f"🛰️ {title}", "━━━━━━━━━━━━━━━━━━"]
     event_type = classify_event(text)
     lines.append(f"🧩 Evento classificato: {event_type}")
+    lines.append(f"🧾 Stato della formulazione: {classify_claim_status(text)}")
+    watchlist = select_watchlist(text)
+    if watchlist:
+        lines += ["", "🎯 STRUMENTI DA VALUTARE (selezione notizia)"]
+        for item in watchlist:
+            lines.append("• " + item["symbol"] + ": " + item["reason"])
+        lines.append("ℹ️ Watchlist preliminare: non equivale a un segnale LONG/SHORT.")
+    else:
+        lines += ["", "⚪ Nessuno strumento prioritario identificato dalle parole chiave."]
     if not matches:
         lines += ["", "⚪ Nessun analogo storico sufficientemente documentato.", "ℹ️ Nessuna direzione viene inventata."]
         return "\n".join(lines)
@@ -134,3 +184,24 @@ def build_action_reaction_record(finding: dict[str, Any], source_text: str = "")
         "historical_directions": infer_direction(matches),
         "evidence": "HISTORICAL_ANALOGUE" if matches else "NO_ANALOGUE",
     }
+
+
+# Narrow, event-driven watchlist; candidates are not trade instructions.
+def select_watchlist(text: str) -> list[dict[str, str]]:
+    body = _normalise(text)
+    candidates: list[dict[str, str]] = []
+    def add(symbol: str, reason: str, rank: int) -> None:
+        if not any(item['symbol'] == symbol for item in candidates):
+            candidates.append({'symbol': symbol, 'reason': reason, '_rank': str(rank)})
+    tech_trade = any(term in body for term in ('semiconductor', 'semiconductors', 'chip export', 'ai chip', 'artificial intelligence', 'technology stocks', 'nasdaq', 'china tariffs', 'tariffs on china', 'export controls'))
+    broad_macro = any(term in body for term in ('federal reserve', 'interest rate', 'inflation', 'jobs report', 'unemployment', 'recession', 'gdp', 'payrolls', 'treasury yield'))
+    energy_supply = any(term in body for term in ('oil supply', 'crude supply', 'opec', 'strait of hormuz', 'oil production', 'production cut', 'oil sanctions', 'brent', 'wti', 'pipeline attack', 'tanker attack'))
+    geopolitical = any(term in body for term in ('military strike', 'invasion', 'war', 'missile attack', 'geopolitical escalation', 'gold'))
+    deescalation = any(term in body for term in ('tariff pause', 'pause tariffs', 'withdraw tariffs', 'deal reached', 'trade deal', 'ceasefire', 'peace agreement'))
+    if tech_trade: add('NASDAQ-100', 'Catalizzatore su tecnologia, semiconduttori o commercio USA-Cina', 1)
+    if broad_macro: add('S&P 500', 'Catalizzatore macroeconomico statunitense ad ampio impatto', 2)
+    if energy_supply: add('WTI', 'Notizia specifica su offerta, produzione o trasporto del petrolio', 1)
+    if geopolitical: add('GOLD', 'Possibile domanda rifugio in presenza di tensione geopolitica', 2)
+    if deescalation and not any(item['symbol'] == 'NASDAQ-100' for item in candidates): add('NASDAQ-100', 'Possibile sollievo azionario dopo una distensione commerciale', 2)
+    candidates.sort(key=lambda item: int(item['_rank']))
+    return [{'symbol': item['symbol'], 'reason': item['reason']} for item in candidates[:2]]
