@@ -1,6 +1,7 @@
 name: SPUTNIK item intelligence tests
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - "trump_tracker.py"
