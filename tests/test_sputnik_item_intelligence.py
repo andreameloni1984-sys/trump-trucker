@@ -221,7 +221,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertNotIn("javascript:", message)
         self.assertNotIn("🔗 Post originale:", message)
 
-    def test_trade_policy_maps_to_watch_candidates_not_orders(selfelf):
+    def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
         )
