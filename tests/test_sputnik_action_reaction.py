@@ -67,6 +67,16 @@ class ActionReactionTests(unittest.TestCase):
         self.assertIn('NASDAQ-100', message)
         self.assertIn('non equivale a un segnale LONG/SHORT', message)
 
+    def test_conflicting_historical_votes_abstain_on_tie(self):
+        matches = [
+            {"reaction": {"NASDAQ": "DOWN"}},
+            {"reaction": {"NASDAQ": "UP"}},
+            {"reaction": {"GOLD": "UP"}},
+        ]
+        directions = infer_direction(matches)
+        self.assertNotIn("NASDAQ", directions)
+        self.assertEqual(directions.get("GOLD"), "UP")
+
     def test_unknown_event_does_not_invent_direction(self):
         matches = match_historical_reactions("Trump discusses a topic with no documented analogue")
         self.assertEqual(matches, [])
