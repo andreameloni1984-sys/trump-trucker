@@ -130,5 +130,29 @@ class CfdCartTests(unittest.TestCase):
                 self.assertIn("LONG oppure SHORT", result["reason"])
 
 
+    def test_invalid_or_collapsed_derived_levels_stay_wait(self):
+        fresh_timestamp = datetime.now(timezone.utc).isoformat()
+        cases = (
+            ("LONG", 1, 2),       # stop would be non-positive
+            ("SHORT", 1, 1),      # target levels would be non-positive
+            ("LONG", 100, 1e-10), # levels collapse after six-decimal rounding
+        )
+        for bias, price, atr in cases:
+            with self.subTest(bias=bias, price=price, atr=atr):
+                quote = {
+                    "price": price, "atr": atr, "timestamp": fresh_timestamp,
+                    "trigger_confirmed": True, "price_confirmed": True,
+                    "volume_confirmed": True,
+                }
+                result = build_conditional_trade_plan(
+                    {"candidate": "GOLD", "bias": bias}, {"GOLD": quote}
+                )
+                self.assertEqual(result["status"], "WAIT")
+                self.assertIsNone(result["entry"])
+                self.assertIsNone(result["stop"])
+                self.assertIsNone(result["tp1"])
+                self.assertIsNone(result["tp2"])
+
+
 if __name__ == "__main__":
     unittest.main()
