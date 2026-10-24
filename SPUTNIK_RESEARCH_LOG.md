@@ -473,3 +473,24 @@ The shared numeric parser rejected missing, non-numeric, zero, and negative valu
 - Regression-test commit: c0e88ea20508e2b41723342a194c10a417c3357d
 - Branch: fix/sputnik-reject-nonfinite-market-values-20261024, stacked on the price/volume-confirmation PR.
 - Rollout: PR/CI/Render state to be verified separately. PAPER ONLY; no orders, broker connection, or Gagarin integration.
+
+
+## 2026-10-24 — Reject missing or ambiguous direction in conditional plans
+
+### Finding
+In sputnik_cfd.py, build_conditional_trade_plan treated any bias containing the substring SHORT as SHORT and every other value as LONG. That meant a missing, neutral, waiting, or malformed bias (for example NEUTRAL, WAIT, LONG_SETUP, or NOT_SHORT) could silently become a directional plan; with fresh quote/ATR and confirmation flags it could even be labelled TRIGGER CONFIRMED. This is a false-positive path independent of quote freshness.
+
+### Implemented
+- Normalize the supplied bias with whitespace trimming and uppercase conversion.
+- Accept only exact LONG or SHORT values; return WAIT without entry/stop/targets for all other values.
+- Add regression coverage for missing, empty, neutral, waiting, suffixed-long, and negated-short values while the quote flags are deliberately all true. This ensures market-data flags cannot override an invalid direction.
+
+### Evidence and limits
+- The prior fallback was directly visible in the conditional-plan function: "SHORT if SHORT in bias else LONG". It made unknown values default to LONG.
+- Regression test added to tests/test_sputnik_cfd.py. CI outcome is pending until GitHub Actions runs on this branch/PR; no local full-suite run is claimed.
+- This change reduces malformed-direction false positives. It does not establish improved market prediction, profitability, or out-of-sample accuracy; no live market data or performance metrics were used.
+
+### Change references
+- Branch: fix/sputnik-require-explicit-direction-20261024, based on PR #16 head 47246bd3a0a1e0d6bee2eba865906368d71c8382.
+- Implementation and regression-test commits: recorded in the PR history after CI starts.
+- Rollout: not merged to main; production deployment not performed. PAPER ONLY; no orders, broker connections, or Gagarin integration.
