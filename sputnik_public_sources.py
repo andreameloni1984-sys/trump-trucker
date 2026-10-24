@@ -194,7 +194,11 @@ def parse_public_feed(raw, base_url):
         title = clean_public_text(_text(entry, {"title"}))
         body = clean_public_text(_text(entry, {"encoded", "description", "summary", "content"}))
         raw_link = _link(entry)
-        published = _text(entry, {"pubdate", "published", "updated", "date"})
+        # `updated` is not a publication timestamp: an old article edited today
+        # must not be promoted to a fresh market catalyst. Require an explicit
+        # publication field (RSS pubDate / Atom published / date metadata).
+        published = _text(entry, {"pubdate", "published", "date"})
+        updated = _text(entry, {"updated"})
         # Only keep a candidate that can be independently checked: title,
         # parseable publication date and a permalink to an individual item.
         if not title or not raw_link or not _has_valid_publication_date(published):
@@ -210,8 +214,9 @@ def parse_public_feed(raw, base_url):
             original = urljoin(base_url, original)
         result.append({
             "id": identity[:500], "title": title[:300], "text": body[:6000],
-            "published": published[:100], "url": link[:1000],
-            "primary_url": original[:1000], "feed_url": base_url[:1000],
+            "published": published[:100], "updated": updated[:100],
+            "url": link[:1000], "primary_url": original[:1000],
+            "feed_url": base_url[:1000],
             "item_index": str(index),
         })
     return result
