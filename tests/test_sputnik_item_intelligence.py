@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
 import trump_tracker
+from trump_tracker import TextExtractor
 from sputnik_catalyst import catalyst_watchlist
 
 
@@ -18,6 +19,32 @@ FEED = b"""<rss><channel><item>
 
 
 class SputnikItemIntelligenceTests(unittest.TestCase):
+    def test_page_text_extractor_ignores_jsonld_and_site_navigation(self):
+        html = """
+        <html><head>
+          <script type="application/ld+json">
+            {"@type":"WebSite","name":"Example","description":"Gold AI Federal Reserve"}
+          </script>
+          <style>.hidden { color: red }</style>
+        </head><body>
+          <nav>Gold silver AI menu</nav>
+          <main><h1>White House announces a new energy policy</h1>
+            <p>Official details of the policy.</p>
+          </main>
+          <footer>Media rates macro site links</footer>
+        </body></html>
+        """
+        parser = TextExtractor()
+        parser.feed(html)
+        visible = parser.text()
+
+        self.assertIn("White House announces a new energy policy", visible)
+        self.assertIn("Official details of the policy.", visible)
+        self.assertNotIn("Federal Reserve", visible)
+        self.assertNotIn("Gold silver AI menu", visible)
+        self.assertNotIn("Media rates macro site links", visible)
+        self.assertNotIn("@type", visible)
+
     def setUp(self):
         clock = patch.object(
             trump_tracker, "utc_now",
