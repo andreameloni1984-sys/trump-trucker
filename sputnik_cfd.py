@@ -92,8 +92,11 @@ def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | 
     atr = _number(quote.get("atr") or quote.get("ATR") or quote.get("atr_14"))
     if entry is None or atr is None:
         return result
-    bias = str(plan.get("bias") or "").upper()
-    direction = "SHORT" if "SHORT" in bias else "LONG"
+    bias = str(plan.get("bias") or "").strip().upper()
+    if bias not in {"LONG", "SHORT"}:
+        result["reason"] = "Bias direzionale assente o non valido: è richiesto LONG oppure SHORT."
+        return result
+    direction = bias
     distance = 1.5 * atr
     if direction == "LONG":
         stop, tp1, tp2 = entry - distance, entry + distance, entry + 2 * distance
