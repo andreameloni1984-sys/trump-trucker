@@ -393,5 +393,6 @@ The item collector stores the alert text as `title + body`, but `intelligence_me
 
 ### Change references
 - Formatter implementation commit: `6ec09e1819b0a19e4ad39854a617a121f7eb2e37`
+- Follow-up whitespace-trim correction: `f1c0b23154fcdc5d736a5040b6b492e7c6e46e24`
 - Regression-test commit: `b331ae10bbc0d9dd1dcc7e81cd093135f12be499`
 - Follow-up: run `tests/test_sputnik_item_intelligence.py` in CI and inspect the new excerpt assertion before merge.
