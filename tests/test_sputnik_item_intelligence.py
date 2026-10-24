@@ -221,6 +221,44 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertNotIn("javascript:", message)
         self.assertNotIn("🔗 Post originale:", message)
 
+    def test_failed_telegram_delivery_releases_dedup_key_for_retry(self):
+        state = {"intelligence_items": {"evt-1": "2026-10-24T07:00:00+00:00"}}
+        finding = {
+            "event_id": "evt-1",
+            "source": "TRUTH_ARCHIVE_RSS",
+            "title": "Tariff announcement",
+            "published": "2026-10-24T06:00:00Z",
+            "domains": ["TRADE_POLICY"],
+            "evidence": "PUBLIC_RSS_ITEM",
+            "url": "https://archive.example/posts/1",
+        }
+        with patch.object(trump_tracker, "send_telegram", return_value=False), patch.object(
+            trump_tracker, "save_state"
+        ) as save_state:
+            trump_tracker.deliver_intelligence_findings([finding], state, chat_id="test-chat")
+
+        self.assertNotIn("evt-1", state["intelligence_items"])
+        save_state.assert_called_once_with(state)
+
+    def test_successful_telegram_delivery_keeps_dedup_key(self):
+        state = {"intelligence_items": {"evt-1": "2026-10-24T07:00:00+00:00"}}
+        finding = {
+            "event_id": "evt-1",
+            "source": "TRUTH_ARCHIVE_RSS",
+            "title": "Tariff announcement",
+            "published": "2026-10-24T06:00:00Z",
+            "domains": ["TRADE_POLICY"],
+            "evidence": "PUBLIC_RSS_ITEM",
+            "url": "https://archive.example/posts/1",
+        }
+        with patch.object(trump_tracker, "send_telegram", return_value=True), patch.object(
+            trump_tracker, "save_state"
+        ) as save_state:
+            trump_tracker.deliver_intelligence_findings([finding], state, chat_id="test-chat")
+
+        self.assertIn("evt-1", state["intelligence_items"])
+        save_state.assert_not_called()
+
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
