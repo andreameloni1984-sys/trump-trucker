@@ -284,3 +284,24 @@ The item collector already retained both the archive/article permalink (`url`) a
 - Alert formatter commit: `40e916e4c3b1151ad8e42d739a104e13b2a8de40`
 - Regression tests commit: `147c0e9ff745db9c0b3f079ed924fa21de55029f`
 - Follow-up: run the repository unittest suite and verify actual Telegram rendering with a feed item that contains original-URL metadata.
+
+
+## 2026-10-24 — Skip invalid Atom alternates instead of losing a valid article link
+
+### Finding
+The Atom link selector returned the first `rel="alternate"` URL and let the later item-level validation reject the whole entry if that first URL was malformed or pointed back to the feed endpoint. An entry could therefore contain a valid later alternate permalink but be discarded because an earlier alternate was unusable.
+
+### Implemented
+- The parser now validates each alternate candidate against the feed URL while scanning, skipping unsupported schemes and feed-level links and continuing until it finds a valid individual permalink.
+- The same individual-link check is applied to legacy text-valued RSS links when a base feed URL is available.
+- Added a regression test with a `javascript:` alternate, a feed-endpoint alternate, and a later valid article URL; the valid article must be extracted.
+
+### Evidence and limits
+- The previous `_link` returned immediately on the first alternate candidate, while `parse_public_feed` performed the individual-permalink check only after selection. This ordering could discard an entry even when a later valid link existed.
+- The test is a deterministic XML fixture and does not require network access. The test has been added but has **not been executed in this run**; full unittest and GitHub Actions results remain unverified. No live source or Telegram delivery was tested.
+- This change improves permalink extraction only; it does not prove the destination page is reachable or that its content matches the feed entry. No LONG/SHORT signal, price, stop loss, take profit, order execution, or Gagarin integration was added.
+
+### Change references
+- Parser commit: `d8dc8b4635aa23c83c10aa6b66ba44077c6c15a7`
+- Regression-test commit: `a1c817d821ebd603295a4c15b636c66aeabfcbe4`
+- Follow-up: run `tests/test_sputnik_public_sources.py` and the full item-intelligence suite in CI, then verify the configured live feeds.
