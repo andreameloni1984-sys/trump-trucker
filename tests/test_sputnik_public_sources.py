@@ -1,5 +1,39 @@
 import unittest
-from sputnik_public_sources import canonical_public_item_url, parse_public_feed, public_item_identity
+from datetime import datetime, timezone
+from sputnik_public_sources import (
+    canonical_public_item_url, parse_public_feed, parse_publication_datetime,
+    public_item_identity, publication_is_recent,
+)
+
+
+class PublicationFreshnessTests(unittest.TestCase):
+    def setUp(self):
+        self.now = datetime(2026, 10, 24, 7, 0, tzinfo=timezone.utc)
+
+    def test_iso_and_rfc2822_dates_are_normalized_to_utc(self):
+        iso = parse_publication_datetime("2026-10-24T08:30:00+01:00")
+        rfc = parse_publication_datetime("Sat, 24 Oct 2026 07:30:00 GMT")
+        self.assertEqual(iso, datetime(2026, 10, 24, 7, 30, tzinfo=timezone.utc))
+        self.assertEqual(rfc, iso)
+
+    def test_recent_publication_is_accepted(self):
+        self.assertTrue(publication_is_recent(
+            "Sat, 24 Oct 2026 06:00:00 GMT", now=self.now, max_age_hours=72
+        ))
+
+    def test_stale_and_implausibly_future_publications_are_rejected(self):
+        self.assertFalse(publication_is_recent(
+            "Mon, 19 Oct 2026 06:00:00 GMT", now=self.now, max_age_hours=72
+        ))
+        self.assertFalse(publication_is_recent(
+            "2026-10-24T08:00:00Z", now=self.now, max_age_hours=72
+        ))
+
+    def test_naive_iso_timestamp_is_treated_as_utc(self):
+        self.assertEqual(
+            parse_publication_datetime("2026-10-24T06:00:00"),
+            datetime(2026, 10, 24, 6, 0, tzinfo=timezone.utc),
+        )
 
 class PublicFeedParserTests(unittest.TestCase):
     def test_rss_keeps_title_date_url_and_plain_text(self):
