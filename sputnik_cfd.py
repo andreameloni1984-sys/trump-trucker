@@ -43,12 +43,28 @@ def _quote_is_fresh(quote: dict[str, Any], max_age_minutes: int = 30) -> bool:
         return False
 
 
+def _has_price_volume_confirmation(quote: dict[str, Any]) -> bool:
+    """Require explicit, strict price and volume evidence before confirmation.
+
+    A fresh quote and ATR can produce indicative levels, but cannot by themselves
+    establish a breakout or volume participation. String values like "true" are
+    deliberately not accepted as verified booleans.
+    """
+    return (
+        quote.get("trigger_confirmed") is True
+        and quote.get("price_confirmed") is True
+        and quote.get("volume_confirmed") is True
+    )
+
+
 def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | None,
                                  risk_pct: float = DEFAULT_RISK_PCT) -> dict[str, Any]:
     """Calculate indicative SL/TP from a fresh broker quote and ATR.
 
     Uses 1.5 ATR stop and 1R/2R targets. It is only a PREPARE plan unless the
-    quote explicitly carries trigger_confirmed=True. No price or ATR is guessed.
+    quote explicitly carries trigger_confirmed=True AND independent boolean
+    flags price_confirmed=True and volume_confirmed=True. A bare trigger flag is
+    not enough to claim price/volume confirmation. No price or ATR is guessed.
     """
     if not 0 < risk_pct <= 5:
         raise ValueError("risk_pct must be between 0 and 5")
@@ -82,11 +98,16 @@ def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | 
         stop, tp1, tp2 = entry - distance, entry + distance, entry + 2 * distance
     else:
         stop, tp1, tp2 = entry + distance, entry - distance, entry - 2 * distance
+    confirmed = _has_price_volume_confirmation(quote)
     result.update({"direction": direction, "entry": round(entry, 6),
                    "stop": round(stop, 6), "tp1": round(tp1, 6), "tp2": round(tp2, 6),
                    "atr": round(atr, 6),
-                   "status": "TRIGGER CONFIRMED" if quote.get("trigger_confirmed") is True else "PREPARE",
-                   "reason": "Livelli indicativi calcolati da prezzo broker e ATR; trigger tecnico da confermare."})
+                   "status": "TRIGGER CONFIRMED" if confirmed else "PREPARE",
+                   "reason": (
+                       "Quotazione fresca, ATR e conferme esplicite di prezzo e volume presenti."
+                       if confirmed else
+                       "Livelli indicativi da prezzo broker e ATR; servono conferme esplicite di prezzo e volume."
+                   )})
     return result
 
 
