@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - "trump_tracker.py"
+      - "sputnik_public_sources.py"
+      - "tests/test_sputnik_public_sources.py"
+      - "tests/test_sputnik_item_intelligence.py"
       - "sputnik_release_calendar.py"
       - "sputnik_event_outcomes.py"
       - "tests/test_sputnik_event_outcomes.py"
@@ -38,6 +41,9 @@ on:
       - "tests/test_sputnik_decision_engine.py"
       - "tests/test_sputnik_decision.py"
       - "trump_tracker.py"
+      - "sputnik_public_sources.py"
+      - "tests/test_sputnik_public_sources.py"
+      - "tests/test_sputnik_item_intelligence.py"
       - "sputnik_release_calendar.py"
       - "sputnik_pre_release_alerts.py"
       - "sputnik_bea_calendar.py"
