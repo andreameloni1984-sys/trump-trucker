@@ -661,7 +661,12 @@ def gagarin_confirmation_message(result: dict[str, Any]) -> str:
 def intelligence_message(item: dict[str, Any]) -> str:
     title = str(item.get("title") or "").strip()
     published = str(item.get("published") or "").strip()
-    excerpt = re.sub(r"\s+", " ", str(item.get("text") or "")).strip()[:420]
+    excerpt = re.sub(r"\s+", " ", str(item.get("text") or "")).strip()
+    # Collector text starts with the headline; remove that prefix so the alert
+    # can show useful source context without repeating the title.
+    if title and excerpt.casefold().startswith(title.casefold()):
+        excerpt = excerpt[len(title):].lstrip(" \\t-–—:|.;")
+    excerpt = excerpt[:420]
     item_url = str(item.get("url") or "").strip()
     original_url = canonical_public_item_url(item.get("primary_url"))
     canonical_item_url = canonical_public_item_url(item_url)
@@ -678,8 +683,8 @@ def intelligence_message(item: dict[str, Any]) -> str:
         f"🧩 Aree citate: {', '.join(item.get('domains') or [])}",
         f"🔎 Evidenza: {item.get('evidence', 'N/D')}",
     ])
-    if excerpt and not title:
-        lines.append(f"📝 Testo: {excerpt}")
+    if excerpt:
+        lines.append(f"📝 Estratto: {excerpt}")
     lines.extend([
         "⚠️ Stato: CATALIZZATORE DA VERIFICARE",
         f"🔗 Articolo/archivio: {item_url}",
