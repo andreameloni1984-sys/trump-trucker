@@ -1,5 +1,27 @@
 # SPUTNIK Research and Implementation Log
 
+## 2026-10-24 — Exclude page metadata from generic source-text extraction
+
+### Finding
+The three reported alerts contained JSON-LD website metadata from the generic Trump archive and White House homepages (for example, `@type: WebSite`, page names, and broad descriptions), not individual dated posts or articles. `TextExtractor` previously collected text from every HTML data node, including `<script type="application/ld+json">`, styles, and navigation/footer elements. This could pollute keyword discovery with site-wide metadata.
+
+### Implemented
+- Updated `TextExtractor` in `trump_tracker.py` to ignore script, style, noscript, SVG, navigation, header, footer, and aside content while extracting visible page text.
+- Added a regression test to `tests/test_sputnik_item_intelligence.py` with JSON-LD containing market keywords and verifies that only visible editorial content remains.
+- Kept the existing hard gate: generic homepages are diagnostics only and cannot be emitted as individual market catalysts.
+
+### Evidence and limits
+- The provided notifications visibly contain JSON-LD `WebSite` schema and generic homepage URLs, which matches the failure mode addressed here.
+- The change reduces metadata-driven keyword pollution; it does not by itself discover individual posts. Individual catalysts still require configured RSS/Atom entries with a title, explicit publication time, and a valid item permalink.
+- Code and regression test were committed to the feature branch and must be re-read; no local Python test run, GitHub Actions success, live source fetch, or Telegram delivery is claimed.
+- Informational only: no LONG/SHORT inference, prices, stop loss, take profit, orders, or direct Gagarin integration.
+
+### Change references
+- Extractor commit: `7eddbdcb7d42f4b40df8ac70071f916adf718478`
+- Regression-test commit: `f8b0d19e15897afa692b7af00353150296779f03`
+- Follow-up: verify CI and confirm the deployed Telegram bot runs this branch; a repository commit alone does not update the production service.
+
+
 ## 2026-10-23 — Historical analogue matching must agree with event class
 
 ### Finding
