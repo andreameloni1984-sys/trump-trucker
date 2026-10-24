@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
 
 class _Text(HTMLParser):
     def __init__(self):
@@ -82,6 +82,57 @@ def _is_individual_permalink(link, base_url):
     normalized_link = (parsed.scheme.lower(), parsed.netloc.lower(), parsed.path.rstrip("/"), parsed.query)
     normalized_base = (base.scheme.lower(), base.netloc.lower(), base.path.rstrip("/"), base.query)
     return normalized_link != normalized_base
+
+
+_TRACKING_QUERY_KEYS = {
+    "fbclid", "gclid", "dclid", "mc_cid", "mc_eid", "ref_src",
+    "igshid", "vero_id", "oly_anon_id", "oly_enc_id",
+}
+
+
+def canonical_public_item_url(value):
+    """Normalize an individual public-item URL for cross-feed deduplication."""
+    parsed = urlsplit(str(value or "").strip())
+    scheme = parsed.scheme.lower()
+    if scheme not in {"http", "https"} or not parsed.hostname:
+        return ""
+    if parsed.username is not None or parsed.password is not None:
+        return ""
+    try:
+        port = parsed.port
+    except ValueError:
+        return ""
+    host = parsed.hostname.lower()
+    if ":" in host and not host.startswith("["):
+        host = f"[{host}]"
+    if port and not ((scheme == "http" and port == 80) or (scheme == "https" and port == 443)):
+        host = f"{host}:{port}"
+    path = re.sub(r"/{2,}", "/", parsed.path or "/")
+    if path != "/":
+        path = path.rstrip("/")
+    query = [
+        (key, val)
+        for key, val in parse_qsl(parsed.query, keep_blank_values=True)
+        if not key.lower().startswith("utm_") and key.lower() not in _TRACKING_QUERY_KEYS
+    ]
+    return urlunsplit((scheme, host, path, urlencode(sorted(query)), ""))
+
+
+def public_item_identity(item):
+    """Return an identity independent of which feed carried the same item."""
+    primary = canonical_public_item_url(item.get("primary_url"))
+    if primary:
+        return "url:" + primary
+    permalink = canonical_public_item_url(item.get("url"))
+    if permalink:
+        return "url:" + permalink
+    title = " ".join(str(item.get("title") or "").split()).casefold()
+    published = " ".join(str(item.get("published") or "").split())
+    if title and published:
+        return "metadata:" + hashlib.sha256((title + "|" + published).encode("utf-8")).hexdigest()
+    return ""
+
+
 
 def _descendant(node, names):
     for child in node.iter():
