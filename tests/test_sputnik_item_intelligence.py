@@ -42,6 +42,40 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
 
+    def test_generic_homepages_are_not_emitted_as_individual_catalysts(self):
+        with patch.dict(os.environ, {
+            "SPUTNIK_SOCIAL_ENABLED": "1",
+            "SPUTNIK_RSS_FEEDS": "https://example.gov/feed.xml",
+        }):
+            with patch.object(
+                trump_tracker, "fetch_public_text",
+                return_value="Gold artificial intelligence federal reserve generic homepage",
+            ), patch.object(
+                trump_tracker, "fetch_public_feed", return_value=b"<rss><channel/></rss>"
+            ):
+                findings = trump_tracker.intelligence_snapshot({})
+
+        self.assertEqual(findings, [])
+
+    def test_default_feeds_include_truth_archive_and_white_house(self):
+        with patch.dict(os.environ, {"SPUTNIK_RSS_FEEDS": ""}, clear=False):
+            feeds = trump_tracker._configured_rss_feeds()
+        self.assertIn("https://www.whitehouse.gov/news/feed/", feeds)
+        self.assertIn("https://www.trumpstruth.org/feed", feeds)
+
+    def test_truth_archive_feed_is_labelled_separately(self):
+        with patch.dict(os.environ, {
+            "SPUTNIK_SOCIAL_ENABLED": "1",
+            "SPUTNIK_RSS_FEEDS": "https://www.trumpstruth.org/feed",
+        }):
+            with patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test")), patch.object(
+                trump_tracker, "fetch_public_feed", return_value=FEED
+            ):
+                findings = trump_tracker.intelligence_snapshot({})
+        self.assertEqual(len(findings), 1)
+        self.assertEqual(findings[0]["source"], "TRUTH_ARCHIVE_RSS")
+        self.assertEqual(findings[0]["evidence"], "PUBLIC_RSS_ITEM")
+
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
