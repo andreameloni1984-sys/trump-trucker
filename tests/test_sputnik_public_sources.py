@@ -135,6 +135,17 @@ class PublicFeedParserTests(unittest.TestCase):
         }
         self.assertEqual(public_item_identity(first), public_item_identity(second))
 
+    def test_metadata_fallback_deduplicates_equivalent_timestamp_formats(self):
+        first = {
+            "title": "Same syndicated item",
+            "published": "2026-10-24T08:00:00+01:00",
+        }
+        second = {
+            "title": "  SAME   syndicated item ",
+            "published": "Sat, 24 Oct 2026 07:00:00 GMT",
+        }
+        self.assertEqual(public_item_identity(first), public_item_identity(second))
+
     def test_empty_feed_is_valid(self):
         self.assertEqual(parse_public_feed(b"<rss><channel/></rss>", "https://example.gov/feed"), [])
 
