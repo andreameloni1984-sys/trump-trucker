@@ -88,7 +88,7 @@ def publication_is_recent(value, now=None, max_age_hours=72, future_skew_minutes
         future_limit = float(future_skew_minutes)
     except (TypeError, ValueError, OverflowError):
         return False
-    if not 0 < age_limit <= 24 * 30 or not 0 <= future_limit <= 60:
+    if not 1 <= age_limit <= 24 * 30 or not 0 <= future_limit <= 60:
         return False
     current = now or datetime.now(timezone.utc)
     if current.tzinfo is None:
