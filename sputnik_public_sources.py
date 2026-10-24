@@ -38,15 +38,22 @@ def _text(node, names):
     return "".join(child.itertext()).strip() if child is not None else ""
 
 def _link(node):
-    """Prefer an Atom alternate/permalink over self, enclosure or feed links."""
+    """Return an item permalink; never mistake an Atom self/feed link for one."""
     links = [child for child in list(node) if _name(child.tag) == "link"]
     for child in links:
-        rel = str(child.attrib.get("rel") or "alternate").strip().lower()
+        # In Atom, a missing rel means "alternate" by specification. RSS uses
+        # a text-valued <link> element with no rel/href attributes.
+        rel_attr = child.attrib.get("rel")
+        rel = str(rel_attr or "alternate").strip().lower()
         href = str(child.attrib.get("href") or "").strip()
         if href and rel in {"alternate", ""}:
             return href
     for child in links:
-        value = str(child.attrib.get("href") or "").strip() or "".join(child.itertext()).strip()
+        # Compatibility with RSS 2.0: <link>https://host/article</link>.
+        # Do not fall back to Atom rel="self", "enclosure", or other typed links.
+        if child.attrib.get("rel") or child.attrib.get("href"):
+            continue
+        value = "".join(child.itertext()).strip()
         if value:
             return value
     return ""
