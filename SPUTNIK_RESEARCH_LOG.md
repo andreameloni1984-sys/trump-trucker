@@ -305,3 +305,25 @@ The Atom link selector returned the first `rel="alternate"` URL and let the late
 - Parser commit: `d8dc8b4635aa23c83c10aa6b66ba44077c6c15a7`
 - Regression-test commit: `a1c817d821ebd603295a4c15b636c66aeabfcbe4`
 - Follow-up: run `tests/test_sputnik_public_sources.py` and the full item-intelligence suite in CI, then verify the configured live feeds.
+
+
+## 2026-10-24 — Select valid publication timestamps deterministically
+
+### Finding
+`parse_public_feed` used `_text(entry, {"pubdate", "published", "date"})`. That helper returns the first matching XML child in document order, not the first valid publication field. A malformed generic date element placed before a valid Atom `published` or RSS `pubDate` could therefore cause a legitimate item to be discarded.
+
+### Implemented
+- Added `_publication_text`, which checks explicit publication fields in stable priority order (`pubDate`, `published`, then generic `date`) and returns the first value that parses as a date.
+- Invalid higher-priority fields no longer mask a valid lower-priority publication field. Atom `updated` remains excluded from publication-date selection.
+- Added a regression test with an invalid namespaced `dc:date` before a valid Atom `published` timestamp; the item must be retained with the original publication time while keeping `updated` separate.
+
+### Evidence and limits
+- The ordering defect was directly visible in the previous parser call: the generic `_text` helper searched XML children in document order and did not validate alternate candidate fields.
+- The change improves deterministic extraction for entries that expose more than one date field. It does not establish that the publisher's date is truthful, and items without any parseable explicit publication field remain excluded.
+- The regression test was committed but **has not been executed in this run**. The GitHub connector does not provide a workflow-dispatch action here; CI status must be checked after the commit. No live feed or Telegram delivery was verified.
+- Informational only: no LONG/SHORT inference, price, stop loss, take profit, order execution, or Gagarin integration was added.
+
+### Change references
+- Parser commit: `211d34bbf91a376fe329bc09b99d396f12ad2f60`
+- Regression-test commit: `7e90f690d57b0a66ef9fe57858ae0752403cd93f`
+- Follow-up: run `tests/test_sputnik_public_sources.py` and the full item-intelligence suite in GitHub Actions and inspect the result before merge.
