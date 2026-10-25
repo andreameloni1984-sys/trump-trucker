@@ -371,7 +371,7 @@ def _domains_for_public_text(text: str) -> list[str]:
     matched = []
     for domain, keywords in ASSET_KEYWORDS.items():
         for keyword in keywords:
-            pattern = r"(?<!\\w)" + re.escape(keyword.casefold()) + r"(?!\\w)"
+            pattern = r"(?<!\w)" + re.escape(keyword.casefold()) + r"(?!\w)"
             if re.search(pattern, normalized):
                 matched.append(domain)
                 break
