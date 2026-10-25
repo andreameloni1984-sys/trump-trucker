@@ -478,3 +478,25 @@ The individual-permalink gate checked HTTP(S) scheme, host, and whether the URL 
 - Implementation correction commit: `2faed2a5dbdb74020b840cb682d08dee22224c53`
 - Regression-test commit: `7de68f04f2b6bec312035a832224ef07c701d55b`
 - Follow-up: inspect the focused GitHub Actions run and review any remaining false positives/false negatives before merging PR #11.
+
+
+## 2026-10-25 — Use the configured timeout for Telegram intelligence alerts
+
+### Finding
+- The general Telegram HTTP timeout is configurable through `SPUTNIK_TELEGRAM_HTTP_TIMEOUT` and stored in `TELEGRAM_HTTP_TIMEOUT`, but `send_telegram` used a separate hard-coded 20-second timeout. Operators could adjust the shared timeout and still have alert delivery behave differently from other Telegram API calls.
+- The send path also assumed every successfully decoded JSON response was an object; a valid JSON value of another type should be treated as a failed delivery, not as an uncaught attribute access.
+
+### Implemented
+- `send_telegram` now uses the existing `TELEGRAM_HTTP_TIMEOUT` setting.
+- Success is accepted only when the decoded API response is a dictionary with `ok: true`; malformed JSON and unexpected JSON shapes return failure through the existing guarded error path.
+- Added regression tests for the configured timeout and malformed JSON response handling.
+
+### Verification and limits
+- Source and tests were written to the feature branch; they still need to be reread and run in CI.
+- No test execution, live Telegram request, live feed check, or deployment is claimed. A timeout limits how long the caller waits; it does not guarantee delivery, and a timeout can leave delivery outcome uncertain.
+- Informational only: no LONG/SHORT inference, price, stop loss, take profit, broker order, or new Gagarin integration was added.
+
+### Change references
+- Implementation commit: `79845196b27b3e528161835c002725aedddb6ac9`
+- Regression-test commit: `35578255622601b3e6e8ef776f85aaf18e530137`
+- Follow-up: inspect the latest GitHub Actions run and run `tests/test_sputnik_item_intelligence.py` before merging PR #11.
