@@ -59,6 +59,20 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         )
         self.assertIn("TRADE_POLICY", domains)
 
+    def test_short_keywords_do_not_match_inside_unrelated_words(self):
+        domains = trump_tracker._domains_for_public_text(
+            "The president said the administration will discuss a golden age."
+        )
+        self.assertNotIn("AI_TECH", domains)
+        self.assertNotIn("METALS", domains)
+
+    def test_short_keywords_still_match_as_whole_words_and_phrases(self):
+        domains = trump_tracker._domains_for_public_text(
+            "AI chips may affect oil-supply logistics."
+        )
+        self.assertIn("AI_TECH", domains)
+        self.assertIn("ENERGY", domains)
+
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     @patch.object(trump_tracker, "fetch_public_feed", return_value=FEED)
     def test_rss_items_are_saved_with_title_date_url_and_deduplicated(
