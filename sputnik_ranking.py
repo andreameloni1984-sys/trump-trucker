@@ -86,6 +86,12 @@ def disclosure_lag_bucket(transaction_date: str, filing_date: str) -> str:
     return "OLTRE_45_GIORNI"
 
 
+def _transaction_date_not_future(transaction_date: str, today: date) -> bool:
+    """Reject parseable transaction dates after the scoring date; unknown dates stay unknown."""
+    tx_date = _parse_date(transaction_date)
+    return tx_date is None or tx_date <= today
+
+
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     """Score one documented security candidate from Form 4 purchases.
 
@@ -93,11 +99,13 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     filing events. Unsupported relationship, sector and social points remain zero.
     """
 
+    reference_date = today or datetime.now(timezone.utc).date()
     valid = [
         item for item in items
         if item.get("action") == "ACQUISTATO"
         and item.get("source_kind") == "FORM4_TRANSACTION"
         and item.get("source_url")
+        and _transaction_date_not_future(str(item.get("transaction_date") or ""), reference_date)
     ]
     if not valid:
         return {}
@@ -115,7 +123,7 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     event_strength = 25       # Form 4 purchase code P.
     confirmations = min(15, distinct_filings * 5)
     documented_relationship = 0
-    recency = _recency_score(str(latest.get("transaction_date") or ""), today)
+    recency = _recency_score(str(latest.get("transaction_date") or ""), reference_date)
     sector_impact = 0
     social_confirmation = 0
 
