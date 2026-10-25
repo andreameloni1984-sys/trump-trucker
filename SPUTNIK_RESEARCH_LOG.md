@@ -458,3 +458,23 @@ The individual-permalink gate checked HTTP(S) scheme, host, and whether the URL 
 ### Change reference
 - Workflow commit: `eedf37e12b6ac5cc385cd20c38ebd610bf005524`
 - Follow-up: inspect the workflow run triggered by this push and confirm the focused tests pass before merging PR #11.
+
+
+## 2026-10-25 — Prevent substring matches in catalyst keyword classification
+
+### Finding
+- `_domains_for_public_text` used plain substring checks. Short terms such as `ai` could match inside unrelated words (for example, "said"), and `gold` could match inside "golden". This could assign irrelevant market domains to a dated source item and pollute Sputnik's candidate alerts.
+
+### Implemented
+- Changed keyword classification to case-folded, Unicode-aware whole-word/phrase matching using regex word boundaries.
+- Added regression tests that reject the unrelated phrases "said the administration" and "golden age", while still matching standalone "AI" and the hyphenated phrase "oil-supply".
+
+### Verification and limits
+- The implementation and both regression tests were reread from the feature branch after the commits.
+- Tests have **not** been executed in this session; the CI workflow trigger was added in the previous step, but no successful run is confirmed. This change reduces substring false positives; it does not establish that a keyword mention is a material catalyst or predict market direction.
+- No live feed, Telegram delivery, production deployment, trade recommendation, price, stop loss, take profit, real order, or direct Gagarin integration was verified or added.
+
+### Change references
+- Implementation correction commit: `2faed2a5dbdb74020b840cb682d08dee22224c53`
+- Regression-test commit: `7de68f04f2b6bec312035a832224ef07c701d55b`
+- Follow-up: inspect the focused GitHub Actions run and review any remaining false positives/false negatives before merging PR #11.
