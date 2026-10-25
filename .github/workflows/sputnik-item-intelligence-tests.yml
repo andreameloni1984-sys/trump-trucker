@@ -2,6 +2,19 @@ name: SPUTNIK item intelligence tests
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - "fix/sputnik-historical-match-gate"
+    paths:
+      - "trump_tracker.py"
+      - "sputnik_catalyst.py"
+      - "sputnik_public_sources.py"
+      - "sputnik_action_reaction.py"
+      - "tests/test_sputnik_item_intelligence.py"
+      - "tests/test_sputnik_public_sources.py"
+      - "tests/test_sputnik_action_reaction.py"
+      - "tests/test_sputnik_catalyst.py"
+      - ".github/workflows/sputnik-item-intelligence-tests.yml"
   pull_request:
     paths:
       - "trump_tracker.py"
