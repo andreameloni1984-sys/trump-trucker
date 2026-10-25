@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime, timezone
 
-from sputnik_cfd import build_cfd_cart, build_conditional_trade_plan
+from sputnik_cfd import build_cfd_cart, build_conditional_trade_plan, build_conditional_trade_plan
 
 
 class CfdCartTests(unittest.TestCase):
@@ -165,6 +165,44 @@ class ConditionalPlanDerivedLevelTests(unittest.TestCase):
             {"GOLD": self.fresh_quote(price=100.0000001, atr=1e-8)},
         )
         self.assert_wait_without_levels(result)
+
+
+
+class ExplicitConditionalDirectionTests(unittest.TestCase):
+    def fresh_quote(self):
+        return {
+            "price": 2000.0,
+            "atr": 10.0,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "trigger_confirmed": False,
+        }
+
+    def test_missing_or_ambiguous_bias_stays_wait_without_levels(self):
+        for bias in (None, "", "NEUTRAL", "WAIT", "LONG_SETUP", "NOT_SHORT", "SHORT_SETUP"):
+            with self.subTest(bias=bias):
+                plan = {"candidate": "Gold"}
+                if bias is not None:
+                    plan["bias"] = bias
+                result = build_conditional_trade_plan(plan, {"GOLD": self.fresh_quote()})
+                self.assertEqual(result["status"], "WAIT")
+                self.assertIsNone(result["direction"])
+                for key in ("entry", "stop", "tp1", "tp2"):
+                    self.assertIsNone(result[key], key)
+                self.assertIn("LONG o SHORT esplicito", result["reason"])
+
+    def test_explicit_long_and_short_keep_directional_plans(self):
+        for bias, expected in (("LONG", "LONG"), ("SHORT", "SHORT")):
+            with self.subTest(bias=bias):
+                result = build_conditional_trade_plan(
+                    {"candidate": "Gold", "bias": bias},
+                    {"GOLD": self.fresh_quote()},
+                )
+                self.assertEqual(result["status"], "PREPARE")
+                self.assertEqual(result["direction"], expected)
+                self.assertIsNotNone(result["entry"])
+                self.assertIsNotNone(result["stop"])
+                self.assertIsNotNone(result["tp1"])
+                self.assertIsNotNone(result["tp2"])
 
 
 if __name__ == "__main__":
