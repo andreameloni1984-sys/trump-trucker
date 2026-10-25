@@ -65,6 +65,15 @@ class CfdCartTests(unittest.TestCase):
 
 
 class ConditionalPlanNumericValidationTests(unittest.TestCase):
+    def candidate(self):
+        return {
+            "security": "ACME",
+            "company": "ACME Corp",
+            "ticker": "ACME",
+            "score": 80,
+            "signal": "COMPRA",
+        }
+
     def fresh_quote(self, price=100, atr=2):
         return {
             "price": price,
@@ -96,6 +105,28 @@ class ConditionalPlanNumericValidationTests(unittest.TestCase):
                       "timestamp": datetime.now(timezone.utc).isoformat()}},
         )
         self.assertEqual(rows[0]["status"], "WAIT")
+        self.assertIsNone(rows[0]["entry"])
+
+    def test_overflowing_unit_size_stays_wait_with_finite_market_values(self):
+        rows = build_cfd_cart(
+            [self.candidate()],
+            {"ACME": {"price": 1e-323, "stop": 5e-324, "target": 2e-323,
+                      "timestamp": datetime.now(timezone.utc).isoformat()}},
+        )
+        self.assertEqual(rows[0]["status"], "WAIT")
+        self.assertIsNone(rows[0]["units"])
+        self.assertIsNone(rows[0]["entry"])
+
+    def test_overflowing_risk_reward_stays_wait_with_finite_market_values(self):
+        rows = build_cfd_cart(
+            [self.candidate()],
+            {"ACME": {"price": 2e-308, "stop": 1e-308, "target": 1e308,
+                      "timestamp": datetime.now(timezone.utc).isoformat()}},
+            capital=1,
+            risk_pct=1,
+        )
+        self.assertEqual(rows[0]["status"], "WAIT")
+        self.assertIsNone(rows[0]["units"])
         self.assertIsNone(rows[0]["entry"])
 
 
