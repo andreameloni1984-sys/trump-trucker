@@ -20,3 +20,12 @@
 - **Repository / production:** change is on `fix/sputnik-reject-overflowing-derived-size-20261025`, stacked on the open non-finite-input PR branch to preserve that dependency. No merge or Render deploy; production activation is not claimed.
 - **Safety:** PAPER ONLY. No orders, broker connections, costs, or Gagarin integration.
 
+## 2026-10-25 — Reject invalid derived conditional levels
+
+- **Problem learned:** valid positive price and ATR inputs do not guarantee valid derived SL/TP levels. If ATR is too large relative to entry, a stop or target can become zero/negative; if ATR is too small relative to price, rounding to six decimals can collapse distinct levels to the same price. A conditional plan could previously expose such levels and inherit a trigger flag.
+- **Single improvement implemented:** `build_conditional_trade_plan` now validates all rounded derived levels as finite and positive and requires strict directional ordering (`stop < entry < TP1 < TP2` for LONG; reverse order for SHORT). Invalid/collapsed levels return `WAIT` with all price levels left null.
+- **Regression tests added:** LONG with stop below zero; SHORT with target below zero; valid positive inputs whose levels collapse after rounding. All tests set `trigger_confirmed=True` to ensure the numeric guard takes precedence.
+- **Verification:** pending pull-request CI for this branch; do not infer success until the workflow result is inspected.
+- **Evidence boundary:** this validates derived arithmetic only. It does not verify actual OHLCV price/volume confirmation or establish signal accuracy, profitability, or out-of-sample performance.
+- **Repository / production:** branch is stacked on `fix/sputnik-reject-overflowing-derived-size-20261025` (PR #21) to preserve the prior numeric-safety changes and log history. No merge or Render deployment is performed.
+- **Safety:** PAPER ONLY. No orders, broker connections, costs, or Gagarin integration.
