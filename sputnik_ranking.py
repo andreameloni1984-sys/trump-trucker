@@ -86,10 +86,19 @@ def disclosure_lag_bucket(transaction_date: str, filing_date: str) -> str:
     return "OLTRE_45_GIORNI"
 
 
-def _transaction_date_not_future(transaction_date: str, today: date) -> bool:
-    """Reject parseable transaction dates after the scoring date; unknown dates stay unknown."""
+def _transaction_dates_consistent(transaction_date: str, filing_date: str, today: date) -> bool:
+    """Reject future transactions and impossible filing-before-transaction chronology.
+
+    Missing or unparseable dates remain unknown rather than being silently treated
+    as valid evidence; callers can retain legacy handling for those rows.
+    """
     tx_date = _parse_date(transaction_date)
-    return tx_date is None or tx_date <= today
+    filing = _parse_date(filing_date)
+    if tx_date is not None and tx_date > today:
+        return False
+    if tx_date is not None and filing is not None and filing < tx_date:
+        return False
+    return True
 
 
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
@@ -105,7 +114,11 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
         if item.get("action") == "ACQUISTATO"
         and item.get("source_kind") == "FORM4_TRANSACTION"
         and item.get("source_url")
-        and _transaction_date_not_future(str(item.get("transaction_date") or ""), reference_date)
+        and _transaction_dates_consistent(
+            str(item.get("transaction_date") or ""),
+            str(item.get("filing_date") or ""),
+            reference_date,
+        )
     ]
     if not valid:
         return {}
