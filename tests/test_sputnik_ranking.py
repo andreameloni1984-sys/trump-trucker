@@ -50,6 +50,25 @@ class RankingTests(unittest.TestCase):
         result = score_purchase_candidate([tx("e1", tx_date="not-a-date")], today=date(2026, 10, 6))
         self.assertEqual(result["recency"], 0)
 
+    def test_future_dated_transaction_is_excluded(self):
+        result = score_purchase_candidate(
+            [tx("future", tx_date="2026-10-07")],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result, {})
+
+    def test_future_dated_transaction_cannot_supply_third_confirmation(self):
+        result = score_purchase_candidate(
+            [
+                tx("e1", tx_date="2026-10-05"),
+                tx("e2", tx_date="2026-10-04"),
+                tx("future", tx_date="2026-10-07"),
+            ],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result["filings"], 2)
+        self.assertEqual(result["signal"], "OSSERVA")
+
 
 
     def test_disclosure_business_days_weekend_aware(self):
