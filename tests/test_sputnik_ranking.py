@@ -2,7 +2,6 @@ import unittest
 from datetime import date
 
 from sputnik_ranking import disclosure_business_days
-
 from sputnik_ranking import disclosure_lag, disclosure_lag_bucket, rank_purchase_candidates, score_purchase_candidate
 
 
@@ -46,11 +45,37 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(result["score"], 75)
         self.assertEqual(result["signal"], "COMPRA")
 
+    def test_multiple_transactions_in_one_filing_count_as_one_confirmation(self):
+        # A Form 4 may contain multiple transactions on different dates. event_id
+        # identifies the filing, so transaction dates must not inflate filing count.
+        result = score_purchase_candidate(
+            [
+                tx("same-filing", tx_date="2026-10-05"),
+                tx("same-filing", tx_date="2026-10-04"),
+                tx("same-filing", tx_date="2026-10-03"),
+            ],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result["filings"], 1)
+        self.assertEqual(result["confirmations"], 5)
+        self.assertEqual(result["signal"], "OSSERVA")
+
+    def test_missing_event_ids_do_not_count_as_independent_filings(self):
+        result = score_purchase_candidate(
+            [
+                tx("", tx_date="2026-10-05"),
+                tx("", tx_date="2026-10-04"),
+                tx("", tx_date="2026-10-03"),
+            ],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result["filings"], 0)
+        self.assertEqual(result["confirmations"], 0)
+        self.assertNotEqual(result["signal"], "COMPRA")
+
     def test_invalid_date_gets_no_recency_points(self):
         result = score_purchase_candidate([tx("e1", tx_date="not-a-date")], today=date(2026, 10, 6))
         self.assertEqual(result["recency"], 0)
-
-
 
     def test_disclosure_business_days_weekend_aware(self):
         self.assertEqual(disclosure_business_days("2026-10-09", "2026-10-12"), 1)

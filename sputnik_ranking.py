@@ -105,9 +105,14 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     valid.sort(key=lambda x: str(x.get("transaction_date") or ""), reverse=True)
     latest = valid[0]
 
+    # event_id is derived from the SEC accession, form, and primary document.
+    # Multiple transaction rows from one filing can have different transaction
+    # dates, but they are still one disclosure and must not inflate confirmation.
+    # Missing IDs are not usable as independent filing evidence.
     filing_ids = {
-        (str(x.get("event_id") or ""), str(x.get("transaction_date") or ""))
+        str(x.get("event_id") or "").strip()
         for x in valid
+        if str(x.get("event_id") or "").strip()
     }
     distinct_filings = len(filing_ids)
 
