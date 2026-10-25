@@ -28,3 +28,25 @@ The ranking function gave a future-dated transaction zero recency points but sti
 ### Production and safety
 - Render/Telegram production must be inspected separately; no deployment is authorized.
 - PAPER ONLY: no real orders, broker connection, paid services, or Gagarin integration.
+
+
+## 2026-10-25 — Reject impossible Form 4 filing chronology
+
+### Finding
+The ranking path already reported negative disclosure lag as `N/D`, but it could still accept that row as purchase evidence. A filing date earlier than its documented transaction date is internally inconsistent and should not contribute to a ranked candidate.
+
+### Implemented
+- Replaced the future-only date check with `_transaction_dates_consistent()`.
+- Excluded a row when its parseable transaction date is in the future or its parseable filing date predates the transaction date.
+- Kept missing/unparseable dates as unknown; this change does not claim those rows are validated.
+- Added regression test `test_filing_before_transaction_date_is_excluded`.
+
+### Evidence and verification status
+- Code commit: `622bb0e82f972f36dfca5567e2c5e110d73c5f84`.
+- Test commit: `916dd3fe83136a1cddb51b28d41631a13bdb57d0`.
+- This branch has not yet had CI results for the new head; tests are added but **not yet verified by CI**.
+- This is chronology validation only, not proof of source authenticity or predictive accuracy.
+
+### Blocks and safety
+- Production Render/Telegram status not checked in this execution; no deployment claimed.
+- PAPER ONLY: no real orders, broker connection, paid services, or Gagarin integration.
