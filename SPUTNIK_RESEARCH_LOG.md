@@ -29,3 +29,13 @@
 - **Evidence boundary:** this validates derived arithmetic only. It does not verify actual OHLCV price/volume confirmation or establish signal accuracy, profitability, or out-of-sample performance.
 - **Repository / production:** PR #22 is a draft stacked on `fix/sputnik-reject-overflowing-derived-size-20261025` (PR #21), not merged. Render service `sputnik-telegram-listener` (`srv-db1v6muk1f9s738gfm0g`) is configured to auto-deploy from `main`; the latest listed live deploy remains commit `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16), and the 2026-10-22 attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed with `build_failed` / `pipeline_minutes_exhausted`. A Render log query for 2026-10-25 02:15–02:25 UTC returned no entries; that absence does not establish that the service was down. No merge or deployment was performed.
 - **Safety:** PAPER ONLY. No orders, broker connections, costs, or Gagarin integration.
+
+## 2026-10-25 — Require an explicit conditional-plan direction
+
+- **Problem learned:** `build_conditional_trade_plan` treated any bias containing the substring `SHORT` as SHORT and every other value (including missing, `NEUTRAL`, `WAIT`, `LONG_SETUP`, or `NOT_SHORT`) as LONG. That could produce directional levels from an ambiguous label.
+- **Single improvement implemented:** accept only a normalized exact `LONG` or `SHORT` bias. Missing or ambiguous bias now returns `WAIT`, with direction and all price levels null. Explicit LONG/SHORT behavior is retained.
+- **Regression tests added:** seven missing/ambiguous values are rejected even with a fresh quote and valid ATR; explicit LONG and SHORT still produce PREPARE plans with correctly populated levels.
+- **Verification status:** pending GitHub Actions run on the pull request. Do not infer test success until the workflow result is observed.
+- **Evidence boundary:** this is directional-input validation, not actual OHLCV price/volume confirmation or proof of predictive accuracy, profitability, or out-of-sample performance.
+- **Repository / production:** work is based on PR #22's draft head to preserve its existing safety changes. No merge or Render deployment; production activation is not claimed.
+- **Safety:** PAPER ONLY. No orders, broker connections, costs, or Gagarin integration.
