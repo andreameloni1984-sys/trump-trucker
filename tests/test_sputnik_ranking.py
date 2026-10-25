@@ -50,6 +50,12 @@ class RankingTests(unittest.TestCase):
         result = score_purchase_candidate([tx("e1", tx_date="not-a-date")], today=date(2026, 10, 6))
         self.assertEqual(result["recency"], 0)
 
+    def test_filing_before_transaction_date_is_excluded(self):
+        item = tx("impossible", tx_date="2026-10-05")
+        item["filing_date"] = "2026-10-04"
+        result = score_purchase_candidate([item], today=date(2026, 10, 6))
+        self.assertEqual(result, {})
+
     def test_future_dated_transaction_is_excluded(self):
         result = score_purchase_candidate(
             [tx("future", tx_date="2026-10-07")],
