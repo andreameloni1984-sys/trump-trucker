@@ -1076,9 +1076,9 @@ def send_telegram(message: str, chat_id: str | None = None) -> bool:
     request.add_header("Content-Type", "application/x-www-form-urlencoded")
 
     try:
-        with urllib.request.urlopen(request, timeout=20) as response:
+        with urllib.request.urlopen(request, timeout=TELEGRAM_HTTP_TIMEOUT) as response:
             payload = json.loads(response.read().decode("utf-8"))
-        if payload.get("ok") is True:
+        if isinstance(payload, dict) and payload.get("ok") is True:
             return True
         print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
     except urllib.error.HTTPError as exc:
