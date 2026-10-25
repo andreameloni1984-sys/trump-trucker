@@ -366,11 +366,16 @@ def fetch_public_text(url: str) -> str:
     return parser.text()
 
 def _domains_for_public_text(text: str) -> list[str]:
-    normalized = str(text or "").lower()
-    return [
-        domain for domain, keywords in ASSET_KEYWORDS.items()
-        if any(keyword in normalized for keyword in keywords)
-    ]
+    """Match whole keywords/phrases so short tokens (notably 'ai') don't match substrings."""
+    normalized = str(text or "").casefold()
+    matched = []
+    for domain, keywords in ASSET_KEYWORDS.items():
+        for keyword in keywords:
+            pattern = r"(?<!\\w)" + re.escape(keyword.casefold()) + r"(?!\\w)"
+            if re.search(pattern, normalized):
+                matched.append(domain)
+                break
+    return matched
 
 
 def fetch_public_feed(url: str) -> bytes:
