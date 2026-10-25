@@ -62,8 +62,8 @@ def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | 
     quotes = quotes or {}
     quote = next((quotes.get(k) or quotes.get(k.lower()) for k in keys
                   if isinstance(quotes.get(k) or quotes.get(k.lower()), dict)), None)
-    result = {"candidate": candidate or "N/D", "status": "WAIT", "entry": None,
-              "stop": None, "tp1": None, "tp2": None, "rr_tp1": 1.0,
+    result = {"candidate": candidate or "N/D", "status": "WAIT", "direction": None,
+              "entry": None, "stop": None, "tp1": None, "tp2": None, "rr_tp1": 1.0,
               "rr_tp2": 2.0, "quote_time": None,
               "reason": "Quotazione broker aggiornata o ATR non disponibili."}
     if not quote:
@@ -76,8 +76,11 @@ def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | 
     atr = _number(quote.get("atr") or quote.get("ATR") or quote.get("atr_14"))
     if entry is None or atr is None:
         return result
-    bias = str(plan.get("bias") or "").upper()
-    direction = "SHORT" if "SHORT" in bias else "LONG"
+    bias = str(plan.get("bias") or "").strip().upper()
+    if bias not in {"LONG", "SHORT"}:
+        result["reason"] = "Orientamento assente o ambiguo: è richiesto LONG o SHORT esplicito."
+        return result
+    direction = bias
     distance = 1.5 * atr
     if direction == "LONG":
         stop, tp1, tp2 = entry - distance, entry + distance, entry + 2 * distance
