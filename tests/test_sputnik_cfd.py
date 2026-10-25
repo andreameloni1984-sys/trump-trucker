@@ -122,7 +122,7 @@ class ConditionalPlanNumericValidationTests(unittest.TestCase):
             [self.candidate()],
             {"ACME": {"price": 2e-308, "stop": 1e-308, "target": 1e308,
                       "timestamp": datetime.now(timezone.utc).isoformat()}},
-            capital=1e-306,
+            capital=1,
             risk_pct=1,
         )
         self.assertEqual(rows[0]["status"], "WAIT")
