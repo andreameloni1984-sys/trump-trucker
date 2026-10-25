@@ -65,6 +65,15 @@ class CfdCartTests(unittest.TestCase):
 
 
 class ConditionalPlanNumericValidationTests(unittest.TestCase):
+    def candidate(self):
+        return {
+            "security": "ACME",
+            "company": "ACME Corp",
+            "ticker": "ACME",
+            "score": 80,
+            "signal": "COMPRA",
+        }
+
     def fresh_quote(self, price=100, atr=2):
         return {
             "price": price,
