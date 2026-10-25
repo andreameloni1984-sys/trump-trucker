@@ -13,16 +13,22 @@ Count only distinct, non-empty `event_id` values when calculating filing confirm
 - Missing event IDs count as zero independent filings and cannot produce `COMPRA`.
 - Existing controls preserve the behavior for one, two, and three distinct event IDs.
 
+### CI evidence
+Both pull-request workflows completed successfully on the branch head containing the code, tests, and this log:
+- [SPUTNIK Telegram menu tests — run 40160404865](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40160404865): job `tests` succeeded; it ran `tests/test_telegram_menu.py`, `tests/test_sputnik_ranking.py`, `tests/test_sputnik_cfd.py`, `tests/test_sputnik_catalyst.py`, and `tests/test_sputnik_history.py`.
+- [SPUTNIK ranking tests — run 40160404938](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40160404938): job `tests` succeeded and ran `python -m unittest discover -s tests -p "test_*.py" -v`.
+
+The connector reported both workflow runs as `completed` with conclusion `success`. This is CI evidence; no local full-suite execution is claimed.
+
 ### Evidence and limits
 - `trump_tracker.py:event_id()` hashes CIK, SEC accession, form, and primary document.
-- `extract_form4_transactions()` assigns `event.event_id` to each transaction row from that filing.
+- `extract_form4_transactions()` assigns the same `event.event_id` to every transaction row from that filing.
 - This change prevents duplicate rows from inflating disclosure confirmation; it does not prove market direction, price/volume confirmation, predictive accuracy, or profitability.
-- CI evidence is pending at branch creation and will be added after the pull-request checks complete.
-- Local execution of the complete test suite is not claimed.
 
 ### Rollout and safety
 - Branch: `fix/sputnik-count-unique-form4-filings-20261025`
 - Base: `main`
+- Draft PR: [#24 — Count unique Form 4 filings in Sputnik confirmations](https://github.com/andreameloni1984-sys/trump-trucker/pull/24)
 - No merge or production deployment performed.
-- Render/Telegram production verification remains separate; a workspace selection is required before querying that account's service details.
+- Render production verification is blocked because no workspace is selected and the connector explicitly requires the user to confirm which workspace to inspect. The only listed workspace was `My Workspace`; no service was queried and no deployment was triggered.
 - PAPER ONLY: no orders, broker connections, purchases, costs, or Gagarin integration.
