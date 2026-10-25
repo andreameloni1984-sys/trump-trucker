@@ -86,6 +86,15 @@ def disclosure_lag_bucket(transaction_date: str, filing_date: str) -> str:
     return "OLTRE_45_GIORNI"
 
 
+def _filing_chronology_valid(item: dict[str, Any]) -> bool:
+    """Reject impossible filing chronology; keep unknown dates as unverified, not invalid."""
+    transaction_date = _parse_date(str(item.get("transaction_date") or ""))
+    filing_date = _parse_date(str(item.get("filing_date") or ""))
+    if transaction_date is None or filing_date is None:
+        return True
+    return filing_date >= transaction_date
+
+
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     """Score one documented security candidate from Form 4 purchases.
 
@@ -98,6 +107,7 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
         if item.get("action") == "ACQUISTATO"
         and item.get("source_kind") == "FORM4_TRANSACTION"
         and item.get("source_url")
+        and _filing_chronology_valid(item)
     ]
     if not valid:
         return {}
