@@ -9,3 +9,14 @@
 - **Evidence boundary:** these tests establish input-validation behavior only. They do not prove price/volume confirmation, market predictive accuracy, profitability, or out-of-sample performance.
 - **Blockers / production:** `SPUTNIK_RESEARCH_LOG.md` was not present on `main`, so this branch creates the persistent log. No merge or Render deploy is performed; production activation is not claimed.
 - **Safety:** PAPER ONLY. No orders, broker connections, or Gagarin integration.
+
+## 2026-10-25 — Reject overflowing derived CFD sizing and R/R
+
+- **Problem learned:** validating individual inputs as finite is not enough. With tiny but finite entry/stop distances, the derived position size can overflow to infinity; a very large finite target divided by a tiny finite risk distance can likewise make the calculated risk/reward ratio infinite. Rounding can also collapse a positive derived value to zero.
+- **Single improvement implemented:** `build_cfd_cart` now calculates the risk budget without an avoidable intermediate overflow, validates the risk budget, then rejects a candidate with `WAIT` before exposing levels if risk/reward inputs or derived size/RR are non-finite or non-positive. Rounded units and rounded RR must also remain finite and positive. No fallback levels or sizing are invented.
+- **Regression tests added:** finite subnormal prices that overflow unit sizing must stay `WAIT`; finite price/stop/target values that overflow calculated R/R must also stay `WAIT`. Existing normal-case test continues to cover a valid long.
+- **Verification status at log update:** code commit `51c5509f611a95872693b871e4cf925ee2e3c59a`; tests commit `b7072eddcedde345ab955795b5f84dfd72e4da98`. GitHub Actions verification is pending PR execution; record the exact run and conclusion after it completes.
+- **Evidence boundary:** this is arithmetic/input safety, not evidence of signal accuracy, profitability, price/volume confirmation, or out-of-sample performance.
+- **Repository / production:** change is on `fix/sputnik-reject-overflowing-derived-size-20261025`, stacked on the open non-finite-input PR branch to preserve that dependency. No merge or Render deploy; production activation is not claimed.
+- **Safety:** PAPER ONLY. No orders, broker connections, costs, or Gagarin integration.
+
