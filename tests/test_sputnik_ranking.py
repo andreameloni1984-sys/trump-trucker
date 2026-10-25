@@ -50,6 +50,25 @@ class RankingTests(unittest.TestCase):
         result = score_purchase_candidate([tx("e1", tx_date="not-a-date")], today=date(2026, 10, 6))
         self.assertEqual(result["recency"], 0)
 
+    def test_impossible_filing_before_transaction_is_excluded(self):
+        item = tx("impossible", tx_date="2026-10-06")
+        item["filing_date"] = "2026-10-05"
+        self.assertEqual(score_purchase_candidate([item], today=date(2026, 10, 6)), {})
+
+    def test_impossible_filing_does_not_count_as_confirmation(self):
+        impossible = tx("bad", tx_date="2026-10-06")
+        impossible["filing_date"] = "2026-10-05"
+        result = score_purchase_candidate(
+            [
+                impossible,
+                tx("e2", tx_date="2026-10-04"),
+                tx("e3", tx_date="2026-10-03"),
+            ],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result["filings"], 2)
+        self.assertEqual(result["signal"], "OSSERVA")
+
 
 
     def test_disclosure_business_days_weekend_aware(self):
