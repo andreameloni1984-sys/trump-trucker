@@ -15,7 +15,10 @@ The ranking function gave a future-dated transaction zero recency points but sti
 ### Evidence
 - Code commit: `3cf2122e8bd7dc9b5a81754165345d4d22271bdb`.
 - Test commit: `236aa7880b26c9f22423ecddc04ecb3a946498d0`.
-- CI: pending until pull-request workflows finish. Do not infer success before the run completes.
+- CI evidence on tested PR head `bbca7e3a3ee984d36e0437fa8b059306c4a8ae52`:
+  - [SPUTNIK ranking tests — SUCCESS](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40164511328); logs report 63 tests run, all OK, including both new regressions.
+  - [SPUTNIK Telegram menu tests — SUCCESS](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40164511358).
+- The later commit updates this log only; no local full-suite execution is claimed.
 
 ### Limitations / related work
 - This is a chronology sanity check, not verification of the SEC source itself and not evidence of predictive accuracy.
