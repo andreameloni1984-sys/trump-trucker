@@ -14,11 +14,11 @@ Count only distinct, non-empty `event_id` values when calculating filing confirm
 - Existing controls preserve the behavior for one, two, and three distinct event IDs.
 
 ### CI evidence
-Both pull-request workflows completed successfully on the branch head containing the code, tests, and this log:
-- [SPUTNIK Telegram menu tests — run 40160404865](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40160404865): job `tests` succeeded; it ran `tests/test_telegram_menu.py`, `tests/test_sputnik_ranking.py`, `tests/test_sputnik_cfd.py`, `tests/test_sputnik_catalyst.py`, and `tests/test_sputnik_history.py`.
-- [SPUTNIK ranking tests — run 40160404938](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40160404938): job `tests` succeeded and ran `python -m unittest discover -s tests -p "test_*.py" -v`.
+Both pull-request workflows completed successfully on tested code/test head `e89d6de516a4cb40d07531b536782628d376bd0a`:
+- [SPUTNIK Telegram menu tests — run 40160404865](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40160404865): job `tests` succeeded; it ran the Telegram menu, ranking, CFD, catalyst, and history test modules.
+- [SPUTNIK ranking tests — run 40160404938](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40160404938): job `tests` succeeded and ran `python -m unittest discover -s tests -p "test_*.py" -v`. The job log confirms **63 tests ran, all passed**, including both new regression tests.
 
-The connector reported both workflow runs as `completed` with conclusion `success`. This is CI evidence; no local full-suite execution is claimed.
+The connector reported both workflow runs as `completed` with conclusion `success`. This is CI evidence; no local full-suite execution is claimed. The later branch commit changes only this log.
 
 ### Evidence and limits
 - `trump_tracker.py:event_id()` hashes CIK, SEC accession, form, and primary document.
