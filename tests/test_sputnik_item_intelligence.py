@@ -19,6 +19,31 @@ FEED = b"""<rss><channel><item>
 
 
 class SputnikItemIntelligenceTests(unittest.TestCase):
+    @patch("trump_tracker.urllib.request.urlopen")
+    def test_send_telegram_uses_configured_http_timeout(self, urlopen):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = json.dumps({"ok": True}).encode("utf-8")
+        urlopen.return_value = response
+
+        with patch.dict(os.environ, {"TELEGRAM_BOT_TOKEN": "test-token", "TELEGRAM_CHAT_ID": "test-chat"}), patch.object(
+            trump_tracker, "TELEGRAM_HTTP_TIMEOUT", 7
+        ):
+            delivered = trump_tracker.send_telegram("test message")
+
+        self.assertTrue(delivered)
+        self.assertEqual(urlopen.call_args.kwargs["timeout"], 7)
+
+    @patch("trump_tracker.urllib.request.urlopen")
+    def test_send_telegram_rejects_malformed_success_payload(self, urlopen):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = b"not-json"
+        urlopen.return_value = response
+
+        with patch.dict(os.environ, {"TELEGRAM_BOT_TOKEN": "test-token", "TELEGRAM_CHAT_ID": "test-chat"}):
+            delivered = trump_tracker.send_telegram("test message")
+
+        self.assertFalse(delivered)
+
     def test_page_text_extractor_ignores_jsonld_and_site_navigation(self):
         html = """
         <html><head>
