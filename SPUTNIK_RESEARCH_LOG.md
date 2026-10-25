@@ -439,3 +439,22 @@ The individual-permalink gate checked HTTP(S) scheme, host, and whether the URL 
 - Parser commit: `70d08c193cad3d6e9d527fd598f0c2e21310b4eb`
 - Regression-test commit: `a57a429b8f89701322d0af456d53f9048a7647d3`
 - Follow-up: run the parser and item-intelligence test suites in GitHub Actions and review the results.
+
+
+## 2026-10-25 — Make item-intelligence tests run on feature-branch pushes
+
+### Finding
+- The item-intelligence workflow had `pull_request` path filters and `workflow_dispatch`, but the latest branch commit had no reported combined status checks or PR-triggered workflow runs when inspected. The connector exposed no workflow-dispatch action, and a local `git clone` attempt failed because this execution environment could not resolve `github.com`; therefore tests could not be executed directly in this session.
+
+### Implemented
+- Added a `push` trigger scoped to `fix/sputnik-historical-match-gate` and the same relevant source/test/workflow paths, so later commits to this feature branch can trigger the focused Python test job.
+- Kept the existing pull-request trigger and manual workflow trigger. No test result is assumed from adding this trigger.
+
+### Verification and limits
+- The workflow file was updated in the feature branch. A fresh workflow run and its result still need to be confirmed; repository status checks were empty and the connector returned no PR-triggered runs for the inspected head commit before this change.
+- The test suite, live feed fetching, Telegram delivery, and production deployment were not verified. This is CI wiring only, not evidence of passing tests or a deployed fix.
+- Informational only: no LONG/SHORT inference, prices, stop loss, take profit, broker orders, or direct Gagarin integration was added.
+
+### Change reference
+- Workflow commit: `eedf37e12b6ac5cc385cd20c38ebd610bf005524`
+- Follow-up: inspect the workflow run triggered by this push and confirm the focused tests pass before merging PR #11.
