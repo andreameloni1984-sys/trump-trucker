@@ -130,5 +130,42 @@ class ConditionalPlanNumericValidationTests(unittest.TestCase):
         self.assertIsNone(rows[0]["entry"])
 
 
+class ConditionalPlanDerivedLevelTests(unittest.TestCase):
+    def fresh_quote(self, price, atr):
+        return {
+            "price": price,
+            "atr": atr,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "trigger_confirmed": True,
+        }
+
+    def assert_wait_without_levels(self, result):
+        self.assertEqual(result["status"], "WAIT")
+        for key in ("entry", "stop", "tp1", "tp2"):
+            self.assertIsNone(result[key], key)
+        self.assertIn("Livelli SL/TP derivati non validi", result["reason"])
+
+    def test_long_with_stop_below_zero_stays_wait(self):
+        result = build_conditional_trade_plan(
+            {"candidate": "Gold", "bias": "LONG"},
+            {"GOLD": self.fresh_quote(price=10, atr=100)},
+        )
+        self.assert_wait_without_levels(result)
+
+    def test_short_with_target_below_zero_stays_wait(self):
+        result = build_conditional_trade_plan(
+            {"candidate": "Gold", "bias": "SHORT"},
+            {"GOLD": self.fresh_quote(price=10, atr=100)},
+        )
+        self.assert_wait_without_levels(result)
+
+    def test_levels_collapsing_after_rounding_stay_wait(self):
+        result = build_conditional_trade_plan(
+            {"candidate": "Gold", "bias": "LONG"},
+            {"GOLD": self.fresh_quote(price=100.0000001, atr=1e-8)},
+        )
+        self.assert_wait_without_levels(result)
+
+
 if __name__ == "__main__":
     unittest.main()
