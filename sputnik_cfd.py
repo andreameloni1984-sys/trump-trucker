@@ -102,6 +102,9 @@ def build_cfd_cart(ranked_rows: list[dict[str, Any]], quotes: dict[str, Any] | N
         raise ValueError("risk_pct must be between 0 and 5")
     if limit <= 0:
         return []
+    risk_budget = capital_value * (risk_pct / 100)
+    if not math.isfinite(risk_budget) or risk_budget <= 0:
+        raise ValueError("risk budget must be finite and positive")
     cart = []
     for row in ranked_rows:
         signal = str(row.get("signal") or "")
@@ -109,7 +112,7 @@ def build_cfd_cart(ranked_rows: list[dict[str, Any]], quotes: dict[str, Any] | N
                 "company": row.get("company") or "N/D", "score": row.get("score", 0),
                 "evidence_signal": signal, "direction": "LONG" if signal == "COMPRA" else "WAIT",
                 "status": "WAIT", "entry": None, "stop": None, "target": None,
-                "risk_eur": round(capital_value * risk_pct / 100, 2), "units": None, "reason": ""}
+                "risk_eur": round(risk_budget, 2), "units": None, "reason": ""}
         if signal != "COMPRA":
             item["reason"] = "Evidenza SPUTNIK sotto soglia BUY: nessun CFD."
             cart.append(item); continue
@@ -125,9 +128,20 @@ def build_cfd_cart(ranked_rows: list[dict[str, Any]], quotes: dict[str, Any] | N
             item["reason"] = "WAIT: livelli LONG non coerenti (stop < entry < target richiesto)."
             cart.append(item); continue
         risk_per_unit = entry - stop
-        units = (capital_value * risk_pct / 100) / risk_per_unit
+        reward_per_unit = target - entry
+        units = risk_budget / risk_per_unit
+        rr = reward_per_unit / risk_per_unit
+        if not all(math.isfinite(value) and value > 0 for value in
+                   (risk_per_unit, reward_per_unit, units, rr)):
+            item["reason"] = "WAIT: calcoli di rischio/rendimento non finiti o non rappresentabili."
+            cart.append(item); continue
+        rounded_units = round(units, 6)
+        rounded_rr = round(rr, 2)
+        if not all(math.isfinite(value) and value > 0 for value in (rounded_units, rounded_rr)):
+            item["reason"] = "WAIT: unità o rapporto rischio/rendimento non validi dopo arrotondamento."
+            cart.append(item); continue
         item.update({"status": "TRADE", "entry": entry, "stop": stop, "target": target,
-                     "units": round(units, 6), "rr": round((target-entry)/risk_per_unit, 2),
+                     "units": rounded_units, "rr": rounded_rr,
                      "reason": "BUY SPUTNIK + quotazione recente e livelli verificabili."})
         cart.append(item)
     return cart[:limit]
