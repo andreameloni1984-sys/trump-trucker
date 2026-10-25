@@ -83,8 +83,29 @@ def build_conditional_trade_plan(plan: dict[str, Any], quotes: dict[str, Any] | 
         stop, tp1, tp2 = entry - distance, entry + distance, entry + 2 * distance
     else:
         stop, tp1, tp2 = entry + distance, entry - distance, entry - 2 * distance
-    result.update({"direction": direction, "entry": round(entry, 6),
-                   "stop": round(stop, 6), "tp1": round(tp1, 6), "tp2": round(tp2, 6),
+
+    # Validate the derived levels after rounding, not just their source inputs.
+    # Large ATR relative to price can create non-positive targets/stops, while
+    # small distances can collapse distinct levels to the same rounded price.
+    rounded_entry, rounded_stop = round(entry, 6), round(stop, 6)
+    rounded_tp1, rounded_tp2 = round(tp1, 6), round(tp2, 6)
+    derived_levels = (rounded_entry, rounded_stop, rounded_tp1, rounded_tp2)
+    levels_are_positive_finite = all(
+        math.isfinite(value) and value > 0 for value in derived_levels
+    )
+    if direction == "LONG":
+        levels_are_ordered = rounded_stop < rounded_entry < rounded_tp1 < rounded_tp2
+    else:
+        levels_are_ordered = rounded_tp2 < rounded_tp1 < rounded_entry < rounded_stop
+    if not levels_are_positive_finite or not levels_are_ordered:
+        result["reason"] = (
+            "Livelli SL/TP derivati non validi: non positivi, non finiti "
+            "o coincidenti dopo arrotondamento; piano mantenuto WAIT."
+        )
+        return result
+
+    result.update({"direction": direction, "entry": rounded_entry,
+                   "stop": rounded_stop, "tp1": rounded_tp1, "tp2": rounded_tp2,
                    "atr": round(atr, 6),
                    "status": "TRIGGER CONFIRMED" if quote.get("trigger_confirmed") is True else "PREPARE",
                    "reason": "Livelli indicativi calcolati da prezzo broker e ATR; trigger tecnico da confermare."})
