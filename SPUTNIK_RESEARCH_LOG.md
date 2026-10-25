@@ -14,7 +14,9 @@ The ranking engine accepted Form 4 transaction rows even when the documented fil
 ### Evidence
 - Code commit: `33666a67b81c57a27e144ea2696abc1214d5dc32`.
 - Test commit: `15be9334e96f79aab5bae46497c4752c016dc7fc`.
-- CI status: pending; verify after opening the pull request. Do not infer success before workflow results are available.
+- CI evidence: both pull-request workflows completed successfully on head `a7c981cde0d69a0d9dbaed789698818fcc5254c9`:
+- [SPUTNIK Telegram menu tests — SUCCESS](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40164109684).
+- [SPUTNIK ranking tests — SUCCESS](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40164109766); its test log reports 63 tests run, all OK, including the ranking test module. The code and regression tests are in this tested PR head. No local full-suite execution is claimed.
 
 ### Limitations / next checks
 - This validates date ordering only; it does not verify the SEC filing itself or prove market-direction accuracy.
@@ -24,3 +26,8 @@ The ranking engine accepted Form 4 transaction rows even when the documented fil
 
 ### Safety
 PAPER ONLY. No real orders, broker connection, deployment, paid services, or Gagarin integration.
+
+### CI result update (2026-10-25)
+- Telegram menu workflow: completed/success.
+- Ranking workflow: completed/success; test log confirms 63 tests, OK.
+- Render workspace listing returned a single workspace named `My Workspace`, but production inspection was not performed because workspace selection requires explicit user confirmation. No deploy was triggered.
