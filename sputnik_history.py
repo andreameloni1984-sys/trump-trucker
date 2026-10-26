@@ -48,8 +48,12 @@ def anticipatory_selector(findings: list[dict[str, Any]], limit: int = 5) -> lis
         return []
     buckets: dict[str, dict[str, Any]] = {}
     for item in findings:
-        source = str(item.get("source") or "UNKNOWN")
-        event_id = str(item.get("event_id") or "")
+        # Source diversity is evidence only when attached to an identifiable event.
+        # Otherwise unkeyed rows from several labels can inflate anticipation scores.
+        event_id = str(item.get("event_id") or "").strip()
+        if not event_id:
+            continue
+        source = str(item.get("source") or "UNKNOWN").strip()
         for domain in item.get("domains") or []:
             key = str(domain).upper()
             row = buckets.setdefault(key, {"domain": key, "events": set(), "sources": set(), "latest": ""})

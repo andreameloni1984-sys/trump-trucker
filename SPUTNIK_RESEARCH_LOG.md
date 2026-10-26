@@ -70,3 +70,23 @@ The ranking previously counted a confirmation using the pair `(event_id, transac
 
 ### Limits and safety
 This prevents one class of duplicate-evidence inflation; it does not validate the identity of every event ID or prove market predictiveness. Production Render/Telegram was not checked and no deploy is claimed. PAPER ONLY; no real orders, broker connection, paid service, or Gagarin integration.
+
+
+## 2026-10-26 — Require identifiable events before counting anticipatory source diversity
+
+### Finding
+`anticipatory_selector()` counted source labels even when a finding had no `event_id`. Several unkeyed rows could therefore increase source-diversity points and create an `ANTICIPA` candidate without any identifiable event.
+
+### Implemented
+- Skip findings without a non-empty event ID before they contribute domains, sources, recency, or score.
+- Added regression tests proving unidentifiable rows cannot create a candidate or inflate source diversity.
+- Added `sputnik_history.py` and `tests/test_sputnik_history.py` to the item-intelligence workflow path filters and added a dedicated history-test step.
+
+### Verification
+- Code commit: `38f0193ccaeb0113d197c3e441f8cf54158646f6`.
+- Regression test commit: `9762cf20b29058bd71f4b2149f19e5d927849f23`.
+- CI workflow change commit: `4963eb0c039d562ccb59d7d2787ecdecdabd3220`.
+- CI SUCCESS on PR merge commit `3afb681dec2caa22add25d2f6c62b6794090c8da`: [SPUTNIK item intelligence tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40267842485). The existing item-intelligence suite passed (17 tests) and the new public-history suite passed (5 tests), including both regressions. No local test run is claimed.
+
+### Limits and safety
+An event ID is an identity key, not proof that the source is authentic or independent; source validation and market price/volume confirmation remain separate gates. Production Render/Telegram was not checked and no deployment is claimed. PAPER ONLY: no real orders, broker connection, paid services, or Gagarin integration.
