@@ -1,6 +1,7 @@
 import json
 import os
 import unittest
+from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
 import trump_tracker
@@ -41,6 +42,40 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
+
+    def test_feed_candidates_need_valid_publication_time_and_item_permalink(self):
+        fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
+        cases = [
+            ("missing publication date", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>", b""
+            )),
+            ("unparseable publication date", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>soon</pubDate>",
+            )),
+            ("future publication date", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>Mon, 26 Oct 2026 06:10:00 GMT</pubDate>",
+            )),
+            ("feed URL used as item permalink", FEED.replace(
+                b"<link>https://example.gov/news/tariffs</link>", b""
+            )),
+        ]
+        for label, feed in cases:
+            with self.subTest(case=label):
+                state = {}
+                with (
+                    patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test")),
+                    patch.object(trump_tracker, "fetch_public_feed", return_value=feed),
+                    patch.object(trump_tracker, "utc_now", return_value=fixed_now),
+                    patch.dict(os.environ, {
+                        "SPUTNIK_RSS_FEEDS": "https://example.gov/feed.xml",
+                        "SPUTNIK_SOCIAL_ENABLED": "1",
+                    }),
+                ):
+                    findings = trump_tracker.intelligence_snapshot(state)
+                self.assertEqual(findings, [])
+                self.assertEqual(state.get("intelligence_items"), {})
 
     def test_default_feeds_include_item_level_trump_archive_rss(self):
         with patch.dict(os.environ, {}, clear=True):
