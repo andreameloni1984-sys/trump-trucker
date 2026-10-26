@@ -1,4 +1,6 @@
-"""Persistent SPUTNIK Telegram listener.
+def menu_markup() -> dict[str, Any]:
+    """Legacy compatibility helper: never recreate inline Telegram buttons."""
+    return {"remove_keyboard": True}"""Persistent SPUTNIK Telegram listener.
 
 Telegram transport is deliberately separated from the GitHub Actions collector.
 GitHub Actions periodically bootstraps the bot token and pings /health so a free
@@ -116,22 +118,8 @@ def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | N
 
 
 def telegram_menu() -> dict[str, Any]:
-    return {
-        "keyboard": [
-            [{"text": "🏠 HOME"}, {"text": "🏆 CLASSIFICA"}],
-            [{"text": "🟢 COSA COMPRARE"}, {"text": "🛒 CARRELLO CFD"}],
-            [{"text": "🎯 CATALIZZATORI"}, {"text": "🧠 AZIONE → REAZIONE"}],
-            [{"text": "🔥 SPUTNIK AGGRESSIVO"}],
-            [{"text": "🏛️ TRUMP / WHITE HOUSE"}],
-            [{"text": "📰 NEWS"}, {"text": "🧾 SEC / OGE"}],
-            [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
-            [{"text": "💰 ACQUISTI"}, {"text": "🔄 AGGIORNA"}],
-            [{"text": "⚙️ STATO"}, {"text": "ℹ️ AIUTO"}],
-        ],
-        "resize_keyboard": True,
-        "is_persistent": True,
-        "input_field_placeholder": "SPUTNIK • scegli un'operazione",
-    }
+    """Remove the persistent reply keyboard; keep commands available as text."""
+    return {"remove_keyboard": True}
 
 
 
