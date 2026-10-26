@@ -82,7 +82,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             feeds = trump_tracker._configured_rss_feeds()
 
         self.assertIn("https://www.whitehouse.gov/feed/", feeds)
-        self.assertIn("https://www.trumpstruth.org/feed", feeds)
+        self.assertIn("https://trumpstruth.org/feed", feeds)
 
     def test_page_level_archive_message_warns_not_an_individual_catalyst(self):
         message = trump_tracker.intelligence_message({
@@ -104,7 +104,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertTrue(rows)
         self.assertTrue(all(row["status"] == "WATCH" for row in rows))
         self.assertTrue(all("LONG" not in row["status"] and "BUY" not in row["status"] for row in rows))
-
 
     def test_gagarin_handoff_is_disabled_without_credentials(self):
         with patch.dict(os.environ, {}, clear=True):
