@@ -57,16 +57,36 @@ def _check_sec_cooldown(url: str) -> None:
         raise SECSourceCooldown(f"SEC HTTP 403 cooldown active; retry_in={int(remaining)}s")
 
 
+def _sec_retry_after_seconds(exc: urllib.error.HTTPError) -> int | None:
+    """Parse SEC Retry-After as seconds or HTTP-date, without trusting malformed input."""
+    raw = (exc.headers or {}).get("Retry-After", "")
+    try:
+        seconds = float(raw)
+        if seconds >= 0 and seconds < float("inf"):
+            return min(int(seconds), 24 * 60 * 60)
+    except (TypeError, ValueError, OverflowError):
+        pass
+    try:
+        retry_at = parsedate_to_datetime(str(raw))
+        if retry_at.tzinfo is None:
+            retry_at = retry_at.replace(tzinfo=timezone.utc)
+        seconds = int((retry_at - utc_now()).total_seconds())
+        return min(max(0, seconds), 24 * 60 * 60)
+    except (TypeError, ValueError, OverflowError):
+        return None
+
+
 def _record_sec_http_error(url: str, exc: urllib.error.HTTPError) -> None:
     global _SEC_403_COOLDOWN_UNTIL
     if not _is_sec_url(url) or exc.code != 403:
         return
+    retry_after = _sec_retry_after_seconds(exc)
+    delay = max(SEC_403_COOLDOWN_SECONDS, retry_after or 0)
     with _SEC_403_COOLDOWN_LOCK:
-        retry_at = time.monotonic() + SEC_403_COOLDOWN_SECONDS
+        retry_at = time.monotonic() + delay
         _SEC_403_COOLDOWN_UNTIL = max(_SEC_403_COOLDOWN_UNTIL, retry_at)
     print(
-        f"SPUTNIK: SEC source cooldown | reason=HTTP_403 | "
-        f"retry_in={SEC_403_COOLDOWN_SECONDS}s",
+        f"SPUTNIK: SEC source cooldown | reason=HTTP_403 | retry_in={delay}s",
         flush=True,
     )
 
