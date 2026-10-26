@@ -36,6 +36,21 @@ class PublicPageTextExtractorTests(unittest.TestCase):
         self.assertEqual(parser.text(), "President announces new tariffs")
         self.assertEqual(_domains_for_public_text(parser.text()), ["TRADE_POLICY"])
 
+    def test_hidden_elements_do_not_create_market_catalysts(self):
+        parser = TextExtractor()
+        parser.feed(
+            '<body><p>Routine public notice.</p>'
+            '<div hidden><div>Oil and gold</div><p>crude tariffs</p></div>'
+            '<span aria-hidden="true">wheat and copper</span>'
+            '<p style="display: none !important">oil futures</p>'
+            '<div style="visibility: hidden"><p>gold prices</p></div>'
+            '<div style="content-visibility: hidden">natural gas</div>'
+            '<p>Meeting postponed.</p></body>'
+        )
+
+        self.assertEqual(parser.text(), "Routine public notice. Meeting postponed.")
+        self.assertEqual(_domains_for_public_text(parser.text()), [])
+
 
 if __name__ == "__main__":
     unittest.main()
