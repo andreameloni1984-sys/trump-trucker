@@ -86,6 +86,21 @@ def disclosure_lag_bucket(transaction_date: str, filing_date: str) -> str:
     return "OLTRE_45_GIORNI"
 
 
+def _transaction_dates_consistent(transaction_date: str, filing_date: str, today: date) -> bool:
+    """Reject future transactions and impossible filing-before-transaction chronology.
+
+    Missing or unparseable dates remain unknown rather than being silently treated
+    as valid evidence; callers can retain legacy handling for those rows.
+    """
+    tx_date = _parse_date(transaction_date)
+    filing = _parse_date(filing_date)
+    if tx_date is not None and tx_date > today:
+        return False
+    if tx_date is not None and filing is not None and filing < tx_date:
+        return False
+    return True
+
+
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     """Score one documented security candidate from Form 4 purchases.
 
@@ -93,11 +108,17 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     filing events. Unsupported relationship, sector and social points remain zero.
     """
 
+    reference_date = today or datetime.now(timezone.utc).date()
     valid = [
         item for item in items
         if item.get("action") == "ACQUISTATO"
         and item.get("source_kind") == "FORM4_TRANSACTION"
         and item.get("source_url")
+        and _transaction_dates_consistent(
+            str(item.get("transaction_date") or ""),
+            str(item.get("filing_date") or ""),
+            reference_date,
+        )
     ]
     if not valid:
         return {}
@@ -105,9 +126,13 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     valid.sort(key=lambda x: str(x.get("transaction_date") or ""), reverse=True)
     latest = valid[0]
 
+    # Count confirmations by stable filing/event identifier only. Combining
+    # event_id with transaction_date can incorrectly turn rows from one filing
+    # into multiple confirmations when their dates differ.
     filing_ids = {
-        (str(x.get("event_id") or ""), str(x.get("transaction_date") or ""))
+        str(x.get("event_id") or "").strip()
         for x in valid
+        if str(x.get("event_id") or "").strip()
     }
     distinct_filings = len(filing_ids)
 
@@ -115,7 +140,7 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     event_strength = 25       # Form 4 purchase code P.
     confirmations = min(15, distinct_filings * 5)
     documented_relationship = 0
-    recency = _recency_score(str(latest.get("transaction_date") or ""), today)
+    recency = _recency_score(str(latest.get("transaction_date") or ""), reference_date)
     sector_impact = 0
     social_confirmation = 0
 

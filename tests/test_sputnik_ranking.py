@@ -34,6 +34,18 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(result["score"], 70)
         self.assertEqual(result["signal"], "OSSERVA")
 
+    def test_same_filing_id_with_different_transaction_dates_counts_once(self):
+        result = score_purchase_candidate(
+            [
+                tx("same-filing", tx_date="2026-10-05"),
+                tx("same-filing", tx_date="2026-10-04"),
+                tx("same-filing", tx_date="2026-10-03"),
+            ],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result["filings"], 1)
+        self.assertEqual(result["signal"], "OSSERVA")
+
     def test_three_distinct_recent_filings_reach_buy_threshold(self):
         result = score_purchase_candidate(
             [
@@ -49,6 +61,31 @@ class RankingTests(unittest.TestCase):
     def test_invalid_date_gets_no_recency_points(self):
         result = score_purchase_candidate([tx("e1", tx_date="not-a-date")], today=date(2026, 10, 6))
         self.assertEqual(result["recency"], 0)
+
+    def test_filing_before_transaction_date_is_excluded(self):
+        item = tx("impossible", tx_date="2026-10-05")
+        item["filing_date"] = "2026-10-04"
+        result = score_purchase_candidate([item], today=date(2026, 10, 6))
+        self.assertEqual(result, {})
+
+    def test_future_dated_transaction_is_excluded(self):
+        result = score_purchase_candidate(
+            [tx("future", tx_date="2026-10-07")],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result, {})
+
+    def test_future_dated_transaction_cannot_supply_third_confirmation(self):
+        result = score_purchase_candidate(
+            [
+                tx("e1", tx_date="2026-10-05"),
+                tx("e2", tx_date="2026-10-04"),
+                tx("future", tx_date="2026-10-07"),
+            ],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result["filings"], 2)
+        self.assertEqual(result["signal"], "OSSERVA")
 
 
 
