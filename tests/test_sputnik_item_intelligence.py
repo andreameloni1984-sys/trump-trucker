@@ -34,6 +34,17 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(urlopen.call_args.kwargs["timeout"], 7)
 
     @patch("trump_tracker.urllib.request.urlopen")
+    def test_send_telegram_rejects_non_object_json_payload(self, urlopen):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = json.dumps(["unexpected"]).encode("utf-8")
+        urlopen.return_value = response
+
+        with patch.dict(os.environ, {"TELEGRAM_BOT_TOKEN": "test-token", "TELEGRAM_CHAT_ID": "test-chat"}):
+            delivered = trump_tracker.send_telegram("test message")
+
+        self.assertFalse(delivered)
+
+    @patch("trump_tracker.urllib.request.urlopen")
     def test_send_telegram_rejects_malformed_success_payload(self, urlopen):
         response = MagicMock()
         response.__enter__.return_value.read.return_value = b"not-json"
