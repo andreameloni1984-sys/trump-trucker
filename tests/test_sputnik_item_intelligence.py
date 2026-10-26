@@ -301,3 +301,17 @@ class SputnikCrossFeedDedupTests(unittest.TestCase):
     def test_canonical_permalink_rejects_non_http_and_malformed_urls(self):
         self.assertEqual(trump_tracker._canonical_public_permalink("javascript:alert(1)"), "")
         self.assertEqual(trump_tracker._canonical_public_permalink("https://[bad-host"), "")
+
+    def test_legacy_feed_fingerprint_is_migrated_without_realert(self):
+        source = "WHITE_HOUSE"
+        feed_url = "https://example.gov/feed.xml"
+        identity = "old-guid-123"
+        item_url = "https://example.gov/news/123?utm_source=feed"
+        legacy = trump_tracker._legacy_public_item_digest(source, feed_url, identity)
+        current = trump_tracker._public_item_digest(source, feed_url, identity, item_url)
+        known = {legacy: "2026-10-26T10:00:00+00:00"}
+
+        self.assertTrue(
+            trump_tracker._public_item_already_seen(current, source, feed_url, identity, known)
+        )
+        self.assertEqual(known[current], known[legacy])
