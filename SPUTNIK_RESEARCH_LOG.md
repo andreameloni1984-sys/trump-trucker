@@ -76,3 +76,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Guardrail:** richiede evento RSS individuale con ID, permalink e data; notizie ambigue e pagine generiche non generano ipotesi. Le ipotesi non sono segnali d'ingresso: Sputnik non dispone qui di conferma indipendente live di prezzo, volume e struttura, quindi dichiara che l'ingresso non è autorizzato.
 - **Test aggiunti:** escalation commerciale mappa a ipotesi su NASDAQ100 e GOLD; pagine generiche e titoli vaghi devono essere ignorati.
 - **Verifica:** codice e test salvati nel branch della PR #33; esecuzione dei test e CI non ancora confermate; nessun deploy di produzione eseguito.
+
+
+## 2026-10-26 — External reference review for news-to-signal pipeline
+
+- **Reference 1:** `https://github.com/juliusappl-lang/quant-trading-bot` — public project describing RSS/news ingestion, historical-event similarity, sentiment features, and BUY/SELL/HOLD classification. Its performance claims were not independently verified.
+- **Reference 2:** `https://github.com/DaVVinCi/EventAlpha-LM` — public MIT-licensed research MVP that structures financial events, aligns them to eligible market sessions, and evaluates forward returns while explicitly avoiding look-ahead leakage; its built-in examples are synthetic, not proof of profitability.
+- **Reference 3:** `https://github.com/sundeep-dayalan/sentient-trader` — public paper-trading reference with event pre-screening, market context, risk gates, decision traces, and outcome labelling; project dashboard counters are project-reported, not independently audited here.
+- **Applied adaptation:** added conservative event-to-instrument directional hypotheses to Sputnik's existing news digest. This is an original, small adaptation of the pipeline ideas, not a wholesale copy of any repository. No external code was copied verbatim.
+- **Remaining gap:** independent price/volume confirmation and forward-outcome evaluation are not yet wired into Sputnik's own pipeline; do not label the current news bias as a trade signal.
