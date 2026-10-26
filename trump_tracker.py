@@ -511,11 +511,13 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "primary_url": str(row.get("primary_url") or ""),
                 "title": title[:300],
                 "published": str(row.get("published") or "")[:100],
+                "event_time": published_at.isoformat(),
+                "available_at": observed_now_utc.isoformat(),
                 "domains": domains,
                 "text": body[:6000],
                 "evidence": "PUBLIC_RSS_ITEM",
                 "status": "POTENTIAL_CORRELATION",
-                "detected_at": utc_now().isoformat(),
+                "detected_at": observed_now_utc.isoformat(),
                 "event_id": digest,
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
