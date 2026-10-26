@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-26T14:13:44.857833+00:00",
+  "updated_at": "2026-10-26T19:59:41.638690+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "28bcfe0e51bc6291fa475bb7",
-    "TRUTH_ARCHIVE": "6722e6921539258b09544c99",
+    "WHITE_HOUSE": "81bdfd33a075f92b7ed3b122",
+    "TRUTH_ARCHIVE": "5dbf246fc402191071e730e5",
     "OGE": "bb8797b576c86fb2929bae06"
   },
   "intelligence_history": {
@@ -4259,6 +4259,57 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "81bdfd33a075f92b7ed3b122": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "{\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"isPartOf\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\"},\"about\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"primaryImageOfPage\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"datePublished\":\"2026-01-22T14:00:00+00:00\",\"dateModified\":\"2026-10-02T01:17:56+00:00\",\"description\":\"President Donald J. Trump and Vice President JD Vance are committed to lowering costs for all Americans, securing our borders, unleashing American energy dominance, restoring peace through strength, and making all Americans safe and secure once again.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/www.whitehouse.gov\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"width\":800,\"height\":450},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"description\":\"\",\"publisher\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\\/\\/www.whitehouse.gov\\/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"},{\"@type\":\"GovernmentOrganization\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\",\"name\":\"The White House\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"width\":918,\"height\":918,\"caption\":\"The White House\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\"},\"sameAs\":[\"https:\\/\\/www.facebook.com\\/WhiteHouse\\/\",\"https:\\/\\/x.com\\/whitehouse\",\"https:\\/\\/www.instagram.com\\/whitehouse\\/\",\"https:\\/\\/www.youtube.com\\/@whitehouse\"]}]} The White House img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px} /*# sourceURL=wp-img-auto-sizes-contain-inline-css */ .wp-block-social-link{background:none!important;color:inherit!important}.wp-block-social-link-anchor{padding:0!important}.wp-block-social-link:focus,.wp-block-social-link:hover{transform:none!important} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-social-link.css */ .is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*=\"writing-mode:vertical-lr\"],p.has-text-align-right[style*=\"writing-mode:vertical-rl\"]{rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/paragraph/style.min.css */ .wp-block-spacer{clear:both} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/spacer/style.min.css */ .wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/group/style.min.css */ .wp-block-group.has-hyperlink{position:relative}.wp-block-group.has-hyperlink:not(.block-editor-block-list__block)>:nth-child(2){margin-block-start:0}.wp-block-group.has-hyperlink a.wp-block-group__action{height:100%;left:0;position:absolute;top:0;width:100%;z-index:3}.wp-block-group.has-hyperlink .wp-block-button,.wp-block-group.has-hyperlink a{position:relative;z-index:4} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-group.css */ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-inclu",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-26T19:59:40.290044+00:00",
+      "event_id": "81bdfd33a075f92b7ed3b122",
+      "action_reaction": {
+        "event_id": "81bdfd33a075f92b7ed3b122",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "5dbf246fc402191071e730e5": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "SPACE",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 26, 2026, 3:31 PM Original Post Anybody reporting Voter Fraud in the past Elections, or the upcoming 2026 Midterm Election, will be paid $1,000,000 upon the arrest and conviction of those that created the Fraud! Thank you for your attention to this matter. President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 25, 2026, 10:31 PM Original Post NY plans to drop part of Native American logo ban in ‘huge victory’ for Massapequa: https:// nypost.com/2026/10/19/us-news/ nys-dropping-part-of-native-american-logo-ban-in-huge-victory-for-massapequa/ Read full post nypost.com Exclusive | NY plans to drop part of Native American logo ban in ‘huge victory’ for Massapequa New York is dropping part of its statewide school indigenous mascot ban days before long-anticipated verbal court arguments with the staunchly opposing Massapequa district. Donald J. Trump @realDonaldTrump · October 25, 2026, 10:28 PM Original Post Iran Oil Minister Resigns Amid US Blockade; Hamid Bovard Takes Interim Charge: https:// openthemagazine.com/world/iran -oil-minister-resigns-amid-us-blockade-hamid-bovard-takes-interim-charge Read full post openthemagazine.com Iran Oil Minister Resigns Amid US Blockade; Hamid Bovard Takes Interim Charge President Masoud Pezeshkian accepted Mohsen Paknejad’s resignation after initially asking him to stay. The presidential office cited personal reasons as Tehran faces mounting pressure on petroleum revenues Donald J. Trump @realDonaldTrump · October 25, 2026, 9:58 PM Original Post https:// truthsocial.com/group/memes/st atuses/117473154555335665 Read full post truthsocial.com JP (@Vol4Life323) Donald J. Trump @realDonaldTrump · October 25, 2026, 8:17 PM Original Post Video previously posted. View 3 matching posts. September 28, 2026, 11:00 PM — Identical file October 1, 2026, 2:11 PM — Identical file October 10, 2026, 8:03 PM — Visual match Donald J. Trump @realDonaldTrump · October 25, 2026, 8:16 PM Original Post Video previously posted. View 5 matching posts. August 26, 2026, 10:09 PM — Identical file August 27, 2026, 5:51 PM — Identical file October 1, 2026, 2:11 PM — Identical file October 10, 2026, 8:03 PM — Visual match October 18, 2026, 1:39 PM — Visual match Donald J. Trump @realDonaldTrump · October 25, 2026, 8:16 PM Original Post Video previously posted. View 2 matching posts. October 22, 2026, 6:18 AM — Visual match October 22, 2026, 10:50 AM — Identical file Donald J. Trump @realDonaldTrump · October 25, 2026, 8:00 PM Original Post Let’s talk about this COMPLETE AND TOTAL LOSER, Bill Maher. He’s got a Low Rated Show on equally Low Rated HBO, which was once, long ago, a Network of Quality and Excitement — But that’s all gone. It’s not “HOT” anymore! Maher’s friend and business associate, Chuck LaBella, was also a friend of mine, worked on The Top Hit Show, The Apprentice, as a “gofer” and, because of the success of that show, Number One and Top Rated on many weeks, with the Finale’ being among the Top Shows of the Year, he was automatically and quickly brought up through the Ranks of NBC, along with everyone else associated with that Historic “Happening.” The Success of the Apprentice was so great that everyone partook — It built many careers, and that is a wonderful thing. Some people say it even built my career, because I became President (I would have won without it!). In any event, over the last few years, LaBella would call me nonstop to say, “Hello,” be very nice, and tell me how much Bill Maher “loves” and respects me, and would constantly ask of me, even before I was President, for any form of meeting with Maher and, would I do his show? When I became President, I agreed to meet, after the first one, and the last one, but never agreed to do his show, which he wants me to do, DESPARATELY — It won’t happen! When I have watched the show, which isn’t often, it always ends with dishonesty, about me at least, but, who cares? He doesn’t think it was a good thing to take the Nuclear Weapon away from Iran, which shows you that he is not very smart. If I allowed them to obtain a Nuclear Weapon, the World would be a different place right now! Using Fake Polls, he also said I had my Lowest Ratings so far, “and even the Republican Party doesn’t like him,” but that’s not true. I have High Ratings and, more importantly, he said that I’m losing the support and approval of the Republican Party when, in fact, CNN just came out with a Poll showing that I’m at 98 and 99% support within the Republican Party, an All Time Record High. Ronald Reagan was at 86%. CNN’s Harry Enten also said I am “The Most Influential President of the Last Century.” CNN did another Poll at who was the Most Popular Person in the History of the Republican Party, and I won that, too, with me be",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-26T19:59:40.817580+00:00",
+      "event_id": "5dbf246fc402191071e730e5",
+      "action_reaction": {
+        "event_id": "5dbf246fc402191071e730e5",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -4331,6 +4382,6 @@
     "b1381a5b691adec7bec5626b": "2026-10-26T05:00:32.929865+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-26T14:13:44.836123+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-26T19:59:41.623603+00:00"
   }
 }
