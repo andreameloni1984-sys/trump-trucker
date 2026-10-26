@@ -214,7 +214,17 @@ def directional_news_candidates(
         ):
             continue
         published_at = _parse_publication_time(finding.get("published"))
-        if published_at is None:
+        available_at = _parse_publication_time(
+            finding.get("available_at") or finding.get("detected_at")
+        )
+        if published_at is None or available_at is None:
+            continue
+        # Event time (publication), availability time (first observed by this
+        # pipeline), and decision time (this evaluation) are separate facts.
+        # Reject impossible ordering rather than backdating a catalyst.
+        if available_at > now_utc:
+            continue
+        if (published_at - available_at).total_seconds() > 300:
             continue
         age_seconds = (now_utc - published_at).total_seconds()
         # Point-in-time rule from the September/October research: never turn
@@ -236,6 +246,9 @@ def directional_news_candidates(
                     "title": str(finding.get("title") or "")[:240],
                     "source": str(finding.get("source") or "N/D"),
                     "published": str(finding.get("published") or ""),
+                    "event_time": published_at.isoformat(),
+                    "available_at": available_at.isoformat(),
+                    "decision_time": now_utc.isoformat(),
                     "url": str(finding.get("url") or ""),
                     "instrument": instrument,
                     "bias": bias,
