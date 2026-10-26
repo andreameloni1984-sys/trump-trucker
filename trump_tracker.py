@@ -366,7 +366,7 @@ def _configured_rss_feeds() -> list[str]:
     # its RSS feed supplies individual posts with their own URL/date/text.
     return [
         "https://www.whitehouse.gov/feed/",
-        "https://www.trumpstruth.org/feed",
+        "https://trumpstruth.org/feed",
     ]
 
 
