@@ -100,5 +100,36 @@ class SputnikTelegramMenuTests(unittest.TestCase):
             save.assert_called_once_with(state)
 
 
+
+    def test_local_state_normalizer_recovers_corrupt_cursor_and_fails_closed(self):
+        source = Path("telegram_listener.py").read_text(encoding="utf-8")
+        tree = ast.parse(source)
+        node = next(
+            item for item in tree.body
+            if isinstance(item, ast.FunctionDef) and item.name == "_normalise_local_state"
+        )
+        isolated = ast.Module(body=[node], type_ignores=[])
+        namespace = {"Any": object}
+        exec(compile(isolated, "<sputnik-state-normalizer>", "exec"), namespace)
+        normalise = namespace["_normalise_local_state"]
+
+        self.assertEqual(
+            normalise({"offset": "-9", "chat_id": " 123 ", "active": "false"}),
+            {"offset": 0, "chat_id": "123", "active": False},
+        )
+        self.assertEqual(
+            normalise({"offset": "not-an-integer", "chat_id": None, "active": "maybe"}),
+            {"offset": 0, "chat_id": "", "active": False},
+        )
+        self.assertEqual(
+            normalise({"offset": "42", "chat_id": 12345, "active": True}),
+            {"offset": 42, "chat_id": "12345", "active": True},
+        )
+        self.assertEqual(
+            normalise(["corrupt-json-shape"]),
+            {"offset": 0, "chat_id": "", "active": True},
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
