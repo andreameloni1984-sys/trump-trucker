@@ -30,7 +30,10 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self, _fetch_feed, _fetch_page
     ):
         state = {}
-        with patch.dict(os.environ, {"SPUTNIK_RSS_FEEDS": "https://example.gov/feed.xml"}):
+        with (
+            patch.dict(os.environ, {"SPUTNIK_RSS_FEEDS": "https://example.gov/feed.xml"}),
+            patch.object(trump_tracker, "utc_now", return_value=datetime(2026, 10, 19, 6, 1, tzinfo=timezone.utc)),
+        ):
             first = trump_tracker.intelligence_snapshot(state)
             second = trump_tracker.intelligence_snapshot(state)
 
@@ -160,3 +163,30 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+    @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
+    def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self, _fetch_page):
+        fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
+        two_hours_old = FEED.replace(
+            b"Mon, 19 Oct 2026 06:00:00 GMT", b"Mon, 26 Oct 2026 04:00:00 GMT"
+        )
+        two_days_old = FEED.replace(
+            b"Mon, 19 Oct 2026 06:00:00 GMT", b"Sat, 24 Oct 2026 06:00:00 GMT"
+        )
+        for label, feed in (("recent backlog", two_hours_old), ("stale item", two_days_old)):
+            with self.subTest(case=label):
+                state = {}
+                with (
+                    patch.dict(os.environ, {
+                        "SPUTNIK_RSS_FEEDS": "https://example.gov/feed.xml",
+                        "SPUTNIK_SOCIAL_ENABLED": "1",
+                        "SPUTNIK_PUBLIC_ITEM_MAX_AGE_HOURS": "24",
+                    }),
+                    patch.object(trump_tracker, "fetch_public_feed", return_value=feed),
+                    patch.object(trump_tracker, "utc_now", return_value=fixed_now),
+                ):
+                    findings = trump_tracker.intelligence_snapshot(state)
+                self.assertEqual(findings, [])
+                self.assertEqual(len(state.get("intelligence_items", {})), 1)
+                self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
