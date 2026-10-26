@@ -93,3 +93,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Regression tests:** missing CIK/security are excluded; an unidentified row cannot inflate the filing count for an identified security.
 - **Limits:** a security description is not a ticker or exchange instrument ID; this is identity hygiene, not a directional prediction or profitability claim. Render deployment remains blocked by exhausted build minutes.
 - **Safety:** PAPER ONLY; no broker, orders, or paid services.
+
+
+## 2026-10-26 — Reject feed-level URLs as individual Sputnik items
+
+- **Finding:** an Atom entry with only a `self` link (or no link) could be emitted using the feed URL as if it were an individual article permalink, weakening source provenance and duplicate handling.
+- **Implemented:** merged in `main` as `4eb70c3bad380057bba992c6c27bf9f899f7bb95`; skip entries without an item-level permalink unless an explicit original public-post URL is available.
+- **Files:** `sputnik_public_sources.py`, `tests/test_sputnik_public_sources.py`.
+- **Regression CI:** item-intelligence passed on PR head `433d35e4e37baf60f7dbe37e08d3c67c02a837df` ([run](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40310250121)).
+- **Deployment / limits:** Render's last confirmed live commit remains `9e5204bf7d9074dba27637013b7d98933a91e733`; the newest attempted build before this merge failed because pipeline minutes were exhausted. No manual deployment was triggered. Live Telegram delivery of the changed parser is not verified.
+- **Safety:** source-link hygiene only; it does not verify truth or forecast price direction. No test message or trade order.
