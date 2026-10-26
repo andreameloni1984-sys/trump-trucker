@@ -783,10 +783,10 @@ def _public_content_hash(*parts: Any) -> str:
     event or bypass cross-feed deduplication.
     """
     normalized_parts = [
-        re.sub(r"\\s+", " ", unicodedata.normalize("NFC", str(part or ""))).strip()
+        re.sub(r"\s+", " ", unicodedata.normalize("NFC", str(part or ""))).strip()
         for part in parts
     ]
-    canonical_text = "\\n".join(normalized_parts)
+    canonical_text = "\n".join(normalized_parts)
     return hashlib.sha256(canonical_text.encode("utf-8")).hexdigest()
 
 
