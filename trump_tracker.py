@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from email.utils import parsedate_to_datetime
 import os
 import re
 import time
@@ -18,7 +19,7 @@ import urllib.parse
 import urllib.request
 from html.parser import HTMLParser
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -360,8 +361,13 @@ def _configured_rss_feeds() -> list[str]:
     raw = os.getenv("SPUTNIK_RSS_FEEDS", "").strip()
     if raw:
         return list(dict.fromkeys(url.strip() for url in raw.split(";") if url.strip()))
-    # Official White House feed: item-level title, date, URL and summary.
-    return ["https://www.whitehouse.gov/feed/"]
+    # Item-level public feeds: keep the White House and Trump's Truth archive
+    # in the default scan. The archive homepage is useful for discovery only;
+    # its RSS feed supplies individual posts with their own URL/date/text.
+    return [
+        "https://www.whitehouse.gov/feed/",
+        "https://www.trumpstruth.org/feed",
+    ]
 
 
 def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
@@ -415,6 +421,18 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             continue
 
         for row in rows:
+            published = str(row.get("published") or "").strip()
+            item_url = str(row.get("url") or "").strip()
+            primary_url = str(row.get("primary_url") or "").strip()
+            # Do not turn an undated item or a feed URL into a market catalyst.
+            # Prefer a verified original permalink only when the feed link is absent.
+            if not _valid_public_item_timestamp(published):
+                continue
+            if not _is_item_permalink(item_url, feed_url):
+                if _is_item_permalink(primary_url, feed_url):
+                    item_url = primary_url
+                else:
+                    continue
             title = str(row.get("title") or "").strip()
             body = " ".join(part for part in (title, str(row.get("text") or "").strip()) if part)
             domains = _domains_for_public_text(body)
@@ -430,7 +448,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             finding = {
                 "source": source,
                 "feed_url": feed_url,
-                "url": str(row.get("url") or feed_url),
+                "url": item_url,
                 "primary_url": str(row.get("primary_url") or ""),
                 "title": title[:300],
                 "published": str(row.get("published") or "")[:100],
@@ -566,6 +584,41 @@ def intelligence_message(item: dict[str, Any]) -> str:
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
+
+
+def _valid_public_item_timestamp(value: Any) -> bool:
+    """Require a parseable source publication time; reject implausible future dates."""
+    text = str(value or "").strip()
+    if not text:
+        return False
+    try:
+        try:
+            parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        except ValueError:
+            parsed = parsedate_to_datetime(text)
+        if not isinstance(parsed, datetime):
+            return False
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        parsed = parsed.astimezone(timezone.utc)
+    except (TypeError, ValueError, OverflowError):
+        return False
+    now = utc_now()
+    now_utc = now.replace(tzinfo=timezone.utc) if now.tzinfo is None else now.astimezone(timezone.utc)
+    return parsed <= now_utc + timedelta(minutes=5)
+
+
+def _is_item_permalink(value: Any, feed_url: str) -> bool:
+    """Reject missing, non-HTTP, or feed-level URLs masquerading as individual posts."""
+    candidate = urllib.parse.urlparse(str(value or "").strip())
+    feed = urllib.parse.urlparse(str(feed_url or "").strip())
+    if candidate.scheme.lower() not in {"http", "https"} or not candidate.netloc:
+        return False
+    if feed.scheme.lower() not in {"http", "https"} or not feed.netloc:
+        return False
+    candidate_key = (candidate.scheme.lower(), candidate.netloc.lower(), candidate.path.rstrip("/"))
+    feed_key = (feed.scheme.lower(), feed.netloc.lower(), feed.path.rstrip("/"))
+    return candidate_key != feed_key
 
 
 def http_get_json(url: str, user_agent: str) -> dict[str, Any]:
