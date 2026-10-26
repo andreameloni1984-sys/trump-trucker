@@ -488,9 +488,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             if not domains:
                 continue
             identity = str(row.get("id") or row.get("url") or (title + "|" + str(row.get("published") or "")))
-            digest = hashlib.sha256(
-                (source + "|" + feed_url + "|" + identity).encode("utf-8")
-            ).hexdigest()[:24]
+            digest = _public_item_digest(source, feed_url, identity, item_url)
             if digest in known_items:
                 continue
             observed_now = utc_now()
@@ -740,6 +738,48 @@ def _is_item_permalink(value: Any, feed_url: str) -> bool:
     candidate_key = (candidate.scheme.lower(), candidate.netloc.lower(), candidate.path.rstrip("/"))
     feed_key = (feed.scheme.lower(), feed.netloc.lower(), feed.path.rstrip("/"))
     return candidate_key != feed_key
+
+
+# Tracking parameters do not identify a different article. Preserve other query
+# parameters because they can be part of the publisher's actual article ID.
+_TRACKING_QUERY_KEYS = {"fbclid", "gclid", "dclid", "mc_cid", "mc_eid", "igshid", "ref_src"}
+
+
+def _canonical_public_permalink(value: Any) -> str:
+    """Canonicalize an individual HTTP(S) permalink for cross-feed deduplication."""
+    try:
+        parsed = urllib.parse.urlsplit(str(value or "").strip())
+        scheme = parsed.scheme.lower()
+        if scheme not in {"http", "https"} or not parsed.hostname or parsed.username or parsed.password:
+            return ""
+        host = parsed.hostname.lower()
+        port = parsed.port
+    except (TypeError, ValueError, OverflowError):
+        return ""
+    if ":" in host and not host.startswith("["):
+        host = f"[{host}]"
+    if port and not ((scheme == "http" and port == 80) or (scheme == "https" and port == 443)):
+        host = f"{host}:{port}"
+    path = re.sub(r"/{2,}", "/", parsed.path or "/")
+    if path != "/":
+        path = path.rstrip("/") or "/"
+    query_pairs = [
+        (key, val)
+        for key, val in urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+        if not key.lower().startswith("utm_") and key.lower() not in _TRACKING_QUERY_KEYS
+    ]
+    query = urllib.parse.urlencode(sorted(query_pairs))
+    return urllib.parse.urlunsplit((scheme, host, path, query, ""))
+
+
+def _public_item_digest(source: str, feed_url: str, identity: str, item_url: str) -> str:
+    """Use a canonical permalink across feeds; fall back to feed-local identity."""
+    permalink = _canonical_public_permalink(item_url)
+    if permalink:
+        key = "permalink|" + permalink
+    else:
+        key = "feed|" + str(source) + "|" + str(feed_url) + "|" + str(identity)
+    return hashlib.sha256(key.encode("utf-8")).hexdigest()[:24]
 
 
 def http_get_json(url: str, user_agent: str) -> dict[str, Any]:
