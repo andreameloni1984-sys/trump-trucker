@@ -449,6 +449,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             "detected_at": utc_now().isoformat(),
             "event_id": digest,
             "content_hash": _public_content_hash(body[:200000]),
+            "source_quality": _public_source_quality(url, url, "", "PUBLIC_SOURCE_TEXT_PAGE_LEVEL"),
         }
         finding["action_reaction"] = build_action_reaction_record(finding, body)
         findings.append(finding)
@@ -518,6 +519,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "detected_at": utc_now().isoformat(),
                 "event_id": digest,
                 "content_hash": _public_content_hash(title, str(row.get("text") or "")[:20000]),
+                "source_quality": _public_source_quality(feed_url, item_url, primary_url, "PUBLIC_RSS_ITEM"),
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
@@ -560,6 +562,8 @@ def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any
                 "published": str(item.get("published") or "")[:100],
                 "domains": list(item.get("domains") or []),
                 "text": str(item.get("text") or "")[:1500],
+                "source_quality": str(item.get("source_quality") or "UNASSESSED"),
+                "content_hash": str(item.get("content_hash") or ""),
             }
             for item in items[:20]
         ]
@@ -681,6 +685,7 @@ def intelligence_message(item: dict[str, Any]) -> str:
     lines.extend([
         f"🧩 Aree citate: {', '.join(item.get('domains') or [])}",
         f"🔎 Evidenza: {item.get('evidence', 'N/D')}",
+        f"🧾 Qualità URL: {item.get('source_quality', 'NON_VALUTATA')} (metadati tecnici, non prova di autenticità).",
     ])
     if excerpt and not title:
         lines.append(f"📝 Testo: {excerpt}")
@@ -788,6 +793,38 @@ def _public_content_hash(*parts: Any) -> str:
     ]
     canonical_text = "\n".join(normalized_parts)
     return hashlib.sha256(canonical_text.encode("utf-8")).hexdigest()
+
+
+def _public_source_quality(
+    feed_url: Any, item_url: Any, primary_url: Any = "", evidence: str = "PUBLIC_RSS_ITEM"
+) -> str:
+    """Describe URL provenance without claiming source authenticity or independence."""
+    if str(evidence or "") != "PUBLIC_RSS_ITEM":
+        return "PAGE_LEVEL_UNVERIFIED"
+
+    def safe_host(value: Any) -> str:
+        try:
+            parsed = urllib.parse.urlsplit(str(value or "").strip())
+            if (
+                parsed.scheme.lower() not in {"http", "https"}
+                or not parsed.hostname
+                or parsed.username
+                or parsed.password
+            ):
+                return ""
+            return parsed.hostname.lower().rstrip(".")
+        except (TypeError, ValueError, OverflowError):
+            return ""
+
+    item_permalink = _canonical_public_permalink(item_url)
+    primary_permalink = _canonical_public_permalink(primary_url)
+    if primary_permalink and primary_permalink != item_permalink:
+        return "FEED_DECLARED_ORIGINAL_URL_UNVERIFIED"
+    feed_host = safe_host(feed_url)
+    item_host = safe_host(item_url)
+    if feed_host and item_host and feed_host == item_host:
+        return "FEED_HOST_MATCH_NOT_AUTHENTICATED"
+    return "EXTERNAL_PERMALINK_UNVERIFIED"
 
 
 def _public_item_digest(source: str, feed_url: str, identity: str, item_url: str) -> str:
