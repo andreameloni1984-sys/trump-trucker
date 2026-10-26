@@ -36,10 +36,21 @@ def _text(node, names):
     return "".join(child.itertext()).strip() if child is not None else ""
 
 def _link(node):
-    child = _direct(node, {"link"})
-    if child is None:
-        return ""
-    return str(child.attrib.get("href") or "").strip() or "".join(child.itertext()).strip()
+    """Choose an individual entry's alternate link, not Atom self/enclosure links."""
+    candidates = []
+    for child in list(node):
+        if _name(child.tag) != "link":
+            continue
+        rel = str(child.attrib.get("rel") or "").strip().lower()
+        if rel not in {"", "alternate"}:
+            continue
+        value = str(child.attrib.get("href") or "").strip() or "".join(child.itertext()).strip()
+        if value:
+            # Atom defaults a missing rel to "alternate"; explicit alternate links
+            # are preferred when a feed also contains a link with no rel.
+            priority = 0 if rel == "alternate" else 1
+            candidates.append((priority, value))
+    return min(candidates, key=lambda row: row[0])[1] if candidates else ""
 
 def _descendant(node, names):
     for child in node.iter():
