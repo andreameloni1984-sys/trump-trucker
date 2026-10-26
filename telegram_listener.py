@@ -556,6 +556,22 @@ def dispatch_callback(query: dict[str, Any]) -> None:
         print(f"SPUTNIK callback error: {type(exc).__name__}: {exc}")
 
 
+def _dispatch_update_and_ack(update: dict[str, Any]) -> None:
+    """Process an update before advancing Telegram's durable polling offset.
+
+    Saving the offset first can permanently lose a command if dispatch crashes.
+    A crash after dispatch but before saving may replay the update, preferring
+    at-least-once processing over silently dropping a user's command.
+    """
+    if update.get("callback_query"):
+        dispatch_callback(update["callback_query"])
+    else:
+        dispatch(update.get("message") or {})
+    update_id = int(update.get("update_id", 0))
+    LOCAL_STATE["offset"] = max(int(LOCAL_STATE.get("offset", 0) or 0), update_id + 1)
+    save_local_state(LOCAL_STATE)
+
+
 def poll_loop() -> None:
     global BOT_TOKEN
     last_token = ""
@@ -613,14 +629,7 @@ def poll_loop() -> None:
 
             updates = result.get("result") or []
             for update in updates:
-                update_id = int(update.get("update_id", 0))
-                LOCAL_STATE["offset"] = max(int(LOCAL_STATE.get("offset", 0) or 0), update_id + 1)
-                save_local_state(LOCAL_STATE)
-                
-                if update.get("callback_query"):
-                    dispatch_callback(update["callback_query"])
-                else:
-                    dispatch(update.get("message") or {})
+                _dispatch_update_and_ack(update)
         except urllib.error.HTTPError as exc:
             print(f"SPUTNIK: Telegram HTTP {exc.code}")
             time.sleep(3)
