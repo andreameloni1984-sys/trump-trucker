@@ -278,3 +278,26 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+
+class SputnikCrossFeedDedupTests(unittest.TestCase):
+    def test_canonical_permalink_deduplicates_tracking_variants_across_feeds(self):
+        first = "https://Example.gov/news/123/?id=42&utm_source=mail#article"
+        second = "https://example.gov/news/123?id=42&fbclid=tracking"
+        self.assertEqual(
+            trump_tracker._canonical_public_permalink(first),
+            trump_tracker._canonical_public_permalink(second),
+        )
+        self.assertEqual(
+            trump_tracker._public_item_digest("WHITE_HOUSE", "feed-a", "guid-a", first),
+            trump_tracker._public_item_digest("MIRROR_FEED", "feed-b", "guid-b", second),
+        )
+        different_article = "https://example.gov/news/123?id=43"
+        self.assertNotEqual(
+            trump_tracker._public_item_digest("WHITE_HOUSE", "feed-a", "guid-a", first),
+            trump_tracker._public_item_digest("MIRROR_FEED", "feed-b", "guid-b", different_article),
+        )
+
+    def test_canonical_permalink_rejects_non_http_and_malformed_urls(self):
+        self.assertEqual(trump_tracker._canonical_public_permalink("javascript:alert(1)"), "")
+        self.assertEqual(trump_tracker._canonical_public_permalink("https://[bad-host"), "")
