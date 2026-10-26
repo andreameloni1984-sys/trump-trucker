@@ -87,6 +87,27 @@ class RankingTests(unittest.TestCase):
         item["action"] = "VENDUTO"
         self.assertEqual(rank_purchase_candidates([item]), [])
 
+    def test_missing_security_identity_is_excluded_from_ranking(self):
+        missing_security = tx("e1")
+        missing_security["security"] = ""
+        missing_cik = tx("e2")
+        missing_cik["cik"] = ""
+        self.assertEqual(
+            rank_purchase_candidates(
+                [missing_security, missing_cik], today=date(2026, 10, 6)
+            ),
+            [],
+        )
+
+    def test_unidentified_row_cannot_merge_into_named_security_group(self):
+        identified = tx("e1", security="ACME Common Stock", company="ACME Corp")
+        unidentified = tx("e2", security="", company="ACME Corp")
+        result = rank_purchase_candidates(
+            [identified, unidentified], today=date(2026, 10, 6)
+        )
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]["filings"], 1)
+
     def test_ranking_is_descending(self):
         rows = [
             tx("a1", security="LOW", company="Low", tx_date="2026-09-01"),
