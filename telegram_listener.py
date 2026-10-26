@@ -50,18 +50,64 @@ PORT = int(os.getenv("PORT", "10000"))
 POLL_TIMEOUT = 25
 
 
+def _normalise_local_state(payload: Any) -> dict[str, Any]:
+    """Validate the small local Telegram cursor state before it reaches the poll loop."""
+    if not isinstance(payload, dict):
+        payload = {}
+
+    raw_offset = payload.get("offset", 0)
+    try:
+        if isinstance(raw_offset, bool):
+            raise ValueError("boolean offset")
+        offset = int(raw_offset)
+        if isinstance(raw_offset, float) and not raw_offset.is_integer():
+            raise ValueError("fractional offset")
+        offset = max(0, offset)
+    except (TypeError, ValueError, OverflowError):
+        offset = 0
+
+    raw_chat_id = payload.get("chat_id", "")
+    if isinstance(raw_chat_id, (str, int)) and not isinstance(raw_chat_id, bool):
+        chat_id = str(raw_chat_id).strip()
+    else:
+        chat_id = ""
+
+    if "active" not in payload:
+        active = True
+    else:
+        raw_active = payload.get("active")
+        if isinstance(raw_active, bool):
+            active = raw_active
+        elif isinstance(raw_active, int) and raw_active in (0, 1):
+            active = bool(raw_active)
+        elif isinstance(raw_active, str):
+            value = raw_active.strip().lower()
+            if value in {"1", "true", "yes", "on"}:
+                active = True
+            elif value in {"0", "false", "no", "off"}:
+                active = False
+            else:
+                active = False
+        else:
+            active = False
+
+    return {"offset": offset, "chat_id": chat_id, "active": active}
+
+
 def load_local_state() -> dict[str, Any]:
     if not LOCAL_STATE_FILE.exists():
-        return {"offset": 0, "chat_id": "", "active": True}
+        return _normalise_local_state({})
     try:
-        return json.loads(LOCAL_STATE_FILE.read_text(encoding="utf-8"))
-    except Exception:
-        return {"offset": 0, "chat_id": "", "active": True}
+        payload = json.loads(LOCAL_STATE_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, UnicodeError):
+        payload = {}
+    return _normalise_local_state(payload)
 
 
 def save_local_state(state: dict[str, Any]) -> None:
+    LOCAL_STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     tmp = LOCAL_STATE_FILE.with_suffix(".tmp")
-    tmp.write_text(json.dumps(state, ensure_ascii=False), encoding="utf-8")
+    tmp.write_text(json.dumps(_normalise_local_state(state), ensure_ascii=False), encoding="utf-8")
     tmp.replace(LOCAL_STATE_FILE)
 
 
