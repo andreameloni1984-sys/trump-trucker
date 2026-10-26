@@ -13,7 +13,9 @@
 ### Evidence
 - Code commit: `7cc1868b6bf522a50cd105444c2f238e1d9f0623`.
 - Test commit: `432042e3877b5439a223b64e15a1f07a078bd21f`.
-- CI: pending; update this entry after the PR workflows complete.
+- CI evidence: both workflows completed successfully on PR head `f35237847f7a57303e340f88f093cd85db9498d8`:
+- [SPUTNIK ranking tests — SUCCESS](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40267542867).
+- [SPUTNIK Telegram menu tests — SUCCESS](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40267542843).
 
 ### Limitations / blockers
 - A security description is not a ticker or unique exchange instrument identifier; it reduces ambiguity but does not replace issuer/security mapping validation.
