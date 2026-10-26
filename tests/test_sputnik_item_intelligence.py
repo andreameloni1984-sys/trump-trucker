@@ -60,6 +60,8 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         item = first[0]
         self.assertEqual(item["title"], "President announces new tariffs on China")
         self.assertEqual(item["published"], "Mon, 19 Oct 2026 06:00:00 GMT")
+        self.assertEqual(item["event_time"], "2026-10-19T06:00:00+00:00")
+        self.assertEqual(item["available_at"], "2026-10-19T06:01:00+00:00")
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
