@@ -256,5 +256,10 @@ def directional_news_candidates(
                     "reason": rule["reason"],
                     "status": "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION",
                 }
-    result = sorted(candidates.values(), key=lambda x: x["published"], reverse=True)
+    result = sorted(
+        candidates.values(),
+        key=lambda item: _parse_publication_time(item.get("event_time") or item.get("published"))
+        or datetime.min.replace(tzinfo=timezone.utc),
+        reverse=True,
+    )
     return result[:limit]
