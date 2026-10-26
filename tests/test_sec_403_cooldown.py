@@ -20,7 +20,7 @@ class SEC403CooldownTests(unittest.TestCase):
     @patch("trump_tracker.urllib.request.urlopen")
     def test_sec_403_suppresses_following_sec_requests(self, urlopen, monotonic):
         url = "https://data.sec.gov/submissions/CIK0000000001.json"
-        monotonic.side_effect = [100.0, 100.0, 101.0]
+        monotonic.return_value = 100.0
         urlopen.side_effect = urllib.error.HTTPError(url, 403, "Forbidden", {}, None)
 
         with self.assertRaises(urllib.error.HTTPError):
