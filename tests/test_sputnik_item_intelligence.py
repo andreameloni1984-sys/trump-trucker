@@ -118,6 +118,37 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("Non trattare le parole chiave della pagina come notizia", message)
         self.assertNotIn("Stato: CATALIZZATORE DA VERIFICARE", message)
 
+    def test_directional_news_candidates_maps_explicit_trade_escalation_to_hypotheses(self):
+        findings = [{
+            "event_id": "tariff-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/tariffs",
+            "published": "2026-10-26T10:00:00Z",
+            "source": "WHITE_HOUSE",
+            "domains": ["TRADE_POLICY"],
+        }]
+        candidates = trump_tracker.directional_news_candidates(findings)
+        self.assertEqual({x["instrument"] for x in candidates}, {"NASDAQ100", "GOLD"})
+        self.assertEqual({x["bias"] for x in candidates}, {"SHORT_BIAS", "LONG_BIAS"})
+        self.assertTrue(all(x["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for x in candidates))
+
+    def test_directional_news_candidates_rejects_page_level_and_ambiguous_headlines(self):
+        page_level = [{
+            "event_id": "page-1", "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            "title": "New tariffs", "text": "new tariffs", "url": "https://example.gov/",
+            "published": "2026-10-26T10:00:00Z", "domains": ["TRADE_POLICY"],
+        }]
+        vague = [{
+            "event_id": "evt-2", "evidence": "PUBLIC_RSS_ITEM",
+            "title": "Trump speaks today", "text": "Remarks are expected.",
+            "url": "https://example.gov/remarks", "published": "2026-10-26T10:00:00Z",
+            "domains": ["TRADE_POLICY"],
+        }]
+        self.assertEqual(trump_tracker.directional_news_candidates(page_level), [])
+        self.assertEqual(trump_tracker.directional_news_candidates(vague), [])
+
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
