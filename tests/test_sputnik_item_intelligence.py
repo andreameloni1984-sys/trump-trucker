@@ -42,6 +42,13 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
 
+    def test_default_feeds_include_item_level_trump_archive_rss(self):
+        with patch.dict(os.environ, {}, clear=True):
+            feeds = trump_tracker._configured_rss_feeds()
+
+        self.assertIn("https://www.whitehouse.gov/feed/", feeds)
+        self.assertIn("https://www.trumpstruth.org/feed", feeds)
+
     def test_page_level_archive_message_warns_not_an_individual_catalyst(self):
         message = trump_tracker.intelligence_message({
             "source": "TRUTH_ARCHIVE",
