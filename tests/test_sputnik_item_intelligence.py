@@ -261,7 +261,10 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "evidence": "PUBLIC_RSS_ITEM",
                 "title": "Tariff headline",
                 "url": "https://example.gov/news/1",
-                "published": "2026-10-19",
+                "published": "2026-10-19T06:00:00Z",
+                "event_time": "2026-10-19T06:00:00+00:00",
+                "available_at": "2026-10-19T06:01:00+00:00",
+                "source": "WHITE_HOUSE",
                 "domains": ["TRADE_POLICY"],
                 "text": "Tariff headline details",
             },
@@ -286,6 +289,11 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         payload = json.loads(request.data.decode("utf-8"))
         self.assertEqual(len(payload["events"]), 1)
         self.assertEqual(payload["events"][0]["event_id"], "evt-1")
+        self.assertEqual(payload["events"][0]["event_time"], "2026-10-19T06:00:00+00:00")
+        self.assertEqual(payload["events"][0]["available_at"], "2026-10-19T06:01:00+00:00")
+        self.assertEqual(payload["events"][0]["source"], "WHITE_HOUSE")
+        self.assertEqual(payload["events"][0]["evidence"], "PUBLIC_RSS_ITEM")
+        self.assertNotIn("decision_time", payload["events"][0])
         self.assertNotIn("order", payload["events"][0])
 
 
