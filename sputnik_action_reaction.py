@@ -7,6 +7,7 @@ does not turn a political statement into a guaranteed trade.
 from __future__ import annotations
 
 from typing import Any
+from urllib.parse import urlparse
 
 # These are documented historical analogues, not forecasts.  Source URLs point
 # to primary/reputable public reporting retained with the observation.
@@ -59,6 +60,18 @@ HISTORICAL_PATTERNS = [
 def _normalise(text: str) -> str:
     return " ".join(str(text or "").lower().split())
 
+def _has_article_specific_source(pattern: dict[str, Any]) -> bool:
+    """Require an HTTPS article-like URL; this is provenance hygiene, not truth verification."""
+    parsed = urlparse(str(pattern.get("source_url") or "").strip())
+    if parsed.scheme != "https" or not parsed.hostname:
+        return False
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 2:
+        return False
+    slug = parts[-1]
+    return len(slug) >= 12 and ("-" in slug or any(ch.isdigit() for ch in slug))
+
+
 def classify_event(text: str) -> str:
     body = _normalise(text)
     if any(k in body for k in ("tariff", "tariffs", "trade war", "china", "xi")):
@@ -76,9 +89,14 @@ def match_historical_reactions(text: str, limit: int = 3) -> list[dict[str, Any]
     event_type = classify_event(body)
     matches: list[dict[str, Any]] = []
     for pattern in HISTORICAL_PATTERNS:
+        if not _has_article_specific_source(pattern):
+            continue
         keyword_hits = sum(1 for k in pattern["keywords"] if k in body)
         type_match = pattern["event_type"] == event_type
-        if keyword_hits == 0 and not type_match:
+        # Require both event-class agreement and at least one pattern-specific
+        # phrase. Broad labels such as "tariff" must not transfer another
+        # event's historical direction to the current item.
+        if keyword_hits == 0 or not type_match:
             continue
         matches.append({
             **pattern,
