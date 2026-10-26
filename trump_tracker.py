@@ -341,18 +341,32 @@ class TextExtractor(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         tag = tag.lower()
+        attributes = {name.lower(): (value or "").strip().lower() for name, value in attrs}
+        style_values: dict[str, str] = {}
+        for declaration in attributes.get("style", "").split(";"):
+            if ":" in declaration:
+                name, value = declaration.split(":", 1)
+                style_values[name.strip()] = value.strip().split("!important", 1)[0].strip()
+        hidden = (
+            "hidden" in attributes
+            or attributes.get("aria-hidden") == "true"
+            or style_values.get("display") == "none"
+            or style_values.get("visibility") in {"hidden", "collapse"}
+            or style_values.get("content-visibility") == "hidden"
+        )
         if self._ignored_stack:
-            if tag in self._IGNORED_TAGS:
-                self._ignored_stack.append(tag)
+            # Track every nested tag while skipping a hidden container. Otherwise
+            # a same-named child (for example div inside div) could close it early.
+            self._ignored_stack.append(tag)
             return
-        if tag in self._IGNORED_TAGS:
+        if tag in self._IGNORED_TAGS or hidden:
             self._ignored_stack.append(tag)
 
     def handle_endtag(self, tag: str) -> None:
         if not self._ignored_stack:
             return
         tag = tag.lower()
-        # Recover from malformed nesting by closing through the matching ignored tag.
+        # Recover from malformed nesting by closing through the matching skipped tag.
         for index in range(len(self._ignored_stack) - 1, -1, -1):
             if self._ignored_stack[index] == tag:
                 del self._ignored_stack[index:]
