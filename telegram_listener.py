@@ -1,6 +1,4 @@
-def menu_markup() -> dict[str, Any]:
-    """Legacy compatibility helper: never recreate inline Telegram buttons."""
-    return {"remove_keyboard": True}"""Persistent SPUTNIK Telegram listener.
+"""Persistent SPUTNIK Telegram listener.
 
 Telegram transport is deliberately separated from the GitHub Actions collector.
 GitHub Actions periodically bootstraps the bot token and pings /health so a free
@@ -118,11 +116,8 @@ def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | N
 
 
 def telegram_menu() -> dict[str, Any]:
-    """Remove the persistent reply keyboard; keep commands available as text."""
+    """Remove the persistent reply keyboard; keep text commands available."""
     return {"remove_keyboard": True}
-
-
-
 
 
 def sputnik_home_message(state: dict[str, Any]) -> str:
@@ -241,28 +236,8 @@ def anticipation_message(state: dict[str, Any]) -> str:
 
 
 def menu_markup() -> dict[str, Any]:
-    """SPUTNIK dashboard: Commodities-style inline control panel."""
-    return {
-        "inline_keyboard": [
-            [{"text": "🏠 HOME", "callback_data": "home"}],
-            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"},
-             {"text": "🔵 ANTICIPO", "callback_data": "anticipation"}],
-            [{"text": "🔥 SPUTNIK AGGRESSIVO", "callback_data": "aggressive"}],
-            [{"text": "🧠 AZIONE → REAZIONE", "callback_data": "action_reaction"}],
-            [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
-            [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"},
-             {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
-            [{"text": "🏛️ TRUMP / WHITE HOUSE", "callback_data": "brief"},
-             {"text": "📰 NEWS", "callback_data": "news"}],
-            [{"text": "🧾 SEC / OGE", "callback_data": "filings"},
-             {"text": "💰 ACQUISTI", "callback_data": "purchases"}],
-            [{"text": "📊 SETTORI / IMPATTO", "callback_data": "sectors"},
-             {"text": "🔎 ANALISI", "callback_data": "analysis"}],
-            [{"text": "🔄 AGGIORNA", "callback_data": "scan"},
-             {"text": "⚙️ STATO", "callback_data": "status"}],
-            [{"text": "ℹ️ AIUTO", "callback_data": "help"}],
-        ]
-    }
+    """Legacy compatibility helper: never recreate inline Telegram buttons."""
+    return {"remove_keyboard": True}
 
 
 def action_reaction_result(state: dict[str, Any]) -> str:
