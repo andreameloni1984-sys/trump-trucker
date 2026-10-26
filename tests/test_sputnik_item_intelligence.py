@@ -318,8 +318,8 @@ class SputnikCrossFeedDedupTests(unittest.TestCase):
         self.assertEqual(known[current], known[legacy])
 
     def test_public_content_hash_normalizes_whitespace_and_unicode_but_tracks_edits(self):
-        first = trump_tracker._public_content_hash("  Tariff\\t update ", "Café\\nannounced")
-        equivalent = trump_tracker._public_content_hash("Tariff update", "Cafe\\u0301 announced")
+        first = trump_tracker._public_content_hash("  Tariff\t update ", "Café\nannounced")
+        equivalent = trump_tracker._public_content_hash("Tariff update", "Cafe\u0301 announced")
         changed = trump_tracker._public_content_hash("Tariff update", "Policy withdrawn")
 
         self.assertEqual(first, equivalent)
