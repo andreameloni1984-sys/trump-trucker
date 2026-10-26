@@ -13,6 +13,7 @@ import json
 from email.utils import parsedate_to_datetime
 import os
 import re
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -33,6 +34,41 @@ MAX_STATE_EVENTS = 5000
 TELEGRAM_POLL_TIMEOUT = int(os.getenv("SPUTNIK_TELEGRAM_POLL_TIMEOUT", "20"))
 TELEGRAM_HTTP_TIMEOUT = int(os.getenv("SPUTNIK_TELEGRAM_HTTP_TIMEOUT", "35"))
 TELEGRAM_LISTEN_SECONDS = int(os.getenv("SPUTNIK_TELEGRAM_LISTEN_SECONDS", "240"))
+SEC_403_COOLDOWN_SECONDS = 6 * 60 * 60
+_SEC_403_COOLDOWN_UNTIL = 0.0
+_SEC_403_COOLDOWN_LOCK = threading.Lock()
+
+
+class SECSourceCooldown(RuntimeError):
+    """Raised while SEC requests are suppressed after an HTTP 403."""
+
+
+def _is_sec_url(url: str) -> bool:
+    host = (urllib.parse.urlsplit(str(url)).hostname or "").lower()
+    return host == "sec.gov" or host.endswith(".sec.gov")
+
+
+def _check_sec_cooldown(url: str) -> None:
+    if not _is_sec_url(url):
+        return
+    with _SEC_403_COOLDOWN_LOCK:
+        remaining = _SEC_403_COOLDOWN_UNTIL - time.monotonic()
+    if remaining > 0:
+        raise SECSourceCooldown(f"SEC HTTP 403 cooldown active; retry_in={int(remaining)}s")
+
+
+def _record_sec_http_error(url: str, exc: urllib.error.HTTPError) -> None:
+    global _SEC_403_COOLDOWN_UNTIL
+    if not _is_sec_url(url) or exc.code != 403:
+        return
+    with _SEC_403_COOLDOWN_LOCK:
+        retry_at = time.monotonic() + SEC_403_COOLDOWN_SECONDS
+        _SEC_403_COOLDOWN_UNTIL = max(_SEC_403_COOLDOWN_UNTIL, retry_at)
+    print(
+        f"SPUTNIK: SEC source cooldown | reason=HTTP_403 | "
+        f"retry_in={SEC_403_COOLDOWN_SECONDS}s",
+        flush=True,
+    )
 
 
 @dataclass
@@ -95,6 +131,7 @@ def xml_text(node: Any, name: str) -> str:
 
 
 def fetch_public_document(url: str, user_agent: str) -> bytes:
+    _check_sec_cooldown(url)
     request = urllib.request.Request(
         url,
         headers={
@@ -102,8 +139,12 @@ def fetch_public_document(url: str, user_agent: str) -> bytes:
             "Accept": "application/xml,text/xml,text/html,application/xhtml+xml,text/plain",
         },
     )
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return response.read()
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            return response.read()
+    except urllib.error.HTTPError as exc:
+        _record_sec_http_error(url, exc)
+        raise
 
 
 def _form4_xml_urls(event: FilingEvent, user_agent: str) -> list[str]:
@@ -702,6 +743,7 @@ def _is_item_permalink(value: Any, feed_url: str) -> bool:
 
 
 def http_get_json(url: str, user_agent: str) -> dict[str, Any]:
+    _check_sec_cooldown(url)
     request = urllib.request.Request(
         url,
         headers={
@@ -710,8 +752,12 @@ def http_get_json(url: str, user_agent: str) -> dict[str, Any]:
             "Accept-Encoding": "gzip, deflate",
         },
     )
-    with urllib.request.urlopen(request, timeout=30) as response:
-        raw = response.read()
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            raw = response.read()
+    except urllib.error.HTTPError as exc:
+        _record_sec_http_error(url, exc)
+        raise
     return json.loads(raw.decode("utf-8"))
 
 
@@ -850,6 +896,9 @@ def collect() -> list[FilingEvent]:
         try:
             events.extend(fetch_sec_events(cik, user_agent, forms))
             time.sleep(0.2)
+        except SECSourceCooldown as exc:
+            print(f"SPUTNIK: SEC collection paused; remaining CIKs skipped: {exc}")
+            break
         except Exception as exc:
             print(f"SPUTNIK: SEC source error CIK {cik}: {exc}")
 
