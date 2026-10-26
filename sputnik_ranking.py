@@ -184,13 +184,17 @@ def rank_purchase_candidates(
             continue
         if item.get("source_kind") != "FORM4_TRANSACTION":
             continue
+        cik = str(item.get("cik") or "").strip()
+        security = str(item.get("security") or "").strip()
+        # Never rank an unidentified issuer/security or merge it into a guessed group.
+        if not cik or not security:
+            continue
         key = "|".join((
-            str(item.get("cik") or ""),
-            str(item.get("security") or "").strip().lower(),
+            cik,
+            security.lower(),
             str(item.get("company") or "").strip().lower(),
         ))
-        if key:
-            grouped[key].append(item)
+        grouped[key].append(item)
 
     ranked = [
         score_purchase_candidate(items, today=today)
