@@ -7,6 +7,7 @@ does not turn a political statement into a guaranteed trade.
 from __future__ import annotations
 
 from typing import Any
+from urllib.parse import urlparse
 
 # These are documented historical analogues, not forecasts.  Source URLs point
 # to primary/reputable public reporting retained with the observation.
@@ -71,11 +72,28 @@ def classify_event(text: str) -> str:
         return "ENERGY"
     return "OTHER"
 
+def _has_article_specific_source(pattern: dict[str, Any]) -> bool:
+    """Require an HTTPS source URL that points to an article-like path, not a homepage.
+
+    This is a minimum provenance check, not proof that the article's claims are true.
+    """
+    parsed = urlparse(str(pattern.get("source_url") or "").strip())
+    if parsed.scheme != "https" or not parsed.hostname:
+        return False
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 2:
+        return False
+    slug = parts[-1]
+    return len(slug) >= 12 and ("-" in slug or any(ch.isdigit() for ch in slug))
+
+
 def match_historical_reactions(text: str, limit: int = 3) -> list[dict[str, Any]]:
     body = _normalise(text)
     event_type = classify_event(body)
     matches: list[dict[str, Any]] = []
     for pattern in HISTORICAL_PATTERNS:
+        if not _has_article_specific_source(pattern):
+            continue
         keyword_hits = sum(1 for k in pattern["keywords"] if k in body)
         type_match = pattern["event_type"] == event_type
         if keyword_hits == 0 and not type_match:
