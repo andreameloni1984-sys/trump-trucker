@@ -9,6 +9,13 @@ import trump_tracker
 
 class SEC403CooldownTests(unittest.TestCase):
     def setUp(self):
+        self._state_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(self._state_dir.cleanup)
+        state_patcher = patch.object(
+            trump_tracker, "STATE_FILE", Path(self._state_dir.name) / "sputnik_state.json"
+        )
+        state_patcher.start()
+        self.addCleanup(state_patcher.stop)
         trump_tracker._SEC_403_COOLDOWN_UNTIL = 0.0
         trump_tracker._SEC_403_COOLDOWN_RESTORED = False
 
