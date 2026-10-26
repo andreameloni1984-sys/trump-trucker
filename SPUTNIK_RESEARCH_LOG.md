@@ -93,3 +93,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Regression tests:** missing CIK/security are excluded; an unidentified row cannot inflate the filing count for an identified security.
 - **Limits:** a security description is not a ticker or exchange instrument ID; this is identity hygiene, not a directional prediction or profitability claim. Render deployment remains blocked by exhausted build minutes.
 - **Safety:** PAPER ONLY; no broker, orders, or paid services.
+
+
+## 2026-10-26 — Suppress repeated SEC requests after HTTP 403
+
+- **Finding:** SEC submissions and filing-document fetches had no host-wide cooldown after HTTP 403. A collector cycle with multiple CIKs could repeat denied requests and emit avoidable errors.
+- **Implemented:** `trump_tracker.py` now starts a six-hour process-local cooldown for SEC hosts after HTTP 403, skips remaining CIKs while the cooldown is active, and leaves White House/other public-source requests unaffected.
+- **Regression tests:** `tests/test_sec_403_cooldown.py` verifies that the first 403 starts the cooldown, a subsequent SEC request is suppressed without another network call, and non-SEC public documents still fetch.
+- **CI:** pending on PR branch; no test result is claimed until GitHub Actions completes.
+- **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
+- **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
+- **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
