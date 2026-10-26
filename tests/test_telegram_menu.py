@@ -8,23 +8,23 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         source = Path("telegram_listener.py").read_text(encoding="utf-8")
         ast.parse(source)
 
-        required_labels = (
-            "🏆 CLASSIFICA",
-            "🟢 COSA COMPRARE",
-            "🛒 CARRELLO CFD",
-            "🎯 CATALIZZATORI",
-            "📰 NEWS",
-            "🏛️ TRUMP / WHITE HOUSE",
-            "💰 ACQUISTI",
-            "🧾 SEC / OGE",
-            "📊 SETTORI / IMPATTO",
-            "🔎 ANALISI",
-            "🔄 AGGIORNA",
-            "⚙️ STATO",
-            "ℹ️ AIUTO",
+        required_commands = (
+            'command == "🏆 classifica"',
+            'command == "🟢 cosa comprare"',
+            'command == "🛒 carrello cfd"',
+            'command == "🎯 catalizzatori"',
+            'command == "📰 news"',
+            'command == "🏛️ trump / white house"',
+            'command == "💰 acquisti"',
+            'command == "🧾 sec / oge"',
+            'command == "📊 settori / impatto"',
+            'command == "🔎 analisi"',
+            'command == "🔄 aggiorna"',
+            'command == "⚙️ stato"',
+            'command == "ℹ️ aiuto"',
         )
-        for label in required_labels:
-            self.assertIn(label, source)
+        for command in required_commands:
+            self.assertIn(command, source)
         self.assertIn('"POLITICA → EVIDENZA → CATALIZZATORE → CFD"', source)
         self.assertIn('def sputnik_home_message', source)
         self.assertIn('def bootstrap_state', source)
@@ -33,16 +33,15 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         self.assertIn('"telegram_configured"', source)
         self.assertIn('"authorized_chat"', source)
         self.assertIn('def menu_markup', source)
-        self.assertIn('"inline_keyboard":', source)
-        self.assertIn('"callback_data": "buy"', source)
-        self.assertIn('"callback_data": "cfd"', source)
-        self.assertIn('"callback_data": "anticipation"', source)
+        self.assertNotIn('"inline_keyboard":', source)
+        self.assertNotIn('"keyboard": [', source)
+        self.assertIn('"remove_keyboard": True', source)
         self.assertIn('def anticipation_message', source)
         self.assertIn('🏆 CLASSIFICA OPERATIVA', source)
         self.assertIn('Entry {item["entry"]}', source)
         self.assertIn('WAIT: quotazione CFD non disponibile.', source)
 
-        self.assertIn('"is_persistent": True', source)
+        self.assertNotIn('"is_persistent": True', source)
         self.assertIn('reply_markup=telegram_menu()', source)
         self.assertNotIn('reply_markup=menu_markup(),', source.split('if command == "/start":', 1)[1].split('if chat_id !=', 1)[0])
 

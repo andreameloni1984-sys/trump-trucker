@@ -116,25 +116,8 @@ def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | N
 
 
 def telegram_menu() -> dict[str, Any]:
-    return {
-        "keyboard": [
-            [{"text": "🏠 HOME"}, {"text": "🏆 CLASSIFICA"}],
-            [{"text": "🟢 COSA COMPRARE"}, {"text": "🛒 CARRELLO CFD"}],
-            [{"text": "🎯 CATALIZZATORI"}, {"text": "🧠 AZIONE → REAZIONE"}],
-            [{"text": "🔥 SPUTNIK AGGRESSIVO"}],
-            [{"text": "🏛️ TRUMP / WHITE HOUSE"}],
-            [{"text": "📰 NEWS"}, {"text": "🧾 SEC / OGE"}],
-            [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
-            [{"text": "💰 ACQUISTI"}, {"text": "🔄 AGGIORNA"}],
-            [{"text": "⚙️ STATO"}, {"text": "ℹ️ AIUTO"}],
-        ],
-        "resize_keyboard": True,
-        "is_persistent": True,
-        "input_field_placeholder": "SPUTNIK • scegli un'operazione",
-    }
-
-
-
+    """Remove the persistent reply keyboard; keep text commands available."""
+    return {"remove_keyboard": True}
 
 
 def sputnik_home_message(state: dict[str, Any]) -> str:
@@ -253,28 +236,8 @@ def anticipation_message(state: dict[str, Any]) -> str:
 
 
 def menu_markup() -> dict[str, Any]:
-    """SPUTNIK dashboard: Commodities-style inline control panel."""
-    return {
-        "inline_keyboard": [
-            [{"text": "🏠 HOME", "callback_data": "home"}],
-            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"},
-             {"text": "🔵 ANTICIPO", "callback_data": "anticipation"}],
-            [{"text": "🔥 SPUTNIK AGGRESSIVO", "callback_data": "aggressive"}],
-            [{"text": "🧠 AZIONE → REAZIONE", "callback_data": "action_reaction"}],
-            [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
-            [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"},
-             {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
-            [{"text": "🏛️ TRUMP / WHITE HOUSE", "callback_data": "brief"},
-             {"text": "📰 NEWS", "callback_data": "news"}],
-            [{"text": "🧾 SEC / OGE", "callback_data": "filings"},
-             {"text": "💰 ACQUISTI", "callback_data": "purchases"}],
-            [{"text": "📊 SETTORI / IMPATTO", "callback_data": "sectors"},
-             {"text": "🔎 ANALISI", "callback_data": "analysis"}],
-            [{"text": "🔄 AGGIORNA", "callback_data": "scan"},
-             {"text": "⚙️ STATO", "callback_data": "status"}],
-            [{"text": "ℹ️ AIUTO", "callback_data": "help"}],
-        ]
-    }
+    """Legacy compatibility helper: never recreate inline Telegram buttons."""
+    return {"remove_keyboard": True}
 
 
 def action_reaction_result(state: dict[str, Any]) -> str:
@@ -551,7 +514,7 @@ def dispatch_callback(query: dict[str, Any]) -> None:
         api("answerCallbackQuery", {"callback_query_id": str(query.get("id"))}, timeout=10)
         state = remote_state() or {"telegram_active": True}
         text = answer_for_callback(data, state)
-        api("editMessageText", {"chat_id": chat_id, "message_id": message.get("message_id"), "text": text, "reply_markup": menu_markup()}, timeout=20)
+        api("editMessageText", {"chat_id": chat_id, "message_id": message.get("message_id"), "text": text}, timeout=20)
     except Exception as exc:
         print(f"SPUTNIK callback error: {type(exc).__name__}: {exc}")
 
