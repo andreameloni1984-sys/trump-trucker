@@ -34,6 +34,32 @@ class SEC403CooldownTests(unittest.TestCase):
             100.0 + trump_tracker.SEC_403_COOLDOWN_SECONDS,
         )
 
+    @patch("trump_tracker.time.monotonic", return_value=100.0)
+    @patch("trump_tracker.utc_now")
+    def test_sec_retry_after_http_date_extends_cooldown(self, utc_now, monotonic):
+        from datetime import datetime, timezone
+
+        utc_now.return_value = datetime(2026, 10, 26, 12, 0, tzinfo=timezone.utc)
+        url = "https://data.sec.gov/submissions/CIK0000000001.json"
+        headers = {"Retry-After": "Mon, 26 Oct 2026 20:00:00 GMT"}
+        error = urllib.error.HTTPError(url, 403, "Forbidden", headers, None)
+
+        trump_tracker._record_sec_http_error(url, error)
+
+        self.assertEqual(trump_tracker._SEC_403_COOLDOWN_UNTIL, 100.0 + 8 * 60 * 60)
+
+    @patch("trump_tracker.time.monotonic", return_value=100.0)
+    def test_invalid_sec_retry_after_falls_back_to_six_hours(self, monotonic):
+        url = "https://data.sec.gov/submissions/CIK0000000001.json"
+        error = urllib.error.HTTPError(url, 403, "Forbidden", {"Retry-After": "NaN"}, None)
+
+        trump_tracker._record_sec_http_error(url, error)
+
+        self.assertEqual(
+            trump_tracker._SEC_403_COOLDOWN_UNTIL,
+            100.0 + trump_tracker.SEC_403_COOLDOWN_SECONDS,
+        )
+
     @patch("trump_tracker.urllib.request.urlopen")
     def test_non_sec_public_documents_are_not_blocked_by_sec_cooldown(self, urlopen):
         trump_tracker._SEC_403_COOLDOWN_UNTIL = 99999.0
