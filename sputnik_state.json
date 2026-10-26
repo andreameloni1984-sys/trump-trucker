@@ -1,6 +1,6 @@
 {
   "events": {},
-  "updated_at": "2026-10-26T05:00:32.940054+00:00",
+  "updated_at": "2026-10-26T05:03:05.528885+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
@@ -4329,5 +4329,8 @@
     "484dd83de203477c46d99eb9": "2026-10-26T05:00:32.929458+00:00",
     "70461a73402e92b9d557fb99": "2026-10-26T05:00:32.929653+00:00",
     "b1381a5b691adec7bec5626b": "2026-10-26T05:00:32.929865+00:00"
+  },
+  "intelligence_feed_initialized": {
+    "https://www.trumpstruth.org/feed": "2026-10-26T05:03:05.513357+00:00"
   }
 }
