@@ -360,8 +360,13 @@ def _configured_rss_feeds() -> list[str]:
     raw = os.getenv("SPUTNIK_RSS_FEEDS", "").strip()
     if raw:
         return list(dict.fromkeys(url.strip() for url in raw.split(";") if url.strip()))
-    # Official White House feed: item-level title, date, URL and summary.
-    return ["https://www.whitehouse.gov/feed/"]
+    # Item-level public feeds: keep the White House and Trump's Truth archive
+    # in the default scan. The archive homepage is useful for discovery only;
+    # its RSS feed supplies individual posts with their own URL/date/text.
+    return [
+        "https://www.whitehouse.gov/feed/",
+        "https://www.trumpstruth.org/feed",
+    ]
 
 
 def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
