@@ -50,3 +50,23 @@ The ranking path already reported negative disclosure lag as `N/D`, but it could
 ### Blocks and safety
 - Production Render/Telegram status not checked in this execution; no deployment claimed.
 - PAPER ONLY: no real orders, broker connection, paid services, or Gagarin integration.
+
+
+## 2026-10-26 — Prevent duplicate filing IDs from inflating confirmations
+
+### Finding
+The ranking previously counted a confirmation using the pair `(event_id, transaction_date)`. If one filing/event ID appeared on multiple rows with different transaction dates, those rows could be counted as separate confirmations and potentially inflate the BUY score.
+
+### Implemented
+- Count confirmations by distinct, non-empty `event_id` only.
+- Rows with a missing event ID no longer add confirmation points.
+- Added regression test `test_same_filing_id_with_different_transaction_dates_counts_once`.
+
+### Evidence and verification
+- Ranking code commit: `4e783243ff84d67719848069303182f6f00bcfe2`.
+- Test commit: `43ee75aa1785f7f971505bb148103e01abc445a1`.
+- Earlier CI for the chronology fix completed successfully: [ranking tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40194402671) and [Telegram menu tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40194402674).
+- Those CI runs predate this duplicate-ID change; the current head still needs its own CI result. No local test run is claimed.
+
+### Limits and safety
+This prevents one class of duplicate-evidence inflation; it does not validate the identity of every event ID or prove market predictiveness. Production Render/Telegram was not checked and no deploy is claimed. PAPER ONLY; no real orders, broker connection, paid service, or Gagarin integration.
