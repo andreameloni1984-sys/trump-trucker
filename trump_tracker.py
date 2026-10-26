@@ -489,7 +489,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 continue
             identity = str(row.get("id") or row.get("url") or (title + "|" + str(row.get("published") or "")))
             digest = _public_item_digest(source, feed_url, identity, item_url)
-            if digest in known_items:
+            if _public_item_already_seen(digest, source, feed_url, identity, known_items):
                 continue
             observed_now = utc_now()
             observed_now_utc = observed_now.replace(tzinfo=timezone.utc) if observed_now.tzinfo is None else observed_now.astimezone(timezone.utc)
@@ -780,6 +780,24 @@ def _public_item_digest(source: str, feed_url: str, identity: str, item_url: str
     else:
         key = "feed|" + str(source) + "|" + str(feed_url) + "|" + str(identity)
     return hashlib.sha256(key.encode("utf-8")).hexdigest()[:24]
+
+
+def _legacy_public_item_digest(source: str, feed_url: str, identity: str) -> str:
+    """Return the pre-canonicalization key so deployment does not re-alert known items."""
+    return hashlib.sha256((str(source) + "|" + str(feed_url) + "|" + str(identity)).encode("utf-8")).hexdigest()[:24]
+
+
+def _public_item_already_seen(
+    digest: str, source: str, feed_url: str, identity: str, known_items: dict[str, Any]
+) -> bool:
+    """Recognize current or legacy fingerprints and migrate legacy entries silently."""
+    if digest in known_items:
+        return True
+    legacy = _legacy_public_item_digest(source, feed_url, identity)
+    if legacy in known_items:
+        known_items.setdefault(digest, known_items[legacy])
+        return True
+    return False
 
 
 def http_get_json(url: str, user_agent: str) -> dict[str, Any]:
