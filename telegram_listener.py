@@ -514,7 +514,7 @@ def dispatch_callback(query: dict[str, Any]) -> None:
         api("answerCallbackQuery", {"callback_query_id": str(query.get("id"))}, timeout=10)
         state = remote_state() or {"telegram_active": True}
         text = answer_for_callback(data, state)
-        api("editMessageText", {"chat_id": chat_id, "message_id": message.get("message_id"), "text": text, "reply_markup": menu_markup()}, timeout=20)
+        api("editMessageText", {"chat_id": chat_id, "message_id": message.get("message_id"), "text": text}, timeout=20)
     except Exception as exc:
         print(f"SPUTNIK callback error: {type(exc).__name__}: {exc}")
 
