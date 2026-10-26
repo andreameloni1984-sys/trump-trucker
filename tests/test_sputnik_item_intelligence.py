@@ -63,6 +63,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
+        self.assertRegex(item["content_hash"], r"^[0-9a-f]{64}$")
 
     def test_feed_candidates_need_valid_publication_time_and_item_permalink(self):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
@@ -315,3 +316,12 @@ class SputnikCrossFeedDedupTests(unittest.TestCase):
             trump_tracker._public_item_already_seen(current, source, feed_url, identity, known)
         )
         self.assertEqual(known[current], known[legacy])
+
+    def test_public_content_hash_normalizes_whitespace_and_unicode_but_tracks_edits(self):
+        first = trump_tracker._public_content_hash("  Tariff\\t update ", "Café\\nannounced")
+        equivalent = trump_tracker._public_content_hash("Tariff update", "Cafe\\u0301 announced")
+        changed = trump_tracker._public_content_hash("Tariff update", "Policy withdrawn")
+
+        self.assertEqual(first, equivalent)
+        self.assertNotEqual(first, changed)
+        self.assertRegex(first, r"^[0-9a-f]{64}$")
