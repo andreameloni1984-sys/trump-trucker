@@ -6,6 +6,8 @@ or private relationship is inferred from a policy event.
 """
 from __future__ import annotations
 from typing import Any
+from datetime import datetime, timezone, timedelta
+import email.utils
 
 DOMAIN_INSTRUMENTS = {
     "ENERGY": [
@@ -159,13 +161,48 @@ _DIRECTION_RULES = [
 ]
 
 
-def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) -> list[dict[str, Any]]:
+def _parse_publication_time(value: Any) -> datetime | None:
+    """Parse RSS/Atom/ISO timestamps into UTC; unknown timestamps fail closed."""
+    if not value:
+        return None
+    text = str(value).strip()
+    try:
+        parsed = email.utils.parsedate_to_datetime(text)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed.astimezone(timezone.utc)
+    except (TypeError, ValueError, OverflowError):
+        pass
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed.astimezone(timezone.utc)
+    except (TypeError, ValueError, OverflowError):
+        return None
+
+
+def directional_news_candidates(
+    findings: list[dict[str, Any]], limit: int = 5,
+    now: datetime | None = None, max_age_hours: float = 4.0,
+) -> list[dict[str, Any]]:
     """Map explicit, recognized public-news language to cautious directional biases.
 
     Only dated individual items with a URL and event ID qualify. Biases are
     hypotheses, not trade signals; unrecognized or ambiguous headlines abstain.
     """
     if limit <= 0:
+        return []
+    now_utc = now or datetime.now(timezone.utc)
+    if now_utc.tzinfo is None:
+        now_utc = now_utc.replace(tzinfo=timezone.utc)
+    else:
+        now_utc = now_utc.astimezone(timezone.utc)
+    try:
+        max_age_seconds = max(0.0, float(max_age_hours) * 3600.0)
+    except (TypeError, ValueError, OverflowError):
+        return []
+    if not __import__("math").isfinite(max_age_seconds):
         return []
     candidates: dict[tuple[str, str], dict[str, Any]] = {}
     for finding in findings:
@@ -175,6 +212,14 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
             or not finding.get("url")
             or not finding.get("published")
         ):
+            continue
+        published_at = _parse_publication_time(finding.get("published"))
+        if published_at is None:
+            continue
+        age_seconds = (now_utc - published_at).total_seconds()
+        # Point-in-time rule from the September/October research: never turn
+        # malformed, materially future-dated, or stale items into fresh biases.
+        if age_seconds < -300 or age_seconds > max_age_seconds:
             continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
