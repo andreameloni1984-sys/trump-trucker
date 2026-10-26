@@ -18,6 +18,24 @@ FEED = b"""<rss><channel><item>
 
 
 class SputnikItemIntelligenceTests(unittest.TestCase):
+    @patch("trump_tracker.urllib.request.urlopen")
+    def test_send_telegram_removes_persistent_reply_keyboard(self, urlopen):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = json.dumps({"ok": True}).encode("utf-8")
+        urlopen.return_value = response
+        with patch.dict(os.environ, {
+            "TELEGRAM_BOT_TOKEN": "test-token",
+            "TELEGRAM_CHAT_ID": "12345",
+        }):
+            sent = trump_tracker.send_telegram("Sputnik test")
+
+        self.assertTrue(sent)
+        request = urlopen.call_args.args[0]
+        from urllib.parse import parse_qs
+        payload = parse_qs(request.data.decode("utf-8"))
+        self.assertEqual(json.loads(payload["reply_markup"][0]), {"remove_keyboard": True})
+        self.assertEqual(payload["text"][0], "Sputnik test")
+
     def test_tariff_headline_is_classified_as_a_market_catalyst(self):
         domains = trump_tracker._domains_for_public_text(
             "President announces new tariffs on China"
@@ -100,6 +118,37 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("Non trattare le parole chiave della pagina come notizia", message)
         self.assertNotIn("Stato: CATALIZZATORE DA VERIFICARE", message)
 
+    def test_directional_news_candidates_maps_explicit_trade_escalation_to_hypotheses(self):
+        findings = [{
+            "event_id": "tariff-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/tariffs",
+            "published": "2026-10-26T10:00:00Z",
+            "source": "WHITE_HOUSE",
+            "domains": ["TRADE_POLICY"],
+        }]
+        candidates = trump_tracker.directional_news_candidates(findings)
+        self.assertEqual({x["instrument"] for x in candidates}, {"NASDAQ100", "GOLD"})
+        self.assertEqual({x["bias"] for x in candidates}, {"SHORT_BIAS", "LONG_BIAS"})
+        self.assertTrue(all(x["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for x in candidates))
+
+    def test_directional_news_candidates_rejects_page_level_and_ambiguous_headlines(self):
+        page_level = [{
+            "event_id": "page-1", "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            "title": "New tariffs", "text": "new tariffs", "url": "https://example.gov/",
+            "published": "2026-10-26T10:00:00Z", "domains": ["TRADE_POLICY"],
+        }]
+        vague = [{
+            "event_id": "evt-2", "evidence": "PUBLIC_RSS_ITEM",
+            "title": "Trump speaks today", "text": "Remarks are expected.",
+            "url": "https://example.gov/remarks", "published": "2026-10-26T10:00:00Z",
+            "domains": ["TRADE_POLICY"],
+        }]
+        self.assertEqual(trump_tracker.directional_news_candidates(page_level), [])
+        self.assertEqual(trump_tracker.directional_news_candidates(vague), [])
+
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
@@ -159,6 +208,45 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(len(payload["events"]), 1)
         self.assertEqual(payload["events"][0]["event_id"], "evt-1")
         self.assertNotIn("order", payload["events"][0])
+
+
+    def test_intelligence_digest_batches_many_items_and_labels_them_not_signals(self):
+        items = [
+            {
+                "event_id": f"evt-{i}",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "source": "PUBLIC_RSS",
+                "title": f"Public event {i}",
+                "published": f"2026-10-26T06:{i:02d}:00Z",
+                "url": f"https://example.gov/news/{i}",
+                "domains": ["ENERGY"],
+            }
+            for i in range(60)
+        ]
+        message = trump_tracker.intelligence_digest_message(items)
+        self.assertIn("Nuovi eventi pubblici verificabili: 60", message)
+        self.assertIn("NON segnali confermati", message)
+        self.assertIn("Nessun LONG/SHORT viene emesso senza identificazione dello strumento", message)
+        self.assertIn("e altri 55 eventi", message)
+        self.assertEqual(message.count("https://example.gov/news/"), 5)
+
+    def test_intelligence_digest_suppresses_page_level_and_missing_metadata(self):
+        items = [
+            {
+                "event_id": "page-1",
+                "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+                "url": "https://example.gov/",
+                "title": "Generic homepage",
+                "published": "",
+            },
+            {
+                "event_id": "no-url",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Missing permalink",
+                "published": "2026-10-26T06:00:00Z",
+            },
+        ]
+        self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
 if __name__ == "__main__":

@@ -34,3 +34,45 @@
 - Limits: URL shape is only a minimum provenance check, not proof of authenticity or predictive power. No live trade direction is inferred from the historical analogue alone.
 - Verification: committed on branch fix/sputnik-analogue-evidence-gate-20261026; awaiting GitHub Actions. Not deployed to Render/Telegram in this run.
 - Next: resolve the existing historical-analogue PR conflict through normal review; verify production deploy separately.
+
+
+## 2026-10-26 — Reduce Telegram intelligence notification flood
+
+### User-reported issue
+The user reported receiving roughly 60 Sputnik notifications but no actionable market signal. The code path sent one Telegram message for every new intelligence finding, including generic page-level scans; each message explicitly said it was not a confirmed LONG/SHORT signal. This was a notification-volume and expectation mismatch, not evidence of 60 trades or 60 confirmed catalysts.
+
+### Implemented
+- Added `intelligence_digest_message()` to create one compact digest per run from dated, item-level `PUBLIC_RSS_ITEM` records with event ID, publication time, and permalink.
+- Changed the main notification path to send at most one intelligence digest per run rather than one push per finding.
+- Generic `PUBLIC_SOURCE_TEXT_PAGE_LEVEL` findings remain in local research history but do not trigger Telegram pushes.
+- Digest explicitly labels items as catalysts to verify, not confirmed LONG/SHORT signals, and states that price/volume confirmation is still required.
+- Added tests for batching 60 findings into one digest (showing at most five links) and suppressing generic/missing-metadata findings.
+
+### Verification status
+- Code commit: `369cebbc0bc8491cf332b7c35311e995d4786e7e`.
+- Test commit: `a51089923cc7ba8bcef6a5963e81f8198a89cd25`.
+- Pull request branch: `fix/sputnik-telegram-intelligence-digest-20261026`.
+- CI must run against the new branch head before this change is considered verified. No local test execution is claimed.
+- This reduces notification spam; it does not create price/volume-confirmed LONG/SHORT signals.
+
+### Production and safety
+- Render/Telegram production has not been changed or deployed by this run. The live service will not use this change until a reviewed merge and verified deployment.
+- PAPER ONLY: no real orders, no broker connection, no Gagarin integration, no paid services.
+
+
+## 2026-10-26 — Remove Sputnik Telegram reply keyboard
+
+- **Richiesta:** eliminare la pulsantiera persistente dalla chat Telegram di Sputnik.
+- **Modifica:** `send_telegram()` include ora `reply_markup={"remove_keyboard": true}` in ogni risposta del bot, così Telegram rimuove la tastiera personalizzata quando arriva un messaggio di Sputnik.
+- **Verifica aggiunta:** test unitario che controlla il payload inviato a Telegram e la richiesta di rimozione della tastiera.
+- **Limite:** questa modifica rimuove la tastiera personalizzata di risposta; non cancella eventuali comandi mostrati nel menu Telegram né modifica retroattivamente messaggi con tastiere inline.
+- **Stato:** modifica proposta nel branch della PR #33; non ancora distribuita in produzione. Test non eseguiti in questo ambiente.
+
+ 
+## 2026-10-26 — Convert explicit news catalysts into directional hypotheses
+
+- **Problema:** il digest descriveva notizie ma non proponeva nemmeno un'ipotesi direzionale utile.
+- **Modifica:** aggiunte regole conservative per frasi esplicite su escalation/de-escalation commerciale, interruzioni dell'offerta energetica e sorprese sui tassi. Il digest può ora mostrare strumenti e bias LONG_BIAS/SHORT_BIAS con motivazione e fonte.
+- **Guardrail:** richiede evento RSS individuale con ID, permalink e data; notizie ambigue e pagine generiche non generano ipotesi. Le ipotesi non sono segnali d'ingresso: Sputnik non dispone qui di conferma indipendente live di prezzo, volume e struttura, quindi dichiara che l'ingresso non è autorizzato.
+- **Test aggiunti:** escalation commerciale mappa a ipotesi su NASDAQ100 e GOLD; pagine generiche e titoli vaghi devono essere ignorati.
+- **Verifica:** codice e test salvati nel branch della PR #33; esecuzione dei test e CI non ancora confermate; nessun deploy di produzione eseguito.

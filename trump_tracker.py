@@ -25,6 +25,7 @@ from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
 from sputnik_public_sources import parse_public_feed
+from sputnik_catalyst import directional_news_candidates
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -568,6 +569,60 @@ def gagarin_confirmation_message(result: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> str | None:
+    """Build one compact Telegram digest from dated, item-level public catalysts.
+
+    Generic page-level scans are stored for diagnostics but never trigger alerts.
+    A digest is intelligence only, not a market signal.
+    """
+    eligible = [
+        item for item in items
+        if item.get("evidence") == "PUBLIC_RSS_ITEM"
+        and item.get("event_id")
+        and item.get("url")
+        and item.get("published")
+    ]
+    if not eligible:
+        return None
+    eligible.sort(key=lambda item: str(item.get("published") or ""), reverse=True)
+    candidates = directional_news_candidates(eligible, limit=3)
+    lines = [
+        "🛰️ SPUTNIK — NOTIZIE → IPOTESI DI MERCATO",
+        "━━━━━━━━━━━━━━━━━━",
+        f"📰 Nuovi eventi pubblici verificabili: {len(eligible)}",
+        "⚠️ Le direzioni sotto sono ipotesi da notizia, NON segnali confermati.",
+        "",
+    ]
+    if candidates:
+        lines.append("🎯 IPOTESI DIREZIONALI DA VERIFICARE")
+        for candidate in candidates:
+            lines.extend([
+                f"• {candidate['instrument']}: {candidate['bias']}",
+                f"  Motivo: {candidate['reason']}",
+                f"  Evento: {candidate['title'][:130]}",
+                f"  📡 {candidate['source']} | 🕒 {candidate['published']}",
+                f"  🔗 {candidate['url']}",
+            ])
+        lines.append("  ⛔ Conferma prezzo, volume e struttura non disponibile in Sputnik: nessun ingresso autorizzato.")
+        lines.append("")
+    for item in eligible[:max(1, limit)]:
+        title = str(item.get("title") or "Titolo non disponibile").strip()
+        domains = ", ".join(item.get("domains") or []) or "Area N/D"
+        lines.extend([
+            f"• {title[:180]}",
+            f"  📡 {item.get('source', 'N/D')} | 🕒 {item.get('published', 'N/D')}",
+            f"  🧩 {domains}",
+            f"  🔗 {item.get('url', '')}",
+        ])
+    if len(eligible) > max(1, limit):
+        lines.append(f"… e altri {len(eligible) - max(1, limit)} eventi nel registro locale.")
+    lines.extend([
+        "",
+        "📊 Nessun LONG/SHORT viene emesso senza identificazione dello strumento e conferma indipendente di prezzo/volume.",
+    ])
+    return "\n".join(lines)
+
+
 def intelligence_message(item: dict[str, Any]) -> str:
     title = str(item.get("title") or "").strip()
     published = str(item.get("published") or "").strip()
@@ -986,7 +1041,13 @@ def send_telegram(message: str, chat_id: str | None = None) -> bool:
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     data = urllib.parse.urlencode(
-        {"chat_id": chat_id, "text": message, "disable_web_page_preview": "true"}
+        {
+            "chat_id": chat_id,
+            "text": message,
+            "disable_web_page_preview": "true",
+            # Remove any persistent custom reply keyboard when Sputnik replies.
+            "reply_markup": json.dumps({"remove_keyboard": True}),
+        }
     ).encode("utf-8")
     request = urllib.request.Request(url, data=data, method="POST")
     request.add_header("Content-Type", "application/x-www-form-urlencoded")
@@ -1471,10 +1532,13 @@ def main() -> None:
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
-    for item in intelligence:
-        message = intelligence_message(item)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+    # Avoid one Telegram push per feed row. Keep page-level findings in the
+    # local research history, but alert only on dated individual RSS items and
+    # combine them into one digest per run.
+    digest = intelligence_digest_message(intelligence)
+    if digest:
+        print(digest)
+        send_telegram(digest, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
     if gagarin_confirmation:
         message = gagarin_confirmation_message(gagarin_confirmation)

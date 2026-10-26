@@ -109,3 +109,94 @@ def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[
         })
     result.sort(key=lambda x: (-x["score"], x["instrument"]))
     return result[:limit]
+
+
+# Conservative headline-to-direction rules. These produce a *news bias* only;
+# they never certify an entry without independent price/volume confirmation.
+_DIRECTION_RULES = [
+    {
+        "id": "energy_supply_tightening",
+        "domains": {"ENERGY"},
+        "patterns": [r"\b(supply disruption|supply disrupted|production cut|cuts production|output cut|oil embargo|energy sanctions|pipeline attack|shipping disruption|strait of hormuz)\b"],
+        "bias": {"WTI": "LONG_BIAS", "BRENT": "LONG_BIAS"},
+        "reason": "possible tightening of energy supply",
+    },
+    {
+        "id": "energy_supply_easing",
+        "domains": {"ENERGY"},
+        "patterns": [r"\b(production increase|raises output|output increase|supply restored|ceasefire.*oil|sanctions lifted.*oil|production boost)\b"],
+        "bias": {"WTI": "SHORT_BIAS", "BRENT": "SHORT_BIAS"},
+        "reason": "possible easing of energy supply constraints",
+    },
+    {
+        "id": "trade_escalation",
+        "domains": {"TRADE_POLICY"},
+        "patterns": [r"\b(new tariffs|tariff increase|raises tariffs|tariffs on|trade war|trade restrictions|export ban|sanctions imposed|sanctions expanded)\b"],
+        "bias": {"NASDAQ100": "SHORT_BIAS", "GOLD": "LONG_BIAS"},
+        "reason": "trade escalation may pressure growth assets and support defensive demand",
+    },
+    {
+        "id": "trade_deescalation",
+        "domains": {"TRADE_POLICY"},
+        "patterns": [r"\b(tariffs reduced|tariffs lifted|tariff rollback|trade deal|trade agreement|sanctions lifted|sanctions eased|ceasefire agreement)\b"],
+        "bias": {"NASDAQ100": "LONG_BIAS", "GOLD": "SHORT_BIAS"},
+        "reason": "trade de-escalation may support risk appetite and reduce defensive demand",
+    },
+    {
+        "id": "hawkish_rates",
+        "domains": {"RATES_MACRO"},
+        "patterns": [r"\b(rate hike|raises interest rates|higher for longer|hawkish|inflation hotter than expected|inflation accelerates)\b"],
+        "bias": {"USD": "LONG_BIAS", "GOLD": "SHORT_BIAS", "NASDAQ100": "SHORT_BIAS"},
+        "reason": "higher expected rates may support USD and pressure duration-sensitive assets",
+    },
+    {
+        "id": "dovish_rates",
+        "domains": {"RATES_MACRO"},
+        "patterns": [r"\b(rate cut|cuts interest rates|dovish|rate cuts expected|inflation cools|inflation lower than expected)\b"],
+        "bias": {"USD": "SHORT_BIAS", "GOLD": "LONG_BIAS", "NASDAQ100": "LONG_BIAS"},
+        "reason": "lower expected rates may weaken USD and support duration-sensitive assets",
+    },
+]
+
+
+def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) -> list[dict[str, Any]]:
+    """Map explicit, recognized public-news language to cautious directional biases.
+
+    Only dated individual items with a URL and event ID qualify. Biases are
+    hypotheses, not trade signals; unrecognized or ambiguous headlines abstain.
+    """
+    if limit <= 0:
+        return []
+    candidates: dict[tuple[str, str], dict[str, Any]] = {}
+    for finding in findings:
+        if (
+            finding.get("evidence") != "PUBLIC_RSS_ITEM"
+            or not finding.get("event_id")
+            or not finding.get("url")
+            or not finding.get("published")
+        ):
+            continue
+        text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
+        text = " ".join(text.lower().split())
+        domains = {str(x).upper() for x in finding.get("domains") or []}
+        for rule in _DIRECTION_RULES:
+            if not domains.intersection(rule["domains"]):
+                continue
+            if not any(__import__("re").search(pattern, text, __import__("re").I) for pattern in rule["patterns"]):
+                continue
+            for instrument, bias in rule["bias"].items():
+                key = (str(finding["event_id"]), instrument)
+                candidates[key] = {
+                    "event_id": str(finding["event_id"]),
+                    "title": str(finding.get("title") or "")[:240],
+                    "source": str(finding.get("source") or "N/D"),
+                    "published": str(finding.get("published") or ""),
+                    "url": str(finding.get("url") or ""),
+                    "instrument": instrument,
+                    "bias": bias,
+                    "rule": rule["id"],
+                    "reason": rule["reason"],
+                    "status": "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION",
+                }
+    result = sorted(candidates.values(), key=lambda x: x["published"], reverse=True)
+    return result[:limit]
