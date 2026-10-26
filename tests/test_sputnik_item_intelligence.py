@@ -327,11 +327,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         ]
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
-
-if __name__ == "__main__":
-    unittest.main()
-
-
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self, _fetch_page):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
@@ -357,3 +352,37 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+
+    def test_directional_candidates_sort_mixed_timestamp_formats_by_utc(self):
+        now = datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc)
+        base = {
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/tariffs",
+            "source": "WHITE_HOUSE",
+            "domains": ["TRADE_POLICY"],
+        }
+        older_rfc822 = {
+            **base,
+            "event_id": "older-rfc822",
+            "published": "Mon, 26 Oct 2026 09:00:00 GMT",
+            "detected_at": "2026-10-26T09:01:00Z",
+        }
+        newer_iso = {
+            **base,
+            "event_id": "newer-iso",
+            "published": "2026-10-26T10:00:00Z",
+            "detected_at": "2026-10-26T10:01:00Z",
+        }
+
+        rows = trump_tracker.directional_news_candidates(
+            [older_rfc822, newer_iso], now=now
+        )
+        self.assertGreaterEqual(len(rows), 2)
+        self.assertEqual(rows[0]["event_id"], "newer-iso")
+        self.assertEqual(rows[0]["event_time"], "2026-10-26T10:00:00+00:00")
+
+if __name__ == "__main__":
+    unittest.main()
