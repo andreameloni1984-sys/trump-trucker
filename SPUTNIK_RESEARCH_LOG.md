@@ -500,3 +500,22 @@ The individual-permalink gate checked HTTP(S) scheme, host, and whether the URL 
 - Implementation commit: `79845196b27b3e528161835c002725aedddb6ac9`
 - Regression-test commit: `35578255622601b3e6e8ef776f85aaf18e530137`
 - Follow-up: inspect the latest GitHub Actions run and run `tests/test_sputnik_item_intelligence.py` before merging PR #11.
+
+
+## 2026-10-26 — Reject non-object Telegram API JSON responses explicitly
+
+### Finding
+- `send_telegram` decoded the response and accepted only dictionaries with `ok: true`, but its error-reporting branch still called `.get()` on any other JSON value. For a valid JSON response such as a list or string, that raised an attribute error which was caught by the broad exception handler; delivery was reported as failed, but the diagnostic misleadingly looked like a generic exception rather than an unexpected API response shape.
+
+### Implemented
+- Added an explicit type guard after JSON decoding. A non-dictionary response now logs a concise unexpected-response message and returns `False` without attempting dictionary access.
+- Added a regression test where the mocked Telegram endpoint returns a JSON list; the function must return `False`.
+
+### Verification and limits
+- The code and regression test were written to the feature branch. They must still be reread and executed in CI; no passing test or workflow run is claimed.
+- This is defensive response handling, not proof that Telegram accepted or delivered any message. No live Telegram call, market signal, price, stop loss, take profit, broker order, or new Gagarin integration was added.
+
+### Change references
+- Implementation commit: `c82b4ec4137a7b5d65deb7716a1e241686c105f4`
+- Regression-test commit: `fbb3060c72378d5141f1909ccb0c581db028cb03`
+- Follow-up: run `tests/test_sputnik_item_intelligence.py` and inspect the latest GitHub Actions result before merging PR #11.
