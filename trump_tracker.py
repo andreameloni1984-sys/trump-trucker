@@ -568,6 +568,47 @@ def gagarin_confirmation_message(result: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> str | None:
+    """Build one compact Telegram digest from dated, item-level public catalysts.
+
+    Generic page-level scans are stored for diagnostics but never trigger alerts.
+    A digest is intelligence only, not a market signal.
+    """
+    eligible = [
+        item for item in items
+        if item.get("evidence") == "PUBLIC_RSS_ITEM"
+        and item.get("event_id")
+        and item.get("url")
+        and item.get("published")
+    ]
+    if not eligible:
+        return None
+    eligible.sort(key=lambda item: str(item.get("published") or ""), reverse=True)
+    lines = [
+        "🛰️ SPUTNIK — RIEPILOGO INTELLIGENCE",
+        "━━━━━━━━━━━━━━━━━━",
+        f"📰 Nuovi eventi pubblici verificabili: {len(eligible)}",
+        "⚠️ Questi sono catalizzatori da verificare, NON segnali LONG/SHORT confermati.",
+        "",
+    ]
+    for item in eligible[:max(1, limit)]:
+        title = str(item.get("title") or "Titolo non disponibile").strip()
+        domains = ", ".join(item.get("domains") or []) or "Area N/D"
+        lines.extend([
+            f"• {title[:180]}",
+            f"  📡 {item.get('source', 'N/D')} | 🕒 {item.get('published', 'N/D')}",
+            f"  🧩 {domains}",
+            f"  🔗 {item.get('url', '')}",
+        ])
+    if len(eligible) > max(1, limit):
+        lines.append(f"… e altri {len(eligible) - max(1, limit)} eventi nel registro locale.")
+    lines.extend([
+        "",
+        "📊 Nessun LONG/SHORT viene emesso senza identificazione dello strumento e conferma indipendente di prezzo/volume.",
+    ])
+    return "\n".join(lines)
+
+
 def intelligence_message(item: dict[str, Any]) -> str:
     title = str(item.get("title") or "").strip()
     published = str(item.get("published") or "").strip()
@@ -1471,10 +1512,13 @@ def main() -> None:
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
-    for item in intelligence:
-        message = intelligence_message(item)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+    # Avoid one Telegram push per feed row. Keep page-level findings in the
+    # local research history, but alert only on dated individual RSS items and
+    # combine them into one digest per run.
+    digest = intelligence_digest_message(intelligence)
+    if digest:
+        print(digest)
+        send_telegram(digest, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
     if gagarin_confirmation:
         message = gagarin_confirmation_message(gagarin_confirmation)
