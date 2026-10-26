@@ -18,6 +18,24 @@ FEED = b"""<rss><channel><item>
 
 
 class SputnikItemIntelligenceTests(unittest.TestCase):
+    @patch("trump_tracker.urllib.request.urlopen")
+    def test_send_telegram_removes_persistent_reply_keyboard(self, urlopen):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = json.dumps({"ok": True}).encode("utf-8")
+        urlopen.return_value = response
+        with patch.dict(os.environ, {
+            "TELEGRAM_BOT_TOKEN": "test-token",
+            "TELEGRAM_CHAT_ID": "12345",
+        }):
+            sent = trump_tracker.send_telegram("Sputnik test")
+
+        self.assertTrue(sent)
+        request = urlopen.call_args.args[0]
+        from urllib.parse import parse_qs
+        payload = parse_qs(request.data.decode("utf-8"))
+        self.assertEqual(json.loads(payload["reply_markup"][0]), {"remove_keyboard": True})
+        self.assertEqual(payload["text"][0], "Sputnik test")
+
     def test_tariff_headline_is_classified_as_a_market_catalyst(self):
         domains = trump_tracker._domains_for_public_text(
             "President announces new tariffs on China"
