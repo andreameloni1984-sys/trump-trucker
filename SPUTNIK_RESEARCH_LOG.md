@@ -15,3 +15,13 @@
 - **Implemented:** validate the publication time (ISO/RFC 822), reject timestamps more than five minutes in the future, and require a distinct HTTP(S) item permalink. A verified original permalink may substitute for a missing feed link; a feed-level URL cannot.
 - **Regression tests:** missing date, unparseable date, implausibly future date, and missing item permalink are all rejected before deduplication/history insertion.
 - **Evidence boundary:** valid metadata establishes a dated public item, not the authenticity of its claims or a directional market signal. Price/volume confirmation remains separate. No production deployment or Telegram delivery is claimed.
+
+
+## 2026-10-26 — Require article-specific sources for historical analogues
+
+- **Observed issue:** the historical pattern `tariff_pause_2025_04` pointed only to the Reuters homepage. The matcher could still use that pattern's stored market directions as if they were backed by a specific historical report.
+- **Implemented:** added a minimum provenance check for historical patterns: source URL must use HTTPS and have an article-like path with a sufficiently specific final slug. Homepage-only URLs are excluded from historical matching.
+- **Regression test:** `test_analogue_with_homepage_only_source_is_excluded` checks that the homepage-only tariff-pause pattern is not used.
+- **Evidence boundary:** a specific-looking URL is only a provenance minimum; it does not prove source authenticity, correctness, event comparability, or a future price direction. Historical analogues remain descriptive evidence, not a live trade signal.
+- **Verification status:** code and test are committed on branch `fix/sputnik-require-specific-historical-source-20261026`; CI has not yet been observed for this head. No local test execution is claimed.
+- **Production/safety:** Render/Telegram not inspected and no deployment claimed. PAPER ONLY; no orders, broker connection, paid service, or Gagarin integration.
