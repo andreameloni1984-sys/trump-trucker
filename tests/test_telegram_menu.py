@@ -75,5 +75,30 @@ class SputnikTelegramMenuTests(unittest.TestCase):
             self.assertIn(command, help_source)
 
 
+    def test_update_offset_is_not_committed_when_dispatch_raises(self):
+        from unittest.mock import patch
+        import telegram_listener as listener
+
+        with patch.object(listener, "LOCAL_STATE", {"offset": 10}) as state, \
+             patch.object(listener, "save_local_state") as save, \
+             patch.object(listener, "dispatch", side_effect=RuntimeError("dispatch failed")):
+            with self.assertRaises(RuntimeError):
+                listener._dispatch_update_and_ack({"update_id": 10, "message": {"text": "hi"}})
+            self.assertEqual(state["offset"], 10)
+            save.assert_not_called()
+
+    def test_update_offset_is_committed_after_successful_dispatch(self):
+        from unittest.mock import patch
+        import telegram_listener as listener
+
+        with patch.object(listener, "LOCAL_STATE", {"offset": 10}) as state, \
+             patch.object(listener, "save_local_state") as save, \
+             patch.object(listener, "dispatch") as dispatch:
+            listener._dispatch_update_and_ack({"update_id": 10, "message": {"text": "hi"}})
+            dispatch.assert_called_once_with({"text": "hi"})
+            self.assertEqual(state["offset"], 11)
+            save.assert_called_once_with(state)
+
+
 if __name__ == "__main__":
     unittest.main()
