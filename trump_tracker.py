@@ -36,6 +36,7 @@ TELEGRAM_HTTP_TIMEOUT = int(os.getenv("SPUTNIK_TELEGRAM_HTTP_TIMEOUT", "35"))
 TELEGRAM_LISTEN_SECONDS = int(os.getenv("SPUTNIK_TELEGRAM_LISTEN_SECONDS", "240"))
 SEC_403_COOLDOWN_SECONDS = 6 * 60 * 60
 _SEC_403_COOLDOWN_UNTIL = 0.0
+_SEC_403_COOLDOWN_RESTORED = False
 _SEC_403_COOLDOWN_LOCK = threading.Lock()
 
 
@@ -48,9 +49,43 @@ def _is_sec_url(url: str) -> bool:
     return host == "sec.gov" or host.endswith(".sec.gov")
 
 
+def _parse_sec_cooldown_deadline(value: Any) -> datetime | None:
+    try:
+        deadline = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if deadline.tzinfo is None:
+        deadline = deadline.replace(tzinfo=timezone.utc)
+    return deadline.astimezone(timezone.utc)
+
+
+def _restore_sec_cooldown_from_state() -> None:
+    """Restore a UTC deadline once per process; monotonic values cannot survive restarts."""
+    global _SEC_403_COOLDOWN_RESTORED, _SEC_403_COOLDOWN_UNTIL
+    with _SEC_403_COOLDOWN_LOCK:
+        if _SEC_403_COOLDOWN_RESTORED:
+            return
+        _SEC_403_COOLDOWN_RESTORED = True
+    try:
+        saved = load_state().get("sec_cooldown_until_utc")
+        deadline = _parse_sec_cooldown_deadline(saved)
+        if deadline is None:
+            return
+        remaining = (deadline - utc_now()).total_seconds()
+        if remaining <= 0:
+            return
+        with _SEC_403_COOLDOWN_LOCK:
+            _SEC_403_COOLDOWN_UNTIL = max(
+                _SEC_403_COOLDOWN_UNTIL, time.monotonic() + remaining
+            )
+    except Exception as exc:
+        print(f"SPUTNIK: SEC cooldown restore unavailable | {type(exc).__name__}", flush=True)
+
+
 def _check_sec_cooldown(url: str) -> None:
     if not _is_sec_url(url):
         return
+    _restore_sec_cooldown_from_state()
     with _SEC_403_COOLDOWN_LOCK:
         remaining = _SEC_403_COOLDOWN_UNTIL - time.monotonic()
     if remaining > 0:
@@ -77,14 +112,46 @@ def _sec_retry_after_seconds(exc: urllib.error.HTTPError) -> int | None:
 
 
 def _record_sec_http_error(url: str, exc: urllib.error.HTTPError) -> None:
-    global _SEC_403_COOLDOWN_UNTIL
+    global _SEC_403_COOLDOWN_UNTIL, _SEC_403_COOLDOWN_RESTORED
     if not _is_sec_url(url) or exc.code != 403:
         return
     retry_after = _sec_retry_after_seconds(exc)
     delay = max(SEC_403_COOLDOWN_SECONDS, retry_after or 0)
+    now_utc = utc_now()
+    if now_utc.tzinfo is None:
+        now_utc = now_utc.replace(tzinfo=timezone.utc)
+    else:
+        now_utc = now_utc.astimezone(timezone.utc)
+    deadline = now_utc + timedelta(seconds=delay)
     with _SEC_403_COOLDOWN_LOCK:
-        retry_at = time.monotonic() + delay
-        _SEC_403_COOLDOWN_UNTIL = max(_SEC_403_COOLDOWN_UNTIL, retry_at)
+        current_remaining = max(0.0, _SEC_403_COOLDOWN_UNTIL - time.monotonic())
+        _SEC_403_COOLDOWN_UNTIL = max(
+            _SEC_403_COOLDOWN_UNTIL, time.monotonic() + delay
+        )
+        _SEC_403_COOLDOWN_RESTORED = True
+    if current_remaining > delay:
+        deadline = now_utc + timedelta(seconds=current_remaining)
+
+    # Persist the wall-clock deadline in the same state snapshot the scheduled
+    # collector already commits. The monotonic deadline remains authoritative
+    # for the current process.
+    try:
+        state = load_state()
+        stored_deadline = _parse_sec_cooldown_deadline(state.get("sec_cooldown_until_utc"))
+        if stored_deadline is not None and stored_deadline > deadline:
+            deadline = stored_deadline
+        state["sec_cooldown_until_utc"] = deadline.isoformat()
+        save_state(state)
+        remaining = max(0.0, (deadline - utc_now()).total_seconds())
+        with _SEC_403_COOLDOWN_LOCK:
+            _SEC_403_COOLDOWN_UNTIL = max(
+                _SEC_403_COOLDOWN_UNTIL, time.monotonic() + remaining
+            )
+    except Exception as persist_exc:
+        print(
+            f"SPUTNIK: SEC cooldown persistence unavailable | {type(persist_exc).__name__}",
+            flush=True,
+        )
     print(
         f"SPUTNIK: SEC source cooldown | reason=HTTP_403 | retry_in={delay}s",
         flush=True,
@@ -812,6 +879,15 @@ def save_state(state: dict[str, Any]) -> None:
         copy = dict(value)
         copy.pop("updated_at", None)
         return copy
+
+    # A main-cycle snapshot may have been loaded before a concurrent SEC 403.
+    # Preserve the newest persisted cooldown so a later save cannot erase it.
+    current_cooldown = _parse_sec_cooldown_deadline(current.get("sec_cooldown_until_utc"))
+    state_cooldown = _parse_sec_cooldown_deadline(state.get("sec_cooldown_until_utc"))
+    if current_cooldown is not None and (
+        state_cooldown is None or current_cooldown > state_cooldown
+    ):
+        state["sec_cooldown_until_utc"] = current_cooldown.isoformat()
 
     events = state.get("events", {})
     transactions = state.get("transactions", {})
