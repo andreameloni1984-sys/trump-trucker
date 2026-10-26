@@ -86,7 +86,7 @@ This prevents one class of duplicate-evidence inflation; it does not validate th
 - Code commit: `38f0193ccaeb0113d197c3e441f8cf54158646f6`.
 - Regression test commit: `9762cf20b29058bd71f4b2149f19e5d927849f23`.
 - CI workflow change commit: `4963eb0c039d562ccb59d7d2787ecdecdabd3220`.
-- CI has not yet been checked for this branch head. No local test run is claimed.
+- CI SUCCESS on PR merge commit `3afb681dec2caa22add25d2f6c62b6794090c8da`: [SPUTNIK item intelligence tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40267842485). The existing item-intelligence suite passed (17 tests) and the new public-history suite passed (5 tests), including both regressions. No local test run is claimed.
 
 ### Limits and safety
 An event ID is an identity key, not proof that the source is authentic or independent; source validation and market price/volume confirmation remain separate gates. Production Render/Telegram was not checked and no deployment is claimed. PAPER ONLY: no real orders, broker connection, paid services, or Gagarin integration.
