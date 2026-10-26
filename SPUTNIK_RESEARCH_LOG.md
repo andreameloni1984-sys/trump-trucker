@@ -58,3 +58,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 ### Production and safety
 - Render/Telegram production has not been changed or deployed by this run. The live service will not use this change until a reviewed merge and verified deployment.
 - PAPER ONLY: no real orders, no broker connection, no Gagarin integration, no paid services.
+
+
+## 2026-10-26 — Remove Sputnik Telegram reply keyboard
+
+- **Richiesta:** eliminare la pulsantiera persistente dalla chat Telegram di Sputnik.
+- **Modifica:** `send_telegram()` include ora `reply_markup={"remove_keyboard": true}` in ogni risposta del bot, così Telegram rimuove la tastiera personalizzata quando arriva un messaggio di Sputnik.
+- **Verifica aggiunta:** test unitario che controlla il payload inviato a Telegram e la richiesta di rimozione della tastiera.
+- **Limite:** questa modifica rimuove la tastiera personalizzata di risposta; non cancella eventuali comandi mostrati nel menu Telegram né modifica retroattivamente messaggi con tastiere inline.
+- **Stato:** modifica proposta nel branch della PR #33; non ancora distribuita in produzione. Test non eseguiti in questo ambiente.
