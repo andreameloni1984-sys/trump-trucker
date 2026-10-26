@@ -8,23 +8,23 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         source = Path("telegram_listener.py").read_text(encoding="utf-8")
         ast.parse(source)
 
-        required_labels = (
-            "🏆 CLASSIFICA",
-            "🟢 COSA COMPRARE",
-            "🛒 CARRELLO CFD",
-            "🎯 CATALIZZATORI",
-            "📰 NEWS",
-            "🏛️ TRUMP / WHITE HOUSE",
-            "💰 ACQUISTI",
-            "🧾 SEC / OGE",
-            "📊 SETTORI / IMPATTO",
-            "🔎 ANALISI",
-            "🔄 AGGIORNA",
-            "⚙️ STATO",
-            "ℹ️ AIUTO",
+        required_commands = (
+            'command == "🏆 classifica"',
+            'command == "🟢 cosa comprare"',
+            'command == "🛒 carrello cfd"',
+            'command == "🎯 catalizzatori"',
+            'command == "📰 news"',
+            'command == "🏛️ trump / white house"',
+            'command == "💰 acquisti"',
+            'command == "🧾 sec / oge"',
+            'command == "📊 settori / impatto"',
+            'command == "🔎 analisi"',
+            'command == "🔄 aggiorna"',
+            'command == "⚙️ stato"',
+            'command == "ℹ️ aiuto"',
         )
-        for label in required_labels:
-            self.assertIn(label, source)
+        for command in required_commands:
+            self.assertIn(command, source)
         self.assertIn('"POLITICA → EVIDENZA → CATALIZZATORE → CFD"', source)
         self.assertIn('def sputnik_home_message', source)
         self.assertIn('def bootstrap_state', source)
