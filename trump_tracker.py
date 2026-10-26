@@ -411,8 +411,14 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
 
     # Item-level feed scan: each article is deduplicated independently, so a
     # page-level digest cannot hide a new post added to an otherwise unchanged
-    # archive. A feed item is a catalyst candidate, never an automatic trade.
+    # archive. First scan of a feed seeds its backlog without flooding Telegram.
+    initialized_feeds = state.setdefault("intelligence_feed_initialized", {})
+    try:
+        max_public_item_age_hours = max(1, int(os.getenv("SPUTNIK_PUBLIC_ITEM_MAX_AGE_HOURS", "24")))
+    except (TypeError, ValueError):
+        max_public_item_age_hours = 24
     for feed_url in _configured_rss_feeds():
+        feed_is_new = feed_url not in initialized_feeds
         source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
         try:
             rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
@@ -422,11 +428,12 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
 
         for row in rows:
             published = str(row.get("published") or "").strip()
+            published_at = _parse_public_item_timestamp(published)
             item_url = str(row.get("url") or "").strip()
             primary_url = str(row.get("primary_url") or "").strip()
             # Do not turn an undated item or a feed URL into a market catalyst.
             # Prefer a verified original permalink only when the feed link is absent.
-            if not _valid_public_item_timestamp(published):
+            if published_at is None or not _valid_public_item_timestamp(published):
                 continue
             if not _is_item_permalink(item_url, feed_url):
                 if _is_item_permalink(primary_url, feed_url):
@@ -444,7 +451,17 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             ).hexdigest()[:24]
             if digest in known_items:
                 continue
-            known_items[digest] = utc_now().isoformat()
+            observed_now = utc_now()
+            observed_now_utc = observed_now.replace(tzinfo=timezone.utc) if observed_now.tzinfo is None else observed_now.astimezone(timezone.utc)
+            age_minutes = (observed_now_utc - published_at).total_seconds() / 60.0
+            # Mark back-catalog entries as seen, but never emit stale headlines.
+            known_items[digest] = observed_now.isoformat()
+            if age_minutes > max_public_item_age_hours * 60:
+                continue
+            # When a feed is first added, only genuinely new items (<=5 minutes)
+            # are eligible for an alert; older entries are seeded silently.
+            if feed_is_new and age_minutes > 5:
+                continue
             finding = {
                 "source": source,
                 "feed_url": feed_url,
@@ -461,6 +478,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
+        initialized_feeds[feed_url] = utc_now().isoformat()
 
     # Bound per-item deduplication state and history to prevent unbounded growth.
     if len(known_items) > 2000:
@@ -586,22 +604,29 @@ def utc_now() -> datetime:
     return datetime.now(timezone.utc)
 
 
-def _valid_public_item_timestamp(value: Any) -> bool:
-    """Require a parseable source publication time; reject implausible future dates."""
+def _parse_public_item_timestamp(value: Any) -> datetime | None:
+    """Parse ISO-8601 or RFC 822 publication timestamps as UTC."""
     text = str(value or "").strip()
     if not text:
-        return False
+        return None
     try:
         try:
             parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
         except ValueError:
             parsed = parsedate_to_datetime(text)
         if not isinstance(parsed, datetime):
-            return False
+            return None
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=timezone.utc)
-        parsed = parsed.astimezone(timezone.utc)
+        return parsed.astimezone(timezone.utc)
     except (TypeError, ValueError, OverflowError):
+        return None
+
+
+def _valid_public_item_timestamp(value: Any) -> bool:
+    """Require a parseable source publication time; reject implausible future dates."""
+    parsed = _parse_public_item_timestamp(value)
+    if parsed is None:
         return False
     now = utc_now()
     now_utc = now.replace(tzinfo=timezone.utc) if now.tzinfo is None else now.astimezone(timezone.utc)
