@@ -25,6 +25,7 @@ from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
 from sputnik_public_sources import parse_public_feed
+from sputnik_catalyst import directional_news_candidates
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -584,13 +585,26 @@ def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> 
     if not eligible:
         return None
     eligible.sort(key=lambda item: str(item.get("published") or ""), reverse=True)
+    candidates = directional_news_candidates(eligible, limit=3)
     lines = [
-        "🛰️ SPUTNIK — RIEPILOGO INTELLIGENCE",
+        "🛰️ SPUTNIK — NOTIZIE → IPOTESI DI MERCATO",
         "━━━━━━━━━━━━━━━━━━",
         f"📰 Nuovi eventi pubblici verificabili: {len(eligible)}",
-        "⚠️ Questi sono catalizzatori da verificare, NON segnali LONG/SHORT confermati.",
+        "⚠️ Le direzioni sotto sono ipotesi da notizia, NON segnali confermati.",
         "",
     ]
+    if candidates:
+        lines.append("🎯 IPOTESI DIREZIONALI DA VERIFICARE")
+        for candidate in candidates:
+            lines.extend([
+                f"• {candidate['instrument']}: {candidate['bias']}",
+                f"  Motivo: {candidate['reason']}",
+                f"  Evento: {candidate['title'][:130]}",
+                f"  📡 {candidate['source']} | 🕒 {candidate['published']}",
+                f"  🔗 {candidate['url']}",
+            ])
+        lines.append("  ⛔ Conferma prezzo, volume e struttura non disponibile in Sputnik: nessun ingresso autorizzato.")
+        lines.append("")
     for item in eligible[:max(1, limit)]:
         title = str(item.get("title") or "Titolo non disponibile").strip()
         domains = ", ".join(item.get("domains") or []) or "Area N/D"
