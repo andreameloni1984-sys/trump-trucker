@@ -34,6 +34,18 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(result["score"], 70)
         self.assertEqual(result["signal"], "OSSERVA")
 
+    def test_same_filing_id_with_different_transaction_dates_counts_once(self):
+        result = score_purchase_candidate(
+            [
+                tx("same-filing", tx_date="2026-10-05"),
+                tx("same-filing", tx_date="2026-10-04"),
+                tx("same-filing", tx_date="2026-10-03"),
+            ],
+            today=date(2026, 10, 6),
+        )
+        self.assertEqual(result["filings"], 1)
+        self.assertEqual(result["signal"], "OSSERVA")
+
     def test_three_distinct_recent_filings_reach_buy_threshold(self):
         result = score_purchase_candidate(
             [
