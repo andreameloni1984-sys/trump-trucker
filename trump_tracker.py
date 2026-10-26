@@ -330,10 +330,37 @@ def extract_transactions(events: list[FilingEvent]) -> list[TransactionRecord]:
 
 
 class TextExtractor(HTMLParser):
+    """Extract visible page text without indexing scripts or document metadata."""
+
+    _IGNORED_TAGS = {"script", "style", "noscript", "svg", "template", "title"}
+
     def __init__(self) -> None:
-        super().__init__()
+        super().__init__(convert_charrefs=True)
         self.parts: list[str] = []
+        self._ignored_stack: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        tag = tag.lower()
+        if self._ignored_stack:
+            if tag in self._IGNORED_TAGS:
+                self._ignored_stack.append(tag)
+            return
+        if tag in self._IGNORED_TAGS:
+            self._ignored_stack.append(tag)
+
+    def handle_endtag(self, tag: str) -> None:
+        if not self._ignored_stack:
+            return
+        tag = tag.lower()
+        # Recover from malformed nesting by closing through the matching ignored tag.
+        for index in range(len(self._ignored_stack) - 1, -1, -1):
+            if self._ignored_stack[index] == tag:
+                del self._ignored_stack[index:]
+                return
+
     def handle_data(self, data: str) -> None:
+        if self._ignored_stack:
+            return
         text = re.sub(r"\s+", " ", data).strip()
         if text:
             self.parts.append(text)
