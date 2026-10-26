@@ -34,3 +34,27 @@
 - Limits: URL shape is only a minimum provenance check, not proof of authenticity or predictive power. No live trade direction is inferred from the historical analogue alone.
 - Verification: committed on branch fix/sputnik-analogue-evidence-gate-20261026; awaiting GitHub Actions. Not deployed to Render/Telegram in this run.
 - Next: resolve the existing historical-analogue PR conflict through normal review; verify production deploy separately.
+
+
+## 2026-10-26 — Reduce Telegram intelligence notification flood
+
+### User-reported issue
+The user reported receiving roughly 60 Sputnik notifications but no actionable market signal. The code path sent one Telegram message for every new intelligence finding, including generic page-level scans; each message explicitly said it was not a confirmed LONG/SHORT signal. This was a notification-volume and expectation mismatch, not evidence of 60 trades or 60 confirmed catalysts.
+
+### Implemented
+- Added `intelligence_digest_message()` to create one compact digest per run from dated, item-level `PUBLIC_RSS_ITEM` records with event ID, publication time, and permalink.
+- Changed the main notification path to send at most one intelligence digest per run rather than one push per finding.
+- Generic `PUBLIC_SOURCE_TEXT_PAGE_LEVEL` findings remain in local research history but do not trigger Telegram pushes.
+- Digest explicitly labels items as catalysts to verify, not confirmed LONG/SHORT signals, and states that price/volume confirmation is still required.
+- Added tests for batching 60 findings into one digest (showing at most five links) and suppressing generic/missing-metadata findings.
+
+### Verification status
+- Code commit: `369cebbc0bc8491cf332b7c35311e995d4786e7e`.
+- Test commit: `a51089923cc7ba8bcef6a5963e81f8198a89cd25`.
+- Pull request branch: `fix/sputnik-telegram-intelligence-digest-20261026`.
+- CI must run against the new branch head before this change is considered verified. No local test execution is claimed.
+- This reduces notification spam; it does not create price/volume-confirmed LONG/SHORT signals.
+
+### Production and safety
+- Render/Telegram production has not been changed or deployed by this run. The live service will not use this change until a reviewed merge and verified deployment.
+- PAPER ONLY: no real orders, no broker connection, no Gagarin integration, no paid services.
