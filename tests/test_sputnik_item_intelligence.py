@@ -127,6 +127,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "url": "https://example.gov/tariffs",
             "published": "2026-10-26T10:00:00Z",
             "source": "WHITE_HOUSE",
+            "detected_at": "2026-10-26T10:01:00Z",
             "domains": ["TRADE_POLICY"],
         }]
         candidates = trump_tracker.directional_news_candidates(findings, now=datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc))
@@ -161,6 +162,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "text": "New tariffs on imports were announced.",
             "url": "https://example.gov/tariffs",
             "source": "WHITE_HOUSE",
+            "detected_at": "2026-10-26T10:01:00Z",
             "domains": ["TRADE_POLICY"],
         }
         for published in (
@@ -175,6 +177,36 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                     [],
                 )
 
+    def test_directional_news_candidates_enforces_event_available_decision_order(self):
+        from sputnik_catalyst import directional_news_candidates
+
+        now = datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc)
+        base = {
+            "event_id": "ordered-tariff",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/tariffs",
+            "published": "2026-10-26T10:04:00Z",
+            "source": "WHITE_HOUSE",
+            "detected_at": "2026-10-26T10:04:30Z",
+            "domains": ["TRADE_POLICY"],
+        }
+        candidates = directional_news_candidates([base], now=now)
+        self.assertEqual(len(candidates), 2)
+        self.assertEqual(candidates[0]["event_time"], "2026-10-26T10:04:00+00:00")
+        self.assertEqual(candidates[0]["available_at"], "2026-10-26T10:04:30+00:00")
+        self.assertEqual(candidates[0]["decision_time"], "2026-10-26T10:05:00+00:00")
+
+        invalid_availability = [
+            {**base, "detected_at": None},
+            {**base, "detected_at": "2026-10-26T10:06:00Z"},
+            {**base, "published": "2026-10-26T10:10:00Z"},
+        ]
+        for finding in invalid_availability:
+            with self.subTest(finding=finding):
+                self.assertEqual(directional_news_candidates([finding], now=now), [])
+
     def test_directional_news_candidates_accepts_fresh_iso_and_rfc822_times(self):
         from sputnik_catalyst import directional_news_candidates
 
@@ -186,6 +218,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "text": "New tariffs on imports were announced.",
             "url": "https://example.gov/tariffs",
             "source": "WHITE_HOUSE",
+            "detected_at": "2026-10-26T10:01:00Z",
             "domains": ["TRADE_POLICY"],
         }
         for published in ("2026-10-26T10:00:00Z", "Mon, 26 Oct 2026 10:00:00 GMT"):
