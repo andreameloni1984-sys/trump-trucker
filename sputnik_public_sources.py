@@ -76,15 +76,23 @@ def parse_public_feed(raw, base_url):
         body = clean_public_text(_text(entry, {"encoded", "description", "summary", "content"}))
         if not title and not body:
             continue
-        link = _link(entry)
-        link = urljoin(base_url, link) if link else base_url
+        raw_link = _link(entry)
         published = _text(entry, {"pubdate", "published", "updated", "date"})
-        identity = _text(entry, {"guid", "id"}) or link or hashlib.sha256(
-            (title + "|" + published + "|" + body).encode("utf-8")
-        ).hexdigest()
         original = _descendant(entry, {"originalurl", "original_url", "truthoriginalurl"})
         if original:
             original = urljoin(base_url, original)
+        # Never substitute the feed URL for an individual post permalink.
+        # If the archive omits its own link but exposes the original public post,
+        # that original URL is still a valid item-level destination.
+        if raw_link:
+            link = urljoin(base_url, raw_link)
+        elif original:
+            link = original
+        else:
+            continue
+        identity = _text(entry, {"guid", "id"}) or link or hashlib.sha256(
+            (title + "|" + published + "|" + body).encode("utf-8")
+        ).hexdigest()
         result.append({
             "id": identity[:500], "title": title[:300], "text": body[:6000],
             "published": published[:100], "url": link[:1000],
