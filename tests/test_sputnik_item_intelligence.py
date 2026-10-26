@@ -64,6 +64,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
         self.assertRegex(item["content_hash"], r"^[0-9a-f]{64}$")
+        self.assertEqual(item["source_quality"], "FEED_HOST_MATCH_NOT_AUTHENTICATED")
 
     def test_feed_candidates_need_valid_publication_time_and_item_permalink(self):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
@@ -186,6 +187,8 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "published": "2026-10-19",
                 "domains": ["TRADE_POLICY"],
                 "text": "Tariff headline details",
+                "source_quality": "FEED_HOST_MATCH_NOT_AUTHENTICATED",
+                "content_hash": "a" * 64,
             },
             {
                 "event_id": "page-1",
@@ -208,6 +211,8 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         payload = json.loads(request.data.decode("utf-8"))
         self.assertEqual(len(payload["events"]), 1)
         self.assertEqual(payload["events"][0]["event_id"], "evt-1")
+        self.assertEqual(payload["events"][0]["source_quality"], "FEED_HOST_MATCH_NOT_AUTHENTICATED")
+        self.assertEqual(payload["events"][0]["content_hash"], "a" * 64)
         self.assertNotIn("order", payload["events"][0])
 
 
@@ -250,8 +255,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
-if __name__ == "__main__":
-    unittest.main()
 
 
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
@@ -325,3 +328,44 @@ class SputnikCrossFeedDedupTests(unittest.TestCase):
         self.assertEqual(first, equivalent)
         self.assertNotEqual(first, changed)
         self.assertRegex(first, r"^[0-9a-f]{64}$")
+    def test_public_source_quality_reports_url_evidence_without_claiming_authenticity(self):
+        self.assertEqual(
+            trump_tracker._public_source_quality(
+                "https://www.whitehouse.gov/feed/",
+                "https://www.whitehouse.gov/news/briefing",
+                "",
+                "PUBLIC_RSS_ITEM",
+            ),
+            "FEED_HOST_MATCH_NOT_AUTHENTICATED",
+        )
+        self.assertEqual(
+            trump_tracker._public_source_quality(
+                "https://archive.example/feed.xml",
+                "https://news.example/story/1",
+                "https://www.whitehouse.gov/news/briefing",
+                "PUBLIC_RSS_ITEM",
+            ),
+            "FEED_DECLARED_ORIGINAL_URL_UNVERIFIED",
+        )
+        self.assertEqual(
+            trump_tracker._public_source_quality(
+                "https://archive.example/feed.xml",
+                "https://news.example/story/1",
+                "",
+                "PUBLIC_RSS_ITEM",
+            ),
+            "EXTERNAL_PERMALINK_UNVERIFIED",
+        )
+        self.assertEqual(
+            trump_tracker._public_source_quality(
+                "https://www.whitehouse.gov/",
+                "https://www.whitehouse.gov/",
+                "",
+                "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            ),
+            "PAGE_LEVEL_UNVERIFIED",
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
