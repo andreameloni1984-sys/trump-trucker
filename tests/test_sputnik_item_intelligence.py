@@ -161,6 +161,44 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertNotIn("order", payload["events"][0])
 
 
+    def test_intelligence_digest_batches_many_items_and_labels_them_not_signals(self):
+        items = [
+            {
+                "event_id": f"evt-{i}",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "source": "PUBLIC_RSS",
+                "title": f"Public event {i}",
+                "published": f"2026-10-26T06:{i:02d}:00Z",
+                "url": f"https://example.gov/news/{i}",
+                "domains": ["ENERGY"],
+            }
+            for i in range(60)
+        ]
+        message = trump_tracker.intelligence_digest_message(items)
+        self.assertIn("Nuovi eventi pubblici verificabili: 60", message)
+        self.assertIn("NON segnali LONG/SHORT confermati", message)
+        self.assertIn("e altri 55 eventi", message)
+        self.assertEqual(message.count("https://example.gov/news/"), 5)
+
+    def test_intelligence_digest_suppresses_page_level_and_missing_metadata(self):
+        items = [
+            {
+                "event_id": "page-1",
+                "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+                "url": "https://example.gov/",
+                "title": "Generic homepage",
+                "published": "",
+            },
+            {
+                "event_id": "no-url",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Missing permalink",
+                "published": "2026-10-26T06:00:00Z",
+            },
+        ]
+        self.assertIsNone(trump_tracker.intelligence_digest_message(items))
+
+
 if __name__ == "__main__":
     unittest.main()
 
