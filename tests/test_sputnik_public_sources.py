@@ -30,6 +30,28 @@ class PublicFeedParserTests(unittest.TestCase):
         self.assertEqual(rows[0]["primary_url"], "https://social.example/@public/7")
         self.assertEqual(rows[0]["text"], "Shipping halted")
 
+    def test_atom_prefers_alternate_link_over_self_link(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><id>status-8</id><title>Oil supply update</title>
+          <link rel="self" href="https://archive.example/api/statuses/8"/>
+          <link rel="alternate" type="text/html" href="https://archive.example/statuses/8"/>
+          <updated>2026-10-26T08:00:00Z</updated>
+        </entry></feed>'''
+        rows = parse_public_feed(raw, "https://archive.example/feed")
+        self.assertEqual(rows[0]["url"], "https://archive.example/statuses/8")
+
+    def test_atom_self_link_alone_is_not_selected_as_an_item_permalink(self):
+        raw = b'''<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><id>status-9</id><title>Oil supply update</title>
+          <link rel="self" href="https://archive.example/api/statuses/9"/>
+          <updated>2026-10-26T08:00:00Z</updated>
+        </entry></feed>'''
+        rows = parse_public_feed(raw, "https://archive.example/feed")
+        # Parser fallback is the feed URL; the operational intake gate rejects it
+        # as an item permalink instead of treating the self API endpoint as news.
+        self.assertEqual(rows[0]["url"], "https://archive.example/feed")
+        self.assertNotIn("/api/statuses/9", rows[0]["url"])
+
     def test_invalid_xml_raises(self):
         with self.assertRaises(ValueError):
             parse_public_feed(b"<html>not a feed</html>", "https://example.gov/feed")
