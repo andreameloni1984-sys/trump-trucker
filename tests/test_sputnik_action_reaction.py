@@ -17,6 +17,11 @@ class ActionReactionTests(unittest.TestCase):
         directions = infer_direction(match_historical_reactions(text))
         self.assertEqual(directions.get("GOLD"), "UP")
 
+    def test_analogue_with_homepage_only_source_is_excluded(self):
+        matches = match_historical_reactions("Trump announces a tariff pause for 90 days")
+        matched_ids = {item["id"] for item in matches}
+        self.assertNotIn("tariff_pause_2025_04", matched_ids)
+
     def test_unknown_event_does_not_invent_direction(self):
         matches = match_historical_reactions("Trump discusses a topic with no documented analogue")
         self.assertEqual(matches, [])
