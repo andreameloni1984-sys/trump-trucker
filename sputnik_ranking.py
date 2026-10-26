@@ -126,9 +126,13 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     valid.sort(key=lambda x: str(x.get("transaction_date") or ""), reverse=True)
     latest = valid[0]
 
+    # Count confirmations by stable filing/event identifier only. Combining
+    # event_id with transaction_date can incorrectly turn rows from one filing
+    # into multiple confirmations when their dates differ.
     filing_ids = {
-        (str(x.get("event_id") or ""), str(x.get("transaction_date") or ""))
+        str(x.get("event_id") or "").strip()
         for x in valid
+        if str(x.get("event_id") or "").strip()
     }
     distinct_filings = len(filing_ids)
 
