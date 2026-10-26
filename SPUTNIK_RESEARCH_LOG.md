@@ -84,3 +84,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Implemented:** the public-feed parser now selects only default/alternate links and ignores self/enclosure links. An explicit alternate link is preferred when present; if no valid alternate exists, the parser falls back to the feed URL, which the existing operational intake gate rejects as a non-individual permalink.
 - **Regression tests:** self-before-alternate ordering and self-only entries.
 - **Limits:** parser-level tests only; live feed behavior and Render deployment are separate checks. No Telegram test message or trade order was sent.
+
+
+## 2026-10-26 — Require issuer and security identity before ranking
+
+- **Finding:** joining missing CIK/security values with separators still created a truthy grouping key, allowing unidentified Form 4 rows to enter ranking or inflate the filing count for a named security.
+- **Implemented:** `rank_purchase_candidates()` now skips rows without both issuer CIK and security description before grouping.
+- **Regression tests:** missing CIK/security are excluded; an unidentified row cannot inflate the filing count for an identified security.
+- **Limits:** a security description is not a ticker or exchange instrument ID; this is identity hygiene, not a directional prediction or profitability claim. Render deployment remains blocked by exhausted build minutes.
+- **Safety:** PAPER ONLY; no broker, orders, or paid services.
