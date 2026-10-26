@@ -1027,7 +1027,13 @@ def send_telegram(message: str, chat_id: str | None = None) -> bool:
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     data = urllib.parse.urlencode(
-        {"chat_id": chat_id, "text": message, "disable_web_page_preview": "true"}
+        {
+            "chat_id": chat_id,
+            "text": message,
+            "disable_web_page_preview": "true",
+            # Remove any persistent custom reply keyboard when Sputnik replies.
+            "reply_markup": json.dumps({"remove_keyboard": True}),
+        }
     ).encode("utf-8")
     request = urllib.request.Request(url, data=data, method="POST")
     request.add_header("Content-Type", "application/x-www-form-urlencoded")
