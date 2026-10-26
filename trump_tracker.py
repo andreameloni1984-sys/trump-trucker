@@ -18,6 +18,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import unicodedata
 from html.parser import HTMLParser
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
@@ -447,6 +448,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             "status": "POTENTIAL_CORRELATION",
             "detected_at": utc_now().isoformat(),
             "event_id": digest,
+            "content_hash": _public_content_hash(body[:200000]),
         }
         finding["action_reaction"] = build_action_reaction_record(finding, body)
         findings.append(finding)
@@ -515,6 +517,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "status": "POTENTIAL_CORRELATION",
                 "detected_at": utc_now().isoformat(),
                 "event_id": digest,
+                "content_hash": _public_content_hash(title, str(row.get("text") or "")[:20000]),
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
@@ -770,6 +773,21 @@ def _canonical_public_permalink(value: Any) -> str:
     ]
     query = urllib.parse.urlencode(sorted(query_pairs))
     return urllib.parse.urlunsplit((scheme, host, path, query, ""))
+
+
+def _public_content_hash(*parts: Any) -> str:
+    """Return a stable SHA-256 audit hash for normalized public-source text.
+
+    This hash records the evidence snapshot; it is deliberately separate from
+    the permalink-based event ID so ordinary article edits do not create a new
+    event or bypass cross-feed deduplication.
+    """
+    normalized_parts = [
+        re.sub(r"\\s+", " ", unicodedata.normalize("NFC", str(part or ""))).strip()
+        for part in parts
+    ]
+    canonical_text = "\\n".join(normalized_parts)
+    return hashlib.sha256(canonical_text.encode("utf-8")).hexdigest()
 
 
 def _public_item_digest(source: str, feed_url: str, identity: str, item_url: str) -> str:
