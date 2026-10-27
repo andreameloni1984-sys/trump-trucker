@@ -412,15 +412,23 @@ def _configured_rss_feeds() -> list[str]:
     ]
 
 def _public_feed_source_label(feed_url: str) -> str:
-    """Label White House RSS only when the HTTPS hostname is actually official."""
+    """Label White House RSS only when the HTTPS authority is unambiguous."""
     try:
         parsed = urllib.parse.urlsplit(str(feed_url or "").strip())
         host = (parsed.hostname or "").lower().rstrip(".")
+        port = parsed.port
+        has_userinfo = parsed.username is not None or parsed.password is not None
     except (TypeError, ValueError):
         # A malformed configured URL must not abort the whole intelligence scan.
         return "PUBLIC_RSS"
     is_official_host = host == "whitehouse.gov" or host.endswith(".whitehouse.gov")
-    if parsed.scheme.lower() == "https" and is_official_host:
+    standard_https_port = port in (None, 443)
+    if (
+        parsed.scheme.lower() == "https"
+        and is_official_host
+        and not has_userinfo
+        and standard_https_port
+    ):
         return "WHITE_HOUSE_RSS"
     return "PUBLIC_RSS"
 
