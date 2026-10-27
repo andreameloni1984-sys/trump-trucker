@@ -3,7 +3,7 @@ import tempfile
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
-from sputnik_event_backtest import backtest_event, backtest_events, load_candles_csv, load_events_csv
+from sputnik_event_backtest import backtest_event, backtest_events, load_candles_csv, load_events_csv, summarize_comparison_results
 
 
 def run_backtest(data, event_time, side, atr, *args, **kwargs):
@@ -37,6 +37,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
         result = run_backtest(data, "2026-01-01T00:02:00+00:00", "SHORT", 1.0, breakout_lookback=2)
         self.assertEqual(result["early"]["entry"], 100.0)
         self.assertEqual(result["early"]["status"], "TARGET")
+        self.assertEqual(result["early"]["exit_time"], data[2]["timestamp"].isoformat())
         self.assertNotEqual(result["breakout"]["status"], "NO_BREAKOUT")
         # Close-confirmed breakouts can only be filled on the following bar.
         self.assertEqual(result["breakout"]["entry"], 97.4)
@@ -358,6 +359,41 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(summary["unscored_breakout_status_counts"], {"NO_BREAKOUT": 1})
         self.assertEqual(result["results"][0]["source_url"], "https://example.com/event/1")
 
+
+
+    def test_batch_summary_reports_overlapping_trade_windows(self):
+        results = [
+            {
+                "early": {
+                    "pnl_r": 1.0,
+                    "entry_time": "2026-01-01T00:00:00+00:00",
+                    "exit_time": "2026-01-01T00:15:00+00:00",
+                },
+                "breakout": {
+                    "pnl_r": 0.5,
+                    "entry_time": "2026-01-01T00:05:00+00:00",
+                    "exit_time": "2026-01-01T00:20:00+00:00",
+                },
+            },
+            {
+                "early": {
+                    "pnl_r": 0.5,
+                    "entry_time": "2026-01-01T00:10:00+00:00",
+                    "exit_time": "2026-01-01T00:25:00+00:00",
+                },
+                "breakout": {
+                    "pnl_r": 0.75,
+                    "entry_time": "2026-01-01T00:18:00+00:00",
+                    "exit_time": "2026-01-01T00:28:00+00:00",
+                },
+            },
+        ]
+        summary = summarize_comparison_results(results)
+        self.assertEqual(summary["early_scored_trade_windows"], 2)
+        self.assertEqual(summary["breakout_scored_trade_windows"], 2)
+        self.assertEqual(summary["overlapping_trade_pairs_early"], 1)
+        self.assertEqual(summary["overlapping_trade_pairs_breakout"], 1)
+        self.assertIn("not independent", summary["overlap_diagnostic_note"])
 
     def test_event_ledger_preserves_original_permalink_for_provenance(self):
         original_url = "https://EXAMPLE.com/event/1?token=b&expires=2&utm_source=feed#source"
