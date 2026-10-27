@@ -317,5 +317,9 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                     candidates[key] = candidate
     # Sort normalized UTC instants, not raw strings whose lexical order
     # changes with timezone offsets or mixed RFC-822/ISO formats.
-    result = sorted(candidates.values(), key=lambda x: x["published_at_utc"], reverse=True)
+    result = sorted(
+        candidates.values(),
+        key=lambda x: _parse_aware_publication_time(x["published_at_utc"]),
+        reverse=True,
+    )
     return result[:limit]
