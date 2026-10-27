@@ -27,6 +27,10 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("Officials discussed diplomacy at a public event.")
         self.assertFalse(any(row["id"] == "oil_diplomatic_deescalation" for row in rows))
 
+    def test_failed_diplomacy_does_not_create_oil_short_watch(self):
+        rows = conditional_plans("Diplomatic efforts failed to ease tensions and no breakthrough was reached.")
+        self.assertFalse(any(row["id"] == "oil_diplomatic_deescalation" for row in rows))
+
     def test_houthi_attack_language_maps_to_conditional_brent_scenario(self):
         text = "The Houthis emerged again, hitting Saudi Arabia and trying to drive up oil prices."
         rows = conditional_plans(text)
