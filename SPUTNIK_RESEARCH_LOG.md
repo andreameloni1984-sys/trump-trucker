@@ -195,3 +195,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Empirical limit:** the rubric is an accepted scoring specification, not a validated probability model. No historical replay, calibration, or out-of-sample profitability result is claimed.
 - **Terminology:** this recovered item is a 100-point score rubric; it is not evidence of a separate catalog containing 100 individual lessons.
 
+
+
+## 2026-10-27 — Canonicalize default HTTPS ports for SEC filing deduplication
+
+- **Finding:** filing identity fallback removed query/fragment and lowercased the raw network location, but treated `https://www.sec.gov/path` and `https://www.sec.gov.:443/path` as different filings. Since both are accepted SEC archive URL forms, repeated transaction rows could inflate independent-confirmation points when accession metadata is absent.
+- **Change:** `sputnik_ranking.py::_filing_identity()` now normalizes the hostname's trailing dot and strips the scheme's default port before constructing the fallback identity; non-default ports remain distinct (and the upstream SEC URL gate rejects them).
+- **Operational path:** Form 4 rows → SEC URL/issuer validation → filing identity → distinct-confirmation score.
+- **Regression:** `tests/test_sputnik_ranking.py::test_filing_identity_normalizes_default_https_port_and_trailing_dot` verifies that default-port/trailing-dot/query/fragment variants count as one filing.
+- **CI:** queued by the PR branch update; record the final run after Actions completes.
+- **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline quota remains exhausted.
+- **Empirical limit:** this prevents a duplicate-confirmation artifact; it does not validate predictive value or out-of-sample returns. PAPER/DEMO only; no secrets, broker, orders or Telegram test messages.
