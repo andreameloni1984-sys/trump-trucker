@@ -326,3 +326,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Verification:** GitHub Actions run [40513210285](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40513210285) was triggered for the test commit. Its `tests` job's `Run ranking tests` step completed with conclusion `success`; at the last API check, the enclosing job/run still reported `in_progress` with no final conclusion. Thus the test command step passed, but the final workflow conclusion has not yet been confirmed. A local run was not possible because the execution container could not resolve `raw.githubusercontent.com`; no local-test claim is made.
 - **Data/performance status:** no exchange-verified NYMEX CL OHLCV has been paired with a source-linked ledger of exact catalyst publication times. No real-event replay, profitability conclusion, or production deployment is claimed.
 - **Safety:** PR branch only; no orders, broker changes, Telegram test messages, or deployment.
+
+
+## R&D update — 2026-10-27: separate publication time from system availability
+- **Finding:** the event-study harness chose the first candle after `event_time` even when the catalyst became available to the system later. This could simulate an entry before the system could know the news.
+- **Change:** `sputnik_event_backtest.py` now requires `available_at` separately from `event_time`; rejects availability earlier than publication; the early-entry path waits for the first candle timestamp strictly after `available_at`; output records `available_at` and an explicit early `decision_time`. Breakout output records its signal-bar `decision_time` separately from next-bar execution.
+- **Ledger/CLI:** batch CSV now requires `available_at`; single-event CLI requires `--available-at`. Existing CSV ledgers must be migrated before they can be replayed.
+- **Regression:** `tests/test_sputnik_event_backtest.py::test_entry_waits_until_first_bar_after_source_available_at` and `test_availability_before_publication_is_rejected`, plus updated ledger fixtures.
+- **Commits:** code `8fbad8a207305541709325060fcee1ef5182281f`; tests/fixture correction `3ff465067a8a74432d8f09fc67afd0cfcbcfdacb`.
+- **CI:** first run [40513793845](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40513793845) exposed two fixture/expectation errors; they were corrected. Final ranking-tests workflow [40513932535](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40513932535) completed successfully.
+- **Operational path:** source publication `event_time` → system receipt `available_at` → decision time → first permissible bar/next-bar execution.
+- **Empirical limit:** synthetic regressions only; no source-linked exact-time catalyst ledger paired with exchange-verified NYMEX CL bars, no out-of-sample result, and no session/expiry/rollover calendar. PR branch only; no merge/deploy.
+- **Safety:** PAPER ONLY; no broker, order, secret, or Telegram test message.
