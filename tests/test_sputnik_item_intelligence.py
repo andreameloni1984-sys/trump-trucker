@@ -74,6 +74,14 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>soon</pubDate>",
             )),
+            ("RFC 822 publication date without timezone", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00</pubDate>",
+            )),
+            ("ISO publication date without timezone", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>2026-10-19T06:00:00</pubDate>",
+            )),
             ("future publication date", FEED.replace(
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>Mon, 26 Oct 2026 06:10:00 GMT</pubDate>",
@@ -247,6 +255,16 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             },
         ]
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
+
+
+    def test_valid_public_item_timestamp_fails_closed_when_validation_clock_is_naive(self):
+        with patch.object(
+            trump_tracker, "utc_now",
+            return_value=datetime(2026, 10, 26, 6, 1),
+        ):
+            self.assertFalse(
+                trump_tracker._valid_public_item_timestamp("2026-10-26T06:00:00Z")
+            )
 
 
 if __name__ == "__main__":

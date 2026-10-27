@@ -712,8 +712,10 @@ def _parse_public_item_timestamp(value: Any) -> datetime | None:
             parsed = parsedate_to_datetime(text)
         if not isinstance(parsed, datetime):
             return None
-        if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=timezone.utc)
+        # A timestamp without an explicit offset is ambiguous. Do not silently
+        # reinterpret a publisher's local wall time as UTC for point-in-time use.
+        if parsed.tzinfo is None or parsed.utcoffset() is None:
+            return None
         return parsed.astimezone(timezone.utc)
     except (TypeError, ValueError, OverflowError):
         return None
@@ -725,7 +727,11 @@ def _valid_public_item_timestamp(value: Any) -> bool:
     if parsed is None:
         return False
     now = utc_now()
-    now_utc = now.replace(tzinfo=timezone.utc) if now.tzinfo is None else now.astimezone(timezone.utc)
+    # The decision clock must itself be timezone-aware. Treating a naive
+    # injected/system clock as UTC would make the future-date gate ambiguous.
+    if now.tzinfo is None or now.utcoffset() is None:
+        return False
+    now_utc = now.astimezone(timezone.utc)
     return parsed <= now_utc + timedelta(minutes=5)
 
 

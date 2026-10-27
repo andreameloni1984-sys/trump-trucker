@@ -104,3 +104,35 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 05:44 UTC — Reject public-feed timestamps without timezone
+
+- **Finding:** `_parse_public_item_timestamp()` silently assigned UTC to naive ISO-8601/RFC-822 publication dates. A publisher's local wall time could therefore be misrepresented as an exact UTC event time and pass freshness checks.
+- **Change:** reject timestamps without an explicit timezone/UTC offset; timezone-aware values are still normalized to UTC. This is a fail-closed point-in-time integrity gate.
+- **Files:** `trump_tracker.py`; `tests/test_sputnik_item_intelligence.py`.
+- **Operational path:** RSS item parse → `_parse_public_item_timestamp` → `_valid_public_item_timestamp` → item candidate filtering.
+- **Regression tests:** RSS dates with missing timezone in both RFC-822 and ISO-8601 forms are rejected, alongside existing missing/unparseable/future-date and permalink checks.
+- **CI:** both workflows passed on branch commit `f3694d4d6c2f437dc4d8a234a6474f7161771f88` (code/tests plus initial research-log entry): item-intelligence [40451536323](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40451536323) and ranking [40451536215](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40451536215). Subsequent documentation-only commits were not associated with workflow runs.
+- **Deployment:** branch only; no deploy triggered. Render read-only check: last live Sputnik listener commit `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16); latest attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` (2026-10-22) failed with `pipeline_minutes_exhausted`. This PR is not live.
+- **Empirical validation:** no feed replay or live-feed measurement performed. Some non-compliant feeds may now be suppressed; this is intentional until their timezone is known.
+- **Safety:** informational intelligence only; no trade/order path changed; PAPER/DEMO ONLY.
+
+## 2026-10-27 — Require a timezone-aware validation clock
+
+- **Finding:** even after rejecting source publication timestamps without offsets, `_valid_public_item_timestamp()` still treated a naive injected/current clock as UTC. That leaves the future-date gate ambiguous in tests or alternate runtimes.
+- **Change:** return `False` when the validation clock has no timezone/UTC offset; only compare aware clocks after normalization to UTC.
+- **Files/path:** `trump_tracker.py::_valid_public_item_timestamp`; RSS/Atom publication timestamp → parse → future-date gate → finding eligibility.
+- **Regression:** `tests/test_sputnik_item_intelligence.py::test_valid_public_item_timestamp_fails_closed_when_validation_clock_is_naive`.
+- **Commits:** code `dd07e174d4af5a2a025c8b3e132ddd5a961b3a82`; test `44077aa7640760ad4fa0399dc469228cd3e941c8`.
+- **CI:** pending after these commits; no new result claimed yet.
+- **Deployment:** PR #49 branch only; no merge/deploy. Render quota remains exhausted.
+- **Empirical limits:** no live-feed replay or price-outcome study; this is timestamp integrity, not directional evidence.
+- **Safety:** PAPER/DEMO ONLY; no broker, orders, secret-value inspection, or Telegram test messages.
+
+## 2026-10-27 — Recoverable early-October research record (catalog clarification)
+
+- **Recovered from prior conversation record (2026-10-03):** Sputnik's proposed pipeline was SOURCE → DOCUMENT → TRANSACTION → NORMALIZATION → DEDUPLICATION → MAPPING → SCORE. Recorded score factors included Document Confidence, Transaction Size, Recency, Disclosure Lag, Sector Concentration, Asset Concentration and Event Correlation. SEC/OGE/CFTC source types were to be distinguished; Form 144 is a proposed sale notice, not proof of an executed sale; COT is aggregate positioning, not attributable to an individual.
+- **Recovered from 2026-10-06 record:** a separate Sputnik 0–100 ranking concept was described with at least three distinct filings and a 75/100 threshold for a COMPRA classification. This is a scoring system, not a list of 100 lessons, and should not be applied to public-news catalysts without its own validation.
+- **Catalog status:** searches of the current Library and prior-conversation retrieval did not recover a numbered catalog of 100 distinct rules. Do not fabricate missing entries or treat unverified score weights as source facts.
+- **Current code relevance:** timestamp/freshness gate in `trump_tracker.py` remains the current implementation path; this record is research context, not proof of market predictiveness.
+- **Safety:** informational/PAPER only; no broker, order, or deployment.
