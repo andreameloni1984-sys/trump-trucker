@@ -294,6 +294,9 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                     "title": str(finding.get("title") or "")[:240],
                     "source": str(finding.get("source") or "N/D"),
                     "published": str(finding.get("published") or ""),
+                    # Canonical UTC timestamp supports correct ordering across
+                    # RFC-822/ISO inputs and differing source timezone offsets.
+                    "published_at_utc": published_at.isoformat().replace("+00:00", "Z"),
                     "url": str(finding.get("url") or ""),
                     "instrument": instrument,
                     "bias": bias,
@@ -301,6 +304,8 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                     "reason": rule["reason"],
                     "status": "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION",
                 }
+                if available_raw is not None:
+                    candidate["available_at_utc"] = available_at.isoformat().replace("+00:00", "Z")
                 previous = candidates.get(key)
                 if previous is not None and previous["bias"] != bias:
                     # Mixed/contradictory catalysts must not be resolved by
@@ -310,5 +315,7 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                     continue
                 if previous is None:
                     candidates[key] = candidate
-    result = sorted(candidates.values(), key=lambda x: x["published"], reverse=True)
+    # Sort normalized UTC instants, not raw strings whose lexical order
+    # changes with timezone offsets or mixed RFC-822/ISO formats.
+    result = sorted(candidates.values(), key=lambda x: x["published_at_utc"], reverse=True)
     return result[:limit]

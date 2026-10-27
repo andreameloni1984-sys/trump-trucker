@@ -134,6 +134,41 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual({x["bias"] for x in candidates}, {"SHORT_BIAS", "LONG_BIAS"})
         self.assertTrue(all(x["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for x in candidates))
 
+    def test_directional_news_candidates_sort_by_normalized_utc_instant(self):
+        findings = [
+            {
+                "event_id": "earlier-utc",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "New tariffs on China announced",
+                "text": "New tariffs were announced.",
+                "url": "https://example.gov/news/earlier",
+                # 10:00 at UTC+02:00 is 08:00Z, earlier than 09:30Z.
+                "published": "2026-10-27T10:00:00+02:00",
+                "available_at": "2026-10-27T10:01:00+02:00",
+                "source": "WHITE_HOUSE",
+                "domains": ["TRADE_POLICY"],
+            },
+            {
+                "event_id": "later-utc",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "New tariffs on Japan announced",
+                "text": "New tariffs were announced.",
+                "url": "https://example.gov/news/later",
+                "published": "2026-10-27T09:30:00Z",
+                "available_at": "2026-10-27T09:31:00Z",
+                "source": "WHITE_HOUSE",
+                "domains": ["TRADE_POLICY"],
+            },
+        ]
+
+        candidates = trump_tracker.directional_news_candidates(findings)
+
+        self.assertEqual([row["event_id"] for row in candidates[:2]], ["later-utc", "later-utc"])
+        self.assertEqual(candidates[0]["published_at_utc"], "2026-10-27T09:30:00Z")
+        self.assertEqual(candidates[0]["available_at_utc"], "2026-10-27T09:31:00Z")
+        self.assertEqual(candidates[2]["published_at_utc"], "2026-10-27T08:00:00Z")
+        self.assertEqual(candidates[2]["available_at_utc"], "2026-10-27T08:01:00Z")
+
     def test_directional_news_candidates_rejects_page_level_and_ambiguous_headlines(self):
         page_level = [{
             "event_id": "page-1", "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
