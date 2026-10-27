@@ -408,3 +408,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Sputnik mapping/status:** item permalink/time validation and the WTI event-ledger HTTPS gate implement part of source/data integrity; SEC 403 cooldown is present, but the last Render log query contained no fresh SEC/White House feed entries, so current source recovery is unverified. No dedicated order-flow provider audit or LLM-based final authorization is claimed. The event backtest is an experimental comparison, not the complete preregistered full-grid/cost/falsification/OOS workflow; no empirical WTI edge is established.
 - **Related commits and tests:** current work in PR #45; secure URL tests passed on code/test commit `e08c660c76eff751ae78802b511ecc5f2ce8c96c` (run [40526067753](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40526067753)). A subsequent short-interval regression commit is on the same branch; its current-head CI was not visible as complete at this audit.
 - **Deployment:** PR remains unmerged; Render live commit remains `9e5204bf7d9074dba27637013b7d98933a91e733`; build pipeline quota is exhausted. PAPER ONLY; no secrets, broker, order or Telegram test.
+
+
+## 2026-10-27 — Audit of the original 100-point research catalog
+
+- **Recovery attempt:** searched the Library (including `Registro Studio IBKR - aggiornato 2026-10-20 sessione 9.md`) and retrieved prior-conversation summaries dated 2026-10-03.
+- **Verified result:** the earlier conversation explicitly recorded that the original numbered 1–100 catalog and complete list of roughly 100 points had not been recovered; only incremental summaries were available. The IBKR session-9 file is a separate study register, with numbered study items through item 32 and later hypotheses; it is not evidence of the missing 100-point catalog.
+- **Decision:** do not reconstruct or relabel missing items as original lessons. Apply only directly retrievable, source-backed findings and record inferred hypotheses separately. Items 100–103 appearing in recent implementation notes remain implementation hypotheses, not proof that the original catalog has been recovered.
+- **Scope:** this is a provenance/research-integrity finding, not a code feature or empirical trading result.
