@@ -171,3 +171,16 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Open PR inventory:** 35 open PRs were returned. 25 target `main`; 24 of those had a base SHA older than current `main`; 10 are stacked on another branch. The inventory includes overlapping work on timestamp handling, source provenance/deduplication, SEC retry policy, Telegram dispatch and conditional market hypotheses.
 - **Current PR #55:** base SHA matches current main, head `4eba9eea321a8f9280ca4be586e58d14753abea6`, compare is 7 commits ahead / 0 behind, GitHub metadata says mergeable; ranking workflow [40582775585](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40582775585) passed on that head.
 - **Decision:** no automatic rebase, merge or deploy. Older PRs require individual diff review because many are stacked and some cover overlapping fixes; merging them as a batch could duplicate or regress behavior. PAPER ONLY.
+
+
+## 2026-10-27 — Scope negation to semicolon-separated clauses
+
+- **Finding:** `_sentences()` split on periods, question/exclamation marks, and newlines, but not semicolons. A sentence such as “The report denied a production cut; Iran threatens shipping near Hormuz and oil exports.” could suppress the independent shipping-risk clause because the earlier clause contained “denied”.
+- **Change:** treat semicolons as clause boundaries before evaluating catalyst evidence. The existing negation guard remains conservative within each clause.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_semicolon_scopes_negation_to_its_clause`; it uses the existing positive oil-flow wording after a semicolon and asserts that Brent remains a conditional candidate. Existing negative-control tests remain in place.
+- **Commits:** code `818a2899d77db146e5e6043ab383214d91ccc159`; test `ec1721cab064f6f442ce12849deec995c89592e2`.
+- **CI:** SPUTNIK ranking tests passed on code/test head `ec1721cab064f6f442ce12849deec995c89592e2`, run [40590079265](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40590079265).
+- **Operational path:** public item text → clause splitting → negation guard → whole-word action/topic evidence → conditional catalyst hypothesis → independent price/volume confirmation. This change does not convert news into a confirmed trade.
+- **IBKR session 9 crosswalk:** the recorded requirement to preserve source provenance, publication/availability timing, text evidence, and fixed reaction horizons maps to the public-item/catalyst path; this lexical regression addresses only clause-level false suppression. It does not validate source truth or predictive value.
+- **Deployment/limits:** PR #55 branch only; no merge/deploy. Render workspace and Telegram runtime logs were not accessible through the tools in this run. Synthetic language regression only; no event replay, price/volume study, or OOS performance claim. PAPER ONLY.
+- **Historical research:** the session 9 Library file was retrieved. The original complete 100-rule catalog was not found in the available Library results and is not reconstructed here.
