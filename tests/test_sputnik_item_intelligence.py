@@ -74,6 +74,14 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>soon</pubDate>",
             )),
+            ("ISO publication date without timezone", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>2026-10-26T06:00:00</pubDate>",
+            )),
+            ("RFC822 publication date without timezone", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>Mon, 26 Oct 2026 06:00:00</pubDate>",
+            )),
             ("future publication date", FEED.replace(
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>Mon, 26 Oct 2026 06:10:00 GMT</pubDate>",
@@ -249,10 +257,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self, _fetch_page):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
@@ -278,3 +282,14 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+    def test_public_item_timestamp_rejects_naive_validation_clock(self):
+        fixed_now = datetime(2026, 10, 26, 6, 0)
+        with patch.object(trump_tracker, "utc_now", return_value=fixed_now):
+            self.assertFalse(
+                trump_tracker._valid_public_item_timestamp("2026-10-26T05:00:00Z")
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()
