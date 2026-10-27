@@ -163,3 +163,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Operational path:** public text → sentence splitting → negation gate → catalyst action/topic evidence → conditional hypothesis → independent price/volume confirmation. News remains a hypothesis, not an order.
 - **Render/runtime:** no Render or Telegram log connector was available in this run; no deploy was attempted and the live Render commit was not verified. The last known runtime report recorded exhausted build minutes; current quota could not be rechecked. SEC 403 cooldown code and the White House RSS URL are present in `trump_tracker.py`, but live ingestion/alert delivery is not confirmed. Only the names `GAGARIN_CLOUD_API_URL` and `GAGARIN_CLOUD_API_KEY` were inspected, never their values.
 - **Empirical limit/safety:** synthetic unit regression only; no historical headline replay, event study or OOS edge. No merge/deploy, broker, real order or Telegram test message. PAPER ONLY.
+
+
+## 2026-10-27 — Open-PR base audit
+
+- **Main SHA:** `780b06b078747d2ce71385e9b0f9a9942aaca794`; latest main ranking workflow [40576677519](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40576677519) passed. Several earlier intermediate pushes failed before their corrective commits; those failures are retained as history, not hidden.
+- **Open PR inventory:** 35 open PRs were returned. 25 target `main`; 24 of those had a base SHA older than current `main`; 10 are stacked on another branch. The inventory includes overlapping work on timestamp handling, source provenance/deduplication, SEC retry policy, Telegram dispatch and conditional market hypotheses.
+- **Current PR #55:** base SHA matches current main, head `4eba9eea321a8f9280ca4be586e58d14753abea6`, compare is 7 commits ahead / 0 behind, GitHub metadata says mergeable; ranking workflow [40582775585](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40582775585) passed on that head.
+- **Decision:** no automatic rebase, merge or deploy. Older PRs require individual diff review because many are stacked and some cover overlapping fixes; merging them as a batch could duplicate or regress behavior. PAPER ONLY.
