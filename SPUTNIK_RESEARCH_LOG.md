@@ -104,3 +104,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+
+## 2026-10-27 — Add conditional WTI/Brent hypothesis for Iran diplomatic de-escalation
+
+- **User goal:** Telegram should turn relevant public news into one concise instrument/direction hypothesis rather than only listing headlines.
+- **Change:** add a narrow, explicit-language catalyst rule for an Iran agreement/deal/ceasefire, diplomatic breakthrough, de-escalation, or easing/lifting of Iran sanctions. It maps to WTI/Brent SHORT_BIAS only; it does not fabricate entry, stop, or target prices.
+- **Test:** add regression coverage that a dated individual news item with explicit Iran agreement language produces WTI/Brent SHORT_BIAS candidates, still marked `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION`.
+- **Limits:** this is a conditional news-bias rule, not proof of predictive value. The supplied 16-item digest does not itself contain a verified Iran-de-escalation event, and this change does not send a Telegram message or add live quote/ATR calculations. Those require current market data and a connected runtime.
+- **Deployment:** branch-only change; not merged or deployed. PAPER ONLY; no orders.
