@@ -10,9 +10,11 @@ import argparse
 import csv
 import json
 import math
+import statistics
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 
 def _dt(value: str) -> datetime:
@@ -99,6 +101,63 @@ def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
     _validate_candle_timestamps(candles)
     _validate_candle_values(candles)
     return candles
+
+
+def _validate_source_url(value: str) -> str:
+    url = str(value).strip()
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        raise ValueError("source_url must be an absolute HTTP(S) URL")
+    return url
+
+
+def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
+    """Load a traceable event ledger with exact timezone-aware publication times.
+
+    Required columns: event_id,event_time,side,atr,atr_time,source_url.
+    The URL is provenance metadata; its presence does not independently verify the claim.
+    """
+    required = {"event_id", "event_time", "side", "atr", "atr_time", "source_url"}
+    events = []
+    seen_ids = set()
+    with open(path, newline="", encoding="utf-8-sig") as handle:
+        reader = csv.DictReader(handle)
+        if not required.issubset(set(reader.fieldnames or [])):
+            raise ValueError(
+                "event CSV requires columns: event_id,event_time,side,atr,atr_time,source_url"
+            )
+        for row_number, row in enumerate(reader, start=2):
+            event_id = str(row.get("event_id") or "").strip()
+            if not event_id:
+                raise ValueError(f"event CSV row {row_number} has an empty event_id")
+            if event_id in seen_ids:
+                raise ValueError(f"event_id must be unique: {event_id}")
+            seen_ids.add(event_id)
+            event_dt = _dt(str(row.get("event_time") or "").strip())
+            atr_dt = _dt(str(row.get("atr_time") or "").strip())
+            if atr_dt > event_dt:
+                raise ValueError(f"event CSV row {row_number} ATR timestamp is after event time")
+            side = str(row.get("side") or "").strip().upper()
+            if side not in {"LONG", "SHORT"}:
+                raise ValueError(f"event CSV row {row_number} side must be LONG or SHORT")
+            try:
+                atr = float(row.get("atr", ""))
+            except (TypeError, ValueError, OverflowError) as exc:
+                raise ValueError(f"event CSV row {row_number} has invalid ATR") from exc
+            if not math.isfinite(atr) or atr <= 0:
+                raise ValueError(f"event CSV row {row_number} ATR must be finite and positive")
+            source_url = _validate_source_url(row.get("source_url") or "")
+            events.append({
+                "event_id": event_id,
+                "event_time": event_dt.isoformat(),
+                "side": side,
+                "atr": atr,
+                "atr_time": atr_dt.isoformat(),
+                "source_url": source_url,
+            })
+    if not events:
+        raise ValueError("event ledger contains no events")
+    return events
 
 
 def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes):
@@ -307,13 +366,113 @@ def backtest_event(
     }
 
 
+def _is_scored_pnl(value: Any) -> bool:
+    return (
+        not isinstance(value, bool)
+        and isinstance(value, (int, float))
+        and math.isfinite(value)
+    )
+
+
+def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any]:
+    """Summarize paired R outcomes without treating unscored trades as zero."""
+    paired = []
+    early_unscored = {}
+    breakout_unscored = {}
+    for result in results:
+        early = result.get("early", {})
+        breakout = result.get("breakout", {})
+        early_r = early.get("pnl_r")
+        breakout_r = breakout.get("pnl_r")
+        if _is_scored_pnl(early_r) and _is_scored_pnl(breakout_r):
+            paired.append((float(early_r), float(breakout_r)))
+        else:
+            if not _is_scored_pnl(early_r):
+                status = str(early.get("status", "UNKNOWN"))
+                early_unscored[status] = early_unscored.get(status, 0) + 1
+            if not _is_scored_pnl(breakout_r):
+                status = str(breakout.get("status", "UNKNOWN"))
+                breakout_unscored[status] = breakout_unscored.get(status, 0) + 1
+
+    differences = [early_r - breakout_r for early_r, breakout_r in paired]
+    mean_early = statistics.mean(early for early, _ in paired) if paired else None
+    mean_breakout = statistics.mean(breakout for _, breakout in paired) if paired else None
+    mean_difference = statistics.mean(differences) if differences else None
+    median_difference = statistics.median(differences) if differences else None
+    return {
+        "events_total": len(results),
+        "paired_scored_events": len(paired),
+        "unpaired_or_unscored_events": len(results) - len(paired),
+        "mean_early_r_paired": round(mean_early, 4) if mean_early is not None else None,
+        "mean_breakout_r_paired": round(mean_breakout, 4) if mean_breakout is not None else None,
+        "mean_early_minus_breakout_r": round(mean_difference, 4) if mean_difference is not None else None,
+        "median_early_minus_breakout_r": round(median_difference, 4) if median_difference is not None else None,
+        "early_better_count": sum(value > 0 for value in differences),
+        "breakout_better_count": sum(value < 0 for value in differences),
+        "ties_count": sum(value == 0 for value in differences),
+        "unscored_early_status_counts": early_unscored,
+        "unscored_breakout_status_counts": breakout_unscored,
+        "scoring_note": (
+            "R averages and paired differences use only events with numeric P&L for both strategies; "
+            "unscored outcomes are reported by status and are never treated as zero."
+        ),
+    }
+
+
+def backtest_events(
+    candles: list[dict[str, Any]],
+    events: list[dict[str, Any]],
+    *,
+    stop_atr: float = 1.0,
+    target_r: float = 2.0,
+    breakout_lookback: int = 3,
+    max_holding_bars: int = 12,
+    spread: float = 0.0,
+    bar_interval_minutes: int = 5,
+) -> dict[str, Any]:
+    """Run a paired early-vs-breakout study over a source-linked event ledger."""
+    if not events:
+        raise ValueError("event ledger contains no events")
+    results = []
+    seen_ids = set()
+    for event in events:
+        event_id = str(event.get("event_id") or "").strip()
+        if not event_id:
+            raise ValueError("each event must have a non-empty event_id")
+        if event_id in seen_ids:
+            raise ValueError(f"event_id must be unique: {event_id}")
+        seen_ids.add(event_id)
+        source_url = _validate_source_url(event.get("source_url") or "")
+        result = backtest_event(
+            candles,
+            event["event_time"],
+            event["side"],
+            event["atr"],
+            atr_time=event["atr_time"],
+            stop_atr=stop_atr,
+            target_r=target_r,
+            breakout_lookback=breakout_lookback,
+            max_holding_bars=max_holding_bars,
+            spread=spread,
+            bar_interval_minutes=bar_interval_minutes,
+        )
+        result["event_id"] = event_id
+        result["source_url"] = source_url
+        results.append(result)
+    return {"summary": summarize_comparison_results(results), "results": results}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--csv", required=True, help="OHLCV CSV with timezone-aware timestamps")
-    parser.add_argument("--event-time", required=True, help="Catalyst publication time, ISO-8601 with timezone")
-    parser.add_argument("--side", required=True, choices=("LONG", "SHORT"))
-    parser.add_argument("--atr", type=float, required=True, help="ATR known at event time, in price units")
-    parser.add_argument("--atr-time", required=True, help="Timestamp when the supplied ATR value was available, ISO-8601 with timezone; must be <= event time")
+    parser.add_argument(
+        "--events-csv",
+        help="Batch ledger CSV with event_id,event_time,side,atr,atr_time,source_url; requires source-linked events",
+    )
+    parser.add_argument("--event-time", help="Single catalyst publication time, ISO-8601 with timezone")
+    parser.add_argument("--side", choices=("LONG", "SHORT"))
+    parser.add_argument("--atr", type=float, help="ATR known at event time, in price units")
+    parser.add_argument("--atr-time", help="Timestamp when the supplied ATR was available; must be <= event time")
     parser.add_argument("--stop-atr", type=float, default=1.0)
     parser.add_argument("--target-r", type=float, default=2.0)
     parser.add_argument("--lookback", type=int, default=3)
@@ -321,10 +480,26 @@ def main() -> None:
     parser.add_argument("--spread", type=float, default=0.0, help="Round-trip cost in price units")
     parser.add_argument("--bar-interval-minutes", type=int, default=5, help="Expected OHLCV bar interval; larger unexplained gaps fail closed")
     args = parser.parse_args()
-    result = backtest_event(load_candles_csv(args.csv), args.event_time, args.side, args.atr,
-                            atr_time=args.atr_time, stop_atr=args.stop_atr, target_r=args.target_r,
-                            breakout_lookback=args.lookback, max_holding_bars=args.holding_bars,
-                            spread=args.spread, bar_interval_minutes=args.bar_interval_minutes)
+    candles = load_candles_csv(args.csv)
+    strategy_options = {
+        "stop_atr": args.stop_atr,
+        "target_r": args.target_r,
+        "breakout_lookback": args.lookback,
+        "max_holding_bars": args.holding_bars,
+        "spread": args.spread,
+        "bar_interval_minutes": args.bar_interval_minutes,
+    }
+    if args.events_csv:
+        if any(value is not None for value in (args.event_time, args.side, args.atr, args.atr_time)):
+            parser.error("use either --events-csv or the single-event arguments, not both")
+        result = backtest_events(candles, load_events_csv(args.events_csv), **strategy_options)
+    else:
+        if any(value is None for value in (args.event_time, args.side, args.atr, args.atr_time)):
+            parser.error("single-event mode requires --event-time, --side, --atr and --atr-time")
+        result = backtest_event(
+            candles, args.event_time, args.side, args.atr, atr_time=args.atr_time,
+            **strategy_options,
+        )
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 
