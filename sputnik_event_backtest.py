@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -34,6 +35,26 @@ def _validate_candle_timestamps(candles: list[dict[str, Any]]) -> None:
         seen.add(timestamp)
 
 
+def _validate_candle_values(candles: list[dict[str, Any]]) -> None:
+    """Reject non-finite OHLCV values and impossible/negative-volume bars."""
+    for index, candle in enumerate(candles):
+        values = {}
+        for key in ("open", "high", "low", "close", "volume"):
+            try:
+                value = float(candle[key])
+            except (KeyError, TypeError, ValueError) as exc:
+                raise ValueError(f"candle {index} has invalid {key}") from exc
+            if not math.isfinite(value):
+                raise ValueError(f"candle {index} {key} must be finite")
+            values[key] = value
+        if values["volume"] < 0:
+            raise ValueError(f"candle {index} volume must be non-negative")
+        if values["high"] < max(values["open"], values["close"], values["low"]):
+            raise ValueError(f"candle {index} high is inconsistent with OHLC values")
+        if values["low"] > min(values["open"], values["close"], values["high"]):
+            raise ValueError(f"candle {index} low is inconsistent with OHLC values")
+
+
 def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
     """Load timestamp,open,high,low,close,volume CSV rows in chronological order."""
     candles = []
@@ -46,13 +67,10 @@ def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
             candle = {"timestamp": _dt(row["timestamp"])}
             for key in ("open", "high", "low", "close", "volume"):
                 candle[key] = float(row[key])
-            if candle["high"] < max(candle["open"], candle["close"], candle["low"]):
-                raise ValueError("candle high is inconsistent with OHLC values")
-            if candle["low"] > min(candle["open"], candle["close"], candle["high"]):
-                raise ValueError("candle low is inconsistent with OHLC values")
             candles.append(candle)
     candles.sort(key=lambda candle: candle["timestamp"])
     _validate_candle_timestamps(candles)
+    _validate_candle_values(candles)
     return candles
 
 
@@ -141,6 +159,7 @@ def backtest_event(
     if atr_dt > event_dt:
         raise ValueError("ATR timestamp must be at or before event time to prevent look-ahead bias")
     _validate_candle_timestamps(candles)
+    _validate_candle_values(candles)
     candles = sorted(candles, key=lambda candle: candle["timestamp"])
     if not candles:
         return {"event_time": event_dt.isoformat(), "side": side, "early": {"status": "NO_DATA"}, "breakout": {"status": "NO_DATA"}}
