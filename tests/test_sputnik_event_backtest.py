@@ -27,6 +27,41 @@ def candles(rows, start=None):
 
 
 class SputnikEventBacktestTests(unittest.TestCase):
+    def test_execution_cost_model_deducts_commission_and_two_sided_slippage(self):
+        start = datetime(2026, 1, 1, 0, 5, tzinfo=timezone.utc)
+        data = candles([(100.0, 100.5, 99.5, 100.2, 1000)], start=start)
+        result = run_backtest(
+            data,
+            "2026-01-01T00:00:00+00:00",
+            "LONG",
+            1.0,
+            max_holding_bars=1,
+            spread=0.02,
+            commission_round_trip_usd_per_contract=10.0,
+            slippage_ticks_per_side=1.0,
+            tick_size=0.01,
+            contract_multiplier=1000.0,
+        )
+        early = result["early"]
+        self.assertAlmostEqual(early["gross_pnl_price_units"], 0.2)
+        # 0.02 spread + $10/1000 barrels + two 0.01 ticks = 0.05 price units.
+        self.assertAlmostEqual(early["round_trip_cost_price_units"], 0.05)
+        self.assertAlmostEqual(early["net_pnl_price_units"], 0.15)
+        self.assertAlmostEqual(early["pnl_r"], 0.15)
+
+    def test_execution_cost_model_rejects_invalid_cost_inputs(self):
+        data = candles([(100.0, 100.5, 99.5, 100.2, 1000)])
+        with self.assertRaisesRegex(ValueError, "must be non-negative"):
+            run_backtest(
+                data, "2026-01-01T00:00:00+00:00", "LONG", 1.0,
+                commission_round_trip_usd_per_contract=-1.0,
+            )
+        with self.assertRaisesRegex(ValueError, "tick_size and contract_multiplier must be positive"):
+            run_backtest(
+                data, "2026-01-01T00:00:00+00:00", "LONG", 1.0,
+                tick_size=0.0,
+            )
+
     def test_exploratory_short_can_enter_before_breakout(self):
         data = candles([
             (100, 101, 99, 100, 1000),
