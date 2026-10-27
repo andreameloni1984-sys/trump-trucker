@@ -479,7 +479,7 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Files:** sputnik_event_backtest.py, tests/test_sputnik_event_backtest.py.
 - **Regression:** added test_event_ledger_decision_time_delays_entry_and_must_follow_availability; verifies that a decision at 00:12 cannot fill on the 00:05 or 00:10 bar, and rejects a decision timestamp earlier than availability.
 - **Commits:** implementation 322a94dd57c162e4ee57a3211d29d96d9de83991; test 591fd6b97355983562fee9b734e17fc0cec3ae8b.
-- **CI:** pending at log update; report only the workflow result visible after this commit.
+- **CI:** initial run 40542088134 failed because the new CSV fixture used double-escaped newline literals. Corrected in test commit daa53a68e1d7eb675f965cb21074bb566637f317; run [40542269726](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40542269726) passed: 120 tests, OK. A later log-only commit is not represented by that test result.
 - **Deployment:** PR #45 branch only; no merge/deploy.
 - **Empirical limit:** this removes one optimistic timing assumption only when actual decision times are supplied. Legacy ledgers still assume decision time equals availability and are labeled accordingly. No verified CL/event-time sample or profitability claim.
 
