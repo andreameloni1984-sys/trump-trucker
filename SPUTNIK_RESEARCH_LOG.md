@@ -166,3 +166,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Operational path:** item-level RSS findings → `directional_news_candidates` → bias-only hypothesis. This does not create a trade entry; price/volume confirmation remains separate.
 - **Empirical limit:** no live-feed replay or OOS market test. This is a causal timestamp/input-quality guard, not evidence of predictive edge.
 - **Deployment:** PR #54 branch only; no merge/deploy. PAPER/DEMO only; no broker, real orders, secrets, or Telegram test messages.
+
+
+## 2026-10-27 — Abstain on conflicting catalyst directions
+- **Finding:** `directional_news_candidates()` assigned into a dictionary keyed by event/instrument, so if one item matched two rules with opposite biases, the later rule silently overwrote the earlier one. Example: “production cut announced, but supply restored” could produce a direction determined by rule order rather than the mixed evidence.
+- **Change:** track event/instrument pairs with conflicting biases; remove the candidate and abstain for that pair. Same-direction duplicate rule matches remain a single hypothesis.
+- **Operational path:** individual RSS item → temporal/evidence gates → rule matching → conflict gate → `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION` candidates. No price entry is created.
+- **Files:** `sputnik_catalyst.py`; regression test `tests/test_sputnik_item_intelligence.py::test_directional_news_candidates_abstains_when_energy_rules_conflict`.
+- **CI:** pending for this latest change at log creation.
+- **Deployment:** PR #54 branch only; no merge/deploy. Last Render live commit still needs a fresh deployment check before any live-state claim.
+- **Empirical limits:** deterministic regression only; no historical headline replay or out-of-sample market validation. Keyword rules remain limited NLP. PAPER/DEMO ONLY.
