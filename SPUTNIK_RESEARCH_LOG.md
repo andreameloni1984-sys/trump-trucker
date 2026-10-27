@@ -345,3 +345,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - Library search did **not** recover an authentic numbered 100-rule catalog. Searches for the exact phrases `catalogo dei 100 punti`, `100 regole`, `ORB_RETEST_TIMING_GATE`, and the named Feedback Engine record did not locate a source document that could substantiate a complete catalog. Do not invent or reconstruct missing rules from memory.
 - Search did surface historical code snapshots such as `commodity_bot_v3.9.py` and `commodity_bot_v4.0.py` containing descriptive MAE/MFE and adaptive SL/TP logic. These are code snapshots, not proof of a complete research catalog, current production behavior, or empirical profitability.
 - This recovery is a source audit only. Any lesson still requires an operational code path, regression test, CI result, deployment confirmation, and out-of-sample evidence before it can be called implemented/validated.
+
+## 2026-10-27 — Make breakout decision timestamps causal
+
+- **Finding:** the event backtest used the opening timestamp of the breakout candle as `signal_time` and `decision_time`, although the breakout predicate depends on that candle's completed close. This made the audit metadata appear up to one bar earlier than the information was available.
+- **Change:** document that OHLCV timestamps must represent bar opens; record the signal time at the bar boundary after the close; align decision time to that boundary and reject a next candle that starts before the declared close boundary as `UNMODELED_BAR_INTERVAL`.
+- **Regression tests:** assert signal-bar time, causal signal/decision time, equality with the next-bar entry time on contiguous five-minute data, and fail-closed behavior for a one-minute spacing passed as five-minute candles.
+- **CI:** code and tests committed to the existing PR branch; a fresh Actions run must confirm the new revision. No local execution or empirical performance result is claimed.
+- **Limits:** source-provider timestamp semantics still need confirmation before importing real candles. This fixes timestamp integrity, not strategy profitability. No merge, deploy, broker, or order execution.
