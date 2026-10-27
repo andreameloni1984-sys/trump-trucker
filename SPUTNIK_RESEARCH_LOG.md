@@ -205,3 +205,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Commit:** `a66b913b1e2e13798b3d7766b2f617568aa90857`.
 - **CI PASS on corrected code/test head:** item intelligence [40561374887](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561374887); Telegram/menu tests [40561375377](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561375377).
 - **Limit/deployment:** no historical RSS replay or market-return validation; PR #54 branch only, no merge/deploy. This is timestamp-order correctness, not a trading edge.
+
+## 2026-10-27 follow-up — scope negation to semicolon-delimited clauses
+
+- **Finding:** the rule-negation guard bounded context at periods, exclamation marks and question marks, but not semicolons. An unrelated earlier clause such as “No new tariffs planned; rate hike announced” could therefore suppress a separate, explicitly stated macro catalyst.
+- **Change:** `_NEGATION_BEFORE_MATCH` now stops at semicolons, and `_is_explicitly_negated_rule_match()` uses semicolons as left/right clause boundaries. Conflicting directional catalysts still abstain; this change only prevents unrelated negation from leaking across clauses.
+- **Files:** `sputnik_catalyst.py`; `tests/test_sputnik_item_intelligence.py`.
+- **Regression:** `test_negation_does_not_leak_across_semicolon_clauses` checks that a negated tariff clause does not suppress the independent rate-hike hypothesis.
+- **Commits:** code `5a44e47376c6eef4fa159b7d6978c29393d06068`; test `d8f16c162ab7703423fd4a29779ba934ea6882dc`.
+- **CI:** item intelligence PASS [40566862821](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40566862821); Telegram menu PASS [40566862738](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40566862738).
+- **Operational path:** item-level public RSS → dated/source validation → clause-scoped negation guard → hypothesis-only catalyst → separate price/volume confirmation. No entry/SL/TP is created by this change.
+- **Deployment/empirical limits:** PR #54 branch only; no merge/deploy. Synthetic regression only; no historical headline replay, OOS return test, or profitability claim. PAPER ONLY.
