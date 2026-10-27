@@ -24,15 +24,22 @@ def _dt(value: str) -> datetime:
 
 
 def _validate_candle_timestamps(candles: list[dict[str, Any]]) -> None:
-    """Reject ambiguous bar times before event sequencing or breakout evaluation."""
+    """Reject ambiguous, duplicate, or out-of-order bar times before simulation."""
     seen = set()
-    for candle in candles:
+    previous = None
+    for index, candle in enumerate(candles):
         timestamp = candle.get("timestamp")
         if not isinstance(timestamp, datetime) or timestamp.tzinfo is None or timestamp.utcoffset() is None:
             raise ValueError("candle timestamps must be timezone-aware datetime values")
         if timestamp in seen:
             raise ValueError(f"candle timestamps must be unique; duplicate timestamp: {timestamp.isoformat()}")
+        if previous is not None and timestamp < previous:
+            raise ValueError(
+                f"candle timestamps must be in chronological order; row {index} "
+                f"({timestamp.isoformat()}) precedes the previous row ({previous.isoformat()})"
+            )
         seen.add(timestamp)
+        previous = timestamp
 
 
 def _validate_candle_values(candles: list[dict[str, Any]]) -> None:
@@ -68,7 +75,6 @@ def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
             for key in ("open", "high", "low", "close", "volume"):
                 candle[key] = float(row[key])
             candles.append(candle)
-    candles.sort(key=lambda candle: candle["timestamp"])
     _validate_candle_timestamps(candles)
     _validate_candle_values(candles)
     return candles
@@ -164,7 +170,6 @@ def backtest_event(
         raise ValueError("ATR timestamp must be at or before event time to prevent look-ahead bias")
     _validate_candle_timestamps(candles)
     _validate_candle_values(candles)
-    candles = sorted(candles, key=lambda candle: candle["timestamp"])
     if not candles:
         return {"event_time": event_dt.isoformat(), "side": side, "early": {"status": "NO_DATA"}, "breakout": {"status": "NO_DATA"}}
 
