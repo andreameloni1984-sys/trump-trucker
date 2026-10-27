@@ -712,8 +712,10 @@ def _parse_public_item_timestamp(value: Any) -> datetime | None:
             parsed = parsedate_to_datetime(text)
         if not isinstance(parsed, datetime):
             return None
-        if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=timezone.utc)
+        # A timestamp without an explicit offset is ambiguous. Do not silently
+        # reinterpret a publisher's local wall time as UTC for point-in-time use.
+        if parsed.tzinfo is None or parsed.utcoffset() is None:
+            return None
         return parsed.astimezone(timezone.utc)
     except (TypeError, ValueError, OverflowError):
         return None
