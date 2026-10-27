@@ -193,3 +193,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Files/tests:** `sputnik_decision_engine.py::_fallback_watch`; `tests/test_sputnik_decision_engine.py::test_fallback_watch_uses_whole_topic_words_and_keeps_hyphenated_phrases`.
 - **Validation:** code/test commit `a269763fed7894f9a5e0fd4fefa48a72c5e1d53d` passed SPUTNIK ranking tests, run [40592091222](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40592091222). This is synthetic lexical validation only; no event replay or OOS result.
 - **Deployment/limits:** PR branch only; no merge/deploy. Keyword-based classification only; no headline replay or OOS market-performance result. PAPER ONLY.
+
+
+## 2026-10-28 — Use whole terms for catalyst ranking counts
+
+- **Finding:** `_evidence()` already used whole-word/phrase matching, but `conditional_plans()` still counted scenario trigger terms by substring. For example, `trade war` was counted inside `trade warrior`, inflating a catalyst's match count and potentially changing ranking.
+- **Change/files:** normalize hyphens and use the existing `_contains_term()` matcher for `matched_terms` in `sputnik_decision_engine.py::conditional_plans`.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_trigger_ranking_does_not_count_word_fragments` keeps the positive `tariff` match and rejects the unrelated `trade war` fragment.
+- **Operational path:** public item text → evidence gate → trigger-count ranking → conditional hypothesis → independent price/volume confirmation. This affects ranking metadata only; it does not confirm a trade.
+- **Code commit:** 9dc9de120f45be2caf3435fce605b4bfe0eaf87e. **Test commit:** 50d5642865547bd3ef82f7a2cfcb7ba93eeb7984.
+- **CI/deployment/limits:** CI is expected to run from the PR branch and will be recorded after checking Actions. No merge/deploy; Render build minutes remain exhausted. Synthetic text regression only; no news replay, event study, or OOS performance claim. PAPER ONLY.
