@@ -173,6 +173,7 @@ def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str
         f"Direzione: {direction} ipotetico",
         f"Prezzo: {entry if entry is not None else 'da aggiornare'}",
         f"Conferma tecnica: {'da verificare sul trigger di prezzo/volume' if trade.get('status') != 'TRIGGER CONFIRMED' else 'presente nei dati quotazione forniti'}",
+        f"Conferma richiesta: {plan.get('confirmation', 'verificare il catalizzatore e la reazione del prezzo')}",
         f"Stato: {trade.get('status', 'WAIT')} — {trade.get('reason', 'quotazioni aggiornate necessarie')}",
         "",
         "⚠️ Segnale sperimentale. Nessun ordine reale.",
