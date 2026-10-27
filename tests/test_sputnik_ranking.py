@@ -3,7 +3,7 @@ from datetime import date
 
 from sputnik_ranking import disclosure_business_days
 
-from sputnik_ranking import disclosure_lag, disclosure_lag_bucket, rank_purchase_candidates, score_purchase_candidate
+from sputnik_ranking import _parse_date, disclosure_lag, disclosure_lag_bucket, rank_purchase_candidates, score_purchase_candidate
 
 
 def tx(event_id, security="ACME Common Stock", company="ACME Corp", tx_date="2026-10-05"):
@@ -221,6 +221,19 @@ class RankingTests(unittest.TestCase):
         result = score_purchase_candidate([item], today=date(2026, 10, 6))
         self.assertTrue(result)
         self.assertEqual(result["filings"], 1)
+
+    def test_parse_date_rejects_timestamps_and_trailing_garbage(self):
+        # SEC transaction/filing fields are calendar dates, not timestamps.
+        # Never silently salvage the first ten characters of a malformed value.
+        self.assertIsNone(_parse_date("2026-10-05T23:30:00Z"))
+        self.assertIsNone(_parse_date("2026-10-05 trailing-data"))
+        self.assertIsNone(_parse_date("2026-1-5"))
+        self.assertIsNone(_parse_date(None))
+        self.assertEqual(_parse_date("2026-10-05"), date(2026, 10, 5))
+
+    def test_invalid_date_suffix_cannot_pass_filing_chronology(self):
+        item = tx("e1", tx_date="2026-10-05 garbage")
+        self.assertEqual(score_purchase_candidate([item], today=date(2026, 10, 6)), {})
 
 if __name__ == "__main__":
     unittest.main()
