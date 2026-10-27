@@ -216,3 +216,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI:** item intelligence PASS [40566862821](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40566862821); Telegram menu PASS [40566862738](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40566862738).
 - **Operational path:** item-level public RSS → dated/source validation → clause-scoped negation guard → hypothesis-only catalyst → separate price/volume confirmation. No entry/SL/TP is created by this change.
 - **Deployment/empirical limits:** PR #54 branch only; no merge/deploy. Synthetic regression only; no historical headline replay, OOS return test, or profitability claim. PAPER ONLY.
+
+## 2026-10-27 — Require explicit point-in-time availability for directional news
+
+- **Finding:** RSS item records carried a publication timestamp, but newly ingested items did not persist a distinct first-observed time. `directional_news_candidates()` tolerated missing `available_at`, so a legacy record could be promoted to a directional hypothesis without evidence of when Sputnik first had it.
+- **Change:** `trump_tracker.py::intelligence_snapshot` now records canonical UTC `event_time` from the timezone-aware feed publication timestamp and `available_at` from the first-observed ingestion time. `sputnik_catalyst.py::directional_news_candidates` now requires an explicit, valid `available_at` not earlier than event time and not later than its captured `decision_time`; it emits `event_time_utc`, `available_at_utc`, and `decision_time_utc`. Legacy records lacking availability time abstain instead of guessing.
+- **Regression:** `tests/test_sputnik_item_intelligence.py` verifies RSS ingestion timestamps, missing-availability abstention, and `available_at <= decision_time`; existing chronology, negation and contradiction tests remain in place.
+- **Operational path:** RSS/Atom item → permalink/date validation → first-observed timestamp → dedup/state persistence → directional hypothesis (still `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION`). This does not generate an entry or infer price/volume confirmation.
+- **Commits:** source tracker 9fb84ed5d6320a16d76d9719f72af8a1e7fa1a0c; catalyst 30b3fce4edc6e3133296f2a960b661535f58d4e2; regression tests 92ca61dc8e4dfe49169646900178c90a6499021f.
+- **CI:** pending for the latest test commit at the time this note was written; do not treat as verified until branch workflows finish.
+- **Deployment:** PR #54 branch only; no merge/deploy. Render workspace/runtime logs are not available through this run's connected tools, so live feed delivery is unconfirmed.
+- **Empirical limit:** unit tests only; no historical feed replay, WTI/Brent OHLCV alignment, cost/slippage test or OOS performance result. PAPER/DEMO only; no broker or orders.
