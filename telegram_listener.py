@@ -301,7 +301,8 @@ def action_reaction_result(state: dict[str, Any]) -> str:
     source = str(evidence_row.get("source") or "Fonti pubbliche")
     if url:
         source = f"{source} — {url}"
-    return decision_message(evidence_text, source)
+    quotes = state.get("market_quotes") or state.get("quotes") or {}
+    return decision_message(evidence_text, source, quotes=quotes)
 
 
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
