@@ -113,6 +113,6 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Operational path:** RSS item parse → `_parse_public_item_timestamp` → `_valid_public_item_timestamp` → item candidate filtering.
 - **Regression tests:** RSS dates with missing timezone in both RFC-822 and ISO-8601 forms are rejected, alongside existing missing/unparseable/future-date and permalink checks.
 - **CI:** passed on code/test commit `af55083a7e8b225f884b222c529398e6753d4d06`: item-intelligence run [40451536323](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40451536323) and ranking run [40451536215](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40451536215). This research-log update will receive its own workflow run.
-- **Deployment:** branch only; no Render deploy triggered. Production commit not verified in this run.
+- **Deployment:** branch only; no deploy triggered. Render read-only check: last live Sputnik listener commit `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16); latest attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` (2026-10-22) failed with `pipeline_minutes_exhausted`. This PR is not live.
 - **Empirical validation:** no feed replay or live-feed measurement performed. Some non-compliant feeds may now be suppressed; this is intentional until their timezone is known.
 - **Safety:** informational intelligence only; no trade/order path changed; PAPER/DEMO ONLY.
