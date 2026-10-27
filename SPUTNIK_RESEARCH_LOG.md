@@ -104,3 +104,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 05:44 UTC — Reject public-feed timestamps without timezone
+
+- **Finding:** `_parse_public_item_timestamp()` silently assigned UTC to naive ISO-8601/RFC-822 publication dates. A publisher's local wall time could therefore be misrepresented as an exact UTC event time and pass freshness checks.
+- **Change:** reject timestamps without an explicit timezone/UTC offset; timezone-aware values are still normalized to UTC. This is a fail-closed point-in-time integrity gate.
+- **Files:** `trump_tracker.py`; `tests/test_sputnik_item_intelligence.py`.
+- **Operational path:** RSS item parse → `_parse_public_item_timestamp` → `_valid_public_item_timestamp` → item candidate filtering.
+- **Regression tests:** RSS dates with missing timezone in both RFC-822 and ISO-8601 forms are rejected, alongside existing missing/unparseable/future-date and permalink checks.
+- **CI:** pending on the new PR branch; no pass is claimed until the workflow completes.
+- **Deployment:** branch only; no Render deploy triggered. Production commit not verified in this run.
+- **Empirical validation:** no feed replay or live-feed measurement performed. Some non-compliant feeds may now be suppressed; this is intentional until their timezone is known.
+- **Safety:** informational intelligence only; no trade/order path changed; PAPER/DEMO ONLY.
