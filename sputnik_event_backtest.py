@@ -126,6 +126,20 @@ def _validate_source_url(value: str) -> str:
         raise ValueError("source_url has an invalid port") from exc
     if port not in (None, 443):
         raise ValueError("source_url must use the standard HTTPS port")
+    path = (parsed.path or "/").rstrip("/") or "/"
+    item_identifier_keys = {
+        "id", "post", "post_id", "postid", "story", "story_id",
+        "article", "article_id", "p", "status", "status_id",
+        "message_id", "tweet_id", "guid",
+    }
+    has_item_identifier = any(
+        key.lower() in item_identifier_keys and value.strip()
+        for key, value in parse_qsl(parsed.query, keep_blank_values=True)
+    )
+    feed_endpoints = ("/feed", "/rss", "/atom.xml", "/feed.xml", "/rss.xml", "/index.xml")
+    is_feed_endpoint = any(path.lower() == endpoint or path.lower().endswith(endpoint) for endpoint in feed_endpoints)
+    if (path == "/" or is_feed_endpoint) and not has_item_identifier:
+        raise ValueError("source_url must identify an individual item, not a homepage or feed URL")
     # Keep the original scheme/host casing, query order, tracking parameters,
     # and fragment for evidence provenance. Canonical identity is separate.
     return url
