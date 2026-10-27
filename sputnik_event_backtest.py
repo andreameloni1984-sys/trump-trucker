@@ -473,9 +473,11 @@ def backtest_event(
     if availability_gap_unmodeled:
         breakout = {
             "status": "UNMODELED_SESSION_GAP",
-            "gap_start_time": available_dt.isoformat(),
+            "gap_start_time": decision_dt.isoformat(),
             "gap_end_time": candles[next_index]["timestamp"].isoformat(),
             "gap_minutes": round(availability_gap_minutes, 2),
+            "signal_bars_observed": 0,
+            "required_signal_bars": max_breakout_wait_bars,
         }
     elif next_index is None:
         breakout = {
@@ -494,6 +496,8 @@ def backtest_event(
                         "gap_start_time": candles[i - 1]["timestamp"].isoformat(),
                         "gap_end_time": candles[i]["timestamp"].isoformat(),
                         "gap_minutes": round(gap_minutes, 2),
+                        "signal_bars_observed": signal_bars_observed,
+                        "required_signal_bars": max_breakout_wait_bars,
                     }
                     break
             prior = candles[max(0, i - breakout_lookback):i]
@@ -522,6 +526,8 @@ def backtest_event(
                             "gap_start_time": candles[i]["timestamp"].isoformat(),
                             "gap_end_time": candles[entry_index]["timestamp"].isoformat(),
                             "gap_minutes": round(entry_gap_minutes, 2),
+                            "signal_bars_observed": signal_bars_observed,
+                            "required_signal_bars": max_breakout_wait_bars,
                         }
                     else:
                         # Candle timestamps are bar opens: the signal close is observable
