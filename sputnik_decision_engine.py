@@ -13,6 +13,10 @@ RULES = {
         "actions": ("signed", "signs", "reached", "reach", "agreed", "agrees", "announced", "announce", "finalized", "firmato", "raggiunto", "concordato", "suspended", "suspends", "paused", "pause", "sospende", "sospesi", "proroga", "estende"),
         "topics": ("trade deal", "trade agreement", "accordo commerciale", "intesa commerciale", "tariff pause", "pausa sui dazi", "dazi", "tariff"),
     },
+    "oil_diplomatic_deescalation": {
+        "actions": ("ease", "eases", "eased", "easing", "seek", "seeking", "agreed", "agree", "prevent", "preventing", "resume", "resumed", "negoziati", "allentare", "ridurre", "distensione"),
+        "topics": ("peace", "diplomatic", "hostilities", "tensions", "iran", "middle east", "escalation", "negoziati", "diplomatica"),
+    },
     "oil_supply_disruption": {
         "actions": ("blocks", "blocked", "closes", "closed", "disrupts", "disrupted", "interrupts", "interrupted", "attacks", "attacked", "attack", "attacking", "hitting", "hit", "hits", "strike", "strikes", "struck", "escalates", "escalated", "threatens", "threatened", "halts", "halted", "suspends", "suspended", "interrompe", "interrotto", "blocca", "bloccato", "chiude", "chiusura", "attacca", "attaccato", "minaccia", "minacciato"),
         "topics": ("tanker", "shipping", "exports", "export", "supply", "hormuz", "strait", "petrolio", "flussi", "esportazioni", "petroliere", "offerta", "oil prices", "oil price", "saudi arabia", "houthi", "houthis", "diesel", "energy flows"),
