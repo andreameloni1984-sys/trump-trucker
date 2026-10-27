@@ -92,9 +92,41 @@ class RankingTests(unittest.TestCase):
         self.assertTrue(result)
         self.assertEqual(result["source_quality"], 25)
 
-    def test_invalid_date_gets_no_recency_points(self):
-        result = score_purchase_candidate([tx("e1", tx_date="not-a-date")], today=date(2026, 10, 6))
-        self.assertEqual(result["recency"], 0)
+    def test_invalid_transaction_or_filing_date_is_excluded(self):
+        invalid_transaction = tx("e1", tx_date="not-a-date")
+        invalid_filing = tx("e2", tx_date="2026-10-05")
+        invalid_filing["filing_date"] = "not-a-date"
+        self.assertEqual(
+            score_purchase_candidate([invalid_transaction], today=date(2026, 10, 6)),
+            {},
+        )
+        self.assertEqual(
+            score_purchase_candidate([invalid_filing], today=date(2026, 10, 6)),
+            {},
+        )
+
+    def test_future_transaction_date_is_excluded_from_as_of_ranking(self):
+        item = tx("e1", tx_date="2026-10-07")
+        self.assertEqual(
+            score_purchase_candidate([item], today=date(2026, 10, 6)),
+            {},
+        )
+
+    def test_filing_before_transaction_is_excluded(self):
+        item = tx("e1", tx_date="2026-10-05")
+        item["filing_date"] = "2026-10-04"
+        self.assertEqual(
+            score_purchase_candidate([item], today=date(2026, 10, 6)),
+            {},
+        )
+
+    def test_future_filing_date_is_excluded_from_as_of_ranking(self):
+        item = tx("e1", tx_date="2026-10-05")
+        item["filing_date"] = "2026-10-07"
+        self.assertEqual(
+            score_purchase_candidate([item], today=date(2026, 10, 6)),
+            {},
+        )
 
 
 
