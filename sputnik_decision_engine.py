@@ -106,6 +106,18 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
     }
 
 
+def _is_campaign_endorsement(text: str) -> bool:
+    """Identify political endorsements/election promotion that lack a policy catalyst."""
+    body = " ".join(str(text or "").lower().split())
+    terms = (
+        "endorse", "endorses", "endorsed", "endorsement",
+        "running to represent", "running for", "congressional district",
+        "great honor to endorse", "america first patriot",
+        "endorso", "endorza", "candidato", "si candida",
+    )
+    return any(term in body for term in terms)
+
+
 def decision_message(text: str, source: str = "Fonte pubblica") -> str:
     plans = conditional_plans(text)
     lines = [
@@ -114,6 +126,16 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
         f"📰 Fonte: {source}",
         "",
     ]
+    if not plans and _is_campaign_endorsement(text):
+        lines.extend([
+            "⚪ RISULTATO: NESSUN CATALIZZATORE DI MERCATO IDENTIFICATO",
+            "📌 Tipo di contenuto: endorsement/promozione elettorale.",
+            "🧠 Perché: il sostegno a un candidato, senza una misura politica concreta o un effetto economico verificabile, non indica da solo una direzione di mercato.",
+            "✅ Azione: archiviare senza inviare un alert di trading; rivalutare soltanto se il testo contiene una politica concreta con impatto identificabile.",
+            "🛑 Nessun LONG/SHORT, nessun ingresso e nessun livello inventato.",
+        ])
+        return "\\n".join(lines)
+
     if plans:
         plan = plans[0]
         lines.extend([
