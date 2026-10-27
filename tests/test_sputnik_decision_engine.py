@@ -27,6 +27,13 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("Officials discussed diplomacy at a public event.")
         self.assertFalse(any(row["id"] == "oil_diplomatic_deescalation" for row in rows))
 
+    def test_decision_message_allows_early_exploratory_entry(self):
+        message = decision_message("Diplomatic efforts to resolve the conflict eased concerns about oil supply disruptions.")
+        self.assertIn("MODALITÀ ELASTICA", message)
+        self.assertIn("ingresso esplorativo anticipato", message)
+        self.assertIn("1/3 della size normale", message)
+        self.assertIn("breakout", message.lower())
+
     def test_failed_diplomacy_does_not_create_oil_short_watch(self):
         rows = conditional_plans("Diplomatic efforts failed to ease tensions and no breakthrough was reached.")
         self.assertFalse(any(row["id"] == "oil_diplomatic_deescalation" for row in rows))
