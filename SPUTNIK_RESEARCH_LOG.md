@@ -138,3 +138,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Empirical limit:** unit-level language guard only; no live-news replay or directional performance claim.
 - **Safety:** PAPER ONLY; no broker, orders, or Telegram test messages.
 
+## 2026-10-27 — Final verification of negated-catalyst guard
+
+- **Code/test:** code commit `ed2c0aed45c0acef0ea1a4e17be6a18cf24186f5`; regression tests and test-discovery repair commit `aaa25c440c318f21ac0f98716dcee79ebeff4ad2`.
+- **CI:** item-intelligence tests PASS on run [40541330990](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40541330990); Telegram-menu tests PASS on run [40541330956](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40541330956), against the current research-log branch head. The tests specifically cover negated supply/trade headlines and positive controls.
+- **Main / PR:** current `main` SHA observed: `608e053a8b87c71fa4a272dd97f71295eab18471`. PR #54 remains open; the new guard is not merged.
+- **Render:** service remains configured to deploy `main`; last successful deploy in the available deployment list is `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16). The newer attempt on `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed (2026-10-22). No new SEC/RSS matching log lines were returned for the queried 2026-10-26 to 2026-10-27 window, so current source delivery is not confirmed by that query.
+- **Limits:** keyword-negation guard is not full natural-language understanding and is not a live-news or predictive-performance test. No merge/deploy, broker, order, or Telegram test message.
+
