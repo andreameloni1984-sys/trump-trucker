@@ -174,3 +174,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline quota remains exhausted.
 - **Empirical limit:** schema/chronology integrity only; no SEC replay or out-of-sample return validation.
 - **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders, or Telegram test messages.
+
+
+## Final CI verification — strict SEC date parser (2026-10-27 09:50 UTC)
+
+- **Final code head:** `926fc13b0c7b9c4328ab491ff7d4ab2b029c8d9c`; parser fix corrected an escaping error in the first regex edit before the final successful run.
+- **Regression tests:** commit `7c0897e8b071a48762a4f032b9ff5698ccdf8f82`; the initial run failed because the regex was over-escaped, and the corrected code commit was then tested.
+- **CI PASS on corrected code head:** ranking [run 40483767939](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40483767939) and Telegram menu [run 40483767930](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40483767930).
+- **Deployment:** PR #53 branch only, no merge/deploy; Render workspace not selected in this runtime.
+- **Empirical limit:** strict date schema only; no filing replay or out-of-sample market validation.
