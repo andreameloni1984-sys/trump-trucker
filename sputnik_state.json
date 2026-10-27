@@ -1,11 +1,11 @@
 {
   "events": {},
-  "updated_at": "2026-10-26T23:45:11.311648+00:00",
+  "updated_at": "2026-10-27T02:27:48.159197+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "81bdfd33a075f92b7ed3b122",
+    "WHITE_HOUSE": "c88f14880667ff6d10d7f675",
     "TRUTH_ARCHIVE": "3457ed9301243f1e76ea9b83",
     "OGE": "bb8797b576c86fb2929bae06"
   },
@@ -4869,6 +4869,82 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "c88f14880667ff6d10d7f675": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:[\"bam.nr-data.net\"]},feature_flags:[\"rum_v2\"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:\"NRJS-478cab472aef3db5069\",applicationID:\"1352821653\",browserID:\"1386236136\"};;/*! For license information please see nr-loader-rum-1.324.0.min.js.LICENSE.txt */ (()=>{var e={8122(e,t,r){\"use strict\";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||\"object\"!=typeof e)return(0,n.R)(3);if(!t||\"object\"!=typeof t)return(0,n.R)(4);const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),a=0===Object.keys(r).length?e:r;for(let s in a)if(void 0!==e[s])try{if(null===e[s]){r[s]=null;continue}Array.isArray(e[s])&&Array.isArray(t[s])?r[s]=Array.from(new Set([...e[s],...t[s]])):e[s]instanceof Map||e[s]instanceof Set||e[s]instanceof Date||e[s]instanceof RegExp?r[s]=e[s]:\"object\"==typeof e[s]&&null!==t[s]&&\"object\"==typeof t[s]?r[s]=i(e[s],t[s]):r[s]=e[s]}catch(e){r[s]||(0,n.R)(1,e)}return r}catch(e){(0,n.R)(2,e)}}},2555(e,t,r){\"use strict\";r.d(t,{f:()=>s});var n=r(384),i=r(8122);const a={beacon:n.NT.beacon,errorBeacon:n.NT.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0};function s(e){try{return!!e.licenseKey&&!!e.errorBeacon&&!!e.applicationID}catch(e){return!1}}r.d(t,[\"D\",0,e=>(0,i.a)(e,a)])},7699(e,t,r){\"use strict\";var n=r(860);const i=1e6,a={[n.K7.logging]:!0,[n.K7.genericEvents]:!0,[n.K7.jserrors]:!0,[n.K7.ajax]:!0};r.d(t,[\"It\",0,i,\"KC\",0,a,\"qh\",0,\"SESSION_ERROR\",\"zd\",0,5e5])},9324(e,t,r){\"use strict\";r.d(t,[\"xv\",0,\"1.324.0\"])},981(e,t,r){\"use strict\";r.d(t,[\"R\",0,{AJAX:\"AjaxRequest\",PA:\"PageAction\",UA:\"UserAction\",BP:\"BrowserPerformance\",WS:\"WebSocket\",SPV:\"SecurityPolicyViolation\",JSE:\"JavaScriptError\",LOG:\"Log\",PVE:\"PageView\",PVT:\"PageViewTiming\",SR:\"SessionReplay\",ST:\"SessionTrace\",BI:\"BrowserInteraction\"}])},6154(e,t,r){\"use strict\";var n=r(1863);const i=\"undefined\"!=typeof window&&!!window.document,a=\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),s=i?window:\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),o=Boolean(\"hidden\"===s?.document?.visibilityState),c=\"\"+s?.location,u=/iPad|iPhone|iPod/.test(s.navigator?.userAgent),d=u&&\"undefined\"==typeof SharedWorker,l=((()=>{const e=s.navigator?.userAgent?.match(/Firefox[/\\s](\\d+\\.\\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Date.now()-(0,n.t)());r.d(t,[\"OF\",0,u,\"RI\",0,i,\"WN\",0,l,\"bv\",0,a,\"gm\",0,s,\"m\",0,c,\"mw\",0,o,\"sb\",0,d,\"zk\",0,()=>{const e=s?.performance?.getEntriesByType?.(\"navigation\")?.[0];if(e&&e.responseStart>0&&e.responseStart<s.performance.now())return e}])},3241(e,t,r){\"use strict\";r.d(t,{W:()=>i});var n=r(6154);function i(e={}){try{n.gm.dispatchEvent(new CustomEvent(\"newrelic\",{detail:e}))}catch(e){}}},1687(e,t,r){\"use strict\";r.d(t,{Ak:()=>o,Ze:()=>u,x3:()=>c});var n=r(3241),i=r(3606),a=r(860),s=r(2646);function o(e,t){if(!e)return;const r={staged:!1,priority:a.P3[t]||0};e.runtime.drainRegistry.get(t)||e.runtime.drainRegistry.set(t,r)}function c(e,t){if(!e)return;const r=e.runtime.drainRegistry;r&&(r.get(t)&&r.delete(t),l(e,t,!1),r.size&&d(e))}function u(e,t=\"feature\",r=!1){if(e){if(!e.runtime.drainRegistry.get(t)||r)return l(e,t);e.runtime.drainRegistry.get(t).staged=!0,d(e)}}function d(e){if(!e)return;const t=Array.from(e.runtime.drainRegistry);t.every(([e,t])=>t.staged)&&(t.sort((e,t)=>e[1].priority-t[1].priority),t.forEach(([t])=>{e.runtime.drainRegistry.delete(t),l(e,t)}))}function l(e,t,r=!0){if(!e)return;const a=e.ee,o=i.i.handlers;if(a&&!a.aborted&&a.backlog&&o){if((0,n.W)({type:\"lifecycle\",name:\"drain\",feature:t}),r){const e=a.backlog[t],r=o[t];if(r){for(let t=0;e&&t<e.length;++t)f(e[t],r);Object.entries(r).forEach(([e,t])=>{Object.values(t||{}).forEach(t=>{t[0]?.on&&t[0].context()instanceof s.y&&!t[0].listeners(e).includes(t[1])&&t[0].on(e,t[1])})})}}a.isolatedBacklog||delete o[t],a.backlog[t]=null,a.emit(\"drain-\"+t,[])}}function f(e,t){var r=e[1];Object.values(t[r]||{}).forEach(t=>{var r=e[0];if(t[0]===r){var n=t[1],i=e[3],a=e[2];n.apply(i,a)}})}},7836(e,t,r){\"use strict\";var n=r(384),i=r(8990),a=r(2646),s=r(5607);const o=\"nr@context:\".concat(s.W),c=function e(t,r){var n={},s={},d={},l=!1;try{l=16===r.length&&u.initializedAgents?.[r]?.runtime.isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,a){!1!==a&&(a=!0);if(c.aborted&&!i)return;t&&a&&t.emit(e,r,n);var o=g(n);m(e).forEach(e=>{e.apply(o,r)});var u=v()[s[e]];u&&u.push([f,e,r,o]);return o},get:h,listeners:m,context:g,buffer:function(e,t){const r=v();if(t=t||\"feature\",f.aborted)return;Object.entries(e||{}).forEach(([e,n])=>{s[n]=t,t in r||(r[t]=[])})},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach(e=>{delete f.backlog[e]})},isBuffering:function(e){return!!v()[s[e]]},debugId:r,backlog:l?{}:t&&\"object\"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,\"aborted\",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof a.y?e:e?(0,i.I)(e,o,()=>new a.y(o)):new a.y(o)}function p(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function h(t){return d[t]=d[t]||e(f,t)}function v(){return f.backlog}}(void 0,\"globalEE\"),u=(0,n.Zm)();u.ee||(u.ee=c),r.d(t,[\"P\",0,o,\"ee\",0,c])},2646(e,t,r){\"use strict\";r.d(t,{y:()=>n});class n{constructor(e){this.contextId=e}}},9908(e,t,r){\"use ",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T02:27:47.058303+00:00",
+      "event_id": "c88f14880667ff6d10d7f675",
+      "action_reaction": {
+        "event_id": "c88f14880667ff6d10d7f675",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "56e0355a0865e2c6475c4ec5": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42755",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117509180502162923",
+      "title": "Congressman Bill Huizenga is a Tremendous Champion, and Highly Effective Representative, for the incredible people of Michigan's 4th Congressional District! As a very successful Small Businessman, and Vice Chair of the House Financial Services Committee, Bill knows the America First Policies require",
+      "published": "Mon, 26 Oct 2026 20:49:58 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "Congressman Bill Huizenga is a Tremendous Champion, and Highly Effective Representative, for the incredible people of Michigan's 4th Congressional District! As a very successful Small Businessman, and Vice Chair of the House Financial Services Committee, Bill knows the America First Policies require Congressman Bill Huizenga is a Tremendous Champion, and Highly Effective Representative, for the incredible people of Michigan's 4th Congressional District! As a very successful Small Businessman, and Vice Chair of the House Financial Services Committee, Bill knows the America First Policies required to Grow our Economy, Create GREAT Jobs, Cut Taxes and Regulations, Champion our Great Farmers and Agriculture, Promote MADE IN THE U.S.A., and Unleash American Energy DOMINANCE. Additionally, Bill is fighting tirelessly to Keep our Border SECURE, Strengthen our Incredible Military/Vets, and Protect our always under siege Second Amendment. Bill’s opponent, Sean McCann, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Sean McCann is Reckless, Radical, and Dangerous! Bill Huizenga has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR BILL — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/michigan/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T02:27:48.135867+00:00",
+      "event_id": "56e0355a0865e2c6475c4ec5",
+      "action_reaction": {
+        "event_id": "56e0355a0865e2c6475c4ec5",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "0424fea9c0244c5201e351de": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42756",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117509179042856777",
+      "title": "It is my Great Honor to endorse America First Patriot, Ralph Alvarado, M.D., who is running to represent the incredible people of Kentucky’s 6th Congressional District. A true friend to MAGA, Ralph was a featured Speaker at the 2016 Republican National Convention, and a Member of the National Hispan",
+      "published": "Mon, 26 Oct 2026 20:49:35 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Ralph Alvarado, M.D., who is running to represent the incredible people of Kentucky’s 6th Congressional District. A true friend to MAGA, Ralph was a featured Speaker at the 2016 Republican National Convention, and a Member of the National Hispan It is my Great Honor to endorse America First Patriot, Ralph Alvarado, M.D., who is running to represent the incredible people of Kentucky’s 6th Congressional District. A true friend to MAGA, Ralph was a featured Speaker at the 2016 Republican National Convention, and a Member of the National Hispanic Advisory Council for “TRUMP” – RALPH HAS BEEN WITH US FROM THE VERY BEGINNING! A very successful Family Physician, and former Kentucky State Senator, Ralph has dedicated his life to serving his Community. As your next Congressman, Ralph will fight tirelessly to Grow the Economy, Promote our Amazing Farmers and Ranchers, Unleash American Energy DOMINANCE, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Support our Brave Military/Veterans, and Protect our always under siege Second Amendment. Ralph’s opponent, Zach Dembo, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Zach Dembo is Reckless, Radical, and Dangerous! Dr. Ralph Alvarado has my Complete and Total Endorsement to be the next Representative from Kentucky’s 6th Congressional District. GET OUT AND VOTE FOR RALPH — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/kentucky/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T02:27:48.136076+00:00",
+      "event_id": "0424fea9c0244c5201e351de",
+      "action_reaction": {
+        "event_id": "0424fea9c0244c5201e351de",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -4960,9 +5036,11 @@
     "c82bfefece6c9539254297b5": "2026-10-26T23:45:11.275646+00:00",
     "21ebcdc710e828f7f9c1c066": "2026-10-26T23:45:11.275916+00:00",
     "d4cb490184ce0a61b7cb8b57": "2026-10-26T23:45:11.276146+00:00",
-    "9dceab2ba05a40517d8f1416": "2026-10-26T23:45:11.276341+00:00"
+    "9dceab2ba05a40517d8f1416": "2026-10-26T23:45:11.276341+00:00",
+    "56e0355a0865e2c6475c4ec5": "2026-10-27T02:27:48.135850+00:00",
+    "0424fea9c0244c5201e351de": "2026-10-27T02:27:48.136072+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-26T23:45:11.281954+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-27T02:27:48.139967+00:00"
   }
 }
