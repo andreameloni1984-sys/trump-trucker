@@ -182,5 +182,30 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(result["early"]["pnl_r"], 2.0)
 
 
+    def test_invalid_spread_costs_are_rejected_instead_of_silently_clamped(self):
+        data = candles([(100, 101, 99, 100, 1000)])
+        for invalid_spread in (-0.01, float("nan"), float("inf")):
+            with self.subTest(spread=invalid_spread):
+                with self.assertRaisesRegex(ValueError, "spread|finite"):
+                    backtest_event(
+                        data,
+                        "2026-01-01T00:00:00+00:00",
+                        "LONG",
+                        1.0,
+                        atr_time="2025-12-31T23:55:00+00:00",
+                        spread=invalid_spread,
+                    )
+
+    def test_valid_round_trip_spread_cost_is_deducted_from_r_multiple(self):
+        data = candles([
+            (100, 100.5, 99.5, 100, 1000),
+            (100, 100.5, 99.5, 100, 1000),
+            (103, 104, 102.5, 103.5, 1400),
+        ])
+        result = run_backtest(data, "2026-01-01T00:00:00+00:00", "LONG", 1.0, target_r=2.0, spread=0.5)
+        self.assertEqual(result["early"]["status"], "TARGET_GAP")
+        self.assertEqual(result["early"]["pnl_r"], 1.5)
+
+
 if __name__ == "__main__":
     unittest.main()
