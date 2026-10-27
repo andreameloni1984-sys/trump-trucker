@@ -75,7 +75,6 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertIn("status", result["early"])
         self.assertEqual(result["breakout"]["status"], "NO_BREAKOUT")
 
-
     def test_duplicate_candle_timestamps_are_rejected(self):
         data = candles([
             (100, 101, 99, 100, 1000),
@@ -92,6 +91,30 @@ class SputnikEventBacktestTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(ValueError, "timezone-aware"):
             backtest_event(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0)
+
+    def test_gap_through_short_stop_fills_at_worse_open(self):
+        data = candles([
+            (100, 100.5, 99.5, 100, 1000),
+            (100, 100.5, 99.5, 100, 1000),
+            (102.5, 103, 102, 102.8, 1400),
+        ])
+        result = backtest_event(data, "2026-01-01T00:00:00+00:00", "SHORT", 1.0)
+        self.assertEqual(result["early"]["status"], "STOP_GAP")
+        self.assertEqual(result["early"]["stop"], 101.0)
+        self.assertEqual(result["early"]["exit"], 102.5)
+        self.assertEqual(result["early"]["pnl_r"], -2.5)
+
+    def test_gap_through_long_target_does_not_assume_better_fill(self):
+        data = candles([
+            (100, 100.5, 99.5, 100, 1000),
+            (100, 100.5, 99.5, 100, 1000),
+            (103, 104, 102.5, 103.5, 1400),
+        ])
+        result = backtest_event(data, "2026-01-01T00:00:00+00:00", "LONG", 1.0, target_r=2.0)
+        self.assertEqual(result["early"]["status"], "TARGET_GAP")
+        self.assertEqual(result["early"]["target"], 102.0)
+        self.assertEqual(result["early"]["exit"], 102.0)
+        self.assertEqual(result["early"]["pnl_r"], 2.0)
 
 
 if __name__ == "__main__":
