@@ -141,3 +141,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Correction:** keep the plural `tariffs` and `import duties` in the escalation rule only; trade de-escalation continues to require its agreement/pause language. The existing tariff test now asserts that a new-tariff headline does not produce a `trade_deescalation` row.
 - **CI:** the first run on commit `2f7c4ead73183db262fe75759665fec49e43027d` failed because whole-word matching exposed missing plural vocabulary. Commit `d76b48c62a653129c4622cb500ff33b333e6fb69` added that vocabulary; this follow-up narrows the de-escalation rule and adds an explicit regression assertion. CI for this head is pending.
 - **Safety/limits:** no merge/deploy, no real orders. Keyword rules are not a substitute for source verification or price/volume confirmation; no historical or OOS performance claim.
+
+
+## Final verification — whole-word catalyst matcher (2026-10-27)
+
+- **Code/test head:** `899790b02620082b0b224fdec99ecf7fa2aa0cb8`.
+- **CI PASS:** SPUTNIK ranking tests [40577683546](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40577683546). The suite includes the new whole-word negative control and the existing plural-tariff positive control. The earlier run on `2f7c4ead73183db262fe75759665fec49e43027d` failed two tests; explicit plural vocabulary and separation of escalation/de-escalation fixed the observed regressions. The Telegram-menu workflow did not trigger on this head and is not claimed as passed.
+- **Main:** current SHA `780b06b078747d2ce71385e9b0f9a9942aaca794`; ranking workflow [40576677519](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40576677519) passed after the explicit invalidation-label correction. This is a separate main commit, not the PR #55 change.
+- **Render:** latest successful deployment returned remains `9e5204bf7d9074dba27637013b7d98933a91e733`; later attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed with exhausted pipeline minutes. No new deploy event was observed for main SHA `780b06b...`.
+- **Runtime limits:** the queried 2026-10-27 20:10–20:25 UTC log window returned no SEC/White House/source lines, so current source ingestion and alert delivery are not confirmed. Setting names `GAGARIN_CLOUD_API_URL` / `GAGARIN_CLOUD_API_KEY` were inspected only in code; no secret values read.
+- **Empirical limit:** deterministic keyword tests only; no historical headline replay, price/volume event study or OOS edge established. No merge/deploy. PAPER ONLY.
