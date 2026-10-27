@@ -604,3 +604,22 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 ### Isolated logic check for truncated forward-window guard — 2026-10-27 21:18 UTC
 - A local Python check exercised a copy of the updated `_simulate` logic with synthetic two-bar inputs: (1) 2 observed bars against a 3-bar horizon returned `INSUFFICIENT_FORWARD_DATA` with `pnl_r=None`; (2) 2 observed bars against a 2-bar horizon returned `TIME_EXIT` with numeric P&L.
 - **Scope limitation:** this was an isolated check of the relevant logic copied from the fetched branch source, not an import/run of the repository module and not the full unittest suite. The actual regression tests remain unverified until CI runs on the new head; local `git clone` failed with DNS resolution error for `github.com`, and no newer workflow run appeared after the code/test/workflow commits.
+
+
+## 2026-10-27 22:14 UTC — Separate gross strategy edge from configured cost drag
+
+### CLZ26 hypothesis outcome check
+- Hypothesis: 2026-10-27 14:16:51 UTC; NYMEX December 2026 WTI (CLZ26), conditional SHORT below $100.50, reference ~$101.45, stop $101.55, TP1 $98.25, TP2 $97.15. No order was placed.
+- Farmbucks' exact-contract page displayed $100.01/bbl at **2026-10-27 13:12 UTC-5 (18:12 UTC)**, day range $99.51–$102.82, volume 220.99K, and explicitly marked the quote **delayed 10 minutes**. The page also said “updated 18 min ago”; at this check the snapshot is hours old, so it is not a current executable quote: https://farmbucks.com/futures/energy/wti-crude?contract=CLZ26
+- The displayed session range spans both the $100.50 trigger and $101.55 stop, but no timestamped sequence identifies when the low/high occurred relative to the 14:16:51 UTC hypothesis or to a valid entry. TP1/TP2 are below the displayed session low, but the full post-hypothesis path is not verified.
+- **Classification: NON-VERIFIABLE due to lack of reliable post-hypothesis intraday CLZ26 bars.** Do not infer a trigger, stop or target outcome from a delayed snapshot/range.
+
+### One backtest improvement — decompose gross R and cost drag in the paired comparison
+- Finding: the simulator already reported gross/net P&L in price units and USD/contract, but the event-level summary compared only net R. That made it harder to tell whether the early-vs-breakout difference came from price movement or from the configured per-trade costs relative to each trade's initial risk.
+- Implemented in `sputnik_event_backtest.py`: scored trades now expose `gross_pnl_r` and `round_trip_cost_r`. The paired summary adds the count of events with gross/cost decomposition, mean gross R by strategy, mean gross early-minus-breakout R, mean round-trip cost in R by strategy, and `net_minus_gross_difference_r_paired`. Missing/non-finite decomposition fields are excluded from these extra metrics, not filled with zero.
+- Regression: updated `test_execution_cost_model_deducts_commission_and_two_sided_slippage` to assert gross R and cost R, and added `test_summary_separates_gross_edge_from_cost_drag` using synthetic values. The fixture demonstrates gross difference +0.1R, net difference +0.3R and a +0.2R change due to different configured costs; these are arithmetic fixtures, not market results.
+- Files changed: `sputnik_event_backtest.py`; `tests/test_sputnik_event_backtest.py`; this log.
+- Code commit: `f2b5449428a9cec5835bedc5425d199dedc13ab3`. Test commit: `00f39dac3e6a2eb98a8352cd28c260e6d95eefb6`.
+- Test status at log time: no local repository test run (GitHub clone/DNS was previously blocked). The GitHub connector returned no PR-triggered workflow runs for test commit `00f39dac3e6a2eb98a8352cd28c260e6d95eefb6`. The latest known successful run is older, [40570736881](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40570736881), with 124 tests on commit `05707e4308e3de0a80df40e429303ed6cf1110a3`; it does **not** verify this change. Do not claim the current code/tests passed until CI is observed on the new head.
+- PR #45 remains open/unmerged; current PR metadata reports `mergeable=false`. No rebase/merge, broker action, Telegram test message or deployment was performed.
+- Remaining data blocker: obtain exchange-verifiable CLZ26 1-minute/5-minute OHLCV and source-linked event publication/availability/decision timestamps. No real-event performance result is claimed.
