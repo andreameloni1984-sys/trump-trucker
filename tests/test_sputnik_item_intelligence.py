@@ -1,7 +1,7 @@
 import json
 import os
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from unittest.mock import MagicMock, patch
 
 import trump_tracker
@@ -148,6 +148,36 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         }]
         self.assertEqual(trump_tracker.directional_news_candidates(page_level), [])
         self.assertEqual(trump_tracker.directional_news_candidates(vague), [])
+
+    def test_directional_news_candidates_rejects_naive_future_and_invalid_availability_times(self):
+        now = datetime.now(timezone.utc)
+        base = {
+            "event_id": "evt-time-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "New tariffs on China announced",
+            "text": "New tariffs were announced.",
+            "url": "https://example.gov/news/tariffs",
+            "published": now.isoformat(),
+            "available_at": now.isoformat(),
+            "source": "WHITE_HOUSE",
+            "domains": ["TRADE_POLICY"],
+        }
+        self.assertTrue(trump_tracker.directional_news_candidates([base]))
+
+        cases = [
+            ("naive publication", {"published": now.replace(tzinfo=None).isoformat()}),
+            ("future publication", {"published": (now + timedelta(minutes=5)).isoformat()}),
+            ("naive availability", {"available_at": now.replace(tzinfo=None).isoformat()}),
+            ("availability before publication", {"available_at": (now - timedelta(minutes=1)).isoformat()}),
+            ("future availability", {"available_at": (now + timedelta(minutes=5)).isoformat()}),
+        ]
+        for label, override in cases:
+            with self.subTest(case=label):
+                finding = {**base, **override}
+                self.assertEqual(trump_tracker.directional_news_candidates([finding]), [])
+
+        rfc822 = {**base, "published": "Mon, 19 Oct 2026 06:00:00 GMT"}
+        self.assertTrue(trump_tracker.directional_news_candidates([rfc822]))
 
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
