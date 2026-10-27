@@ -282,3 +282,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - Freshly checked FinzData's CL page: it advertises NYMEX CL 5-minute intraday bars from 2007-05-16, bar-start timestamps in US Eastern time, and continuous series with adjusted/unadjusted choices. The page currently advertises full-history access for a one-time $29 and only the latest 30 days of daily bars for free; no data were purchased or retrieved. [Vendor page](https://finzdata.com/futures/cl). This current advertised price differs from the $39 noted in an earlier research entry, so treat pricing as time-sensitive and recheck before any purchase.
 - Reuters reported a paid/licensed Truth API feed with an archive dating to 2022, potentially a more authoritative source for exact post times, but pricing/terms and actual timestamp fields were not verified and no access was obtained. [Reuters report, 2026-07-16](https://www.reuters.com/technology/trump-media-unveils-data-feed-businesses-tracking-truth-social-posts-2026-07-16/).
 - Attempted to inspect https://trumpstruth.org/feed directly; the web connector rejected its application/xml content type. The feed exists as a public lead, but exact item timestamp fields were not inspected in this run. No event was assigned a candle and no market-performance result was calculated.
+
+
+## 2026-10-27 13:00 UTC — Canonical source-permalink deduplication in event ledger
+- **Finding:** batch mode rejected repeated event IDs but allowed two IDs to cite the same underlying source URL. The same publication could therefore be counted as multiple independent catalyst events.
+- **Change:** `sputnik_event_backtest.py::_validate_source_url()` now canonicalizes scheme/host casing, default ports, trailing path slashes, fragments and common tracking parameters. Non-tracking query parameters are retained because some publishers use them as document identifiers. CSV loading and direct `backtest_events()` calls reject duplicate canonical source URLs as well as duplicate event IDs.
+- **Regression:** `tests/test_sputnik_event_backtest.py` adds CSV and direct-call tests proving that different event IDs with the same canonical permalink are rejected.
+- **Operational path:** source-linked event ledger → permalink validation/canonicalization → duplicate-source guard → paired early/breakout event study.
+- **CI:** pending for the new code/test commit; prior main/PR workflows do not validate this change.
+- **Deployment:** PR #45 branch only; no merge/deploy. The branch is substantially divergent from current main and needs reconciliation/review before merge.
+- **Empirical limits:** source-URL deduplication prevents one URL from masquerading as multiple events; it does not prove semantic equivalence across different URLs or establish predictive value. No source-linked, exact-time NYMEX CL event replay or walk-forward result is claimed.
+- **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets or Telegram test messages.
