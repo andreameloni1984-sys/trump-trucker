@@ -158,6 +158,36 @@ def _is_primary_sec_form4_url(value: Any) -> bool:
         return False
 
 
+def _source_matches_filing_identity(item: dict[str, Any]) -> bool:
+    """Require a primary SEC URL to agree with the row's issuer and accession.
+
+    URL shape alone proves only that a URL looks like an EDGAR document; it
+    does not prove that it is the document described by this transaction row.
+    """
+    source_url = item.get("source_url")
+    if not _is_primary_sec_form4_url(source_url):
+        return False
+    cik_value = str(item.get("cik") or "").strip()
+    if not cik_value.isdigit():
+        return False
+    try:
+        parsed = urlsplit(source_url.strip())
+    except (AttributeError, TypeError, ValueError):
+        return False
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 6 or int(parts[3]) != int(cik_value):
+        return False
+
+    accession_value = str(
+        item.get("accession_number") or item.get("accession") or item.get("accession_no") or ""
+    ).strip()
+    if accession_value:
+        normalized_accession = "".join(char for char in accession_value if char.isalnum())
+        if not normalized_accession or normalized_accession != parts[4]:
+            return False
+    return True
+
+
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     """Score one documented security candidate from Form 4 purchases.
 
@@ -171,7 +201,7 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
         item for item in items
         if item.get("action") == "ACQUISTATO"
         and item.get("source_kind") == "FORM4_TRANSACTION"
-        and _is_primary_sec_form4_url(item.get("source_url"))
+        and _source_matches_filing_identity(item)
         and _filing_chronology_is_valid(item, as_of)
     ]
     if not valid:
