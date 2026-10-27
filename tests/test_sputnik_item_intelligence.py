@@ -294,3 +294,23 @@ if __name__ == "__main__":
         oil = [row for row in candidates if row["instrument"] in {"WTI", "BRENT"}]
         self.assertEqual({row["bias"] for row in oil}, {"SHORT_BIAS"})
         self.assertTrue(all(row["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for row in oil))
+
+    def test_negated_iran_diplomacy_does_not_create_oil_short_hypothesis(self):
+        cases = [
+            ("Iran deal not reached after talks collapse", "Officials said no agreement was reached with Iran."),
+            ("Iran rejects ceasefire proposal", "Tehran rejected the ceasefire proposal."),
+            ("Iran sanctions remain in place; no deal reached", "Sanctions were not lifted."),
+        ]
+        for title, body in cases:
+            with self.subTest(title=title):
+                findings = [{
+                    "event_id": "iran-negative-" + str(cases.index((title, body))),
+                    "evidence": "PUBLIC_RSS_ITEM",
+                    "title": title,
+                    "text": body,
+                    "url": "https://example.gov/news/iran-talks",
+                    "published": "2026-10-27T08:00:00Z",
+                    "source": "PUBLIC_RSS",
+                    "domains": ["ENERGY"],
+                }]
+                self.assertEqual(trump_tracker.directional_news_candidates(findings), [])
