@@ -53,6 +53,14 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("Annulla lo scenario", message)
 
 
+    def test_campaign_endorsements_do_not_create_market_catalysts(self):
+        text = "It is my Great Honor to endorse America First Patriot, Ralph Alvarado, who is running to represent Kentucky."
+        message = decision_message(text)
+        self.assertIn("NESSUN CATALIZZATORE DI MERCATO IDENTIFICATO", message)
+        self.assertIn("senza inviare un alert di trading", message)
+        self.assertNotIn("LONG condizionale", message)
+        self.assertNotIn("SHORT condizionale", message)
+
     def test_broad_topic_gets_useful_watch_result(self):
         message = decision_message("Markets discuss tariffs and trade tensions.")
         self.assertIn("MONITORARE", message)
