@@ -102,46 +102,79 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
     }
 
 
-def decision_message(text: str, source: str = "Fonte pubblica") -> str:
-    plans = conditional_plans(text)
+def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str, Any] | None = None) -> str:
+    """Render one Telegram-ready market opportunity; never fabricate quote-based levels."""
+    from sputnik_cfd import build_conditional_trade_plan
+
+    plans = conditional_plans(text, limit=1)
     lines = [
-        "🛰️ SPUTNIK — COSA SIGNIFICA",
+        "🛰️ SPUTNIK — OPPORTUNITÀ DI MERCATO",
         "━━━━━━━━━━━━━━━━━━",
-        f"📰 Fonte: {source}",
-        "",
     ]
-    if plans:
-        plan = plans[0]
+    if not plans:
+        fallback = _fallback_watch(text)
         lines.extend([
-            "🎯 RISULTATO: SCENARIO DA PREPARARE",
-            f"📌 Evento: {plan['event']}",
-            f"👀 Da osservare: {plan['candidate']}",
-            f"➡️ Possibile direzione: {plan['bias']}",
-            f"🧾 Perché: {plan.get('evidence', 'Catalizzatore rilevato nel testo')}",
-            f"✅ Conferma richiesta: {plan['confirmation']}",
-            f"🛑 Annulla lo scenario se: {plan['invalidation']}",
             "",
-            "In parole semplici: prepara lo strumento, ma entra solo se la notizia è confermata e il mercato dà il segnale richiesto.",
-            "Prezzi, stop e obiettivi non vengono inventati: servono quotazioni aggiornate.",
+            "🎯 STRUMENTO: da identificare",
+            "🟡 DIREZIONE: WAIT — catalizzatore non abbastanza specifico",
+            "⏱️ ORIZZONTE: INTRADAY",
+            "🧪 MODALITÀ: PAPER TRADING",
+            "",
+            "━━━━━━━━━━━━━━━━━━",
+            "📰 1. CATALIZZATORE",
+            str(text or "Nessun testo evento disponibile")[:700],
+            "",
+            "📊 2. OPERAZIONE IPOTETICA",
+            "• Entrata / stop loss / take profit: non calcolabili senza strumento, quotazione aggiornata e ATR.",
+            "",
+            "🧠 4. DECISIONE SPUTNIK",
+            f"Stato: IN ATTESA DI CATALIZZATORE E QUOTAZIONI",
+            f"Da monitorare: {fallback['instruments'] if fallback else 'mercati pertinenti alla notizia'}",
+            f"Motivo: {fallback['explanation'] if fallback else 'Il testo non identifica un evento collegabile con sufficiente affidabilità a uno strumento.'}",
+            "",
+            f"🔎 Fonte: {source}",
+            "⚠️ Ipotesi sperimentale. PAPER TRADING: nessun ordine reale.",
         ])
         return "\n".join(lines)
 
-    fallback = _fallback_watch(text)
-    if fallback:
-        lines.extend([
-            "🟡 RISULTATO: MONITORARE, NON IGNORARE",
-            f"📌 Tema: {fallback['topic']}",
-            f"👀 Strumenti da tenere d'occhio: {fallback['instruments']}",
-            f"🧠 Perché: {fallback['explanation']}",
-            "✅ Prossimo passo: controllare la fonte originale e la reazione dei prezzi.",
-            "🛑 Non comprare o vendere soltanto perché il tema è menzionato.",
-            "",
-            "In parole semplici: SPUTNIK ha individuato un tema utile, ma nel testo non c'è ancora una prova abbastanza concreta per indicare una direzione.",
-        ])
-    else:
-        lines.extend([
-            "🟡 RISULTATO: NESSUN CATALIZZATORE CHIARO",
-            "Il testo non contiene un evento riconoscibile collegato in modo affidabile a un mercato.",
-            "Azione pratica: non forzare un acquisto; attendere una notizia identificabile o dati di mercato pertinenti.",
-        ])
+    plan = plans[0]
+    trade = build_conditional_trade_plan(plan, quotes or {})
+    direction = "SHORT" if "SHORT" in str(plan.get("bias", "")).upper() else "LONG"
+    entry, stop, tp1, tp2 = (trade.get(k) for k in ("entry", "stop", "tp1", "tp2"))
+    rr1 = trade.get("rr_tp1")
+    rr2 = trade.get("rr_tp2")
+    lines.extend([
+        "",
+        f"🎯 STRUMENTO: {plan.get('candidate', 'da identificare')}",
+        f"🔴 DIREZIONE: {direction} ipotetico",
+        "⏱️ ORIZZONTE: INTRADAY",
+        "🧪 MODALITÀ: PAPER TRADING",
+        "",
+        "━━━━━━━━━━━━━━━━━━",
+        "📰 1. CATALIZZATORE",
+        str(plan.get("evidence") or text)[:700],
+        f"📡 Fonte: {source}",
+        "",
+        "📊 2. OPERAZIONE IPOTETICA",
+        f"• Entrata: {entry if entry is not None else 'quotazione aggiornata da verificare'}",
+        f"• Stop loss: {stop if stop is not None else 'calcolato su ATR quando disponibile'}",
+        f"• Take profit 1: {tp1 if tp1 is not None else 'da calcolare sulla quotazione effettiva'}",
+        f"• Take profit 2: {tp2 if tp2 is not None else 'da calcolare sulla quotazione effettiva'}",
+        f"• Rapporto rischio/rendimento: TP1 {rr1}R / TP2 {rr2}R, solo dopo calcolo sui prezzi effettivi" if entry is not None else "• Rapporto rischio/rendimento: da calcolare sui prezzi effettivi",
+        "",
+        "━━━━━━━━━━━━━━━━━━",
+        "⚡ 3. PERCHÉ VALUTARE L'OPERAZIONE",
+        f"Ipotesi: {plan.get('if_then') or plan.get('event', 'catalizzatore rilevato')}",
+        f"🔄 Scenario alternativo: {plan.get('alternative') or 'una reazione opposta del mercato può invalidare la direzione ipotizzata.'}",
+        f"❌ INVALIDAZIONE: {plan.get('invalidation', 'annuncio smentito o reazione del prezzo incompatibile con lo scenario')}",
+        "",
+        "━━━━━━━━━━━━━━━━━━",
+        "🧠 4. DECISIONE SPUTNIK",
+        f"Direzione: {direction} ipotetico",
+        f"Prezzo: {entry if entry is not None else 'da aggiornare'}",
+        f"Conferma tecnica: {'da verificare sul trigger di prezzo/volume' if trade.get('status') != 'TRIGGER CONFIRMED' else 'presente nei dati quotazione forniti'}",
+        f"Stato: {trade.get('status', 'WAIT')} — {trade.get('reason', 'quotazioni aggiornate necessarie')}",
+        "",
+        "⚠️ Segnale sperimentale. Nessun ordine reale.",
+    ])
     return "\n".join(lines)
