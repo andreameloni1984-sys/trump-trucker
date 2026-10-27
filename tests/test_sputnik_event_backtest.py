@@ -48,6 +48,10 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertAlmostEqual(early["round_trip_cost_price_units"], 0.05)
         self.assertAlmostEqual(early["net_pnl_price_units"], 0.15)
         self.assertAlmostEqual(early["pnl_r"], 0.15)
+        # USD per CL contract = price-unit P&L/cost multiplied by 1,000 barrels.
+        self.assertAlmostEqual(early["gross_pnl_usd_per_contract"], 200.00)
+        self.assertAlmostEqual(early["net_pnl_usd_per_contract"], 150.00)
+        self.assertAlmostEqual(early["round_trip_cost_usd_per_contract"], 50.00)
 
     def test_execution_cost_model_rejects_invalid_cost_inputs(self):
         data = candles([(100.0, 100.5, 99.5, 100.2, 1000)])
