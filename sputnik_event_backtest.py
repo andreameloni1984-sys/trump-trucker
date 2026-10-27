@@ -215,7 +215,7 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
     return events
 
 
-def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes):
+def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes, contract_multiplier):
     risk = atr * stop_atr
     if not math.isfinite(risk) or risk <= 0 or not math.isfinite(entry):
         return {"status": "INVALID_INPUT", "entry": entry, "stop": None, "target": None, "pnl_r": None}
@@ -293,6 +293,9 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
         "gross_pnl_price_units": round(gross_pnl, 8),
         "net_pnl_price_units": round(net_pnl, 8),
         "round_trip_cost_price_units": round(round_trip_cost, 8),
+        "gross_pnl_usd_per_contract": round(gross_pnl * contract_multiplier, 2),
+        "net_pnl_usd_per_contract": round(net_pnl * contract_multiplier, 2),
+        "round_trip_cost_usd_per_contract": round(round_trip_cost * contract_multiplier, 2),
         "pnl_r": round(net_pnl / risk, 4),
         "bars_held": exit_index - entry_index + 1,
     }
@@ -407,7 +410,7 @@ def backtest_event(
                 "gap_minutes": round(availability_gap_minutes, 2),
             }
         else:
-            early = _simulate(candles, next_index, candles[next_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes)
+            early = _simulate(candles, next_index, candles[next_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes, contract_multiplier)
     early["decision_time"] = available_dt.isoformat()
 
     breakout = {"status": "NO_BREAKOUT"}
@@ -466,7 +469,7 @@ def backtest_event(
                                 "observed_gap_minutes": round(entry_gap_minutes, 2),
                             }
                         else:
-                            breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes)
+                            breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes, contract_multiplier)
                             breakout["signal_bar_time"] = candles[i]["timestamp"].isoformat()
                             breakout["signal_time"] = signal_dt.isoformat()
                             breakout["decision_time"] = signal_dt.isoformat()
