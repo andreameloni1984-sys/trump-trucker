@@ -72,7 +72,7 @@ class StrictDecisionTests(unittest.TestCase):
             "The President announces new tariffs on imports. The trade warrior conference opens."
         )
         tariff = next(row for row in rows if row["id"] == "tariff_escalation")
-        self.assertIn("tariff", tariff["matched_terms"])
+        self.assertIn("tariffs", tariff["matched_terms"])
         self.assertNotIn("trade war", tariff["matched_terms"])
 
     def test_empty_legacy_snapshot_still_returns_result(self):
