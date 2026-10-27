@@ -116,3 +116,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** research branch only; no merge/deploy. Render pipeline minutes are exhausted.
 - **Empirical validation:** no live-feed replay or prediction study performed. This is timestamp-integrity hardening, not a trading edge.
 - **Safety:** PAPER ONLY; no broker, orders, secrets or Telegram test messages.
+
+## 2026-10-27 — Fail closed on a naive RSS observation clock
+
+- **Finding:** the item-level RSS scan relabeled a naive `utc_now()` result as UTC, then used it to calculate publication age and mark a feed initialized. That could invent an observation time and affect first-scan/backlog suppression.
+- **Change:** validate one timezone-aware observation clock per feed snapshot; normalize it to UTC once; reuse it for item age, detected_at, dedupe metadata and feed initialization. If the clock is naive/invalid, skip the feed without seeding it.
+- **Files/path:** `trump_tracker.py::intelligence_snapshot`; `tests/test_sputnik_item_intelligence.py`.
+- **Regression:** naive observation clock must yield no finding, no dedupe entry and no initialized-feed marker.
+- **Commits:** code `c7efb861536e065547f328bbdfc7e1b6f7087f4b`; test `400aa0a4c4a6bd10040bfe15106ea0a8d72e53b7`.
+- **CI:** pending for the new code/test commits.
+- **Deployment/empirical limits:** branch/PR #52 only; no merge/deploy, no live-feed replay or prediction test. Render build capacity remains constrained.
+- **Safety:** PAPER ONLY; no broker/orders, secrets or Telegram test messages.
