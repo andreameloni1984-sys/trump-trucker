@@ -256,6 +256,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             ("https://news.whitehouse.gov/feed/", "WHITE_HOUSE_RSS"),
             ("https://whitehouse.gov.evil.example/feed", "PUBLIC_RSS"),
             ("https://evil.example/?next=whitehouse.gov", "PUBLIC_RSS"),
+            ("https://[invalid/feed", "PUBLIC_RSS"),
             ("http://www.whitehouse.gov/feed/", "PUBLIC_RSS"),
         )
         for feed_url, expected in cases:
