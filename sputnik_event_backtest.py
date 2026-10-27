@@ -65,12 +65,28 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
     target = entry - risk * target_r if side == "SHORT" else entry + risk * target_r
 
     # The entry bar is observable after an open fill; include it in stop/target checks.
+    # On later bars, account for gaps: stop orders fill at the worse opening price;
+    # target limits conservatively fill at the target, not at a more favorable open.
     end_index = min(len(candles), entry_index + max_holding_bars)
     exit_index = entry_index
     exit_price = None
     status = None
     for index in range(entry_index, end_index):
         candle = candles[index]
+        opening = candle["open"]
+        if index > entry_index:
+            if side == "SHORT" and opening >= stop:
+                exit_price, status = opening, "STOP_GAP"
+            elif side == "SHORT" and opening <= target:
+                exit_price, status = target, "TARGET_GAP"
+            elif side == "LONG" and opening <= stop:
+                exit_price, status = opening, "STOP_GAP"
+            elif side == "LONG" and opening >= target:
+                exit_price, status = target, "TARGET_GAP"
+            if status is not None:
+                exit_index = index
+                break
+
         stop_hit = candle["high"] >= stop if side == "SHORT" else candle["low"] <= stop
         target_hit = candle["low"] <= target if side == "SHORT" else candle["high"] >= target
         if stop_hit and target_hit:
