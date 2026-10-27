@@ -143,8 +143,8 @@ class SputnikEventBacktestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "same_time_atr_event.csv"
             path.write_text(
-                "event_id,event_time,available_at,side,atr,atr_time,source_url\\n"
-                f"evt-1,{event_time},{event_time},SHORT,1.0,{event_time},https://example.com/article/1\\n",
+                "event_id,event_time,available_at,side,atr,atr_time,source_url\n"
+                f"evt-1,{event_time},{event_time},SHORT,1.0,{event_time},https://example.com/article/1\n",
                 encoding="utf-8",
             )
             with self.assertRaisesRegex(ValueError, "strictly before"):
