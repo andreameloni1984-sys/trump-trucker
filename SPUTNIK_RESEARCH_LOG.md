@@ -203,3 +203,5 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Operational path:** public item text → evidence gate → trigger-count ranking → conditional hypothesis → independent price/volume confirmation. This affects ranking metadata only; it does not confirm a trade.
 - **Code commit:** 9dc9de120f45be2caf3435fce605b4bfe0eaf87e. **Test commit:** 50d5642865547bd3ef82f7a2cfcb7ba93eeb7984.
 - **CI/deployment/limits:** CI is expected to run from the PR branch and will be recorded after checking Actions. No merge/deploy; Render build minutes remain exhausted. Synthetic text regression only; no news replay, event study, or OOS performance claim. PAPER ONLY.
+
+- **CI correction (2026-10-28):** first run [40602923648](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40602923648) failed because the new test expected singular `tariff` to match the explicitly listed plural `tariffs`. Whole-term matching correctly distinguishes them; corrected the assertion to expect `tariffs` and continue rejecting the fragment `trade war` inside `trade warrior`. Re-run pending.
