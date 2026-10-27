@@ -249,10 +249,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self, _fetch_page):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
@@ -278,3 +274,7 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+
+if __name__ == "__main__":
+    unittest.main()
