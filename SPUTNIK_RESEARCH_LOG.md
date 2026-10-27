@@ -183,3 +183,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI PASS on corrected code head:** ranking [run 40483767939](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40483767939) and Telegram menu [run 40483767930](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40483767930).
 - **Deployment:** PR #53 branch only, no merge/deploy; Render workspace not selected in this runtime.
 - **Empirical limit:** strict date schema only; no filing replay or out-of-sample market validation.
+
+## 2026-10-27 — Recover the accepted Sputnik 0–100 scoring rubric from the 2026-10-06 conversation
+
+- **Historical source:** prior conversation record dated 2026-10-06 02:35 UTC. No independent Library document with these exact weights was found, so treat this as the user's accepted implementation specification, not as a separately sourced research finding.
+- **Recovered weights (sum 100):** source quality 25; political/documentary event strength 20; independent confirmations 15; documented company/sector relationship 15; timeliness 10; sector impact 10; social signal 5.
+- **Recorded penalties:** unverifiable, duplicate, stale, contradictory, or undocumented evidence must reduce or disqualify a candidate. Unsupported relationship/sector/social evidence stays at zero rather than being inferred.
+- **Implementation mapping:** `sputnik_ranking.py` → SEC/Form 4 source validation, filing identity/deduplication, chronology checks, component scoring and `/ranking` / “Trump ordina” output; regression coverage in `tests/test_sputnik_ranking.py`. PR #53 contains the current implementation work.
+- **CI evidence:** PR #53 records passing ranking and Telegram-menu tests on the tested code commit `cb79a0f680aec16a82b41d4248631515c0bd7071`; later branch changes must be checked independently before merge.
+- **Deployment:** PR #53 remains open; no merge/deploy. Render's latest known successful Sputnik deployment is commit `9e5204bf7d9074dba27637013b7d98933a91e733`; the later attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed. The live service is not using this PR's code.
+- **Empirical limit:** the rubric is an accepted scoring specification, not a validated probability model. No historical replay, calibration, or out-of-sample profitability result is claimed.
+- **Terminology:** this recovered item is a 100-point score rubric; it is not evidence of a separate catalog containing 100 individual lessons.
+
