@@ -167,6 +167,7 @@ def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str
         f"Ipotesi: {plan.get('if_then') or plan.get('event', 'catalizzatore rilevato')}",
         f"🔄 Scenario alternativo: {plan.get('alternative') or 'una reazione opposta del mercato può invalidare la direzione ipotizzata.'}",
         f"❌ INVALIDAZIONE: {plan.get('invalidation', 'annuncio smentito o reazione del prezzo incompatibile con lo scenario')}",
+        f"🛑 Annulla lo scenario se: {plan.get('invalidation', 'il catalizzatore viene smentito o il prezzo invalida la direzione')}",
         "",
         "━━━━━━━━━━━━━━━━━━",
         "🧠 4. DECISIONE SPUTNIK",
