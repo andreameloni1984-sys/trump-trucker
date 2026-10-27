@@ -104,3 +104,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 — Reject ambiguous publication timestamps
+
+- **Finding:** `_parse_public_item_timestamp()` assigned UTC to ISO-8601/RFC-822 timestamps without an explicit offset; `_valid_public_item_timestamp()` also treated a naive validation clock as UTC. Both can distort point-in-time freshness.
+- **Implemented:** reject publication timestamps with missing/undefined UTC offset and fail closed when the validation clock is naive.
+- **Files:** `trump_tracker.py`; `tests/test_sputnik_item_intelligence.py`.
+- **Regression tests:** naive ISO timestamp, naive RFC-822 timestamp, naive validation clock; also moved the unittest entrypoint to the end so the later backlog regression test is discoverable when running the module directly.
+- **Commit:** code `92f65942fd20dbb4451eb61f00bf210fd57ac7ed`; tests `62bb82aebdcbce8f6eb8c568e18f110c6e3c440b`.
+- **CI:** pending PR-triggered workflows; no pass claimed yet.
+- **Deployment:** research branch only; no merge/deploy. Render pipeline minutes are exhausted.
+- **Empirical validation:** no live-feed replay or prediction study performed. This is timestamp-integrity hardening, not a trading edge.
+- **Safety:** PAPER ONLY; no broker, orders, secrets or Telegram test messages.
