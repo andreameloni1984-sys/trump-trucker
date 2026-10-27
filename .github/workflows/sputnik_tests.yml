@@ -15,6 +15,7 @@ on:
       - "sputnik_action_reaction.py"
       - "sputnik_event_backtest.py"
       - "tests/test_sputnik_event_backtest.py"
+      - "SPUTNIK_RESEARCH_LOG.md"
       - "tests/test_trump_tracker_form4.py"
       - "tests/test_sputnik_action_reaction.py"
       - "sputnik_action_reaction.py"
