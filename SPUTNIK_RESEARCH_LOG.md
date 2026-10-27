@@ -121,3 +121,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Implemented on `feat/oil-deescalation-watch-20261027`:** `sputnik_decision_engine.py` now recognizes explicit standalone endorsement/campaign phrasing when no strict market catalyst was found and returns a clear no-market-catalyst result instead of a generic sector watchlist. It instructs the pipeline to archive without a trading alert unless concrete policy/economic evidence exists.
 - **Regression test:** added a test asserting an endorsement does not create LONG/SHORT conditional plans.
 - **Limits/status:** test added but not executed in this environment. The feature branch and PR #45 are not production deployment; Telegram behavior changes only after review/merge/deploy and verification.
+
+
+## 2026-10-27 — Flexible early-entry mode instead of mandatory breakout
+
+- **User feedback:** requiring a fully confirmed technical breakout can make a useful news-driven signal arrive too late.
+- **Implemented on `feat/oil-deescalation-watch-20261027`:** the decision message now explicitly supports an exploratory early entry when the catalyst is credible, with reduced exposure (about one-third of normal size), a predefined stop, and optional scaling only if confirmation follows. A breakout raises confidence but is not a universal prerequisite. The WTI diplomatic-de-escalation scenario now permits an exploratory SHORT before the intraday-low break instead of forbidding anticipation.
+- **Regression test:** added a test for the flexible-mode wording and reduced-size guidance.
+- **Risk boundary:** this is an early hypothesis, not certainty. Never invent entry/SL/TP values without a fresh quote and volatility measure; invalidation and physical supply risks still apply. PAPER ONLY; no orders sent.
+- **Verification/deployment:** test added but not run here. Feature branch / PR #45 is not confirmed live in Telegram; deployment remains unverified.
