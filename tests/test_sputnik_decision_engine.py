@@ -93,6 +93,13 @@ class ConditionalTradePlanTests(unittest.TestCase):
             [],
         )
 
+    def test_negation_adjacent_to_punctuation_still_blocks_catalyst(self):
+        # The em dash prevents a space-based " never " check from seeing the negation.
+        self.assertEqual(
+            conditional_plans("The President never—according to officials—imposed new tariffs on imports."),
+            [],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
