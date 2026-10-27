@@ -1,3 +1,23 @@
+## 2026-10-27 17:32 UTC — Require item-specific source URLs in the event ledger
+
+### CLZ26 hypothesis audit before the code change
+- Rechecked the conditional SHORT hypothesis recorded for 2026-10-27 14:16:51 UTC: trigger 100.50, reference 101.45, stop 101.55, TP1 98.25, TP2 97.15. No order was placed.
+- Latest accessible Farmbucks snapshot during this check identified NYMEX CLZ26 at $100.09/bbl at 2026-10-27 12:05 UTC-5 (17:05 UTC), with session range $99.77–$102.82; it explicitly says “Delayed 10 min” and “Updated 19 min ago”. Source: https://farmbucks.com/futures/energy/wti-crude
+- Oilprice.com displayed Dec 2026 CLZ26 at $100.03 with range $99.77–$102.82 and table time “11:10” without a documented timezone: https://oilprice.com/futures/wti/
+- These snapshots put the displayed price below $100.50, but do not provide the first-crossing time or timestamped ordering of the session high/low. The displayed low remains above TP1/TP2, but this is not a complete post-hypothesis path. Final classification remains **NON-VERIFIABLE** because reliable post-hypothesis intraday OHLCV is missing; do not infer stop/target from session extrema. Farmbucks is explicitly delayed and its displayed data was already 19 minutes old at retrieval.
+- PR #45 was open/unmerged/mergeable before this change. Latest verified pre-change PR-head workflow: [40544228601](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40544228601), command `python -m unittest discover -s tests -p "test_*.py" -v`, **121 tests, OK**. Job log confirms the tests step completed successfully.
+
+### One code improvement — reject generic event sources
+- **Finding:** `_validate_source_url()` accepted `https://example.com/` and feed endpoints such as `/feed` or `/rss.xml` as if they were individual event permalinks. A manually supplied event ledger could therefore satisfy the HTTPS check without pointing to a source item that can substantiate the publication timestamp.
+- **Implemented in `sputnik_event_backtest.py`:** reject root/homepage and common feed endpoints unless the URL contains a recognized item-identifier query parameter (`id`, `post_id`, `article_id`, `status_id`, etc.). The original supplied URL is still preserved; canonicalization remains separate.
+- **Regression in `tests/test_sputnik_event_backtest.py`:** reject homepage, `/feed`, and `/rss.xml` URLs; permit a root URL with explicit `post_id=123`. All fixture values are synthetic.
+- **Commits so far:** implementation `6193d56cbcf3e17a73a4bc597a543e6687abed0f`; initial test commit `4c9992370dee7b3cbb9193981820e28dfa2a6aec`; fixture correction `73b175d97b8221122de6fe04f9a31675a7091c2f`.
+- **Test evidence:** code-only workflow [40551881429](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40551881429) passed with the existing suite. Workflow [40551899045](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40551899045) failed on the initial test commit: the new CSV fixture used double-escaped newline sequences, causing the CSV header to parse as one field (122 tests ran; 3 failures and 1 error in the new regression). The fixture was corrected in `73b175d97b8221122de6fe04f9a31675a7091c2f`; at the time of this log update, a post-correction workflow result is not yet visible, so no passing result is claimed for the corrected test revision.
+- **Remaining blocker:** no verified timestamped 1-minute/5-minute CLZ26 bars after the hypothesis and no source-linked event ledger with exact publication/availability times. No real-event comparison or strategy edge is claimed.
+- **Safety:** no orders, broker changes, Telegram test messages, or production deployment.
+
+---
+
 ## 2026-10-27 15:24 UTC — CLZ26 hypothesis audit and explicit execution-cost components
 
 ### Previously formulated WTI hypothesis — outcome check
