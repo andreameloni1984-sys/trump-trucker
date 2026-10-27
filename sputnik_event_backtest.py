@@ -620,6 +620,24 @@ def _non_overlapping_paired_differences(results: list[dict[str, Any]]) -> tuple[
     return selected_differences, excluded_for_overlap, missing_timestamps
 
 
+def _exact_two_sided_sign_test_p_value(differences: list[float]) -> float | None:
+    """Return an exact two-sided sign-test p-value, excluding tied paired differences.
+
+    This tests the null that either strategy is equally likely to win among non-tied
+    pairs. It does not test return magnitude or profitability, and independence is still
+    an assumption; the non-overlapping sample is only a sensitivity diagnostic.
+    """
+    non_ties = [value for value in differences if value != 0]
+    n = len(non_ties)
+    if n == 0:
+        return None
+    early_wins = sum(value > 0 for value in non_ties)
+    breakout_wins = n - early_wins
+    tail_count = min(early_wins, breakout_wins)
+    tail_probability = sum(math.comb(n, k) for k in range(tail_count + 1)) / (2 ** n)
+    return round(min(1.0, 2.0 * tail_probability), 8)
+
+
 def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any]:
     """Summarize paired R outcomes without treating unscored trades as zero."""
     paired = []
@@ -650,6 +668,7 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
     non_overlap_differences, non_overlap_excluded, non_overlap_missing_times = _non_overlapping_paired_differences(results)
     non_overlap_mean = statistics.mean(non_overlap_differences) if non_overlap_differences else None
     non_overlap_median = statistics.median(non_overlap_differences) if non_overlap_differences else None
+    non_overlap_sign_test_p = _exact_two_sided_sign_test_p_value(non_overlap_differences)
     return {
         "events_total": len(results),
         "early_scored_trade_windows": early_windows,
@@ -665,6 +684,8 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         "non_overlapping_early_better_count": sum(value > 0 for value in non_overlap_differences),
         "non_overlapping_breakout_better_count": sum(value < 0 for value in non_overlap_differences),
         "non_overlapping_ties_count": sum(value == 0 for value in non_overlap_differences),
+        "non_overlapping_sign_test_non_ties": sum(value != 0 for value in non_overlap_differences),
+        "non_overlapping_sign_test_two_sided_p_value": non_overlap_sign_test_p,
         "unpaired_or_unscored_events": len(results) - len(paired),
         "mean_early_r_paired": round(mean_early, 4) if mean_early is not None else None,
         "mean_breakout_r_paired": round(mean_breakout, 4) if mean_breakout is not None else None,
@@ -683,6 +704,12 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
             "Overlapping scored trade windows are counted separately for each strategy. "
             "When counts are non-zero, event outcomes are not independent; interpret aggregate "
             "averages cautiously and use the non-overlapping sensitivity figures or an event-clustered analysis."
+        ),
+        "non_overlapping_sign_test_note": (
+            "Exact two-sided binomial sign-test p-value among non-tied paired differences; ties are excluded. "
+            "It tests win frequency, not return magnitude or profitability, and assumes independent pairs. "
+            "Chronological non-overlap reduces direct trade-window overlap but does not guarantee independence; "
+            "do not interpret the p-value as proof of a tradable edge."
         ),
         "non_overlapping_sensitivity_note": (
             "The non-overlapping sensitivity sample is selected chronologically and excludes a paired event "
