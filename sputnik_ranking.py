@@ -6,6 +6,7 @@ infers private transactions, motives, or undocumented relationships.
 
 from __future__ import annotations
 
+import re
 from collections import defaultdict
 from datetime import date, datetime, timezone
 from typing import Any
@@ -16,15 +17,22 @@ WATCH_THRESHOLD = 55
 
 
 def _parse_date(value: str) -> date | None:
-    if not value:
+    """Parse an SEC calendar-date field strictly; never salvage a valid prefix.
+
+    Transaction and filing dates are date-only fields, not timestamps. A caller
+    must normalize any source timestamp explicitly before ranking; accepting a
+    timestamp or trailing garbage here can silently move an event across an
+    as-of boundary.
+    """
+    if not isinstance(value, str):
+        return None
+    text = value.strip()
+    if not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", text):
         return None
     try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00")).date()
+        return date.fromisoformat(text)
     except ValueError:
-        try:
-            return date.fromisoformat(value[:10])
-        except ValueError:
-            return None
+        return None
 
 
 def _recency_score(transaction_date: str, today: date | None = None) -> int:
