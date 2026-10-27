@@ -443,7 +443,7 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Implemented:** extend only the canonical deduplication key with common click IDs (`msclkid`, `dclid`, `ttclid`, `twclid`, `srsltid`, `yclid`, `igshid`, `mkt_tok`, `vero_id`, `vero_conv`). The original `source_url` remains untouched for provenance; remaining query parameter order is preserved.
 - **Files:** `sputnik_event_backtest.py`; `tests/test_sputnik_event_backtest.py`.
 - **Regression:** two rows with the same article URL but different Microsoft/Google-search click IDs, host casing, trailing slash and fragment must be rejected as duplicate canonical sources.
-- **CI:** awaiting the new branch run; no local test execution is claimed.
+- **CI:** initial run 40530933881 failed because the fixture encoded literal backslash-n separators, so the CSV header parsed as one field; corrected in test commit `fe08204af8be96dc9ff42c939396e0ec6894dea2`. Follow-up run [40531033411](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40531033411) passed: 119 tests, OK.
 - **Operational path:** event CSV → `load_events_csv` → `_canonical_source_url` → duplicate-source gate before event backtest.
 - **Deployment:** PR #45 branch only; Render auto-deploy targets `main`, and no deploy was triggered.
 - **Empirical validation:** source deduplication only; no WTI return or predictive-edge claim.
