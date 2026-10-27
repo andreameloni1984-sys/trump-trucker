@@ -453,7 +453,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
             })
         tied_summary = summarize_comparison_results(all_ties)
         self.assertEqual(tied_summary["non_overlapping_sign_test_non_ties"], 0)
-        self.assertIsNone(tied_summary["non_overlapping_sign_test_two_sided_p_value"))
+        self.assertIsNone(tied_summary["non_overlapping_sign_test_two_sided_p_value"])
 
     def test_event_ledger_requires_source_url_and_timezone_aware_times(self):
         with tempfile.TemporaryDirectory() as directory:
