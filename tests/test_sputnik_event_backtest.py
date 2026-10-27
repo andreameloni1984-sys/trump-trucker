@@ -364,8 +364,8 @@ class SputnikEventBacktestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "events.csv"
             path.write_text(
-                "event_id,event_time,side,atr,atr_time,source_url\\n"
-                f"evt-1,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,{original_url}\\n",
+                "event_id,event_time,side,atr,atr_time,source_url\n"
+                f"evt-1,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,{original_url}\n",
                 encoding="utf-8",
             )
             ledger = load_events_csv(path)
