@@ -7,6 +7,7 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("The President announces new tariffs on imports.")
         self.assertTrue(rows)
         self.assertEqual(rows[0]["candidate"], "ORO (XAU/USD)")
+        self.assertFalse(any(row["id"] == "trade_deescalation" for row in rows))
 
     def test_generic_mention_is_not_enough(self):
         self.assertEqual(conditional_plans("A speech mentioned tariffs and trade."), [])

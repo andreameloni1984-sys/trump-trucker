@@ -133,3 +133,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Regression:** existing `test_tariff_action` is the positive control for “announces new tariffs”; the new word-fragment negative test remains.
 - **CI:** rerun pending on the corrective commit. The previous PR #55 run failed at `test_tariff_action` and `test_message_has_confirmation_and_invalidation` because no catalyst was matched; do not treat that run as passing.
 - **Deployment:** no merge/deploy. PAPER ONLY; no live alert delivery or market edge is claimed.
+
+
+## 2026-10-27 — Keep new-tariff announcements separate from trade de-escalation
+
+- **Review finding:** the first word-boundary correction added `tariffs` to both escalation and de-escalation topic vocabularies. A headline announcing new tariffs must not match a trade-de-escalation rule just because both mention tariffs.
+- **Correction:** keep the plural `tariffs` and `import duties` in the escalation rule only; trade de-escalation continues to require its agreement/pause language. The existing tariff test now asserts that a new-tariff headline does not produce a `trade_deescalation` row.
+- **CI:** the first run on commit `2f7c4ead73183db262fe75759665fec49e43027d` failed because whole-word matching exposed missing plural vocabulary. Commit `d76b48c62a653129c4622cb500ff33b333e6fb69` added that vocabulary; this follow-up narrows the de-escalation rule and adds an explicit regression assertion. CI for this head is pending.
+- **Safety/limits:** no merge/deploy, no real orders. Keyword rules are not a substitute for source verification or price/volume confirmation; no historical or OOS performance claim.
