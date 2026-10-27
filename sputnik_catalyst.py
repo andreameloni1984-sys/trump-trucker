@@ -124,7 +124,7 @@ _DIRECTION_RULES = [
     {
         "id": "iran_diplomatic_deescalation",
         "domains": {"ENERGY"},
-        "patterns": [r"\\b(iran.*(agreement|deal|ceasefire)|((agreement|deal|ceasefire).*)iran|diplomatic breakthrough.*iran|de-escalation.*iran|deescalation.*iran|sanctions eased.*iran|sanctions lifted.*iran)\\b"],
+        "patterns": [r"\b(iran.*(agreement|deal|ceasefire)|((agreement|deal|ceasefire).*)iran|diplomatic breakthrough.*iran|de-escalation.*iran|deescalation.*iran|sanctions eased.*iran|sanctions lifted.*iran)\b"],
         "bias": {"WTI": "SHORT_BIAS", "BRENT": "SHORT_BIAS"},
         "reason": "credible Iran diplomatic de-escalation may reduce the geopolitical oil risk premium; supply-escalation risk remains the invalidation scenario",
     },
