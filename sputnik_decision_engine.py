@@ -147,8 +147,9 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
             f"✅ Conferma richiesta: {plan['confirmation']}",
             f"🛑 Annulla lo scenario se: {plan['invalidation']}",
             "",
-            "In parole semplici: prepara lo strumento, ma entra solo se la notizia è confermata e il mercato dà il segnale richiesto.",
-            "Prezzi, stop e obiettivi non vengono inventati: servono quotazioni aggiornate.",
+            "⚡ MODALITÀ ELASTICA: non serve aspettare sempre il breakout perfetto.",
+            "Se il catalizzatore è credibile, valutare un ingresso esplorativo anticipato con size ridotta (circa 1/3 della size normale) e stop già definito; aggiungere esposizione solo se arrivano conferme.",
+            "Il breakout è una conferma che aumenta la confidenza, non un requisito universale. Se mancano quotazione aggiornata e volatilità, niente livelli numerici inventati.",
         ])
         return "\n".join(lines)
 
