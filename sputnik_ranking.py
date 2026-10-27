@@ -46,6 +46,17 @@ def _recency_score(transaction_date: str, today: date | None = None) -> int:
     return 0
 
 
+
+def _filing_chronology_is_valid(item: dict[str, Any], as_of: date) -> bool:
+    """Require a complete, plausible Form 4 chronology for an as-of ranking."""
+    tx_date = _parse_date(str(item.get("transaction_date") or ""))
+    filing_date = _parse_date(str(item.get("filing_date") or ""))
+    if tx_date is None or filing_date is None:
+        return False
+    # A transaction cannot be disclosed before it occurred, and a historical
+    # score must not use a transaction or filing that is still in the future.
+    return tx_date <= filing_date <= as_of
+
 def disclosure_lag(transaction_date: str, filing_date: str) -> int | None:
     """Return calendar days between the documented transaction and filing dates."""
     tx = _parse_date(transaction_date)
@@ -155,11 +166,13 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     primary-source score. Unsupported relationship, sector and social points remain zero.
     """
 
+    as_of = today or datetime.now(timezone.utc).date()
     valid = [
         item for item in items
         if item.get("action") == "ACQUISTATO"
         and item.get("source_kind") == "FORM4_TRANSACTION"
         and _is_primary_sec_form4_url(item.get("source_url"))
+        and _filing_chronology_is_valid(item, as_of)
     ]
     if not valid:
         return {}
@@ -177,7 +190,7 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     event_strength = 20       # Historical 100-point rubric: documented event.
     confirmations = min(15, distinct_filings * 5)
     documented_relationship = 0
-    recency = _recency_score(str(latest.get("transaction_date") or ""), today)
+    recency = _recency_score(str(latest.get("transaction_date") or ""), as_of)
     sector_impact = 0
     social_confirmation = 0
 
@@ -240,6 +253,7 @@ def rank_purchase_candidates(
     limit: int = 5,
     today: date | None = None,
 ) -> list[dict[str, Any]]:
+    as_of = today or datetime.now(timezone.utc).date()
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for item in transactions:
         if item.get("action") != "ACQUISTATO":
@@ -259,7 +273,7 @@ def rank_purchase_candidates(
         grouped[key].append(item)
 
     ranked = [
-        score_purchase_candidate(items, today=today)
+        score_purchase_candidate(items, today=as_of)
         for items in grouped.values()
     ]
     ranked = [item for item in ranked if item]
