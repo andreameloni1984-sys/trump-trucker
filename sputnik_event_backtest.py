@@ -443,6 +443,56 @@ def _overlapping_scored_trade_pairs(results: list[dict[str, Any]], strategy_key:
     return len(windows), overlapping_pairs
 
 
+
+def _non_overlapping_paired_differences(results: list[dict[str, Any]]) -> tuple[list[float], int, int]:
+    """Build a chronological sensitivity sample with no cross-event trade-window overlap.
+
+    An event is retained only when both strategies have scored P&L and valid timezone-aware
+    entry/exit timestamps. If either trade window overlaps any window from a previously retained
+    event, the whole event pair is excluded. This deterministic greedy filter is a sensitivity
+    diagnostic, not a guarantee of statistical independence.
+    """
+    candidates = []
+    missing_timestamps = 0
+    for index, result in enumerate(results):
+        early = result.get("early", {})
+        breakout = result.get("breakout", {})
+        early_r = early.get("pnl_r")
+        breakout_r = breakout.get("pnl_r")
+        if not (_is_scored_pnl(early_r) and _is_scored_pnl(breakout_r)):
+            continue
+        try:
+            event_time = _dt(result.get("event_time", ""))
+            windows = []
+            for trade in (early, breakout):
+                start = _dt(trade.get("entry_time", ""))
+                end = _dt(trade.get("exit_time", ""))
+                if end < start:
+                    raise ValueError("trade exit precedes entry")
+                windows.append((start, end))
+        except (TypeError, ValueError):
+            missing_timestamps += 1
+            continue
+        candidates.append((event_time, index, float(early_r) - float(breakout_r), windows))
+
+    candidates.sort(key=lambda item: (item[0], item[1]))
+    selected_differences = []
+    accepted_windows = []
+    excluded_for_overlap = 0
+    for _, _, difference, windows in candidates:
+        overlaps = any(
+            start < prior_end and prior_start < end
+            for start, end in windows
+            for prior_start, prior_end in accepted_windows
+        )
+        if overlaps:
+            excluded_for_overlap += 1
+            continue
+        selected_differences.append(difference)
+        accepted_windows.extend(windows)
+    return selected_differences, excluded_for_overlap, missing_timestamps
+
+
 def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any]:
     """Summarize paired R outcomes without treating unscored trades as zero."""
     paired = []
@@ -470,6 +520,9 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
     median_difference = statistics.median(differences) if differences else None
     early_windows, early_overlaps = _overlapping_scored_trade_pairs(results, "early")
     breakout_windows, breakout_overlaps = _overlapping_scored_trade_pairs(results, "breakout")
+    non_overlap_differences, non_overlap_excluded, non_overlap_missing_times = _non_overlapping_paired_differences(results)
+    non_overlap_mean = statistics.mean(non_overlap_differences) if non_overlap_differences else None
+    non_overlap_median = statistics.median(non_overlap_differences) if non_overlap_differences else None
     return {
         "events_total": len(results),
         "early_scored_trade_windows": early_windows,
@@ -477,6 +530,14 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         "overlapping_trade_pairs_early": early_overlaps,
         "overlapping_trade_pairs_breakout": breakout_overlaps,
         "paired_scored_events": len(paired),
+        "non_overlapping_paired_events": len(non_overlap_differences),
+        "non_overlapping_events_excluded_for_overlap": non_overlap_excluded,
+        "non_overlapping_events_missing_timestamps": non_overlap_missing_times,
+        "non_overlapping_mean_early_minus_breakout_r": round(non_overlap_mean, 4) if non_overlap_mean is not None else None,
+        "non_overlapping_median_early_minus_breakout_r": round(non_overlap_median, 4) if non_overlap_median is not None else None,
+        "non_overlapping_early_better_count": sum(value > 0 for value in non_overlap_differences),
+        "non_overlapping_breakout_better_count": sum(value < 0 for value in non_overlap_differences),
+        "non_overlapping_ties_count": sum(value == 0 for value in non_overlap_differences),
         "unpaired_or_unscored_events": len(results) - len(paired),
         "mean_early_r_paired": round(mean_early, 4) if mean_early is not None else None,
         "mean_breakout_r_paired": round(mean_breakout, 4) if mean_breakout is not None else None,
@@ -494,7 +555,13 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         "overlap_diagnostic_note": (
             "Overlapping scored trade windows are counted separately for each strategy. "
             "When counts are non-zero, event outcomes are not independent; interpret aggregate "
-            "averages cautiously and use event-clustered or non-overlapping sensitivity analysis."
+            "averages cautiously and use the non-overlapping sensitivity figures or an event-clustered analysis."
+        ),
+        "non_overlapping_sensitivity_note": (
+            "The non-overlapping sensitivity sample is selected chronologically and excludes a paired event "
+            "if either strategy's trade window overlaps any trade window from a previously retained event. "
+            "Events with unscored P&L are not eligible; paired events with missing/invalid timestamps are counted "
+            "separately. This reduces direct window overlap but does not guarantee statistical independence."
         ),
     }
 
