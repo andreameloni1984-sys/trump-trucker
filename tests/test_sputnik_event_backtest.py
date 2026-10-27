@@ -112,6 +112,45 @@ class SputnikEventBacktestTests(unittest.TestCase):
         result = run_backtest(data, "2026-01-02T00:00:00+00:00", "LONG", 1.0)
         self.assertEqual(result["early"]["status"], "NO_POST_AVAILABILITY_CANDLE")
 
+    def test_truncated_forward_window_is_unscored_instead_of_marked_to_data_end(self):
+        data = candles([
+            (100, 100.5, 99.5, 100, 1000),
+            (100, 100.5, 99.5, 100, 1000),
+        ])
+        result = run_backtest(
+            data,
+            "2025-12-31T23:59:00+00:00",
+            "LONG",
+            1.0,
+            max_holding_bars=3,
+        )
+        early = result["early"]
+        self.assertEqual(early["status"], "INSUFFICIENT_FORWARD_DATA")
+        self.assertIsNone(early["pnl_r"])
+        self.assertIsNone(early["exit"])
+        self.assertNotIn("exit_time", early)
+        self.assertEqual(early["available_holding_bars"], 2)
+        self.assertEqual(early["required_holding_bars"], 3)
+
+        summary = summarize_comparison_results([result])
+        self.assertEqual(summary["paired_scored_events"], 0)
+        self.assertEqual(summary["unscored_early_status_counts"], {"INSUFFICIENT_FORWARD_DATA": 1})
+
+    def test_full_holding_window_is_scored_as_time_exit_even_at_file_end(self):
+        data = candles([
+            (100, 100.5, 99.5, 100, 1000),
+            (100, 100.5, 99.5, 100.2, 1000),
+        ])
+        result = run_backtest(
+            data,
+            "2025-12-31T23:59:00+00:00",
+            "LONG",
+            1.0,
+            max_holding_bars=2,
+        )
+        self.assertEqual(result["early"]["status"], "TIME_EXIT")
+        self.assertEqual(result["early"]["pnl_r"], 0.2)
+
     def test_future_atr_timestamp_is_rejected(self):
         data = candles([(100, 101, 99, 100, 1000)])
         with self.assertRaisesRegex(ValueError, "strictly before event time"):
