@@ -176,3 +176,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI:** pending for this latest change at log creation.
 - **Deployment:** PR #54 branch only; no merge/deploy. Last Render live commit still needs a fresh deployment check before any live-state claim.
 - **Empirical limits:** deterministic regression only; no historical headline replay or out-of-sample market validation. Keyword rules remain limited NLP. PAPER/DEMO ONLY.
+
+
+## Recovered historical records — 2026-10-27
+- **2026-10-03 — architecture proposal:** event clustering, deduplication, source weighting and evidence confidence; Sputnik remains public intelligence and Gagarin remains the separate market/trading engine. This is a historical design note, not proof that all stages were wired end-to-end.
+- **2026-10-03 — TextExtractor regex finding:** historical conversation records the suspected whitespace-regex bug in re.sub(r"\\s+", ...), but the repository write was blocked at that time. It was not treated as fixed by this entry.
+- **2026-10-05 — transaction registry:** historical work recorded ACQUISTATO/VENDUTO rows with title, quantity, price, effective transaction date, subject, SEC form and original SEC document; Form 144 was explicitly not treated as an executed sale.
+- **2026-10-06 — ranking rubric:** historical conversation records a 0–100 Form 4 ranking, with one filing unable to reach COMPRA and at least three distinct filings plus score >=75 required. Exact weights are recorded in PR #53 with a caveat: the historical accepted specification is not an empirical calibration, and current main still needs reconciliation.
+- **Session 9, 2026-10-20 — source-grounded research priorities:** preserve publication/availability/decision times; study chokepoints and freight against a price/volatility baseline; separate macro channels; keep controversial theses as opinions until reproducible evidence exists. Source: Library file “Registro Studio IBKR - aggiornato 2026-10-20 sessione 9.md”.
+- **Current code mapping:** mixed-catalyst abstention is implemented only on PR #54 in sputnik_catalyst.py, tested in tests/test_sputnik_item_intelligence.py, and passed item-intelligence run 40559759406 plus Telegram-menu run 40559759468 on the tested branch head. No merge/deploy and no historical market replay.
