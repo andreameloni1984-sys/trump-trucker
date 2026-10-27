@@ -60,6 +60,8 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         item = first[0]
         self.assertEqual(item["title"], "President announces new tariffs on China")
         self.assertEqual(item["published"], "Mon, 19 Oct 2026 06:00:00 GMT")
+        self.assertEqual(item["event_time"], "2026-10-19T06:00:00Z")
+        self.assertEqual(item["available_at"], "2026-10-19T06:01:00Z")
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
@@ -126,6 +128,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "text": "New tariffs on imports were announced.",
             "url": "https://example.gov/tariffs",
             "published": "2026-10-26T10:00:00Z",
+            "available_at": "2026-10-26T10:00:00Z",
             "source": "WHITE_HOUSE",
             "domains": ["TRADE_POLICY"],
         }]
@@ -178,6 +181,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "text": "New tariffs were announced.",
                 "url": "https://example.gov/news/whole",
                 "published": "2026-10-27T09:30:00Z",
+                "available_at": "2026-10-27T09:30:00Z",
                 "source": "WHITE_HOUSE",
                 "domains": ["TRADE_POLICY"],
             },
@@ -188,6 +192,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "text": "New tariffs were announced.",
                 "url": "https://example.gov/news/fractional",
                 "published": "2026-10-27T09:30:00.500Z",
+                "available_at": "2026-10-27T09:30:00.500Z",
                 "source": "WHITE_HOUSE",
                 "domains": ["TRADE_POLICY"],
             },
@@ -207,6 +212,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "event_id": "page-1", "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
             "title": "New tariffs", "text": "new tariffs", "url": "https://example.gov/",
             "published": "2026-10-26T10:00:00Z", "domains": ["TRADE_POLICY"],
+            "available_at": "2026-10-26T10:00:00Z", "domains": ["TRADE_POLICY"],
         }]
         vague = [{
             "event_id": "evt-2", "evidence": "PUBLIC_RSS_ITEM",
@@ -231,6 +237,16 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "domains": ["TRADE_POLICY"],
         }
         self.assertTrue(trump_tracker.directional_news_candidates([base]))
+        legacy_without_availability = {**base}
+        legacy_without_availability.pop("available_at")
+        self.assertEqual(trump_tracker.directional_news_candidates([legacy_without_availability]), [])
+
+        candidates = trump_tracker.directional_news_candidates([base])
+        self.assertTrue(candidates)
+        self.assertTrue(all("event_time_utc" in row and "available_at_utc" in row and "decision_time_utc" in row for row in candidates))
+        available_at = datetime.fromisoformat(candidates[0]["available_at_utc"].replace("Z", "+00:00"))
+        decision_time = datetime.fromisoformat(candidates[0]["decision_time_utc"].replace("Z", "+00:00"))
+        self.assertLessEqual(available_at, decision_time)
 
         cases = [
             ("naive publication", {"published": now.replace(tzinfo=None).isoformat()}),
@@ -281,6 +297,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "title": "Tariff headline",
                 "url": "https://example.gov/news/1",
                 "published": "2026-10-19",
+                "available_at": "2026-10-19",
                 "domains": ["TRADE_POLICY"],
                 "text": "Tariff headline details",
             },
@@ -316,6 +333,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "source": "PUBLIC_RSS",
                 "title": f"Public event {i}",
                 "published": f"2026-10-26T06:{i:02d}:00Z",
+                "available_at": f"2026-10-26T06:{i:02d}:00Z",
                 "url": f"https://example.gov/news/{i}",
                 "domains": ["ENERGY"],
             }
@@ -336,12 +354,14 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "url": "https://example.gov/",
                 "title": "Generic homepage",
                 "published": "",
+                "available_at": "",
             },
             {
                 "event_id": "no-url",
                 "evidence": "PUBLIC_RSS_ITEM",
                 "title": "Missing permalink",
                 "published": "2026-10-26T06:00:00Z",
+                "available_at": "2026-10-26T06:00:00Z",
             },
         ]
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
@@ -383,6 +403,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "text": "A diplomatic agreement with Iran was reached.",
             "url": "https://example.gov/news/iran-agreement",
             "published": "2026-10-27T08:00:00Z",
+            "available_at": "2026-10-27T08:00:00Z",
             "source": "PUBLIC_RSS",
             "domains": ["ENERGY"],
         }]
@@ -406,6 +427,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                     "text": body,
                     "url": "https://example.gov/news/iran-talks",
                     "published": "2026-10-27T08:00:00Z",
+                    "available_at": "2026-10-27T08:00:00Z",
                     "source": "PUBLIC_RSS",
                     "domains": ["ENERGY"],
                 }]
@@ -420,6 +442,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "text": "Officials said a production cut was not announced.",
                 "url": "https://example.gov/news/oil-supply",
                 "published": "2026-10-27T08:00:00Z",
+                "available_at": "2026-10-27T08:00:00Z",
                 "source": "PUBLIC_RSS",
                 "domains": ["ENERGY"],
             },
@@ -430,6 +453,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "text": "Officials rejected the trade deal.",
                 "url": "https://example.gov/news/trade-talks",
                 "published": "2026-10-27T08:00:00Z",
+                "available_at": "2026-10-27T08:00:00Z",
                 "source": "PUBLIC_RSS",
                 "domains": ["TRADE_POLICY"],
             },
@@ -447,6 +471,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "text": "Officials announced a production cut.",
                 "url": "https://example.gov/news/oil-cut",
                 "published": "2026-10-27T08:00:00Z",
+                "available_at": "2026-10-27T08:00:00Z",
                 "source": "PUBLIC_RSS",
                 "domains": ["ENERGY"],
             },
@@ -457,6 +482,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "text": "Officials reached a trade deal.",
                 "url": "https://example.gov/news/trade-deal",
                 "published": "2026-10-27T08:00:00Z",
+                "available_at": "2026-10-27T08:00:00Z",
                 "source": "PUBLIC_RSS",
                 "domains": ["TRADE_POLICY"],
             },
@@ -477,6 +503,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "text": "Officials announced a production cut, but later confirmed supply restored.",
             "url": "https://example.gov/news/mixed-energy",
             "published": "2026-10-27T08:00:00Z",
+            "available_at": "2026-10-27T08:00:00Z",
             "source": "PUBLIC_RSS",
             "domains": ["ENERGY"],
         }
@@ -494,6 +521,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "text": "No new tariffs are planned; officials announced a rate hike.",
             "url": "https://example.gov/news/rates",
             "published": "2026-10-27T08:00:00Z",
+            "available_at": "2026-10-27T08:00:00Z",
             "source": "PUBLIC_RSS",
             "domains": ["RATES_MACRO"],
         }
