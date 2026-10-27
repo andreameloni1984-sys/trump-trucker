@@ -52,6 +52,31 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertAlmostEqual(early["gross_pnl_usd_per_contract"], 200.00)
         self.assertAlmostEqual(early["net_pnl_usd_per_contract"], 150.00)
         self.assertAlmostEqual(early["round_trip_cost_usd_per_contract"], 50.00)
+        self.assertAlmostEqual(early["gross_pnl_r"], 0.2)
+        self.assertAlmostEqual(early["round_trip_cost_r"], 0.05)
+
+    def test_summary_separates_gross_edge_from_cost_drag(self):
+        results = [{
+            "event_time": "2026-01-01T00:00:00+00:00",
+            "early": {
+                "pnl_r": 0.4, "gross_pnl_r": 0.5, "round_trip_cost_r": 0.1,
+                "entry_time": "2026-01-01T00:05:00+00:00",
+                "exit_time": "2026-01-01T00:10:00+00:00",
+            },
+            "breakout": {
+                "pnl_r": 0.1, "gross_pnl_r": 0.4, "round_trip_cost_r": 0.3,
+                "entry_time": "2026-01-01T00:10:00+00:00",
+                "exit_time": "2026-01-01T00:15:00+00:00",
+            },
+        }]
+        summary = summarize_comparison_results(results)
+        self.assertEqual(summary["paired_scored_events"], 1)
+        self.assertEqual(summary["paired_gross_scored_events"], 1)
+        self.assertAlmostEqual(summary["mean_early_minus_breakout_gross_r_paired"], 0.1)
+        self.assertAlmostEqual(summary["mean_early_minus_breakout_r"], 0.3)
+        self.assertAlmostEqual(summary["mean_early_round_trip_cost_r_paired"], 0.1)
+        self.assertAlmostEqual(summary["mean_breakout_round_trip_cost_r_paired"], 0.3)
+        self.assertAlmostEqual(summary["net_minus_gross_difference_r_paired"], 0.2)
 
     def test_execution_cost_model_rejects_invalid_cost_inputs(self):
         data = candles([(100.0, 100.5, 99.5, 100.2, 1000)])
