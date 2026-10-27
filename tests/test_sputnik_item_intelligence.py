@@ -249,6 +249,20 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
+    def test_white_house_feed_label_requires_official_https_hostname(self):
+        cases = (
+            ("https://www.whitehouse.gov/feed/", "WHITE_HOUSE_RSS"),
+            ("https://whitehouse.gov/feed/", "WHITE_HOUSE_RSS"),
+            ("https://news.whitehouse.gov/feed/", "WHITE_HOUSE_RSS"),
+            ("https://whitehouse.gov.evil.example/feed", "PUBLIC_RSS"),
+            ("https://evil.example/?next=whitehouse.gov", "PUBLIC_RSS"),
+            ("http://www.whitehouse.gov/feed/", "PUBLIC_RSS"),
+        )
+        for feed_url, expected in cases:
+            with self.subTest(feed_url=feed_url):
+                self.assertEqual(trump_tracker._public_feed_source_label(feed_url), expected)
+
+
 if __name__ == "__main__":
     unittest.main()
 
