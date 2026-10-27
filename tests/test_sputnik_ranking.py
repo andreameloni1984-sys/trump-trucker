@@ -14,7 +14,7 @@ def tx(event_id, security="ACME Common Stock", company="ACME Corp", tx_date="202
         "company": company,
         "action": "ACQUISTATO",
         "source_kind": "FORM4_TRANSACTION",
-        "source_url": f"https://www.sec.gov/Archives/edgar/data/0000000001/{event_id}/form4.xml",
+        "source_url": f"https://www.sec.gov/Archives/edgar/data/0000000001/000000000126{int(event_id[-1]) if event_id and event_id[-1].isdigit() else 1:06d}/form4.xml",
         "transaction_date": tx_date,
         "filing_date": tx_date,
     }
@@ -71,6 +71,10 @@ class RankingTests(unittest.TestCase):
             "https://www.sec.gov:444/Archives/edgar/data/0000000001/e1/form4.xml",
             "https://www.sec.gov/",
             "https://www.sec.gov/Archives/edgar/data/",
+            "https://www.sec.gov/Archives/edgar/data/not-a-cik/000000000126000001/form4.xml",
+            "https://www.sec.gov/Archives/edgar/data/1/not-an-accession/form4.xml",
+            "https://www.sec.gov/Archives/edgar/data/1/000000000126000001/index.html",
+            "https://www.sec.gov/Archives/edgar/data/1/000000000126000001/filing",
         ]
         for url in invalid_urls:
             with self.subTest(url=url):
