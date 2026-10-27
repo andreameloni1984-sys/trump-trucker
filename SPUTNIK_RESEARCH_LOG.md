@@ -202,3 +202,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 
 
 - **Additional public-data lead (2026-10-27):** found the public [getdata-finance USOIL 5-minute sample](https://github.com/getdata-finance/usoil-5m-ohlcv-commodities-historical-data), whose README states 35,882 bars from 2026-03-26 through 2026-09-25, ISO timestamps with UTC offsets, and an MIT license. The sample schema matches `datetime,open,high,low,close,volume`, making it a candidate for a pilot parser/backtest. The repository labels the instrument USOIL; it is **not verified as NYMEX CL futures**, and the meaning/provenance of its volume is not independently verified. Attempting to retrieve the full CSV through the available GitHub file connector returned empty content, and direct download was unavailable in this run. Therefore no rows were imported, validated locally, or used for a performance calculation. This is a lead, not a validated dataset.
+
+
+
+## 2026-10-27 — Preserve negative WTI prices in event simulation
+
+- **Status before change:** PR #45 was open/unmerged. The then-current head `4c8d2a1950c0d81d14ccc3ac7625769f5e3f96b7` had a successful GitHub Actions run [40471816412](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40471816412); that run predates this change.
+- **Finding:** the shared OHLCV validator intentionally permits negative prices (relevant to historical WTI futures), but `_simulate()` rejected every entry price `<= 0` as `INVALID_INPUT`. This contradicted the validator's policy and would silently exclude negative-price historical bars from performance evaluation.
+- **Implemented on `feat/oil-deescalation-watch-20261027`:** `_simulate()` now requires a finite entry and finite positive risk distance, but no longer assumes that the entry price must be positive.
+- **Regression test added:** a synthetic SHORT event at -5.0 with ATR 1.0 checks stop -4.0, target -7.0 and a target exit at 2R. These are synthetic values only, not observed market data.
+- **Verification status:** code commit `9d82d5b72f1075767fe7fb82605c1b7d13b8fd34`; test commit `69aea0c3dad1d7e1fe42352ca3633b06753eecb1`. GitHub Actions run [40479389788](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40479389788) was observed in progress; its final result must be recorded after completion. No local test run is claimed.
+- **Data/performance status:** this fix only makes the simulator compatible with negative price bars; it does not validate any source dataset. No source-linked WTI OHLCV plus news-time ledger has been assembled, and no real-event performance result is claimed. PAPER ONLY; no broker changes, orders, Telegram test messages, or deployment.
