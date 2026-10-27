@@ -113,3 +113,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Tests added:** explicit de-escalation wording maps to conditional WTI SHORT watch; generic diplomacy mention does not.
 - **Risk controls:** new attacks/physical supply interruptions invalidate the scenario; no entry, stop, target, or position size is fabricated without fresh quote/ATR data. This does not place orders.
 - **Verification status:** code and regression tests committed to the feature branch. Test suite and CI have not been run in this environment; do not describe this as production-deployed or live in Telegram until CI passes, the change is reviewed/merged, and deployment is confirmed.
+
+
+## 2026-10-27 — Suppress campaign-endorsement noise in market interpretation
+
+- **Observed input:** two TRUTH_ARCHIVE items praised/endorsed congressional candidates. Their broad topic tags included ENERGY/DEFENSE/AI_TECH, but the supplied text contained no specific policy change, contract, supply disruption, or economic catalyst.
+- **Implemented on `feat/oil-deescalation-watch-20261027`:** `sputnik_decision_engine.py` now recognizes explicit standalone endorsement/campaign phrasing when no strict market catalyst was found and returns a clear no-market-catalyst result instead of a generic sector watchlist. It instructs the pipeline to archive without a trading alert unless concrete policy/economic evidence exists.
+- **Regression test:** added a test asserting an endorsement does not create LONG/SHORT conditional plans.
+- **Limits/status:** test added but not executed in this environment. The feature branch and PR #45 are not production deployment; Telegram behavior changes only after review/merge/deploy and verification.
