@@ -518,6 +518,16 @@ def _is_scored_pnl(value: Any) -> bool:
     )
 
 
+def _trade_windows_overlap(start: datetime, end: datetime, other_start: datetime, other_end: datetime) -> bool:
+    """Treat a shared candle-open boundary as overlap because exits are only bar-timestamped.
+
+    Entry/exit timestamps identify the candle containing the fill, not its exact intrabar
+    time. If one trade's exit candle timestamp equals another trade's entry timestamp,
+    their actual execution order is unknown; the non-overlap filter must therefore fail closed.
+    """
+    return start <= other_end and other_start <= end
+
+
 def _overlapping_scored_trade_pairs(results: list[dict[str, Any]], strategy_key: str) -> tuple[int, int]:
     """Count strictly overlapping time windows among trades with scored P&L and timestamps."""
     windows = []
@@ -541,7 +551,7 @@ def _overlapping_scored_trade_pairs(results: list[dict[str, Any]], strategy_key:
     overlapping_pairs = 0
     for index, (start, end) in enumerate(windows):
         for other_start, other_end in windows[index + 1:]:
-            if start < other_end and other_start < end:
+            if _trade_windows_overlap(start, end, other_start, other_end):
                 overlapping_pairs += 1
     return len(windows), overlapping_pairs
 
@@ -584,7 +594,7 @@ def _non_overlapping_paired_differences(results: list[dict[str, Any]]) -> tuple[
     excluded_for_overlap = 0
     for _, _, difference, windows in candidates:
         overlaps = any(
-            start < prior_end and prior_start < end
+            _trade_windows_overlap(start, end, prior_start, prior_end)
             for start, end in windows
             for prior_start, prior_end in accepted_windows
         )
