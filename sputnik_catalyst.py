@@ -5,6 +5,9 @@ It deliberately produces WATCH candidates, not trade directions. No company
 or private relationship is inferred from a policy event.
 """
 from __future__ import annotations
+import re
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from typing import Any
 
 DOMAIN_INSTRUMENTS = {
@@ -122,6 +125,13 @@ _DIRECTION_RULES = [
         "reason": "possible tightening of energy supply",
     },
     {
+        "id": "iran_diplomatic_deescalation",
+        "domains": {"ENERGY"},
+        "patterns": [r"\b(iran.*(agreement|deal|ceasefire)|((agreement|deal|ceasefire).*)iran|diplomatic breakthrough.*iran|de-escalation.*iran|deescalation.*iran|sanctions eased.*iran|sanctions lifted.*iran)\b"],
+        "bias": {"WTI": "SHORT_BIAS", "BRENT": "SHORT_BIAS"},
+        "reason": "credible Iran diplomatic de-escalation may reduce the geopolitical oil risk premium; supply-escalation risk remains the invalidation scenario",
+    },
+    {
         "id": "energy_supply_easing",
         "domains": {"ENERGY"},
         "patterns": [r"\b(production increase|raises output|output increase|supply restored|ceasefire.*oil|sanctions lifted.*oil|production boost)\b"],
@@ -159,15 +169,89 @@ _DIRECTION_RULES = [
 ]
 
 
-def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) -> list[dict[str, Any]]:
-    """Map explicit, recognized public-news language to cautious directional biases.
+_NEGATED_IRAN_DEESCALATION_PATTERNS = (
+    r"\b(?:no|not|never|failed to reach|reject(?:s|ed)?|collapse[ds]?)\b.{0,60}\b(?:agreement|deal|ceasefire|de-escalation|deescalation)\b",
+    r"\b(?:agreement|deal|ceasefire)\b.{0,40}\b(?:not reached|rejected|failed|collapsed|off)\b",
+    r"\bsanctions\b.{0,40}\b(?:not lifted|not eased|remain(?:s)? in place|will remain)\b",
+)
 
-    Only dated individual items with a URL and event ID qualify. Biases are
-    hypotheses, not trade signals; unrecognized or ambiguous headlines abstain.
+
+def _is_negated_iran_deescalation(text: str) -> bool:
+    """Abstain when an Iran deal/ceasefire/sanctions easing is explicitly denied."""
+    return any(re.search(pattern, text, re.IGNORECASE) for pattern in _NEGATED_IRAN_DEESCALATION_PATTERNS)
+
+_NEGATION_BEFORE_MATCH = re.compile(
+    r"\b(?:no|not|never|failed to|fails to|reject(?:s|ed)?|den(?:y|ies|ied)|ruled out|without)\b[^.!?;]{0,60}$",
+    re.IGNORECASE,
+)
+_NEGATION_AFTER_MATCH = re.compile(
+    r"^\s*(?:(?:was|were|is|are|has been|have been|had been|will be)\s+)?"
+    r"(?:not\s+(?:reached|announced|approved|implemented|expected|planned|lifted|eased|restored|increased|cut|confirmed)|"
+    r"rejected|denied|ruled out|failed|collapsed|off)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_explicitly_negated_rule_match(text: str, patterns: list[str]) -> bool:
+    """Return True when a matched catalyst is explicitly denied in its sentence.
+
+    This is a conservative keyword guard, not full natural-language understanding.
+    Ambiguous cases should abstain rather than produce a directional hypothesis.
+    """
+    for pattern in patterns:
+        for match in re.finditer(pattern, text, re.IGNORECASE):
+            left_boundary = max(
+                text.rfind(".", 0, match.start()),
+                text.rfind("!", 0, match.start()),
+                text.rfind("?", 0, match.start()),
+                text.rfind(";", 0, match.start()),
+            ) + 1
+            right_candidates = [
+                position for position in (
+                    text.find(".", match.end()),
+                    text.find("!", match.end()),
+                    text.find("?", match.end()),
+                    text.find(";", match.end()),
+                ) if position >= 0
+            ]
+            right_boundary = min(right_candidates) if right_candidates else len(text)
+            before = text[left_boundary:match.start()]
+            after = text[match.end():right_boundary]
+            if _NEGATION_BEFORE_MATCH.search(before) or _NEGATION_AFTER_MATCH.search(after):
+                return True
+    return False
+
+
+
+def _parse_aware_publication_time(value: Any) -> datetime | None:
+    """Parse ISO-8601 or RFC-822 publication times only when timezone-aware."""
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        try:
+            parsed = parsedate_to_datetime(text)
+        except (TypeError, ValueError, OverflowError):
+            return None
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        return None
+    return parsed.astimezone(timezone.utc)
+
+
+def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) -> list[dict[str, Any]]:
+    """Map recognized public-news items to cautious, point-in-time biases.
+
+    A timezone-aware event/publication time, first-observed available_at, URL,
+    and event ID are required. Legacy records without availability time abstain.
+    Biases are hypotheses, not trade signals; unrecognized or ambiguous headlines abstain.
     """
     if limit <= 0:
         return []
+    decision_time = datetime.now(timezone.utc)
     candidates: dict[tuple[str, str], dict[str, Any]] = {}
+    conflicted: set[tuple[str, str]] = set()
     for finding in findings:
         if (
             finding.get("evidence") != "PUBLIC_RSS_ITEM"
@@ -176,21 +260,56 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
             or not finding.get("published")
         ):
             continue
+        event_raw = finding.get("event_time")
+        if event_raw is None:
+            event_raw = finding.get("published")
+        event_time = _parse_aware_publication_time(event_raw)
+        if event_time is None or event_time > decision_time:
+            continue
+        # Never infer availability from publication time: a record without an
+        # explicit first-observed timestamp cannot be replayed point-in-time.
+        available_raw = finding.get("available_at")
+        if available_raw is None:
+            continue
+        available_at = _parse_aware_publication_time(available_raw)
+        if (
+            available_at is None
+            or available_at < event_time
+            or available_at > decision_time
+        ):
+            continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
+        negated_iran_deescalation = _is_negated_iran_deescalation(text)
         domains = {str(x).upper() for x in finding.get("domains") or []}
         for rule in _DIRECTION_RULES:
             if not domains.intersection(rule["domains"]):
                 continue
-            if not any(__import__("re").search(pattern, text, __import__("re").I) for pattern in rule["patterns"]):
+            # Keyword overlap is not enough: a rejected/failed deal must not
+            # become the opposite (SHORT) hypothesis of a successful de-escalation.
+            if rule["id"] == "iran_diplomatic_deescalation" and negated_iran_deescalation:
+                continue
+            if not any(re.search(pattern, text, re.IGNORECASE) for pattern in rule["patterns"]):
+                continue
+            # A negated headline must not be inverted into the opposite bias
+            # (e.g. "no production cut" must not imply LONG oil).
+            if _is_explicitly_negated_rule_match(text, rule["patterns"]):
                 continue
             for instrument, bias in rule["bias"].items():
                 key = (str(finding["event_id"]), instrument)
-                candidates[key] = {
+                if key in conflicted:
+                    continue
+                candidate = {
                     "event_id": str(finding["event_id"]),
                     "title": str(finding.get("title") or "")[:240],
                     "source": str(finding.get("source") or "N/D"),
                     "published": str(finding.get("published") or ""),
+                    # Canonical UTC timestamp supports correct ordering across
+                    # RFC-822/ISO inputs and differing source timezone offsets.
+                    "published_at_utc": event_time.isoformat().replace("+00:00", "Z"),
+                    "event_time_utc": event_time.isoformat().replace("+00:00", "Z"),
+                    "available_at_utc": available_at.isoformat().replace("+00:00", "Z"),
+                    "decision_time_utc": decision_time.isoformat().replace("+00:00", "Z"),
                     "url": str(finding.get("url") or ""),
                     "instrument": instrument,
                     "bias": bias,
@@ -198,5 +317,20 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                     "reason": rule["reason"],
                     "status": "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION",
                 }
-    result = sorted(candidates.values(), key=lambda x: x["published"], reverse=True)
+                previous = candidates.get(key)
+                if previous is not None and previous["bias"] != bias:
+                    # Mixed/contradictory catalysts must not be resolved by
+                    # rule iteration order. Abstain for this event/instrument.
+                    candidates.pop(key, None)
+                    conflicted.add(key)
+                    continue
+                if previous is None:
+                    candidates[key] = candidate
+    # Sort normalized UTC instants, not raw strings whose lexical order
+    # changes with timezone offsets or mixed RFC-822/ISO formats.
+    result = sorted(
+        candidates.values(),
+        key=lambda x: _parse_aware_publication_time(x["event_time_utc"]),
+        reverse=True,
+    )
     return result[:limit]

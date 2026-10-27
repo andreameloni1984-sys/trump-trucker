@@ -1,7 +1,7 @@
 import json
 import os
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from unittest.mock import MagicMock, patch
 
 import trump_tracker
@@ -60,6 +60,8 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         item = first[0]
         self.assertEqual(item["title"], "President announces new tariffs on China")
         self.assertEqual(item["published"], "Mon, 19 Oct 2026 06:00:00 GMT")
+        self.assertEqual(item["event_time"], "2026-10-19T06:00:00Z")
+        self.assertEqual(item["available_at"], "2026-10-19T06:01:00Z")
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
@@ -126,6 +128,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "text": "New tariffs on imports were announced.",
             "url": "https://example.gov/tariffs",
             "published": "2026-10-26T10:00:00Z",
+            "available_at": "2026-10-26T10:00:00Z",
             "source": "WHITE_HOUSE",
             "domains": ["TRADE_POLICY"],
         }]
@@ -134,11 +137,82 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual({x["bias"] for x in candidates}, {"SHORT_BIAS", "LONG_BIAS"})
         self.assertTrue(all(x["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for x in candidates))
 
+    def test_directional_news_candidates_sort_by_normalized_utc_instant(self):
+        findings = [
+            {
+                "event_id": "earlier-utc",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "New tariffs on China announced",
+                "text": "New tariffs were announced.",
+                "url": "https://example.gov/news/earlier",
+                # 10:00 at UTC+02:00 is 08:00Z, earlier than 09:30Z.
+                "published": "2026-10-27T10:00:00+02:00",
+                "available_at": "2026-10-27T10:01:00+02:00",
+                "source": "WHITE_HOUSE",
+                "domains": ["TRADE_POLICY"],
+            },
+            {
+                "event_id": "later-utc",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "New tariffs on Japan announced",
+                "text": "New tariffs were announced.",
+                "url": "https://example.gov/news/later",
+                "published": "2026-10-27T09:30:00Z",
+                "available_at": "2026-10-27T09:31:00Z",
+                "source": "WHITE_HOUSE",
+                "domains": ["TRADE_POLICY"],
+            },
+        ]
+
+        candidates = trump_tracker.directional_news_candidates(findings)
+
+        self.assertEqual([row["event_id"] for row in candidates[:2]], ["later-utc", "later-utc"])
+        self.assertEqual(candidates[0]["published_at_utc"], "2026-10-27T09:30:00Z")
+        self.assertEqual(candidates[0]["available_at_utc"], "2026-10-27T09:31:00Z")
+        self.assertEqual(candidates[2]["published_at_utc"], "2026-10-27T08:00:00Z")
+        self.assertEqual(candidates[2]["available_at_utc"], "2026-10-27T08:01:00Z")
+
+    def test_directional_news_candidates_sort_fractional_seconds_chronologically(self):
+        findings = [
+            {
+                "event_id": "whole-second",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "New tariffs announced",
+                "text": "New tariffs were announced.",
+                "url": "https://example.gov/news/whole",
+                "published": "2026-10-27T09:30:00Z",
+                "available_at": "2026-10-27T09:30:00Z",
+                "source": "WHITE_HOUSE",
+                "domains": ["TRADE_POLICY"],
+            },
+            {
+                "event_id": "fractional-second",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "New tariffs announced",
+                "text": "New tariffs were announced.",
+                "url": "https://example.gov/news/fractional",
+                "published": "2026-10-27T09:30:00.500Z",
+                "available_at": "2026-10-27T09:30:00.500Z",
+                "source": "WHITE_HOUSE",
+                "domains": ["TRADE_POLICY"],
+            },
+        ]
+
+        candidates = trump_tracker.directional_news_candidates(findings)
+
+        # Variable-width ISO strings can sort incorrectly around fractional
+        # seconds; compare parsed instants rather than their string forms.
+        self.assertEqual(
+            [row["event_id"] for row in candidates[:2]],
+            ["fractional-second", "fractional-second"],
+        )
+
     def test_directional_news_candidates_rejects_page_level_and_ambiguous_headlines(self):
         page_level = [{
             "event_id": "page-1", "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
             "title": "New tariffs", "text": "new tariffs", "url": "https://example.gov/",
             "published": "2026-10-26T10:00:00Z", "domains": ["TRADE_POLICY"],
+            "available_at": "2026-10-26T10:00:00Z", "domains": ["TRADE_POLICY"],
         }]
         vague = [{
             "event_id": "evt-2", "evidence": "PUBLIC_RSS_ITEM",
@@ -148,6 +222,46 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         }]
         self.assertEqual(trump_tracker.directional_news_candidates(page_level), [])
         self.assertEqual(trump_tracker.directional_news_candidates(vague), [])
+
+    def test_directional_news_candidates_rejects_naive_future_and_invalid_availability_times(self):
+        now = datetime.now(timezone.utc)
+        base = {
+            "event_id": "evt-time-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "New tariffs on China announced",
+            "text": "New tariffs were announced.",
+            "url": "https://example.gov/news/tariffs",
+            "published": now.isoformat(),
+            "available_at": now.isoformat(),
+            "source": "WHITE_HOUSE",
+            "domains": ["TRADE_POLICY"],
+        }
+        self.assertTrue(trump_tracker.directional_news_candidates([base]))
+        legacy_without_availability = {**base}
+        legacy_without_availability.pop("available_at")
+        self.assertEqual(trump_tracker.directional_news_candidates([legacy_without_availability]), [])
+
+        candidates = trump_tracker.directional_news_candidates([base])
+        self.assertTrue(candidates)
+        self.assertTrue(all("event_time_utc" in row and "available_at_utc" in row and "decision_time_utc" in row for row in candidates))
+        available_at = datetime.fromisoformat(candidates[0]["available_at_utc"].replace("Z", "+00:00"))
+        decision_time = datetime.fromisoformat(candidates[0]["decision_time_utc"].replace("Z", "+00:00"))
+        self.assertLessEqual(available_at, decision_time)
+
+        cases = [
+            ("naive publication", {"published": now.replace(tzinfo=None).isoformat()}),
+            ("future publication", {"published": (now + timedelta(minutes=5)).isoformat()}),
+            ("naive availability", {"available_at": now.replace(tzinfo=None).isoformat()}),
+            ("availability before publication", {"available_at": (now - timedelta(minutes=1)).isoformat()}),
+            ("future availability", {"available_at": (now + timedelta(minutes=5)).isoformat()}),
+        ]
+        for label, override in cases:
+            with self.subTest(case=label):
+                finding = {**base, **override}
+                self.assertEqual(trump_tracker.directional_news_candidates([finding]), [])
+
+        rfc822 = {**base, "published": "Mon, 19 Oct 2026 06:00:00 GMT"}
+        self.assertTrue(trump_tracker.directional_news_candidates([rfc822]))
 
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
@@ -183,6 +297,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "title": "Tariff headline",
                 "url": "https://example.gov/news/1",
                 "published": "2026-10-19",
+                "available_at": "2026-10-19",
                 "domains": ["TRADE_POLICY"],
                 "text": "Tariff headline details",
             },
@@ -218,6 +333,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "source": "PUBLIC_RSS",
                 "title": f"Public event {i}",
                 "published": f"2026-10-26T06:{i:02d}:00Z",
+                "available_at": f"2026-10-26T06:{i:02d}:00Z",
                 "url": f"https://example.gov/news/{i}",
                 "domains": ["ENERGY"],
             }
@@ -238,19 +354,19 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "url": "https://example.gov/",
                 "title": "Generic homepage",
                 "published": "",
+                "available_at": "",
             },
             {
                 "event_id": "no-url",
                 "evidence": "PUBLIC_RSS_ITEM",
                 "title": "Missing permalink",
                 "published": "2026-10-26T06:00:00Z",
+                "available_at": "2026-10-26T06:00:00Z",
             },
         ]
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
-if __name__ == "__main__":
-    unittest.main()
 
 
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
@@ -278,3 +394,149 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+    def test_iran_diplomatic_deescalation_creates_conditional_oil_short_hypothesis(self):
+        findings = [{
+            "event_id": "iran-deescalation-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "Iran diplomatic agreement reached after talks",
+            "text": "A diplomatic agreement with Iran was reached.",
+            "url": "https://example.gov/news/iran-agreement",
+            "published": "2026-10-27T08:00:00Z",
+            "available_at": "2026-10-27T08:00:00Z",
+            "source": "PUBLIC_RSS",
+            "domains": ["ENERGY"],
+        }]
+        candidates = trump_tracker.directional_news_candidates(findings)
+        oil = [row for row in candidates if row["instrument"] in {"WTI", "BRENT"}]
+        self.assertEqual({row["bias"] for row in oil}, {"SHORT_BIAS"})
+        self.assertTrue(all(row["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for row in oil))
+
+    def test_negated_iran_diplomacy_does_not_create_oil_short_hypothesis(self):
+        cases = [
+            ("Iran deal not reached after talks collapse", "Officials said no agreement was reached with Iran."),
+            ("Iran rejects ceasefire proposal", "Tehran rejected the ceasefire proposal."),
+            ("Iran sanctions remain in place; no deal reached", "Sanctions were not lifted."),
+        ]
+        for title, body in cases:
+            with self.subTest(title=title):
+                findings = [{
+                    "event_id": "iran-negative-" + str(cases.index((title, body))),
+                    "evidence": "PUBLIC_RSS_ITEM",
+                    "title": title,
+                    "text": body,
+                    "url": "https://example.gov/news/iran-talks",
+                    "published": "2026-10-27T08:00:00Z",
+                    "available_at": "2026-10-27T08:00:00Z",
+                    "source": "PUBLIC_RSS",
+                    "domains": ["ENERGY"],
+                }]
+                self.assertEqual(trump_tracker.directional_news_candidates(findings), [])
+
+    def test_explicitly_negated_catalysts_do_not_create_opposite_biases(self):
+        cases = [
+            {
+                "event_id": "no-production-cut",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "No production cut expected",
+                "text": "Officials said a production cut was not announced.",
+                "url": "https://example.gov/news/oil-supply",
+                "published": "2026-10-27T08:00:00Z",
+                "available_at": "2026-10-27T08:00:00Z",
+                "source": "PUBLIC_RSS",
+                "domains": ["ENERGY"],
+            },
+            {
+                "event_id": "trade-deal-rejected",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Trade deal rejected after talks",
+                "text": "Officials rejected the trade deal.",
+                "url": "https://example.gov/news/trade-talks",
+                "published": "2026-10-27T08:00:00Z",
+                "available_at": "2026-10-27T08:00:00Z",
+                "source": "PUBLIC_RSS",
+                "domains": ["TRADE_POLICY"],
+            },
+        ]
+        for finding in cases:
+            with self.subTest(event_id=finding["event_id"]):
+                self.assertEqual(trump_tracker.directional_news_candidates([finding]), [])
+
+    def test_non_negated_supply_cut_and_trade_deal_keep_their_hypotheses(self):
+        cases = [
+            {
+                "event_id": "production-cut",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Production cut announced",
+                "text": "Officials announced a production cut.",
+                "url": "https://example.gov/news/oil-cut",
+                "published": "2026-10-27T08:00:00Z",
+                "available_at": "2026-10-27T08:00:00Z",
+                "source": "PUBLIC_RSS",
+                "domains": ["ENERGY"],
+            },
+            {
+                "event_id": "trade-deal-reached",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Trade deal reached",
+                "text": "Officials reached a trade deal.",
+                "url": "https://example.gov/news/trade-deal",
+                "published": "2026-10-27T08:00:00Z",
+                "available_at": "2026-10-27T08:00:00Z",
+                "source": "PUBLIC_RSS",
+                "domains": ["TRADE_POLICY"],
+            },
+        ]
+        candidates = trump_tracker.directional_news_candidates(cases)
+        by_event = {}
+        for row in candidates:
+            by_event.setdefault(row["event_id"], set()).add((row["instrument"], row["bias"]))
+        self.assertIn(("WTI", "LONG_BIAS"), by_event["production-cut"])
+        self.assertIn(("BRENT", "LONG_BIAS"), by_event["production-cut"])
+        self.assertIn(("NASDAQ100", "LONG_BIAS"), by_event["trade-deal-reached"])
+
+    def test_directional_news_candidates_abstains_when_energy_rules_conflict(self):
+        finding = {
+            "event_id": "mixed-energy-catalyst-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "Production cut announced, but supply restored",
+            "text": "Officials announced a production cut, but later confirmed supply restored.",
+            "url": "https://example.gov/news/mixed-energy",
+            "published": "2026-10-27T08:00:00Z",
+            "available_at": "2026-10-27T08:00:00Z",
+            "source": "PUBLIC_RSS",
+            "domains": ["ENERGY"],
+        }
+
+        # A single item matches both supply-tightening (LONG) and supply-easing
+        # (SHORT). The result must not depend on rule order.
+        self.assertEqual(trump_tracker.directional_news_candidates([finding]), [])
+
+
+    def test_negation_does_not_leak_across_semicolon_clauses(self):
+        finding = {
+            "event_id": "unrelated-negation-before-rate-hike",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "No new tariffs planned; rate hike announced",
+            "text": "No new tariffs are planned; officials announced a rate hike.",
+            "url": "https://example.gov/news/rates",
+            "published": "2026-10-27T08:00:00Z",
+            "available_at": "2026-10-27T08:00:00Z",
+            "source": "PUBLIC_RSS",
+            "domains": ["RATES_MACRO"],
+        }
+
+        candidates = trump_tracker.directional_news_candidates([finding])
+
+        # The negated tariff clause must not suppress the independent,
+        # explicitly announced rate-hike hypothesis after the semicolon.
+        self.assertIn(("USD", "LONG_BIAS"), {
+            (row["instrument"], row["bias"]) for row in candidates
+        })
+        self.assertIn(("GOLD", "SHORT_BIAS"), {
+            (row["instrument"], row["bias"]) for row in candidates
+        })
+
+
+if __name__ == "__main__":
+    unittest.main()

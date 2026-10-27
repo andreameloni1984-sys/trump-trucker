@@ -104,3 +104,135 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+
+## 2026-10-27 — Add conditional WTI/Brent hypothesis for Iran diplomatic de-escalation
+
+- **User goal:** Telegram should turn relevant public news into one concise instrument/direction hypothesis rather than only listing headlines.
+- **Change:** add a narrow, explicit-language catalyst rule for an Iran agreement/deal/ceasefire, diplomatic breakthrough, de-escalation, or easing/lifting of Iran sanctions. It maps to WTI/Brent SHORT_BIAS only; it does not fabricate entry, stop, or target prices.
+- **Test:** add regression coverage that a dated individual news item with explicit Iran agreement language produces WTI/Brent SHORT_BIAS candidates, still marked `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION`.
+- **Limits:** this is a conditional news-bias rule, not proof of predictive value. The supplied 16-item digest does not itself contain a verified Iran-de-escalation event, and this change does not send a Telegram message or add live quote/ATR calculations. Those require current market data and a connected runtime.
+- **Deployment:** branch-only change; not merged or deployed. PAPER ONLY; no orders.
+
+
+## 2026-10-27 — Abstain on negated Iran de-escalation language
+
+- **Finding:** the conditional WTI/Brent SHORT_BIAS rule matched keyword overlap such as “Iran deal not reached” or “Iran rejects ceasefire”, even though the stated event was a failed/rejected agreement rather than de-escalation.
+- **Change:** \`sputnik_catalyst.py\` now checks a narrow set of explicit negation/rejection patterns before applying only the \`iran_diplomatic_deescalation\` rule. Other catalyst rules are unchanged; ambiguous/negated wording abstains.
+- **Regression:** \`tests/test_sputnik_item_intelligence.py::test_negated_iran_diplomacy_does_not_create_oil_short_hypothesis\` covers failed deal, rejected ceasefire, and sanctions remaining in place.
+- **CI status at this check:** GitHub's PR-run endpoint returned no new workflow run for the updated test commit `6469d487ecf81b4ef2db3937d0252d537c1d6778`. Earlier successful Sputnik runs predate this negation guard and are not counted as validation. A fresh CI result is not claimed unless a run for this change becomes observable.
+- **Deployment:** PR #54 branch only; no merge or deploy. Render build-pipeline minutes are exhausted.
+- **Empirical limit:** this is a keyword-negation safety guard, not NLP fact verification or a predictive edge. No live-feed replay or price/volume study.
+- **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets, or Telegram test messages.
+
+## 2026-10-27 — Abstain on explicitly negated directional catalyst phrases
+
+- **Finding:** the headline rule set could interpret a negated phrase such as “no production cut” or “trade deal rejected” as if the catalyst had occurred, producing the opposite directional hypothesis. The existing negation guard covered only the Iran de-escalation rule.
+- **Change:** `sputnik_catalyst.py` now checks local sentence context around a matched catalyst for explicit negation/rejection before emitting any rule-based bias. The guard is intentionally conservative; it is not full natural-language understanding.
+- **Regression:** `tests/test_sputnik_item_intelligence.py` covers negated oil-supply and trade-deal examples plus positive controls. The misplaced `unittest.main()` block was moved to the end so later test methods are discoverable when the module is run directly.
+- **Operational path:** individual dated RSS item → domain/rule matching → negation gate → `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION` candidate. This does not confirm price/volume or authorize entry.
+- **Code commit:** `ed2c0aed45c0acef0ea1a4e17be6a18cf24186f5` (includes the corrected regex escaping after the initial code commit).
+- **Test commit:** `aaa25c440c318f21ac0f98716dcee79ebeff4ad2`.
+- **CI:** new branch-head workflow has not yet completed at time of this entry; do not treat prior PR checks as verification of this change.
+- **Deployment:** no merge/deploy; Render build-pipeline minutes remain exhausted.
+- **Empirical limit:** unit-level language guard only; no live-news replay or directional performance claim.
+- **Safety:** PAPER ONLY; no broker, orders, or Telegram test messages.
+
+## 2026-10-27 — Final verification of negated-catalyst guard
+
+- **Code/test:** code commit `ed2c0aed45c0acef0ea1a4e17be6a18cf24186f5`; regression tests and test-discovery repair commit `aaa25c440c318f21ac0f98716dcee79ebeff4ad2`.
+- **CI:** item-intelligence tests PASS on run [40541330990](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40541330990); Telegram-menu tests PASS on run [40541330956](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40541330956), against the current research-log branch head. The tests specifically cover negated supply/trade headlines and positive controls.
+- **Main / PR:** current `main` SHA observed: `608e053a8b87c71fa4a272dd97f71295eab18471`. PR #54 remains open; the new guard is not merged.
+- **Render:** service remains configured to deploy `main`; last successful deploy in the available deployment list is `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16). The newer attempt on `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed (2026-10-22). No new SEC/RSS matching log lines were returned for the queried 2026-10-26 to 2026-10-27 window, so current source delivery is not confirmed by that query.
+- **Limits:** keyword-negation guard is not full natural-language understanding and is not a live-news or predictive-performance test. No merge/deploy, broker, order, or Telegram test message.
+
+## 2026-10-27 — Main workflow and source-log inspection
+
+- Current `main`: `608e053a8b87c71fa4a272dd97f71295eab18471` (14:41 UTC).
+- Latest scheduled `SPUTNIK` workflow returned in the recent-run list: [40523401974](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40523401974), SUCCESS at 14:40 UTC on the previous SHA `6992555ee972276cbc36995747368d2198c988fd). No newer scheduled run on current `main` was present in the returned top 10.
+- PR #54 item-intelligence and Telegram-menu checks passed on the updated branch; this is separate from the main workflow.
+- Render deployment history still identifies `9e5204bf7d9074dba27637013b7d98933a91e733` as the latest successful live commit and `50851b0dc76f1b7ed0adaa872c47aa84793687f9` as a failed later attempt. No deploy was triggered.
+- The current 2026-10-26/27 log query returned no SEC/RSS matches. This absence does not establish feed health or failure; current source delivery remains unconfirmed.
+
+
+
+## 2026-10-27 — Directional candidate point-in-time guard
+
+- **Finding:** `directional_news_candidates()` required a non-empty publication string but did not independently reject naive ISO timestamps or future-dated publication times. When `available_at` was supplied by the Sputnik→Gagarin handoff, it was not validated at the directional-candidate boundary.
+- **Change:** `sputnik_catalyst.py` now parses timezone-aware ISO-8601 and RFC-822 timestamps, rejects naive/malformed/future publication times, and validates an optional `available_at` as timezone-aware, not earlier than publication and not in the future. Legacy findings without `available_at` remain accepted for compatibility, but are less auditable.
+- **Regression:** `tests/test_sputnik_item_intelligence.py::test_directional_news_candidates_rejects_naive_future_and_invalid_availability_times` covers valid ISO, valid RFC-822, naive/future publication, naive/future availability, and availability preceding publication.
+- **Commits:** code `a720dadf814dd58677654ea8e7cbf6d394a2fa2d`; tests `e1da8f15a84b6b485bfcb5e53c09b0c4e2876768`.
+- **CI:** PASS on latest branch head `829abc73c4b4438e66991bff8355517906352522`: item intelligence [40549168654](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40549168654) and Telegram menu [40549168761](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40549168761).
+- **Operational path:** item-level RSS findings → `directional_news_candidates` → bias-only hypothesis. This does not create a trade entry; price/volume confirmation remains separate.
+- **Empirical limit:** no live-feed replay or OOS market test. This is a causal timestamp/input-quality guard, not evidence of predictive edge.
+- **Deployment:** PR #54 branch only; no merge/deploy. PAPER/DEMO only; no broker, real orders, secrets, or Telegram test messages.
+
+
+## 2026-10-27 — Abstain on conflicting catalyst directions
+- **Finding:** `directional_news_candidates()` assigned into a dictionary keyed by event/instrument, so if one item matched two rules with opposite biases, the later rule silently overwrote the earlier one. Example: “production cut announced, but supply restored” could produce a direction determined by rule order rather than the mixed evidence.
+- **Change:** track event/instrument pairs with conflicting biases; remove the candidate and abstain for that pair. Same-direction duplicate rule matches remain a single hypothesis.
+- **Operational path:** individual RSS item → temporal/evidence gates → rule matching → conflict gate → `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION` candidates. No price entry is created.
+- **Files:** `sputnik_catalyst.py`; regression test `tests/test_sputnik_item_intelligence.py::test_directional_news_candidates_abstains_when_energy_rules_conflict`.
+- **CI:** pending for this latest change at log creation.
+- **Deployment:** PR #54 branch only; no merge/deploy. Last Render live commit still needs a fresh deployment check before any live-state claim.
+- **Empirical limits:** deterministic regression only; no historical headline replay or out-of-sample market validation. Keyword rules remain limited NLP. PAPER/DEMO ONLY.
+
+
+## Recovered historical records — 2026-10-27
+- **2026-10-03 — architecture proposal:** event clustering, deduplication, source weighting and evidence confidence; Sputnik remains public intelligence and Gagarin remains the separate market/trading engine. This is a historical design note, not proof that all stages were wired end-to-end.
+- **2026-10-03 — TextExtractor regex finding:** historical conversation records the suspected whitespace-regex bug in re.sub(r"\\s+", ...), but the repository write was blocked at that time. It was not treated as fixed by this entry.
+- **2026-10-05 — transaction registry:** historical work recorded ACQUISTATO/VENDUTO rows with title, quantity, price, effective transaction date, subject, SEC form and original SEC document; Form 144 was explicitly not treated as an executed sale.
+- **2026-10-06 — ranking rubric:** historical conversation records a 0–100 Form 4 ranking, with one filing unable to reach COMPRA and at least three distinct filings plus score >=75 required. Exact weights are recorded in PR #53 with a caveat: the historical accepted specification is not an empirical calibration, and current main still needs reconciliation.
+- **Session 9, 2026-10-20 — source-grounded research priorities:** preserve publication/availability/decision times; study chokepoints and freight against a price/volatility baseline; separate macro channels; keep controversial theses as opinions until reproducible evidence exists. Source: Library file “Registro Studio IBKR - aggiornato 2026-10-20 sessione 9.md”.
+- **Current code mapping:** mixed-catalyst abstention is implemented only on PR #54 in sputnik_catalyst.py, tested in tests/test_sputnik_item_intelligence.py, and passed item-intelligence run 40559759406 plus Telegram-menu run 40559759468 on the tested branch head. No merge/deploy and no historical market replay.
+
+
+## 2026-10-27 — Normalize publication timestamps before candidate sorting
+- **Finding:** `directional_news_candidates()` sorted the original timestamp strings, so mixed timezone offsets / ISO and RFC-822 formats could appear in the wrong chronological order.
+- **Code/test commit:** `6de670aa632ca152be3b1807abedeac41f8d084a` updates `sputnik_catalyst.py` and `tests/test_sputnik_item_intelligence.py`.
+- **Change:** emit canonical UTC `published_at_utc`; preserve `available_at_utc` only when supplied; sort by normalized UTC. The original `published` text remains for source traceability.
+- **Regression:** `test_directional_news_candidates_sort_by_normalized_utc_instant` verifies 10:00+02:00 sorts before 09:30Z and availability is normalized.
+- **CI:** item intelligence PASS [40561147668](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561147668); Telegram menu PASS [40561147750](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561147750) on the code/test commit.
+- **Historical mapping:** the Library session 9 record prioritizes publication time, first availability, primary source and fixed reaction horizons; this change addresses chronological timestamp consistency only. It does not fill missing availability timestamps or prove that news sentiment adds predictive value.
+- **Operational path:** item-level RSS → timezone-aware parse / point-in-time validation → directional hypothesis → normalized ordering → digest/handoff. The status remains hypothesis-only until independent price/volume confirmation.
+- **Deployment/empirical limit:** PR #54 branch only; no merge/deploy. Synthetic regression only; no historical feed replay or OOS market-return validation. PAPER only.
+
+
+## Follow-up correction — compare parsed UTC instants, including fractional seconds
+- **Finding:** the first UTC-ordering change used canonical ISO strings as the sort key. ISO strings with variable fractional-second precision are not always lexically ordered chronologically (for example, `09:30:00Z` versus `09:30:00.500Z`).
+- **Correction:** sort by the parsed timezone-aware UTC datetime, while retaining canonical `published_at_utc` and optional `available_at_utc` output fields.
+- **Regression:** `test_directional_news_candidates_sort_fractional_seconds_chronologically` covers the fractional-second edge case.
+- **Commit:** `a66b913b1e2e13798b3d7766b2f617568aa90857`.
+- **CI PASS on corrected code/test head:** item intelligence [40561374887](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561374887); Telegram/menu tests [40561375377](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561375377).
+- **Limit/deployment:** no historical RSS replay or market-return validation; PR #54 branch only, no merge/deploy. This is timestamp-order correctness, not a trading edge.
+
+## 2026-10-27 follow-up — scope negation to semicolon-delimited clauses
+
+- **Finding:** the rule-negation guard bounded context at periods, exclamation marks and question marks, but not semicolons. An unrelated earlier clause such as “No new tariffs planned; rate hike announced” could therefore suppress a separate, explicitly stated macro catalyst.
+- **Change:** `_NEGATION_BEFORE_MATCH` now stops at semicolons, and `_is_explicitly_negated_rule_match()` uses semicolons as left/right clause boundaries. Conflicting directional catalysts still abstain; this change only prevents unrelated negation from leaking across clauses.
+- **Files:** `sputnik_catalyst.py`; `tests/test_sputnik_item_intelligence.py`.
+- **Regression:** `test_negation_does_not_leak_across_semicolon_clauses` checks that a negated tariff clause does not suppress the independent rate-hike hypothesis.
+- **Commits:** code `5a44e47376c6eef4fa159b7d6978c29393d06068`; test `d8f16c162ab7703423fd4a29779ba934ea6882dc`.
+- **CI:** item intelligence PASS [40566862821](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40566862821); Telegram menu PASS [40566862738](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40566862738).
+- **Operational path:** item-level public RSS → dated/source validation → clause-scoped negation guard → hypothesis-only catalyst → separate price/volume confirmation. No entry/SL/TP is created by this change.
+- **Deployment/empirical limits:** PR #54 branch only; no merge/deploy. Synthetic regression only; no historical headline replay, OOS return test, or profitability claim. PAPER ONLY.
+
+## 2026-10-27 — Require explicit point-in-time availability for directional news
+
+- **Finding:** RSS item records carried a publication timestamp, but newly ingested items did not persist a distinct first-observed time. `directional_news_candidates()` tolerated missing `available_at`, so a legacy record could be promoted to a directional hypothesis without evidence of when Sputnik first had it.
+- **Change:** `trump_tracker.py::intelligence_snapshot` now records canonical UTC `event_time` from the timezone-aware feed publication timestamp and `available_at` from the first-observed ingestion time. `sputnik_catalyst.py::directional_news_candidates` now requires an explicit, valid `available_at` not earlier than event time and not later than its captured `decision_time`; it emits `event_time_utc`, `available_at_utc`, and `decision_time_utc`. Legacy records lacking availability time abstain instead of guessing.
+- **Regression:** `tests/test_sputnik_item_intelligence.py` verifies RSS ingestion timestamps, missing-availability abstention, and `available_at <= decision_time`; existing chronology, negation and contradiction tests remain in place.
+- **Operational path:** RSS/Atom item → permalink/date validation → first-observed timestamp → dedup/state persistence → directional hypothesis (still `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION`). This does not generate an entry or infer price/volume confirmation.
+- **Commits:** source tracker 9fb84ed5d6320a16d76d9719f72af8a1e7fa1a0c; catalyst 30b3fce4edc6e3133296f2a960b661535f58d4e2; regression tests 92ca61dc8e4dfe49169646900178c90a6499021f.
+- **CI verified:** code/test commit `92ca61dc8e4dfe49169646900178c90a6499021f` passed item-intelligence [40569376590](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40569376590), ranking [40569376595](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40569376595), and Telegram-menu [40569376697](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40569376697). The subsequent commit only updates this log.
+- **Deployment:** PR #54 branch only; no merge/deploy. Render workspace/runtime logs are not available through this run's connected tools, so live feed delivery is unconfirmed.
+- **Empirical limit:** unit tests only; no historical feed replay, WTI/Brent OHLCV alignment, cost/slippage test or OOS performance result. PAPER/DEMO only; no broker or orders.
+
+
+## Historical research recovery — IBKR session 9 and 100-point catalog status (2026-10-27)
+
+- **Library source actually retrieved:** `Registro Studio IBKR - aggiornato 2026-10-20 sessione 9.md`. Its session-9 priorities explicitly call for source-primary news provenance, permalink/deduplication, timezone-safe event/availability/decision timestamps, surprise-versus-consensus, predeclared reaction horizons, and comparing sentiment/mention counts with price, volatility and macro surprise rather than assuming predictive value.
+- **Mapping to this branch:** `trump_tracker.py::intelligence_snapshot` now records `event_time` from the parsed RSS publication timestamp and `available_at` from first observation; `sputnik_catalyst.py::directional_news_candidates` requires availability not before event time or after captured decision time and emits all three UTC timestamps. Regression file: `tests/test_sputnik_item_intelligence.py`; CI passed on code/test commit `92ca61dc8e4dfe49169646900178c90a6499021f` (item intelligence [40569376590](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40569376590), ranking [40569376595](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40569376595), Telegram menu [40569376697](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40569376697)).
+- **Historical records:** prior context records the October 3 architecture boundary (Sputnik public intelligence; Gagarin market/commodity evaluation), and October 6 Form 4 scoring requirements. Current branch notes also document negation/contradiction abstention. These are separate recovered notes, not a single numbered rule list.
+- **100-point catalog:** searches of the available Library and repository content did not retrieve the original catalog of 100 separate lessons. The 0–100 Form 4 scoring rubric is not the same thing as a 100-rule research catalog. Do not reconstruct missing lessons by inference.
+- **Deployment/empirical status:** branch only, no merge/deploy; Render runtime logs are not accessible through this run. Unit tests establish timestamp invariants only; no historical headline/WTI/Brent replay, cost/slippage analysis or OOS edge has been measured.
