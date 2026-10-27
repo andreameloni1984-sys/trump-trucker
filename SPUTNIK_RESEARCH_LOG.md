@@ -124,3 +124,17 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** PR #54 branch only; no merge or deploy. Render build-pipeline minutes are exhausted.
 - **Empirical limit:** this is a keyword-negation safety guard, not NLP fact verification or a predictive edge. No live-feed replay or price/volume study.
 - **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets, or Telegram test messages.
+
+## 2026-10-27 — Abstain on explicitly negated directional catalyst phrases
+
+- **Finding:** the headline rule set could interpret a negated phrase such as “no production cut” or “trade deal rejected” as if the catalyst had occurred, producing the opposite directional hypothesis. The existing negation guard covered only the Iran de-escalation rule.
+- **Change:** `sputnik_catalyst.py` now checks local sentence context around a matched catalyst for explicit negation/rejection before emitting any rule-based bias. The guard is intentionally conservative; it is not full natural-language understanding.
+- **Regression:** `tests/test_sputnik_item_intelligence.py` covers negated oil-supply and trade-deal examples plus positive controls. The misplaced `unittest.main()` block was moved to the end so later test methods are discoverable when the module is run directly.
+- **Operational path:** individual dated RSS item → domain/rule matching → negation gate → `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION` candidate. This does not confirm price/volume or authorize entry.
+- **Code commit:** `ed2c0aed45c0acef0ea1a4e17be6a18cf24186f5` (includes the corrected regex escaping after the initial code commit).
+- **Test commit:** `aaa25c440c318f21ac0f98716dcee79ebeff4ad2`.
+- **CI:** new branch-head workflow has not yet completed at time of this entry; do not treat prior PR checks as verification of this change.
+- **Deployment:** no merge/deploy; Render build-pipeline minutes remain exhausted.
+- **Empirical limit:** unit-level language guard only; no live-news replay or directional performance claim.
+- **Safety:** PAPER ONLY; no broker, orders, or Telegram test messages.
+
