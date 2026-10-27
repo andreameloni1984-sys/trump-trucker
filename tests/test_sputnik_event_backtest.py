@@ -598,5 +598,36 @@ class SputnikEventBacktestTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "unique after canonicalization"):
                 load_events_csv(path)
 
+    def test_event_ledger_decision_time_delays_entry_and_must_follow_availability(self):
+        start = datetime(2026, 1, 1, 0, 0, tzinfo=timezone.utc)
+        data = candles([(100, 101, 99, 100, 1000)] * 6, start=start)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "events_with_decision_time.csv"
+            path.write_text(
+                "event_id,event_time,available_at,decision_time,side,atr,atr_time,source_url\\n"
+                "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:03:00+00:00,"
+                "2026-01-01T00:12:00+00:00,LONG,1.0,2026-01-01T00:00:00+00:00,"
+                "https://example.com/event/1\\n",
+                encoding="utf-8",
+            )
+            events = load_events_csv(path)
+            self.assertEqual(events[0]["decision_time"], "2026-01-01T00:12:00+00:00")
+            report = backtest_events(data, events, max_holding_bars=1)
+            result = report["results"][0]
+            self.assertEqual(result["decision_time_source"], "explicit")
+            self.assertEqual(result["early"]["decision_time"], "2026-01-01T00:12:00+00:00")
+            self.assertEqual(result["early"]["entry_time"], data[3]["timestamp"].isoformat())
+
+            path.write_text(
+                "event_id,event_time,available_at,decision_time,side,atr,atr_time,source_url\\n"
+                "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:03:00+00:00,"
+                "2026-01-01T00:02:00+00:00,LONG,1.0,2026-01-01T00:00:00+00:00,"
+                "https://example.com/event/1\\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "decision_time is before available_at"):
+                load_events_csv(path)
+
+
 if __name__ == "__main__":
     unittest.main()
