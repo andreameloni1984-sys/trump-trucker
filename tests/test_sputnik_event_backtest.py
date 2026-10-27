@@ -359,6 +359,21 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(result["results"][0]["source_url"], "https://example.com/event/1")
 
 
+    def test_event_ledger_preserves_original_permalink_for_provenance(self):
+        original_url = "https://EXAMPLE.com/event/1?token=b&expires=2&utm_source=feed#source"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "events.csv"
+            path.write_text(
+                "event_id,event_time,side,atr,atr_time,source_url\\n"
+                f"evt-1,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,{original_url}\\n",
+                encoding="utf-8",
+            )
+            ledger = load_events_csv(path)
+        self.assertEqual(ledger[0]["source_url"], original_url)
+        result = backtest_events(candles([(100, 101, 99, 100, 1000)]), ledger)
+        self.assertEqual(result["results"][0]["source_url"], original_url)
+
+
     def test_event_ledger_rejects_duplicate_canonical_source_urls(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "duplicate_events.csv"

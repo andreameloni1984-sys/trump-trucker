@@ -104,7 +104,7 @@ def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
 
 
 def _validate_source_url(value: str) -> str:
-    """Validate and canonicalize an event permalink for provenance/deduplication."""
+    """Validate a source permalink while preserving its exact supplied form."""
     url = str(value).strip()
     parsed = urlparse(url)
     if parsed.scheme.lower() not in {"http", "https"} or not parsed.hostname:
@@ -112,25 +112,34 @@ def _validate_source_url(value: str) -> str:
     if parsed.username is not None or parsed.password is not None:
         raise ValueError("source_url must not contain embedded credentials")
     try:
-        port = parsed.port
+        parsed.port
     except ValueError as exc:
         raise ValueError("source_url has an invalid port") from exc
+    # Keep the original scheme/host casing, query order, tracking parameters,
+    # and fragment for evidence provenance. Canonical identity is separate.
+    return url
 
+
+def _canonical_source_url(value: str) -> str:
+    """Build a conservative deduplication key without rewriting the stored permalink."""
+    url = _validate_source_url(value)
+    parsed = urlparse(url)
     scheme = parsed.scheme.lower()
     host = parsed.hostname.lower()
     if ":" in host and not host.startswith("["):
         host = f"[{host}]"
+    port = parsed.port
     default_port = (scheme == "https" and port == 443) or (scheme == "http" and port == 80)
     netloc = host if port is None or default_port else f"{host}:{port}"
 
-    # Remove common tracking parameters and fragments, but retain other query
-    # parameters because some publishers use them as document identifiers.
+    # Remove known tracking parameters but preserve the order of all remaining
+    # query parameters: some publishers use order-sensitive/signed permalinks.
     tracking_keys = {"fbclid", "gclid", "mc_cid", "mc_eid", "ref_src"}
     query_pairs = [
         (key, val) for key, val in parse_qsl(parsed.query, keep_blank_values=True)
         if not key.lower().startswith("utm_") and key.lower() not in tracking_keys
     ]
-    query = urlencode(sorted(query_pairs))
+    query = urlencode(query_pairs)
     path = parsed.path or "/"
     if path != "/":
         path = path.rstrip("/") or "/"
@@ -174,9 +183,10 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
             if not math.isfinite(atr) or atr <= 0:
                 raise ValueError(f"event CSV row {row_number} ATR must be finite and positive")
             source_url = _validate_source_url(row.get("source_url") or "")
-            if source_url in seen_sources:
-                raise ValueError(f"source_url must be unique after canonicalization: {source_url}")
-            seen_sources.add(source_url)
+            canonical_source = _canonical_source_url(source_url)
+            if canonical_source in seen_sources:
+                raise ValueError(f"source_url must be unique after canonicalization: {canonical_source}")
+            seen_sources.add(canonical_source)
             events.append({
                 "event_id": event_id,
                 "event_time": event_dt.isoformat(),
@@ -474,9 +484,10 @@ def backtest_events(
             raise ValueError(f"event_id must be unique: {event_id}")
         seen_ids.add(event_id)
         source_url = _validate_source_url(event.get("source_url") or "")
-        if source_url in seen_sources:
-            raise ValueError(f"source_url must be unique after canonicalization: {source_url}")
-        seen_sources.add(source_url)
+        canonical_source = _canonical_source_url(source_url)
+        if canonical_source in seen_sources:
+            raise ValueError(f"source_url must be unique after canonicalization: {canonical_source}")
+        seen_sources.add(canonical_source)
         result = backtest_event(
             candles,
             event["event_time"],
