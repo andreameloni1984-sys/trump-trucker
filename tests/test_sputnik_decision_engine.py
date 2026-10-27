@@ -39,20 +39,20 @@ class StrictDecisionTests(unittest.TestCase):
 
     def test_broad_topic_gets_useful_watch_result(self):
         message = decision_message("Markets discuss tariffs and trade tensions.")
-        self.assertIn("MONITORARE", message)
-        self.assertIn("NASDAQ-100", message)
-        self.assertIn("non comprare", message.lower())
+        self.assertIn("SPUTNIK — OPPORTUNITÀ DI MERCATO", message)
+        self.assertIn("PAPER TRADING", message)
+        self.assertIn("quotazione aggiornata", message.lower())
 
     def test_unrelated_text_still_returns_operational_monitoring_result(self):
         message = decision_message("Hello world, nothing market-related here.")
-        self.assertIn("MONITORAGGIO OPERATIVO", message)
-        self.assertIn("Nasdaq-100, oro, Brent e USD", message)
-        self.assertIn("non una previsione direzionale", message)
+        self.assertIn("SPUTNIK — OPPORTUNITÀ DI MERCATO", message)
+        self.assertIn("DIREZIONE: WAIT", message)
+        self.assertIn("PAPER TRADING", message)
 
     def test_empty_legacy_snapshot_still_returns_result(self):
         message = decision_message("")
-        self.assertIn("RISULTATO: MONITORARE, NON IGNORARE", message)
-        self.assertIn("DATI INSUFFICIENTI", message)
+        self.assertIn("SPUTNIK — OPPORTUNITÀ DI MERCATO", message)
+        self.assertIn("IN ATTESA DI CATALIZZATORE", message)
 
     def test_legacy_domain_labels_produce_domain_watchlist(self):
         message = decision_message("ENERGY METALS DEFENSE")
