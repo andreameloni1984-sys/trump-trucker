@@ -193,10 +193,22 @@ def backtest_event(
         raise ValueError("side must be LONG or SHORT")
     if isinstance(bar_interval_minutes, bool) or not isinstance(bar_interval_minutes, int) or bar_interval_minutes < 1:
         raise ValueError("bar interval minutes must be a positive integer")
-    if not all(math.isfinite(value) for value in (atr, stop_atr, target_r, spread)):
-        raise ValueError("ATR, stop, target and spread must be finite")
-    if atr <= 0 or stop_atr <= 0 or target_r <= 0 or breakout_lookback < 1 or max_holding_bars < 1:
-        raise ValueError("ATR, stop, target, lookback and holding bars must be positive")
+    numeric_values = (atr, stop_atr, target_r, spread)
+    if any(
+        isinstance(value, bool)
+        or not isinstance(value, (int, float))
+        or not math.isfinite(value)
+        for value in numeric_values
+    ):
+        raise ValueError("ATR, stop, target and spread must be finite numeric values")
+    integer_values = (breakout_lookback, max_holding_bars)
+    if any(
+        isinstance(value, bool) or not isinstance(value, int) or value < 1
+        for value in integer_values
+    ):
+        raise ValueError("lookback and holding bars must be positive integers")
+    if atr <= 0 or stop_atr <= 0 or target_r <= 0:
+        raise ValueError("ATR, stop and target must be positive")
     if spread < 0:
         raise ValueError("spread must be non-negative; pass the round-trip cost in price units")
     event_dt = _dt(event_time)
