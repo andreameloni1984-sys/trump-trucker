@@ -401,6 +401,22 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn(("BRENT", "LONG_BIAS"), by_event["production-cut"])
         self.assertIn(("NASDAQ100", "LONG_BIAS"), by_event["trade-deal-reached"])
 
+    def test_directional_news_candidates_abstains_when_energy_rules_conflict(self):
+        finding = {
+            "event_id": "mixed-energy-catalyst-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "Production cut announced, but supply restored",
+            "text": "Officials announced a production cut, but later confirmed supply restored.",
+            "url": "https://example.gov/news/mixed-energy",
+            "published": "2026-10-27T08:00:00Z",
+            "source": "PUBLIC_RSS",
+            "domains": ["ENERGY"],
+        }
+
+        # A single item matches both supply-tightening (LONG) and supply-easing
+        # (SHORT). The result must not depend on rule order.
+        self.assertEqual(trump_tracker.directional_news_candidates([finding]), [])
+
 
 if __name__ == "__main__":
     unittest.main()
