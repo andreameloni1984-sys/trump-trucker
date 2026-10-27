@@ -104,3 +104,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 — Preserve point-in-time evidence across Gagarin handoff
+
+- **Finding:** item-level Sputnik RSS findings carried the original publication text and a detection timestamp, but the optional Gagarin handoff did not preserve a normalized event timestamp, explicit availability time, or a separate content hash. Downstream consumers could not reliably distinguish event time from observation time.
+- **Implemented:** item-level findings now record UTC-normalized `event_time`, `available_at`, and a SHA-256 hash of normalized title/body. The handoff transmits these fields separately; it does not invent `decision_time`, which belongs to Gagarin's own decision process.
+- **Files:** `trump_tracker.py`; `tests/test_sputnik_item_intelligence.py`.
+- **Regression tests:** verify UTC event time and availability time on feed ingestion, a 64-character content hash, and preservation of all three fields in the handoff while confirming no decision/order field is added.
+- **CI:** triggered by PR; results pending. No CI pass is claimed until the relevant workflows finish.
+- **Deployment:** not deployed; Render build-pipeline minutes remain exhausted. No merge or manual deploy.
+- **Empirical validation:** no live-feed replay or price-outcome evaluation performed. This is evidence lineage and point-in-time metadata, not a directional signal.
+- **Safety:** PAPER/DEMO ONLY; no broker, order, secret-value inspection, or Telegram test message.
