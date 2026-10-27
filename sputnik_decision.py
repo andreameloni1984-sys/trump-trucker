@@ -42,6 +42,17 @@ SCENARIOS = [
         "source_quality": "Tema energia rilevato; serve verificare che la notizia riguardi davvero l'offerta fisica.",
     },
     {
+        "id": "oil_diplomatic_deescalation",
+        "trigger": ("peace talks", "diplomatic efforts", "ease hostilities", "easing tensions", "diplomatic breakthrough", "prevent escalation", "negoziati di pace", "distensione diplomatica"),
+        "event": "Possibile de-escalation geopolitica che riduce il premio di rischio sul petrolio",
+        "candidate": "WTI (petrolio USA)",
+        "bias": "SHORT condizionale",
+        "if_then": "Se una fonte affidabile conferma progressi diplomatici credibili e il WTI rompe un minimo intraday con volume di vendita, valutare uno scenario SHORT; non anticipare il breakout.",
+        "confirmation": "Conferma indipendente della notizia + rottura del minimo intraday su prezzo/volume; verificare che non siano in corso nuove interruzioni fisiche dell'offerta.",
+        "invalidation": "Nuovi attacchi alle infrastrutture o alle rotte, smentita dei progressi diplomatici, oppure recupero del livello di rottura.",
+        "source_quality": "La diplomazia può ridurre il premio di rischio, ma l'effetto è condizionale e può essere compensato da interruzioni dell'offerta.",
+    },
+    {
         "id": "defense_escalation",
         "trigger": ("missile", "military strike", "defense spending", "defence spending", "military operation", "defense contract"),
         "event": "Escalation militare o spesa/commessa difesa",
