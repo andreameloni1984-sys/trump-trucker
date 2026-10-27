@@ -128,3 +128,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** PR #53 only, not merged. Render workspace was not selected in this run; no deploy was triggered, and the live commit was not re-verified.
 - **Empirical limit:** stricter provenance validation is not predictive validation; no historical replay or out-of-sample return study.
 - **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders or Telegram test messages.
+
+
+## 2026-10-27 08:53 UTC — Fail closed on impossible or future Form 4 chronology
+
+- **Finding:** the ranking validated source provenance and distinct filing identity, but an otherwise valid SEC URL could still contribute confirmation points when the transaction/filing dates were invalid, future-dated, or chronologically impossible.
+- **Change:** `sputnik_ranking.py` now requires parseable transaction and filing dates with `transaction_date <= filing_date <= as_of_date`. `rank_purchase_candidates()` resolves one UTC as-of date and uses it consistently across candidate groups.
+- **Regression:** `tests/test_sputnik_ranking.py` now rejects invalid transaction/filing dates, future transactions, future filings, and a filing dated before its transaction.
+- **CI:** new code/test commit will trigger the ranking and related PR workflows; final status is to be recorded after GitHub Actions completes.
+- **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline minutes remain exhausted.
+- **Empirical limit:** chronology integrity only; no historical replay or out-of-sample return validation.
+- **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets, or Telegram test messages.
