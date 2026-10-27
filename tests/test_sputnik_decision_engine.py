@@ -15,6 +15,18 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
         self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
 
+    def test_confirmed_diplomatic_deescalation_maps_to_conditional_wti_short_watch(self):
+        text = "Diplomatic efforts to resolve the conflict eased concerns about oil supply disruptions."
+        rows = conditional_plans(text)
+        wti = next(row for row in rows if row["id"] == "oil_diplomatic_deescalation")
+        self.assertEqual(wti["candidate"], "WTI (petrolio USA)")
+        self.assertIn("SHORT", wti["bias"])
+        self.assertIn("volume", wti["if_then"].lower())
+
+    def test_generic_diplomacy_mention_does_not_create_oil_direction(self):
+        rows = conditional_plans("Officials discussed diplomacy at a public event.")
+        self.assertFalse(any(row["id"] == "oil_diplomatic_deescalation" for row in rows))
+
     def test_houthi_attack_language_maps_to_conditional_brent_scenario(self):
         text = "The Houthis emerged again, hitting Saudi Arabia and trying to drive up oil prices."
         rows = conditional_plans(text)
