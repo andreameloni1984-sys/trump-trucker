@@ -483,3 +483,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** PR #45 branch only; no merge/deploy.
 - **Empirical limit:** this removes one optimistic timing assumption only when actual decision times are supplied. Legacy ledgers still assume decision time equals availability and are labeled accordingly. No verified CL/event-time sample or profitability claim.
 
+## 2026-10-27 — Historical research retrieval audit (late September / early October)
+
+- **Recovered summary, not verbatim catalog:** conversation retrieval dated 2026-10-03 describes public-disclosure sources (OGE, Senate, House), disclosure lag and amount buckets, and the path source → document → transaction → normalization → deduplication → sector/commodity → score → Telegram. The 2026-10-03 summary also names event clustering, source weighting and evidence confidence; it rejects keyword-to-market causality and automatic LONG/SHORT from keywords. The 2026-10-05 summary says to keep facts, signals and correlations separate and not promote rumours to certainty.
+- **Additional 2026-10-02 summary:** broader research ideas named term structure, liquidity regime, order flow/CVD/open interest, session engine, regime hysteresis, volatility curve, macro transmission, tail dependence, episodic memory and adaptive policy. This is a recovered summary of topics, not the original numbered catalog and not proof these components exist in the current operational path.
+- **Catalog integrity:** searches of prior context and the Library did not recover the original numbered 1–100 list. The 2026-09-25 retrieval note explicitly says that the original list is absent. Do not reconstruct missing numbered entries.
+- **Current mapping:** the event backtest now distinguishes event_time, available_at and optional decision_time; it preserves source_url and canonicalizes common tracking parameters for deduplication. It still does not prove primary-source authenticity, hash the original source body, implement the full disclosure-to-transaction pipeline, or establish an empirical news-to-WTI edge.
+- **Validation/deployment:** these are recovered historical summaries and an audit of existing code, not a market-performance result. PR #45 remains unmerged; no deploy.
+
