@@ -42,7 +42,9 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertNotEqual(result["breakout"]["status"], "NO_BREAKOUT")
         # Close-confirmed breakouts can only be filled on the following bar.
         self.assertEqual(result["breakout"]["entry"], 97.4)
-        self.assertEqual(result["breakout"]["signal_time"], data[2]["timestamp"].isoformat())
+        self.assertEqual(result["breakout"]["signal_bar_time"], data[2]["timestamp"].isoformat())
+        self.assertEqual(result["breakout"]["signal_time"], (data[2]["timestamp"] + timedelta(minutes=5)).isoformat())
+        self.assertEqual(result["breakout"]["decision_time"], result["breakout"]["entry_time"])
         self.assertEqual(result["breakout"]["entry_time"], data[3]["timestamp"].isoformat())
         self.assertEqual(result["breakout"]["entry_model"], "next_bar_open_after_close_confirmation")
         self.assertGreater(result["early"]["pnl_r"], 0)
@@ -507,3 +509,21 @@ class SputnikEventBacktestTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+    def test_breakout_rejects_entry_before_signal_bar_close(self):
+        start = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        data = candles([
+            (100, 101, 99, 100, 1000),
+            (100, 100.5, 98, 98.5, 1200),
+            (98.5, 99, 97, 98, 1300),
+        ], start=start)
+        data[1]["timestamp"] = start + timedelta(minutes=1)
+        data[2]["timestamp"] = start + timedelta(minutes=2)
+        result = run_backtest(
+            data, "2026-01-01T00:00:00+00:00", "SHORT", 1.0,
+            breakout_lookback=1, bar_interval_minutes=5,
+        )
+        self.assertEqual(result["breakout"]["status"], "UNMODELED_BAR_INTERVAL")
+        self.assertIsNone(result["breakout"].get("pnl_r"))
+
