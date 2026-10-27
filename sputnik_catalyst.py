@@ -179,13 +179,13 @@ def _is_negated_iran_deescalation(text: str) -> bool:
     return any(re.search(pattern, text, re.IGNORECASE) for pattern in _NEGATED_IRAN_DEESCALATION_PATTERNS)
 
 _NEGATION_BEFORE_MATCH = re.compile(
-    r"\\b(?:no|not|never|failed to|fails to|reject(?:s|ed)?|den(?:y|ies|ied)|ruled out|without)\\b[^.!?]{0,60}$",
+    r"\b(?:no|not|never|failed to|fails to|reject(?:s|ed)?|den(?:y|ies|ied)|ruled out|without)\b[^.!?]{0,60}$",
     re.IGNORECASE,
 )
 _NEGATION_AFTER_MATCH = re.compile(
-    r"^\\s*(?:(?:was|were|is|are|has been|have been|had been|will be)\\s+)?"
-    r"(?:not\\s+(?:reached|announced|approved|implemented|expected|planned|lifted|eased|restored|increased|cut|confirmed)|"
-    r"rejected|denied|ruled out|failed|collapsed|off)\\b",
+    r"^\s*(?:(?:was|were|is|are|has been|have been|had been|will be)\s+)?"
+    r"(?:not\s+(?:reached|announced|approved|implemented|expected|planned|lifted|eased|restored|increased|cut|confirmed)|"
+    r"rejected|denied|ruled out|failed|collapsed|off)\b",
     re.IGNORECASE,
 )
 
