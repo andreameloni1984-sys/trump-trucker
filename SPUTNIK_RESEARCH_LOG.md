@@ -112,7 +112,7 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Files:** `trump_tracker.py`; `tests/test_sputnik_item_intelligence.py`.
 - **Regression tests:** naive ISO timestamp, naive RFC-822 timestamp, naive validation clock; also moved the unittest entrypoint to the end so the later backlog regression test is discoverable when running the module directly.
 - **Commit:** code `92f65942fd20dbb4451eb61f00bf210fd57ac7ed`; tests `62bb82aebdcbce8f6eb8c568e18f110c6e3c440b`.
-- **CI:** pending PR-triggered workflows; no pass claimed yet.
+- **CI:** PASS on PR head `58009aa02495f7c5138f2155d4d1b6bea10da602`: item-intelligence run 40461248520 and ranking run 40461248514. The research-log-only commit follows those test runs.
 - **Deployment:** research branch only; no merge/deploy. Render pipeline minutes are exhausted.
 - **Empirical validation:** no live-feed replay or prediction study performed. This is timestamp-integrity hardening, not a trading edge.
 - **Safety:** PAPER ONLY; no broker, orders, secrets or Telegram test messages.
