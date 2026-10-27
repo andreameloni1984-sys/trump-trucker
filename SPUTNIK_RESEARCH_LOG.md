@@ -387,3 +387,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Render:** listener is configured on `main`; last live Sputnik deployment is commit `9e5204bf7d9074dba27637013b7d98933a91e733` from 2026-10-16. The 2026-10-22 attempt for `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed because the workspace ran out of build-pipeline minutes. App logs at 2026-10-27 14:41 UTC show listener online and Telegram bootstrap authorized, but this window contains no SEC/White House feed log entries and does not prove a market alert was delivered.
 - **Empirical limit:** no historical WTI replay or profitability result from this URL-validation change.
 - **Safety:** no secrets inspected, no test Telegram message, no broker or orders; PAPER ONLY.
+
+
+## 2026-10-27 — Reject candle spacing shorter than the declared timeframe
+
+- **Finding:** the WTI event backtest marked gaps longer than the declared interval, but did not reject a dataset sampled more frequently than that interval. For example, one-minute bars passed with a five-minute setting could distort holding-bar duration and early-entry timing even though the breakout path had a local timing check.
+- **Change:** `_bar_gap_diagnostics()` now reports unexpected short intervals and the minimum observed spacing; `backtest_event()` fails closed with `UNMODELED_BAR_INTERVAL` for both early and breakout models when candle spacing is shorter than the declared interval.
+- **Regression:** the short-spacing fixture now asserts both models are unscored, the interval mismatch count is two, and no P&L is produced.
+- **Operational path:** OHLCV timestamp validation → declared-interval diagnostics → early/breakout simulation eligibility.
+- **Verification:** implementation commit `65a9137b0a336ce8b6d8355fe65c0adf53d2d1cc`; test commit `6e73a4e9b91b9207c916f3b5f344601d1fe47cb1`. CI on the resulting head is pending; no empirical backtest result is claimed.
+- **Limits:** this prevents timeframe-mismatch scoring but does not provide an exchange session calendar or validate the source instrument/volume. PR #45 remains open/unmerged; no Render deploy, Telegram test message, broker, or order.
+- **Safety:** PAPER ONLY.
