@@ -113,3 +113,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Test:** add regression coverage that a dated individual news item with explicit Iran agreement language produces WTI/Brent SHORT_BIAS candidates, still marked `BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION`.
 - **Limits:** this is a conditional news-bias rule, not proof of predictive value. The supplied 16-item digest does not itself contain a verified Iran-de-escalation event, and this change does not send a Telegram message or add live quote/ATR calculations. Those require current market data and a connected runtime.
 - **Deployment:** branch-only change; not merged or deployed. PAPER ONLY; no orders.
+
+
+## 2026-10-27 — Abstain on negated Iran de-escalation language
+
+- **Finding:** the conditional WTI/Brent SHORT_BIAS rule matched keyword overlap such as “Iran deal not reached” or “Iran rejects ceasefire”, even though the stated event was a failed/rejected agreement rather than de-escalation.
+- **Change:** \`sputnik_catalyst.py\` now checks a narrow set of explicit negation/rejection patterns before applying only the \`iran_diplomatic_deescalation\` rule. Other catalyst rules are unchanged; ambiguous/negated wording abstains.
+- **Regression:** \`tests/test_sputnik_item_intelligence.py::test_negated_iran_diplomacy_does_not_create_oil_short_hypothesis\` covers failed deal, rejected ceasefire, and sanctions remaining in place.
+- **CI:** triggered on the code/test head; final run IDs and outcomes are recorded in the PR discussion after completion.
+- **Deployment:** PR #54 branch only; no merge or deploy. Render build-pipeline minutes are exhausted.
+- **Empirical limit:** this is a keyword-negation safety guard, not NLP fact verification or a predictive edge. No live-feed replay or price/volume study.
+- **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets, or Telegram test messages.
