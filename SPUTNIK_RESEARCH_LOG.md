@@ -117,7 +117,7 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Empirical validation:** no historical replay or out-of-sample ranking study performed. This is scoring-integrity validation, not a return/profitability claim.
 - **Safety:** PAPER/DEMO ONLY; no broker, order, or Telegram test message.
 
-## 2026-10-27 09:33 UTC — Require numeric SEC accession and a filing document URL
+## 2026-10-27 08:33 UTC (09:33 CET) — Require numeric SEC accession and a filing document URL
 
 - **Finding:** the primary-source gate checked that CIK/accession path components were merely non-empty and that a sixth path segment existed. A lookalike archive path with a non-numeric CIK/accession or an index page could pass the provenance gate.
 - **Change:** `sputnik_ranking.py::_is_primary_sec_form4_url()` now requires a numeric CIK, an 18-digit dashless accession directory, and a document filename ending in `.xml`, `.htm`, `.html`, or `.txt`; generic `index.htm/html` pages are rejected. Nested document paths remain allowed.
