@@ -468,6 +468,18 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
             continue
 
+        # Use one explicit, timezone-aware observation clock for the whole feed
+        # snapshot. Never relabel a naive local wall clock as UTC.
+        observed_now = utc_now()
+        if (
+            not isinstance(observed_now, datetime)
+            or observed_now.tzinfo is None
+            or observed_now.utcoffset() is None
+        ):
+            print("SPUTNIK: RSS scan skipped; observation clock has no timezone.")
+            continue
+        observed_now_utc = observed_now.astimezone(timezone.utc)
+
         for row in rows:
             published = str(row.get("published") or "").strip()
             published_at = _parse_public_item_timestamp(published)
@@ -493,11 +505,9 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             ).hexdigest()[:24]
             if digest in known_items:
                 continue
-            observed_now = utc_now()
-            observed_now_utc = observed_now.replace(tzinfo=timezone.utc) if observed_now.tzinfo is None else observed_now.astimezone(timezone.utc)
             age_minutes = (observed_now_utc - published_at).total_seconds() / 60.0
             # Mark back-catalog entries as seen, but never emit stale headlines.
-            known_items[digest] = observed_now.isoformat()
+            known_items[digest] = observed_now_utc.isoformat()
             if age_minutes > max_public_item_age_hours * 60:
                 continue
             # When a feed is first added, only genuinely new items (<=5 minutes)
@@ -515,12 +525,12 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "text": body[:6000],
                 "evidence": "PUBLIC_RSS_ITEM",
                 "status": "POTENTIAL_CORRELATION",
-                "detected_at": utc_now().isoformat(),
+                "detected_at": observed_now_utc.isoformat(),
                 "event_id": digest,
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
-        initialized_feeds[feed_url] = utc_now().isoformat()
+        initialized_feeds[feed_url] = observed_now_utc.isoformat()
 
     # Bound per-item deduplication state and history to prevent unbounded growth.
     if len(known_items) > 2000:
@@ -712,8 +722,9 @@ def _parse_public_item_timestamp(value: Any) -> datetime | None:
             parsed = parsedate_to_datetime(text)
         if not isinstance(parsed, datetime):
             return None
-        if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=timezone.utc)
+        # A timestamp without an explicit offset is ambiguous; never assume UTC.
+        if parsed.tzinfo is None or parsed.utcoffset() is None:
+            return None
         return parsed.astimezone(timezone.utc)
     except (TypeError, ValueError, OverflowError):
         return None
@@ -725,7 +736,9 @@ def _valid_public_item_timestamp(value: Any) -> bool:
     if parsed is None:
         return False
     now = utc_now()
-    now_utc = now.replace(tzinfo=timezone.utc) if now.tzinfo is None else now.astimezone(timezone.utc)
+    if now.tzinfo is None or now.utcoffset() is None:
+        return False
+    now_utc = now.astimezone(timezone.utc)
     return parsed <= now_utc + timedelta(minutes=5)
 
 

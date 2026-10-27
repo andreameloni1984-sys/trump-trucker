@@ -74,6 +74,14 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>soon</pubDate>",
             )),
+            ("ISO publication date without timezone", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>2026-10-26T06:00:00</pubDate>",
+            )),
+            ("RFC822 publication date without timezone", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>Mon, 26 Oct 2026 06:00:00</pubDate>",
+            )),
             ("future publication date", FEED.replace(
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>Mon, 26 Oct 2026 06:10:00 GMT</pubDate>",
@@ -249,10 +257,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self, _fetch_page):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
@@ -278,3 +282,43 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+    def test_public_item_timestamp_rejects_naive_validation_clock(self):
+        fixed_now = datetime(2026, 10, 26, 6, 0)
+        with patch.object(trump_tracker, "utc_now", return_value=fixed_now):
+            self.assertFalse(
+                trump_tracker._valid_public_item_timestamp("2026-10-26T05:00:00Z")
+            )
+
+
+    def test_rss_scan_fails_closed_on_naive_observation_clock_without_seeding_feed(self):
+        feed_url = "https://example.gov/feed.xml"
+        row = {
+            "id": "naive-clock-event",
+            "title": "President announces new tariffs on China",
+            "text": "New trade measures announced.",
+            "url": "https://example.gov/news/tariffs",
+            "published": "Mon, 19 Oct 2026 06:00:00 GMT",
+        }
+        naive_clock = datetime(2026, 10, 27, 8, 0)
+        published_at = datetime(2026, 10, 19, 6, 0, tzinfo=timezone.utc)
+
+        with (
+            patch.object(trump_tracker, "INTELLIGENCE_SOURCES", {}),
+            patch.object(trump_tracker, "_configured_rss_feeds", return_value=[feed_url]),
+            patch.object(trump_tracker, "fetch_public_feed", return_value=b"<rss/>"),
+            patch.object(trump_tracker, "parse_public_feed", return_value=[row]),
+            patch.object(trump_tracker, "_parse_public_item_timestamp", return_value=published_at),
+            patch.object(trump_tracker, "_valid_public_item_timestamp", return_value=True),
+            patch.object(trump_tracker, "utc_now", return_value=naive_clock),
+        ):
+            state = {}
+            findings = trump_tracker.intelligence_snapshot(state)
+
+        self.assertEqual(findings, [])
+        self.assertEqual(state["intelligence_items"], {})
+        self.assertEqual(state["intelligence_feed_initialized"], {})
+
+
+if __name__ == "__main__":
+    unittest.main()
