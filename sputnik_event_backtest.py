@@ -161,6 +161,8 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
     """Load a traceable event ledger with exact timezone-aware publication times.
 
     Required columns: event_id,event_time,available_at,side,atr,atr_time,source_url.
+    Optional decision_time records when the strategy actually made its decision; if absent,
+    the simulation explicitly assumes decision_time == available_at.
     The URL is provenance metadata; its presence does not independently verify the claim.
     """
     required = {"event_id", "event_time", "available_at", "side", "atr", "atr_time", "source_url"}
@@ -169,7 +171,9 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
     seen_sources = set()
     with open(path, newline="", encoding="utf-8-sig") as handle:
         reader = csv.DictReader(handle)
-        if not required.issubset(set(reader.fieldnames or [])):
+        fieldnames = set(reader.fieldnames or [])
+        has_decision_time = "decision_time" in fieldnames
+        if not required.issubset(fieldnames):
             raise ValueError(
                 "event CSV requires columns: event_id,event_time,available_at,side,atr,atr_time,source_url"
             )
@@ -184,6 +188,11 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
             available_dt = _dt(str(row.get("available_at") or "").strip())
             if available_dt < event_dt:
                 raise ValueError(f"event CSV row {row_number} available_at is before event_time")
+            decision_dt = available_dt
+            if has_decision_time:
+                decision_dt = _dt(str(row.get("decision_time") or "").strip())
+                if decision_dt < available_dt:
+                    raise ValueError(f"event CSV row {row_number} decision_time is before available_at")
             atr_dt = _dt(str(row.get("atr_time") or "").strip())
             if atr_dt > event_dt:
                 raise ValueError(f"event CSV row {row_number} ATR timestamp is after event time")
@@ -201,7 +210,7 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
             if canonical_source in seen_sources:
                 raise ValueError(f"source_url must be unique after canonicalization: {canonical_source}")
             seen_sources.add(canonical_source)
-            events.append({
+            event_row = {
                 "event_id": event_id,
                 "event_time": event_dt.isoformat(),
                 "available_at": available_dt.isoformat(),
@@ -209,7 +218,10 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
                 "atr": atr,
                 "atr_time": atr_dt.isoformat(),
                 "source_url": source_url,
-            })
+            }
+            if has_decision_time:
+                event_row["decision_time"] = decision_dt.isoformat()
+            events.append(event_row)
     if not events:
         raise ValueError("event ledger contains no events")
     return events
@@ -309,6 +321,7 @@ def backtest_event(
     *,
     atr_time: str,
     available_at: str,
+    decision_time: str | None = None,
     stop_atr: float = 1.0,
     target_r: float = 2.0,
     breakout_lookback: int = 3,
@@ -357,6 +370,10 @@ def backtest_event(
     available_dt = _dt(available_at)
     if available_dt < event_dt:
         raise ValueError("available_at must be at or after event_time")
+    decision_dt = _dt(decision_time) if decision_time is not None else available_dt
+    if decision_dt < available_dt:
+        raise ValueError("decision_time must be at or after available_at")
+    decision_time_source = "explicit" if decision_time is not None else "assumed_available_at"
     atr_dt = _dt(atr_time)
     if atr_dt > event_dt:
         raise ValueError("ATR timestamp must be at or before event time to prevent look-ahead bias")
@@ -373,6 +390,8 @@ def backtest_event(
         return {
             "event_time": event_dt.isoformat(),
             "available_at": available_dt.isoformat(),
+            "decision_time": decision_dt.isoformat(),
+            "decision_time_source": decision_time_source,
             "side": side,
             "settings": {
                 "atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr,
@@ -384,7 +403,7 @@ def backtest_event(
                 "bar_interval_minutes": bar_interval_minutes,
             },
             "data_quality": data_quality,
-            "early": {**reason, "decision_time": available_dt.isoformat()},
+            "early": {**reason, "decision_time": decision_dt.isoformat()},
             "breakout": dict(reason),
             "interpretation": (
                 "Historical simulation refused: observed candle spacing is shorter than the declared interval; "
@@ -392,26 +411,26 @@ def backtest_event(
             ),
         }
     if not candles:
-        return {"event_time": event_dt.isoformat(), "available_at": available_dt.isoformat(), "side": side, "early": {"status": "NO_DATA", "decision_time": available_dt.isoformat()}, "breakout": {"status": "NO_DATA"}, "data_quality": data_quality}
+        return {"event_time": event_dt.isoformat(), "available_at": available_dt.isoformat(), "decision_time": decision_dt.isoformat(), "decision_time_source": decision_time_source, "side": side, "early": {"status": "NO_DATA", "decision_time": decision_dt.isoformat()}, "breakout": {"status": "NO_DATA"}, "data_quality": data_quality}
 
-    next_index = next((i for i, c in enumerate(candles) if c["timestamp"] > available_dt), None)
+    next_index = next((i for i, c in enumerate(candles) if c["timestamp"] > decision_dt), None)
     availability_gap_minutes = None
     availability_gap_unmodeled = False
     if next_index is None:
         early = {"status": "NO_POST_AVAILABILITY_CANDLE"}
     else:
-        availability_gap_minutes = (candles[next_index]["timestamp"] - available_dt).total_seconds() / 60.0
+        availability_gap_minutes = (candles[next_index]["timestamp"] - decision_dt).total_seconds() / 60.0
         availability_gap_unmodeled = availability_gap_minutes > bar_interval_minutes
         if availability_gap_unmodeled:
             early = {
                 "status": "UNMODELED_SESSION_GAP",
-                "gap_start_time": available_dt.isoformat(),
+                "gap_start_time": decision_dt.isoformat(),
                 "gap_end_time": candles[next_index]["timestamp"].isoformat(),
                 "gap_minutes": round(availability_gap_minutes, 2),
             }
         else:
             early = _simulate(candles, next_index, candles[next_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes, contract_multiplier)
-    early["decision_time"] = available_dt.isoformat()
+    early["decision_time"] = decision_dt.isoformat()
 
     breakout = {"status": "NO_BREAKOUT"}
     start = next_index if next_index is not None else len(candles)
@@ -480,12 +499,14 @@ def backtest_event(
     return {
         "event_time": event_dt.isoformat(),
         "available_at": available_dt.isoformat(),
+        "decision_time": decision_dt.isoformat(),
+        "decision_time_source": decision_time_source,
         "side": side,
         "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread, "commission_round_trip_usd_per_contract": commission_round_trip_usd_per_contract, "slippage_ticks_per_side": slippage_ticks_per_side, "tick_size": tick_size, "contract_multiplier": contract_multiplier, "round_trip_cost_price_units": round_trip_cost, "bar_interval_minutes": bar_interval_minutes},
         "data_quality": data_quality,
         "early": early,
         "breakout": breakout,
-        "interpretation": "Historical simulation only. Early-entry timing uses available_at, not just publication event_time; breakout decision_time is the signal-bar timestamp and fills occur on the next bar. Unmodeled gaps fail closed.",
+        "interpretation": "Historical simulation only. Early-entry timing uses explicit decision_time when supplied; otherwise it assumes decision_time equals available_at. Breakout decisions occur at the signal-bar close and fills occur on the next bar. Unmodeled gaps fail closed.",
     }
 
 
@@ -688,6 +709,7 @@ def backtest_events(
             event["atr"],
             atr_time=event["atr_time"],
             available_at=event["available_at"],
+            decision_time=event.get("decision_time"),
             stop_atr=stop_atr,
             target_r=target_r,
             breakout_lookback=breakout_lookback,
@@ -710,13 +732,14 @@ def main() -> None:
     parser.add_argument("--csv", required=True, help="OHLCV CSV with timezone-aware timestamps")
     parser.add_argument(
         "--events-csv",
-        help="Batch ledger CSV with event_id,event_time,side,atr,atr_time,source_url; requires source-linked events",
+        help="Batch ledger CSV with event_id,event_time,available_at,side,atr,atr_time,source_url and optional decision_time",
     )
     parser.add_argument("--event-time", help="Single catalyst publication time, ISO-8601 with timezone")
     parser.add_argument("--side", choices=("LONG", "SHORT"))
     parser.add_argument("--atr", type=float, help="ATR known at event time, in price units")
     parser.add_argument("--atr-time", help="Timestamp when the supplied ATR was available; must be <= event time")
     parser.add_argument("--available-at", help="Timestamp when the catalyst became available to the system; must be >= event time")
+    parser.add_argument("--decision-time", help="Actual strategy decision time; must be >= available-at (defaults to available-at if omitted)")
     parser.add_argument("--stop-atr", type=float, default=1.0)
     parser.add_argument("--target-r", type=float, default=2.0)
     parser.add_argument("--lookback", type=int, default=3)
@@ -742,7 +765,7 @@ def main() -> None:
         "bar_interval_minutes": args.bar_interval_minutes,
     }
     if args.events_csv:
-        if any(value is not None for value in (args.event_time, args.available_at, args.side, args.atr, args.atr_time)):
+        if any(value is not None for value in (args.event_time, args.available_at, args.decision_time, args.side, args.atr, args.atr_time)):
             parser.error("use either --events-csv or the single-event arguments, not both")
         result = backtest_events(candles, load_events_csv(args.events_csv), **strategy_options)
     else:
@@ -750,7 +773,7 @@ def main() -> None:
             parser.error("single-event mode requires --event-time, --available-at, --side, --atr and --atr-time")
         result = backtest_event(
             candles, args.event_time, args.side, args.atr, atr_time=args.atr_time,
-            available_at=args.available_at, **strategy_options,
+            available_at=args.available_at, decision_time=args.decision_time, **strategy_options,
         )
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
