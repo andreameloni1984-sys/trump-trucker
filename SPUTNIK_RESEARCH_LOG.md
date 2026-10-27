@@ -120,7 +120,7 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Finding:** the conditional WTI/Brent SHORT_BIAS rule matched keyword overlap such as “Iran deal not reached” or “Iran rejects ceasefire”, even though the stated event was a failed/rejected agreement rather than de-escalation.
 - **Change:** \`sputnik_catalyst.py\` now checks a narrow set of explicit negation/rejection patterns before applying only the \`iran_diplomatic_deescalation\` rule. Other catalyst rules are unchanged; ambiguous/negated wording abstains.
 - **Regression:** \`tests/test_sputnik_item_intelligence.py::test_negated_iran_diplomacy_does_not_create_oil_short_hypothesis\` covers failed deal, rejected ceasefire, and sanctions remaining in place.
-- **CI:** triggered on the code/test head; final run IDs and outcomes are recorded in the PR discussion after completion.
+- **CI status at this check:** GitHub's PR-run endpoint returned no new workflow run for the updated test commit `6469d487ecf81b4ef2db3937d0252d537c1d6778`. Earlier successful Sputnik runs predate this negation guard and are not counted as validation. A fresh CI result is not claimed unless a run for this change becomes observable.
 - **Deployment:** PR #54 branch only; no merge or deploy. Render build-pipeline minutes are exhausted.
 - **Empirical limit:** this is a keyword-negation safety guard, not NLP fact verification or a predictive edge. No live-feed replay or price/volume study.
 - **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets, or Telegram test messages.
