@@ -80,7 +80,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
 
     def test_invalid_direction_rejected(self):
         with self.assertRaises(ValueError):
-            backtest_event(candles([(100, 101, 99, 100, 1000)]), "2026-01-01T00:00:00+00:00", "MAYBE", 1.0)
+            backtest_event(candles([(100, 101, 99, 100, 1000)]), "2026-01-01T00:00:00+00:00", "MAYBE", 1.0, atr_time="2025-12-31T23:55:00+00:00")
 
     def test_both_results_are_reported_even_when_breakout_absent(self):
         data = candles([
@@ -100,7 +100,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
         ])
         data[1]["timestamp"] = data[0]["timestamp"]
         with self.assertRaisesRegex(ValueError, "timestamps must be unique"):
-            backtest_event(data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0)
+            backtest_event(data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0, atr_time="2025-12-31T23:54:00+00:00")
 
     def test_naive_candle_timestamps_are_rejected(self):
         data = candles(
@@ -108,7 +108,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
             start=datetime(2026, 1, 1),
         )
         with self.assertRaisesRegex(ValueError, "timezone-aware"):
-            backtest_event(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0)
+            backtest_event(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0, atr_time="2025-12-31T23:54:00+00:00")
 
     def test_gap_through_short_stop_fills_at_worse_open(self):
         data = candles([
