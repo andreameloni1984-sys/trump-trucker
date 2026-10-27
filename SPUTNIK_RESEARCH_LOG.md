@@ -124,6 +124,6 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Files/path:** `trump_tracker.py::intelligence_snapshot`; `tests/test_sputnik_item_intelligence.py`.
 - **Regression:** naive observation clock must yield no finding, no dedupe entry and no initialized-feed marker.
 - **Commits:** code `c7efb861536e065547f328bbdfc7e1b6f7087f4b`; test `400aa0a4c4a6bd10040bfe15106ea0a8d72e53b7`.
-- **CI:** pending for the new code/test commits.
+- **CI:** PASS on code/test commit `400aa0a4c4a6bd10040bfe15106ea0a8d72e53b7`: item intelligence run `40468935789`; ranking run `40468935781`. The following commit updates this log only.
 - **Deployment/empirical limits:** branch/PR #52 only; no merge/deploy, no live-feed replay or prediction test. Render build capacity remains constrained.
 - **Safety:** PAPER ONLY; no broker/orders, secrets or Telegram test messages.
