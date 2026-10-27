@@ -487,6 +487,38 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(summary["non_overlapping_median_early_minus_breakout_r"], 0.3)
         self.assertIn("does not guarantee statistical independence", summary["non_overlapping_sensitivity_note"])
 
+    def test_summary_treats_shared_candle_boundary_as_overlap(self):
+        base = datetime(2026, 1, 1, tzinfo=timezone.utc)
+
+        def trade(pnl, start_minute, end_minute):
+            return {
+                "pnl_r": pnl,
+                "entry_time": (base + timedelta(minutes=start_minute)).isoformat(),
+                "exit_time": (base + timedelta(minutes=end_minute)).isoformat(),
+            }
+
+        results = [
+            {
+                "event_time": base.isoformat(),
+                "early": trade(1.0, 0, 10),
+                "breakout": trade(0.5, 0, 10),
+            },
+            {
+                # The second pair enters at the same candle timestamp where the first
+                # pair's exit candle begins. Intrabar order is unknown, so it must overlap.
+                "event_time": (base + timedelta(minutes=10)).isoformat(),
+                "early": trade(0.25, 10, 20),
+                "breakout": trade(0.75, 10, 20),
+            },
+        ]
+
+        summary = summarize_comparison_results(results)
+        self.assertEqual(summary["paired_scored_events"], 2)
+        self.assertEqual(summary["overlapping_trade_pairs_early"], 1)
+        self.assertEqual(summary["overlapping_trade_pairs_breakout"], 1)
+        self.assertEqual(summary["non_overlapping_paired_events"], 1)
+        self.assertEqual(summary["non_overlapping_events_excluded_for_overlap"], 1)
+
     def test_batch_summary_reports_overlapping_trade_windows(self):
         results = [
             {
