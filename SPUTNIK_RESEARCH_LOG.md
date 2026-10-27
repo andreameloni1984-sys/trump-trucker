@@ -470,3 +470,16 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI verification:** GitHub Actions run [40538023486](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40538023486) ran `python -m unittest discover -s tests -p "test_*.py" -v` on PR head `15a7c60b86f2a646ca41e0676609e89b1ba409ea`; **119 tests ran, OK**. The CI log also emitted handled `OSError` messages for WHITE_HOUSE, TRUTH_ARCHIVE and OGE source fetches, so external source availability was not validated by this suite. A local clone/test attempt was blocked because the container could not resolve `github.com`.
 - **Data/performance block:** no reliable post-hypothesis 1-minute/5-minute CLZ26 OHLCV sequence with source timestamps was obtained; no historical trade outcome or strategy profitability is claimed. The quote is delayed.
 - **Safety:** PR branch only; no orders, broker changes, Telegram test messages, or production deployment.
+ 
+## 2026-10-27 — Separate source availability from strategy decision time
+
+- **Finding:** the event ledger captured publication time (event_time) and system availability (available_at), but the simulator implicitly equated strategy decision time with available_at. This can overstate early-entry timeliness when processing/analysis latency exists.
+- **Implemented:** backtest_event accepts an optional timezone-aware decision_time; the first eligible entry bar must open strictly after it. A supplied decision time before available_at is rejected. Batch event CSVs may include decision_time; legacy ledgers remain compatible but the output explicitly labels the fallback decision_time_source=assumed_available_at.
+- **Operational path:** event CSV → load_events_csv → backtest_events → backtest_event → earliest eligible entry bar and early.decision_time. CLI single-event mode also accepts --decision-time.
+- **Files:** sputnik_event_backtest.py, tests/test_sputnik_event_backtest.py.
+- **Regression:** added test_event_ledger_decision_time_delays_entry_and_must_follow_availability; verifies that a decision at 00:12 cannot fill on the 00:05 or 00:10 bar, and rejects a decision timestamp earlier than availability.
+- **Commits:** implementation 322a94dd57c162e4ee57a3211d29d96d9de83991; test 591fd6b97355983562fee9b734e17fc0cec3ae8b.
+- **CI:** pending at log update; report only the workflow result visible after this commit.
+- **Deployment:** PR #45 branch only; no merge/deploy.
+- **Empirical limit:** this removes one optimistic timing assumption only when actual decision times are supplied. Legacy ledgers still assume decision time equals availability and are labeled accordingly. No verified CL/event-time sample or profitability claim.
+
