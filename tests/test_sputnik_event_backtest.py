@@ -69,7 +69,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
     def test_no_future_candle_does_not_invent_entry(self):
         data = candles([(100, 101, 99, 100, 1000)])
         result = run_backtest(data, "2026-01-02T00:00:00+00:00", "LONG", 1.0)
-        self.assertEqual(result["early"]["status"], "NO_POST_EVENT_CANDLE")
+        self.assertEqual(result["early"]["status"], "NO_POST_AVAILABILITY_CANDLE")
 
     def test_future_atr_timestamp_is_rejected(self):
         data = candles([(100, 101, 99, 100, 1000)])
@@ -376,7 +376,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
             path.write_text(
                 "event_id,event_time,available_at,side,atr,atr_time,source_url\n"
                 "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,https://example.com/event/1\n"
-                "evt-2,2026-01-01T00:30:00+00:00,SHORT,1.0,2026-01-01T00:25:00+00:00,https://example.com/event/2\n",
+                "evt-2,2026-01-01T00:30:00+00:00,2026-01-01T00:30:00+00:00,SHORT,1.0,2026-01-01T00:25:00+00:00,https://example.com/event/2\n",
                 encoding="utf-8",
             )
             ledger = load_events_csv(path)
