@@ -1,13 +1,13 @@
 {
   "events": {},
-  "updated_at": "2026-10-27T14:41:17.522098+00:00",
+  "updated_at": "2026-10-27T19:40:40.705183+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "81bdfd33a075f92b7ed3b122",
-    "TRUTH_ARCHIVE": "9c21fdb74937a89b0e982345",
-    "OGE": "bb8797b576c86fb2929bae06"
+    "WHITE_HOUSE": "eec6591252224dacbfeb80eb",
+    "TRUTH_ARCHIVE": "4b47a5edfbf5ad72d82cf70a",
+    "OGE": "34885a64ac17f66a3396213a"
   },
   "intelligence_history": {
     "95ae7d8592d09521659c4776": {
@@ -5399,6 +5399,426 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "eec6591252224dacbfeb80eb": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:[\"bam.nr-data.net\"]},feature_flags:[\"rum_v2\"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:\"NRJS-478cab472aef3db5069\",applicationID:\"1352821653\",browserID:\"1386236136\"};;/*! For license information please see nr-loader-rum-1.324.0.min.js.LICENSE.txt */ (()=>{var e={8122(e,t,r){\"use strict\";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||\"object\"!=typeof e)return(0,n.R)(3);if(!t||\"object\"!=typeof t)return(0,n.R)(4);const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),a=0===Object.keys(r).length?e:r;for(let s in a)if(void 0!==e[s])try{if(null===e[s]){r[s]=null;continue}Array.isArray(e[s])&&Array.isArray(t[s])?r[s]=Array.from(new Set([...e[s],...t[s]])):e[s]instanceof Map||e[s]instanceof Set||e[s]instanceof Date||e[s]instanceof RegExp?r[s]=e[s]:\"object\"==typeof e[s]&&null!==t[s]&&\"object\"==typeof t[s]?r[s]=i(e[s],t[s]):r[s]=e[s]}catch(e){r[s]||(0,n.R)(1,e)}return r}catch(e){(0,n.R)(2,e)}}},2555(e,t,r){\"use strict\";r.d(t,{f:()=>s});var n=r(384),i=r(8122);const a={beacon:n.NT.beacon,errorBeacon:n.NT.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0};function s(e){try{return!!e.licenseKey&&!!e.errorBeacon&&!!e.applicationID}catch(e){return!1}}r.d(t,[\"D\",0,e=>(0,i.a)(e,a)])},7699(e,t,r){\"use strict\";var n=r(860);const i=1e6,a={[n.K7.logging]:!0,[n.K7.genericEvents]:!0,[n.K7.jserrors]:!0,[n.K7.ajax]:!0};r.d(t,[\"It\",0,i,\"KC\",0,a,\"qh\",0,\"SESSION_ERROR\",\"zd\",0,5e5])},9324(e,t,r){\"use strict\";r.d(t,[\"xv\",0,\"1.324.0\"])},981(e,t,r){\"use strict\";r.d(t,[\"R\",0,{AJAX:\"AjaxRequest\",PA:\"PageAction\",UA:\"UserAction\",BP:\"BrowserPerformance\",WS:\"WebSocket\",SPV:\"SecurityPolicyViolation\",JSE:\"JavaScriptError\",LOG:\"Log\",PVE:\"PageView\",PVT:\"PageViewTiming\",SR:\"SessionReplay\",ST:\"SessionTrace\",BI:\"BrowserInteraction\"}])},6154(e,t,r){\"use strict\";var n=r(1863);const i=\"undefined\"!=typeof window&&!!window.document,a=\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),s=i?window:\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),o=Boolean(\"hidden\"===s?.document?.visibilityState),c=\"\"+s?.location,u=/iPad|iPhone|iPod/.test(s.navigator?.userAgent),d=u&&\"undefined\"==typeof SharedWorker,l=((()=>{const e=s.navigator?.userAgent?.match(/Firefox[/\\s](\\d+\\.\\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Date.now()-(0,n.t)());r.d(t,[\"OF\",0,u,\"RI\",0,i,\"WN\",0,l,\"bv\",0,a,\"gm\",0,s,\"m\",0,c,\"mw\",0,o,\"sb\",0,d,\"zk\",0,()=>{const e=s?.performance?.getEntriesByType?.(\"navigation\")?.[0];if(e&&e.responseStart>0&&e.responseStart<s.performance.now())return e}])},3241(e,t,r){\"use strict\";r.d(t,{W:()=>i});var n=r(6154);function i(e={}){try{n.gm.dispatchEvent(new CustomEvent(\"newrelic\",{detail:e}))}catch(e){}}},1687(e,t,r){\"use strict\";r.d(t,{Ak:()=>o,Ze:()=>u,x3:()=>c});var n=r(3241),i=r(3606),a=r(860),s=r(2646);function o(e,t){if(!e)return;const r={staged:!1,priority:a.P3[t]||0};e.runtime.drainRegistry.get(t)||e.runtime.drainRegistry.set(t,r)}function c(e,t){if(!e)return;const r=e.runtime.drainRegistry;r&&(r.get(t)&&r.delete(t),l(e,t,!1),r.size&&d(e))}function u(e,t=\"feature\",r=!1){if(e){if(!e.runtime.drainRegistry.get(t)||r)return l(e,t);e.runtime.drainRegistry.get(t).staged=!0,d(e)}}function d(e){if(!e)return;const t=Array.from(e.runtime.drainRegistry);t.every(([e,t])=>t.staged)&&(t.sort((e,t)=>e[1].priority-t[1].priority),t.forEach(([t])=>{e.runtime.drainRegistry.delete(t),l(e,t)}))}function l(e,t,r=!0){if(!e)return;const a=e.ee,o=i.i.handlers;if(a&&!a.aborted&&a.backlog&&o){if((0,n.W)({type:\"lifecycle\",name:\"drain\",feature:t}),r){const e=a.backlog[t],r=o[t];if(r){for(let t=0;e&&t<e.length;++t)f(e[t],r);Object.entries(r).forEach(([e,t])=>{Object.values(t||{}).forEach(t=>{t[0]?.on&&t[0].context()instanceof s.y&&!t[0].listeners(e).includes(t[1])&&t[0].on(e,t[1])})})}}a.isolatedBacklog||delete o[t],a.backlog[t]=null,a.emit(\"drain-\"+t,[])}}function f(e,t){var r=e[1];Object.values(t[r]||{}).forEach(t=>{var r=e[0];if(t[0]===r){var n=t[1],i=e[3],a=e[2];n.apply(i,a)}})}},7836(e,t,r){\"use strict\";var n=r(384),i=r(8990),a=r(2646),s=r(5607);const o=\"nr@context:\".concat(s.W),c=function e(t,r){var n={},s={},d={},l=!1;try{l=16===r.length&&u.initializedAgents?.[r]?.runtime.isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,a){!1!==a&&(a=!0);if(c.aborted&&!i)return;t&&a&&t.emit(e,r,n);var o=g(n);m(e).forEach(e=>{e.apply(o,r)});var u=v()[s[e]];u&&u.push([f,e,r,o]);return o},get:h,listeners:m,context:g,buffer:function(e,t){const r=v();if(t=t||\"feature\",f.aborted)return;Object.entries(e||{}).forEach(([e,n])=>{s[n]=t,t in r||(r[t]=[])})},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach(e=>{delete f.backlog[e]})},isBuffering:function(e){return!!v()[s[e]]},debugId:r,backlog:l?{}:t&&\"object\"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,\"aborted\",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof a.y?e:e?(0,i.I)(e,o,()=>new a.y(o)):new a.y(o)}function p(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function h(t){return d[t]=d[t]||e(f,t)}function v(){return f.backlog}}(void 0,\"globalEE\"),u=(0,n.Zm)();u.ee||(u.ee=c),r.d(t,[\"P\",0,o,\"ee\",0,c])},2646(e,t,r){\"use strict\";r.d(t,{y:()=>n});class n{constructor(e){this.contextId=e}}},9908(e,t,r){\"use ",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:34.998229+00:00",
+      "event_id": "eec6591252224dacbfeb80eb",
+      "action_reaction": {
+        "event_id": "eec6591252224dacbfeb80eb",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "4b47a5edfbf5ad72d82cf70a": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 27, 2026, 3:36 PM Original Post https://www. youtube.com/live/inZ8qeJOpb8?s i=bdkL3Mzig_VHbhw1 Read full post www.youtube.com LIVE: President Trump Holds Rallies in Corpus Christi & Lubbock, Texas - 10/27/26 Join RSBN LIVE as we give you exclusive on the ground coverage of President Trump's Rallies in Corpus Christi & Lubbock Texas.Tune in at 10 am EDT on October... Donald J. Trump @realDonaldTrump · October 27, 2026, 3:35 PM Original Post https:// events.gop.com/events/midterm- rally-in-south-carolina-president-donald-j-trump-djt47 Read full post events.gop.com Midterm Rally in Rock Hill, South Carolina featuring President Donald J. Trump Sign up for a ticket TODAY! Donald J. Trump @realDonaldTrump · October 27, 2026, 3:32 PM Original Post https:// events.gop.com/events/midterm- rally-in-chillicothe-ohio-with-president-donald-j-trump-djt47 Read full post events.gop.com Midterm Rally in Chillicothe, Ohio featuring President Donald J. Trump Sign up for a ticket TODAY! Donald J. Trump @realDonaldTrump · October 27, 2026, 3:04 PM Original Post https:// events.gop.com/events/midterm- rally-in-chillicothe-ohio-with-president-donald-j-trump-djt47 Read full post events.gop.com Midterm Rally in Chillicothe, Ohio featuring President Donald J. Trump Sign up for a ticket TODAY! Donald J. Trump @realDonaldTrump · October 27, 2026, 3:04 PM Original Post Donald J. Trump @realDonaldTrump · October 27, 2026, 2:05 PM Original Post TO THE GREAT PEOPLE OF KANSAS, MAKE A PLAN TO VOTE FOR: – Roger Marshall for U.S. Senate – Ty Masterson for Governor – Tracey Mann for U.S. Congress (KS-01) – Derek Schmidt for U.S. Congress (KS-02) – Ron Estes for U.S. Congress (KS-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/kansas/ Read full post swampthevoteusa.com KANSAS: MAKE A PLAN TO VOTE! Election Day in Kansas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 27, 2026, 2:05 PM Original Post 🚨 KANSAS! Early Voting, in-person, is UNDERWAY NOW in the Great State of Kansas. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Kansas, you can cast your early Vote, in-person, all the way through November 2nd. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/kansas/ swampthevoteusa.com KANSAS: MAKE A PLAN TO VOTE! Election Day in Kansas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 27, 2026, 2:05 PM Original Post 🚨 KANSAS! Early Voting, in-person, is UNDERWAY NOW in the Great State of Kansas. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Kansas, you can cast your early Vote, in-person, all the way through November 2nd. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/kansas/ Read full post swampthevoteusa.com KANSAS: MAKE A PLAN TO VOTE! Election Day in Kansas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 27, 2026, 1:46 PM Original Post Heading into Corpus Christi, Texas. Watching Right Side Broadcasting Network (RSBN). Their coverage of our Rallies is truly spectacular! The enthusiasm for America, and what we stand for, is a beautiful thing to watch, especially since it is not constantly interrupted by RINOS, Dumocrats, and Radical Left Jihadists spewing America Hating nonsense. Watch Right Side Broadcasting Network for positive, uninterrupted coverage. Their Rally Ratings have gone through the roof. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 27, 2026, 1:08 PM Original Post Get rid of the guns, get rid of the Oil, get rid of the meat, but Transgender Mutilization of your Children and Open Borders are OK. This is what TalaFREAKO stands for, and this is where he is going to help take Texas if he wins — which he won’t. Ken Paxton is the Greatest Attorney General in Texas History. He deserves to be your Senator! President DONALD J. TRUMP Read full post",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:39.782957+00:00",
+      "event_id": "4b47a5edfbf5ad72d82cf70a",
+      "action_reaction": {
+        "event_id": "4b47a5edfbf5ad72d82cf70a",
+        "event_type": "ENERGY",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "34885a64ac17f66a3396213a": {
+      "source": "OGE",
+      "url": "https://www.oge.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "USOGE | OGE US OGE | Home <!-- document._domino_target = \"_self\"; function _doClick(v, o, t) { var returnValue = false; var url=\"/web/oge.nsf?OpenDatabase&Click=\" + v; if (o.href != null) { o.href = url; returnValue = true; } else { if (t == null) t = document._domino_target; window.open(url, t); } return returnValue; } // --> <!-- function popularTask() { var e = document.getElementById(\"i-want-to\"); var i = e.selectedIndex; //alert(\"you selected \" +i ); if(i == 1) { window.open(\"https://www.oge.gov/web/OGE.nsf/Officials%20Individual%20Disclosures%20Search%20Collection?OpenForm\"); } if(i == 2) { window.open(\"https://www.oge.gov/web/OGE.nsf/publicresources_disclosure-glossary?OpenForm\"); } if(i == 3) { window.open(\"https://www.oge.gov/web/OGE.nsf/accessdocs_ethics-glossary?OpenForm\"); } if(i == 4) { window.open(\"https://www.oge.gov/web/oge.nsf/about_ethics-contact-list\"); } if(i == 5) { window.open(\"https://www.oge.gov/web/OGE.nsf/Legal Research Search Collection?OpenForm\"); } if(i == 6) { window.open(\"https://www.oge.gov/web/OGE.nsf/Legal Research Search Collection?OpenForm\"); } if(i == 7) { window.open(\"https://www.oge.gov/web/oge.nsf/about_reporting-misconduct\"); } if(i == 8) { window.open(\"https://www.oge.gov/web/oge.nsf/publicresources_FOIA-landing\"); } if(i == 9) { window.open(\"https://www.oge.gov/web/oge.nsf/0/C050C462DD7AF5DC85258B89004DDCF6/$FILE/The%20Nominee%20Guide%20(2024).pdf\"); } } // --> Skip to Main Content An official website of the United States government Here’s how you know Here’s how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( Lock A locked padlock ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. U.S. Office of Government Ethics Menu About Our Mission, Role, and History What We Do Budget & Performance Our History Information Management Internal Agency Policies Our People & Organization Agency Leadership Organization Employee Engagement Legislative Affairs Ethics Legislation Congressional Correspondence Reports to Congress Appropriations Popular Resources Congressional Correspondence Reports to Congress Partners in Government Integrity Resources for Reporting Misconduct Resources for International Anti-Corruption Bodies Contact Contact Us Agency Ethics Program Contact Information Careers View all in About Resources for the Public Freedom of Information Act FOIA -Getting Started Frequently Requested Information Available Without a FOIA Request FOIA Reports FOIA-Processed Records Repository Review Executive Branch Wide Ethics Program Data Oversight Summary Reports Compliance Dashboards Public Engagement Public Participation Opportunities View Officials' Individual Disclosures In this collection: Financial Disclosure Reports | Certificates of Divestiture | Ethics Pledge Waivers | Ethics Agreements | Certificates of Ethics Agreement Compliance | Conflict of Interest Waivers View Agency Ethics Documents In this collection: Program Review Reports | Annual Agency Ethics Program Questionnaires | Oversight Correspondence with Agencies | 1353 Travel Reports View all in Resources for the Public Resources for Ethics Officials Managing Effective Ethics Programs Mission, Authority, & Key Players Ethical Leadership & Building an Ethical Culture Conflicts Analysis & Resolution Education through Training & Advice Financial Disclosure Election Readiness Enforcement Responsibilities OGE Oversight OGE Support Professional Development for Ethics Officials Records Management & Release OGE Forms Library Legal Expense Funds Conduct Legal Research In this collection: Statutes | Executive Orders | OGE Regulations | Agency Supplemental Regulations | Federal Register Issuances | OGE Advisories | Legal Interpretation (DOJ and Judicial Opinions) Visit the Institute for Ethics in Government In this collection: Upcoming Courses | On Demand Courses | Curricula | Job Aids | View all in Resources for Ethics Officials Resources for Federal Employees Agency Ethics Program Contact Information Resources for Financial Disclosure Filers Standards of Ethical Conduct for Employees of the Executive Branch Resources Related to Legal Expense Funds News Leadership Notes News Releases Press Contacts Site Index Forms Library Contact Us Search Search @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap'); Public service is a public trust, requiring employees to place loyalty to the Constitution, the laws and ethical principles above private gain Learn about our mission #hero-button-a { text-decoration:none !important; } Popular Tasks Find an Individual's Ethics Document Find an Agency's Ethics Program Document Find the Ethics Rules I want to... I want to... Find a financial disclosure report for an individual or Presidential candidate Learn more about the individual disclosures available on OGE’s website Learn more about the ethics documents available on OGE’s website Find contact information to access ethics documents at other agencies Research an ethics topic Find an ethics statute or regulation Find where to report misconduct by a federal employee File a FOIA Request I want to find information about being a PAS Nominee Go OGE Leadership Leadership Notes OGE uses Leadership Notes to communicate with the public. Read More What's New Oversight | 10/27/2026 OGE Issues a Program Review Report for the Department of Education (ED) OGE reviewed ED's ethics program and issued 14 recommendations. News | 10/27/2026 Today, OGE Met with the Leaders of Executive Branch Ethics Programs Today, OGE leadership and staff met virtually with more than 100 leaders of executive branch ethics programs to discuss current events in the executive branch ethics community. News | 10/06/2026 OGE Holds an Orientation for New Designated Agency Ethics Officials and Alternates Oversight | 09/29/2026 OGE Issues a ",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.301081+00:00",
+      "event_id": "34885a64ac17f66a3396213a",
+      "action_reaction": {
+        "event_id": "34885a64ac17f66a3396213a",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "86557783beb27113f2831d39": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42802",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117514196965554272",
+      "title": "TO THE GREAT PEOPLE OF KANSAS, MAKE A PLAN TO VOTE FOR: – Roger Marshall for U.S. Senate– Ty Masterson for Governor– Tracey Mann for U.S. Congress (KS-01)– Derek Schmidt for U.S. Congress (KS-02)– Ron Estes for U.S. Congress (KS-04) These Great Patriots have my Complete and Total Endorsement — They",
+      "published": "Tue, 27 Oct 2026 18:05:43 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "TO THE GREAT PEOPLE OF KANSAS, MAKE A PLAN TO VOTE FOR: – Roger Marshall for U.S. Senate– Ty Masterson for Governor– Tracey Mann for U.S. Congress (KS-01)– Derek Schmidt for U.S. Congress (KS-02)– Ron Estes for U.S. Congress (KS-04) These Great Patriots have my Complete and Total Endorsement — They RT: https://truthsocial.com/users/realDonaldTrump/statuses/117514195455574693 TO THE GREAT PEOPLE OF KANSAS, MAKE A PLAN TO VOTE FOR: – Roger Marshall for U.S. Senate – Ty Masterson for Governor – Tracey Mann for U.S. Congress (KS-01) – Derek Schmidt for U.S. Congress (KS-02) – Ron Estes for U.S. Congress (KS-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/kansas/ Quoted Donald J. Trump 🚨 KANSAS! Early Voting, in-person, is UNDERWAY NOW in the Great State of Kansas. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Kansas, you can cast your early Vote, in-person, all the way through November 2nd. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/kansas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.686342+00:00",
+      "event_id": "86557783beb27113f2831d39",
+      "action_reaction": {
+        "event_id": "86557783beb27113f2831d39",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b0885b74bcb25f8d175d29c1": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42803",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117514195455574693",
+      "title": "🚨 KANSAS! Early Voting, in-person, is UNDERWAY NOW in the Great State of Kansas. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absent",
+      "published": "Tue, 27 Oct 2026 18:05:20 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "🚨 KANSAS! Early Voting, in-person, is UNDERWAY NOW in the Great State of Kansas. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absent 🚨 KANSAS! Early Voting, in-person, is UNDERWAY NOW in the Great State of Kansas. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Kansas, you can cast your early Vote, in-person, all the way through November 2nd. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/kansas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.686628+00:00",
+      "event_id": "b0885b74bcb25f8d175d29c1",
+      "action_reaction": {
+        "event_id": "b0885b74bcb25f8d175d29c1",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "8479696e638d03827bcfd3ef": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42801",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117514120967768880",
+      "title": "Heading into Corpus Christi, Texas. Watching Right Side Broadcasting Network (RSBN). Their coverage of our Rallies is truly spectacular! The enthusiasm for America, and what we stand for, is a beautiful thing to watch, especially since it is not constantly interrupted by RINOS, Dumocrats, and Radica",
+      "published": "Tue, 27 Oct 2026 17:46:23 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Heading into Corpus Christi, Texas. Watching Right Side Broadcasting Network (RSBN). Their coverage of our Rallies is truly spectacular! The enthusiasm for America, and what we stand for, is a beautiful thing to watch, especially since it is not constantly interrupted by RINOS, Dumocrats, and Radica Heading into Corpus Christi, Texas. Watching Right Side Broadcasting Network (RSBN). Their coverage of our Rallies is truly spectacular! The enthusiasm for America, and what we stand for, is a beautiful thing to watch, especially since it is not constantly interrupted by RINOS, Dumocrats, and Radical Left Jihadists spewing America Hating nonsense. Watch Right Side Broadcasting Network for positive, uninterrupted coverage. Their Rally Ratings have gone through the roof. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.686803+00:00",
+      "event_id": "8479696e638d03827bcfd3ef",
+      "action_reaction": {
+        "event_id": "8479696e638d03827bcfd3ef",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f68e4ed7be16b4b79586371a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42781",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513970306136414",
+      "title": "Get rid of the guns, get rid of the Oil, get rid of the meat, but Transgender Mutilization of your Children and Open Borders are OK. This is what TalaFREAKO stands for, and this is where he is going to help take Texas if he wins — which he won’t. Ken Paxton is the Greatest Attorney General in Texas",
+      "published": "Tue, 27 Oct 2026 17:08:04 +0000",
+      "domains": [
+        "ENERGY"
+      ],
+      "text": "Get rid of the guns, get rid of the Oil, get rid of the meat, but Transgender Mutilization of your Children and Open Borders are OK. This is what TalaFREAKO stands for, and this is where he is going to help take Texas if he wins — which he won’t. Ken Paxton is the Greatest Attorney General in Texas Get rid of the guns, get rid of the Oil, get rid of the meat, but Transgender Mutilization of your Children and Open Borders are OK. This is what TalaFREAKO stands for, and this is where he is going to help take Texas if he wins — which he won’t. Ken Paxton is the Greatest Attorney General in Texas History. He deserves to be your Senator! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.686979+00:00",
+      "event_id": "f68e4ed7be16b4b79586371a",
+      "action_reaction": {
+        "event_id": "f68e4ed7be16b4b79586371a",
+        "event_type": "ENERGY",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "393b1e92c815ec45cd8de55f": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42782",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513954929880389",
+      "title": "I am traveling to Corpus Christi, Texas to a PACKED Rally, where the United States of America will receive ONE MILLION BARRELS of VENEZUELAN OIL as a result of our Highly Successful Military Operation, followed by the Biggest Oil Deal in the History of the World. Thanks to our renewed relationship w",
+      "published": "Tue, 27 Oct 2026 17:04:10 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "I am traveling to Corpus Christi, Texas to a PACKED Rally, where the United States of America will receive ONE MILLION BARRELS of VENEZUELAN OIL as a result of our Highly Successful Military Operation, followed by the Biggest Oil Deal in the History of the World. Thanks to our renewed relationship w I am traveling to Corpus Christi, Texas to a PACKED Rally, where the United States of America will receive ONE MILLION BARRELS of VENEZUELAN OIL as a result of our Highly Successful Military Operation, followed by the Biggest Oil Deal in the History of the World. Thanks to our renewed relationship with Venezuela, which has turned out to be a truly excellent one, the Oil is being provided to the United States at NO cost to the American Taxpayer. This is just the first shipment of BILLIONS of Barrels to come. By unleashing Energy Dominance from Alaska, all the way down to Venezuela, I have made the Western Hemisphere the Energy Capital of the World. Gasoline and Diesel Prices will soon come plummeting down — JUST WATCH! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.687176+00:00",
+      "event_id": "393b1e92c815ec45cd8de55f",
+      "action_reaction": {
+        "event_id": "393b1e92c815ec45cd8de55f",
+        "event_type": "ENERGY",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "6ed8ece58625c2968948d81a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42783",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513910082427983",
+      "title": "France: Now and Then. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP",
+      "published": "Tue, 27 Oct 2026 16:52:45 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "France: Now and Then. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP France: Now and Then. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.687314+00:00",
+      "event_id": "6ed8ece58625c2968948d81a",
+      "action_reaction": {
+        "event_id": "6ed8ece58625c2968948d81a",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c7d8f46d03f7d5d0104c6c80": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42784",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513827753369395",
+      "title": "Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania’s 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON T",
+      "published": "Tue, 27 Oct 2026 16:31:49 +0000",
+      "domains": [
+        "DEFENSE"
+      ],
+      "text": "Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania’s 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON T Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania’s 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and the Transgender Mutilization of your Children. Janelle Stelson is Reckless, Radical, and Dangerous! On the other hand, in Congress, Scott is working tirelessly with me to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military and Veterans, Uphold the Rule of Law, Protect our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Scott Perry has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR SCOTT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/states/pen nsylvania/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.687491+00:00",
+      "event_id": "c7d8f46d03f7d5d0104c6c80",
+      "action_reaction": {
+        "event_id": "c7d8f46d03f7d5d0104c6c80",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "fa822870a06c442fbeac6ac9": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42785",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513761542349273",
+      "title": "When will The Wall Street Journal start calling Artificial Intelligence (AI), a very bad and inaccurate name, SI (Super Intelligence), the name which virtually everyone else is using, or soon will be. In short order, we will be officially BANNING the term, “AI/Artificial Intelligence,” in all releva",
+      "published": "Tue, 27 Oct 2026 16:14:59 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "When will The Wall Street Journal start calling Artificial Intelligence (AI), a very bad and inaccurate name, SI (Super Intelligence), the name which virtually everyone else is using, or soon will be. In short order, we will be officially BANNING the term, “AI/Artificial Intelligence,” in all releva When will The Wall Street Journal start calling Artificial Intelligence (AI), a very bad and inaccurate name, SI (Super Intelligence), the name which virtually everyone else is using, or soon will be. In short order, we will be officially BANNING the term, “AI/Artificial Intelligence,” in all relevant documents, and everything else, due to its inaccuracy. Thank you for your attention to this matter. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.687687+00:00",
+      "event_id": "fa822870a06c442fbeac6ac9",
+      "action_reaction": {
+        "event_id": "fa822870a06c442fbeac6ac9",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f8a4477c100ee4adc3e226f9": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42787",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513750896325596",
+      "title": "Quote post from October 27, 2026",
+      "published": "Tue, 27 Oct 2026 16:12:16 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 27, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117513748917462566 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.687839+00:00",
+      "event_id": "f8a4477c100ee4adc3e226f9",
+      "action_reaction": {
+        "event_id": "f8a4477c100ee4adc3e226f9",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "139acbb41e43c3eb3ec2911c": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42789",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513742358218898",
+      "title": "Quote post from October 27, 2026",
+      "published": "Tue, 27 Oct 2026 16:10:06 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 27, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117513725195476460 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.688008+00:00",
+      "event_id": "139acbb41e43c3eb3ec2911c",
+      "action_reaction": {
+        "event_id": "139acbb41e43c3eb3ec2911c",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ee75bc5bee0cb3c66400df19": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42791",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513740571841141",
+      "title": "Quote post from October 27, 2026",
+      "published": "Tue, 27 Oct 2026 16:09:39 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 27, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117513731349800861 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.688080+00:00",
+      "event_id": "ee75bc5bee0cb3c66400df19",
+      "action_reaction": {
+        "event_id": "ee75bc5bee0cb3c66400df19",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f04a1dacfec1d553c289db1e": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42793",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513717824869790",
+      "title": "Quote post from October 27, 2026",
+      "published": "Tue, 27 Oct 2026 16:03:52 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 27, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117513579089626559 View video Quoted Donald J. Trump The Freedom Caucus Fund just did a Great Ad — One of the best out there, talking about PRESIDENT DONALD J. TRUMP and, of course, FREEDOM! Thank you, I love the Freedom Caucus. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.688237+00:00",
+      "event_id": "f04a1dacfec1d553c289db1e",
+      "action_reaction": {
+        "event_id": "f04a1dacfec1d553c289db1e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "8890915fd44811f06511d5cf": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42794",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513707283246784",
+      "title": "Quote post from October 27, 2026",
+      "published": "Tue, 27 Oct 2026 16:01:11 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 27, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117513706348498042 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.688357+00:00",
+      "event_id": "8890915fd44811f06511d5cf",
+      "action_reaction": {
+        "event_id": "8890915fd44811f06511d5cf",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "2184b83cb1825d9b2605a88b": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42796",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513699879855060",
+      "title": "Quote post from October 27, 2026",
+      "published": "Tue, 27 Oct 2026 15:59:18 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 27, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117513698517194972 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.688457+00:00",
+      "event_id": "2184b83cb1825d9b2605a88b",
+      "action_reaction": {
+        "event_id": "2184b83cb1825d9b2605a88b",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c747f1cd06c0adec33c371e1": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42798",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117513691842839994",
+      "title": "Quote post from October 27, 2026",
+      "published": "Tue, 27 Oct 2026 15:57:15 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 27, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117513689851891225 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-27T19:40:40.688554+00:00",
+      "event_id": "c747f1cd06c0adec33c371e1",
+      "action_reaction": {
+        "event_id": "c747f1cd06c0adec33c371e1",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -5508,9 +5928,24 @@
     "12f3aba3baaa536725ad35bf": "2026-10-27T08:34:16.299643+00:00",
     "1da1add22f3ed0974e4840fa": "2026-10-27T08:34:16.299722+00:00",
     "2693ccdfa51deb1b1eff6c3d": "2026-10-27T08:34:16.299808+00:00",
-    "1028c2c2df90b3b6c8abd308": "2026-10-27T08:34:16.299898+00:00"
+    "1028c2c2df90b3b6c8abd308": "2026-10-27T08:34:16.299898+00:00",
+    "86557783beb27113f2831d39": "2026-10-27T19:40:40.686327+00:00",
+    "b0885b74bcb25f8d175d29c1": "2026-10-27T19:40:40.686620+00:00",
+    "8479696e638d03827bcfd3ef": "2026-10-27T19:40:40.686798+00:00",
+    "f68e4ed7be16b4b79586371a": "2026-10-27T19:40:40.686972+00:00",
+    "393b1e92c815ec45cd8de55f": "2026-10-27T19:40:40.687171+00:00",
+    "6ed8ece58625c2968948d81a": "2026-10-27T19:40:40.687309+00:00",
+    "c7d8f46d03f7d5d0104c6c80": "2026-10-27T19:40:40.687485+00:00",
+    "fa822870a06c442fbeac6ac9": "2026-10-27T19:40:40.687682+00:00",
+    "f8a4477c100ee4adc3e226f9": "2026-10-27T19:40:40.687835+00:00",
+    "139acbb41e43c3eb3ec2911c": "2026-10-27T19:40:40.688002+00:00",
+    "ee75bc5bee0cb3c66400df19": "2026-10-27T19:40:40.688076+00:00",
+    "f04a1dacfec1d553c289db1e": "2026-10-27T19:40:40.688232+00:00",
+    "8890915fd44811f06511d5cf": "2026-10-27T19:40:40.688353+00:00",
+    "2184b83cb1825d9b2605a88b": "2026-10-27T19:40:40.688453+00:00",
+    "c747f1cd06c0adec33c371e1": "2026-10-27T19:40:40.688550+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-27T14:41:17.498687+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-27T19:40:40.695559+00:00"
   }
 }
