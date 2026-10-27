@@ -249,8 +249,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
-if __name__ == "__main__":
-    unittest.main()
 
 
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
@@ -314,3 +312,65 @@ if __name__ == "__main__":
                     "domains": ["ENERGY"],
                 }]
                 self.assertEqual(trump_tracker.directional_news_candidates(findings), [])
+
+    def test_explicitly_negated_catalysts_do_not_create_opposite_biases(self):
+        cases = [
+            {
+                "event_id": "no-production-cut",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "No production cut expected",
+                "text": "Officials said a production cut was not announced.",
+                "url": "https://example.gov/news/oil-supply",
+                "published": "2026-10-27T08:00:00Z",
+                "source": "PUBLIC_RSS",
+                "domains": ["ENERGY"],
+            },
+            {
+                "event_id": "trade-deal-rejected",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Trade deal rejected after talks",
+                "text": "Officials rejected the trade deal.",
+                "url": "https://example.gov/news/trade-talks",
+                "published": "2026-10-27T08:00:00Z",
+                "source": "PUBLIC_RSS",
+                "domains": ["TRADE_POLICY"],
+            },
+        ]
+        for finding in cases:
+            with self.subTest(event_id=finding["event_id"]):
+                self.assertEqual(trump_tracker.directional_news_candidates([finding]), [])
+
+    def test_non_negated_supply_cut_and_trade_deal_keep_their_hypotheses(self):
+        cases = [
+            {
+                "event_id": "production-cut",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Production cut announced",
+                "text": "Officials announced a production cut.",
+                "url": "https://example.gov/news/oil-cut",
+                "published": "2026-10-27T08:00:00Z",
+                "source": "PUBLIC_RSS",
+                "domains": ["ENERGY"],
+            },
+            {
+                "event_id": "trade-deal-reached",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "title": "Trade deal reached",
+                "text": "Officials reached a trade deal.",
+                "url": "https://example.gov/news/trade-deal",
+                "published": "2026-10-27T08:00:00Z",
+                "source": "PUBLIC_RSS",
+                "domains": ["TRADE_POLICY"],
+            },
+        ]
+        candidates = trump_tracker.directional_news_candidates(cases)
+        by_event = {}
+        for row in candidates:
+            by_event.setdefault(row["event_id"], set()).add((row["instrument"], row["bias"]))
+        self.assertIn(("WTI", "LONG_BIAS"), by_event["production-cut"])
+        self.assertIn(("BRENT", "LONG_BIAS"), by_event["production-cut"])
+        self.assertIn(("NASDAQ100", "LONG_BIAS"), by_event["trade-deal-reached"])
+
+
+if __name__ == "__main__":
+    unittest.main()
