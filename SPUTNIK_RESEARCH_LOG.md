@@ -113,3 +113,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Regression:** official apex/www/subdomain cases pass; lookalike domain, query-string-only mention, malformed IPv6 URL and HTTP scheme remain PUBLIC_RSS. Malformed URLs fall back to PUBLIC_RSS instead of aborting the scan.
 - **Validation:** source-classification commit ab15b005d3edc97509cbf43671d361595e6f4e13; malformed-URL hardening commit 83873060fe1734764704d6d1ef03f03d3179bbf9; regression-test commit d697159ea0e8a2bf5fb39768638c2aec89d038fc. CI must pass on the final PR head before treating this as verified.
 - **Limits:** host classification is provenance hygiene, not proof that a page's claims are authentic or market-predictive. No live feed replay, Telegram message, merge, Render deploy, broker or order. PAPER/DEMO ONLY.
+
+## 2026-10-27 — Unambiguous official-feed authority and complete test discovery
+
+- **Finding:** checking only HTTPS plus hostname could still assign the official White House label to URLs containing user-info or a non-standard port. Also, the direct `unittest.main()` guard appeared before later test methods, preventing those later methods from being defined during module import/direct execution.
+- **Change:** `_public_feed_source_label()` now requires HTTPS, the exact official hostname/subdomain, no user-info, and the default HTTPS port (or explicit 443). The test module's unittest entrypoint is at the end so all regression methods are defined before discovery starts.
+- **Files / path:** `trump_tracker.py::_public_feed_source_label`; `tests/test_sputnik_item_intelligence.py`; `intelligence_snapshot() -> feed attribution -> evidence classification`.
+- **Regression cases:** official apex/www/subdomain and explicit 443 remain accepted; user-info, non-standard/invalid port, lookalike host, query-only mention, malformed URL and HTTP are rejected as `PUBLIC_RSS`.
+- **Commits:** code `29321dfab37cf92985ca23933c90ee4423659edd`; tests `e31cbaa671b400beb34241c2131f5a3b9c94526e`.
+- **CI:** pending on the updated PR head; do not call this verified until the PR workflows finish.
+- **Empirical validation:** no live feed replay or source-authenticity audit. This prevents ambiguous labels but does not establish content authenticity or predictive value.
+- **Safety:** no merge/deploy, no Telegram test, no broker or orders; PAPER/DEMO ONLY.
