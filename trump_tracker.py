@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from email.utils import parsedate_to_datetime
 import os
 import re
@@ -57,16 +58,47 @@ def _check_sec_cooldown(url: str) -> None:
         raise SECSourceCooldown(f"SEC HTTP 403 cooldown active; retry_in={int(remaining)}s")
 
 
+def _sec_retry_after_seconds(exc: urllib.error.HTTPError) -> int:
+    """Return a conservative SEC cooldown, honoring longer valid Retry-After hints."""
+    default_seconds = SEC_403_COOLDOWN_SECONDS
+    max_seconds = 7 * 24 * 60 * 60
+    headers = getattr(exc, "headers", None)
+    raw = headers.get("Retry-After") if headers is not None else None
+    if not raw:
+        return default_seconds
+
+    delay = None
+    try:
+        numeric = float(str(raw).strip())
+        if math.isfinite(numeric) and numeric >= 0:
+            delay = numeric
+    except (TypeError, ValueError, OverflowError):
+        try:
+            target = parsedate_to_datetime(str(raw))
+            if target.tzinfo is None:
+                target = target.replace(tzinfo=timezone.utc)
+            delay = (target - datetime.now(timezone.utc)).total_seconds()
+        except (TypeError, ValueError, OverflowError, IndexError):
+            delay = None
+
+    if delay is None or not math.isfinite(delay):
+        return default_seconds
+    # Never shorten the existing six-hour 403 cooldown; cap untrusted/malformed
+    # upstream values so a bad header cannot disable retries indefinitely.
+    return min(max_seconds, max(default_seconds, int(delay))) 
+
+
 def _record_sec_http_error(url: str, exc: urllib.error.HTTPError) -> None:
     global _SEC_403_COOLDOWN_UNTIL
     if not _is_sec_url(url) or exc.code != 403:
         return
+    cooldown_seconds = _sec_retry_after_seconds(exc)
     with _SEC_403_COOLDOWN_LOCK:
-        retry_at = time.monotonic() + SEC_403_COOLDOWN_SECONDS
+        retry_at = time.monotonic() + cooldown_seconds
         _SEC_403_COOLDOWN_UNTIL = max(_SEC_403_COOLDOWN_UNTIL, retry_at)
     print(
         f"SPUTNIK: SEC source cooldown | reason=HTTP_403 | "
-        f"retry_in={SEC_403_COOLDOWN_SECONDS}s",
+        f"retry_in={cooldown_seconds}s",
         flush=True,
     )
 
