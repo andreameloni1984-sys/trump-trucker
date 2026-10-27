@@ -410,6 +410,51 @@ class SputnikEventBacktestTests(unittest.TestCase):
                 available_at="2026-01-01T00:01:00+00:00",
             )
 
+    def test_non_overlapping_summary_reports_exact_sign_test_and_excludes_ties(self):
+        base = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        results = []
+        for index in range(6):
+            event_time = base + timedelta(minutes=30 * index)
+            early_r, breakout_r = (1.0, 0.0) if index < 5 else (0.5, 0.5)
+            early_start = event_time + timedelta(minutes=5)
+            breakout_start = event_time + timedelta(minutes=6)
+            results.append({
+                "event_time": event_time.isoformat(),
+                "early": {
+                    "pnl_r": early_r,
+                    "entry_time": early_start.isoformat(),
+                    "exit_time": (event_time + timedelta(minutes=10)).isoformat(),
+                },
+                "breakout": {
+                    "pnl_r": breakout_r,
+                    "entry_time": breakout_start.isoformat(),
+                    "exit_time": (event_time + timedelta(minutes=11)).isoformat(),
+                },
+            })
+
+        summary = summarize_comparison_results(results)
+        self.assertEqual(summary["non_overlapping_paired_events"], 6)
+        self.assertEqual(summary["non_overlapping_early_better_count"], 5)
+        self.assertEqual(summary["non_overlapping_breakout_better_count"], 0)
+        self.assertEqual(summary["non_overlapping_ties_count"], 1)
+        self.assertEqual(summary["non_overlapping_sign_test_non_ties"], 5)
+        # Five wins and no losses gives a two-sided exact binomial p-value of 2/2**5.
+        self.assertEqual(summary["non_overlapping_sign_test_two_sided_p_value"], 0.0625)
+
+        all_ties = []
+        for index in range(2):
+            event_time = base + timedelta(minutes=30 * index)
+            start = event_time + timedelta(minutes=5)
+            end = event_time + timedelta(minutes=10)
+            all_ties.append({
+                "event_time": event_time.isoformat(),
+                "early": {"pnl_r": 1.0, "entry_time": start.isoformat(), "exit_time": end.isoformat()},
+                "breakout": {"pnl_r": 1.0, "entry_time": start.isoformat(), "exit_time": end.isoformat()},
+            })
+        tied_summary = summarize_comparison_results(all_ties)
+        self.assertEqual(tied_summary["non_overlapping_sign_test_non_ties"], 0)
+        self.assertIsNone(tied_summary["non_overlapping_sign_test_two_sided_p_value"))
+
     def test_event_ledger_requires_source_url_and_timezone_aware_times(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "events.csv"
