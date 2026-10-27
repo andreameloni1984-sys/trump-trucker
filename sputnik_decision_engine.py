@@ -34,8 +34,9 @@ def _contains_term(text: str, term: str) -> bool:
 
 def _evidence(text: str, rule: dict[str, tuple[str, ...]]) -> str:
     for sentence in _sentences(text):
-        padded = " " + sentence + " "
-        if any(term in padded for term in NEGATIONS):
+        # Match negation tokens as whole words, including when punctuation
+        # touches the token (for example, an em dash after "never").
+        if any(_contains_term(sentence, term.strip()) for term in NEGATIONS):
             continue
         if any(_contains_term(sentence, action) for action in rule["actions"]) and any(_contains_term(sentence, topic) for topic in rule["topics"]):
             return sentence[:320]
