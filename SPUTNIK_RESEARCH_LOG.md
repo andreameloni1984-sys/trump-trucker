@@ -130,3 +130,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Regression test:** added a test for the flexible-mode wording and reduced-size guidance.
 - **Risk boundary:** this is an early hypothesis, not certainty. Never invent entry/SL/TP values without a fresh quote and volatility measure; invalidation and physical supply risks still apply. PAPER ONLY; no orders sent.
 - **Verification/deployment:** test added but not run here. Feature branch / PR #45 is not confirmed live in Telegram; deployment remains unverified.
+
+
+## 2026-10-27 — Add a reproducible early-entry vs breakout event backtest
+
+- **Purpose:** test the user's concern that waiting for a technical breakout may make Sputnik late, without assuming that early entries are automatically better.
+- **Implemented:** added `sputnik_event_backtest.py`, a command-line harness that reads timezone-aware OHLCV CSV data and compares an exploratory entry at the first bar after a catalyst timestamp with a delayed close-confirmed breakout entry. It records entry, stop, target, exit, outcome and R-multiple; a candle touching stop and target in the same bar is treated conservatively as stop-first. Spread/cost input is supported.
+- **Tests added:** early SHORT entry and target, no-breakout case, no future candle, invalid direction, and conservative ambiguous-candle handling. Updated an existing test to check that volume remains in the confirmation rule rather than requiring it in the entry trigger.
+- **CI:** expanded `.github/workflows/sputnik_tests.yml` pull-request path filters so the new harness and tests run with the existing suite. Awaiting GitHub Actions results after the latest commit.
+- **How to run:** `python -m unittest tests/test_sputnik_event_backtest.py -v`; with market data: `python sputnik_event_backtest.py --csv candles.csv --event-time 2026-10-27T08:30:00+00:00 --side SHORT --atr 0.45 --spread 0.02`.
+- **Limitations:** no market data is bundled, so this does not yet establish profitability. Use historical WTI bars and actual catalyst publication timestamps, include realistic costs, and evaluate many events before drawing conclusions. PAPER ONLY; no orders, Telegram test messages, or deployment performed.
