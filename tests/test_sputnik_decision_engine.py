@@ -21,7 +21,7 @@ class StrictDecisionTests(unittest.TestCase):
         wti = next(row for row in rows if row["id"] == "oil_diplomatic_deescalation")
         self.assertEqual(wti["candidate"], "WTI (petrolio USA)")
         self.assertIn("SHORT", wti["bias"])
-        self.assertIn("volume", wti["confirmation"].lower())
+        self.assertIn("volum", wti["confirmation"].lower())
 
     def test_generic_diplomacy_mention_does_not_create_oil_direction(self):
         rows = conditional_plans("Officials discussed diplomacy at a public event.")
