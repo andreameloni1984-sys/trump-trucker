@@ -161,5 +161,26 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(result["early"]["pnl_r"], 2.0)
 
 
+    def test_negative_wti_prices_are_simulated_not_rejected(self):
+        # Negative futures prices are historically possible; OHLC geometry remains valid.
+        start = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        data = [
+            {"timestamp": start, "open": -5.0, "high": -4.5, "low": -5.5, "close": -5.0, "volume": 1000.0},
+            {"timestamp": start + timedelta(minutes=5), "open": -5.5, "high": -5.0, "low": -7.1, "close": -6.8, "volume": 1200.0},
+        ]
+        result = backtest_event(
+            data,
+            "2025-12-31T23:59:00+00:00",
+            "SHORT",
+            1.0,
+            atr_time="2025-12-31T23:54:00+00:00",
+        )
+        self.assertEqual(result["early"]["status"], "TARGET")
+        self.assertEqual(result["early"]["entry"], -5.0)
+        self.assertEqual(result["early"]["stop"], -4.0)
+        self.assertEqual(result["early"]["target"], -7.0)
+        self.assertEqual(result["early"]["pnl_r"], 2.0)
+
+
 if __name__ == "__main__":
     unittest.main()
