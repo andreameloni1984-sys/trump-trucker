@@ -151,3 +151,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Render:** latest successful deployment returned remains `9e5204bf7d9074dba27637013b7d98933a91e733`; later attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed with exhausted pipeline minutes. No new deploy event was observed for main SHA `780b06b...`.
 - **Runtime limits:** the queried 2026-10-27 20:10–20:25 UTC log window returned no SEC/White House/source lines, so current source ingestion and alert delivery are not confirmed. Setting names `GAGARIN_CLOUD_API_URL` / `GAGARIN_CLOUD_API_KEY` were inspected only in code; no secret values read.
 - **Empirical limit:** deterministic keyword tests only; no historical headline replay, price/volume event study or OOS edge established. No merge/deploy. PAPER ONLY.
+
+
+## 2026-10-27 — Treat punctuation-adjacent negation as a whole token
+
+- **Finding:** after whole-word matching was added for catalyst actions/topics, the negation gate still used padded substring checks. A negation such as `never` adjacent to an em dash could evade the gate, leaving a sentence with an action/topic pair eligible as a catalyst.
+- **Change:** `sputnik_decision_engine.py::_evidence` now uses the existing whole-word matcher for each normalized negation token, preserving multi-word phrases while recognizing punctuation boundaries.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_negation_adjacent_to_punctuation_still_blocks_catalyst` rejects a negated tariff headline with em dashes; the existing explicit-negation and positive tariff controls remain in the same suite.
+- **Commits:** code `d42ee07934fc6a8f2fa630d088aaa2c9bd791489`; regression test `66b3152b445a8560c286fa00bcf58fb3e5b1a5b7`.
+- **CI:** SPUTNIK ranking tests passed on the code/test head: [run 40582630474](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40582630474). The current PR head at log-update time is `66b3152b445a8560c286fa00bcf58fb3e5b1a5b7), based on current `main` `780b06b078747d2ce71385e9b0f9a9942aaca794`; compare reports 6 commits ahead, 0 behind, and PR metadata says mergeable. This is branch CI, not a production check.
+- **Operational path:** public text → sentence splitting → negation gate → catalyst action/topic evidence → conditional hypothesis → independent price/volume confirmation. News remains a hypothesis, not an order.
+- **Render/runtime:** no Render or Telegram log connector was available in this run; no deploy was attempted and the live Render commit was not verified. The last known runtime report recorded exhausted build minutes; current quota could not be rechecked. SEC 403 cooldown code and the White House RSS URL are present in `trump_tracker.py`, but live ingestion/alert delivery is not confirmed. Only the names `GAGARIN_CLOUD_API_URL` and `GAGARIN_CLOUD_API_KEY` were inspected, never their values.
+- **Empirical limit/safety:** synthetic unit regression only; no historical headline replay, event study or OOS edge. No merge/deploy, broker, real order or Telegram test message. PAPER ONLY.
