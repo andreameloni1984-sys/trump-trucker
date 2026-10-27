@@ -586,9 +586,9 @@ class SputnikEventBacktestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "tracking_duplicates.csv"
             path.write_text(
-                "event_id,event_time,available_at,side,atr,atr_time,source_url\\n"
-                "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,https://example.com/event/1?msclkid=click-a&story=one\\n"
-                "evt-2,2026-01-01T00:07:00+00:00,2026-01-01T00:07:00+00:00,SHORT,1.0,2026-01-01T00:05:00+00:00,https://EXAMPLE.com/event/1/?story=one&srsltid=click-b#article\\n",
+                "event_id,event_time,available_at,side,atr,atr_time,source_url\n"
+                "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,https://example.com/event/1?msclkid=click-a&story=one\n"
+                "evt-2,2026-01-01T00:07:00+00:00,2026-01-01T00:07:00+00:00,SHORT,1.0,2026-01-01T00:05:00+00:00,https://EXAMPLE.com/event/1/?story=one&srsltid=click-b#article\n",
                 encoding="utf-8",
             )
             with self.assertRaisesRegex(ValueError, "unique after canonicalization"):
