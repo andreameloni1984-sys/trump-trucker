@@ -122,6 +122,13 @@ _DIRECTION_RULES = [
         "reason": "possible tightening of energy supply",
     },
     {
+        "id": "iran_diplomatic_deescalation",
+        "domains": {"ENERGY"},
+        "patterns": [r"\\b(iran.*(agreement|deal|ceasefire)|((agreement|deal|ceasefire).*)iran|diplomatic breakthrough.*iran|de-escalation.*iran|deescalation.*iran|sanctions eased.*iran|sanctions lifted.*iran)\\b"],
+        "bias": {"WTI": "SHORT_BIAS", "BRENT": "SHORT_BIAS"},
+        "reason": "credible Iran diplomatic de-escalation may reduce the geopolitical oil risk premium; supply-escalation risk remains the invalidation scenario",
+    },
+    {
         "id": "energy_supply_easing",
         "domains": {"ENERGY"},
         "patterns": [r"\b(production increase|raises output|output increase|supply restored|ceasefire.*oil|sanctions lifted.*oil|production boost)\b"],
