@@ -63,6 +63,8 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
+        self.assertRegex(item["content_hash"], r"^[0-9a-f]{64}$")
+        self.assertEqual(item["source_quality"], "FEED_HOST_MATCH_NOT_AUTHENTICATED")
 
     def test_feed_candidates_need_valid_publication_time_and_item_permalink(self):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
@@ -182,9 +184,14 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "evidence": "PUBLIC_RSS_ITEM",
                 "title": "Tariff headline",
                 "url": "https://example.gov/news/1",
-                "published": "2026-10-19",
+                "published": "Mon, 19 Oct 2026 00:00:00 GMT",
+                "event_time": "2026-10-19T00:00:00+00:00",
+                "available_at": "2026-10-19T00:01:00+00:00",
+                "detected_at": "2026-10-19T00:01:00+00:00",
                 "domains": ["TRADE_POLICY"],
                 "text": "Tariff headline details",
+                "source_quality": "FEED_HOST_MATCH_NOT_AUTHENTICATED",
+                "content_hash": "a" * 64,
             },
             {
                 "event_id": "page-1",
@@ -207,6 +214,11 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         payload = json.loads(request.data.decode("utf-8"))
         self.assertEqual(len(payload["events"]), 1)
         self.assertEqual(payload["events"][0]["event_id"], "evt-1")
+        self.assertEqual(payload["events"][0]["source_quality"], "FEED_HOST_MATCH_NOT_AUTHENTICATED")
+        self.assertEqual(payload["events"][0]["content_hash"], "a" * 64)
+        self.assertEqual(payload["events"][0]["event_time"], "2026-10-19T00:00:00+00:00")
+        self.assertEqual(payload["events"][0]["available_at"], "2026-10-19T00:01:00+00:00")
+        self.assertNotIn("decision_time", payload["events"][0])
         self.assertNotIn("order", payload["events"][0])
 
 
@@ -249,8 +261,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
-if __name__ == "__main__":
-    unittest.main()
 
 
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
@@ -278,3 +288,102 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+
+class SputnikCrossFeedDedupTests(unittest.TestCase):
+    def test_canonical_permalink_deduplicates_tracking_variants_across_feeds(self):
+        first = "https://Example.gov/news/123/?id=42&utm_source=mail#article"
+        second = "https://example.gov/news/123?id=42&fbclid=tracking"
+        self.assertEqual(
+            trump_tracker._canonical_public_permalink(first),
+            trump_tracker._canonical_public_permalink(second),
+        )
+        self.assertEqual(
+            trump_tracker._public_item_digest("WHITE_HOUSE", "feed-a", "guid-a", first),
+            trump_tracker._public_item_digest("MIRROR_FEED", "feed-b", "guid-b", second),
+        )
+        different_article = "https://example.gov/news/123?id=43"
+        self.assertNotEqual(
+            trump_tracker._public_item_digest("WHITE_HOUSE", "feed-a", "guid-a", first),
+            trump_tracker._public_item_digest("MIRROR_FEED", "feed-b", "guid-b", different_article),
+        )
+
+    def test_canonical_permalink_deduplicates_terminal_dns_root_dot(self):
+        dotted = "https://example.gov./news/123?id=42"
+        plain = "https://example.gov/news/123?id=42"
+        self.assertEqual(
+            trump_tracker._canonical_public_permalink(dotted),
+            trump_tracker._canonical_public_permalink(plain),
+        )
+        self.assertEqual(
+            trump_tracker._public_item_digest("WHITE_HOUSE", "feed-a", "guid-a", dotted),
+            trump_tracker._public_item_digest("MIRROR_FEED", "feed-b", "guid-b", plain),
+        )
+
+    def test_canonical_permalink_rejects_non_http_and_malformed_urls(self):
+        self.assertEqual(trump_tracker._canonical_public_permalink("javascript:alert(1)"), "")
+        self.assertEqual(trump_tracker._canonical_public_permalink("https://[bad-host"), "")
+
+    def test_legacy_feed_fingerprint_is_migrated_without_realert(self):
+        source = "WHITE_HOUSE"
+        feed_url = "https://example.gov/feed.xml"
+        identity = "old-guid-123"
+        item_url = "https://example.gov/news/123?utm_source=feed"
+        legacy = trump_tracker._legacy_public_item_digest(source, feed_url, identity)
+        current = trump_tracker._public_item_digest(source, feed_url, identity, item_url)
+        known = {legacy: "2026-10-26T10:00:00+00:00"}
+
+        self.assertTrue(
+            trump_tracker._public_item_already_seen(current, source, feed_url, identity, known)
+        )
+        self.assertEqual(known[current], known[legacy])
+
+    def test_public_content_hash_normalizes_whitespace_and_unicode_but_tracks_edits(self):
+        first = trump_tracker._public_content_hash("  Tariff\t update ", "Café\nannounced")
+        equivalent = trump_tracker._public_content_hash("Tariff update", "Cafe\u0301 announced")
+        changed = trump_tracker._public_content_hash("Tariff update", "Policy withdrawn")
+
+        self.assertEqual(first, equivalent)
+        self.assertNotEqual(first, changed)
+        self.assertRegex(first, r"^[0-9a-f]{64}$")
+    def test_public_source_quality_reports_url_evidence_without_claiming_authenticity(self):
+        self.assertEqual(
+            trump_tracker._public_source_quality(
+                "https://www.whitehouse.gov/feed/",
+                "https://www.whitehouse.gov/news/briefing",
+                "",
+                "PUBLIC_RSS_ITEM",
+            ),
+            "FEED_HOST_MATCH_NOT_AUTHENTICATED",
+        )
+        self.assertEqual(
+            trump_tracker._public_source_quality(
+                "https://archive.example/feed.xml",
+                "https://news.example/story/1",
+                "https://www.whitehouse.gov/news/briefing",
+                "PUBLIC_RSS_ITEM",
+            ),
+            "FEED_DECLARED_ORIGINAL_URL_UNVERIFIED",
+        )
+        self.assertEqual(
+            trump_tracker._public_source_quality(
+                "https://archive.example/feed.xml",
+                "https://news.example/story/1",
+                "",
+                "PUBLIC_RSS_ITEM",
+            ),
+            "EXTERNAL_PERMALINK_UNVERIFIED",
+        )
+        self.assertEqual(
+            trump_tracker._public_source_quality(
+                "https://www.whitehouse.gov/",
+                "https://www.whitehouse.gov/",
+                "",
+                "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            ),
+            "PAGE_LEVEL_UNVERIFIED",
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()

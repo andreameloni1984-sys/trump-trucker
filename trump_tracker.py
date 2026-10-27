@@ -18,6 +18,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import unicodedata
 from html.parser import HTMLParser
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
@@ -447,6 +448,8 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             "status": "POTENTIAL_CORRELATION",
             "detected_at": utc_now().isoformat(),
             "event_id": digest,
+            "content_hash": _public_content_hash(body[:200000]),
+            "source_quality": _public_source_quality(url, url, "", "PUBLIC_SOURCE_TEXT_PAGE_LEVEL"),
         }
         finding["action_reaction"] = build_action_reaction_record(finding, body)
         findings.append(finding)
@@ -488,10 +491,8 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             if not domains:
                 continue
             identity = str(row.get("id") or row.get("url") or (title + "|" + str(row.get("published") or "")))
-            digest = hashlib.sha256(
-                (source + "|" + feed_url + "|" + identity).encode("utf-8")
-            ).hexdigest()[:24]
-            if digest in known_items:
+            digest = _public_item_digest(source, feed_url, identity, item_url)
+            if _public_item_already_seen(digest, source, feed_url, identity, known_items):
                 continue
             observed_now = utc_now()
             observed_now_utc = observed_now.replace(tzinfo=timezone.utc) if observed_now.tzinfo is None else observed_now.astimezone(timezone.utc)
@@ -517,6 +518,8 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "status": "POTENTIAL_CORRELATION",
                 "detected_at": utc_now().isoformat(),
                 "event_id": digest,
+                "content_hash": _public_content_hash(title, str(row.get("text") or "")[:20000]),
+                "source_quality": _public_source_quality(feed_url, item_url, primary_url, "PUBLIC_RSS_ITEM"),
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
@@ -534,6 +537,13 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         keep = sorted(history.items(), key=lambda item: item[1].get("detected_at", ""), reverse=True)[:500]
         state["intelligence_history"] = dict(keep)
     return findings
+
+
+def _handoff_event_time(item: dict[str, Any]) -> str:
+    """Return a normalized, timezone-aware publication timestamp for the Gagarin handoff."""
+    raw = item.get("event_time") or item.get("published")
+    parsed = _parse_public_item_timestamp(raw)
+    return parsed.isoformat() if parsed is not None else ""
 
 
 def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any] | None:
@@ -557,8 +567,14 @@ def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any
                 "title": str(item.get("title") or "")[:300],
                 "url": str(item.get("url") or "")[:1000],
                 "published": str(item.get("published") or "")[:100],
+                # Preserve point-in-time and evidence provenance across the optional
+                # handoff. Gagarin must stamp decision_time when it evaluates the event.
+                "event_time": _handoff_event_time(item),
+                "available_at": str(item.get("available_at") or item.get("detected_at") or "")[:100],
                 "domains": list(item.get("domains") or []),
                 "text": str(item.get("text") or "")[:1500],
+                "source_quality": str(item.get("source_quality") or "UNASSESSED")[:80],
+                "content_hash": str(item.get("content_hash") or "")[:64],
             }
             for item in items[:20]
         ]
@@ -680,6 +696,7 @@ def intelligence_message(item: dict[str, Any]) -> str:
     lines.extend([
         f"🧩 Aree citate: {', '.join(item.get('domains') or [])}",
         f"🔎 Evidenza: {item.get('evidence', 'N/D')}",
+        f"🧾 Qualità URL: {item.get('source_quality', 'NON_VALUTATA')} (metadati tecnici, non prova di autenticità).",
     ])
     if excerpt and not title:
         lines.append(f"📝 Testo: {excerpt}")
@@ -740,6 +757,121 @@ def _is_item_permalink(value: Any, feed_url: str) -> bool:
     candidate_key = (candidate.scheme.lower(), candidate.netloc.lower(), candidate.path.rstrip("/"))
     feed_key = (feed.scheme.lower(), feed.netloc.lower(), feed.path.rstrip("/"))
     return candidate_key != feed_key
+
+
+# Tracking parameters do not identify a different article. Preserve other query
+# parameters because they can be part of the publisher's actual article ID.
+_TRACKING_QUERY_KEYS = {"fbclid", "gclid", "dclid", "mc_cid", "mc_eid", "igshid", "ref_src"}
+
+
+def _canonical_public_permalink(value: Any) -> str:
+    """Canonicalize an individual HTTP(S) permalink for cross-feed deduplication."""
+    try:
+        parsed = urllib.parse.urlsplit(str(value or "").strip())
+        scheme = parsed.scheme.lower()
+        if scheme not in {"http", "https"} or not parsed.hostname or parsed.username or parsed.password:
+            return ""
+        host = parsed.hostname.lower()
+        # A terminal DNS root dot does not identify a distinct host.
+        # Reject malformed repeated trailing dots instead of collapsing them.
+        if host.endswith(".."):
+            return ""
+        if host.endswith("."):
+            host = host[:-1]
+        if not host:
+            return ""
+        port = parsed.port
+    except (TypeError, ValueError, OverflowError):
+        return ""
+    if ":" in host and not host.startswith("["):
+        host = f"[{host}]"
+    if port and not ((scheme == "http" and port == 80) or (scheme == "https" and port == 443)):
+        host = f"{host}:{port}"
+    path = re.sub(r"/{2,}", "/", parsed.path or "/")
+    if path != "/":
+        path = path.rstrip("/") or "/"
+    query_pairs = [
+        (key, val)
+        for key, val in urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+        if not key.lower().startswith("utm_") and key.lower() not in _TRACKING_QUERY_KEYS
+    ]
+    query = urllib.parse.urlencode(sorted(query_pairs))
+    return urllib.parse.urlunsplit((scheme, host, path, query, ""))
+
+
+def _public_content_hash(*parts: Any) -> str:
+    """Return a stable SHA-256 audit hash for normalized public-source text.
+
+    This hash records the evidence snapshot; it is deliberately separate from
+    the permalink-based event ID so ordinary article edits do not create a new
+    event or bypass cross-feed deduplication.
+    """
+    normalized_parts = [
+        re.sub(r"\s+", " ", unicodedata.normalize("NFC", str(part or ""))).strip()
+        for part in parts
+    ]
+    canonical_text = "\n".join(normalized_parts)
+    return hashlib.sha256(canonical_text.encode("utf-8")).hexdigest()
+
+
+def _public_source_quality(
+    feed_url: Any, item_url: Any, primary_url: Any = "", evidence: str = "PUBLIC_RSS_ITEM"
+) -> str:
+    """Describe URL provenance without claiming source authenticity or independence."""
+    if str(evidence or "") != "PUBLIC_RSS_ITEM":
+        return "PAGE_LEVEL_UNVERIFIED"
+
+    def safe_host(value: Any) -> str:
+        try:
+            parsed = urllib.parse.urlsplit(str(value or "").strip())
+            if (
+                parsed.scheme.lower() not in {"http", "https"}
+                or not parsed.hostname
+                or parsed.username
+                or parsed.password
+            ):
+                return ""
+            return parsed.hostname.lower().rstrip(".")
+        except (TypeError, ValueError, OverflowError):
+            return ""
+
+    item_permalink = _canonical_public_permalink(item_url)
+    primary_permalink = _canonical_public_permalink(primary_url)
+    if primary_permalink and primary_permalink != item_permalink:
+        return "FEED_DECLARED_ORIGINAL_URL_UNVERIFIED"
+    feed_host = safe_host(feed_url)
+    item_host = safe_host(item_url)
+    if feed_host and item_host and feed_host == item_host:
+        return "FEED_HOST_MATCH_NOT_AUTHENTICATED"
+    return "EXTERNAL_PERMALINK_UNVERIFIED"
+
+
+def _public_item_digest(source: str, feed_url: str, identity: str, item_url: str) -> str:
+    """Use a canonical permalink across feeds; fall back to feed-local identity."""
+    permalink = _canonical_public_permalink(item_url)
+    if permalink:
+        key = "permalink|" + permalink
+    else:
+        key = "feed|" + str(source) + "|" + str(feed_url) + "|" + str(identity)
+    return hashlib.sha256(key.encode("utf-8")).hexdigest()[:24]
+
+
+def _legacy_public_item_digest(source: str, feed_url: str, identity: str) -> str:
+    """Return the pre-canonicalization key so deployment does not re-alert known items."""
+    return hashlib.sha256((str(source) + "|" + str(feed_url) + "|" + str(identity)).encode("utf-8")).hexdigest()[:24]
+
+
+def _public_item_already_seen(
+    digest: str, source: str, feed_url: str, identity: str, known_items: dict[str, Any]
+) -> bool:
+    """Recognize current or legacy fingerprints and migrate legacy entries silently."""
+    if digest in known_items:
+        return True
+    legacy = _legacy_public_item_digest(source, feed_url, identity)
+    if legacy in known_items:
+        known_items.setdefault(digest, known_items[legacy])
+        return True
+    return False
 
 
 def http_get_json(url: str, user_agent: str) -> dict[str, Any]:
