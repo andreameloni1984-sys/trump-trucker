@@ -9,6 +9,7 @@ from __future__ import annotations
 from collections import defaultdict
 from datetime import date, datetime, timezone
 from typing import Any
+from urllib.parse import urlsplit, urlunsplit
 
 BUY_THRESHOLD = 75
 WATCH_THRESHOLD = 55
@@ -86,6 +87,32 @@ def disclosure_lag_bucket(transaction_date: str, filing_date: str) -> str:
     return "OLTRE_45_GIORNI"
 
 
+def _filing_identity(item: dict[str, Any]) -> str:
+    """Return a stable filing identity; transactions from one filing count once."""
+    accession = str(item.get("accession_number") or item.get("accession") or "").strip()
+    if accession:
+        normalized_accession = "".join(char for char in accession.lower() if char.isalnum())
+        if normalized_accession:
+            return f"accession:{normalized_accession}"
+
+    source_url = str(item.get("source_url") or "").strip()
+    try:
+        parsed = urlsplit(source_url)
+        if parsed.scheme.lower() in {"http", "https"} and parsed.netloc:
+            canonical = urlunsplit((
+                parsed.scheme.lower(),
+                parsed.netloc.lower(),
+                parsed.path.rstrip("/"),
+                "",
+                "",
+            ))
+            if canonical:
+                return f"url:{canonical}"
+    except ValueError:
+        pass
+    return f"url:{source_url}"
+
+
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     """Score one documented security candidate from Form 4 purchases.
 
@@ -105,14 +132,14 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     valid.sort(key=lambda x: str(x.get("transaction_date") or ""), reverse=True)
     latest = valid[0]
 
-    filing_ids = {
-        (str(x.get("event_id") or ""), str(x.get("transaction_date") or ""))
-        for x in valid
-    }
+    # Multiple transaction rows from the same Form 4 must not count as
+    # independent confirmations. Prefer the SEC accession when available;
+    # otherwise use the canonical source permalink.
+    filing_ids = {_filing_identity(item) for item in valid}
     distinct_filings = len(filing_ids)
 
     source_quality = 25       # SEC primary document.
-    event_strength = 25       # Form 4 purchase code P.
+    event_strength = 20       # Historical 100-point rubric: documented event.
     confirmations = min(15, distinct_filings * 5)
     documented_relationship = 0
     recency = _recency_score(str(latest.get("transaction_date") or ""), today)
