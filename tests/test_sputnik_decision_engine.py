@@ -12,6 +12,10 @@ class StrictDecisionTests(unittest.TestCase):
     def test_generic_mention_is_not_enough(self):
         self.assertEqual(conditional_plans("A speech mentioned tariffs and trade."), [])
 
+    def test_hyphenated_multiword_topic_matches_catalyst_evidence(self):
+        rows = conditional_plans("The countries signed a trade-deal after negotiations.")
+        self.assertTrue(any(row["id"] == "trade_deescalation" for row in rows))
+
     def test_oil_flow_risk(self):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
         self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))

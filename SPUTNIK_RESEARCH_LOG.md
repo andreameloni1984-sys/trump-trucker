@@ -205,3 +205,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI/deployment/limits:** CI is expected to run from the PR branch and will be recorded after checking Actions. No merge/deploy; Render build minutes remain exhausted. Synthetic text regression only; no news replay, event study, or OOS performance claim. PAPER ONLY.
 
 - **CI correction (2026-10-28):** first run [40602923648](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40602923648) failed because the new test expected singular `tariff` to match the explicitly listed plural `tariffs`. Whole-term matching correctly distinguishes them; corrected the assertion to expect `tariffs` and continue rejecting the fragment `trade war` inside `trade warrior`. Re-run pending.
+
+
+## 2026-10-28 — align hyphenated phrase evidence with trigger ranking
+- **Finding:** `conditional_plans()` normalizes hyphens when counting trigger terms, but `_evidence()` did not. A concrete phrase such as “signed a trade-deal” could therefore be ranked using normalized text but fail the evidence gate because the rule topic is “trade deal”.
+- **Change/files:** `sputnik_decision_engine.py::_evidence` normalizes ASCII hyphen runs for matching while preserving the original sentence in the evidence field.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_hyphenated_multiword_topic_matches_catalyst_evidence`.
+- **Operational path:** public text → evidence gate → trigger ranking → conditional hypothesis → independent price/volume confirmation. No order authorization is added.
+- **Validation:** synthetic text regression; no event replay, event-study or out-of-sample performance claim. CI result and commit SHA will be recorded in the PR conversation after the run completes.
+- **Deployment/safety:** research PR #55 only; no merge or deploy. PAPER ONLY.
