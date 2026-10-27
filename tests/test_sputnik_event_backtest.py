@@ -119,6 +119,33 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertIn("status", result["early"])
         self.assertEqual(result["breakout"]["status"], "NO_BREAKOUT")
 
+    def test_out_of_order_candle_timestamps_are_rejected_in_direct_input(self):
+        data = candles([
+            (100, 101, 99, 100, 1000),
+            (99, 100, 98, 99, 1200),
+        ])
+        data.reverse()
+        with self.assertRaisesRegex(ValueError, "chronological order"):
+            backtest_event(
+                data,
+                "2025-12-31T23:59:00+00:00",
+                "SHORT",
+                1.0,
+                atr_time="2025-12-31T23:54:00+00:00",
+            )
+
+    def test_out_of_order_candle_timestamps_are_rejected_in_csv(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "out_of_order_wti.csv"
+            path.write_text(
+                "timestamp,open,high,low,close,volume\\n"
+                "2026-01-01T00:05:00+00:00,99,100,98,99,1200\\n"
+                "2026-01-01T00:00:00+00:00,100,101,99,100,1000\\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "chronological order"):
+                load_candles_csv(path)
+
     def test_duplicate_candle_timestamps_are_rejected(self):
         data = candles([
             (100, 101, 99, 100, 1000),
