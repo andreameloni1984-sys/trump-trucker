@@ -85,8 +85,8 @@ class SputnikEventBacktestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "bad_wti.csv"
             path.write_text(
-                "timestamp,open,high,low,close,volume\\n"
-                "2026-01-01T00:00:00+00:00,100,101,99,100,nan\\n",
+                "timestamp,open,high,low,close,volume\n"
+                "2026-01-01T00:00:00+00:00,100,101,99,100,nan\n",
                 encoding="utf-8",
             )
             with self.assertRaisesRegex(ValueError, "volume must be finite"):
