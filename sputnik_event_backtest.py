@@ -107,14 +107,16 @@ def _validate_source_url(value: str) -> str:
     """Validate a source permalink while preserving its exact supplied form."""
     url = str(value).strip()
     parsed = urlparse(url)
-    if parsed.scheme.lower() not in {"http", "https"} or not parsed.hostname:
-        raise ValueError("source_url must be an absolute HTTP(S) URL")
+    if parsed.scheme.lower() != "https" or not parsed.hostname:
+        raise ValueError("source_url must be an absolute HTTPS URL")
     if parsed.username is not None or parsed.password is not None:
         raise ValueError("source_url must not contain embedded credentials")
     try:
-        parsed.port
+        port = parsed.port
     except ValueError as exc:
         raise ValueError("source_url has an invalid port") from exc
+    if port not in (None, 443):
+        raise ValueError("source_url must use the standard HTTPS port")
     # Keep the original scheme/host casing, query order, tracking parameters,
     # and fragment for evidence provenance. Canonical identity is separate.
     return url
