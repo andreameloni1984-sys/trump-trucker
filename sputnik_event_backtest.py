@@ -122,7 +122,7 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
         status = "TIME_EXIT" if end_index < len(candles) else "END_OF_DATA"
 
     gross_pnl = sign * (exit_price - entry)
-    net_pnl = gross_pnl - max(0.0, spread)
+    net_pnl = gross_pnl - spread
     return {
         "status": status,
         "entry_time": candles[entry_index]["timestamp"].isoformat(),
@@ -152,8 +152,12 @@ def backtest_event(
     side = side.upper()
     if side not in {"LONG", "SHORT"}:
         raise ValueError("side must be LONG or SHORT")
+    if not all(math.isfinite(value) for value in (atr, stop_atr, target_r, spread)):
+        raise ValueError("ATR, stop, target and spread must be finite")
     if atr <= 0 or stop_atr <= 0 or target_r <= 0 or breakout_lookback < 1 or max_holding_bars < 1:
         raise ValueError("ATR, stop, target, lookback and holding bars must be positive")
+    if spread < 0:
+        raise ValueError("spread must be non-negative; pass the round-trip cost in price units")
     event_dt = _dt(event_time)
     atr_dt = _dt(atr_time)
     if atr_dt > event_dt:
