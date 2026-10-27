@@ -1,7 +1,9 @@
 import unittest
+import tempfile
+from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
-from sputnik_event_backtest import backtest_event
+from sputnik_event_backtest import backtest_event, load_candles_csv
 
 
 def run_backtest(data, event_time, side, atr, *args, **kwargs):
@@ -76,6 +78,30 @@ class SputnikEventBacktestTests(unittest.TestCase):
                 "LONG",
                 1.0,
                 atr_time="2026-01-01T00:05:00+00:00",
+            )
+
+
+    def test_non_finite_ohlcv_from_csv_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "bad_wti.csv"
+            path.write_text(
+                "timestamp,open,high,low,close,volume\\n"
+                "2026-01-01T00:00:00+00:00,100,101,99,100,nan\\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "volume must be finite"):
+                load_candles_csv(path)
+
+    def test_negative_volume_in_direct_backtest_input_is_rejected(self):
+        data = candles([(100, 101, 99, 100, 1000)])
+        data[0]["volume"] = -1.0
+        with self.assertRaisesRegex(ValueError, "volume must be non-negative"):
+            backtest_event(
+                data,
+                "2025-12-31T23:59:00+00:00",
+                "LONG",
+                1.0,
+                atr_time="2025-12-31T23:54:00+00:00",
             )
 
     def test_invalid_direction_rejected(self):
