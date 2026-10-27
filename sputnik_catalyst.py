@@ -247,6 +247,7 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
     if limit <= 0:
         return []
     candidates: dict[tuple[str, str], dict[str, Any]] = {}
+    conflicted: set[tuple[str, str]] = set()
     for finding in findings:
         if (
             finding.get("evidence") != "PUBLIC_RSS_ITEM"
@@ -286,7 +287,9 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                 continue
             for instrument, bias in rule["bias"].items():
                 key = (str(finding["event_id"]), instrument)
-                candidates[key] = {
+                if key in conflicted:
+                    continue
+                candidate = {
                     "event_id": str(finding["event_id"]),
                     "title": str(finding.get("title") or "")[:240],
                     "source": str(finding.get("source") or "N/D"),
@@ -298,5 +301,14 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                     "reason": rule["reason"],
                     "status": "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION",
                 }
+                previous = candidates.get(key)
+                if previous is not None and previous["bias"] != bias:
+                    # Mixed/contradictory catalysts must not be resolved by
+                    # rule iteration order. Abstain for this event/instrument.
+                    candidates.pop(key, None)
+                    conflicted.add(key)
+                    continue
+                if previous is None:
+                    candidates[key] = candidate
     result = sorted(candidates.values(), key=lambda x: x["published"], reverse=True)
     return result[:limit]
