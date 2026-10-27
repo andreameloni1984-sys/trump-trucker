@@ -435,3 +435,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Verified result:** the earlier conversation explicitly recorded that the original numbered 1–100 catalog and complete list of roughly 100 points had not been recovered; only incremental summaries were available. The IBKR session-9 file is a separate study register, with numbered study items through item 32 and later hypotheses; it is not evidence of the missing 100-point catalog.
 - **Decision:** do not reconstruct or relabel missing items as original lessons. Apply only directly retrievable, source-backed findings and record inferred hypotheses separately. Items 100–103 appearing in recent implementation notes remain implementation hypotheses, not proof that the original catalog has been recovered.
 - **Scope:** this is a provenance/research-integrity finding, not a code feature or empirical trading result.
+
+
+## 2026-10-27 — Deduplicate common ad-click tracking parameters
+
+- **Finding:** the event-ledger canonicalizer already removes `utm_*`, `fbclid`, `gclid`, and selected mailing/referrer keys, but still treated common ad-click IDs such as `msclkid` and `srsltid` as distinct event sources. This can let the same publisher permalink appear twice in a manually assembled event ledger.
+- **Implemented:** extend only the canonical deduplication key with common click IDs (`msclkid`, `dclid`, `ttclid`, `twclid`, `srsltid`, `yclid`, `igshid`, `mkt_tok`, `vero_id`, `vero_conv`). The original `source_url` remains untouched for provenance; remaining query parameter order is preserved.
+- **Files:** `sputnik_event_backtest.py`; `tests/test_sputnik_event_backtest.py`.
+- **Regression:** two rows with the same article URL but different Microsoft/Google-search click IDs, host casing, trailing slash and fragment must be rejected as duplicate canonical sources.
+- **CI:** awaiting the new branch run; no local test execution is claimed.
+- **Operational path:** event CSV → `load_events_csv` → `_canonical_source_url` → duplicate-source gate before event backtest.
+- **Deployment:** PR #45 branch only; Render auto-deploy targets `main`, and no deploy was triggered.
+- **Empirical validation:** source deduplication only; no WTI return or predictive-edge claim.
