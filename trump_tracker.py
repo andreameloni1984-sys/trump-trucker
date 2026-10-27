@@ -772,6 +772,14 @@ def _canonical_public_permalink(value: Any) -> str:
         if scheme not in {"http", "https"} or not parsed.hostname or parsed.username or parsed.password:
             return ""
         host = parsed.hostname.lower()
+        # A terminal DNS root dot does not identify a distinct host.
+        # Reject malformed repeated trailing dots instead of collapsing them.
+        if host.endswith(".."):
+            return ""
+        if host.endswith("."):
+            host = host[:-1]
+        if not host:
+            return ""
         port = parsed.port
     except (TypeError, ValueError, OverflowError):
         return ""

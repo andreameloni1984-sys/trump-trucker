@@ -308,6 +308,18 @@ class SputnikCrossFeedDedupTests(unittest.TestCase):
             trump_tracker._public_item_digest("MIRROR_FEED", "feed-b", "guid-b", different_article),
         )
 
+    def test_canonical_permalink_deduplicates_terminal_dns_root_dot(self):
+        dotted = "https://example.gov./news/123?id=42"
+        plain = "https://example.gov/news/123?id=42"
+        self.assertEqual(
+            trump_tracker._canonical_public_permalink(dotted),
+            trump_tracker._canonical_public_permalink(plain),
+        )
+        self.assertEqual(
+            trump_tracker._public_item_digest("WHITE_HOUSE", "feed-a", "guid-a", dotted),
+            trump_tracker._public_item_digest("MIRROR_FEED", "feed-b", "guid-b", plain),
+        )
+
     def test_canonical_permalink_rejects_non_http_and_malformed_urls(self):
         self.assertEqual(trump_tracker._canonical_public_permalink("javascript:alert(1)"), "")
         self.assertEqual(trump_tracker._canonical_public_permalink("https://[bad-host"), "")
