@@ -270,6 +270,7 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
     return {
         "status": status,
         "entry_time": candles[entry_index]["timestamp"].isoformat(),
+        "exit_time": candles[exit_index]["timestamp"].isoformat(),
         "entry": round(entry, 8),
         "stop": round(stop, 8),
         "target": round(target, 8),
@@ -414,6 +415,34 @@ def _is_scored_pnl(value: Any) -> bool:
     )
 
 
+def _overlapping_scored_trade_pairs(results: list[dict[str, Any]], strategy_key: str) -> tuple[int, int]:
+    """Count strictly overlapping time windows among trades with scored P&L and timestamps."""
+    windows = []
+    for result in results:
+        trade = result.get(strategy_key, {})
+        if not _is_scored_pnl(trade.get("pnl_r")):
+            continue
+        start_value = trade.get("entry_time")
+        end_value = trade.get("exit_time")
+        if not isinstance(start_value, str) or not isinstance(end_value, str):
+            continue
+        try:
+            start = _dt(start_value)
+            end = _dt(end_value)
+        except (TypeError, ValueError):
+            continue
+        if end < start:
+            continue
+        windows.append((start, end))
+
+    overlapping_pairs = 0
+    for index, (start, end) in enumerate(windows):
+        for other_start, other_end in windows[index + 1:]:
+            if start < other_end and other_start < end:
+                overlapping_pairs += 1
+    return len(windows), overlapping_pairs
+
+
 def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any]:
     """Summarize paired R outcomes without treating unscored trades as zero."""
     paired = []
@@ -439,8 +468,14 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
     mean_breakout = statistics.mean(breakout for _, breakout in paired) if paired else None
     mean_difference = statistics.mean(differences) if differences else None
     median_difference = statistics.median(differences) if differences else None
+    early_windows, early_overlaps = _overlapping_scored_trade_pairs(results, "early")
+    breakout_windows, breakout_overlaps = _overlapping_scored_trade_pairs(results, "breakout")
     return {
         "events_total": len(results),
+        "early_scored_trade_windows": early_windows,
+        "breakout_scored_trade_windows": breakout_windows,
+        "overlapping_trade_pairs_early": early_overlaps,
+        "overlapping_trade_pairs_breakout": breakout_overlaps,
         "paired_scored_events": len(paired),
         "unpaired_or_unscored_events": len(results) - len(paired),
         "mean_early_r_paired": round(mean_early, 4) if mean_early is not None else None,
@@ -455,6 +490,11 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         "scoring_note": (
             "R averages and paired differences use only events with numeric P&L for both strategies; "
             "unscored outcomes are reported by status and are never treated as zero."
+        ),
+        "overlap_diagnostic_note": (
+            "Overlapping scored trade windows are counted separately for each strategy. "
+            "When counts are non-zero, event outcomes are not independent; interpret aggregate "
+            "averages cautiously and use event-clustered or non-overlapping sensitivity analysis."
         ),
     }
 
