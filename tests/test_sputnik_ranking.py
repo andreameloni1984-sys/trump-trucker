@@ -14,7 +14,7 @@ def tx(event_id, security="ACME Common Stock", company="ACME Corp", tx_date="202
         "company": company,
         "action": "ACQUISTATO",
         "source_kind": "FORM4_TRANSACTION",
-        "source_url": "https://www.sec.gov/example",
+        "source_url": f"https://www.sec.gov/Archives/edgar/data/0000000001/{event_id}/form4.xml",
         "transaction_date": tx_date,
         "filing_date": tx_date,
     }
@@ -23,7 +23,8 @@ def tx(event_id, security="ACME Common Stock", company="ACME Corp", tx_date="202
 class RankingTests(unittest.TestCase):
     def test_single_form4_cannot_be_buy(self):
         result = score_purchase_candidate([tx("e1")], today=date(2026, 10, 6))
-        self.assertEqual(result["score"], 65)
+        self.assertEqual(result["score"], 60)
+        self.assertEqual(result["event_strength"], 20)
         self.assertEqual(result["signal"], "OSSERVA")
 
     def test_repeated_recent_form4_stays_below_buy_until_three_filings(self):
@@ -31,10 +32,10 @@ class RankingTests(unittest.TestCase):
             [tx("e1", tx_date="2026-10-05"), tx("e2", tx_date="2026-10-04")],
             today=date(2026, 10, 6),
         )
-        self.assertEqual(result["score"], 70)
+        self.assertEqual(result["score"], 65)
         self.assertEqual(result["signal"], "OSSERVA")
 
-    def test_three_distinct_recent_filings_reach_buy_threshold(self):
+    def test_three_distinct_recent_filings_do_not_buy_without_other_evidence(self):
         result = score_purchase_candidate(
             [
                 tx("e1", tx_date="2026-10-05"),
@@ -43,8 +44,24 @@ class RankingTests(unittest.TestCase):
             ],
             today=date(2026, 10, 6),
         )
-        self.assertEqual(result["score"], 75)
-        self.assertEqual(result["signal"], "COMPRA")
+        self.assertEqual(result["score"], 70)
+        self.assertEqual(result["signal"], "OSSERVA")
+
+    def test_multiple_transactions_from_one_filing_count_as_one_confirmation(self):
+        first = tx("e1", tx_date="2026-10-05")
+        second = tx("e2", tx_date="2026-10-04")
+        same_filing_url = "https://www.sec.gov/Archives/edgar/data/1/000000000126000001/form4.xml?source=rss"
+        first["source_url"] = same_filing_url
+        second["source_url"] = same_filing_url + "#transaction"
+        first["accession_number"] = "0000000001-26-000001"
+        second["accession_number"] = "000000000126000001"
+
+        result = score_purchase_candidate([first, second], today=date(2026, 10, 6))
+
+        self.assertEqual(result["filings"], 1)
+        self.assertEqual(result["confirmations"], 5)
+        self.assertEqual(result["score"], 60)
+        self.assertEqual(result["signal"], "OSSERVA")
 
     def test_invalid_date_gets_no_recency_points(self):
         result = score_purchase_candidate([tx("e1", tx_date="not-a-date")], today=date(2026, 10, 6))
@@ -77,7 +94,7 @@ class RankingTests(unittest.TestCase):
         item = tx("e1", tx_date="2026-10-05")
         item["filing_date"] = "2026-10-20"
         result = score_purchase_candidate([item], today=date(2026, 10, 21))
-        self.assertEqual(result["score"], 60)
+        self.assertEqual(result["score"], 55)
         self.assertEqual(result["disclosure_lag_days"], 15)
         self.assertEqual(result["disclosure_lag_bucket"], "4-45_GIORNI")
         self.assertEqual(result["disclosure_business_days"], 11)
