@@ -112,7 +112,7 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Change:** `sputnik_ranking.py` now prefers SEC accession identity and otherwise canonicalizes the source permalink (scheme/host normalized, query and fragment removed). Multiple rows from one filing count once. Event-strength weight is aligned to 20.
 - **Regression tests:** `tests/test_sputnik_ranking.py` covers accession normalization, same-filing rows with different event IDs/transaction dates, and three recent distinct filings. With unsupported relationship/sector/social evidence left at zero, three filings score 70 and remain `OSSERVA`, not `COMPRA`.
 - **Operational path:** public Form 4 rows → candidate grouping → distinct filing count → 0–100 score → COMPRA/OSSERVA/EVITA.
-- **CI:** pending on branch `fix/sputnik-distinct-filing-rubric-20261027`; no test success is claimed yet.
+- **CI:** PASS on PR head `6200775032b1946da9a3269e3b26c71acef64fd2`: SPUTNIK ranking tests run `40469292377` and Telegram menu tests run `40469292329`.
 - **Deployment:** Render main service is auto-deploy on main; branch is not merged. No deploy was triggered. Latest observed listener live commit remains `9e5204bf7d9074dba27637013b7d98933a91e733`; latest deploy attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed. Build quota is exhausted.
 - **Empirical validation:** no historical replay or out-of-sample ranking study performed. This is scoring-integrity validation, not a return/profitability claim.
 - **Safety:** PAPER/DEMO ONLY; no broker, order, or Telegram test message.
