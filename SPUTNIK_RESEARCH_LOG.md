@@ -367,3 +367,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI:** SPUTNIK ranking tests passed on the code/test revision in run [40522083277](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40522083277); the later log-only revision also passed in run [40522102565](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40522102565). The subsequent historical-register edit is documentation-only.
 - **Deployment:** PR #45 remains open and unmerged. No Render/Telegram runtime-log connector was available in this execution, so production deployment and message delivery are not confirmed. Render build-pipeline quota remains a deployment blocker.
 - **Safety:** PAPER ONLY; no secret values inspected, no Telegram test message, no broker, no orders.
+
+
+## 2026-10-27 — Require secure source URLs in the WTI event backtest
+
+- **Finding:** the event-ledger loader accepted HTTP and non-standard-port source URLs even though the operational Sputnik permalink gate requires unambiguous HTTPS item links. This could let a manually supplied research CSV bypass the same minimum provenance hygiene.
+- **Change:** `sputnik_event_backtest.py::_validate_source_url` now requires HTTPS, rejects embedded credentials, and permits only the default HTTPS port (or explicit 443); malformed ports fail closed.
+- **Regression:** `tests/test_sputnik_event_backtest.py` covers HTTP, non-standard port, and malformed port. Also moved the `unittest.main()` guard to the end so the trailing breakout-timestamp regression is actually defined during direct execution.
+- **Operational path:** CSV event ledger → source URL validation → canonical deduplication → early-entry/breakout comparison.
+- **Validation limit:** this is source-URL hygiene and test-discovery correctness, not a claim that the event is authentic or the trading rule profitable. Await CI on the final PR head; no live replay, merge, Render deploy, Telegram message, broker, or order.
+- **Safety:** PAPER ONLY.
