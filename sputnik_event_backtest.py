@@ -11,7 +11,7 @@ import csv
 import json
 import math
 import statistics
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
@@ -86,7 +86,7 @@ def _bar_gap_diagnostics(candles: list[dict[str, Any]], bar_interval_minutes: in
 
 
 def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
-    """Load timestamp,open,high,low,close,volume CSV rows in chronological order."""
+    """Load OHLCV rows with timezone-aware timestamps representing candle opens."""
     candles = []
     with open(path, newline="", encoding="utf-8-sig") as handle:
         reader = csv.DictReader(handle)
@@ -397,13 +397,26 @@ def backtest_event(
                             "gap_minutes": round(entry_gap_minutes, 2),
                         }
                     else:
-                        # The breakout is known only at this candle's close. A causal fill is
-                        # the next candle's open, never the already-observed signal close.
-                        breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes)
-                        breakout["signal_time"] = candles[i]["timestamp"].isoformat()
-                        breakout["decision_time"] = candles[i]["timestamp"].isoformat()
-                        breakout["signal_close"] = round(candles[i]["close"], 8)
-                        breakout["entry_model"] = "next_bar_open_after_close_confirmation"
+                        # Candle timestamps are bar opens: the signal close is observable
+                        # only at the next bar boundary. Never score a fill before that time.
+                        signal_dt = candles[i]["timestamp"] + timedelta(minutes=bar_interval_minutes)
+                        entry_dt = candles[entry_index]["timestamp"]
+                        if entry_dt < signal_dt:
+                            breakout = {
+                                "status": "UNMODELED_BAR_INTERVAL",
+                                "signal_bar_time": candles[i]["timestamp"].isoformat(),
+                                "signal_time": signal_dt.isoformat(),
+                                "entry_time": entry_dt.isoformat(),
+                                "expected_gap_minutes": float(bar_interval_minutes),
+                                "observed_gap_minutes": round(entry_gap_minutes, 2),
+                            }
+                        else:
+                            breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes)
+                            breakout["signal_bar_time"] = candles[i]["timestamp"].isoformat()
+                            breakout["signal_time"] = signal_dt.isoformat()
+                            breakout["decision_time"] = signal_dt.isoformat()
+                            breakout["signal_close"] = round(candles[i]["close"], 8)
+                            breakout["entry_model"] = "next_bar_open_after_close_confirmation"
                 break
 
     return {
