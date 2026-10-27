@@ -377,3 +377,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Operational path:** CSV event ledger → source URL validation → canonical deduplication → early-entry/breakout comparison.
 - **Validation limit:** this is source-URL hygiene and test-discovery correctness, not a claim that the event is authentic or the trading rule profitable. Await CI on the final PR head; no live replay, merge, Render deploy, Telegram message, broker, or order.
 - **Safety:** PAPER ONLY.
+
+
+## 2026-10-27 — CI and runtime verification for secure backtest source URLs
+
+- **Code commit:** `4be6f1fb81b3badf52efa11212b9049be2e89a77`; **test/discovery fix:** `e08c660c76eff751ae78802b511ecc5f2ce8c96c`; **research-log update before this entry:** `563d421c13923aa3038c8f2a34407232c672f32a`.
+- **CI:** SPUTNIK ranking tests PASS on final code/test revision, run [40526067753](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40526067753). The first run failed because the new CSV fixture contained literal escaped newline characters; the fixture was corrected before the passing run.
+- **PR:** #45 remains open/unmerged; no merge or deployment.
+- **Render:** listener is configured on `main`; last live Sputnik deployment is commit `9e5204bf7d9074dba27637013b7d98933a91e733` from 2026-10-16. The 2026-10-22 attempt for `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed because the workspace ran out of build-pipeline minutes. App logs at 2026-10-27 14:41 UTC show listener online and Telegram bootstrap authorized, but this window contains no SEC/White House feed log entries and does not prove a market alert was delivered.
+- **Empirical limit:** no historical WTI replay or profitability result from this URL-validation change.
+- **Safety:** no secrets inspected, no test Telegram message, no broker or orders; PAPER ONLY.
