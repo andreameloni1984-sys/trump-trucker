@@ -404,6 +404,30 @@ class SputnikEventBacktestTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "timestamps must include a timezone"):
                 load_events_csv(path)
 
+    def test_event_ledger_rejects_homepage_and_feed_urls_as_item_sources(self):
+        base = (
+            "event_id,event_time,available_at,side,atr,atr_time,source_url\\n"
+            "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:02:00+00:00,"
+            "SHORT,1.0,2026-01-01T00:00:00+00:00,{source_url}\\n"
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "events.csv"
+            for source_url in (
+                "https://example.com/",
+                "https://example.com/feed",
+                "https://example.com/rss.xml",
+            ):
+                with self.subTest(source_url=source_url):
+                    path.write_text(base.format(source_url=source_url), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "individual item"):
+                        load_events_csv(path)
+
+            # A root URL with an explicit item identifier remains valid.
+            item_url = "https://example.com/?post_id=123"
+            path.write_text(base.format(source_url=item_url), encoding="utf-8")
+            self.assertEqual(load_events_csv(path)[0]["source_url"], item_url)
+
+
     def test_event_ledger_requires_https_standard_port_source_url(self):
         cases = (
             ("http://example.com/event/1", "absolute HTTPS URL"),
