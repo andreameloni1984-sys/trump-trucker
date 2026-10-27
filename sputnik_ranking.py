@@ -117,10 +117,18 @@ def _filing_identity(item: dict[str, Any]) -> str:
     source_url = str(item.get("source_url") or "").strip()
     try:
         parsed = urlsplit(source_url)
-        if parsed.scheme.lower() in {"http", "https"} and parsed.netloc:
+        scheme = parsed.scheme.lower()
+        host = (parsed.hostname or "").lower().rstrip(".")
+        if scheme in {"http", "https"} and host:
+            port = parsed.port
+            # Explicit default ports and trailing-dot DNS names identify the
+            # same HTTPS filing URL and must not inflate distinct confirmations.
+            if (scheme, port) in {("https", 443), ("http", 80)}:
+                port = None
+            netloc = host if port is None else f"{host}:{port}"
             canonical = urlunsplit((
-                parsed.scheme.lower(),
-                parsed.netloc.lower(),
+                scheme,
+                netloc,
                 parsed.path.rstrip("/"),
                 "",
                 "",
