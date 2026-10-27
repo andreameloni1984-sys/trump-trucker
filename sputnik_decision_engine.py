@@ -53,7 +53,8 @@ def conditional_plans(text: str, limit: int = 3) -> list[dict[str, Any]]:
         evidence = _evidence(text, rule)
         if not evidence:
             continue
-        hits = [term for term in scenario.get("trigger", ()) if term in str(text).lower()]
+        trigger_text = re.sub(r"-+", " ", " ".join(str(text or "").lower().split()))
+        hits = [term for term in scenario.get("trigger", ()) if _contains_term(trigger_text, term)]
         row = {key: value for key, value in scenario.items() if key != "trigger"}
         row.update(matched_terms=hits, match_count=len(hits), evidence=evidence)
         rows.append(row)
