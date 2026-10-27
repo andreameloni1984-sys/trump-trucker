@@ -21,7 +21,7 @@ RULES = {
 NEGATIONS = (" never ", "did not", "does not", "do not", "will not", "would not", "was not", "were not", "is not", "are not", "has not", "have not", "had not", "cannot", "can not", "not confirmed", "not yet", "won't", "didn't", "doesn't", "don't", "isn't", "aren't", "wasn't", "weren't", "denied", "rejects", "rejected", "withdrawn", "cancelled", " non ", "nessun", "nega", "smentisce", "ritira", "respinge")
 
 def _sentences(text: str) -> list[str]:
-    normalized = str(text or "").replace("?", ".").replace("!", ".")
+    normalized = str(text or "").replace("?", ".").replace("!", ".").replace(";", ".")
     parts = []
     for line in normalized.splitlines():
         parts.extend(line.split("."))
