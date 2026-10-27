@@ -254,3 +254,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Commits:** implementation `ce7dda8311107b173e6045d1427b1601903730ed`; tests `0b7591088fe6280a2c3b50dec061d064d17b31a2`; corrected test-fixture line endings `f390f8ff50ed8d87c5e6acb26be221e87e5dade0`.
 - **CI feedback:** first run [40489813026](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40489813026) failed because the new CSV fixture encoded literal `\\n` text instead of line breaks. Fixed the fixture; follow-up run [40489845149](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40489845149) completed with conclusion **success** on `f390f8ff50ed8d87c5e6acb26be221e87e5dade0`; the `Run ranking tests` step passed. The available summary does not expose the exact test count, so none is claimed.
 - **Data/performance status:** this is a data-integrity improvement only. No exchange-verified NYMEX CL dataset paired to exact source-linked catalyst timestamps has been assembled; no real-event comparison or profitability claim is made. PAPER ONLY; no broker changes, orders, Telegram test messages or production deployment.
+
+
+### 2026-10-27 — Reject boolean parameters in event backtest
+- **Finding:** Python treats `True` as numeric 1 and as an integer. The event backtest accepted boolean ATR/stop/target/spread inputs and boolean lookback/holding counts, which can silently change the simulated risk geometry.
+- **Files:** `sputnik_event_backtest.py`; `tests/test_sputnik_event_backtest.py`.
+- **Change:** require ATR, stop multiplier, target R and spread to be finite non-boolean int/float values; require lookback and holding-bar parameters to be positive non-boolean integers.
+- **Regression:** `test_boolean_numeric_and_integer_parameters_are_rejected` covers all six parameter paths.
+- **Commits:** code `5d63e2f722b780da8b8b596a67c8db2f41cd8167`; tests `8a2090dd17b321a5d8e7705bc7845cad9b43e38c`.
+- **CI:** SPUTNIK ranking tests PASS on test commit `8a2090dd17b321a5d8e7705bc7845cad9b43e38c`.
+- **Deployment:** PR #45 branch only; no merge/deploy. Render workspace selection is not available in this automation context; pipeline quota is known exhausted.
+- **Empirical limit:** numeric input hygiene only. No verified NYMEX CL/event-time dataset, real-event replay or out-of-sample result.
+- **Safety:** PAPER ONLY; no broker, orders, secrets or Telegram test messages.
