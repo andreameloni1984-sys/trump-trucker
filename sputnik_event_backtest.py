@@ -145,7 +145,7 @@ def _canonical_source_url(value: str) -> str:
 
     # Remove known tracking parameters but preserve the order of all remaining
     # query parameters: some publishers use order-sensitive/signed permalinks.
-    tracking_keys = {"fbclid", "gclid", "mc_cid", "mc_eid", "ref_src"}
+    tracking_keys = {"fbclid", "gclid", "mc_cid", "mc_eid", "ref_src", "msclkid", "dclid", "ttclid", "twclid", "srsltid", "yclid", "igshid", "mkt_tok", "vero_id", "vero_conv"}
     query_pairs = [
         (key, val) for key, val in parse_qsl(parsed.query, keep_blank_values=True)
         if not key.lower().startswith("utm_") and key.lower() not in tracking_keys
