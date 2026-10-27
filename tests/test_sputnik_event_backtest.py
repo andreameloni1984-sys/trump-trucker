@@ -4,6 +4,13 @@ from datetime import datetime, timedelta, timezone
 from sputnik_event_backtest import backtest_event
 
 
+def run_backtest(data, event_time, side, atr, *args, **kwargs):
+    """Use an explicitly pre-event ATR snapshot in deterministic fixtures."""
+    event_dt = datetime.fromisoformat(event_time.replace("Z", "+00:00"))
+    kwargs.setdefault("atr_time", (event_dt - timedelta(minutes=5)).isoformat())
+    return backtest_event(data, event_time, side, atr, *args, **kwargs)
+
+
 def candles(rows, start=None):
     start = start or datetime(2026, 1, 1, tzinfo=timezone.utc)
     output = []
@@ -25,7 +32,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
             (97.4, 98.2, 96.0, 97, 1800),
             (97, 97.2, 95.0, 96, 1900),
         ])
-        result = backtest_event(data, "2026-01-01T00:02:00+00:00", "SHORT", 1.0, breakout_lookback=2)
+        result = run_backtest(data, "2026-01-01T00:02:00+00:00", "SHORT", 1.0, breakout_lookback=2)
         self.assertEqual(result["early"]["entry"], 100.0)
         self.assertEqual(result["early"]["status"], "TARGET")
         self.assertNotEqual(result["breakout"]["status"], "NO_BREAKOUT")
@@ -42,7 +49,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
             (100, 103, 97, 100, 1000),
             (100, 100, 100, 100, 1000),
         ])
-        result = backtest_event(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0, target_r=2.0)
+        result = run_backtest(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0, target_r=2.0)
         self.assertEqual(result["early"]["status"], "STOP_AMBIGUOUS_STOP_FIRST")
         self.assertEqual(result["early"]["pnl_r"], -1.0)
 
@@ -51,14 +58,25 @@ class SputnikEventBacktestTests(unittest.TestCase):
             (100, 103, 97, 100, 1000),
             (100, 100, 100, 100, 1000),
         ])
-        result = backtest_event(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0, target_r=2.0)
+        result = run_backtest(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0, target_r=2.0)
         self.assertEqual(result["early"]["status"], "STOP_AMBIGUOUS_STOP_FIRST")
         self.assertEqual(result["early"]["bars_held"], 1)
 
     def test_no_future_candle_does_not_invent_entry(self):
         data = candles([(100, 101, 99, 100, 1000)])
-        result = backtest_event(data, "2026-01-02T00:00:00+00:00", "LONG", 1.0)
+        result = run_backtest(data, "2026-01-02T00:00:00+00:00", "LONG", 1.0)
         self.assertEqual(result["early"]["status"], "NO_POST_EVENT_CANDLE")
+
+    def test_future_atr_timestamp_is_rejected(self):
+        data = candles([(100, 101, 99, 100, 1000)])
+        with self.assertRaisesRegex(ValueError, "ATR timestamp must be at or before event time"):
+            backtest_event(
+                data,
+                "2026-01-01T00:00:00+00:00",
+                "LONG",
+                1.0,
+                atr_time="2026-01-01T00:05:00+00:00",
+            )
 
     def test_invalid_direction_rejected(self):
         with self.assertRaises(ValueError):
@@ -71,7 +89,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
             (100, 100.3, 99.5, 100, 1000),
             (100, 100.2, 99.6, 100, 1000),
         ])
-        result = backtest_event(data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0, breakout_lookback=2)
+        result = run_backtest(data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0, breakout_lookback=2)
         self.assertIn("status", result["early"])
         self.assertEqual(result["breakout"]["status"], "NO_BREAKOUT")
 
@@ -98,7 +116,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
             (100, 100.5, 99.5, 100, 1000),
             (102.5, 103, 102, 102.8, 1400),
         ])
-        result = backtest_event(data, "2026-01-01T00:00:00+00:00", "SHORT", 1.0)
+        result = run_backtest(data, "2026-01-01T00:00:00+00:00", "SHORT", 1.0)
         self.assertEqual(result["early"]["status"], "STOP_GAP")
         self.assertEqual(result["early"]["stop"], 101.0)
         self.assertEqual(result["early"]["exit"], 102.5)
@@ -110,7 +128,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
             (100, 100.5, 99.5, 100, 1000),
             (103, 104, 102.5, 103.5, 1400),
         ])
-        result = backtest_event(data, "2026-01-01T00:00:00+00:00", "LONG", 1.0, target_r=2.0)
+        result = run_backtest(data, "2026-01-01T00:00:00+00:00", "LONG", 1.0, target_r=2.0)
         self.assertEqual(result["early"]["status"], "TARGET_GAP")
         self.assertEqual(result["early"]["target"], 102.0)
         self.assertEqual(result["early"]["exit"], 102.0)
