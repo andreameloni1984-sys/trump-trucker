@@ -185,3 +185,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Commits:** code `cc230b626f2a1024c7cf7df0cda55b17524d47f8`; regression tests `c81ad78952816d50a125ba8252e653add5b0ebc7`.
 - **CI feedback and correction:** first run [40461331569](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40461331569) ran 93 tests and failed 3 event-backtest tests because three direct test calls omitted the newly required `atr_time`. Those fixtures were corrected in test commit `b69804d0161f90b4fc03f1f019cf684a74a8f594`. The subsequent run [40461398846](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40461398846) checked the PR merge commit containing that correction, ran **93 tests, and passed (`OK`)**. This is the authoritative verification for the ATR guard and updated fixtures; no local test execution is claimed.
 - **Data/performance status:** no verified WTI OHLCV plus source-linked news-time dataset is available in the branch, so no real-event strategy comparison or profitability claim is made. PAPER ONLY; no orders, broker changes, Telegram test messages, or deployment.
+
+
+## 2026-10-27 — Reject non-finite and invalid OHLCV inputs
+
+- **Status before change:** PR #45 was open, unmerged and mergeable. Latest verified PR workflow run [40461445259](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40461445259) completed successfully on head `b372f5f800f70254a5e4a9e796011ef3c9495357` (93 tests, as recorded in the prior section). This run predates the change below.
+- **Finding:** Python float parsing accepts `NaN` and infinities. Comparisons against NaN are false, so malformed OHLCV CSV rows could bypass the existing high/low consistency checks and silently contaminate simulated fills/P&L. Negative volume is also not a valid bar input.
+- **Implemented on `feat/oil-deescalation-watch-20261027`:** added shared OHLCV validation for both CSV loading and direct `backtest_event()` calls. All OHLCV values must be finite; volume must be non-negative; high/low must be consistent with open/close/low/high. Negative WTI prices are not prohibited because historical futures data can include negative prices.
+- **Regression tests added:** a CSV row with `NaN` volume must be rejected; a direct backtest input with negative volume must be rejected.
+- **Commits:** code `d6f6e8afab7d4280832125970a2a0f84ba311803`; tests `803b6844848d2ff5db530d09fa91bac8527afea3`.
+- **Verification status at log entry:** CI for these new commits is pending; no local test execution is claimed. Record the actual GitHub Actions outcome below once observed.
+- **Data/performance status:** no verified WTI OHLCV + source-linked news-time dataset has been assembled. This data-integrity guard improves input quality but does not establish whether early entry outperforms breakout. No orders, broker changes, Telegram test messages, or deployment.
