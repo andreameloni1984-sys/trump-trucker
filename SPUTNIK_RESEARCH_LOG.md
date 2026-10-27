@@ -104,3 +104,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 follow-up — canonical DNS root-dot deduplication
+
+- **Finding:** _canonical_public_permalink normalized scheme, hostname case, default ports, tracking parameters and path slashes, but treated https://example.gov./story?id=42 as a different identity from https://example.gov/story?id=42. A terminal DNS root dot does not identify a different host, so duplicate syndicated records could be counted twice.
+- **Change/files:** trump_tracker.py::_canonical_public_permalink removes one terminal DNS root dot and rejects malformed repeated trailing dots. tests/test_sputnik_item_intelligence.py::test_canonical_permalink_deduplicates_terminal_dns_root_dot checks canonical identity and cross-feed event digest.
+- **Operational path:** public feed item → validate item permalink → canonical permalink → cross-feed deduplication/event digest → catalyst evidence.
+- **Code/test commit:** 6272f8db7a8f9f31d8052bfefad6823bcfa6a09b.
+- **CI:** SPUTNIK ranking tests PASS [40598245779](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40598245779) and item-intelligence tests PASS [40598245765](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40598245765), both on the code/test commit.
+- **PR/base:** PR #43 remains open. The branch is 13 commits ahead and 15 behind current main (compare status diverged); GitHub mergeability is not approval to merge. Reconcile its base before integration.
+- **Deployment/runtime:** PR branch only; no merge/deploy. Render pull-request previews are disabled. Latest confirmed Sputnik live commit remains 9e5204bf7d9074dba27637013b7d98933a91e733; the later attempt 50851b0dc76f1b7ed0adaa872c47aa84793687f9 failed. No SEC or White House matching logs appeared in the queried 22:00–22:50 UTC window; ingestion is not confirmed.
+- **Empirical limit/safety:** synthetic URL identity tests only; no news replay, price-volume study or OOS performance claim. PAPER ONLY.
