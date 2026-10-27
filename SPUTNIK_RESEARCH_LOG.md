@@ -154,3 +154,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - Render deployment history still identifies `9e5204bf7d9074dba27637013b7d98933a91e733` as the latest successful live commit and `50851b0dc76f1b7ed0adaa872c47aa84793687f9` as a failed later attempt. No deploy was triggered.
 - The current 2026-10-26/27 log query returned no SEC/RSS matches. This absence does not establish feed health or failure; current source delivery remains unconfirmed.
 
+
+
+## 2026-10-27 — Directional candidate point-in-time guard
+
+- **Finding:** `directional_news_candidates()` required a non-empty publication string but did not independently reject naive ISO timestamps or future-dated publication times. When `available_at` was supplied by the Sputnik→Gagarin handoff, it was not validated at the directional-candidate boundary.
+- **Change:** `sputnik_catalyst.py` now parses timezone-aware ISO-8601 and RFC-822 timestamps, rejects naive/malformed/future publication times, and validates an optional `available_at` as timezone-aware, not earlier than publication and not in the future. Legacy findings without `available_at` remain accepted for compatibility, but are less auditable.
+- **Regression:** `tests/test_sputnik_item_intelligence.py::test_directional_news_candidates_rejects_naive_future_and_invalid_availability_times` covers valid ISO, valid RFC-822, naive/future publication, naive/future availability, and availability preceding publication.
+- **Commits:** code `a720dadf814dd58677654ea8e7cbf6d394a2fa2d`; tests `e1da8f15a84b6b485bfcb5e53c09b0c4e2876768`.
+- **CI:** pending fresh Actions result for the latest branch head at time of logging; do not treat previous CI as validation of these new commits.
+- **Operational path:** item-level RSS findings → `directional_news_candidates` → bias-only hypothesis. This does not create a trade entry; price/volume confirmation remains separate.
+- **Empirical limit:** no live-feed replay or OOS market test. This is a causal timestamp/input-quality guard, not evidence of predictive edge.
+- **Deployment:** PR #54 branch only; no merge/deploy. PAPER/DEMO only; no broker, real orders, secrets, or Telegram test messages.
