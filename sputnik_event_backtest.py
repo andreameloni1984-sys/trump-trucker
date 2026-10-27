@@ -208,8 +208,8 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
                 if decision_dt < available_dt:
                     raise ValueError(f"event CSV row {row_number} decision_time is before available_at")
             atr_dt = _dt(str(row.get("atr_time") or "").strip())
-            if atr_dt > event_dt:
-                raise ValueError(f"event CSV row {row_number} ATR timestamp is after event time")
+            if atr_dt >= event_dt:
+                raise ValueError(f"event CSV row {row_number} ATR timestamp must be strictly before event_time to avoid same-time ambiguity")
             side = str(row.get("side") or "").strip().upper()
             if side not in {"LONG", "SHORT"}:
                 raise ValueError(f"event CSV row {row_number} side must be LONG or SHORT")
@@ -389,8 +389,8 @@ def backtest_event(
         raise ValueError("decision_time must be at or after available_at")
     decision_time_source = "explicit" if decision_time is not None else "assumed_available_at"
     atr_dt = _dt(atr_time)
-    if atr_dt > event_dt:
-        raise ValueError("ATR timestamp must be at or before event time to prevent look-ahead bias")
+    if atr_dt >= event_dt:
+        raise ValueError("ATR timestamp must be strictly before event time to avoid same-time/look-ahead ambiguity")
     _validate_candle_timestamps(candles)
     _validate_candle_values(candles)
     data_quality = _bar_gap_diagnostics(candles, bar_interval_minutes)
