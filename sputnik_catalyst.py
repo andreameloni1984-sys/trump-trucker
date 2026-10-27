@@ -6,6 +6,8 @@ or private relationship is inferred from a policy event.
 """
 from __future__ import annotations
 import re
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from typing import Any
 
 DOMAIN_INSTRUMENTS = {
@@ -218,6 +220,24 @@ def _is_explicitly_negated_rule_match(text: str, patterns: list[str]) -> bool:
     return False
 
 
+
+def _parse_aware_publication_time(value: Any) -> datetime | None:
+    """Parse ISO-8601 or RFC-822 publication times only when timezone-aware."""
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        try:
+            parsed = parsedate_to_datetime(text)
+        except (TypeError, ValueError, OverflowError):
+            return None
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        return None
+    return parsed.astimezone(timezone.utc)
+
+
 def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) -> list[dict[str, Any]]:
     """Map explicit, recognized public-news language to cautious directional biases.
 
@@ -235,6 +255,18 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
             or not finding.get("published")
         ):
             continue
+        now_utc = datetime.now(timezone.utc)
+        published_at = _parse_aware_publication_time(finding.get("published"))
+        if published_at is None or published_at > now_utc:
+            continue
+        # If observation time is provided, it must be explicit, timezone-aware,
+        # no earlier than publication, and not in the future. Older records
+        # without available_at remain compatible but are less auditable.
+        available_raw = finding.get("available_at")
+        if available_raw is not None:
+            available_at = _parse_aware_publication_time(available_raw)
+            if available_at is None or available_at < published_at or available_at > now_utc:
+                continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
         negated_iran_deescalation = _is_negated_iran_deescalation(text)
