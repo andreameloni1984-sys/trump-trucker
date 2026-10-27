@@ -198,5 +198,29 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(ranked[0]["rank"], 1)
 
 
+
+    def test_sec_url_cik_must_match_transaction_issuer(self):
+        item = tx("e1")
+        item["cik"] = "0000000002"
+        self.assertEqual(
+            score_purchase_candidate([item], today=date(2026, 10, 6)),
+            {},
+        )
+
+    def test_sec_url_accession_must_match_transaction_metadata_when_present(self):
+        item = tx("e1")
+        item["accession_number"] = "0000000001-26-000099"
+        self.assertEqual(
+            score_purchase_candidate([item], today=date(2026, 10, 6)),
+            {},
+        )
+
+    def test_matching_sec_url_accession_is_accepted(self):
+        item = tx("e1")
+        item["accession_number"] = "0000000001-26-000001"
+        result = score_purchase_candidate([item], today=date(2026, 10, 6))
+        self.assertTrue(result)
+        self.assertEqual(result["filings"], 1)
+
 if __name__ == "__main__":
     unittest.main()
