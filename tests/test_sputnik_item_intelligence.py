@@ -278,3 +278,19 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+    def test_iran_diplomatic_deescalation_creates_conditional_oil_short_hypothesis(self):
+        findings = [{
+            "event_id": "iran-deescalation-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "Iran diplomatic agreement reached after talks",
+            "text": "A diplomatic agreement with Iran was reached.",
+            "url": "https://example.gov/news/iran-agreement",
+            "published": "2026-10-27T08:00:00Z",
+            "source": "PUBLIC_RSS",
+            "domains": ["ENERGY"],
+        }]
+        candidates = trump_tracker.directional_news_candidates(findings)
+        oil = [row for row in candidates if row["instrument"] in {"WTI", "BRENT"}]
+        self.assertEqual({row["bias"] for row in oil}, {"SHORT_BIAS"})
+        self.assertTrue(all(row["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for row in oil))
