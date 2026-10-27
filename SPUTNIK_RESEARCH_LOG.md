@@ -104,3 +104,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 — Reject ambiguous public item permalinks
+
+- **Finding:** `_is_item_permalink()` accepted HTTP URLs, embedded credentials, arbitrary ports and host-root pages as item-level evidence. Those URLs can be insecure or fail to identify an individual public document.
+- **Change:** require HTTPS, a valid hostname, no URL credentials, standard HTTPS port only, and a non-root path distinct from the feed endpoint. Malformed ports fail closed.
+- **Files:** `trump_tracker.py`; `tests/test_sputnik_item_intelligence.py`.
+- **Regression coverage:** valid HTTPS article URL; HTTP, userinfo, nonstandard/malformed port, root page, feed endpoint with query, and HTTP feed base are rejected.
+- **Code commit:** `024ac20141d114cd142c7bb0006b5f0b8f537d73`; **test commit:** `d2de528a955fd48372340020b82dd13441764b0b`.
+- **CI:** PASS on PR head commit `09c66a83c6f27b2e9fc99cbd2c5d556c265dbf19`: item intelligence run `40460783619`, ranking run `40460783702`. The later PR-body update records these results; no market replay was run.
+- **Deployment / limits:** research branch only; no Render deploy. This is URL integrity, not content authenticity or market prediction.
+- **Safety:** PAPER/DEMO ONLY; no secrets read, Telegram test message, broker or order.

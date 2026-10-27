@@ -730,15 +730,37 @@ def _valid_public_item_timestamp(value: Any) -> bool:
 
 
 def _is_item_permalink(value: Any, feed_url: str) -> bool:
-    """Reject missing, non-HTTP, or feed-level URLs masquerading as individual posts."""
-    candidate = urllib.parse.urlparse(str(value or "").strip())
-    feed = urllib.parse.urlparse(str(feed_url or "").strip())
-    if candidate.scheme.lower() not in {"http", "https"} or not candidate.netloc:
+    """Accept only unambiguous HTTPS article URLs, never feed/homepage URLs."""
+    try:
+        candidate = urllib.parse.urlsplit(str(value or "").strip())
+        feed = urllib.parse.urlsplit(str(feed_url or "").strip())
+        candidate_port = candidate.port
+        feed_port = feed.port
+    except (TypeError, ValueError):
+        # urlsplit().port raises ValueError for malformed ports.
         return False
-    if feed.scheme.lower() not in {"http", "https"} or not feed.netloc:
+
+    def has_trusted_authority(parsed: Any, port: int | None) -> bool:
+        return (
+            parsed.scheme.lower() == "https"
+            and bool(parsed.hostname)
+            and parsed.username is None
+            and parsed.password is None
+            and port in (None, 443)
+        )
+
+    if not has_trusted_authority(candidate, candidate_port):
         return False
-    candidate_key = (candidate.scheme.lower(), candidate.netloc.lower(), candidate.path.rstrip("/"))
-    feed_key = (feed.scheme.lower(), feed.netloc.lower(), feed.path.rstrip("/"))
+    if not has_trusted_authority(feed, feed_port):
+        return False
+
+    candidate_path = candidate.path.rstrip("/")
+    feed_path = feed.path.rstrip("/")
+    # A host root or the feed endpoint itself is not an item-level permalink.
+    if not candidate_path:
+        return False
+    candidate_key = (candidate.scheme.lower(), candidate.hostname.lower(), candidate_port or 443, candidate_path)
+    feed_key = (feed.scheme.lower(), feed.hostname.lower(), feed_port or 443, feed_path)
     return candidate_key != feed_key
 
 
