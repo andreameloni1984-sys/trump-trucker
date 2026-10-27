@@ -13,12 +13,16 @@ RULES = {
         "actions": ("signed", "signs", "reached", "reach", "agreed", "agrees", "announced", "announce", "finalized", "firmato", "raggiunto", "concordato", "suspended", "suspends", "paused", "pause", "sospende", "sospesi", "proroga", "estende"),
         "topics": ("trade deal", "trade agreement", "accordo commerciale", "intesa commerciale", "tariff pause", "pausa sui dazi", "dazi", "tariff"),
     },
+    "oil_diplomatic_deescalation": {
+        "actions": ("ease", "eases", "eased", "easing", "seek", "seeking", "agreed", "agree", "prevent", "preventing", "resume", "resumed", "negoziati", "allentare", "ridurre", "distensione"),
+        "topics": ("peace", "diplomatic", "hostilities", "tensions", "iran", "middle east", "escalation", "negoziati", "diplomatica"),
+    },
     "oil_supply_disruption": {
         "actions": ("blocks", "blocked", "closes", "closed", "disrupts", "disrupted", "interrupts", "interrupted", "attacks", "attacked", "attack", "attacking", "hitting", "hit", "hits", "strike", "strikes", "struck", "escalates", "escalated", "threatens", "threatened", "halts", "halted", "suspends", "suspended", "interrompe", "interrotto", "blocca", "bloccato", "chiude", "chiusura", "attacca", "attaccato", "minaccia", "minacciato"),
         "topics": ("tanker", "shipping", "exports", "export", "supply", "hormuz", "strait", "petrolio", "flussi", "esportazioni", "petroliere", "offerta", "oil prices", "oil price", "saudi arabia", "houthi", "houthis", "diesel", "energy flows"),
     },
 }
-NEGATIONS = (" never ", "did not", "does not", "do not", "will not", "would not", "was not", "were not", "is not", "are not", "has not", "have not", "had not", "cannot", "can not", "not confirmed", "not yet", "won't", "didn't", "doesn't", "don't", "isn't", "aren't", "wasn't", "weren't", "denied", "rejects", "rejected", "withdrawn", "cancelled", " non ", "nessun", "nega", "smentisce", "ritira", "respinge")
+NEGATIONS = (" never ", "did not", "does not", "do not", "will not", "would not", "was not", "were not", "is not", "are not", "has not", "have not", "had not", "cannot", "can not", "not confirmed", "not yet", "won't", "didn't", "doesn't", "don't", "isn't", "aren't", "wasn't", "weren't", "failed to", "fails to", "fail to", "unable to", "not successful", "unsuccessful", "no progress", "no breakthrough", "talks collapsed", "talks failed", "denied", "rejects", "rejected", "withdrawn", "cancelled", " non ", "nessun", "nega", "smentisce", "ritira", "respinge")
 
 def _sentences(text: str) -> list[str]:
     normalized = str(text or "").replace("?", ".").replace("!", ".")
@@ -102,6 +106,18 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
     }
 
 
+def _is_campaign_endorsement(text: str) -> bool:
+    """Identify political endorsements/election promotion that lack a policy catalyst."""
+    body = " ".join(str(text or "").lower().split())
+    terms = (
+        "endorse", "endorses", "endorsed", "endorsement",
+        "running to represent", "running for", "congressional district",
+        "great honor to endorse", "america first patriot",
+        "endorso", "endorza", "candidato", "si candida",
+    )
+    return any(term in body for term in terms)
+
+
 def decision_message(text: str, source: str = "Fonte pubblica") -> str:
     plans = conditional_plans(text)
     lines = [
@@ -110,6 +126,16 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
         f"📰 Fonte: {source}",
         "",
     ]
+    if not plans and _is_campaign_endorsement(text):
+        lines.extend([
+            "⚪ RISULTATO: NESSUN CATALIZZATORE DI MERCATO IDENTIFICATO",
+            "📌 Tipo di contenuto: endorsement/promozione elettorale.",
+            "🧠 Perché: il sostegno a un candidato, senza una misura politica concreta o un effetto economico verificabile, non indica da solo una direzione di mercato.",
+            "✅ Azione: archiviare senza inviare un alert di trading; rivalutare soltanto se il testo contiene una politica concreta con impatto identificabile.",
+            "🛑 Nessun LONG/SHORT, nessun ingresso e nessun livello inventato.",
+        ])
+        return "\n".join(lines)
+
     if plans:
         plan = plans[0]
         lines.extend([
@@ -121,8 +147,9 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
             f"✅ Conferma richiesta: {plan['confirmation']}",
             f"🛑 Annulla lo scenario se: {plan['invalidation']}",
             "",
-            "In parole semplici: prepara lo strumento, ma entra solo se la notizia è confermata e il mercato dà il segnale richiesto.",
-            "Prezzi, stop e obiettivi non vengono inventati: servono quotazioni aggiornate.",
+            "⚡ MODALITÀ ELASTICA: non serve aspettare sempre il breakout perfetto.",
+            "Se il catalizzatore è credibile, valutare un ingresso esplorativo anticipato con size ridotta (circa 1/3 della size normale) e stop già definito; aggiungere esposizione solo se arrivano conferme.",
+            "Il breakout è una conferma che aumenta la confidenza, non un requisito universale. Se mancano quotazione aggiornata e volatilità, niente livelli numerici inventati.",
         ])
         return "\n".join(lines)
 

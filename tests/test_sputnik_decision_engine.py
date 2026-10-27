@@ -15,6 +15,29 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
         self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
 
+    def test_confirmed_diplomatic_deescalation_maps_to_conditional_wti_short_watch(self):
+        text = "Diplomatic efforts to resolve the conflict eased concerns about oil supply disruptions."
+        rows = conditional_plans(text)
+        wti = next(row for row in rows if row["id"] == "oil_diplomatic_deescalation")
+        self.assertEqual(wti["candidate"], "WTI (petrolio USA)")
+        self.assertIn("SHORT", wti["bias"])
+        self.assertIn("volum", wti["confirmation"].lower())
+
+    def test_generic_diplomacy_mention_does_not_create_oil_direction(self):
+        rows = conditional_plans("Officials discussed diplomacy at a public event.")
+        self.assertFalse(any(row["id"] == "oil_diplomatic_deescalation" for row in rows))
+
+    def test_decision_message_allows_early_exploratory_entry(self):
+        message = decision_message("Diplomatic efforts to resolve the conflict eased concerns about oil supply disruptions.")
+        self.assertIn("MODALITÀ ELASTICA", message)
+        self.assertIn("ingresso esplorativo anticipato", message)
+        self.assertIn("1/3 della size normale", message)
+        self.assertIn("breakout", message.lower())
+
+    def test_failed_diplomacy_does_not_create_oil_short_watch(self):
+        rows = conditional_plans("Diplomatic efforts failed to ease tensions and no breakthrough was reached.")
+        self.assertFalse(any(row["id"] == "oil_diplomatic_deescalation" for row in rows))
+
     def test_houthi_attack_language_maps_to_conditional_brent_scenario(self):
         text = "The Houthis emerged again, hitting Saudi Arabia and trying to drive up oil prices."
         rows = conditional_plans(text)
@@ -36,6 +59,14 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("Conferma richiesta", message)
         self.assertIn("Annulla lo scenario", message)
 
+
+    def test_campaign_endorsements_do_not_create_market_catalysts(self):
+        text = "It is my Great Honor to endorse America First Patriot, Ralph Alvarado, who is running to represent Kentucky."
+        message = decision_message(text)
+        self.assertIn("NESSUN CATALIZZATORE DI MERCATO IDENTIFICATO", message)
+        self.assertIn("senza inviare un alert di trading", message)
+        self.assertNotIn("LONG condizionale", message)
+        self.assertNotIn("SHORT condizionale", message)
 
     def test_broad_topic_gets_useful_watch_result(self):
         message = decision_message("Markets discuss tariffs and trade tensions.")

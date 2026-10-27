@@ -42,6 +42,17 @@ SCENARIOS = [
         "source_quality": "Tema energia rilevato; serve verificare che la notizia riguardi davvero l'offerta fisica.",
     },
     {
+        "id": "oil_diplomatic_deescalation",
+        "trigger": ("peace talks", "diplomatic efforts", "ease hostilities", "easing tensions", "diplomatic breakthrough", "prevent escalation", "negoziati di pace", "distensione diplomatica"),
+        "event": "Possibile de-escalation geopolitica che riduce il premio di rischio sul petrolio",
+        "candidate": "WTI (petrolio USA)",
+        "bias": "SHORT condizionale",
+        "if_then": "Con progressi diplomatici credibili, si può valutare un ingresso anticipato esplorativo SHORT anche prima del breakout, con size ridotta e stop definito; la rottura del minimo con pressione di vendita è una conferma aggiuntiva, non un requisito assoluto.",
+        "confirmation": "Preferibile: conferma indipendente della notizia e pressione di vendita, idealmente accompagnata da volumi coerenti. Il breakout del minimo aumenta la confidenza ma non è obbligatorio per un ingresso esplorativo; verificare sempre i rischi di nuove interruzioni dell'offerta.",
+        "invalidation": "Nuovi attacchi alle infrastrutture o alle rotte, smentita dei progressi diplomatici, oppure recupero del livello di rottura.",
+        "source_quality": "La diplomazia può ridurre il premio di rischio, ma l'effetto è condizionale e può essere compensato da interruzioni dell'offerta.",
+    },
+    {
         "id": "defense_escalation",
         "trigger": ("missile", "military strike", "defense spending", "defence spending", "military operation", "defense contract"),
         "event": "Escalation militare o spesa/commessa difesa",
