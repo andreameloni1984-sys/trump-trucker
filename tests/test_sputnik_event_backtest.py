@@ -359,5 +359,31 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(result["results"][0]["source_url"], "https://example.com/event/1")
 
 
+    def test_event_ledger_rejects_duplicate_canonical_source_urls(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "duplicate_events.csv"
+            path.write_text(
+                "event_id,event_time,side,atr,atr_time,source_url\\n"
+                "evt-1,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,https://EXAMPLE.com/event/1?utm_source=a#story\\n"
+                "evt-2,2026-01-01T00:07:00+00:00,SHORT,1.0,2026-01-01T00:05:00+00:00,https://example.com/event/1/?utm_source=b\\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "unique after canonicalization"):
+                load_events_csv(path)
+
+    def test_batch_backtest_rejects_duplicate_canonical_source_urls(self):
+        data = candles([(100, 101, 99, 100, 1000)])
+        events = [
+            {"event_id": "evt-1", "event_time": "2026-01-01T00:00:00+00:00",
+             "side": "LONG", "atr": 1.0, "atr_time": "2025-12-31T23:55:00+00:00",
+             "source_url": "https://example.com/event/1?utm_campaign=first"},
+            {"event_id": "evt-2", "event_time": "2026-01-01T00:00:00+00:00",
+             "side": "LONG", "atr": 1.0, "atr_time": "2025-12-31T23:55:00+00:00",
+             "source_url": "https://EXAMPLE.com/event/1/#duplicate"},
+        ]
+        with self.assertRaisesRegex(ValueError, "unique after canonicalization"):
+            backtest_events(data, events)
+
+
 if __name__ == "__main__":
     unittest.main()
