@@ -539,6 +539,13 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     return findings
 
 
+def _handoff_event_time(item: dict[str, Any]) -> str:
+    """Return a normalized, timezone-aware publication timestamp for the Gagarin handoff."""
+    raw = item.get("event_time") or item.get("published")
+    parsed = _parse_public_item_timestamp(raw)
+    return parsed.isoformat() if parsed is not None else ""
+
+
 def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any] | None:
     """Optionally send item-level public catalysts to GAGARIN for price confirmation."""
     items = [
@@ -560,10 +567,14 @@ def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any
                 "title": str(item.get("title") or "")[:300],
                 "url": str(item.get("url") or "")[:1000],
                 "published": str(item.get("published") or "")[:100],
+                # Preserve point-in-time and evidence provenance across the optional
+                # handoff. Gagarin must stamp decision_time when it evaluates the event.
+                "event_time": _handoff_event_time(item),
+                "available_at": str(item.get("available_at") or item.get("detected_at") or "")[:100],
                 "domains": list(item.get("domains") or []),
                 "text": str(item.get("text") or "")[:1500],
-                "source_quality": str(item.get("source_quality") or "UNASSESSED"),
-                "content_hash": str(item.get("content_hash") or ""),
+                "source_quality": str(item.get("source_quality") or "UNASSESSED")[:80],
+                "content_hash": str(item.get("content_hash") or "")[:64],
             }
             for item in items[:20]
         ]
