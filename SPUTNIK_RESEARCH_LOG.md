@@ -162,3 +162,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI on final code/test/log head:** ranking tests [run 40478611051](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40478611051) and Telegram menu tests [run 40478611202](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40478611202), both SUCCESS.
 - **Deployment:** PR #53 branch only; not merged or deployed. Render workspace not selected, so live commit was not checked this run.
 - **Empirical limit:** provenance consistency only; no filing replay or out-of-sample return test.
+
+
+## 2026-10-27 — Reject malformed SEC calendar-date fields
+
+- **Finding:** `_parse_date()` attempted ISO datetime parsing and then fell back to `value[:10]`. A malformed value such as `2026-10-05 trailing-data` could therefore be treated as a valid SEC transaction/filing date; datetime strings could also be silently reduced to a date despite these fields representing SEC calendar dates.
+- **Change:** parse only strict `YYYY-MM-DD` strings in `sputnik_ranking.py`; reject timestamps and malformed suffixes rather than inferring a date. Upstream timestamp normalization must be explicit before values enter these date fields.
+- **Operational path:** Form 4 transaction/filing fields → strict date parsing → chronology/as-of guard → distinct-filing scoring.
+- **Regression:** `tests/test_sputnik_ranking.py` covers timestamps, trailing garbage, non-padded dates, non-string values, and a malformed date passed into the ranking path.
+- **CI:** pending for this code/test update; record final workflow outcomes after GitHub Actions completes.
+- **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline quota remains exhausted.
+- **Empirical limit:** schema/chronology integrity only; no SEC replay or out-of-sample return validation.
+- **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders, or Telegram test messages.
