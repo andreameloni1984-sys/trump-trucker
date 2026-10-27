@@ -116,3 +116,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render main service is auto-deploy on main; branch is not merged. No deploy was triggered. Latest observed listener live commit remains `9e5204bf7d9074dba27637013b7d98933a91e733`; latest deploy attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed. Build quota is exhausted.
 - **Empirical validation:** no historical replay or out-of-sample ranking study performed. This is scoring-integrity validation, not a return/profitability claim.
 - **Safety:** PAPER/DEMO ONLY; no broker, order, or Telegram test message.
+
+## 2026-10-27 09:33 UTC — Require numeric SEC accession and a filing document URL
+
+- **Finding:** the primary-source gate checked that CIK/accession path components were merely non-empty and that a sixth path segment existed. A lookalike archive path with a non-numeric CIK/accession or an index page could pass the provenance gate.
+- **Change:** `sputnik_ranking.py::_is_primary_sec_form4_url()` now requires a numeric CIK, an 18-digit dashless accession directory, and a document filename ending in `.xml`, `.htm`, `.html`, or `.txt`; generic `index.htm/html` pages are rejected. Nested document paths remain allowed.
+- **Files:** `sputnik_ranking.py`; `tests/test_sputnik_ranking.py`.
+- **Regression:** test fixtures now use SEC-shaped numeric accession directories. Invalid CIK/accession, index-page and non-document URLs are rejected; existing valid archive URLs with query/fragment remain accepted.
+- **Commits:** code `b4e881be69655312994edc775783f45c3bb2c232`; tests `b03828b0b6f30e3f5b6b2a0a447c03601ac149d7`.
+- **CI:** PASS on the code/test head: [ranking tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40474531848), [Telegram menu tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40474531852).
+- **Deployment:** PR #53 only, not merged. Render workspace was not selected in this run; no deploy was triggered, and the live commit was not re-verified.
+- **Empirical limit:** stricter provenance validation is not predictive validation; no historical replay or out-of-sample return study.
+- **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders or Telegram test messages.
