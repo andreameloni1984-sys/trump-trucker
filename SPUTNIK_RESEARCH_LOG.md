@@ -191,5 +191,5 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Change:** fallback watchlist keywords now use the existing whole-word/phrase matcher. Hyphens are normalized to spaces first, so phrases such as “oil-price” remain discoverable; common plural variants were made explicit where needed.
 - **Operational path:** no directional catalyst → fallback watchlist classification → Telegram WAIT/monitoring message. This cannot create LONG/SHORT by itself.
 - **Files/tests:** `sputnik_decision_engine.py::_fallback_watch`; `tests/test_sputnik_decision_engine.py::test_fallback_watch_uses_whole_topic_words_and_keeps_hyphenated_phrases`.
-- **Validation:** code and regression test committed together on the Sputnik research branch; CI result is to be checked on the new head before claiming it passed.
+- **Validation:** code/test commit `a269763fed7894f9a5e0fd4fefa48a72c5e1d53d` passed SPUTNIK ranking tests, run [40592091222](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40592091222). This is synthetic lexical validation only; no event replay or OOS result.
 - **Deployment/limits:** PR branch only; no merge/deploy. Keyword-based classification only; no headline replay or OOS market-performance result. PAPER ONLY.
