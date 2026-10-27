@@ -215,7 +215,7 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
     return events
 
 
-def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes):
+def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes):
     risk = atr * stop_atr
     if not math.isfinite(risk) or risk <= 0 or not math.isfinite(entry):
         return {"status": "INVALID_INPUT", "entry": entry, "stop": None, "target": None, "pnl_r": None}
@@ -281,7 +281,7 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
         status = "TIME_EXIT" if end_index < len(candles) else "END_OF_DATA"
 
     gross_pnl = sign * (exit_price - entry)
-    net_pnl = gross_pnl - spread
+    net_pnl = gross_pnl - round_trip_cost
     return {
         "status": status,
         "entry_time": candles[entry_index]["timestamp"].isoformat(),
@@ -290,6 +290,9 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
         "stop": round(stop, 8),
         "target": round(target, 8),
         "exit": round(exit_price, 8),
+        "gross_pnl_price_units": round(gross_pnl, 8),
+        "net_pnl_price_units": round(net_pnl, 8),
+        "round_trip_cost_price_units": round(round_trip_cost, 8),
         "pnl_r": round(net_pnl / risk, 4),
         "bars_held": exit_index - entry_index + 1,
     }
@@ -308,22 +311,26 @@ def backtest_event(
     breakout_lookback: int = 3,
     max_holding_bars: int = 12,
     spread: float = 0.0,
+    commission_round_trip_usd_per_contract: float = 0.0,
+    slippage_ticks_per_side: float = 0.0,
+    tick_size: float = 0.01,
+    contract_multiplier: float = 1000.0,
     bar_interval_minutes: int = 5,
 ) -> dict[str, Any]:
-    """Compare exploratory entry after the event with a later close-confirmed breakout."""
+    """Compare early/breakout entries with spread, commission and slippage cost deductions."""
     side = side.upper()
     if side not in {"LONG", "SHORT"}:
         raise ValueError("side must be LONG or SHORT")
     if isinstance(bar_interval_minutes, bool) or not isinstance(bar_interval_minutes, int) or bar_interval_minutes < 1:
         raise ValueError("bar interval minutes must be a positive integer")
-    numeric_values = (atr, stop_atr, target_r, spread)
+    numeric_values = (atr, stop_atr, target_r, spread, commission_round_trip_usd_per_contract, slippage_ticks_per_side, tick_size, contract_multiplier)
     if any(
         isinstance(value, bool)
         or not isinstance(value, (int, float))
         or not math.isfinite(value)
         for value in numeric_values
     ):
-        raise ValueError("ATR, stop, target and spread must be finite numeric values")
+        raise ValueError("ATR, stop, target and all execution-cost inputs must be finite numeric values")
     integer_values = (breakout_lookback, max_holding_bars)
     if any(
         isinstance(value, bool) or not isinstance(value, int) or value < 1
@@ -332,8 +339,17 @@ def backtest_event(
         raise ValueError("lookback and holding bars must be positive integers")
     if atr <= 0 or stop_atr <= 0 or target_r <= 0:
         raise ValueError("ATR, stop and target must be positive")
-    if spread < 0:
-        raise ValueError("spread must be non-negative; pass the round-trip cost in price units")
+    if spread < 0 or commission_round_trip_usd_per_contract < 0 or slippage_ticks_per_side < 0:
+        raise ValueError("spread, round-trip commission and slippage must be non-negative")
+    if tick_size <= 0 or contract_multiplier <= 0:
+        raise ValueError("tick_size and contract_multiplier must be positive")
+    round_trip_cost = (
+        spread
+        + commission_round_trip_usd_per_contract / contract_multiplier
+        + 2.0 * slippage_ticks_per_side * tick_size
+    )
+    if not math.isfinite(round_trip_cost):
+        raise ValueError("combined round-trip execution cost must be finite")
     event_dt = _dt(event_time)
     available_dt = _dt(available_at)
     if available_dt < event_dt:
@@ -359,6 +375,9 @@ def backtest_event(
                 "atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr,
                 "target_r": target_r, "breakout_lookback": breakout_lookback,
                 "max_holding_bars": max_holding_bars, "spread": spread,
+                "commission_round_trip_usd_per_contract": commission_round_trip_usd_per_contract,
+                "slippage_ticks_per_side": slippage_ticks_per_side, "tick_size": tick_size,
+                "contract_multiplier": contract_multiplier, "round_trip_cost_price_units": round_trip_cost,
                 "bar_interval_minutes": bar_interval_minutes,
             },
             "data_quality": data_quality,
@@ -388,7 +407,7 @@ def backtest_event(
                 "gap_minutes": round(availability_gap_minutes, 2),
             }
         else:
-            early = _simulate(candles, next_index, candles[next_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes)
+            early = _simulate(candles, next_index, candles[next_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes)
     early["decision_time"] = available_dt.isoformat()
 
     breakout = {"status": "NO_BREAKOUT"}
@@ -447,7 +466,7 @@ def backtest_event(
                                 "observed_gap_minutes": round(entry_gap_minutes, 2),
                             }
                         else:
-                            breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes)
+                            breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, round_trip_cost, bar_interval_minutes)
                             breakout["signal_bar_time"] = candles[i]["timestamp"].isoformat()
                             breakout["signal_time"] = signal_dt.isoformat()
                             breakout["decision_time"] = signal_dt.isoformat()
@@ -459,7 +478,7 @@ def backtest_event(
         "event_time": event_dt.isoformat(),
         "available_at": available_dt.isoformat(),
         "side": side,
-        "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread, "bar_interval_minutes": bar_interval_minutes},
+        "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread, "commission_round_trip_usd_per_contract": commission_round_trip_usd_per_contract, "slippage_ticks_per_side": slippage_ticks_per_side, "tick_size": tick_size, "contract_multiplier": contract_multiplier, "round_trip_cost_price_units": round_trip_cost, "bar_interval_minutes": bar_interval_minutes},
         "data_quality": data_quality,
         "early": early,
         "breakout": breakout,
@@ -635,6 +654,10 @@ def backtest_events(
     breakout_lookback: int = 3,
     max_holding_bars: int = 12,
     spread: float = 0.0,
+    commission_round_trip_usd_per_contract: float = 0.0,
+    slippage_ticks_per_side: float = 0.0,
+    tick_size: float = 0.01,
+    contract_multiplier: float = 1000.0,
     bar_interval_minutes: int = 5,
 ) -> dict[str, Any]:
     """Run a paired early-vs-breakout study over a source-linked event ledger."""
@@ -667,6 +690,10 @@ def backtest_events(
             breakout_lookback=breakout_lookback,
             max_holding_bars=max_holding_bars,
             spread=spread,
+            commission_round_trip_usd_per_contract=commission_round_trip_usd_per_contract,
+            slippage_ticks_per_side=slippage_ticks_per_side,
+            tick_size=tick_size,
+            contract_multiplier=contract_multiplier,
             bar_interval_minutes=bar_interval_minutes,
         )
         result["event_id"] = event_id
@@ -691,7 +718,11 @@ def main() -> None:
     parser.add_argument("--target-r", type=float, default=2.0)
     parser.add_argument("--lookback", type=int, default=3)
     parser.add_argument("--holding-bars", type=int, default=12)
-    parser.add_argument("--spread", type=float, default=0.0, help="Round-trip cost in price units")
+    parser.add_argument("--spread", type=float, default=0.0, help="Round-trip spread cost in price units")
+    parser.add_argument("--commission-round-trip-usd-per-contract", type=float, default=0.0, help="Round-trip commission per contract in USD")
+    parser.add_argument("--slippage-ticks-per-side", type=float, default=0.0, help="Assumed slippage in ticks for each side of the trade")
+    parser.add_argument("--tick-size", type=float, default=0.01, help="Instrument tick size in price units (CL: 0.01 USD/barrel)")
+    parser.add_argument("--contract-multiplier", type=float, default=1000.0, help="Units per contract (CL: 1000 barrels)")
     parser.add_argument("--bar-interval-minutes", type=int, default=5, help="Expected OHLCV bar interval; larger unexplained gaps fail closed")
     args = parser.parse_args()
     candles = load_candles_csv(args.csv)
@@ -701,6 +732,10 @@ def main() -> None:
         "breakout_lookback": args.lookback,
         "max_holding_bars": args.holding_bars,
         "spread": args.spread,
+        "commission_round_trip_usd_per_contract": args.commission_round_trip_usd_per_contract,
+        "slippage_ticks_per_side": args.slippage_ticks_per_side,
+        "tick_size": args.tick_size,
+        "contract_multiplier": args.contract_multiplier,
         "bar_interval_minutes": args.bar_interval_minutes,
     }
     if args.events_csv:
