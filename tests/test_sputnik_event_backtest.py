@@ -104,6 +104,43 @@ class SputnikEventBacktestTests(unittest.TestCase):
                 atr_time="2025-12-31T23:54:00+00:00",
             )
 
+    def test_event_to_first_bar_gap_requires_session_calendar(self):
+        data = candles([
+            (100, 101, 99, 100, 1000),
+            (100, 101, 99, 100, 1000),
+        ])
+        # Event is stamped at the first bar, but the next available bar is 10 minutes later.
+        data[1]["timestamp"] = data[0]["timestamp"] + timedelta(minutes=10)
+        result = run_backtest(data, "2026-01-01T00:00:00+00:00", "LONG", 1.0)
+        self.assertEqual(result["early"]["status"], "UNMODELED_SESSION_GAP")
+        self.assertEqual(result["early"]["gap_minutes"], 10.0)
+        self.assertEqual(result["breakout"]["status"], "UNMODELED_SESSION_GAP")
+        self.assertEqual(result["data_quality"]["unmodeled_gap_count"], 1)
+        self.assertFalse(result["data_quality"]["session_calendar_used"])
+
+    def test_open_trade_is_not_scored_across_unmodeled_bar_gap(self):
+        start = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        data = [
+            {"timestamp": start, "open": 100.0, "high": 100.5, "low": 99.5, "close": 100.0, "volume": 1000.0},
+            {"timestamp": start + timedelta(minutes=5), "open": 100.0, "high": 100.5, "low": 99.5, "close": 100.0, "volume": 1000.0},
+            {"timestamp": start + timedelta(minutes=25), "open": 100.0, "high": 100.5, "low": 99.5, "close": 100.0, "volume": 1000.0},
+        ]
+        result = run_backtest(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0)
+        self.assertEqual(result["early"]["status"], "UNMODELED_SESSION_GAP")
+        self.assertIsNone(result["early"]["pnl_r"])
+        self.assertEqual(result["breakout"]["status"], "UNMODELED_SESSION_GAP")
+
+    def test_invalid_bar_interval_fails_closed(self):
+        data = candles([(100, 101, 99, 100, 1000)])
+        for interval in (0, True, 2.5):
+            with self.subTest(interval=interval):
+                with self.assertRaisesRegex(ValueError, "bar interval minutes"):
+                    backtest_event(
+                        data, "2026-01-01T00:00:00+00:00", "LONG", 1.0,
+                        atr_time="2025-12-31T23:55:00+00:00",
+                        bar_interval_minutes=interval,
+                    )
+
     def test_invalid_direction_rejected(self):
         with self.assertRaises(ValueError):
             backtest_event(candles([(100, 101, 99, 100, 1000)]), "2026-01-01T00:00:00+00:00", "MAYBE", 1.0, atr_time="2025-12-31T23:55:00+00:00")

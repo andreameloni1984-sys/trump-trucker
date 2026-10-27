@@ -62,6 +62,20 @@ def _validate_candle_values(candles: list[dict[str, Any]]) -> None:
             raise ValueError(f"candle {index} low is inconsistent with OHLC values")
 
 
+def _bar_gap_diagnostics(candles: list[dict[str, Any]], bar_interval_minutes: int) -> dict[str, Any]:
+    gaps = []
+    for index in range(1, len(candles)):
+        gap_minutes = (candles[index]["timestamp"] - candles[index - 1]["timestamp"]).total_seconds() / 60.0
+        if gap_minutes > bar_interval_minutes:
+            gaps.append(gap_minutes)
+    return {
+        "bar_interval_minutes": bar_interval_minutes,
+        "unmodeled_gap_count": len(gaps),
+        "max_gap_minutes": round(max(gaps), 2) if gaps else 0.0,
+        "session_calendar_used": False,
+    }
+
+
 def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
     """Load timestamp,open,high,low,close,volume CSV rows in chronological order."""
     candles = []
@@ -80,7 +94,7 @@ def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
     return candles
 
 
-def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_holding_bars, spread):
+def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes):
     risk = atr * stop_atr
     if not math.isfinite(risk) or risk <= 0 or not math.isfinite(entry):
         return {"status": "INVALID_INPUT", "entry": entry, "stop": None, "target": None, "pnl_r": None}
@@ -97,6 +111,24 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
     status = None
     for index in range(entry_index, end_index):
         candle = candles[index]
+        if index > entry_index:
+            gap_minutes = (candle["timestamp"] - candles[index - 1]["timestamp"]).total_seconds() / 60.0
+            if gap_minutes > bar_interval_minutes:
+                # Without an instrument/session calendar, a long gap could be a
+                # market closure or missing data. Do not score a trade across it.
+                return {
+                    "status": "UNMODELED_SESSION_GAP",
+                    "entry_time": candles[entry_index]["timestamp"].isoformat(),
+                    "entry": round(entry, 8),
+                    "stop": round(stop, 8),
+                    "target": round(target, 8),
+                    "exit": None,
+                    "pnl_r": None,
+                    "bars_held": index - entry_index,
+                    "gap_start_time": candles[index - 1]["timestamp"].isoformat(),
+                    "gap_end_time": candle["timestamp"].isoformat(),
+                    "gap_minutes": round(gap_minutes, 2),
+                }
         opening = candle["open"]
         if index > entry_index:
             if side == "SHORT" and opening >= stop:
@@ -153,11 +185,14 @@ def backtest_event(
     breakout_lookback: int = 3,
     max_holding_bars: int = 12,
     spread: float = 0.0,
+    bar_interval_minutes: int = 5,
 ) -> dict[str, Any]:
     """Compare exploratory entry after the event with a later close-confirmed breakout."""
     side = side.upper()
     if side not in {"LONG", "SHORT"}:
         raise ValueError("side must be LONG or SHORT")
+    if isinstance(bar_interval_minutes, bool) or not isinstance(bar_interval_minutes, int) or bar_interval_minutes < 1:
+        raise ValueError("bar interval minutes must be a positive integer")
     if not all(math.isfinite(value) for value in (atr, stop_atr, target_r, spread)):
         raise ValueError("ATR, stop, target and spread must be finite")
     if atr <= 0 or stop_atr <= 0 or target_r <= 0 or breakout_lookback < 1 or max_holding_bars < 1:
@@ -170,45 +205,86 @@ def backtest_event(
         raise ValueError("ATR timestamp must be at or before event time to prevent look-ahead bias")
     _validate_candle_timestamps(candles)
     _validate_candle_values(candles)
+    data_quality = _bar_gap_diagnostics(candles, bar_interval_minutes)
     if not candles:
-        return {"event_time": event_dt.isoformat(), "side": side, "early": {"status": "NO_DATA"}, "breakout": {"status": "NO_DATA"}}
+        return {"event_time": event_dt.isoformat(), "side": side, "early": {"status": "NO_DATA"}, "breakout": {"status": "NO_DATA"}, "data_quality": data_quality}
 
     next_index = next((i for i, c in enumerate(candles) if c["timestamp"] > event_dt), None)
+    event_gap_minutes = None
+    event_gap_unmodeled = False
     if next_index is None:
         early = {"status": "NO_POST_EVENT_CANDLE"}
     else:
-        early = _simulate(candles, next_index, candles[next_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread)
+        event_gap_minutes = (candles[next_index]["timestamp"] - event_dt).total_seconds() / 60.0
+        event_gap_unmodeled = event_gap_minutes > bar_interval_minutes
+        if event_gap_unmodeled:
+            early = {
+                "status": "UNMODELED_SESSION_GAP",
+                "gap_start_time": event_dt.isoformat(),
+                "gap_end_time": candles[next_index]["timestamp"].isoformat(),
+                "gap_minutes": round(event_gap_minutes, 2),
+            }
+        else:
+            early = _simulate(candles, next_index, candles[next_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes)
 
     breakout = {"status": "NO_BREAKOUT"}
     start = next_index if next_index is not None else len(candles)
-    for i in range(start, len(candles)):
-        prior = candles[max(0, i - breakout_lookback):i]
-        if len(prior) < breakout_lookback:
-            continue
-        if side == "SHORT":
-            triggered = candles[i]["close"] < min(c["low"] for c in prior)
-        else:
-            triggered = candles[i]["close"] > max(c["high"] for c in prior)
-        if triggered:
-            if i + 1 >= len(candles):
-                breakout = {"status": "BREAKOUT_NO_FOLLOWING_CANDLE"}
+    if event_gap_unmodeled:
+        breakout = {
+            "status": "UNMODELED_SESSION_GAP",
+            "gap_start_time": event_dt.isoformat(),
+            "gap_end_time": candles[next_index]["timestamp"].isoformat(),
+            "gap_minutes": round(event_gap_minutes, 2),
+        }
+    else:
+        for i in range(start, len(candles)):
+            if i > 0:
+                gap_minutes = (candles[i]["timestamp"] - candles[i - 1]["timestamp"]).total_seconds() / 60.0
+                if gap_minutes > bar_interval_minutes:
+                    breakout = {
+                        "status": "UNMODELED_SESSION_GAP",
+                        "gap_start_time": candles[i - 1]["timestamp"].isoformat(),
+                        "gap_end_time": candles[i]["timestamp"].isoformat(),
+                        "gap_minutes": round(gap_minutes, 2),
+                    }
+                    break
+            prior = candles[max(0, i - breakout_lookback):i]
+            if len(prior) < breakout_lookback:
+                continue
+            if side == "SHORT":
+                triggered = candles[i]["close"] < min(c["low"] for c in prior)
             else:
-                # The breakout is known only at this candle's close. A causal fill is
-                # the next candle's open, never the already-observed signal close.
-                entry_index = i + 1
-                breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread)
-                breakout["signal_time"] = candles[i]["timestamp"].isoformat()
-                breakout["signal_close"] = round(candles[i]["close"], 8)
-                breakout["entry_model"] = "next_bar_open_after_close_confirmation"
-            break
+                triggered = candles[i]["close"] > max(c["high"] for c in prior)
+            if triggered:
+                if i + 1 >= len(candles):
+                    breakout = {"status": "BREAKOUT_NO_FOLLOWING_CANDLE"}
+                else:
+                    entry_index = i + 1
+                    entry_gap_minutes = (candles[entry_index]["timestamp"] - candles[i]["timestamp"]).total_seconds() / 60.0
+                    if entry_gap_minutes > bar_interval_minutes:
+                        breakout = {
+                            "status": "UNMODELED_SESSION_GAP",
+                            "gap_start_time": candles[i]["timestamp"].isoformat(),
+                            "gap_end_time": candles[entry_index]["timestamp"].isoformat(),
+                            "gap_minutes": round(entry_gap_minutes, 2),
+                        }
+                    else:
+                        # The breakout is known only at this candle's close. A causal fill is
+                        # the next candle's open, never the already-observed signal close.
+                        breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes)
+                        breakout["signal_time"] = candles[i]["timestamp"].isoformat()
+                        breakout["signal_close"] = round(candles[i]["close"], 8)
+                        breakout["entry_model"] = "next_bar_open_after_close_confirmation"
+                break
 
     return {
         "event_time": event_dt.isoformat(),
         "side": side,
-        "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread},
+        "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread, "bar_interval_minutes": bar_interval_minutes},
+        "data_quality": data_quality,
         "early": early,
         "breakout": breakout,
-        "interpretation": "Historical simulation only; compare multiple events, include realistic costs, and do not infer profitability from one event.",
+        "interpretation": "Historical simulation only; any gap above the declared bar interval is not treated as continuous trading time; use a verified instrument/session calendar before scoring across such gaps.",
     }
 
 
@@ -224,11 +300,12 @@ def main() -> None:
     parser.add_argument("--lookback", type=int, default=3)
     parser.add_argument("--holding-bars", type=int, default=12)
     parser.add_argument("--spread", type=float, default=0.0, help="Round-trip cost in price units")
+    parser.add_argument("--bar-interval-minutes", type=int, default=5, help="Expected OHLCV bar interval; larger unexplained gaps fail closed")
     args = parser.parse_args()
     result = backtest_event(load_candles_csv(args.csv), args.event_time, args.side, args.atr,
                             atr_time=args.atr_time, stop_atr=args.stop_atr, target_r=args.target_r,
                             breakout_lookback=args.lookback, max_holding_bars=args.holding_bars,
-                            spread=args.spread)
+                            spread=args.spread, bar_interval_minutes=args.bar_interval_minutes)
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 
