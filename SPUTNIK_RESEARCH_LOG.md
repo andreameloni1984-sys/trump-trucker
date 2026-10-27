@@ -104,3 +104,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 — Count distinct SEC filings and align the documented event weight
+
+- **Evidence:** the historical research rubric recorded in the late-September/early-October work uses a 0–100 score with source quality 25, event strength 20, independent confirmations 15, documented relationship 15, recency 10, sector impact 10, and social-evidence quality 5. This is a scoring rubric, not 100 separate rules. The current main-branch ranking used event strength 25 and counted `(event_id, transaction_date)` as a filing identity.
+- **Finding:** separate transaction rows from the same SEC Form 4 could be counted as independent confirmations; the event weight also differed from the documented rubric.
+- **Change:** `sputnik_ranking.py` now prefers SEC accession identity and otherwise canonicalizes the source permalink (scheme/host normalized, query and fragment removed). Multiple rows from one filing count once. Event-strength weight is aligned to 20.
+- **Regression tests:** `tests/test_sputnik_ranking.py` covers accession normalization, same-filing rows with different event IDs/transaction dates, and three recent distinct filings. With unsupported relationship/sector/social evidence left at zero, three filings score 70 and remain `OSSERVA`, not `COMPRA`.
+- **Operational path:** public Form 4 rows → candidate grouping → distinct filing count → 0–100 score → COMPRA/OSSERVA/EVITA.
+- **CI:** pending on branch `fix/sputnik-distinct-filing-rubric-20261027`; no test success is claimed yet.
+- **Deployment:** Render main service is auto-deploy on main; branch is not merged. No deploy was triggered. Latest observed listener live commit remains `9e5204bf7d9074dba27637013b7d98933a91e733`; latest deploy attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed. Build quota is exhausted.
+- **Empirical validation:** no historical replay or out-of-sample ranking study performed. This is scoring-integrity validation, not a return/profitability claim.
+- **Safety:** PAPER/DEMO ONLY; no broker, order, or Telegram test message.
