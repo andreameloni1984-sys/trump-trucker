@@ -486,5 +486,29 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(trump_tracker.directional_news_candidates([finding]), [])
 
 
+    def test_negation_does_not_leak_across_semicolon_clauses(self):
+        finding = {
+            "event_id": "unrelated-negation-before-rate-hike",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "No new tariffs planned; rate hike announced",
+            "text": "No new tariffs are planned; officials announced a rate hike.",
+            "url": "https://example.gov/news/rates",
+            "published": "2026-10-27T08:00:00Z",
+            "source": "PUBLIC_RSS",
+            "domains": ["RATES_MACRO"],
+        }
+
+        candidates = trump_tracker.directional_news_candidates([finding])
+
+        # The negated tariff clause must not suppress the independent,
+        # explicitly announced rate-hike hypothesis after the semicolon.
+        self.assertIn(("USD", "LONG_BIAS"), {
+            (row["instrument"], row["bias"]) for row in candidates
+        })
+        self.assertIn(("GOLD", "SHORT_BIAS"), {
+            (row["instrument"], row["bias"]) for row in candidates
+        })
+
+
 if __name__ == "__main__":
     unittest.main()
