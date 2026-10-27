@@ -365,6 +365,24 @@ class SputnikEventBacktestTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "timestamps must include a timezone"):
                 load_events_csv(path)
 
+    def test_event_ledger_requires_https_standard_port_source_url(self):
+        cases = (
+            ("http://example.com/event/1", "absolute HTTPS URL"),
+            ("https://example.com:8443/event/1", "standard HTTPS port"),
+            ("https://example.com:bad/event/1", "invalid port"),
+        )
+        for source_url, message in cases:
+            with self.subTest(source_url=source_url), tempfile.TemporaryDirectory() as directory:
+                path = Path(directory) / "events.csv"
+                path.write_text(
+                    "event_id,event_time,available_at,side,atr,atr_time,source_url\\n"
+                    f"evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,{source_url}\\n",
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(ValueError, message):
+                    load_events_csv(path)
+
+
     def test_batch_backtest_reports_paired_difference_and_unscored_statuses(self):
         data = candles([
             (100, 101, 99, 100, 1000),
@@ -507,10 +525,6 @@ class SputnikEventBacktestTests(unittest.TestCase):
             backtest_events(data, events)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
     def test_breakout_rejects_entry_before_signal_bar_close(self):
         start = datetime(2026, 1, 1, tzinfo=timezone.utc)
         data = candles([
@@ -527,3 +541,6 @@ if __name__ == "__main__":
         self.assertEqual(result["breakout"]["status"], "UNMODELED_BAR_INTERVAL")
         self.assertIsNone(result["breakout"].get("pnl_r"))
 
+
+if __name__ == "__main__":
+    unittest.main()
