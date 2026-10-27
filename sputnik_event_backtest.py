@@ -360,6 +360,7 @@ def backtest_event(
     stop_atr: float = 1.0,
     target_r: float = 2.0,
     breakout_lookback: int = 3,
+    max_breakout_wait_bars: int = 12,
     max_holding_bars: int = 12,
     spread: float = 0.0,
     commission_round_trip_usd_per_contract: float = 0.0,
@@ -382,12 +383,12 @@ def backtest_event(
         for value in numeric_values
     ):
         raise ValueError("ATR, stop, target and all execution-cost inputs must be finite numeric values")
-    integer_values = (breakout_lookback, max_holding_bars)
+    integer_values = (breakout_lookback, max_breakout_wait_bars, max_holding_bars)
     if any(
         isinstance(value, bool) or not isinstance(value, int) or value < 1
         for value in integer_values
     ):
-        raise ValueError("lookback and holding bars must be positive integers")
+        raise ValueError("lookback, breakout wait and holding bars must be positive integers")
     if atr <= 0 or stop_atr <= 0 or target_r <= 0:
         raise ValueError("ATR, stop and target must be positive")
     if spread < 0 or commission_round_trip_usd_per_contract < 0 or slippage_ticks_per_side < 0:
@@ -430,7 +431,7 @@ def backtest_event(
             "side": side,
             "settings": {
                 "atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr,
-                "target_r": target_r, "breakout_lookback": breakout_lookback,
+                "target_r": target_r, "breakout_lookback": breakout_lookback, "max_breakout_wait_bars": max_breakout_wait_bars,
                 "max_holding_bars": max_holding_bars, "spread": spread,
                 "commission_round_trip_usd_per_contract": commission_round_trip_usd_per_contract,
                 "slippage_ticks_per_side": slippage_ticks_per_side, "tick_size": tick_size,
@@ -476,7 +477,14 @@ def backtest_event(
             "gap_end_time": candles[next_index]["timestamp"].isoformat(),
             "gap_minutes": round(availability_gap_minutes, 2),
         }
+    elif next_index is None:
+        breakout = {
+            "status": "INSUFFICIENT_BREAKOUT_OBSERVATION",
+            "signal_bars_observed": 0,
+            "required_signal_bars": max_breakout_wait_bars,
+        }
     else:
+        signal_bars_observed = 0
         for i in range(start, len(candles)):
             if i > 0:
                 gap_minutes = (candles[i]["timestamp"] - candles[i - 1]["timestamp"]).total_seconds() / 60.0
@@ -491,13 +499,20 @@ def backtest_event(
             prior = candles[max(0, i - breakout_lookback):i]
             if len(prior) < breakout_lookback:
                 continue
+            if signal_bars_observed >= max_breakout_wait_bars:
+                break
+            signal_bars_observed += 1
             if side == "SHORT":
                 triggered = candles[i]["close"] < min(c["low"] for c in prior)
             else:
                 triggered = candles[i]["close"] > max(c["high"] for c in prior)
             if triggered:
                 if i + 1 >= len(candles):
-                    breakout = {"status": "BREAKOUT_NO_FOLLOWING_CANDLE"}
+                    breakout = {
+                        "status": "BREAKOUT_NO_FOLLOWING_CANDLE",
+                        "signal_bars_observed": signal_bars_observed,
+                        "required_signal_bars": max_breakout_wait_bars,
+                    }
                 else:
                     entry_index = i + 1
                     entry_gap_minutes = (candles[entry_index]["timestamp"] - candles[i]["timestamp"]).total_seconds() / 60.0
@@ -529,7 +544,22 @@ def backtest_event(
                             breakout["decision_time"] = signal_dt.isoformat()
                             breakout["signal_close"] = round(candles[i]["close"], 8)
                             breakout["entry_model"] = "next_bar_open_after_close_confirmation"
+                            breakout["signal_bars_observed"] = signal_bars_observed
+                            breakout["required_signal_bars"] = max_breakout_wait_bars
                 break
+        if breakout["status"] == "NO_BREAKOUT":
+            if signal_bars_observed >= max_breakout_wait_bars:
+                breakout = {
+                    "status": "NO_BREAKOUT_WITHIN_WINDOW",
+                    "signal_bars_observed": signal_bars_observed,
+                    "required_signal_bars": max_breakout_wait_bars,
+                }
+            else:
+                breakout = {
+                    "status": "INSUFFICIENT_BREAKOUT_OBSERVATION",
+                    "signal_bars_observed": signal_bars_observed,
+                    "required_signal_bars": max_breakout_wait_bars,
+                }
 
     return {
         "event_time": event_dt.isoformat(),
@@ -537,7 +567,7 @@ def backtest_event(
         "decision_time": decision_dt.isoformat(),
         "decision_time_source": decision_time_source,
         "side": side,
-        "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread, "commission_round_trip_usd_per_contract": commission_round_trip_usd_per_contract, "slippage_ticks_per_side": slippage_ticks_per_side, "tick_size": tick_size, "contract_multiplier": contract_multiplier, "round_trip_cost_price_units": round_trip_cost, "bar_interval_minutes": bar_interval_minutes},
+        "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_breakout_wait_bars": max_breakout_wait_bars, "max_holding_bars": max_holding_bars, "spread": spread, "commission_round_trip_usd_per_contract": commission_round_trip_usd_per_contract, "slippage_ticks_per_side": slippage_ticks_per_side, "tick_size": tick_size, "contract_multiplier": contract_multiplier, "round_trip_cost_price_units": round_trip_cost, "bar_interval_minutes": bar_interval_minutes},
         "data_quality": data_quality,
         "early": early,
         "breakout": breakout,
@@ -782,6 +812,7 @@ def backtest_events(
     stop_atr: float = 1.0,
     target_r: float = 2.0,
     breakout_lookback: int = 3,
+    max_breakout_wait_bars: int = 12,
     max_holding_bars: int = 12,
     spread: float = 0.0,
     commission_round_trip_usd_per_contract: float = 0.0,
@@ -819,6 +850,7 @@ def backtest_events(
             stop_atr=stop_atr,
             target_r=target_r,
             breakout_lookback=breakout_lookback,
+            max_breakout_wait_bars=max_breakout_wait_bars,
             max_holding_bars=max_holding_bars,
             spread=spread,
             commission_round_trip_usd_per_contract=commission_round_trip_usd_per_contract,
@@ -849,6 +881,7 @@ def main() -> None:
     parser.add_argument("--stop-atr", type=float, default=1.0)
     parser.add_argument("--target-r", type=float, default=2.0)
     parser.add_argument("--lookback", type=int, default=3)
+    parser.add_argument("--breakout-wait-bars", type=int, default=12, help="Maximum eligible post-decision signal candles to observe before classifying no breakout")
     parser.add_argument("--holding-bars", type=int, default=12)
     parser.add_argument("--spread", type=float, default=0.0, help="Round-trip spread cost in price units")
     parser.add_argument("--commission-round-trip-usd-per-contract", type=float, default=0.0, help="Round-trip commission per contract in USD")
@@ -862,6 +895,7 @@ def main() -> None:
         "stop_atr": args.stop_atr,
         "target_r": args.target_r,
         "breakout_lookback": args.lookback,
+        "max_breakout_wait_bars": args.breakout_wait_bars,
         "max_holding_bars": args.holding_bars,
         "spread": args.spread,
         "commission_round_trip_usd_per_contract": args.commission_round_trip_usd_per_contract,
