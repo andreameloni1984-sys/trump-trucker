@@ -727,7 +727,11 @@ def _valid_public_item_timestamp(value: Any) -> bool:
     if parsed is None:
         return False
     now = utc_now()
-    now_utc = now.replace(tzinfo=timezone.utc) if now.tzinfo is None else now.astimezone(timezone.utc)
+    # The decision clock must itself be timezone-aware. Treating a naive
+    # injected/system clock as UTC would make the future-date gate ambiguous.
+    if now.tzinfo is None or now.utcoffset() is None:
+        return False
+    now_utc = now.astimezone(timezone.utc)
     return parsed <= now_utc + timedelta(minutes=5)
 
 
