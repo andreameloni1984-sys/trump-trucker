@@ -185,3 +185,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **2026-10-06 — ranking rubric:** historical conversation records a 0–100 Form 4 ranking, with one filing unable to reach COMPRA and at least three distinct filings plus score >=75 required. Exact weights are recorded in PR #53 with a caveat: the historical accepted specification is not an empirical calibration, and current main still needs reconciliation.
 - **Session 9, 2026-10-20 — source-grounded research priorities:** preserve publication/availability/decision times; study chokepoints and freight against a price/volatility baseline; separate macro channels; keep controversial theses as opinions until reproducible evidence exists. Source: Library file “Registro Studio IBKR - aggiornato 2026-10-20 sessione 9.md”.
 - **Current code mapping:** mixed-catalyst abstention is implemented only on PR #54 in sputnik_catalyst.py, tested in tests/test_sputnik_item_intelligence.py, and passed item-intelligence run 40559759406 plus Telegram-menu run 40559759468 on the tested branch head. No merge/deploy and no historical market replay.
+
+
+## 2026-10-27 — Normalize publication timestamps before candidate sorting
+- **Finding:** `directional_news_candidates()` sorted the original timestamp strings, so mixed timezone offsets / ISO and RFC-822 formats could appear in the wrong chronological order.
+- **Code/test commit:** `6de670aa632ca152be3b1807abedeac41f8d084a` updates `sputnik_catalyst.py` and `tests/test_sputnik_item_intelligence.py`.
+- **Change:** emit canonical UTC `published_at_utc`; preserve `available_at_utc` only when supplied; sort by normalized UTC. The original `published` text remains for source traceability.
+- **Regression:** `test_directional_news_candidates_sort_by_normalized_utc_instant` verifies 10:00+02:00 sorts before 09:30Z and availability is normalized.
+- **CI:** item intelligence PASS [40561147668](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561147668); Telegram menu PASS [40561147750](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561147750) on the code/test commit.
+- **Historical mapping:** the Library session 9 record prioritizes publication time, first availability, primary source and fixed reaction horizons; this change addresses chronological timestamp consistency only. It does not fill missing availability timestamps or prove that news sentiment adds predictive value.
+- **Operational path:** item-level RSS → timezone-aware parse / point-in-time validation → directional hypothesis → normalized ordering → digest/handoff. The status remains hypothesis-only until independent price/volume confirmation.
+- **Deployment/empirical limit:** PR #54 branch only; no merge/deploy. Synthetic regression only; no historical feed replay or OOS market-return validation. PAPER only.
