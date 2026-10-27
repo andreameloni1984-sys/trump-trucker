@@ -104,3 +104,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+
+## 2026-10-27 — Add a conditional WTI hypothesis for verified diplomatic de-escalation
+
+- **Observed need:** Sputnik could map attacks and physical supply threats to a conditional Brent LONG watch, but had no explicit opposing scenario for credible diplomatic progress that reduces the geopolitical risk premium. That left the recent mixed oil-news pattern under-expressed.
+- **Implemented on branch `feat/oil-deescalation-watch-20261027`:** added `oil_diplomatic_deescalation` to `sputnik_decision.py`, with WTI as the candidate and SHORT as a conditional hypothesis only after credible diplomatic evidence and an intraday low break with selling volume. Added a strict evidence rule in `sputnik_decision_engine.py` so generic mentions of diplomacy do not qualify.
+- **Tests added:** explicit de-escalation wording maps to conditional WTI SHORT watch; generic diplomacy mention does not.
+- **Risk controls:** new attacks/physical supply interruptions invalidate the scenario; no entry, stop, target, or position size is fabricated without fresh quote/ATR data. This does not place orders.
+- **Verification status:** code and regression tests committed to the feature branch. Test suite and CI have not been run in this environment; do not describe this as production-deployed or live in Telegram until CI passes, the change is reviewed/merged, and deployment is confirmed.
