@@ -63,6 +63,21 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(result["score"], 60)
         self.assertEqual(result["signal"], "OSSERVA")
 
+    def test_filing_identity_normalizes_default_https_port_and_trailing_dot(self):
+        first = tx("e1", tx_date="2026-10-05")
+        second = tx("e2", tx_date="2026-10-05")
+        first.pop("accession_number", None)
+        second.pop("accession_number", None)
+        path = "/Archives/edgar/data/0000000001/000000000126000001/form4.xml"
+        first["source_url"] = "https://www.sec.gov" + path + "?source=rss"
+        second["source_url"] = "https://www.sec.gov.:443" + path + "#document"
+
+        result = score_purchase_candidate([first, second], today=date(2026, 10, 6))
+
+        self.assertEqual(result["filings"], 1)
+        self.assertEqual(result["confirmations"], 5)
+        self.assertEqual(result["score"], 60)
+
     def test_non_primary_or_ambiguous_form4_source_urls_are_excluded(self):
         invalid_urls = [
             "http://www.sec.gov/Archives/edgar/data/0000000001/e1/form4.xml",
