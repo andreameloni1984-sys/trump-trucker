@@ -130,6 +130,20 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertIsNone(result["early"]["pnl_r"])
         self.assertEqual(result["breakout"]["status"], "UNMODELED_SESSION_GAP")
 
+    def test_boolean_ohlcv_values_are_rejected(self):
+        for key in ("open", "high", "low", "close", "volume"):
+            with self.subTest(key=key):
+                data = candles([(100, 101, 99, 100, 1000)])
+                data[0][key] = True
+                with self.assertRaisesRegex(ValueError, rf"candle 0 {key} must not be boolean"):
+                    backtest_event(
+                        data,
+                        "2025-12-31T23:59:00+00:00",
+                        "LONG",
+                        1.0,
+                        atr_time="2025-12-31T23:54:00+00:00",
+                    )
+
     def test_invalid_bar_interval_fails_closed(self):
         data = candles([(100, 101, 99, 100, 1000)])
         for interval in (0, True, 2.5):

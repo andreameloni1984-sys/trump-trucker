@@ -48,8 +48,15 @@ def _validate_candle_values(candles: list[dict[str, Any]]) -> None:
         values = {}
         for key in ("open", "high", "low", "close", "volume"):
             try:
-                value = float(candle[key])
-            except (KeyError, TypeError, ValueError) as exc:
+                raw_value = candle[key]
+            except (KeyError, TypeError) as exc:
+                raise ValueError(f"candle {index} has invalid {key}") from exc
+            # Python converts bool to 0.0/1.0; reject it before numeric coercion.
+            if isinstance(raw_value, bool):
+                raise ValueError(f"candle {index} {key} must not be boolean")
+            try:
+                value = float(raw_value)
+            except (TypeError, ValueError, OverflowError) as exc:
                 raise ValueError(f"candle {index} has invalid {key}") from exc
             if not math.isfinite(value):
                 raise ValueError(f"candle {index} {key} must be finite")
