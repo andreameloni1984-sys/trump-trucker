@@ -74,6 +74,14 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>soon</pubDate>",
             )),
+            ("RFC 822 publication date without timezone", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00</pubDate>",
+            )),
+            ("ISO publication date without timezone", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>2026-10-19T06:00:00</pubDate>",
+            )),
             ("future publication date", FEED.replace(
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>Mon, 26 Oct 2026 06:10:00 GMT</pubDate>",
