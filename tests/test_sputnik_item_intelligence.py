@@ -278,3 +278,48 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+
+class SputnikSecRetryAfterTests(unittest.TestCase):
+    def test_sec_retry_after_uses_longer_numeric_delay(self):
+        from urllib.error import HTTPError
+
+        error = HTTPError(
+            "https://www.sec.gov/test",
+            403,
+            "Forbidden",
+            {"Retry-After": "86400"},
+            None,
+        )
+        self.assertEqual(trump_tracker._sec_retry_after_seconds(error), 86400)
+
+    def test_sec_retry_after_never_shortens_default_cooldown(self):
+        from urllib.error import HTTPError
+
+        error = HTTPError(
+            "https://www.sec.gov/test",
+            403,
+            "Forbidden",
+            {"Retry-After": "30"},
+            None,
+        )
+        self.assertEqual(
+            trump_tracker._sec_retry_after_seconds(error),
+            trump_tracker.SEC_403_COOLDOWN_SECONDS,
+        )
+
+    def test_sec_retry_after_invalid_value_falls_back_safely(self):
+        from urllib.error import HTTPError
+
+        error = HTTPError(
+            "https://www.sec.gov/test",
+            403,
+            "Forbidden",
+            {"Retry-After": "not-a-delay"},
+            None,
+        )
+        self.assertEqual(
+            trump_tracker._sec_retry_after_seconds(error),
+            trump_tracker.SEC_403_COOLDOWN_SECONDS,
+        )
+
