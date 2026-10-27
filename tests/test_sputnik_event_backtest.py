@@ -538,7 +538,11 @@ class SputnikEventBacktestTests(unittest.TestCase):
             data, "2026-01-01T00:00:00+00:00", "SHORT", 1.0,
             breakout_lookback=1, bar_interval_minutes=5,
         )
+        self.assertEqual(result["early"]["status"], "UNMODELED_BAR_INTERVAL")
         self.assertEqual(result["breakout"]["status"], "UNMODELED_BAR_INTERVAL")
+        self.assertEqual(result["data_quality"]["unexpected_short_interval_count"], 2)
+        self.assertEqual(result["data_quality"]["min_observed_interval_minutes"], 1.0)
+        self.assertIsNone(result["early"].get("pnl_r"))
         self.assertIsNone(result["breakout"].get("pnl_r"))
 
 
