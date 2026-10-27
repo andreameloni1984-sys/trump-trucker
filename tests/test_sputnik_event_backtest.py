@@ -406,9 +406,9 @@ class SputnikEventBacktestTests(unittest.TestCase):
 
     def test_event_ledger_rejects_homepage_and_feed_urls_as_item_sources(self):
         base = (
-            "event_id,event_time,available_at,side,atr,atr_time,source_url\\n"
+            "event_id,event_time,available_at,side,atr,atr_time,source_url\n"
             "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:02:00+00:00,"
-            "SHORT,1.0,2026-01-01T00:00:00+00:00,{source_url}\\n"
+            "SHORT,1.0,2026-01-01T00:00:00+00:00,{source_url}\n"
         )
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "events.csv"
