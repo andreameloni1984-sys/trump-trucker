@@ -114,7 +114,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
 
     def test_future_atr_timestamp_is_rejected(self):
         data = candles([(100, 101, 99, 100, 1000)])
-        with self.assertRaisesRegex(ValueError, "ATR timestamp must be at or before event time"):
+        with self.assertRaisesRegex(ValueError, "strictly before event time"):
             backtest_event(
                 data,
                 "2026-01-01T00:00:00+00:00",
@@ -129,8 +129,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
         data = candles([(100, 101, 99, 100, 1000)])
         event_time = "2026-01-01T00:00:00+00:00"
 
-        # A timestamp equal to the event time cannot prove the ATR snapshot
-        # was available before the event; fail closed rather than assume.
+        # Equality cannot prove the ATR snapshot was available before the event.
         with self.assertRaisesRegex(ValueError, "strictly before"):
             backtest_event(
                 data,
