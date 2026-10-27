@@ -293,3 +293,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** PR #45 branch only; no merge/deploy. The branch is substantially divergent from current main and needs reconciliation/review before merge.
 - **Empirical limits:** source-URL deduplication prevents one URL from masquerading as multiple events; it does not prove semantic equivalence across different URLs or establish predictive value. No source-linked, exact-time NYMEX CL event replay or walk-forward result is claimed.
 - **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets or Telegram test messages.
+
+
+## 2026-10-27 — Diagnose overlapping trade windows in paired event study
+
+- **Finding:** batch mode reported paired mean/median R differences, but it did not show whether separate catalyst events produced trades held over the same market interval. Overlapping trade windows make event outcomes dependent and can make a small event sample look more conclusive than it is.
+- **Implemented:** scored simulations now include `exit_time`. The paired summary counts scored trade windows and strict temporal overlaps separately for early-entry and breakout strategies, and adds an explicit caveat to interpret aggregate averages cautiously when event outcomes overlap. This is a diagnostic, not an automatic exclusion of events.
+- **Regression coverage:** the existing early-entry fixture asserts the recorded exit timestamp; `test_batch_summary_reports_overlapping_trade_windows` verifies overlap counts and the dependence warning using synthetic timestamps and R values.
+- **Commits:** implementation `5f62204a7fc175f53af58dd4afdb80e5564ba2b6`; regression test `b63b099650444b613173a5b0ac4b694fb2111b8d`.
+- **CI status at documentation update:** previous confirmed success was run [40510039401](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40510039401) on prior head `2556a5fa16cffd9ebd0a14bab28cd2244bde5264`. New run [40510650474](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40510650474) was still in progress when checked; its result must be rechecked before claiming the new change passed.
+- **Empirical limits:** no validated NYMEX CL dataset paired to exact source-linked catalyst timestamps has been acquired. This change improves interpretation of a future batch result but does not show which strategy performs better. Costs still require defensible spread, slippage and commission inputs; session gaps and contract-roll handling need verified data.
+- **Safety:** PR #45 branch only; no merge/deploy, broker changes, orders, or Telegram test messages.
