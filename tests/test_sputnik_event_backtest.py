@@ -3,7 +3,7 @@ import tempfile
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
-from sputnik_event_backtest import backtest_event, load_candles_csv
+from sputnik_event_backtest import backtest_event, backtest_events, load_candles_csv, load_events_csv
 
 
 def run_backtest(data, event_time, side, atr, *args, **kwargs):
@@ -308,6 +308,55 @@ class SputnikEventBacktestTests(unittest.TestCase):
                 options[field] = True
                 with self.assertRaisesRegex(ValueError, "integers"):
                     backtest_event(data, event_time, "LONG", 1.0, atr_time=atr_time, **options)
+
+
+    def test_event_ledger_requires_source_url_and_timezone_aware_times(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "events.csv"
+            path.write_text(
+                "event_id,event_time,side,atr,atr_time\n"
+                "evt-1,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "source_url"):
+                load_events_csv(path)
+
+            path.write_text(
+                "event_id,event_time,side,atr,atr_time,source_url\n"
+                "evt-1,2026-01-01T00:02:00,SHORT,1.0,2026-01-01T00:00:00+00:00,https://example.com/event/1\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "timestamps must include a timezone"):
+                load_events_csv(path)
+
+    def test_batch_backtest_reports_paired_difference_and_unscored_statuses(self):
+        data = candles([
+            (100, 101, 99, 100, 1000),
+            (100, 100.5, 98.8, 99, 1200),
+            (99, 99.2, 97.5, 98, 1500),
+            (97.4, 98.2, 96.0, 97, 1800),
+            (97, 97.2, 95.0, 96, 1900),
+        ])
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "events.csv"
+            path.write_text(
+                "event_id,event_time,side,atr,atr_time,source_url\n"
+                "evt-1,2026-01-01T00:02:00+00:00,SHORT,1.0,2026-01-01T00:00:00+00:00,https://example.com/event/1\n"
+                "evt-2,2026-01-01T00:30:00+00:00,SHORT,1.0,2026-01-01T00:25:00+00:00,https://example.com/event/2\n",
+                encoding="utf-8",
+            )
+            ledger = load_events_csv(path)
+
+        result = backtest_events(data, ledger, breakout_lookback=2)
+        summary = result["summary"]
+        self.assertEqual(summary["events_total"], 2)
+        self.assertEqual(summary["paired_scored_events"], 1)
+        self.assertEqual(summary["unpaired_or_unscored_events"], 1)
+        self.assertEqual(summary["mean_early_minus_breakout_r"], 0.0)
+        self.assertEqual(summary["ties_count"], 1)
+        self.assertEqual(summary["unscored_early_status_counts"], {"NO_POST_EVENT_CANDLE": 1})
+        self.assertEqual(summary["unscored_breakout_status_counts"], {"NO_BREAKOUT": 1})
+        self.assertEqual(result["results"][0]["source_url"], "https://example.com/event/1")
 
 
 if __name__ == "__main__":
