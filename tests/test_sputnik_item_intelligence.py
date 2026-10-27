@@ -254,6 +254,10 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             ("https://www.whitehouse.gov/feed/", "WHITE_HOUSE_RSS"),
             ("https://whitehouse.gov/feed/", "WHITE_HOUSE_RSS"),
             ("https://news.whitehouse.gov/feed/", "WHITE_HOUSE_RSS"),
+            ("https://whitehouse.gov:443/feed/", "WHITE_HOUSE_RSS"),
+            ("https://user@whitehouse.gov/feed/", "PUBLIC_RSS"),
+            ("https://whitehouse.gov:8443/feed/", "PUBLIC_RSS"),
+            ("https://whitehouse.gov:invalid/feed/", "PUBLIC_RSS"),
             ("https://whitehouse.gov.evil.example/feed", "PUBLIC_RSS"),
             ("https://evil.example/?next=whitehouse.gov", "PUBLIC_RSS"),
             ("https://[invalid/feed", "PUBLIC_RSS"),
@@ -264,8 +268,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 self.assertEqual(trump_tracker._public_feed_source_label(feed_url), expected)
 
 
-if __name__ == "__main__":
-    unittest.main()
 
 
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
@@ -293,3 +295,7 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+
+if __name__ == "__main__":
+    unittest.main()
