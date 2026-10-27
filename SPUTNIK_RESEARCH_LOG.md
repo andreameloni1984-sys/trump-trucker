@@ -139,3 +139,16 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline minutes remain exhausted.
 - **Empirical limit:** chronology integrity only; no historical replay or out-of-sample return validation.
 - **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets, or Telegram test messages.
+
+
+## 2026-10-27 09:07 UTC — Match SEC archive provenance to the transaction row
+
+- **Finding:** URL-shape validation alone can accept a genuine SEC archive document that belongs to a different issuer or filing than the transaction row being scored.
+- **Change:** `sputnik_ranking.py::_source_matches_filing_identity()` now requires the archive CIK to match the row CIK. When accession metadata is present, its normalized accession must match the 18-digit accession in the URL. Rows with absent/non-numeric CIKs fail closed.
+- **Operational path:** Form 4 transaction → primary URL validation → CIK/accession consistency → distinct filing count → ranking.
+- **Regression:** `tests/test_sputnik_ranking.py` rejects issuer CIK mismatch and accession mismatch, and accepts matching accession metadata.
+- **Commits:** code/test commits are recorded in the PR activity; research-log commit follows the code and tests.
+- **CI:** pending for this update; record final workflow outcomes after GitHub Actions completes.
+- **Deployment:** PR #53 branch only; no merge or deploy. Render workspace was not selected; live commit not re-verified.
+- **Empirical limit:** identity/provenance integrity only; no filing replay, market outcome study, or out-of-sample return validation.
+- **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders, or Telegram test messages.
