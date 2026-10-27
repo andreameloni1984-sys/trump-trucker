@@ -104,3 +104,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 — Keep direct unittest execution from skipping trailing Sputnik regressions
+
+- **Finding:** `tests/test_sputnik_item_intelligence.py` placed `unittest.main()` before `test_first_scan_seeds_feed_backlog_without_emitting_old_items`. When the file is run directly, unittest starts before that method is defined, silently omitting the regression.
+- **Change:** move the `if __name__ == "__main__"` block to the end of the module.
+- **Operational path:** direct execution of the Sputnik item-intelligence test module; CI/import-based discovery was not the failing path.
+- **Files:** `tests/test_sputnik_item_intelligence.py`, `SPUTNIK_RESEARCH_LOG.md`.
+- **Validation:** pending PR CI; no result claimed until Actions completes. Direct execution result is not available in this connector run.
+- **Empirical validation:** not applicable to market performance; this restores test coverage only.
+- **Deployment:** no merge/deploy. Render build quota remains exhausted; production state unchanged.
+- **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets, or Telegram test messages.
