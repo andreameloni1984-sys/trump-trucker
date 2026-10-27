@@ -184,7 +184,10 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "evidence": "PUBLIC_RSS_ITEM",
                 "title": "Tariff headline",
                 "url": "https://example.gov/news/1",
-                "published": "2026-10-19",
+                "published": "Mon, 19 Oct 2026 00:00:00 GMT",
+                "event_time": "2026-10-19T00:00:00+00:00",
+                "available_at": "2026-10-19T00:01:00+00:00",
+                "detected_at": "2026-10-19T00:01:00+00:00",
                 "domains": ["TRADE_POLICY"],
                 "text": "Tariff headline details",
                 "source_quality": "FEED_HOST_MATCH_NOT_AUTHENTICATED",
@@ -213,6 +216,9 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(payload["events"][0]["event_id"], "evt-1")
         self.assertEqual(payload["events"][0]["source_quality"], "FEED_HOST_MATCH_NOT_AUTHENTICATED")
         self.assertEqual(payload["events"][0]["content_hash"], "a" * 64)
+        self.assertEqual(payload["events"][0]["event_time"], "2026-10-19T00:00:00+00:00")
+        self.assertEqual(payload["events"][0]["available_at"], "2026-10-19T00:01:00+00:00")
+        self.assertNotIn("decision_time", payload["events"][0])
         self.assertNotIn("order", payload["events"][0])
 
 
