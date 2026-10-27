@@ -241,13 +241,15 @@ def _parse_aware_publication_time(value: Any) -> datetime | None:
 
 
 def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) -> list[dict[str, Any]]:
-    """Map explicit, recognized public-news language to cautious directional biases.
+    """Map recognized public-news items to cautious, point-in-time biases.
 
-    Only dated individual items with a URL and event ID qualify. Biases are
-    hypotheses, not trade signals; unrecognized or ambiguous headlines abstain.
+    A timezone-aware event/publication time, first-observed available_at, URL,
+    and event ID are required. Legacy records without availability time abstain.
+    Biases are hypotheses, not trade signals; unrecognized or ambiguous headlines abstain.
     """
     if limit <= 0:
         return []
+    decision_time = datetime.now(timezone.utc)
     candidates: dict[tuple[str, str], dict[str, Any]] = {}
     conflicted: set[tuple[str, str]] = set()
     for finding in findings:
@@ -258,18 +260,24 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
             or not finding.get("published")
         ):
             continue
-        now_utc = datetime.now(timezone.utc)
-        published_at = _parse_aware_publication_time(finding.get("published"))
-        if published_at is None or published_at > now_utc:
+        event_raw = finding.get("event_time")
+        if event_raw is None:
+            event_raw = finding.get("published")
+        event_time = _parse_aware_publication_time(event_raw)
+        if event_time is None or event_time > decision_time:
             continue
-        # If observation time is provided, it must be explicit, timezone-aware,
-        # no earlier than publication, and not in the future. Older records
-        # without available_at remain compatible but are less auditable.
+        # Never infer availability from publication time: a record without an
+        # explicit first-observed timestamp cannot be replayed point-in-time.
         available_raw = finding.get("available_at")
-        if available_raw is not None:
-            available_at = _parse_aware_publication_time(available_raw)
-            if available_at is None or available_at < published_at or available_at > now_utc:
-                continue
+        if available_raw is None:
+            continue
+        available_at = _parse_aware_publication_time(available_raw)
+        if (
+            available_at is None
+            or available_at < event_time
+            or available_at > decision_time
+        ):
+            continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
         negated_iran_deescalation = _is_negated_iran_deescalation(text)
@@ -298,7 +306,10 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                     "published": str(finding.get("published") or ""),
                     # Canonical UTC timestamp supports correct ordering across
                     # RFC-822/ISO inputs and differing source timezone offsets.
-                    "published_at_utc": published_at.isoformat().replace("+00:00", "Z"),
+                    "published_at_utc": event_time.isoformat().replace("+00:00", "Z"),
+                    "event_time_utc": event_time.isoformat().replace("+00:00", "Z"),
+                    "available_at_utc": available_at.isoformat().replace("+00:00", "Z"),
+                    "decision_time_utc": decision_time.isoformat().replace("+00:00", "Z"),
                     "url": str(finding.get("url") or ""),
                     "instrument": instrument,
                     "bias": bias,
@@ -306,8 +317,6 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
                     "reason": rule["reason"],
                     "status": "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION",
                 }
-                if available_raw is not None:
-                    candidate["available_at_utc"] = available_at.isoformat().replace("+00:00", "Z")
                 previous = candidates.get(key)
                 if previous is not None and previous["bias"] != bias:
                     # Mixed/contradictory catalysts must not be resolved by
@@ -321,7 +330,7 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
     # changes with timezone offsets or mixed RFC-822/ISO formats.
     result = sorted(
         candidates.values(),
-        key=lambda x: _parse_aware_publication_time(x["published_at_utc"]),
+        key=lambda x: _parse_aware_publication_time(x["event_time_utc"]),
         reverse=True,
     )
     return result[:limit]
