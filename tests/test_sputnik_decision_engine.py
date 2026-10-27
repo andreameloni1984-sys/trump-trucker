@@ -67,6 +67,14 @@ class StrictDecisionTests(unittest.TestCase):
         oil = _fallback_watch("Oil-price volatility rose after the report.")
         self.assertEqual(oil["topic"], "PETROLIO / OFFERTA ENERGETICA")
 
+    def test_trigger_ranking_does_not_count_word_fragments(self):
+        rows = conditional_plans(
+            "The President announces new tariffs on imports. The trade warrior conference opens."
+        )
+        tariff = next(row for row in rows if row["id"] == "tariff_escalation")
+        self.assertIn("tariff", tariff["matched_terms"])
+        self.assertNotIn("trade war", tariff["matched_terms"])
+
     def test_empty_legacy_snapshot_still_returns_result(self):
         message = decision_message("")
         self.assertIn("SPUTNIK — OPPORTUNITÀ DI MERCATO", message)
