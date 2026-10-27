@@ -112,6 +112,6 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Files:** `trump_tracker.py`; `tests/test_sputnik_item_intelligence.py`.
 - **Regression coverage:** valid HTTPS article URL; HTTP, userinfo, nonstandard/malformed port, root page, feed endpoint with query, and HTTP feed base are rejected.
 - **Code commit:** `024ac20141d114cd142c7bb0006b5f0b8f537d73`; **test commit:** `d2de528a955fd48372340020b82dd13441764b0b`.
-- **CI:** pending on PR branch; no result claimed until GitHub Actions completes.
+- **CI:** PASS on PR head commit `09c66a83c6f27b2e9fc99cbd2c5d556c265dbf19`: item intelligence run `40460783619`, ranking run `40460783702`. The later PR-body update records these results; no market replay was run.
 - **Deployment / limits:** research branch only; no Render deploy. This is URL integrity, not content authenticity or market prediction.
 - **Safety:** PAPER/DEMO ONLY; no secrets read, Telegram test message, broker or order.
