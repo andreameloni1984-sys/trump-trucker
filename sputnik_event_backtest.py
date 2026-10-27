@@ -303,8 +303,27 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
             break
     else:
         exit_index = end_index - 1
+        available_bars = end_index - entry_index
+        if available_bars < max_holding_bars:
+            # Do not score a trade merely because the file ended before its
+            # configured holding horizon. Early entries otherwise get a
+            # different amount of forward data than later breakout entries.
+            last_candle = candles[exit_index]
+            return {
+                "status": "INSUFFICIENT_FORWARD_DATA",
+                "entry_time": candles[entry_index]["timestamp"].isoformat(),
+                "entry": round(entry, 8),
+                "stop": round(stop, 8),
+                "target": round(target, 8),
+                "exit": None,
+                "pnl_r": None,
+                "bars_held": available_bars,
+                "required_holding_bars": max_holding_bars,
+                "available_holding_bars": available_bars,
+                "last_observed_time": last_candle["timestamp"].isoformat(),
+            }
         exit_price = candles[exit_index]["close"]
-        status = "TIME_EXIT" if end_index < len(candles) else "END_OF_DATA"
+        status = "TIME_EXIT"
 
     gross_pnl = sign * (exit_price - entry)
     net_pnl = gross_pnl - round_trip_cost
