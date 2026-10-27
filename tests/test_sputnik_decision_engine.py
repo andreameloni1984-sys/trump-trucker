@@ -32,6 +32,14 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("The report confirms shipping was not disrupted and oil exports continue normally.")
         self.assertEqual(rows, [])
 
+    def test_semicolon_scopes_negation_to_its_clause(self):
+        # A denied production-cut claim must not suppress a separate, concrete
+        # shipping-risk clause after a semicolon.
+        rows = conditional_plans(
+            "The report denied a production cut; Iran threatens shipping near Hormuz and oil exports."
+        )
+        self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
+
     def test_message_has_confirmation_and_invalidation(self):
         message = decision_message("The President announces new tariffs on imports.")
         self.assertIn("Conferma richiesta", message)
