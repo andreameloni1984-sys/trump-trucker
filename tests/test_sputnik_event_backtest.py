@@ -361,6 +361,40 @@ class SputnikEventBacktestTests(unittest.TestCase):
 
 
 
+    def test_summary_adds_non_overlapping_paired_sensitivity(self):
+        base = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        def trade(pnl, start_minute, end_minute):
+            return {
+                "pnl_r": pnl,
+                "entry_time": (base + timedelta(minutes=start_minute)).isoformat(),
+                "exit_time": (base + timedelta(minutes=end_minute)).isoformat(),
+            }
+        results = [
+            {
+                "event_time": base.isoformat(),
+                "early": trade(1.0, 5, 20),
+                "breakout": trade(0.5, 10, 25),
+            },
+            {
+                "event_time": (base + timedelta(minutes=10)).isoformat(),
+                "early": trade(2.0, 15, 30),
+                "breakout": trade(1.0, 20, 35),
+            },
+            {
+                "event_time": (base + timedelta(minutes=60)).isoformat(),
+                "early": trade(0.2, 65, 80),
+                "breakout": trade(0.1, 70, 85),
+            },
+        ]
+        summary = summarize_comparison_results(results)
+        self.assertEqual(summary["paired_scored_events"], 3)
+        self.assertEqual(summary["non_overlapping_paired_events"], 2)
+        self.assertEqual(summary["non_overlapping_events_excluded_for_overlap"], 1)
+        self.assertEqual(summary["non_overlapping_events_missing_timestamps"], 0)
+        self.assertEqual(summary["non_overlapping_mean_early_minus_breakout_r"], 0.3)
+        self.assertEqual(summary["non_overlapping_median_early_minus_breakout_r"], 0.3)
+        self.assertIn("does not guarantee statistical independence", summary["non_overlapping_sensitivity_note"])
+
     def test_batch_summary_reports_overlapping_trade_windows(self):
         results = [
             {
