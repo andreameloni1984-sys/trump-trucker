@@ -271,5 +271,30 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(result["early"]["pnl_r"], 1.5)
 
 
+    def test_boolean_numeric_and_integer_parameters_are_rejected(self):
+        data = candles([(100, 101, 99, 100, 1000)])
+        event_time = "2026-01-01T00:00:00+00:00"
+        atr_time = "2025-12-31T23:55:00+00:00"
+        numeric_cases = ("atr", "stop_atr", "target_r", "spread")
+        for field in numeric_cases:
+            with self.subTest(field=field):
+                options = {"stop_atr": 1.0, "target_r": 2.0, "spread": 0.0}
+                atr = 1.0
+                if field == "atr":
+                    atr = True
+                else:
+                    options[field] = True
+                with self.assertRaisesRegex(ValueError, "numeric"):
+                    backtest_event(data, event_time, "LONG", atr, atr_time=atr_time, **options)
+
+        integer_cases = ("breakout_lookback", "max_holding_bars")
+        for field in integer_cases:
+            with self.subTest(field=field):
+                options = {"breakout_lookback": 3, "max_holding_bars": 12}
+                options[field] = True
+                with self.assertRaisesRegex(ValueError, "integers"):
+                    backtest_event(data, event_time, "LONG", 1.0, atr_time=atr_time, **options)
+
+
 if __name__ == "__main__":
     unittest.main()
