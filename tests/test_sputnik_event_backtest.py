@@ -604,10 +604,10 @@ class SputnikEventBacktestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "events_with_decision_time.csv"
             path.write_text(
-                "event_id,event_time,available_at,decision_time,side,atr,atr_time,source_url\\n"
+                "event_id,event_time,available_at,decision_time,side,atr,atr_time,source_url\n"
                 "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:03:00+00:00,"
                 "2026-01-01T00:12:00+00:00,LONG,1.0,2026-01-01T00:00:00+00:00,"
-                "https://example.com/event/1\\n",
+                "https://example.com/event/1\n",
                 encoding="utf-8",
             )
             events = load_events_csv(path)
@@ -619,10 +619,10 @@ class SputnikEventBacktestTests(unittest.TestCase):
             self.assertEqual(result["early"]["entry_time"], data[3]["timestamp"].isoformat())
 
             path.write_text(
-                "event_id,event_time,available_at,decision_time,side,atr,atr_time,source_url\\n"
+                "event_id,event_time,available_at,decision_time,side,atr,atr_time,source_url\n"
                 "evt-1,2026-01-01T00:02:00+00:00,2026-01-01T00:03:00+00:00,"
                 "2026-01-01T00:02:00+00:00,LONG,1.0,2026-01-01T00:00:00+00:00,"
-                "https://example.com/event/1\\n",
+                "https://example.com/event/1\n",
                 encoding="utf-8",
             )
             with self.assertRaisesRegex(ValueError, "decision_time is before available_at"):
