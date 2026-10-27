@@ -146,3 +146,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Render:** service remains configured to deploy `main`; last successful deploy in the available deployment list is `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16). The newer attempt on `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed (2026-10-22). No new SEC/RSS matching log lines were returned for the queried 2026-10-26 to 2026-10-27 window, so current source delivery is not confirmed by that query.
 - **Limits:** keyword-negation guard is not full natural-language understanding and is not a live-news or predictive-performance test. No merge/deploy, broker, order, or Telegram test message.
 
+## 2026-10-27 — Main workflow and source-log inspection
+
+- Current `main`: `608e053a8b87c71fa4a272dd97f71295eab18471` (14:41 UTC).
+- Latest scheduled `SPUTNIK` workflow returned in the recent-run list: [40523401974](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40523401974), SUCCESS at 14:40 UTC on the previous SHA `6992555ee972276cbc36995747368d2198c988fd). No newer scheduled run on current `main` was present in the returned top 10.
+- PR #54 item-intelligence and Telegram-menu checks passed on the updated branch; this is separate from the main workflow.
+- Render deployment history still identifies `9e5204bf7d9074dba27637013b7d98933a91e733` as the latest successful live commit and `50851b0dc76f1b7ed0adaa872c47aa84793687f9` as a failed later attempt. No deploy was triggered.
+- The current 2026-10-26/27 log query returned no SEC/RSS matches. This absence does not establish feed health or failure; current source delivery remains unconfirmed.
+
