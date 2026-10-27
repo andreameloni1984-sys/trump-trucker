@@ -395,6 +395,6 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Change:** `_bar_gap_diagnostics()` now reports unexpected short intervals and the minimum observed spacing; `backtest_event()` fails closed with `UNMODELED_BAR_INTERVAL` for both early and breakout models when candle spacing is shorter than the declared interval.
 - **Regression:** the short-spacing fixture now asserts both models are unscored, the interval mismatch count is two, and no P&L is produced.
 - **Operational path:** OHLCV timestamp validation → declared-interval diagnostics → early/breakout simulation eligibility.
-- **Verification:** implementation commit `65a9137b0a336ce8b6d8355fe65c0adf53d2d1cc`; test commit `6e73a4e9b91b9207c916f3b5f344601d1fe47cb1`. CI on the resulting head is pending; no empirical backtest result is claimed.
+- **Verification:** implementation commit `65a9137b0a336ce8b6d8355fe65c0adf53d2d1cc`; test commit `6e73a4e9b91b9207c916f3b5f344601d1fe47cb1`; GitHub Actions run [40526436413](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40526436413) passed on final PR head `4dd8dd93861e954f57617c567e94c43a03e87482`: 116 tests ran, OK. No empirical backtest result is claimed.
 - **Limits:** this prevents timeframe-mismatch scoring but does not provide an exchange session calendar or validate the source instrument/volume. PR #45 remains open/unmerged; no Render deploy, Telegram test message, broker, or order.
 - **Safety:** PAPER ONLY.
