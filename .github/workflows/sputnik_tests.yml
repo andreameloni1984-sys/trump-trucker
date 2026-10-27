@@ -23,6 +23,7 @@ on:
   push:
     branches:
       - main
+      - feat/oil-deescalation-watch-20261027
     paths:
       - "sputnik_decision.py"
       - "sputnik_decision_engine.py"
@@ -32,6 +33,9 @@ on:
       - "trump_tracker.py"
       - "sputnik_ranking.py"
       - "tests/test_sputnik_ranking.py"
+      - "sputnik_event_backtest.py"
+      - "tests/test_sputnik_event_backtest.py"
+      - "SPUTNIK_RESEARCH_LOG.md"
       - ".github/workflows/sputnik_tests.yml"
 
 permissions:
