@@ -63,6 +63,31 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(result["score"], 60)
         self.assertEqual(result["signal"], "OSSERVA")
 
+    def test_non_primary_or_ambiguous_form4_source_urls_are_excluded(self):
+        invalid_urls = [
+            "http://www.sec.gov/Archives/edgar/data/0000000001/e1/form4.xml",
+            "https://sec.gov.example/Archives/edgar/data/0000000001/e1/form4.xml",
+            "https://spoof.example@www.sec.gov/Archives/edgar/data/0000000001/e1/form4.xml",
+            "https://www.sec.gov:444/Archives/edgar/data/0000000001/e1/form4.xml",
+            "https://www.sec.gov/",
+            "https://www.sec.gov/Archives/edgar/data/",
+        ]
+        for url in invalid_urls:
+            with self.subTest(url=url):
+                item = tx("e1")
+                item["source_url"] = url
+                self.assertEqual(
+                    score_purchase_candidate([item], today=date(2026, 10, 6)),
+                    {},
+                )
+
+    def test_primary_sec_archive_url_with_query_remains_valid(self):
+        item = tx("e1")
+        item["source_url"] += "?source=rss#document"
+        result = score_purchase_candidate([item], today=date(2026, 10, 6))
+        self.assertTrue(result)
+        self.assertEqual(result["source_quality"], 25)
+
     def test_invalid_date_gets_no_recency_points(self):
         result = score_purchase_candidate([tx("e1", tx_date="not-a-date")], today=date(2026, 10, 6))
         self.assertEqual(result["recency"], 0)

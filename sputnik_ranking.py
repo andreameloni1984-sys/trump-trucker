@@ -113,18 +113,44 @@ def _filing_identity(item: dict[str, Any]) -> str:
     return f"url:{source_url}"
 
 
+def _is_primary_sec_form4_url(value: Any) -> bool:
+    """Accept only unambiguous HTTPS SEC EDGAR archive document URLs."""
+    if not isinstance(value, str) or not value.strip():
+        return False
+    try:
+        parsed = urlsplit(value.strip())
+        if parsed.scheme.lower() != "https":
+            return False
+        if parsed.username is not None or parsed.password is not None:
+            return False
+        if parsed.port not in (None, 443):
+            return False
+        host = (parsed.hostname or "").lower().rstrip(".")
+        if host not in {"sec.gov", "www.sec.gov"}:
+            return False
+        parts = [part for part in parsed.path.split("/") if part]
+        if len(parts) < 6:
+            return False
+        if [part.lower() for part in parts[:3]] != ["archives", "edgar", "data"]:
+            return False
+        return parts[3].isdigit() and bool(parts[4]) and bool(parts[5])
+    except (TypeError, ValueError):
+        return False
+
+
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     """Score one documented security candidate from Form 4 purchases.
 
     A single SEC filing cannot reach BUY: confirmation points require distinct
-    filing events. Unsupported relationship, sector and social points remain zero.
+    filing events. Only primary HTTPS SEC EDGAR archive URLs qualify for the
+    primary-source score. Unsupported relationship, sector and social points remain zero.
     """
 
     valid = [
         item for item in items
         if item.get("action") == "ACQUISTATO"
         and item.get("source_kind") == "FORM4_TRANSACTION"
-        and item.get("source_url")
+        and _is_primary_sec_form4_url(item.get("source_url"))
     ]
     if not valid:
         return {}
