@@ -249,6 +249,27 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
+    def test_item_permalink_rejects_ambiguous_authority_and_non_article_urls(self):
+        feed = "https://www.whitehouse.gov/feed/"
+        self.assertTrue(trump_tracker._is_item_permalink(
+            "https://www.whitehouse.gov/news/2026/example/", feed
+        ))
+        for invalid in (
+            "http://www.whitehouse.gov/news/2026/example/",
+            "https://user:pass@www.whitehouse.gov/news/2026/example/",
+            "https://www.whitehouse.gov:8443/news/2026/example/",
+            "https://www.whitehouse.gov:notaport/news/2026/example/",
+            "https://www.whitehouse.gov/",
+            "https://www.whitehouse.gov/feed/?item=1",
+        ):
+            with self.subTest(url=invalid):
+                self.assertFalse(trump_tracker._is_item_permalink(invalid, feed))
+        self.assertFalse(trump_tracker._is_item_permalink(
+            "https://www.whitehouse.gov/news/2026/example/",
+            "http://www.whitehouse.gov/feed/",
+        ))
+
+
 if __name__ == "__main__":
     unittest.main()
 
