@@ -104,3 +104,117 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 — Count distinct SEC filings and align the documented event weight
+
+- **Evidence:** the retrievable 2026-10-06 conversation records the user-accepted Sputnik 0–100 scoring design: source quality 25, event strength 20, independent confirmations 15, documented relationship 15, recency 10, sector impact 10, and social-evidence quality 5. I did not find a standalone Library source independently confirming those exact weights, so they are treated as the accepted implementation specification—not empirical proof and not 100 separate rules. Current `main` used event strength 25 and counted `(event_id, transaction_date)` as a filing identity.
+- **Finding:** separate transaction rows from the same SEC Form 4 could be counted as independent confirmations; the event weight also differed from the documented rubric.
+- **Change:** `sputnik_ranking.py` now prefers SEC accession identity and otherwise canonicalizes the source permalink (scheme/host normalized, query and fragment removed). Multiple rows from one filing count once. Event-strength weight is aligned to 20.
+- **Regression tests:** `tests/test_sputnik_ranking.py` covers accession normalization, same-filing rows with different event IDs/transaction dates, and three recent distinct filings. With unsupported relationship/sector/social evidence left at zero, three filings score 70 and remain `OSSERVA`, not `COMPRA`.
+- **Operational path:** public Form 4 rows → candidate grouping → distinct filing count → 0–100 score → COMPRA/OSSERVA/EVITA.
+- **CI:** PASS on PR head `6200775032b1946da9a3269e3b26c71acef64fd2`: SPUTNIK ranking tests run `40469292377` and Telegram menu tests run `40469292329`.
+- **Deployment:** Render main service is auto-deploy on main; branch is not merged. No deploy was triggered. Latest observed listener live commit remains `9e5204bf7d9074dba27637013b7d98933a91e733`; latest deploy attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed. Build quota is exhausted.
+- **Empirical validation:** no historical replay or out-of-sample ranking study performed. This is scoring-integrity validation, not a return/profitability claim.
+- **Safety:** PAPER/DEMO ONLY; no broker, order, or Telegram test message.
+
+## 2026-10-27 08:33 UTC (09:33 CET) — Require numeric SEC accession and a filing document URL
+
+- **Finding:** the primary-source gate checked that CIK/accession path components were merely non-empty and that a sixth path segment existed. A lookalike archive path with a non-numeric CIK/accession or an index page could pass the provenance gate.
+- **Change:** `sputnik_ranking.py::_is_primary_sec_form4_url()` now requires a numeric CIK, an 18-digit dashless accession directory, and a document filename ending in `.xml`, `.htm`, `.html`, or `.txt`; generic `index.htm/html` pages are rejected. Nested document paths remain allowed.
+- **Files:** `sputnik_ranking.py`; `tests/test_sputnik_ranking.py`.
+- **Regression:** test fixtures now use SEC-shaped numeric accession directories. Invalid CIK/accession, index-page and non-document URLs are rejected; existing valid archive URLs with query/fragment remain accepted.
+- **Commits:** code `b4e881be69655312994edc775783f45c3bb2c232`; tests `b03828b0b6f30e3f5b6b2a0a447c03601ac149d7`.
+- **CI:** PASS on the code/test head: [ranking tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40474531848), [Telegram menu tests](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40474531852).
+- **Deployment:** PR #53 only, not merged. Render workspace was not selected in this run; no deploy was triggered, and the live commit was not re-verified.
+- **Empirical limit:** stricter provenance validation is not predictive validation; no historical replay or out-of-sample return study.
+- **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders or Telegram test messages.
+
+
+## 2026-10-27 08:53 UTC — Fail closed on impossible or future Form 4 chronology
+
+- **Finding:** the ranking validated source provenance and distinct filing identity, but an otherwise valid SEC URL could still contribute confirmation points when the transaction/filing dates were invalid, future-dated, or chronologically impossible.
+- **Change:** `sputnik_ranking.py` now requires parseable transaction and filing dates with `transaction_date <= filing_date <= as_of_date`. `rank_purchase_candidates()` resolves one UTC as-of date and uses it consistently across candidate groups.
+- **Regression:** `tests/test_sputnik_ranking.py` now rejects invalid transaction/filing dates, future transactions, future filings, and a filing dated before its transaction.
+- **CI:** new code/test commit will trigger the ranking and related PR workflows; final status is to be recorded after GitHub Actions completes.
+- **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline minutes remain exhausted.
+- **Empirical limit:** chronology integrity only; no historical replay or out-of-sample return validation.
+- **Safety:** PAPER/DEMO ONLY; no broker, orders, secrets, or Telegram test messages.
+
+
+## 2026-10-27 09:07 UTC — Match SEC archive provenance to the transaction row
+
+- **Finding:** URL-shape validation alone can accept a genuine SEC archive document that belongs to a different issuer or filing than the transaction row being scored.
+- **Change:** `sputnik_ranking.py::_source_matches_filing_identity()` now requires the archive CIK to match the row CIK. When accession metadata is present, its normalized accession must match the 18-digit accession in the URL. Rows with absent/non-numeric CIKs fail closed.
+- **Operational path:** Form 4 transaction → primary URL validation → CIK/accession consistency → distinct filing count → ranking.
+- **Regression:** `tests/test_sputnik_ranking.py` rejects issuer CIK mismatch and accession mismatch, and accepts matching accession metadata.
+- **Commits:** code/test commits are recorded in the PR activity; research-log commit follows the code and tests.
+- **CI:** pending for this update; record final workflow outcomes after GitHub Actions completes.
+- **Deployment:** PR #53 branch only; no merge or deploy. Render workspace was not selected; live commit not re-verified.
+- **Empirical limit:** identity/provenance integrity only; no filing replay, market outcome study, or out-of-sample return validation.
+- **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders, or Telegram test messages.
+
+
+## Verification — 2026-10-27 09:07 UTC (SEC row/URL identity)
+
+- **Final code commit:** `f5f9f3acd4d47da02346ef2eda3149b1a5b10ccc`
+- **Regression tests commit:** `3806d87b9387d9b0d9d9075babb76c9f38291dc4`
+- **Research log prior commit:** `4f98d38376321c8fc25a8d8dc2588c9bdc849dec`
+- **CI on final code/test/log head:** ranking tests [run 40478611051](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40478611051) and Telegram menu tests [run 40478611202](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40478611202), both SUCCESS.
+- **Deployment:** PR #53 branch only; not merged or deployed. Render workspace not selected, so live commit was not checked this run.
+- **Empirical limit:** provenance consistency only; no filing replay or out-of-sample return test.
+
+
+## 2026-10-27 — Reject malformed SEC calendar-date fields
+
+- **Finding:** `_parse_date()` attempted ISO datetime parsing and then fell back to `value[:10]`. A malformed value such as `2026-10-05 trailing-data` could therefore be treated as a valid SEC transaction/filing date; datetime strings could also be silently reduced to a date despite these fields representing SEC calendar dates.
+- **Change:** parse only strict `YYYY-MM-DD` strings in `sputnik_ranking.py`; reject timestamps and malformed suffixes rather than inferring a date. Upstream timestamp normalization must be explicit before values enter these date fields.
+- **Operational path:** Form 4 transaction/filing fields → strict date parsing → chronology/as-of guard → distinct-filing scoring.
+- **Regression:** `tests/test_sputnik_ranking.py` covers timestamps, trailing garbage, non-padded dates, non-string values, and a malformed date passed into the ranking path.
+- **CI:** pending for this code/test update; record final workflow outcomes after GitHub Actions completes.
+- **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline quota remains exhausted.
+- **Empirical limit:** schema/chronology integrity only; no SEC replay or out-of-sample return validation.
+- **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders, or Telegram test messages.
+
+
+## Final CI verification — strict SEC date parser (2026-10-27 09:50 UTC)
+
+- **Final code head:** `926fc13b0c7b9c4328ab491ff7d4ab2b029c8d9c`; parser fix corrected an escaping error in the first regex edit before the final successful run.
+- **Regression tests:** commit `7c0897e8b071a48762a4f032b9ff5698ccdf8f82`; the initial run failed because the regex was over-escaped, and the corrected code commit was then tested.
+- **CI PASS on corrected code head:** ranking [run 40483767939](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40483767939) and Telegram menu [run 40483767930](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40483767930).
+- **Deployment:** PR #53 branch only, no merge/deploy; Render workspace not selected in this runtime.
+- **Empirical limit:** strict date schema only; no filing replay or out-of-sample market validation.
+
+## 2026-10-27 — Recover the accepted Sputnik 0–100 scoring rubric from the 2026-10-06 conversation
+
+- **Historical source:** prior conversation record dated 2026-10-06 02:35 UTC. No independent Library document with these exact weights was found, so treat this as the user's accepted implementation specification, not as a separately sourced research finding.
+- **Recovered weights (sum 100):** source quality 25; political/documentary event strength 20; independent confirmations 15; documented company/sector relationship 15; timeliness 10; sector impact 10; social signal 5.
+- **Recorded penalties:** unverifiable, duplicate, stale, contradictory, or undocumented evidence must reduce or disqualify a candidate. Unsupported relationship/sector/social evidence stays at zero rather than being inferred.
+- **Implementation mapping:** `sputnik_ranking.py` → SEC/Form 4 source validation, filing identity/deduplication, chronology checks, component scoring and `/ranking` / “Trump ordina” output; regression coverage in `tests/test_sputnik_ranking.py`. PR #53 contains the current implementation work.
+- **CI evidence:** PR #53 records passing ranking and Telegram-menu tests on the tested code commit `cb79a0f680aec16a82b41d4248631515c0bd7071`; later branch changes must be checked independently before merge.
+- **Deployment:** PR #53 remains open; no merge/deploy. Render's latest known successful Sputnik deployment is commit `9e5204bf7d9074dba27637013b7d98933a91e733`; the later attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed. The live service is not using this PR's code.
+- **Empirical limit:** the rubric is an accepted scoring specification, not a validated probability model. No historical replay, calibration, or out-of-sample profitability result is claimed.
+- **Terminology:** this recovered item is a 100-point score rubric; it is not evidence of a separate catalog containing 100 individual lessons.
+
+
+
+## 2026-10-27 — Canonicalize default HTTPS ports for SEC filing deduplication
+
+- **Finding:** filing identity fallback removed query/fragment and lowercased the raw network location, but treated `https://www.sec.gov/path` and `https://www.sec.gov.:443/path` as different filings. Since both are accepted SEC archive URL forms, repeated transaction rows could inflate independent-confirmation points when accession metadata is absent.
+- **Change:** `sputnik_ranking.py::_filing_identity()` now normalizes the hostname's trailing dot and strips the scheme's default port before constructing the fallback identity; non-default ports remain distinct (and the upstream SEC URL gate rejects them).
+- **Operational path:** Form 4 rows → SEC URL/issuer validation → filing identity → distinct-confirmation score.
+- **Regression:** `tests/test_sputnik_ranking.py::test_filing_identity_normalizes_default_https_port_and_trailing_dot` verifies that default-port/trailing-dot/query/fragment variants count as one filing.
+- **CI:** queued by the PR branch update; record the final run after Actions completes.
+- **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline quota remains exhausted.
+- **Empirical limit:** this prevents a duplicate-confirmation artifact; it does not validate predictive value or out-of-sample returns. PAPER/DEMO only; no secrets, broker, orders or Telegram test messages.
+
+
+## 2026-10-27 — Map recovered IBKR session 9 lessons to Sputnik
+
+- **Source inspected:** Library file `Registro Studio IBKR - aggiornato 2026-10-20 sessione 9.md` (535 lines; updated 2026-10-20). It is a progressive study log, not the missing standalone 100-lesson catalog.
+- **Event-driven/no-look-ahead lesson:** the session 9 notes warn against generating a signal at a bar close and filling at that same close. Current work maps this to `sputnik_event_backtest.py` and `tests/test_sputnik_event_backtest.py` in open PR #45, where `event_time`, `available_at`, and `decision_time` are separated. PR #45 is not merged; no live use is claimed.
+- **Source integrity lesson:** SEC/Form 4 ranking maps to `sputnik_ranking.py` and `tests/test_sputnik_ranking.py` in this PR #53 branch: strict date-only fields, as-of chronology, SEC archive/issuer consistency, and canonical filing identity. This run additionally normalizes default ports and trailing-dot hosts for fallback filing deduplication.
+- **Cross-asset event hypothesis:** the IBKR session 9 oil/gold/Hormuz/PPI note proposes observing Brent-WTI spread and macro context around geopolitical headlines. This remains a hypothesis, not an implemented directional rule; the current PRs do not claim price/volume confirmation or OOS edge from that narrative.
+- **API pacing boundary:** the documented IBKR limits apply to an IBKR Web API adapter; Sputnik's SEC/White House/RSS sources have separate access rules. Do not transplant IBKR rate limits to those feeds.
+- **CI:** ranking and Telegram menu workflows passed on branch head `e54a8ef3221cdcbc5516ddae7f36f2e7259fc42e` before this documentation-only update. This log edit does not establish market validation.
+- **Empirical/deployment status:** no filing replay, calibration, walk-forward result, merge, or Render deployment is claimed. Render quota remains exhausted; PAPER/DEMO only.
+- **Catalog integrity:** the original complete 100-item catalog was not retrieved; only the actual IBKR session 9 log and specific historical summaries are mapped. No missing lesson numbers are invented.

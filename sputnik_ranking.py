@@ -6,24 +6,33 @@ infers private transactions, motives, or undocumented relationships.
 
 from __future__ import annotations
 
+import re
 from collections import defaultdict
 from datetime import date, datetime, timezone
 from typing import Any
+from urllib.parse import urlsplit, urlunsplit
 
 BUY_THRESHOLD = 75
 WATCH_THRESHOLD = 55
 
 
 def _parse_date(value: str) -> date | None:
-    if not value:
+    """Parse an SEC calendar-date field strictly; never salvage a valid prefix.
+
+    Transaction and filing dates are date-only fields, not timestamps. A caller
+    must normalize any source timestamp explicitly before ranking; accepting a
+    timestamp or trailing garbage here can silently move an event across an
+    as-of boundary.
+    """
+    if not isinstance(value, str):
+        return None
+    text = value.strip()
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", text):
         return None
     try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00")).date()
+        return date.fromisoformat(text)
     except ValueError:
-        try:
-            return date.fromisoformat(value[:10])
-        except ValueError:
-            return None
+        return None
 
 
 def _recency_score(transaction_date: str, today: date | None = None) -> int:
@@ -44,6 +53,17 @@ def _recency_score(transaction_date: str, today: date | None = None) -> int:
         return 2
     return 0
 
+
+
+def _filing_chronology_is_valid(item: dict[str, Any], as_of: date) -> bool:
+    """Require a complete, plausible Form 4 chronology for an as-of ranking."""
+    tx_date = _parse_date(str(item.get("transaction_date") or ""))
+    filing_date = _parse_date(str(item.get("filing_date") or ""))
+    if tx_date is None or filing_date is None:
+        return False
+    # A transaction cannot be disclosed before it occurred, and a historical
+    # score must not use a transaction or filing that is still in the future.
+    return tx_date <= filing_date <= as_of
 
 def disclosure_lag(transaction_date: str, filing_date: str) -> int | None:
     """Return calendar days between the documented transaction and filing dates."""
@@ -86,18 +106,119 @@ def disclosure_lag_bucket(transaction_date: str, filing_date: str) -> str:
     return "OLTRE_45_GIORNI"
 
 
+def _filing_identity(item: dict[str, Any]) -> str:
+    """Return a stable filing identity; transactions from one filing count once."""
+    accession = str(item.get("accession_number") or item.get("accession") or "").strip()
+    if accession:
+        normalized_accession = "".join(char for char in accession.lower() if char.isalnum())
+        if normalized_accession:
+            return f"accession:{normalized_accession}"
+
+    source_url = str(item.get("source_url") or "").strip()
+    try:
+        parsed = urlsplit(source_url)
+        scheme = parsed.scheme.lower()
+        host = (parsed.hostname or "").lower().rstrip(".")
+        if scheme in {"http", "https"} and host:
+            port = parsed.port
+            # Explicit default ports and trailing-dot DNS names identify the
+            # same HTTPS filing URL and must not inflate distinct confirmations.
+            if (scheme, port) in {("https", 443), ("http", 80)}:
+                port = None
+            netloc = host if port is None else f"{host}:{port}"
+            canonical = urlunsplit((
+                scheme,
+                netloc,
+                parsed.path.rstrip("/"),
+                "",
+                "",
+            ))
+            if canonical:
+                return f"url:{canonical}"
+    except ValueError:
+        pass
+    return f"url:{source_url}"
+
+
+def _is_primary_sec_form4_url(value: Any) -> bool:
+    """Accept only unambiguous HTTPS SEC EDGAR archive document URLs."""
+    if not isinstance(value, str) or not value.strip():
+        return False
+    try:
+        parsed = urlsplit(value.strip())
+        if parsed.scheme.lower() != "https":
+            return False
+        if parsed.username is not None or parsed.password is not None:
+            return False
+        if parsed.port not in (None, 443):
+            return False
+        host = (parsed.hostname or "").lower().rstrip(".")
+        if host not in {"sec.gov", "www.sec.gov"}:
+            return False
+        parts = [part for part in parsed.path.split("/") if part]
+        if len(parts) < 6:
+            return False
+        if [part.lower() for part in parts[:3]] != ["archives", "edgar", "data"]:
+            return False
+        # SEC archive paths use a numeric CIK and the 18-digit, dashless
+        # accession number. Do not award primary-source points to arbitrary
+        # directories that merely resemble an EDGAR URL.
+        cik, accession = parts[3], parts[4]
+        if not cik.isdigit() or len(accession) != 18 or not accession.isdigit():
+            return False
+        document = parts[-1].lower()
+        if document in {"index.htm", "index.html"}:
+            return False
+        return document.endswith((".xml", ".htm", ".html", ".txt"))
+    except (TypeError, ValueError):
+        return False
+
+
+def _source_matches_filing_identity(item: dict[str, Any]) -> bool:
+    """Require a primary SEC URL to agree with the row's issuer and accession.
+
+    URL shape alone proves only that a URL looks like an EDGAR document; it
+    does not prove that it is the document described by this transaction row.
+    """
+    source_url = item.get("source_url")
+    if not _is_primary_sec_form4_url(source_url):
+        return False
+    cik_value = str(item.get("cik") or "").strip()
+    if not cik_value.isdigit():
+        return False
+    try:
+        parsed = urlsplit(source_url.strip())
+    except (AttributeError, TypeError, ValueError):
+        return False
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 6 or int(parts[3]) != int(cik_value):
+        return False
+
+    accession_value = str(
+        item.get("accession_number") or item.get("accession") or item.get("accession_no") or ""
+    ).strip()
+    if accession_value:
+        normalized_accession = "".join(char for char in accession_value if char.isalnum())
+        if not normalized_accession or normalized_accession != parts[4]:
+            return False
+    return True
+
+
 def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     """Score one documented security candidate from Form 4 purchases.
 
     A single SEC filing cannot reach BUY: confirmation points require distinct
-    filing events. Unsupported relationship, sector and social points remain zero.
+    filing events. Only primary HTTPS SEC EDGAR archive URLs qualify for the
+    primary-source score. Unsupported relationship, sector and social points remain zero.
     """
 
+    as_of = today or datetime.now(timezone.utc).date()
     valid = [
         item for item in items
         if item.get("action") == "ACQUISTATO"
         and item.get("source_kind") == "FORM4_TRANSACTION"
-        and item.get("source_url")
+        and _source_matches_filing_identity(item)
+        and _filing_chronology_is_valid(item, as_of)
     ]
     if not valid:
         return {}
@@ -105,17 +226,17 @@ def score_purchase_candidate(items: list[dict[str, Any]], today: date | None = N
     valid.sort(key=lambda x: str(x.get("transaction_date") or ""), reverse=True)
     latest = valid[0]
 
-    filing_ids = {
-        (str(x.get("event_id") or ""), str(x.get("transaction_date") or ""))
-        for x in valid
-    }
+    # Multiple transaction rows from the same Form 4 must not count as
+    # independent confirmations. Prefer the SEC accession when available;
+    # otherwise use the canonical source permalink.
+    filing_ids = {_filing_identity(item) for item in valid}
     distinct_filings = len(filing_ids)
 
     source_quality = 25       # SEC primary document.
-    event_strength = 25       # Form 4 purchase code P.
+    event_strength = 20       # Historical 100-point rubric: documented event.
     confirmations = min(15, distinct_filings * 5)
     documented_relationship = 0
-    recency = _recency_score(str(latest.get("transaction_date") or ""), today)
+    recency = _recency_score(str(latest.get("transaction_date") or ""), as_of)
     sector_impact = 0
     social_confirmation = 0
 
@@ -178,6 +299,7 @@ def rank_purchase_candidates(
     limit: int = 5,
     today: date | None = None,
 ) -> list[dict[str, Any]]:
+    as_of = today or datetime.now(timezone.utc).date()
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for item in transactions:
         if item.get("action") != "ACQUISTATO":
@@ -197,7 +319,7 @@ def rank_purchase_candidates(
         grouped[key].append(item)
 
     ranked = [
-        score_purchase_candidate(items, today=today)
+        score_purchase_candidate(items, today=as_of)
         for items in grouped.values()
     ]
     ranked = [item for item in ranked if item]
