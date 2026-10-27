@@ -149,10 +149,10 @@ def _canonical_source_url(value: str) -> str:
 def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
     """Load a traceable event ledger with exact timezone-aware publication times.
 
-    Required columns: event_id,event_time,side,atr,atr_time,source_url.
+    Required columns: event_id,event_time,available_at,side,atr,atr_time,source_url.
     The URL is provenance metadata; its presence does not independently verify the claim.
     """
-    required = {"event_id", "event_time", "side", "atr", "atr_time", "source_url"}
+    required = {"event_id", "event_time", "available_at", "side", "atr", "atr_time", "source_url"}
     events = []
     seen_ids = set()
     seen_sources = set()
@@ -160,7 +160,7 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
         reader = csv.DictReader(handle)
         if not required.issubset(set(reader.fieldnames or [])):
             raise ValueError(
-                "event CSV requires columns: event_id,event_time,side,atr,atr_time,source_url"
+                "event CSV requires columns: event_id,event_time,available_at,side,atr,atr_time,source_url"
             )
         for row_number, row in enumerate(reader, start=2):
             event_id = str(row.get("event_id") or "").strip()
@@ -170,6 +170,9 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
                 raise ValueError(f"event_id must be unique: {event_id}")
             seen_ids.add(event_id)
             event_dt = _dt(str(row.get("event_time") or "").strip())
+            available_dt = _dt(str(row.get("available_at") or "").strip())
+            if available_dt < event_dt:
+                raise ValueError(f"event CSV row {row_number} available_at is before event_time")
             atr_dt = _dt(str(row.get("atr_time") or "").strip())
             if atr_dt > event_dt:
                 raise ValueError(f"event CSV row {row_number} ATR timestamp is after event time")
@@ -190,6 +193,7 @@ def load_events_csv(path: str | Path) -> list[dict[str, Any]]:
             events.append({
                 "event_id": event_id,
                 "event_time": event_dt.isoformat(),
+                "available_at": available_dt.isoformat(),
                 "side": side,
                 "atr": atr,
                 "atr_time": atr_dt.isoformat(),
@@ -287,6 +291,7 @@ def backtest_event(
     atr: float,
     *,
     atr_time: str,
+    available_at: str,
     stop_atr: float = 1.0,
     target_r: float = 2.0,
     breakout_lookback: int = 3,
@@ -319,6 +324,9 @@ def backtest_event(
     if spread < 0:
         raise ValueError("spread must be non-negative; pass the round-trip cost in price units")
     event_dt = _dt(event_time)
+    available_dt = _dt(available_at)
+    if available_dt < event_dt:
+        raise ValueError("available_at must be at or after event_time")
     atr_dt = _dt(atr_time)
     if atr_dt > event_dt:
         raise ValueError("ATR timestamp must be at or before event time to prevent look-ahead bias")
@@ -326,34 +334,35 @@ def backtest_event(
     _validate_candle_values(candles)
     data_quality = _bar_gap_diagnostics(candles, bar_interval_minutes)
     if not candles:
-        return {"event_time": event_dt.isoformat(), "side": side, "early": {"status": "NO_DATA"}, "breakout": {"status": "NO_DATA"}, "data_quality": data_quality}
+        return {"event_time": event_dt.isoformat(), "available_at": available_dt.isoformat(), "side": side, "early": {"status": "NO_DATA", "decision_time": available_dt.isoformat()}, "breakout": {"status": "NO_DATA"}, "data_quality": data_quality}
 
-    next_index = next((i for i, c in enumerate(candles) if c["timestamp"] > event_dt), None)
-    event_gap_minutes = None
-    event_gap_unmodeled = False
+    next_index = next((i for i, c in enumerate(candles) if c["timestamp"] > available_dt), None)
+    availability_gap_minutes = None
+    availability_gap_unmodeled = False
     if next_index is None:
-        early = {"status": "NO_POST_EVENT_CANDLE"}
+        early = {"status": "NO_POST_AVAILABILITY_CANDLE"}
     else:
-        event_gap_minutes = (candles[next_index]["timestamp"] - event_dt).total_seconds() / 60.0
-        event_gap_unmodeled = event_gap_minutes > bar_interval_minutes
-        if event_gap_unmodeled:
+        availability_gap_minutes = (candles[next_index]["timestamp"] - available_dt).total_seconds() / 60.0
+        availability_gap_unmodeled = availability_gap_minutes > bar_interval_minutes
+        if availability_gap_unmodeled:
             early = {
                 "status": "UNMODELED_SESSION_GAP",
-                "gap_start_time": event_dt.isoformat(),
+                "gap_start_time": available_dt.isoformat(),
                 "gap_end_time": candles[next_index]["timestamp"].isoformat(),
-                "gap_minutes": round(event_gap_minutes, 2),
+                "gap_minutes": round(availability_gap_minutes, 2),
             }
         else:
             early = _simulate(candles, next_index, candles[next_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes)
+    early["decision_time"] = available_dt.isoformat()
 
     breakout = {"status": "NO_BREAKOUT"}
     start = next_index if next_index is not None else len(candles)
-    if event_gap_unmodeled:
+    if availability_gap_unmodeled:
         breakout = {
             "status": "UNMODELED_SESSION_GAP",
-            "gap_start_time": event_dt.isoformat(),
+            "gap_start_time": available_dt.isoformat(),
             "gap_end_time": candles[next_index]["timestamp"].isoformat(),
-            "gap_minutes": round(event_gap_minutes, 2),
+            "gap_minutes": round(availability_gap_minutes, 2),
         }
     else:
         for i in range(start, len(candles)):
@@ -392,18 +401,20 @@ def backtest_event(
                         # the next candle's open, never the already-observed signal close.
                         breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread, bar_interval_minutes)
                         breakout["signal_time"] = candles[i]["timestamp"].isoformat()
+                        breakout["decision_time"] = candles[i]["timestamp"].isoformat()
                         breakout["signal_close"] = round(candles[i]["close"], 8)
                         breakout["entry_model"] = "next_bar_open_after_close_confirmation"
                 break
 
     return {
         "event_time": event_dt.isoformat(),
+        "available_at": available_dt.isoformat(),
         "side": side,
         "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread, "bar_interval_minutes": bar_interval_minutes},
         "data_quality": data_quality,
         "early": early,
         "breakout": breakout,
-        "interpretation": "Historical simulation only; any gap above the declared bar interval is not treated as continuous trading time; use a verified instrument/session calendar before scoring across such gaps.",
+        "interpretation": "Historical simulation only. Early-entry timing uses available_at, not just publication event_time; breakout decision_time is the signal-bar timestamp and fills occur on the next bar. Unmodeled gaps fail closed.",
     }
 
 
@@ -601,6 +612,7 @@ def backtest_events(
             event["side"],
             event["atr"],
             atr_time=event["atr_time"],
+            available_at=event["available_at"],
             stop_atr=stop_atr,
             target_r=target_r,
             breakout_lookback=breakout_lookback,
@@ -625,6 +637,7 @@ def main() -> None:
     parser.add_argument("--side", choices=("LONG", "SHORT"))
     parser.add_argument("--atr", type=float, help="ATR known at event time, in price units")
     parser.add_argument("--atr-time", help="Timestamp when the supplied ATR was available; must be <= event time")
+    parser.add_argument("--available-at", help="Timestamp when the catalyst became available to the system; must be >= event time")
     parser.add_argument("--stop-atr", type=float, default=1.0)
     parser.add_argument("--target-r", type=float, default=2.0)
     parser.add_argument("--lookback", type=int, default=3)
@@ -642,15 +655,15 @@ def main() -> None:
         "bar_interval_minutes": args.bar_interval_minutes,
     }
     if args.events_csv:
-        if any(value is not None for value in (args.event_time, args.side, args.atr, args.atr_time)):
+        if any(value is not None for value in (args.event_time, args.available_at, args.side, args.atr, args.atr_time)):
             parser.error("use either --events-csv or the single-event arguments, not both")
         result = backtest_events(candles, load_events_csv(args.events_csv), **strategy_options)
     else:
-        if any(value is None for value in (args.event_time, args.side, args.atr, args.atr_time)):
-            parser.error("single-event mode requires --event-time, --side, --atr and --atr-time")
+        if any(value is None for value in (args.event_time, args.available_at, args.side, args.atr, args.atr_time)):
+            parser.error("single-event mode requires --event-time, --available-at, --side, --atr and --atr-time")
         result = backtest_event(
             candles, args.event_time, args.side, args.atr, atr_time=args.atr_time,
-            **strategy_options,
+            available_at=args.available_at, **strategy_options,
         )
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
