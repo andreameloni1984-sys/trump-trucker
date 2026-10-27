@@ -21,6 +21,19 @@ def _dt(value: str) -> datetime:
     return parsed
 
 
+
+def _validate_candle_timestamps(candles: list[dict[str, Any]]) -> None:
+    """Reject ambiguous bar times before event sequencing or breakout evaluation."""
+    seen = set()
+    for candle in candles:
+        timestamp = candle.get("timestamp")
+        if not isinstance(timestamp, datetime) or timestamp.tzinfo is None or timestamp.utcoffset() is None:
+            raise ValueError("candle timestamps must be timezone-aware datetime values")
+        if timestamp in seen:
+            raise ValueError(f"candle timestamps must be unique; duplicate timestamp: {timestamp.isoformat()}")
+        seen.add(timestamp)
+
+
 def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
     """Load timestamp,open,high,low,close,volume CSV rows in chronological order."""
     candles = []
@@ -39,6 +52,7 @@ def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
                 raise ValueError("candle low is inconsistent with OHLC values")
             candles.append(candle)
     candles.sort(key=lambda candle: candle["timestamp"])
+    _validate_candle_timestamps(candles)
     return candles
 
 
@@ -106,6 +120,7 @@ def backtest_event(
     if atr <= 0 or stop_atr <= 0 or target_r <= 0 or breakout_lookback < 1 or max_holding_bars < 1:
         raise ValueError("ATR, stop, target, lookback and holding bars must be positive")
     event_dt = _dt(event_time)
+    _validate_candle_timestamps(candles)
     candles = sorted(candles, key=lambda candle: candle["timestamp"])
     if not candles:
         return {"event_time": event_dt.isoformat(), "side": side, "early": {"status": "NO_DATA"}, "breakout": {"status": "NO_DATA"}}

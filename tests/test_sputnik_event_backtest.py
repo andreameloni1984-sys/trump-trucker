@@ -76,5 +76,23 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(result["breakout"]["status"], "NO_BREAKOUT")
 
 
+    def test_duplicate_candle_timestamps_are_rejected(self):
+        data = candles([
+            (100, 101, 99, 100, 1000),
+            (99, 100, 98, 99, 1200),
+        ])
+        data[1]["timestamp"] = data[0]["timestamp"]
+        with self.assertRaisesRegex(ValueError, "timestamps must be unique"):
+            backtest_event(data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0)
+
+    def test_naive_candle_timestamps_are_rejected(self):
+        data = candles(
+            [(100, 101, 99, 100, 1000)],
+            start=datetime(2026, 1, 1),
+        )
+        with self.assertRaisesRegex(ValueError, "timezone-aware"):
+            backtest_event(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0)
+
+
 if __name__ == "__main__":
     unittest.main()
