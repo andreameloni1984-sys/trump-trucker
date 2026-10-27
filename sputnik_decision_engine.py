@@ -134,7 +134,7 @@ def decision_message(text: str, source: str = "Fonte pubblica") -> str:
             "✅ Azione: archiviare senza inviare un alert di trading; rivalutare soltanto se il testo contiene una politica concreta con impatto identificabile.",
             "🛑 Nessun LONG/SHORT, nessun ingresso e nessun livello inventato.",
         ])
-        return "\\n".join(lines)
+        return "\n".join(lines)
 
     if plans:
         plan = plans[0]
