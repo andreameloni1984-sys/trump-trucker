@@ -178,6 +178,45 @@ def _is_negated_iran_deescalation(text: str) -> bool:
     """Abstain when an Iran deal/ceasefire/sanctions easing is explicitly denied."""
     return any(re.search(pattern, text, re.IGNORECASE) for pattern in _NEGATED_IRAN_DEESCALATION_PATTERNS)
 
+_NEGATION_BEFORE_MATCH = re.compile(
+    r"\\b(?:no|not|never|failed to|fails to|reject(?:s|ed)?|den(?:y|ies|ied)|ruled out|without)\\b[^.!?]{0,60}$",
+    re.IGNORECASE,
+)
+_NEGATION_AFTER_MATCH = re.compile(
+    r"^\\s*(?:(?:was|were|is|are|has been|have been|had been|will be)\\s+)?"
+    r"(?:not\\s+(?:reached|announced|approved|implemented|expected|planned|lifted|eased|restored|increased|cut|confirmed)|"
+    r"rejected|denied|ruled out|failed|collapsed|off)\\b",
+    re.IGNORECASE,
+)
+
+
+def _is_explicitly_negated_rule_match(text: str, patterns: list[str]) -> bool:
+    """Return True when a matched catalyst is explicitly denied in its sentence.
+
+    This is a conservative keyword guard, not full natural-language understanding.
+    Ambiguous cases should abstain rather than produce a directional hypothesis.
+    """
+    for pattern in patterns:
+        for match in re.finditer(pattern, text, re.IGNORECASE):
+            left_boundary = max(
+                text.rfind(".", 0, match.start()),
+                text.rfind("!", 0, match.start()),
+                text.rfind("?", 0, match.start()),
+            ) + 1
+            right_candidates = [
+                position for position in (
+                    text.find(".", match.end()),
+                    text.find("!", match.end()),
+                    text.find("?", match.end()),
+                ) if position >= 0
+            ]
+            right_boundary = min(right_candidates) if right_candidates else len(text)
+            before = text[left_boundary:match.start()]
+            after = text[match.end():right_boundary]
+            if _NEGATION_BEFORE_MATCH.search(before) or _NEGATION_AFTER_MATCH.search(after):
+                return True
+    return False
+
 
 def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) -> list[dict[str, Any]]:
     """Map explicit, recognized public-news language to cautious directional biases.
@@ -208,6 +247,10 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
             if rule["id"] == "iran_diplomatic_deescalation" and negated_iran_deescalation:
                 continue
             if not any(re.search(pattern, text, re.IGNORECASE) for pattern in rule["patterns"]):
+                continue
+            # A negated headline must not be inverted into the opposite bias
+            # (e.g. "no production cut" must not imply LONG oil).
+            if _is_explicitly_negated_rule_match(text, rule["patterns"]):
                 continue
             for instrument, bias in rule["bias"].items():
                 key = (str(finding["event_id"]), instrument)
