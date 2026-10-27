@@ -360,3 +360,10 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Source audit:** the Library file “Registro Studio IBKR - aggiornato 2026-10-20 sessione 9.md” contains the IBKR study sessions and numbered material through 32, not the original 100+ point register. The retrieved historical context does not contain points 1–99 in full; they are deliberately not reconstructed.
 - **Implementation mapping:** the breakout timestamp correction in this PR is a point-in-time audit improvement, not implementation of sweep detection. Point 103's sweep-specific detector and point 101's overnight-volatility study remain unimplemented; point 102 needs instrument-specific out-of-sample evidence. Do not label these as completed.
 - **Validation boundary:** the recovered register is a historical research source, not evidence of profitability. PAPER ONLY; no merge, deploy, broker, or orders.
+
+## 2026-10-27 — Verification follow-up for causal breakout timestamps
+
+- **Code commit:** `fe9c160b7a5fa48e8f2af003de2ffb4b53252ec6`; **regression-test commit:** `fecae28557af1f3689ed17cc098dfe18821ef4ef`.
+- **CI:** SPUTNIK ranking tests passed on the code/test revision in run [40522083277](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40522083277); the later log-only revision also passed in run [40522102565](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40522102565). The subsequent historical-register edit is documentation-only.
+- **Deployment:** PR #45 remains open and unmerged. No Render/Telegram runtime-log connector was available in this execution, so production deployment and message delivery are not confirmed. Render build-pipeline quota remains a deployment blocker.
+- **Safety:** PAPER ONLY; no secret values inspected, no Telegram test message, no broker, no orders.
