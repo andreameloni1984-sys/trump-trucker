@@ -136,6 +136,8 @@ class SputnikEventBacktestTests(unittest.TestCase):
         data = candles([(100, 101, 99, 100, 1000)])
         result = run_backtest(data, "2026-01-02T00:00:00+00:00", "LONG", 1.0)
         self.assertEqual(result["early"]["status"], "NO_POST_AVAILABILITY_CANDLE")
+        self.assertEqual(result["breakout"]["status"], "INSUFFICIENT_BREAKOUT_OBSERVATION")
+        self.assertEqual(result["breakout"]["signal_bars_observed"], 0)
 
     def test_truncated_forward_window_is_unscored_instead_of_marked_to_data_end(self):
         data = candles([
@@ -302,9 +304,30 @@ class SputnikEventBacktestTests(unittest.TestCase):
             (100, 100.3, 99.5, 100, 1000),
             (100, 100.2, 99.6, 100, 1000),
         ])
-        result = run_backtest(data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0, breakout_lookback=2)
+        result = run_backtest(
+            data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0,
+            breakout_lookback=2, max_breakout_wait_bars=2,
+        )
         self.assertIn("status", result["early"])
-        self.assertEqual(result["breakout"]["status"], "NO_BREAKOUT")
+        self.assertEqual(result["breakout"]["status"], "NO_BREAKOUT_WITHIN_WINDOW")
+        self.assertEqual(result["breakout"]["signal_bars_observed"], 2)
+        self.assertEqual(result["breakout"]["required_signal_bars"], 2)
+
+    def test_breakout_without_trigger_is_unscored_when_observation_window_is_truncated(self):
+        data = candles([
+            (100, 101, 99, 100, 1000),
+            (100, 100.4, 99.4, 100, 1000),
+            (100, 100.3, 99.5, 100, 1000),
+            (100, 100.2, 99.6, 100, 1000),
+        ])
+        result = run_backtest(
+            data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0,
+            breakout_lookback=2, max_breakout_wait_bars=3,
+        )
+        self.assertEqual(result["breakout"]["status"], "INSUFFICIENT_BREAKOUT_OBSERVATION")
+        self.assertEqual(result["breakout"]["signal_bars_observed"], 2)
+        self.assertEqual(result["breakout"]["required_signal_bars"], 3)
+        self.assertIsNone(result["breakout"].get("pnl_r"))
 
     def test_out_of_order_candle_timestamps_are_rejected_in_direct_input(self):
         data = candles([
@@ -606,7 +629,7 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(summary["mean_early_minus_breakout_r"], 0.0)
         self.assertEqual(summary["ties_count"], 1)
         self.assertEqual(summary["unscored_early_status_counts"], {"NO_POST_AVAILABILITY_CANDLE": 1})
-        self.assertEqual(summary["unscored_breakout_status_counts"], {"NO_BREAKOUT": 1})
+        self.assertEqual(summary["unscored_breakout_status_counts"], {"INSUFFICIENT_BREAKOUT_OBSERVATION": 1})
         self.assertEqual(result["results"][0]["source_url"], "https://example.com/event/1")
 
 
