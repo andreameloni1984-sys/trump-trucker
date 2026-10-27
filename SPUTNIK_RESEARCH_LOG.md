@@ -152,3 +152,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** PR #53 branch only; no merge or deploy. Render workspace was not selected; live commit not re-verified.
 - **Empirical limit:** identity/provenance integrity only; no filing replay, market outcome study, or out-of-sample return validation.
 - **Safety:** PAPER/DEMO ONLY; no secrets, broker, orders, or Telegram test messages.
+
+
+## Verification — 2026-10-27 09:07 UTC (SEC row/URL identity)
+
+- **Final code commit:** `f5f9f3acd4d47da02346ef2eda3149b1a5b10ccc`
+- **Regression tests commit:** `3806d87b9387d9b0d9d9075babb76c9f38291dc4`
+- **Research log prior commit:** `4f98d38376321c8fc25a8d8dc2588c9bdc849dec`
+- **CI on final code/test/log head:** ranking tests [run 40478611051](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40478611051) and Telegram menu tests [run 40478611202](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40478611202), both SUCCESS.
+- **Deployment:** PR #53 branch only; not merged or deployed. Render workspace not selected, so live commit was not checked this run.
+- **Empirical limit:** provenance consistency only; no filing replay or out-of-sample return test.
