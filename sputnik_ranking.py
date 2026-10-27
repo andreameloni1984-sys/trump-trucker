@@ -27,7 +27,7 @@ def _parse_date(value: str) -> date | None:
     if not isinstance(value, str):
         return None
     text = value.strip()
-    if not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", text):
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", text):
         return None
     try:
         return date.fromisoformat(text)
