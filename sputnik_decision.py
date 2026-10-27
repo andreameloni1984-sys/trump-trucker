@@ -48,7 +48,7 @@ SCENARIOS = [
         "candidate": "WTI (petrolio USA)",
         "bias": "SHORT condizionale",
         "if_then": "Con progressi diplomatici credibili, si può valutare un ingresso anticipato esplorativo SHORT anche prima del breakout, con size ridotta e stop definito; la rottura del minimo con pressione di vendita è una conferma aggiuntiva, non un requisito assoluto.",
-        "confirmation": "Preferibile: conferma indipendente della notizia e pressione di vendita. Il breakout del minimo aumenta la confidenza ma non è obbligatorio per un ingresso esplorativo; verificare sempre i rischi di nuove interruzioni dell'offerta.",
+        "confirmation": "Preferibile: conferma indipendente della notizia e pressione di vendita, idealmente accompagnata da volumi coerenti. Il breakout del minimo aumenta la confidenza ma non è obbligatorio per un ingresso esplorativo; verificare sempre i rischi di nuove interruzioni dell'offerta.",
         "invalidation": "Nuovi attacchi alle infrastrutture o alle rotte, smentita dei progressi diplomatici, oppure recupero del livello di rottura.",
         "source_quality": "La diplomazia può ridurre il premio di rischio, ma l'effetto è condizionale e può essere compensato da interruzioni dell'offerta.",
     },
