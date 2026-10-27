@@ -124,3 +124,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI finding:** an earlier main-branch ranking run failed `test_message_has_confirmation_and_invalidation`; the current main file includes the expected invalidation line, but a fresh passing run on the current SHA is still required. This change is separate and does not claim to fix that prior run.
 - **Deployment:** no merge/deploy; Render build-pipeline minutes remain exhausted. The change is on a non-main branch and no Render preview is configured.
 - **Limits:** deterministic keyword matching only; no headline replay, price/volume event study, or OOS edge established. PAPER ONLY.
+
+
+## 2026-10-27 — Preserve plural tariff topics after whole-word matching
+
+- **CI finding:** the first PR #55 run failed two existing positive-control tests. The new whole-word matcher correctly stopped the false `hit` substring inside `White`, but it also exposed that the rule table listed singular `tariff` while the valid headline says `tariffs`.
+- **Correction:** explicitly add `tariffs` (and `import duties`) to the tariff-escalation topic vocabulary, and add the plural `tariffs` to the trade-de-escalation vocabulary. This keeps word-boundary matching strict without losing known inflections.
+- **Regression:** existing `test_tariff_action` is the positive control for “announces new tariffs”; the new word-fragment negative test remains.
+- **CI:** rerun pending on the corrective commit. The previous PR #55 run failed at `test_tariff_action` and `test_message_has_confirmation_and_invalidation` because no catalyst was matched; do not treat that run as passing.
+- **Deployment:** no merge/deploy. PAPER ONLY; no live alert delivery or market edge is claimed.
