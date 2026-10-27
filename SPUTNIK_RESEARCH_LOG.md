@@ -104,3 +104,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 — Fall back from empty RSS/Atom fields
+
+- **Finding:** `sputnik_public_sources.py::_text` returned the first matching child even when its content was empty. An empty `content:encoded` could mask a valid later `description`; an empty `pubDate` could mask a valid `updated` timestamp. This drops evidence and may degrade point-in-time metadata.
+- **Change:** scan matching direct children in document order and return the first non-empty value; return empty only if all matching fields are empty.
+- **Files:** `sputnik_public_sources.py`; `tests/test_sputnik_public_sources.py`.
+- **Regression:** RSS item with empty encoded content and empty pubDate but valid description/updated fields retains both body and timestamp.
+- **Code commit:** `2482df5519c5953db5eab9f6c5571e243c09fb2d`; **test commit:** `de50bd837c331b4778f8d67caa792c42d50b2bd1`.
+- **CI:** pending PR workflow; no passing result claimed until GitHub Actions completes.
+- **Empirical validation:** no live-feed replay performed; parser regression only, no predictive-performance claim.
+- **Deployment:** branch only; no merge or Render deploy due exhausted build-pipeline minutes.
+- **Safety:** PAPER/DEMO only; no Telegram test messages, broker or orders.

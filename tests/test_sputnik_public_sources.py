@@ -60,6 +60,22 @@ class PublicFeedParserTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["url"], "https://social.example/@public/10")
 
+    def test_empty_preferred_fields_fall_back_to_nonempty_description_and_date(self):
+        raw = b'''<rss xmlns:content="http://purl.org/rss/1.0/modules/content/">
+          <channel><item>
+            <title>Energy supply update</title>
+            <content:encoded></content:encoded>
+            <description><![CDATA[<p>Port operations are delayed.</p>]]></description>
+            <pubDate></pubDate>
+            <updated>2026-10-27T03:00:00Z</updated>
+            <link>https://example.gov/energy/port-update</link>
+          </item></channel>
+        </rss>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["text"], "Port operations are delayed.")
+        self.assertEqual(rows[0]["published"], "2026-10-27T03:00:00Z")
+
     def test_invalid_xml_raises(self):
         with self.assertRaises(ValueError):
             parse_public_feed(b"<html>not a feed</html>", "https://example.gov/feed")
