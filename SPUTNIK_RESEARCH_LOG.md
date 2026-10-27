@@ -128,3 +128,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** PR #49 branch only; no merge/deploy. Render quota remains exhausted.
 - **Empirical limits:** no live-feed replay or price-outcome study; this is timestamp integrity, not directional evidence.
 - **Safety:** PAPER/DEMO ONLY; no broker, orders, secret-value inspection, or Telegram test messages.
+
+## 2026-10-27 — Recoverable early-October research record (catalog clarification)
+
+- **Recovered from prior conversation record (2026-10-03):** Sputnik's proposed pipeline was SOURCE → DOCUMENT → TRANSACTION → NORMALIZATION → DEDUPLICATION → MAPPING → SCORE. Recorded score factors included Document Confidence, Transaction Size, Recency, Disclosure Lag, Sector Concentration, Asset Concentration and Event Correlation. SEC/OGE/CFTC source types were to be distinguished; Form 144 is a proposed sale notice, not proof of an executed sale; COT is aggregate positioning, not attributable to an individual.
+- **Recovered from 2026-10-06 record:** a separate Sputnik 0–100 ranking concept was described with at least three distinct filings and a 75/100 threshold for a COMPRA classification. This is a scoring system, not a list of 100 lessons, and should not be applied to public-news catalysts without its own validation.
+- **Catalog status:** searches of the current Library and prior-conversation retrieval did not recover a numbered catalog of 100 distinct rules. Do not fabricate missing entries or treat unverified score weights as source facts.
+- **Current code relevance:** timestamp/freshness gate in `trump_tracker.py` remains the current implementation path; this record is research context, not proof of market predictiveness.
+- **Safety:** informational/PAPER only; no broker, order, or deployment.
