@@ -341,6 +341,8 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
         "gross_pnl_usd_per_contract": round(gross_pnl * contract_multiplier, 2),
         "net_pnl_usd_per_contract": round(net_pnl * contract_multiplier, 2),
         "round_trip_cost_usd_per_contract": round(round_trip_cost * contract_multiplier, 2),
+        "gross_pnl_r": round(gross_pnl / risk, 4),
+        "round_trip_cost_r": round(round_trip_cost / risk, 4),
         "pnl_r": round(net_pnl / risk, 4),
         "bars_held": exit_index - entry_index + 1,
     }
@@ -660,6 +662,7 @@ def _exact_two_sided_sign_test_p_value(differences: list[float]) -> float | None
 def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any]:
     """Summarize paired R outcomes without treating unscored trades as zero."""
     paired = []
+    gross_paired = []
     early_unscored = {}
     breakout_unscored = {}
     for result in results:
@@ -669,6 +672,17 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         breakout_r = breakout.get("pnl_r")
         if _is_scored_pnl(early_r) and _is_scored_pnl(breakout_r):
             paired.append((float(early_r), float(breakout_r)))
+            gross_early_r = early.get("gross_pnl_r")
+            gross_breakout_r = breakout.get("gross_pnl_r")
+            early_cost_r = early.get("round_trip_cost_r")
+            breakout_cost_r = breakout.get("round_trip_cost_r")
+            if all(_is_scored_pnl(value) for value in (
+                gross_early_r, gross_breakout_r, early_cost_r, breakout_cost_r
+            )):
+                gross_paired.append((
+                    float(gross_early_r), float(gross_breakout_r),
+                    float(early_cost_r), float(breakout_cost_r),
+                ))
         else:
             if not _is_scored_pnl(early_r):
                 status = str(early.get("status", "UNKNOWN"))
@@ -682,6 +696,15 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
     mean_breakout = statistics.mean(breakout for _, breakout in paired) if paired else None
     mean_difference = statistics.mean(differences) if differences else None
     median_difference = statistics.median(differences) if differences else None
+    mean_early_gross = statistics.mean(row[0] for row in gross_paired) if gross_paired else None
+    mean_breakout_gross = statistics.mean(row[1] for row in gross_paired) if gross_paired else None
+    mean_gross_difference = statistics.mean(row[0] - row[1] for row in gross_paired) if gross_paired else None
+    mean_early_cost_r = statistics.mean(row[2] for row in gross_paired) if gross_paired else None
+    mean_breakout_cost_r = statistics.mean(row[3] for row in gross_paired) if gross_paired else None
+    net_minus_gross_difference = (
+        mean_difference - mean_gross_difference
+        if mean_difference is not None and mean_gross_difference is not None else None
+    )
     early_windows, early_overlaps = _overlapping_scored_trade_pairs(results, "early")
     breakout_windows, breakout_overlaps = _overlapping_scored_trade_pairs(results, "breakout")
     non_overlap_differences, non_overlap_excluded, non_overlap_missing_times = _non_overlapping_paired_differences(results)
@@ -695,6 +718,13 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         "overlapping_trade_pairs_early": early_overlaps,
         "overlapping_trade_pairs_breakout": breakout_overlaps,
         "paired_scored_events": len(paired),
+        "paired_gross_scored_events": len(gross_paired),
+        "mean_early_gross_r_paired": round(mean_early_gross, 4) if mean_early_gross is not None else None,
+        "mean_breakout_gross_r_paired": round(mean_breakout_gross, 4) if mean_breakout_gross is not None else None,
+        "mean_early_minus_breakout_gross_r_paired": round(mean_gross_difference, 4) if mean_gross_difference is not None else None,
+        "mean_early_round_trip_cost_r_paired": round(mean_early_cost_r, 4) if mean_early_cost_r is not None else None,
+        "mean_breakout_round_trip_cost_r_paired": round(mean_breakout_cost_r, 4) if mean_breakout_cost_r is not None else None,
+        "net_minus_gross_difference_r_paired": round(net_minus_gross_difference, 4) if net_minus_gross_difference is not None else None,
         "non_overlapping_paired_events": len(non_overlap_differences),
         "non_overlapping_events_excluded_for_overlap": non_overlap_excluded,
         "non_overlapping_events_missing_timestamps": non_overlap_missing_times,
@@ -716,8 +746,14 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         "unscored_early_status_counts": early_unscored,
         "unscored_breakout_status_counts": breakout_unscored,
         "scoring_note": (
-            "R averages and paired differences use only events with numeric P&L for both strategies; "
-            "unscored outcomes are reported by status and are never treated as zero."
+            "Net R averages use only events with numeric P&L for both strategies; unscored outcomes are "
+            "reported by status and never treated as zero. Gross/net decomposition is reported only when "
+            "both strategies include finite gross_pnl_r and round_trip_cost_r."
+        ),
+        "gross_net_decomposition_note": (
+            "Gross R excludes configured spread, commission and slippage deductions; net R includes them. "
+            "net_minus_gross_difference_r_paired shows how the configured costs change the early-minus-breakout "
+            "mean difference. These are modelled costs, not verified fills or realized execution quality."
         ),
         "overlap_diagnostic_note": (
             "Overlapping scored trade windows are counted separately for each strategy. "
