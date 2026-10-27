@@ -27,12 +27,17 @@ def _sentences(text: str) -> list[str]:
         parts.extend(line.split("."))
     return [" ".join(part.lower().split()) for part in parts if part.strip()]
 
+def _contains_term(text: str, term: str) -> bool:
+    """Match a whole word/phrase, not a substring inside an unrelated word."""
+    return re.search(rf"(?<!\w){re.escape(term.lower())}(?!\w)", text.lower()) is not None
+
+
 def _evidence(text: str, rule: dict[str, tuple[str, ...]]) -> str:
     for sentence in _sentences(text):
         padded = " " + sentence + " "
         if any(term in padded for term in NEGATIONS):
             continue
-        if any(action in sentence for action in rule["actions"]) and any(topic in sentence for topic in rule["topics"]):
+        if any(_contains_term(sentence, action) for action in rule["actions"]) and any(_contains_term(sentence, topic) for topic in rule["topics"]):
             return sentence[:320]
     return ""
 

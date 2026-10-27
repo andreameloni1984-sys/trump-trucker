@@ -114,3 +114,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-27 — Match catalyst actions/topics as whole words
+
+- **Finding:** `sputnik_decision_engine.py::_evidence` used substring matching. The action token `hit` occurs inside the unrelated word `White`; paired with an oil-price topic, this could create a false oil-supply catalyst.
+- **Implemented on research PR branch:** a whole-word/phrase matcher now checks action and topic evidence. Explicit variants such as `hit`, `hits`, `hitting`, and `attacked` remain listed in the rule table.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_word_fragment_does_not_count_as_oil_disruption_action` rejects “White House discusses oil prices in a routine briefing.”
+- **CI finding:** an earlier main-branch ranking run failed `test_message_has_confirmation_and_invalidation`; the current main file includes the expected invalidation line, but a fresh passing run on the current SHA is still required. This change is separate and does not claim to fix that prior run.
+- **Deployment:** no merge/deploy; Render build-pipeline minutes remain exhausted. The change is on a non-main branch and no Render preview is configured.
+- **Limits:** deterministic keyword matching only; no headline replay, price/volume event study, or OOS edge established. PAPER ONLY.

@@ -85,6 +85,14 @@ class ConditionalTradePlanTests(unittest.TestCase):
         self.assertEqual(result["status"], "WAIT")
         self.assertIsNone(result["entry"])
 
+    def test_word_fragment_does_not_count_as_oil_disruption_action(self):
+        # "White" contains the substring "hit", but is not evidence of an attack.
+        self.assertEqual(
+            conditional_plans("White House discusses oil prices in a routine briefing."),
+            [],
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
 
