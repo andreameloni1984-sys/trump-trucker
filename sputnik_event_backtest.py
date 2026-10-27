@@ -123,6 +123,7 @@ def backtest_event(
     side: str,
     atr: float,
     *,
+    atr_time: str,
     stop_atr: float = 1.0,
     target_r: float = 2.0,
     breakout_lookback: int = 3,
@@ -136,6 +137,9 @@ def backtest_event(
     if atr <= 0 or stop_atr <= 0 or target_r <= 0 or breakout_lookback < 1 or max_holding_bars < 1:
         raise ValueError("ATR, stop, target, lookback and holding bars must be positive")
     event_dt = _dt(event_time)
+    atr_dt = _dt(atr_time)
+    if atr_dt > event_dt:
+        raise ValueError("ATR timestamp must be at or before event time to prevent look-ahead bias")
     _validate_candle_timestamps(candles)
     candles = sorted(candles, key=lambda candle: candle["timestamp"])
     if not candles:
@@ -173,7 +177,7 @@ def backtest_event(
     return {
         "event_time": event_dt.isoformat(),
         "side": side,
-        "settings": {"atr": atr, "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread},
+        "settings": {"atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr, "target_r": target_r, "breakout_lookback": breakout_lookback, "max_holding_bars": max_holding_bars, "spread": spread},
         "early": early,
         "breakout": breakout,
         "interpretation": "Historical simulation only; compare multiple events, include realistic costs, and do not infer profitability from one event.",
@@ -186,6 +190,7 @@ def main() -> None:
     parser.add_argument("--event-time", required=True, help="Catalyst publication time, ISO-8601 with timezone")
     parser.add_argument("--side", required=True, choices=("LONG", "SHORT"))
     parser.add_argument("--atr", type=float, required=True, help="ATR known at event time, in price units")
+    parser.add_argument("--atr-time", required=True, help="Timestamp when the supplied ATR value was available, ISO-8601 with timezone; must be <= event time")
     parser.add_argument("--stop-atr", type=float, default=1.0)
     parser.add_argument("--target-r", type=float, default=2.0)
     parser.add_argument("--lookback", type=int, default=3)
@@ -193,7 +198,7 @@ def main() -> None:
     parser.add_argument("--spread", type=float, default=0.0, help="Round-trip cost in price units")
     args = parser.parse_args()
     result = backtest_event(load_candles_csv(args.csv), args.event_time, args.side, args.atr,
-                            stop_atr=args.stop_atr, target_r=args.target_r,
+                            atr_time=args.atr_time, stop_atr=args.stop_atr, target_r=args.target_r,
                             breakout_lookback=args.lookback, max_holding_bars=args.holding_bars,
                             spread=args.spread)
     print(json.dumps(result, indent=2, ensure_ascii=False))
