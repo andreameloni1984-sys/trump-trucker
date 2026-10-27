@@ -125,6 +125,32 @@ class SputnikEventBacktestTests(unittest.TestCase):
             )
 
 
+    def test_atr_timestamp_equal_to_event_is_rejected_as_ambiguous(self):
+        data = candles([(100, 101, 99, 100, 1000)])
+        event_time = "2026-01-01T00:00:00+00:00"
+
+        # A timestamp equal to the event time cannot prove the ATR snapshot
+        # was available before the event; fail closed rather than assume.
+        with self.assertRaisesRegex(ValueError, "strictly before"):
+            backtest_event(
+                data,
+                event_time,
+                "SHORT",
+                1.0,
+                atr_time=event_time,
+                available_at=event_time,
+            )
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "same_time_atr_event.csv"
+            path.write_text(
+                "event_id,event_time,available_at,side,atr,atr_time,source_url\\n"
+                f"evt-1,{event_time},{event_time},SHORT,1.0,{event_time},https://example.com/article/1\\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "strictly before"):
+                load_events_csv(path)
+
     def test_non_finite_ohlcv_from_csv_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "bad_wti.csv"
