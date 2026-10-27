@@ -5,6 +5,7 @@ It deliberately produces WATCH candidates, not trade directions. No company
 or private relationship is inferred from a policy event.
 """
 from __future__ import annotations
+import re
 from typing import Any
 
 DOMAIN_INSTRUMENTS = {
@@ -166,6 +167,18 @@ _DIRECTION_RULES = [
 ]
 
 
+_NEGATED_IRAN_DEESCALATION_PATTERNS = (
+    r"\b(?:no|not|never|failed to reach|reject(?:s|ed)?|collapse[ds]?)\b.{0,60}\b(?:agreement|deal|ceasefire|de-escalation|deescalation)\b",
+    r"\b(?:agreement|deal|ceasefire)\b.{0,40}\b(?:not reached|rejected|failed|collapsed|off)\b",
+    r"\bsanctions\b.{0,40}\b(?:not lifted|not eased|remain(?:s)? in place|will remain)\b",
+)
+
+
+def _is_negated_iran_deescalation(text: str) -> bool:
+    """Abstain when an Iran deal/ceasefire/sanctions easing is explicitly denied."""
+    return any(re.search(pattern, text, re.IGNORECASE) for pattern in _NEGATED_IRAN_DEESCALATION_PATTERNS)
+
+
 def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) -> list[dict[str, Any]]:
     """Map explicit, recognized public-news language to cautious directional biases.
 
@@ -185,11 +198,16 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
             continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
+        negated_iran_deescalation = _is_negated_iran_deescalation(text)
         domains = {str(x).upper() for x in finding.get("domains") or []}
         for rule in _DIRECTION_RULES:
             if not domains.intersection(rule["domains"]):
                 continue
-            if not any(__import__("re").search(pattern, text, __import__("re").I) for pattern in rule["patterns"]):
+            # Keyword overlap is not enough: a rejected/failed deal must not
+            # become the opposite (SHORT) hypothesis of a successful de-escalation.
+            if rule["id"] == "iran_diplomatic_deescalation" and negated_iran_deescalation:
+                continue
+            if not any(re.search(pattern, text, re.IGNORECASE) for pattern in rule["patterns"]):
                 continue
             for instrument, bias in rule["bias"].items():
                 key = (str(finding["event_id"]), instrument)
