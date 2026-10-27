@@ -1,5 +1,5 @@
 import unittest
-from sputnik_decision_engine import conditional_plans, decision_message
+from sputnik_decision_engine import conditional_plans, decision_message, _fallback_watch
 from sputnik_cfd import build_conditional_trade_plan
 
 class StrictDecisionTests(unittest.TestCase):
@@ -57,6 +57,15 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("SPUTNIK — OPPORTUNITÀ DI MERCATO", message)
         self.assertIn("DIREZIONE: WAIT", message)
         self.assertIn("PAPER TRADING", message)
+
+    def test_fallback_watch_uses_whole_topic_words_and_keeps_hyphenated_phrases(self):
+        # "spoiled" contains the substring "oil", but is not an oil catalyst.
+        spoiled = _fallback_watch("Negotiations were spoiled by a delay.")
+        self.assertEqual(spoiled["topic"], "DATI INSUFFICIENTI — MONITORAGGIO OPERATIVO")
+
+        # Hyphenated market phrases remain recognizable after normalization.
+        oil = _fallback_watch("Oil-price volatility rose after the report.")
+        self.assertEqual(oil["topic"], "PETROLIO / OFFERTA ENERGETICA")
 
     def test_empty_legacy_snapshot_still_returns_result(self):
         message = decision_message("")

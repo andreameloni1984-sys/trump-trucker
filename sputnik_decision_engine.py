@@ -62,15 +62,16 @@ def conditional_plans(text: str, limit: int = 3) -> list[dict[str, Any]]:
 
 def _fallback_watch(text: str) -> dict[str, str] | None:
     """Broad watch mode: always return a useful result without turning mentions into trades."""
-    body = " ".join(str(text or "").lower().split())
+    # Normalize hyphenated phrases (for example, "oil-price") before whole-term matching.
+    body = re.sub(r"-+", " ", " ".join(str(text or "").lower().split()))
     topics = [
-        (("tariff", "tariffs", "dazi", "trade war", "trade deal", "accordo commerciale"),
+        (("tariff", "tariffs", "dazi", "trade war", "trade wars", "trade deal", "accordo commerciale"),
          "COMMERCIO / DAZI", "NASDAQ-100 e oro", "Una notizia commerciale può muovere sia gli asset rischiosi sia i beni rifugio; la direzione dipende dai dettagli e dalla reazione dei prezzi."),
-        (("oil", "petrol", "brent", "wti", "hormuz", "iran", "tanker", "petrolio", "energia"),
+        (("oil", "oils", "petrol", "petroleum", "brent", "wti", "hormuz", "iran", "tanker", "tankers", "petrolio", "energia"),
          "PETROLIO / OFFERTA ENERGETICA", "Brent e WTI", "Il petrolio è da monitorare se la notizia riguarda davvero produzione, trasporti o flussi fisici; una semplice menzione non prova una carenza."),
         (("fed", "federal reserve", "interest rate", "rates", "inflation", "inflazione", "tassi", "rendimenti", "treasury", "dollar", "dollaro"),
          "TASSI / DOLLARO", "USD, Treasury e Nasdaq", "La reazione dipende da come cambiano le aspettative sui tassi; verificare rendimenti e dollaro prima di concludere la direzione."),
-        (("defense", "defence", "military", "missile", "war", "guerra", "difesa", "militare", "sanction", "sanzioni"),
+        (("defense", "defence", "military", "missile", "missiles", "war", "guerra", "difesa", "militare", "sanction", "sanctions", "sanzioni"),
          "GEOPOLITICA / DIFESA", "Settore difesa, petrolio e oro", "L'impatto dipende da conseguenze concrete su spesa, approvvigionamenti e rischio; non basta il tono della notizia."),
         (("sec", "form 4", "insider", "shares", "stock", "azioni", "ogE", "ethics", "disclosure"),
          "DISCLOSURE / SOCIETÀ", "Titolo citato nella disclosure, se identificabile", "Distinguere operazioni effettivamente documentate da opzioni, piani, intenzioni o semplici menzioni."),
@@ -96,7 +97,7 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
          "Una menzione su un sito o social non dimostra un investimento né un impatto sul mercato. Recuperare il singolo post o comunicato originale."),
     ]
     for keywords, label, instruments, explanation in [*topics, *domain_topics]:
-        if any(word in body for word in keywords):
+        if any(_contains_term(body, word) for word in keywords):
             return {"topic": label, "instruments": instruments, "explanation": explanation}
 
     # Always return a transparent operational outcome, even for empty/stale feeds.

@@ -184,3 +184,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **IBKR session 9 crosswalk:** the recorded requirement to preserve source provenance, publication/availability timing, text evidence, and fixed reaction horizons maps to the public-item/catalyst path; this lexical regression addresses only clause-level false suppression. It does not validate source truth or predictive value.
 - **Deployment/limits:** PR #55 branch only; no merge/deploy. Render workspace and Telegram runtime logs were not accessible through the tools in this run. Synthetic language regression only; no event replay, price/volume study, or OOS performance claim. PAPER ONLY.
 - **Historical research:** the session 9 Library file was retrieved. The original complete 100-rule catalog was not found in the available Library results and is not reconstructed here.
+
+## 2026-10-27 — Require whole terms in fallback watchlist matching
+
+- **Finding:** the non-directional `_fallback_watch()` used substring matching even after directional catalyst matching had moved to word boundaries. A routine phrase such as “negotiations were spoiled by a delay” contains the substring `oil` and could incorrectly select the Brent/WTI watchlist.
+- **Change:** fallback watchlist keywords now use the existing whole-word/phrase matcher. Hyphens are normalized to spaces first, so phrases such as “oil-price” remain discoverable; common plural variants were made explicit where needed.
+- **Operational path:** no directional catalyst → fallback watchlist classification → Telegram WAIT/monitoring message. This cannot create LONG/SHORT by itself.
+- **Files/tests:** `sputnik_decision_engine.py::_fallback_watch`; `tests/test_sputnik_decision_engine.py::test_fallback_watch_uses_whole_topic_words_and_keeps_hyphenated_phrases`.
+- **Validation:** code and regression test committed together on the Sputnik research branch; CI result is to be checked on the new head before claiming it passed.
+- **Deployment/limits:** PR branch only; no merge/deploy. Keyword-based classification only; no headline replay or OOS market-performance result. PAPER ONLY.
