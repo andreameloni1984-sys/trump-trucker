@@ -206,3 +206,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI:** queued by the PR branch update; record the final run after Actions completes.
 - **Deployment:** PR #53 branch only; no merge/deploy. Render build-pipeline quota remains exhausted.
 - **Empirical limit:** this prevents a duplicate-confirmation artifact; it does not validate predictive value or out-of-sample returns. PAPER/DEMO only; no secrets, broker, orders or Telegram test messages.
+
+
+## 2026-10-27 — Map recovered IBKR session 9 lessons to Sputnik
+
+- **Source inspected:** Library file `Registro Studio IBKR - aggiornato 2026-10-20 sessione 9.md` (535 lines; updated 2026-10-20). It is a progressive study log, not the missing standalone 100-lesson catalog.
+- **Event-driven/no-look-ahead lesson:** the session 9 notes warn against generating a signal at a bar close and filling at that same close. Current work maps this to `sputnik_event_backtest.py` and `tests/test_sputnik_event_backtest.py` in open PR #45, where `event_time`, `available_at`, and `decision_time` are separated. PR #45 is not merged; no live use is claimed.
+- **Source integrity lesson:** SEC/Form 4 ranking maps to `sputnik_ranking.py` and `tests/test_sputnik_ranking.py` in this PR #53 branch: strict date-only fields, as-of chronology, SEC archive/issuer consistency, and canonical filing identity. This run additionally normalizes default ports and trailing-dot hosts for fallback filing deduplication.
+- **Cross-asset event hypothesis:** the IBKR session 9 oil/gold/Hormuz/PPI note proposes observing Brent-WTI spread and macro context around geopolitical headlines. This remains a hypothesis, not an implemented directional rule; the current PRs do not claim price/volume confirmation or OOS edge from that narrative.
+- **API pacing boundary:** the documented IBKR limits apply to an IBKR Web API adapter; Sputnik's SEC/White House/RSS sources have separate access rules. Do not transplant IBKR rate limits to those feeds.
+- **CI:** ranking and Telegram menu workflows passed on branch head `e54a8ef3221cdcbc5516ddae7f36f2e7259fc42e` before this documentation-only update. This log edit does not establish market validation.
+- **Empirical/deployment status:** no filing replay, calibration, walk-forward result, merge, or Render deployment is claimed. Render quota remains exhausted; PAPER/DEMO only.
+- **Catalog integrity:** the original complete 100-item catalog was not retrieved; only the actual IBKR session 9 log and specific historical summaries are mapped. No missing lesson numbers are invented.
