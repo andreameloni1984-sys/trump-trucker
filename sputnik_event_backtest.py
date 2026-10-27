@@ -49,23 +49,30 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
     sign = -1 if side == "SHORT" else 1
     stop = entry + risk if side == "SHORT" else entry - risk
     target = entry - risk * target_r if side == "SHORT" else entry + risk * target_r
-    last_index = min(len(candles), entry_index + 1 + max_holding_bars)
-    for index in range(entry_index + 1, last_index):
+
+    # The entry bar is observable after an open fill; include it in stop/target checks.
+    end_index = min(len(candles), entry_index + max_holding_bars)
+    exit_index = entry_index
+    exit_price = None
+    status = None
+    for index in range(entry_index, end_index):
         candle = candles[index]
         stop_hit = candle["high"] >= stop if side == "SHORT" else candle["low"] <= stop
         target_hit = candle["low"] <= target if side == "SHORT" else candle["high"] >= target
         if stop_hit and target_hit:
             exit_price, status = stop, "STOP_AMBIGUOUS_STOP_FIRST"
-            break
-        if stop_hit:
+        elif stop_hit:
             exit_price, status = stop, "STOP"
-            break
-        if target_hit:
+        elif target_hit:
             exit_price, status = target, "TARGET"
+        if status is not None:
+            exit_index = index
             break
     else:
-        exit_price = candles[last_index - 1]["close"] if last_index > entry_index + 1 else entry
-        status = "TIME_EXIT" if last_index < len(candles) else "END_OF_DATA"
+        exit_index = end_index - 1
+        exit_price = candles[exit_index]["close"]
+        status = "TIME_EXIT" if end_index < len(candles) else "END_OF_DATA"
+
     gross_pnl = sign * (exit_price - entry)
     net_pnl = gross_pnl - max(0.0, spread)
     return {
@@ -76,7 +83,7 @@ def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_ho
         "target": round(target, 8),
         "exit": round(exit_price, 8),
         "pnl_r": round(net_pnl / risk, 4),
-        "bars_held": max(0, min(last_index - 1, index if 'index' in locals() else last_index - 1) - entry_index),
+        "bars_held": exit_index - entry_index + 1,
     }
 
 
@@ -123,8 +130,13 @@ def backtest_event(
             if i + 1 >= len(candles):
                 breakout = {"status": "BREAKOUT_NO_FOLLOWING_CANDLE"}
             else:
-                breakout = _simulate(candles, i, candles[i]["close"], side, atr, stop_atr, target_r, max_holding_bars, spread)
+                # The breakout is known only at this candle's close. A causal fill is
+                # the next candle's open, never the already-observed signal close.
+                entry_index = i + 1
+                breakout = _simulate(candles, entry_index, candles[entry_index]["open"], side, atr, stop_atr, target_r, max_holding_bars, spread)
                 breakout["signal_time"] = candles[i]["timestamp"].isoformat()
+                breakout["signal_close"] = round(candles[i]["close"], 8)
+                breakout["entry_model"] = "next_bar_open_after_close_confirmation"
             break
 
     return {
