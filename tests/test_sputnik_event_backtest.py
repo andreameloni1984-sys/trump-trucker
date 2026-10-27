@@ -22,13 +22,18 @@ class SputnikEventBacktestTests(unittest.TestCase):
             (100, 101, 99, 100, 1000),
             (100, 100.5, 98.8, 99, 1200),
             (99, 99.2, 97.5, 98, 1500),
-            (98, 98.2, 96.0, 97, 1800),
+            (97.4, 98.2, 96.0, 97, 1800),
             (97, 97.2, 95.0, 96, 1900),
         ])
         result = backtest_event(data, "2026-01-01T00:02:00+00:00", "SHORT", 1.0, breakout_lookback=2)
         self.assertEqual(result["early"]["entry"], 100.0)
         self.assertEqual(result["early"]["status"], "TARGET")
         self.assertNotEqual(result["breakout"]["status"], "NO_BREAKOUT")
+        # Close-confirmed breakouts can only be filled on the following bar.
+        self.assertEqual(result["breakout"]["entry"], 97.4)
+        self.assertEqual(result["breakout"]["signal_time"], data[2]["timestamp"].isoformat())
+        self.assertEqual(result["breakout"]["entry_time"], data[3]["timestamp"].isoformat())
+        self.assertEqual(result["breakout"]["entry_model"], "next_bar_open_after_close_confirmation")
         self.assertGreater(result["early"]["pnl_r"], 0)
 
     def test_stop_wins_when_stop_and_target_hit_in_same_candle(self):
@@ -40,6 +45,15 @@ class SputnikEventBacktestTests(unittest.TestCase):
         result = backtest_event(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0, target_r=2.0)
         self.assertEqual(result["early"]["status"], "STOP_AMBIGUOUS_STOP_FIRST")
         self.assertEqual(result["early"]["pnl_r"], -1.0)
+
+    def test_entry_bar_is_checked_for_stop_and_target(self):
+        data = candles([
+            (100, 103, 97, 100, 1000),
+            (100, 100, 100, 100, 1000),
+        ])
+        result = backtest_event(data, "2025-12-31T23:59:00+00:00", "LONG", 1.0, target_r=2.0)
+        self.assertEqual(result["early"]["status"], "STOP_AMBIGUOUS_STOP_FIRST")
+        self.assertEqual(result["early"]["bars_held"], 1)
 
     def test_no_future_candle_does_not_invent_entry(self):
         data = candles([(100, 101, 99, 100, 1000)])
