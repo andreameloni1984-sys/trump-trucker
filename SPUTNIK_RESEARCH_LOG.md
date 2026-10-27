@@ -447,3 +447,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Operational path:** event CSV → `load_events_csv` → `_canonical_source_url` → duplicate-source gate before event backtest.
 - **Deployment:** PR #45 branch only; Render auto-deploy targets `main`, and no deploy was triggered.
 - **Empirical validation:** source deduplication only; no WTI return or predictive-edge claim.
+
+
+## Recovered from prior conversation summaries — 2026-10-03/06 (not the missing 100-point catalog)
+
+- **2026-10-03 07:04 UTC summary:** public-disclosure intelligence covered OGE/Senate/House sources, disclosure lag, amount buckets, and the pipeline `source → document → transaction → normalization → deduplication → sector/commodity → score → Telegram`.
+- **2026-10-03 21:17 UTC summary:** proposed reusable components were event clustering, deduplication, source weighting and evidence confidence. The notes explicitly rejected keyword-to-market causality and automatic LONG/SHORT solely from keywords.
+- **2026-10-05 05:33 UTC summary:** keep verified facts, signals and correlations separate; do not turn rumors into certainty.
+- **Mapping to current work:** PR #45 implements a causal event ledger with `event_time`, `available_at`, pre-event ATR time, source permalink and canonical URL deduplication. It does not yet implement the complete OGE/Senate/House document-to-transaction pipeline, source-primary verification, disclosure-lag model, or empirical news-to-commodity edge.
+- **Test/CI:** click-ID canonical dedup regression passes in run [40531033411](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40531033411); the research-log commit run [40531124518](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40531124518) also passed.
+- **Deployment:** PR #45 remains open; Render service targets `main`. No deploy.
+- **Empirical status:** no event-linked, verified NYMEX CL out-of-sample result. These are recovered conversation summaries, not a recovered original numbered catalog.
