@@ -73,14 +73,23 @@ def _validate_candle_values(candles: list[dict[str, Any]]) -> None:
 
 def _bar_gap_diagnostics(candles: list[dict[str, Any]], bar_interval_minutes: int) -> dict[str, Any]:
     gaps = []
+    observed_intervals = []
+    short_intervals = []
     for index in range(1, len(candles)):
         gap_minutes = (candles[index]["timestamp"] - candles[index - 1]["timestamp"]).total_seconds() / 60.0
+        observed_intervals.append(gap_minutes)
         if gap_minutes > bar_interval_minutes:
             gaps.append(gap_minutes)
+        elif gap_minutes < bar_interval_minutes:
+            # A 1-minute feed must not be simulated as if it contained 5-minute bars:
+            # holding limits and close-confirmation times would otherwise be wrong.
+            short_intervals.append(gap_minutes)
     return {
         "bar_interval_minutes": bar_interval_minutes,
         "unmodeled_gap_count": len(gaps),
         "max_gap_minutes": round(max(gaps), 2) if gaps else 0.0,
+        "unexpected_short_interval_count": len(short_intervals),
+        "min_observed_interval_minutes": round(min(observed_intervals), 2) if observed_intervals else None,
         "session_calendar_used": False,
     }
 
@@ -335,6 +344,31 @@ def backtest_event(
     _validate_candle_timestamps(candles)
     _validate_candle_values(candles)
     data_quality = _bar_gap_diagnostics(candles, bar_interval_minutes)
+    if data_quality["unexpected_short_interval_count"]:
+        reason = {
+            "status": "UNMODELED_BAR_INTERVAL",
+            "expected_interval_minutes": bar_interval_minutes,
+            "unexpected_short_interval_count": data_quality["unexpected_short_interval_count"],
+            "pnl_r": None,
+        }
+        return {
+            "event_time": event_dt.isoformat(),
+            "available_at": available_dt.isoformat(),
+            "side": side,
+            "settings": {
+                "atr": atr, "atr_time": atr_dt.isoformat(), "stop_atr": stop_atr,
+                "target_r": target_r, "breakout_lookback": breakout_lookback,
+                "max_holding_bars": max_holding_bars, "spread": spread,
+                "bar_interval_minutes": bar_interval_minutes,
+            },
+            "data_quality": data_quality,
+            "early": {**reason, "decision_time": available_dt.isoformat()},
+            "breakout": dict(reason),
+            "interpretation": (
+                "Historical simulation refused: observed candle spacing is shorter than the declared interval; "
+                "entry timing and holding-bar limits would be inconsistent."
+            ),
+        }
     if not candles:
         return {"event_time": event_dt.isoformat(), "available_at": available_dt.isoformat(), "side": side, "early": {"status": "NO_DATA", "decision_time": available_dt.isoformat()}, "breakout": {"status": "NO_DATA"}, "data_quality": data_quality}
 
