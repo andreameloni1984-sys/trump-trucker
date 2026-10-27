@@ -1,3 +1,22 @@
+## 2026-10-27 19:23 UTC — Reject ambiguous same-time ATR snapshots; re-audit CLZ26
+
+### CLZ26 hypothesis outcome check
+- Hypothesis under review: 2026-10-27 14:16:51 UTC; NYMEX December 2026 WTI (CLZ26), conditional SHORT below $100.50, reference about $101.45, stop $101.55, TP1 $98.25, TP2 $97.15. No order was placed.
+- Latest accessible exact-contract quote page found during this check: Farmbucks displayed $101.76/bbl for CLZ26 at 2026-10-26 15:59 UTC-5 (20:59 UTC), day range $100.33–$103.13, explicitly “Delayed 10 min”, “Updated 26 min ago”, and “Market closed”. This snapshot predates the hypothesis and was already stale at retrieval: https://farmbucks.com/futures/energy/wti-crude
+- Yahoo Finance's accessible daily history for CLZ26 showed its latest listed session as 2026-10-23 (close $103.27, high $103.92, low $98.84); it does not provide the post-hypothesis intraday path in the accessible page: https://fr.finance.yahoo.com/quote/CLZ26.NYM/history/
+- **Classification: NON-VERIFIABLE.** No reliable, timestamped 1-minute/5-minute CLZ26 OHLCV after 2026-10-27 14:16:51 UTC was obtained. The available quote snapshots cannot establish the first crossing of $100.50 or the order/timing of stop and target touches. Do not infer a trade outcome from a session range. No prices or timestamps were interpolated.
+
+### One code improvement — fail closed on same-time ATR
+- **Finding:** both event-ledger loading and direct backtest calls rejected ATR timestamps later than the event, but accepted equality. Because the ledger does not prove whether an ATR snapshot stamped exactly at event time was available before that event, equality leaves a same-time look-ahead ambiguity.
+- **Implemented:** `sputnik_event_backtest.py` now requires `atr_time < event_time` in both `load_events_csv` and `backtest_event`. Same-time ATR timestamps are rejected with an explicit error; earlier pre-event snapshots remain accepted.
+- **Regression:** added `test_atr_timestamp_equal_to_event_is_rejected_as_ambiguous`, covering both direct API input and CSV event-ledger loading. The test fixture uses synthetic timestamps and values only.
+- **Files changed:** `sputnik_event_backtest.py`; `tests/test_sputnik_event_backtest.py`; this log.
+- **Commits:** implementation `345fe693c5181e5412d86a4389957dc0e5bd2ba2`; initial test commit `763afd359cf44453707d388c2af1d1dc3e9c20e7`; fixture/assertion correction `493dae0c7e8e5c7d7d0dd1c4d9ac27a4a424e407`.
+- **CI evidence:** first run [40568453530](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40568453530) failed: 123 tests ran with two failures—the legacy regex still expected the previous error text, and the new CSV fixture used double-escaped newline characters. Both were corrected. Follow-up [40568531580](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40568531580) ran `python -m unittest discover -s tests -p "test_*.py" -v`; job log confirms **123 tests, OK** (0.053 s) on commit `493dae0c7e8e5c7d7d0dd1c4d9ac27a4a424e407`. The job log still contains handled `OSError` messages for WHITE_HOUSE, TRUTH_ARCHIVE and OGE source fetches; passing tests do not verify live source availability.
+- **PR status after code/test:** PR #45 remains open and unmerged; GitHub reports mergeable=true at head `493dae0c7e8e5c7d7d0dd1c4d9ac27a4a424e407`. No rebase, merge, deployment, broker change, order or Telegram test message.
+- **Remaining research block:** no verified post-hypothesis CLZ26 intraday bars or event ledger with exact publication/availability/decision timestamps; no real-event comparison or early-entry edge is claimed.
+
+
 ## 2026-10-27 17:32 UTC — Require item-specific source URLs in the event ledger
 
 ### CLZ26 hypothesis audit before the code change
