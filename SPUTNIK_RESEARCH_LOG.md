@@ -196,3 +196,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Historical mapping:** the Library session 9 record prioritizes publication time, first availability, primary source and fixed reaction horizons; this change addresses chronological timestamp consistency only. It does not fill missing availability timestamps or prove that news sentiment adds predictive value.
 - **Operational path:** item-level RSS → timezone-aware parse / point-in-time validation → directional hypothesis → normalized ordering → digest/handoff. The status remains hypothesis-only until independent price/volume confirmation.
 - **Deployment/empirical limit:** PR #54 branch only; no merge/deploy. Synthetic regression only; no historical feed replay or OOS market-return validation. PAPER only.
+
+
+## Follow-up correction — compare parsed UTC instants, including fractional seconds
+- **Finding:** the first UTC-ordering change used canonical ISO strings as the sort key. ISO strings with variable fractional-second precision are not always lexically ordered chronologically (for example, `09:30:00Z` versus `09:30:00.500Z`).
+- **Correction:** sort by the parsed timezone-aware UTC datetime, while retaining canonical `published_at_utc` and optional `available_at_utc` output fields.
+- **Regression:** `test_directional_news_candidates_sort_fractional_seconds_chronologically` covers the fractional-second edge case.
+- **Commit:** `a66b913b1e2e13798b3d7766b2f617568aa90857`.
+- **CI PASS on corrected code/test head:** item intelligence [40561374887](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561374887); Telegram/menu tests [40561375377](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40561375377).
+- **Limit/deployment:** no historical RSS replay or market-return validation; PR #54 branch only, no merge/deploy. This is timestamp-order correctness, not a trading edge.
