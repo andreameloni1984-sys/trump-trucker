@@ -491,3 +491,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Current mapping:** the event backtest now distinguishes event_time, available_at and optional decision_time; it preserves source_url and canonicalizes common tracking parameters for deduplication. It still does not prove primary-source authenticity, hash the original source body, implement the full disclosure-to-transaction pipeline, or establish an empirical news-to-WTI edge.
 - **Validation/deployment:** these are recovered historical summaries and an audit of existing code, not a market-performance result. PR #45 remains unmerged; no deploy.
 
+## 2026-10-27 — Repository/CI and runtime-access audit
+
+- **main:** current default-branch SHA observed as 608e053a8b87c71fa4a272dd97f71295eab18471. Latest visible main workflow run [40523401974](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40523401974) succeeded on older SHA 6992555ee972276cbc36995747368d2198c988fd; no matching workflow for the current main SHA was visible in the recent run list.
+- **Open PRs:** PR #45 remains open and unmerged at the development branch; other open Sputnik PRs cover related source provenance, point-in-time handoff, stale/future catalysts and a separate oil hypothesis. No PR was merged.
+- **Current feature CI:** [40542525116](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40542525116) passed on research-log head d4b75cc08c3879286cbd4dacd2ff25c8758cd7b2; the test job ran 120 tests, OK.
+- **Source/config audit:** main has a six-hour process-local cooldown after SEC HTTP 403 and declares the White House homepage as an intelligence source. This does not prove a working official RSS feed or fresh runtime ingestion. The names GAGARIN_CLOUD_API_URL and GAGARIN_CLOUD_API_KEY are present in the handoff code/workflow; no secret values were inspected. CI test logs report the handoff disabled in that test environment.
+- **Deployment/log limitation:** no Render or production Telegram-log connector was exposed in this run. Live commit, SEC/White House runtime fetches, and Telegram alert delivery could not be revalidated. Previously recorded live SHA is stale evidence only and is not asserted as current. No deployment was attempted because build-pipeline quota was previously reported exhausted.
+
