@@ -842,5 +842,27 @@ class SputnikEventBacktestTests(unittest.TestCase):
                 load_events_csv(path)
 
 
+    def test_breakout_session_gap_reports_observed_and_required_signal_bars(self):
+        start = datetime(2026, 1, 1, 0, 0, tzinfo=timezone.utc)
+        data = candles([
+            (100, 101, 99, 100, 1000),
+            (100, 100.5, 99.5, 100, 1000),
+            (100, 100.4, 99.4, 100, 1000),
+        ], start=start)
+        data[2]["timestamp"] = start + timedelta(minutes=20)
+
+        result = run_backtest(
+            data, "2026-01-01T00:00:00+00:00", "SHORT", 1.0,
+            breakout_lookback=1, max_breakout_wait_bars=3, max_holding_bars=1,
+        )
+        breakout = result["breakout"]
+        self.assertEqual(breakout["status"], "UNMODELED_SESSION_GAP")
+        self.assertEqual(breakout["signal_bars_observed"], 1)
+        self.assertEqual(breakout["required_signal_bars"], 3)
+        self.assertEqual(breakout["gap_start_time"], data[1]["timestamp"].isoformat())
+        self.assertEqual(breakout["gap_end_time"], data[2]["timestamp"].isoformat())
+        self.assertIsNone(breakout.get("pnl_r"))
+
+
 if __name__ == "__main__":
     unittest.main()
