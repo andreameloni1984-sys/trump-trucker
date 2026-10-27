@@ -181,7 +181,7 @@ def _is_negated_iran_deescalation(text: str) -> bool:
     return any(re.search(pattern, text, re.IGNORECASE) for pattern in _NEGATED_IRAN_DEESCALATION_PATTERNS)
 
 _NEGATION_BEFORE_MATCH = re.compile(
-    r"\b(?:no|not|never|failed to|fails to|reject(?:s|ed)?|den(?:y|ies|ied)|ruled out|without)\b[^.!?]{0,60}$",
+    r"\b(?:no|not|never|failed to|fails to|reject(?:s|ed)?|den(?:y|ies|ied)|ruled out|without)\b[^.!?;]{0,60}$",
     re.IGNORECASE,
 )
 _NEGATION_AFTER_MATCH = re.compile(
@@ -204,12 +204,14 @@ def _is_explicitly_negated_rule_match(text: str, patterns: list[str]) -> bool:
                 text.rfind(".", 0, match.start()),
                 text.rfind("!", 0, match.start()),
                 text.rfind("?", 0, match.start()),
+                text.rfind(";", 0, match.start()),
             ) + 1
             right_candidates = [
                 position for position in (
                     text.find(".", match.end()),
                     text.find("!", match.end()),
                     text.find("?", match.end()),
+                    text.find(";", match.end()),
                 ) if position >= 0
             ]
             right_boundary = min(right_candidates) if right_candidates else len(text)
