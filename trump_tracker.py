@@ -411,6 +411,15 @@ def _configured_rss_feeds() -> list[str]:
         "https://www.trumpstruth.org/feed",
     ]
 
+def _public_feed_source_label(feed_url: str) -> str:
+    """Label White House RSS only when the HTTPS hostname is actually official."""
+    parsed = urllib.parse.urlsplit(str(feed_url or "").strip())
+    host = (parsed.hostname or "").lower().rstrip(".")
+    is_official_host = host == "whitehouse.gov" or host.endswith(".whitehouse.gov")
+    if parsed.scheme.lower() == "https" and is_official_host:
+        return "WHITE_HOUSE_RSS"
+    return "PUBLIC_RSS"
+
 
 def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     if os.getenv("SPUTNIK_SOCIAL_ENABLED", "1").strip().lower() not in {"1", "true", "yes"}:
@@ -461,7 +470,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         max_public_item_age_hours = 24
     for feed_url in _configured_rss_feeds():
         feed_is_new = feed_url not in initialized_feeds
-        source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
+        source = _public_feed_source_label(feed_url)
         try:
             rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
         except Exception as exc:
