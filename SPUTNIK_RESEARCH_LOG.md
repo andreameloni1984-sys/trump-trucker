@@ -104,3 +104,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** Render auto-deploy is commit-triggered, but the workspace has exhausted build-pipeline minutes. This branch is not live; no manual deploy was triggered.
 - **Limits:** the cooldown is process-local and resets on process restart; it reduces repeated denied requests but does not repair SEC access policy or prove filings are current.
 - **Safety:** PAPER ONLY; no broker, order, secret-value inspection, test Telegram message, or paid service.
+
+## 2026-10-27 — Attribute White House RSS by parsed hostname, not substring
+
+- **Finding:** the RSS collector labelled a feed WHITE_HOUSE_RSS whenever the configured URL contained the text whitehouse.gov anywhere. A lookalike host such as whitehouse.gov.evil.example, or an unrelated URL with that text in its query string, could receive the official-source label.
+- **Implemented:** _public_feed_source_label() parses the URL and requires HTTPS plus an exact whitehouse.gov hostname or a true subdomain suffix. The feed source label now uses this helper.
+- **Files / path:** trump_tracker.py, tests/test_sputnik_item_intelligence.py; intelligence_snapshot() -> feed source attribution -> item evidence/deduplication.
+- **Regression:** official apex/www/subdomain cases pass; lookalike domain, query-string-only mention and HTTP scheme remain PUBLIC_RSS.
+- **Validation:** code commit ab15b005d3edc97509cbf43671d361595e6f4e13; test commit 0bed737ef42604b4d5972209f440a440edb27133. CI must pass on the latest PR head before treating this as verified.
+- **Limits:** host classification is provenance hygiene, not proof that a page's claims are authentic or market-predictive. No live feed replay, Telegram message, merge, Render deploy, broker or order. PAPER/DEMO ONLY.
