@@ -32,8 +32,15 @@ def _direct(node, names):
     return None
 
 def _text(node, names):
-    child = _direct(node, names)
-    return "".join(child.itertext()).strip() if child is not None else ""
+    # Empty preferred fields (for example Atom content or RSS encoded)
+    # must not hide a later non-empty summary/description or timestamp.
+    for child in list(node):
+        if _name(child.tag) not in names:
+            continue
+        value = "".join(child.itertext()).strip()
+        if value:
+            return value
+    return ""
 
 def _link(node):
     """Choose an individual entry's alternate link, not Atom self/enclosure links."""
