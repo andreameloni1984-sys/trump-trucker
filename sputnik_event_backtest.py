@@ -76,7 +76,7 @@ def load_candles_csv(path: str | Path) -> list[dict[str, Any]]:
 
 def _simulate(candles, entry_index, entry, side, atr, stop_atr, target_r, max_holding_bars, spread):
     risk = atr * stop_atr
-    if risk <= 0 or entry <= 0:
+    if not math.isfinite(risk) or risk <= 0 or not math.isfinite(entry):
         return {"status": "INVALID_INPUT", "entry": entry, "stop": None, "target": None, "pnl_r": None}
     sign = -1 if side == "SHORT" else 1
     stop = entry + risk if side == "SHORT" else entry - risk
