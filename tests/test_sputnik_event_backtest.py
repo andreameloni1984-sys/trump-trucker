@@ -138,9 +138,9 @@ class SputnikEventBacktestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "out_of_order_wti.csv"
             path.write_text(
-                "timestamp,open,high,low,close,volume\\n"
-                "2026-01-01T00:05:00+00:00,99,100,98,99,1200\\n"
-                "2026-01-01T00:00:00+00:00,100,101,99,100,1000\\n",
+                "timestamp,open,high,low,close,volume\n"
+                "2026-01-01T00:05:00+00:00,99,100,98,99,1200\n"
+                "2026-01-01T00:00:00+00:00,100,101,99,100,1000\n",
                 encoding="utf-8",
             )
             with self.assertRaisesRegex(ValueError, "chronological order"):
