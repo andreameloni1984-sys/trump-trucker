@@ -111,7 +111,8 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Implemented:** item-level findings now record UTC-normalized `event_time`, `available_at`, and a SHA-256 hash of normalized title/body. The handoff transmits these fields separately; it does not invent `decision_time`, which belongs to Gagarin's own decision process.
 - **Files:** `trump_tracker.py`; `tests/test_sputnik_item_intelligence.py`.
 - **Regression tests:** verify UTC event time and availability time on feed ingestion, a 64-character content hash, and preservation of all three fields in the handoff while confirming no decision/order field is added.
-- **CI:** triggered by PR; results pending. No CI pass is claimed until the relevant workflows finish.
+- **Commits:** code `48bb2267365dee7a46f418444aa375c7ebe0749a`; tests `06a25e52425214d11877777d21dd215e5d924a33`; research log initially `6b7f958fb7ef1e7da4d98bfb9a9035f1edcc1cd2`.
+- **CI:** item intelligence PASS (run 40454124053); ranking PASS (run 40454124070). The research-log-only follow-up does not change executable code/tests.
 - **Deployment:** not deployed; Render build-pipeline minutes remain exhausted. No merge or manual deploy.
 - **Empirical validation:** no live-feed replay or price-outcome evaluation performed. This is evidence lineage and point-in-time metadata, not a directional signal.
 - **Safety:** PAPER/DEMO ONLY; no broker, order, secret-value inspection, or Telegram test message.
