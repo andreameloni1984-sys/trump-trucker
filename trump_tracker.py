@@ -504,6 +504,9 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             # are eligible for an alert; older entries are seeded silently.
             if feed_is_new and age_minutes > 5:
                 continue
+            content_hash = hashlib.sha256(
+                (title + "\n" + body).encode("utf-8")
+            ).hexdigest()
             finding = {
                 "source": source,
                 "feed_url": feed_url,
@@ -511,11 +514,14 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "primary_url": str(row.get("primary_url") or ""),
                 "title": title[:300],
                 "published": str(row.get("published") or "")[:100],
+                "event_time": published_at.isoformat(),
+                "available_at": observed_now_utc.isoformat(),
+                "content_hash": content_hash,
                 "domains": domains,
                 "text": body[:6000],
                 "evidence": "PUBLIC_RSS_ITEM",
                 "status": "POTENTIAL_CORRELATION",
-                "detected_at": utc_now().isoformat(),
+                "detected_at": observed_now_utc.isoformat(),
                 "event_id": digest,
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
@@ -557,6 +563,9 @@ def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any
                 "title": str(item.get("title") or "")[:300],
                 "url": str(item.get("url") or "")[:1000],
                 "published": str(item.get("published") or "")[:100],
+                "event_time": str(item.get("event_time") or "")[:100],
+                "available_at": str(item.get("available_at") or item.get("detected_at") or "")[:100],
+                "content_hash": str(item.get("content_hash") or "")[:64],
                 "domains": list(item.get("domains") or []),
                 "text": str(item.get("text") or "")[:1500],
             }
