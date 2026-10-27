@@ -133,7 +133,16 @@ def _is_primary_sec_form4_url(value: Any) -> bool:
             return False
         if [part.lower() for part in parts[:3]] != ["archives", "edgar", "data"]:
             return False
-        return parts[3].isdigit() and bool(parts[4]) and bool(parts[5])
+        # SEC archive paths use a numeric CIK and the 18-digit, dashless
+        # accession number. Do not award primary-source points to arbitrary
+        # directories that merely resemble an EDGAR URL.
+        cik, accession = parts[3], parts[4]
+        if not cik.isdigit() or len(accession) != 18 or not accession.isdigit():
+            return False
+        document = parts[-1].lower()
+        if document in {"index.htm", "index.html"}:
+            return False
+        return document.endswith((".xml", ".htm", ".html", ".txt"))
     except (TypeError, ValueError):
         return False
 
