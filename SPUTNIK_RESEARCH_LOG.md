@@ -1,3 +1,22 @@
+## 2026-10-27 15:24 UTC — CLZ26 hypothesis audit and explicit execution-cost components
+
+### Previously formulated WTI hypothesis — outcome check
+- **Hypothesis timestamp recovered from prior conversation:** 2026-10-27 14:16:51 UTC. Instrument: NYMEX WTI December 2026 futures (CLZ26); conditional SHORT only after a break below $100.50; reference near $101.45; hypothetical trigger/entry reference $100.45; stop $101.55; TP1 $98.25; TP2 $97.15. No order was placed.
+- **Public quote snapshots inspected:** Oilprice.com displayed CLZ26 $100.24 with session range $100.05–$102.82 and row time “10:10” (timezone not stated on the table); its page header described WTI data as about 11 minutes old at retrieval. Farmbucks displayed $101.71 and a $100.52–$102.82 day range at 2026-10-27 09:07 UTC-5 (14:07 UTC), marked “Delayed 10 min” and “Updated 20 min ago”. The Farmbucks timestamp precedes the hypothesis, while Oilprice's time-zone basis and the timestamp of its session low/high are not supplied.
+- **Classification: NON-VERIFIABLE due to missing reliable post-hypothesis intraday bars.** The Oilprice session low is below the $100.50 trigger, but its timestamp is unknown, so it cannot prove the trigger happened after 14:16:51 UTC. The published range crosses the $101.55 stop level, but the high's timestamp is also unknown. The displayed low remains above both targets, but no reliable timestamped post-hypothesis bar sequence was available to close the evaluation. No stop/TP result is inferred from daily extrema alone.
+- **Sources:** https://oilprice.com/futures/wti/ ; https://farmbucks.com/futures/energy/wti-crude?contract=CLZ26 . Quotes are delayed/age-ambiguous; not suitable to certify the sequence after the hypothesis. No fabricated prices or times were used.
+
+### One functional improvement — cost decomposition in the event backtest
+- **Status before change:** PR #45 was open/unmerged/mergeable at head `68a20178ec9f82c74549cd1fd94d9d6c8d45e831`; current-head ranking-test workflow [40526742393](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40526742393) had completed successfully.
+- **Finding:** the simulator deducted a single round-trip cost in price units, but could not separately represent per-contract commission and per-side slippage. This makes it harder to stress-test early-entry vs breakout under transparent futures execution assumptions.
+- **Implemented in `sputnik_event_backtest.py`:** added `commission_round_trip_usd_per_contract`, `slippage_ticks_per_side`, `tick_size`, and `contract_multiplier` to single-event, batch and CLI paths. The effective cost deducted from gross P&L is `spread + commission_usd_per_contract / contract_multiplier + 2 * slippage_ticks_per_side * tick_size`. Results now expose gross P&L, net P&L and the effective round-trip cost in price units; settings preserve every input.
+- **CL defaults/documentation:** tick size defaults to $0.01 per barrel and multiplier to 1,000 barrels per contract, matching the published CL contract specifications. Commission and slippage default to zero for backward compatibility; a real study must supply defensible values. The costs are deducted from P&L rather than used to reconstruct individual market fills, so stop/target path sensitivity to slippage remains a limitation.
+- **Regression tests:** added `test_execution_cost_model_deducts_commission_and_two_sided_slippage` and `test_execution_cost_model_rejects_invalid_cost_inputs`. The deterministic synthetic example verifies $0.02 spread + $10/1,000-barrel commission + two $0.01 ticks = $0.05 per barrel of round-trip costs; these are test values, not observed market data.
+- **Commits:** implementation `4e74ef52898ac4041cbcdd8536860bddd25eadfb`; tests `2532ced317bfab202b83b1dc90c30aec5fa2273f`.
+- **CI verification:** workflow [40530382388](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40530382388) completed successfully on the code/test revision; the job log confirms `python -m unittest discover -s tests -p "test_*.py" -v`, **118 tests ran, OK**. No local-run claim is made.
+- **Data/performance blocker:** still no exchange-verified, timestamped CL OHLCV sequence paired with a source-linked event ledger and system-availability times. No real-event backtest or early-entry profitability claim.
+- **Safety/deployment:** PR branch only; no orders, broker changes, Telegram test messages, or production deployment.
+
 # SPUTNIK — Research and implementation log
 
 ## 2026-10-26 — Include individual Trump archive posts in the default feed scan
