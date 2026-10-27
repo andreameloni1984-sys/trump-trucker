@@ -116,3 +116,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Deployment:** branch only; no deploy triggered. Render read-only check: last live Sputnik listener commit `9e5204bf7d9074dba27637013b7d98933a91e733` (2026-10-16); latest attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` (2026-10-22) failed with `pipeline_minutes_exhausted`. This PR is not live.
 - **Empirical validation:** no feed replay or live-feed measurement performed. Some non-compliant feeds may now be suppressed; this is intentional until their timezone is known.
 - **Safety:** informational intelligence only; no trade/order path changed; PAPER/DEMO ONLY.
+
+## 2026-10-27 — Require a timezone-aware validation clock
+
+- **Finding:** even after rejecting source publication timestamps without offsets, `_valid_public_item_timestamp()` still treated a naive injected/current clock as UTC. That leaves the future-date gate ambiguous in tests or alternate runtimes.
+- **Change:** return `False` when the validation clock has no timezone/UTC offset; only compare aware clocks after normalization to UTC.
+- **Files/path:** `trump_tracker.py::_valid_public_item_timestamp`; RSS/Atom publication timestamp → parse → future-date gate → finding eligibility.
+- **Regression:** `tests/test_sputnik_item_intelligence.py::test_valid_public_item_timestamp_fails_closed_when_validation_clock_is_naive`.
+- **Commits:** code `dd07e174d4af5a2a025c8b3e132ddd5a961b3a82`; test `44077aa7640760ad4fa0399dc469228cd3e941c8`.
+- **CI:** pending after these commits; no new result claimed yet.
+- **Deployment:** PR #49 branch only; no merge/deploy. Render quota remains exhausted.
+- **Empirical limits:** no live-feed replay or price-outcome study; this is timestamp integrity, not directional evidence.
+- **Safety:** PAPER/DEMO ONLY; no broker, orders, secret-value inspection, or Telegram test messages.
