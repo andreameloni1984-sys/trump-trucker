@@ -100,6 +100,13 @@ jobs:
           SPUTNIK_WTI_MAX_QUOTE_AGE_SECONDS: "1200"
         run: python run_selected_commodity_alerts.py
 
+      - name: Send preliminary market-opportunity alerts (PAPER ONLY)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SPUTNIK_WTI_MAX_QUOTE_AGE_SECONDS: "1200"
+        run: python run_sputnik_market_opportunity.py
+
       - name: Persist SPUTNIK state
         if: always()
         run: |
