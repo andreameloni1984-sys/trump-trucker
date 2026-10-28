@@ -587,6 +587,16 @@ def backtest_event(
                     "required_signal_bars": max_breakout_wait_bars,
                 }
 
+    # Compare entry timing from the same event decision point. A delay is reported
+    # whenever an entry timestamp exists, even if its later exit is unscored.
+    for trade in (early, breakout):
+        entry_time_value = trade.get("entry_time")
+        if isinstance(entry_time_value, str):
+            entry_delay = (_dt(entry_time_value) - decision_dt).total_seconds() / 60.0
+            trade["entry_delay_minutes"] = round(entry_delay, 2)
+        else:
+            trade["entry_delay_minutes"] = None
+
     return {
         "event_time": event_dt.isoformat(),
         "available_at": available_dt.isoformat(),
@@ -723,12 +733,17 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
     breakout_unscored = {}
     early_status_counts = {}
     breakout_status_counts = {}
+    entry_delay_pairs = []
     for result in results:
         early = result.get("early", {})
         breakout = result.get("breakout", {})
         for trade, counts in ((early, early_status_counts), (breakout, breakout_status_counts)):
             status = str(trade.get("status") or "UNKNOWN")
             counts[status] = counts.get(status, 0) + 1
+        early_delay = early.get("entry_delay_minutes")
+        breakout_delay = breakout.get("entry_delay_minutes")
+        if _is_scored_pnl(early_delay) and _is_scored_pnl(breakout_delay):
+            entry_delay_pairs.append((float(early_delay), float(breakout_delay)))
         early_r = early.get("pnl_r")
         breakout_r = breakout.get("pnl_r")
         if _is_scored_pnl(early_r) and _is_scored_pnl(breakout_r):
@@ -753,6 +768,9 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
                 breakout_unscored[status] = breakout_unscored.get(status, 0) + 1
 
     differences = [early_r - breakout_r for early_r, breakout_r in paired]
+    mean_early_entry_delay = statistics.mean(early for early, _ in entry_delay_pairs) if entry_delay_pairs else None
+    mean_breakout_entry_delay = statistics.mean(breakout for _, breakout in entry_delay_pairs) if entry_delay_pairs else None
+    mean_entry_delay_difference = statistics.mean(early - breakout for early, breakout in entry_delay_pairs) if entry_delay_pairs else None
     mean_early = statistics.mean(early for early, _ in paired) if paired else None
     mean_breakout = statistics.mean(breakout for _, breakout in paired) if paired else None
     mean_difference = statistics.mean(differences) if differences else None
@@ -783,6 +801,10 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         "overlapping_trade_pairs_early": early_overlaps,
         "overlapping_trade_pairs_breakout": breakout_overlaps,
         "paired_scored_events": len(paired),
+        "entry_timing_paired_events": len(entry_delay_pairs),
+        "mean_early_entry_delay_minutes": round(mean_early_entry_delay, 2) if mean_early_entry_delay is not None else None,
+        "mean_breakout_entry_delay_minutes": round(mean_breakout_entry_delay, 2) if mean_breakout_entry_delay is not None else None,
+        "mean_early_minus_breakout_entry_delay_minutes": round(mean_entry_delay_difference, 2) if mean_entry_delay_difference is not None else None,
         "paired_gross_scored_events": len(gross_paired),
         "mean_early_gross_r_paired": round(mean_early_gross, 4) if mean_early_gross is not None else None,
         "mean_breakout_gross_r_paired": round(mean_breakout_gross, 4) if mean_breakout_gross is not None else None,
@@ -810,6 +832,11 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
         "ties_count": sum(value == 0 for value in differences),
         "unscored_early_status_counts": early_unscored,
         "unscored_breakout_status_counts": breakout_unscored,
+        "entry_timing_note": (
+            "Entry delays are measured in minutes from the shared decision_time to each strategy's entry_time. "
+            "The mean early-minus-breakout delay is negative when early entry is faster. Events without an "
+            "entry timestamp for either strategy are excluded from this timing comparison; exit scoring is not required."
+        ),
         "scoring_note": (
             "Net R averages use only events with numeric P&L for both strategies; unscored outcomes are "
             "reported by status and never treated as zero. Gross/net decomposition is reported only when "
