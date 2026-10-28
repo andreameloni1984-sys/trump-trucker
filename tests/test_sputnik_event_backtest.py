@@ -313,6 +313,30 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertEqual(result["breakout"]["signal_bars_observed"], 2)
         self.assertEqual(result["breakout"]["required_signal_bars"], 2)
 
+    def test_gap_after_completed_breakout_window_does_not_invalidate_no_breakout(self):
+        start = datetime(2026, 1, 1, 0, 0, tzinfo=timezone.utc)
+        data = candles([
+            (100, 101, 99.0, 100, 1000),
+            (100, 100.4, 99.4, 100, 1000),
+            (100, 100.3, 99.5, 100, 1000),
+            (100, 100.2, 99.6, 100, 1000),
+            (100, 100.2, 99.7, 100, 1000),
+        ], start=start)
+        # The two eligible signal bars are at 00:10 and 00:15. The gap to
+        # 00:35 begins only after the configured two-bar observation window.
+        data[4]["timestamp"] = start + timedelta(minutes=35)
+        result = run_backtest(
+            data, "2025-12-31T23:59:00+00:00", "SHORT", 1.0,
+            breakout_lookback=2, max_breakout_wait_bars=2,
+            max_holding_bars=1, bar_interval_minutes=5,
+        )
+        breakout = result["breakout"]
+        self.assertEqual(breakout["status"], "NO_BREAKOUT_WITHIN_WINDOW")
+        self.assertEqual(breakout["signal_bars_observed"], 2)
+        self.assertEqual(breakout["required_signal_bars"], 2)
+        self.assertNotIn("gap_start_time", breakout)
+        self.assertIsNone(breakout.get("pnl_r"))
+
     def test_breakout_without_trigger_is_unscored_when_observation_window_is_truncated(self):
         data = candles([
             (100, 101, 99, 100, 1000),
