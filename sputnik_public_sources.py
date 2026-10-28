@@ -7,10 +7,31 @@ from html.parser import HTMLParser
 from urllib.parse import urljoin
 
 class _Text(HTMLParser):
+    # RSS/Atom descriptions may embed HTML. Script/style and inert markup are
+    # not public prose and must never become catalyst evidence.
+    _SUPPRESSED_TAGS = frozenset({"script", "style", "noscript", "template"})
+
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.parts = []
+        self._suppressed_tags = []
+
+    def handle_starttag(self, tag, attrs):
+        tag = str(tag).lower()
+        if tag in self._SUPPRESSED_TAGS:
+            self._suppressed_tags.append(tag)
+
+    def handle_endtag(self, tag):
+        tag = str(tag).lower()
+        if tag in self._SUPPRESSED_TAGS:
+            for index in range(len(self._suppressed_tags) - 1, -1, -1):
+                if self._suppressed_tags[index] == tag:
+                    del self._suppressed_tags[index:]
+                    break
+
     def handle_data(self, data):
+        if self._suppressed_tags:
+            return
         value = " ".join(data.split()).strip()
         if value:
             self.parts.append(value)
