@@ -1,5 +1,5 @@
 import unittest
-from sputnik_decision_engine import conditional_plans, decision_message
+from sputnik_decision_engine import conditional_plans, decision_message, _fallback_watch
 from sputnik_cfd import build_conditional_trade_plan
 
 class StrictDecisionTests(unittest.TestCase):
@@ -7,9 +7,29 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("The President announces new tariffs on imports.")
         self.assertTrue(rows)
         self.assertEqual(rows[0]["candidate"], "ORO (XAU/USD)")
+        self.assertFalse(any(row["id"] == "trade_deescalation" for row in rows))
 
     def test_generic_mention_is_not_enough(self):
         self.assertEqual(conditional_plans("A speech mentioned tariffs and trade."), [])
+
+    def test_hyphenated_multiword_topic_matches_catalyst_evidence(self):
+        rows = conditional_plans("The countries signed a trade-deal after negotiations.")
+        self.assertTrue(any(row["id"] == "trade_deescalation" for row in rows))
+
+    def test_unicode_dash_variants_match_compound_market_terms(self):
+        rows = conditional_plans("The countries signed a trade\u2011deal after negotiations.")
+        self.assertTrue(any(row["id"] == "trade_deescalation" for row in rows))
+
+        watch = _fallback_watch("Oil\u2014price volatility rose after the report.")
+        self.assertEqual(watch["topic"], "PETROLIO / OFFERTA ENERGETICA")
+
+    def test_evidence_preserves_original_source_casing(self):
+        rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
+        row = next(item for item in rows if item["id"] == "oil_supply_disruption")
+        self.assertEqual(
+            row["evidence"],
+            "Iran threatens shipping near Hormuz and oil exports",
+        )
 
     def test_oil_flow_risk(self):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
@@ -31,6 +51,14 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("The report confirms shipping was not disrupted and oil exports continue normally.")
         self.assertEqual(rows, [])
 
+    def test_semicolon_scopes_negation_to_its_clause(self):
+        # A denied production-cut claim must not suppress a separate, concrete
+        # shipping-risk clause after a semicolon.
+        rows = conditional_plans(
+            "The report denied a production cut; Iran threatens shipping near Hormuz and oil exports."
+        )
+        self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
+
     def test_message_has_confirmation_and_invalidation(self):
         message = decision_message("The President announces new tariffs on imports.")
         self.assertIn("Conferma richiesta", message)
@@ -48,6 +76,23 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("SPUTNIK — OPPORTUNITÀ DI MERCATO", message)
         self.assertIn("DIREZIONE: WAIT", message)
         self.assertIn("PAPER TRADING", message)
+
+    def test_fallback_watch_uses_whole_topic_words_and_keeps_hyphenated_phrases(self):
+        # "spoiled" contains the substring "oil", but is not an oil catalyst.
+        spoiled = _fallback_watch("Negotiations were spoiled by a delay.")
+        self.assertEqual(spoiled["topic"], "DATI INSUFFICIENTI — MONITORAGGIO OPERATIVO")
+
+        # Hyphenated market phrases remain recognizable after normalization.
+        oil = _fallback_watch("Oil-price volatility rose after the report.")
+        self.assertEqual(oil["topic"], "PETROLIO / OFFERTA ENERGETICA")
+
+    def test_trigger_ranking_does_not_count_word_fragments(self):
+        rows = conditional_plans(
+            "The President announces new tariffs on imports. The trade warrior conference opens."
+        )
+        tariff = next(row for row in rows if row["id"] == "tariff_escalation")
+        self.assertIn("tariffs", tariff["matched_terms"])
+        self.assertNotIn("trade war", tariff["matched_terms"])
 
     def test_empty_legacy_snapshot_still_returns_result(self):
         message = decision_message("")
@@ -84,6 +129,32 @@ class ConditionalTradePlanTests(unittest.TestCase):
         result = build_conditional_trade_plan(plan, quote)
         self.assertEqual(result["status"], "WAIT")
         self.assertIsNone(result["entry"])
+
+    def test_word_fragment_does_not_count_as_oil_disruption_action(self):
+        # "White" contains the substring "hit", but is not evidence of an attack.
+        self.assertEqual(
+            conditional_plans("White House discusses oil prices in a routine briefing."),
+            [],
+        )
+
+    def test_negation_adjacent_to_punctuation_still_blocks_catalyst(self):
+        # The em dash prevents a space-based " never " check from seeing the negation.
+        self.assertEqual(
+            conditional_plans("The President never—according to officials—imposed new tariffs on imports."),
+            [],
+        )
+
+    def test_curly_apostrophe_negation_blocks_catalyst(self):
+        for text in (
+            "Iran won't hit tankers near Hormuz and oil exports.",
+            "Iran won’t hit tankers near Hormuz and oil exports.",
+        ):
+            self.assertEqual(conditional_plans(text), [])
+
+        self.assertTrue(
+            conditional_plans("Iran will hit tankers near Hormuz and oil exports.")
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

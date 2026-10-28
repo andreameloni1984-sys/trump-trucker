@@ -7,7 +7,7 @@ from sputnik_decision import SCENARIOS as BASE_SCENARIOS
 RULES = {
     "tariff_escalation": {
         "actions": ("impose", "imposes", "imposed", "imposing", "announce", "announces", "announced", "raise", "raises", "raised", "increase", "increases", "increased", "introduce", "introduced", "levies", "implement", "implemented", "annuncia", "annunciato", "aumenta", "aumentati", "imporre", "applica"),
-        "topics": ("tariff", "import dut", "dazi"),
+        "topics": ("tariff", "tariffs", "import dut", "import duties", "dazi"),
     },
     "trade_deescalation": {
         "actions": ("signed", "signs", "reached", "reach", "agreed", "agrees", "announced", "announce", "finalized", "firmato", "raggiunto", "concordato", "suspended", "suspends", "paused", "pause", "sospende", "sospesi", "proroga", "estende"),
@@ -21,18 +21,38 @@ RULES = {
 NEGATIONS = (" never ", "did not", "does not", "do not", "will not", "would not", "was not", "were not", "is not", "are not", "has not", "have not", "had not", "cannot", "can not", "not confirmed", "not yet", "won't", "didn't", "doesn't", "don't", "isn't", "aren't", "wasn't", "weren't", "denied", "rejects", "rejected", "withdrawn", "cancelled", " non ", "nessun", "nega", "smentisce", "ritira", "respinge")
 
 def _sentences(text: str) -> list[str]:
-    normalized = str(text or "").replace("?", ".").replace("!", ".")
+    normalized = str(text or "").replace("?", ".").replace("!", ".").replace(";", ".")
     parts = []
     for line in normalized.splitlines():
         parts.extend(line.split("."))
-    return [" ".join(part.lower().split()) for part in parts if part.strip()]
+    return [" ".join(part.split()) for part in parts if part.strip()]
+
+def _contains_term(text: str, term: str) -> bool:
+    """Match a whole word/phrase, not a substring inside an unrelated word."""
+    return re.search(rf"(?<!\w){re.escape(term.lower())}(?!\w)", text.lower()) is not None
+
+
+def _normalize_phrase_separators(text: str) -> str:
+    """Normalize ASCII and Unicode dash variants before whole-phrase matching."""
+    return re.sub(r"[-\u2010-\u2015\u2212]+", " ", str(text or ""))
+
+
+def _normalize_apostrophes(text: str) -> str:
+    """Normalize common Unicode apostrophes so contraction-based negations match."""
+    return re.sub(r"[\u2018\u2019\u02bc\uff07]", "'", str(text or ""))
+
 
 def _evidence(text: str, rule: dict[str, tuple[str, ...]]) -> str:
     for sentence in _sentences(text):
-        padded = " " + sentence + " "
-        if any(term in padded for term in NEGATIONS):
+        # Trigger ranking normalizes hyphens to spaces. Apply the same
+        # normalization for evidence matching, but preserve the original
+        # sentence in the returned evidence shown to operators.
+        match_sentence = _normalize_apostrophes(_normalize_phrase_separators(sentence))
+        # Match negation tokens as whole words, including when punctuation
+        # touches the token (for example, an em dash after "never").
+        if any(_contains_term(match_sentence, term.strip()) for term in NEGATIONS):
             continue
-        if any(action in sentence for action in rule["actions"]) and any(topic in sentence for topic in rule["topics"]):
+        if any(_contains_term(match_sentence, action) for action in rule["actions"]) and any(_contains_term(match_sentence, topic) for topic in rule["topics"]):
             return sentence[:320]
     return ""
 
@@ -47,7 +67,8 @@ def conditional_plans(text: str, limit: int = 3) -> list[dict[str, Any]]:
         evidence = _evidence(text, rule)
         if not evidence:
             continue
-        hits = [term for term in scenario.get("trigger", ()) if term in str(text).lower()]
+        trigger_text = _normalize_phrase_separators(" ".join(str(text or "").lower().split()))
+        hits = [term for term in scenario.get("trigger", ()) if _contains_term(trigger_text, term)]
         row = {key: value for key, value in scenario.items() if key != "trigger"}
         row.update(matched_terms=hits, match_count=len(hits), evidence=evidence)
         rows.append(row)
@@ -56,15 +77,16 @@ def conditional_plans(text: str, limit: int = 3) -> list[dict[str, Any]]:
 
 def _fallback_watch(text: str) -> dict[str, str] | None:
     """Broad watch mode: always return a useful result without turning mentions into trades."""
-    body = " ".join(str(text or "").lower().split())
+    # Normalize hyphenated phrases (for example, "oil-price") before whole-term matching.
+    body = _normalize_phrase_separators(" ".join(str(text or "").lower().split()))
     topics = [
-        (("tariff", "tariffs", "dazi", "trade war", "trade deal", "accordo commerciale"),
+        (("tariff", "tariffs", "dazi", "trade war", "trade wars", "trade deal", "accordo commerciale"),
          "COMMERCIO / DAZI", "NASDAQ-100 e oro", "Una notizia commerciale può muovere sia gli asset rischiosi sia i beni rifugio; la direzione dipende dai dettagli e dalla reazione dei prezzi."),
-        (("oil", "petrol", "brent", "wti", "hormuz", "iran", "tanker", "petrolio", "energia"),
+        (("oil", "oils", "petrol", "petroleum", "brent", "wti", "hormuz", "iran", "tanker", "tankers", "petrolio", "energia"),
          "PETROLIO / OFFERTA ENERGETICA", "Brent e WTI", "Il petrolio è da monitorare se la notizia riguarda davvero produzione, trasporti o flussi fisici; una semplice menzione non prova una carenza."),
         (("fed", "federal reserve", "interest rate", "rates", "inflation", "inflazione", "tassi", "rendimenti", "treasury", "dollar", "dollaro"),
          "TASSI / DOLLARO", "USD, Treasury e Nasdaq", "La reazione dipende da come cambiano le aspettative sui tassi; verificare rendimenti e dollaro prima di concludere la direzione."),
-        (("defense", "defence", "military", "missile", "war", "guerra", "difesa", "militare", "sanction", "sanzioni"),
+        (("defense", "defence", "military", "missile", "missiles", "war", "guerra", "difesa", "militare", "sanction", "sanctions", "sanzioni"),
          "GEOPOLITICA / DIFESA", "Settore difesa, petrolio e oro", "L'impatto dipende da conseguenze concrete su spesa, approvvigionamenti e rischio; non basta il tono della notizia."),
         (("sec", "form 4", "insider", "shares", "stock", "azioni", "ogE", "ethics", "disclosure"),
          "DISCLOSURE / SOCIETÀ", "Titolo citato nella disclosure, se identificabile", "Distinguere operazioni effettivamente documentate da opzioni, piani, intenzioni o semplici menzioni."),
@@ -90,7 +112,7 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
          "Una menzione su un sito o social non dimostra un investimento né un impatto sul mercato. Recuperare il singolo post o comunicato originale."),
     ]
     for keywords, label, instruments, explanation in [*topics, *domain_topics]:
-        if any(word in body for word in keywords):
+        if any(_contains_term(body, word) for word in keywords):
             return {"topic": label, "instruments": instruments, "explanation": explanation}
 
     # Always return a transparent operational outcome, even for empty/stale feeds.

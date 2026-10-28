@@ -114,3 +114,125 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-27 — Match catalyst actions/topics as whole words
+
+- **Finding:** `sputnik_decision_engine.py::_evidence` used substring matching. The action token `hit` occurs inside the unrelated word `White`; paired with an oil-price topic, this could create a false oil-supply catalyst.
+- **Implemented on research PR branch:** a whole-word/phrase matcher now checks action and topic evidence. Explicit variants such as `hit`, `hits`, `hitting`, and `attacked` remain listed in the rule table.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_word_fragment_does_not_count_as_oil_disruption_action` rejects “White House discusses oil prices in a routine briefing.”
+- **CI finding:** an earlier main-branch ranking run failed `test_message_has_confirmation_and_invalidation`; the current main file includes the expected invalidation line, but a fresh passing run on the current SHA is still required. This change is separate and does not claim to fix that prior run.
+- **Deployment:** no merge/deploy; Render build-pipeline minutes remain exhausted. The change is on a non-main branch and no Render preview is configured.
+- **Limits:** deterministic keyword matching only; no headline replay, price/volume event study, or OOS edge established. PAPER ONLY.
+
+
+## 2026-10-27 — Preserve plural tariff topics after whole-word matching
+
+- **CI finding:** the first PR #55 run failed two existing positive-control tests. The new whole-word matcher correctly stopped the false `hit` substring inside `White`, but it also exposed that the rule table listed singular `tariff` while the valid headline says `tariffs`.
+- **Correction:** explicitly add `tariffs` (and `import duties`) to the tariff-escalation topic vocabulary, and add the plural `tariffs` to the trade-de-escalation vocabulary. This keeps word-boundary matching strict without losing known inflections.
+- **Regression:** existing `test_tariff_action` is the positive control for “announces new tariffs”; the new word-fragment negative test remains.
+- **CI:** rerun pending on the corrective commit. The previous PR #55 run failed at `test_tariff_action` and `test_message_has_confirmation_and_invalidation` because no catalyst was matched; do not treat that run as passing.
+- **Deployment:** no merge/deploy. PAPER ONLY; no live alert delivery or market edge is claimed.
+
+
+## 2026-10-27 — Keep new-tariff announcements separate from trade de-escalation
+
+- **Review finding:** the first word-boundary correction added `tariffs` to both escalation and de-escalation topic vocabularies. A headline announcing new tariffs must not match a trade-de-escalation rule just because both mention tariffs.
+- **Correction:** keep the plural `tariffs` and `import duties` in the escalation rule only; trade de-escalation continues to require its agreement/pause language. The existing tariff test now asserts that a new-tariff headline does not produce a `trade_deescalation` row.
+- **CI:** the first run on commit `2f7c4ead73183db262fe75759665fec49e43027d` failed because whole-word matching exposed missing plural vocabulary. Commit `d76b48c62a653129c4622cb500ff33b333e6fb69` added that vocabulary; this follow-up narrows the de-escalation rule and adds an explicit regression assertion. CI for this head is pending.
+- **Safety/limits:** no merge/deploy, no real orders. Keyword rules are not a substitute for source verification or price/volume confirmation; no historical or OOS performance claim.
+
+
+## Final verification — whole-word catalyst matcher (2026-10-27)
+
+- **Code/test head:** `899790b02620082b0b224fdec99ecf7fa2aa0cb8`.
+- **CI PASS:** SPUTNIK ranking tests [40577683546](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40577683546). The suite includes the new whole-word negative control and the existing plural-tariff positive control. The earlier run on `2f7c4ead73183db262fe75759665fec49e43027d` failed two tests; explicit plural vocabulary and separation of escalation/de-escalation fixed the observed regressions. The Telegram-menu workflow did not trigger on this head and is not claimed as passed.
+- **Main:** current SHA `780b06b078747d2ce71385e9b0f9a9942aaca794`; ranking workflow [40576677519](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40576677519) passed after the explicit invalidation-label correction. This is a separate main commit, not the PR #55 change.
+- **Render:** latest successful deployment returned remains `9e5204bf7d9074dba27637013b7d98933a91e733`; later attempt `50851b0dc76f1b7ed0adaa872c47aa84793687f9` failed with exhausted pipeline minutes. No new deploy event was observed for main SHA `780b06b...`.
+- **Runtime limits:** the queried 2026-10-27 20:10–20:25 UTC log window returned no SEC/White House/source lines, so current source ingestion and alert delivery are not confirmed. Setting names `GAGARIN_CLOUD_API_URL` / `GAGARIN_CLOUD_API_KEY` were inspected only in code; no secret values read.
+- **Empirical limit:** deterministic keyword tests only; no historical headline replay, price/volume event study or OOS edge established. No merge/deploy. PAPER ONLY.
+
+
+## 2026-10-27 — Treat punctuation-adjacent negation as a whole token
+
+- **Finding:** after whole-word matching was added for catalyst actions/topics, the negation gate still used padded substring checks. A negation such as `never` adjacent to an em dash could evade the gate, leaving a sentence with an action/topic pair eligible as a catalyst.
+- **Change:** `sputnik_decision_engine.py::_evidence` now uses the existing whole-word matcher for each normalized negation token, preserving multi-word phrases while recognizing punctuation boundaries.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_negation_adjacent_to_punctuation_still_blocks_catalyst` rejects a negated tariff headline with em dashes; the existing explicit-negation and positive tariff controls remain in the same suite.
+- **Commits:** code `d42ee07934fc6a8f2fa630d088aaa2c9bd791489`; regression test `66b3152b445a8560c286fa00bcf58fb3e5b1a5b7`.
+- **CI:** SPUTNIK ranking tests passed on the code/test head: [run 40582630474](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40582630474). The current PR head at log-update time is `66b3152b445a8560c286fa00bcf58fb3e5b1a5b7), based on current `main` `780b06b078747d2ce71385e9b0f9a9942aaca794`; compare reports 6 commits ahead, 0 behind, and PR metadata says mergeable. This is branch CI, not a production check.
+- **Operational path:** public text → sentence splitting → negation gate → catalyst action/topic evidence → conditional hypothesis → independent price/volume confirmation. News remains a hypothesis, not an order.
+- **Render/runtime:** no Render or Telegram log connector was available in this run; no deploy was attempted and the live Render commit was not verified. The last known runtime report recorded exhausted build minutes; current quota could not be rechecked. SEC 403 cooldown code and the White House RSS URL are present in `trump_tracker.py`, but live ingestion/alert delivery is not confirmed. Only the names `GAGARIN_CLOUD_API_URL` and `GAGARIN_CLOUD_API_KEY` were inspected, never their values.
+- **Empirical limit/safety:** synthetic unit regression only; no historical headline replay, event study or OOS edge. No merge/deploy, broker, real order or Telegram test message. PAPER ONLY.
+
+
+## 2026-10-27 — Open-PR base audit
+
+- **Main SHA:** `780b06b078747d2ce71385e9b0f9a9942aaca794`; latest main ranking workflow [40576677519](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40576677519) passed. Several earlier intermediate pushes failed before their corrective commits; those failures are retained as history, not hidden.
+- **Open PR inventory:** 35 open PRs were returned. 25 target `main`; 24 of those had a base SHA older than current `main`; 10 are stacked on another branch. The inventory includes overlapping work on timestamp handling, source provenance/deduplication, SEC retry policy, Telegram dispatch and conditional market hypotheses.
+- **Current PR #55:** base SHA matches current main, head `4eba9eea321a8f9280ca4be586e58d14753abea6`, compare is 7 commits ahead / 0 behind, GitHub metadata says mergeable; ranking workflow [40582775585](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40582775585) passed on that head.
+- **Decision:** no automatic rebase, merge or deploy. Older PRs require individual diff review because many are stacked and some cover overlapping fixes; merging them as a batch could duplicate or regress behavior. PAPER ONLY.
+
+
+## 2026-10-27 — Scope negation to semicolon-separated clauses
+
+- **Finding:** `_sentences()` split on periods, question/exclamation marks, and newlines, but not semicolons. A sentence such as “The report denied a production cut; Iran threatens shipping near Hormuz and oil exports.” could suppress the independent shipping-risk clause because the earlier clause contained “denied”.
+- **Change:** treat semicolons as clause boundaries before evaluating catalyst evidence. The existing negation guard remains conservative within each clause.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_semicolon_scopes_negation_to_its_clause`; it uses the existing positive oil-flow wording after a semicolon and asserts that Brent remains a conditional candidate. Existing negative-control tests remain in place.
+- **Commits:** code `818a2899d77db146e5e6043ab383214d91ccc159`; test `ec1721cab064f6f442ce12849deec995c89592e2`.
+- **CI:** SPUTNIK ranking tests passed on code/test head `ec1721cab064f6f442ce12849deec995c89592e2`, run [40590079265](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40590079265).
+- **Operational path:** public item text → clause splitting → negation guard → whole-word action/topic evidence → conditional catalyst hypothesis → independent price/volume confirmation. This change does not convert news into a confirmed trade.
+- **IBKR session 9 crosswalk:** the recorded requirement to preserve source provenance, publication/availability timing, text evidence, and fixed reaction horizons maps to the public-item/catalyst path; this lexical regression addresses only clause-level false suppression. It does not validate source truth or predictive value.
+- **Deployment/limits:** PR #55 branch only; no merge/deploy. Render workspace and Telegram runtime logs were not accessible through the tools in this run. Synthetic language regression only; no event replay, price/volume study, or OOS performance claim. PAPER ONLY.
+- **Historical research:** the session 9 Library file was retrieved. The original complete 100-rule catalog was not found in the available Library results and is not reconstructed here.
+
+## 2026-10-27 — Require whole terms in fallback watchlist matching
+
+- **Finding:** the non-directional `_fallback_watch()` used substring matching even after directional catalyst matching had moved to word boundaries. A routine phrase such as “negotiations were spoiled by a delay” contains the substring `oil` and could incorrectly select the Brent/WTI watchlist.
+- **Change:** fallback watchlist keywords now use the existing whole-word/phrase matcher. Hyphens are normalized to spaces first, so phrases such as “oil-price” remain discoverable; common plural variants were made explicit where needed.
+- **Operational path:** no directional catalyst → fallback watchlist classification → Telegram WAIT/monitoring message. This cannot create LONG/SHORT by itself.
+- **Files/tests:** `sputnik_decision_engine.py::_fallback_watch`; `tests/test_sputnik_decision_engine.py::test_fallback_watch_uses_whole_topic_words_and_keeps_hyphenated_phrases`.
+- **Validation:** code/test commit `a269763fed7894f9a5e0fd4fefa48a72c5e1d53d` passed SPUTNIK ranking tests, run [40592091222](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40592091222). This is synthetic lexical validation only; no event replay or OOS result.
+- **Deployment/limits:** PR branch only; no merge/deploy. Keyword-based classification only; no headline replay or OOS market-performance result. PAPER ONLY.
+
+
+## 2026-10-28 — Use whole terms for catalyst ranking counts
+
+- **Finding:** `_evidence()` already used whole-word/phrase matching, but `conditional_plans()` still counted scenario trigger terms by substring. For example, `trade war` was counted inside `trade warrior`, inflating a catalyst's match count and potentially changing ranking.
+- **Change/files:** normalize hyphens and use the existing `_contains_term()` matcher for `matched_terms` in `sputnik_decision_engine.py::conditional_plans`.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_trigger_ranking_does_not_count_word_fragments` keeps the positive `tariff` match and rejects the unrelated `trade war` fragment.
+- **Operational path:** public item text → evidence gate → trigger-count ranking → conditional hypothesis → independent price/volume confirmation. This affects ranking metadata only; it does not confirm a trade.
+- **Code commit:** 9dc9de120f45be2caf3435fce605b4bfe0eaf87e. **Test commit:** 50d5642865547bd3ef82f7a2cfcb7ba93eeb7984.
+- **CI/deployment/limits:** CI is expected to run from the PR branch and will be recorded after checking Actions. No merge/deploy; Render build minutes remain exhausted. Synthetic text regression only; no news replay, event study, or OOS performance claim. PAPER ONLY.
+
+- **CI correction (2026-10-28):** first run [40602923648](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40602923648) failed because the new test expected singular `tariff` to match the explicitly listed plural `tariffs`. Whole-term matching correctly distinguishes them; corrected the assertion to expect `tariffs` and continue rejecting the fragment `trade war` inside `trade warrior`. Re-run pending.
+
+
+## 2026-10-28 — align hyphenated phrase evidence with trigger ranking
+- **Finding:** `conditional_plans()` normalizes hyphens when counting trigger terms, but `_evidence()` did not. A concrete phrase such as “signed a trade-deal” could therefore be ranked using normalized text but fail the evidence gate because the rule topic is “trade deal”.
+- **Change/files:** `sputnik_decision_engine.py::_evidence` normalizes ASCII hyphen runs for matching while preserving the original sentence in the evidence field.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_hyphenated_multiword_topic_matches_catalyst_evidence`.
+- **Operational path:** public text → evidence gate → trigger ranking → conditional hypothesis → independent price/volume confirmation. No order authorization is added.
+- **Validation:** synthetic text regression; no event replay, event-study or out-of-sample performance claim. CI result and commit SHA will be recorded in the PR conversation after the run completes.
+- **Deployment/safety:** research PR #55 only; no merge or deploy. PAPER ONLY.
+
+
+## 2026-10-28 — Preserve original case in Sputnik evidence snippets
+
+- **Finding:** `_sentences()` lowercased source text before `_evidence()` returned the matching sentence. This made the evidence shown to operators differ from the publisher's original casing, weakening audit readability even though matching is case-insensitive.
+- **Change/files:** `sputnik_decision_engine.py::_sentences` now normalizes whitespace without lowercasing the stored sentence. `_contains_term()` remains case-insensitive, so matching behavior is unchanged.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_evidence_preserves_original_source_casing` verifies the evidence keeps “Iran”, “Hormuz” and the original sentence text.
+- **Operational path:** public item text → sentence/clause split → normalized matching → evidence attached to conditional catalyst → operator review. No direction or order authorization is added.
+- **Commits:** code `67af9292064c3a36bebbe857149205c88b421f4a`; test `eee1bbeda8defc509115def85074ddf096aa98e1`.
+- **CI:** pending verification after the branch workflow finishes. This is a synthetic text regression, not an event replay or predictive-performance test.
+- **Deployment/safety:** PR #55 research branch only; no merge/deploy. PAPER ONLY; no broker action, test Telegram message or secret-value inspection.
+
+
+## 2026-10-28 — Normalize Unicode apostrophes before negation matching
+
+- **Finding:** the catalyst rule table includes ASCII contractions such as `won't` and `didn't`, but public headlines often use curly apostrophes (for example, `won’t`). Without normalization, a negated action could evade the negation guard and be treated as positive evidence.
+- **Change/files:** added `_normalize_apostrophes()` in `sputnik_decision_engine.py` and applied it only to the matching copy in `_evidence()`; original source casing/punctuation remains in the returned evidence.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_curly_apostrophe_negation_blocks_catalyst` checks ASCII and curly-apostrophe negative headlines and a positive control.
+- **Commits:** code `df57db561b2d4671897b734206001cab3c8e8aab`; test `91c8c840e71e59724ec49f0ecdeb9299f76ef453`.
+- **CI:** SPUTNIK ranking tests passed on test commit `91c8c840...`, run [40611179509](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40611179509).
+- **Operational path:** public item → sentence split → dash/apostrophe normalization for matching → negation guard → catalyst evidence → conditional hypothesis. No direction/order authorization added.
+- **Base/deploy/limits:** PR #55 remains based on an older `main` SHA and needs deliberate reconciliation. No merge/deploy. Synthetic language tests only; no historical replay, event study, or OOS performance claim. PAPER ONLY.
