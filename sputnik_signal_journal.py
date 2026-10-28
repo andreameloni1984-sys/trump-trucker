@@ -16,6 +16,27 @@ from typing import Any
 JOURNAL_PATH = Path(os.getenv("SPUTNIK_SIGNAL_JOURNAL_PATH", "data/sputnik_signal_journal.jsonl"))
 
 
+def _parse_utc_timestamp(value: str) -> datetime | None:
+    """Parse an ISO timestamp without guessing when source metadata is absent."""
+    if not str(value or "").strip():
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(value).strip().replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def _publication_delay_seconds(published_at: str, detected_at: str) -> float | None:
+    published = _parse_utc_timestamp(published_at)
+    detected = _parse_utc_timestamp(detected_at)
+    if published is None or detected is None:
+        return None
+    return round((detected - published).total_seconds(), 3)
+
+
 def build_signal_record(
     text: str,
     source: str,
@@ -23,6 +44,7 @@ def build_signal_record(
     *,
     event_id: str = "",
     event_detected_at: str = "",
+    event_published_at: str = "",
     now: datetime | None = None,
 ) -> dict[str, Any]:
     """Build a truthful record; missing quotes remain missing, never inferred."""
@@ -42,6 +64,8 @@ def build_signal_record(
         "source": str(source or "Fonte non specificata"),
         "event_id": str(event_id or ""),
         "event_detected_at": str(event_detected_at or ""),
+        "event_published_at": str(event_published_at or ""),
+        "publication_to_detection_seconds": _publication_delay_seconds(event_published_at, event_detected_at),
         "catalyst_excerpt": str(text or "")[:700],
         "horizon": "INTRADAY",
         "mode": "PAPER",
