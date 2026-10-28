@@ -60,6 +60,8 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         item = first[0]
         self.assertEqual(item["title"], "President announces new tariffs on China")
         self.assertEqual(item["published"], "Mon, 19 Oct 2026 06:00:00 GMT")
+        self.assertEqual(item["event_time"], "2026-10-19T06:00:00+00:00")
+        self.assertEqual(item["available_at"], "2026-10-19T06:01:00+00:00")
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
@@ -127,9 +129,10 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "url": "https://example.gov/tariffs",
             "published": "2026-10-26T10:00:00Z",
             "source": "WHITE_HOUSE",
+            "detected_at": "2026-10-26T10:01:00Z",
             "domains": ["TRADE_POLICY"],
         }]
-        candidates = trump_tracker.directional_news_candidates(findings)
+        candidates = trump_tracker.directional_news_candidates(findings, now=datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc))
         self.assertEqual({x["instrument"] for x in candidates}, {"NASDAQ100", "GOLD"})
         self.assertEqual({x["bias"] for x in candidates}, {"SHORT_BIAS", "LONG_BIAS"})
         self.assertTrue(all(x["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for x in candidates))
@@ -146,8 +149,84 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "url": "https://example.gov/remarks", "published": "2026-10-26T10:00:00Z",
             "domains": ["TRADE_POLICY"],
         }]
-        self.assertEqual(trump_tracker.directional_news_candidates(page_level), [])
-        self.assertEqual(trump_tracker.directional_news_candidates(vague), [])
+        self.assertEqual(trump_tracker.directional_news_candidates(page_level, now=datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc)), [])
+        self.assertEqual(trump_tracker.directional_news_candidates(vague, now=datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc)), [])
+
+
+    def test_directional_news_candidates_rejects_stale_future_and_unparseable_timestamps(self):
+        from sputnik_catalyst import directional_news_candidates
+
+        now = datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc)
+        base = {
+            "event_id": "tariff-point-in-time",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/tariffs",
+            "source": "WHITE_HOUSE",
+            "detected_at": "2026-10-26T10:01:00Z",
+            "domains": ["TRADE_POLICY"],
+        }
+        for published in (
+            "2026-10-26T05:00:00Z",  # older than the four-hour action window
+            "2026-10-26T10:20:00Z",  # materially in the future
+            "not-a-timestamp",
+            None,
+        ):
+            with self.subTest(published=published):
+                self.assertEqual(
+                    directional_news_candidates([{**base, "published": published}], now=now),
+                    [],
+                )
+
+    def test_directional_news_candidates_enforces_event_available_decision_order(self):
+        from sputnik_catalyst import directional_news_candidates
+
+        now = datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc)
+        base = {
+            "event_id": "ordered-tariff",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/tariffs",
+            "published": "2026-10-26T10:04:00Z",
+            "source": "WHITE_HOUSE",
+            "detected_at": "2026-10-26T10:04:30Z",
+            "domains": ["TRADE_POLICY"],
+        }
+        candidates = directional_news_candidates([base], now=now)
+        self.assertEqual(len(candidates), 2)
+        self.assertEqual(candidates[0]["event_time"], "2026-10-26T10:04:00+00:00")
+        self.assertEqual(candidates[0]["available_at"], "2026-10-26T10:04:30+00:00")
+        self.assertEqual(candidates[0]["decision_time"], "2026-10-26T10:05:00+00:00")
+
+        invalid_availability = [
+            {**base, "detected_at": None},
+            {**base, "detected_at": "2026-10-26T10:06:00Z"},
+            {**base, "published": "2026-10-26T10:10:00Z"},
+        ]
+        for finding in invalid_availability:
+            with self.subTest(finding=finding):
+                self.assertEqual(directional_news_candidates([finding], now=now), [])
+
+    def test_directional_news_candidates_accepts_fresh_iso_and_rfc822_times(self):
+        from sputnik_catalyst import directional_news_candidates
+
+        now = datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc)
+        base = {
+            "event_id": "fresh-tariff",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/tariffs",
+            "source": "WHITE_HOUSE",
+            "detected_at": "2026-10-26T10:01:00Z",
+            "domains": ["TRADE_POLICY"],
+        }
+        for published in ("2026-10-26T10:00:00Z", "Mon, 26 Oct 2026 10:00:00 GMT"):
+            with self.subTest(published=published):
+                rows = directional_news_candidates([{**base, "published": published}], now=now)
+                self.assertEqual({row["instrument"] for row in rows}, {"NASDAQ100", "GOLD"})
 
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
@@ -182,7 +261,10 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 "evidence": "PUBLIC_RSS_ITEM",
                 "title": "Tariff headline",
                 "url": "https://example.gov/news/1",
-                "published": "2026-10-19",
+                "published": "2026-10-19T06:00:00Z",
+                "event_time": "2026-10-19T06:00:00+00:00",
+                "available_at": "2026-10-19T06:01:00+00:00",
+                "source": "WHITE_HOUSE",
                 "domains": ["TRADE_POLICY"],
                 "text": "Tariff headline details",
             },
@@ -207,6 +289,11 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         payload = json.loads(request.data.decode("utf-8"))
         self.assertEqual(len(payload["events"]), 1)
         self.assertEqual(payload["events"][0]["event_id"], "evt-1")
+        self.assertEqual(payload["events"][0]["event_time"], "2026-10-19T06:00:00+00:00")
+        self.assertEqual(payload["events"][0]["available_at"], "2026-10-19T06:01:00+00:00")
+        self.assertEqual(payload["events"][0]["source"], "WHITE_HOUSE")
+        self.assertEqual(payload["events"][0]["evidence"], "PUBLIC_RSS_ITEM")
+        self.assertNotIn("decision_time", payload["events"][0])
         self.assertNotIn("order", payload["events"][0])
 
 
@@ -248,11 +335,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         ]
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
-
-if __name__ == "__main__":
-    unittest.main()
-
-
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self, _fetch_page):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
@@ -278,3 +360,37 @@ if __name__ == "__main__":
                 self.assertEqual(findings, [])
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
                 self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+
+
+    def test_directional_candidates_sort_mixed_timestamp_formats_by_utc(self):
+        now = datetime(2026, 10, 26, 10, 5, tzinfo=timezone.utc)
+        base = {
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/tariffs",
+            "source": "WHITE_HOUSE",
+            "domains": ["TRADE_POLICY"],
+        }
+        older_rfc822 = {
+            **base,
+            "event_id": "older-rfc822",
+            "published": "Mon, 26 Oct 2026 09:00:00 GMT",
+            "detected_at": "2026-10-26T09:01:00Z",
+        }
+        newer_iso = {
+            **base,
+            "event_id": "newer-iso",
+            "published": "2026-10-26T10:00:00Z",
+            "detected_at": "2026-10-26T10:01:00Z",
+        }
+
+        rows = trump_tracker.directional_news_candidates(
+            [older_rfc822, newer_iso], now=now
+        )
+        self.assertGreaterEqual(len(rows), 2)
+        self.assertEqual(rows[0]["event_id"], "newer-iso")
+        self.assertEqual(rows[0]["event_time"], "2026-10-26T10:00:00+00:00")
+
+if __name__ == "__main__":
+    unittest.main()

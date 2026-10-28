@@ -511,11 +511,13 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "primary_url": str(row.get("primary_url") or ""),
                 "title": title[:300],
                 "published": str(row.get("published") or "")[:100],
+                "event_time": published_at.isoformat(),
+                "available_at": observed_now_utc.isoformat(),
                 "domains": domains,
                 "text": body[:6000],
                 "evidence": "PUBLIC_RSS_ITEM",
                 "status": "POTENTIAL_CORRELATION",
-                "detected_at": utc_now().isoformat(),
+                "detected_at": observed_now_utc.isoformat(),
                 "event_id": digest,
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
@@ -557,6 +559,12 @@ def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any
                 "title": str(item.get("title") or "")[:300],
                 "url": str(item.get("url") or "")[:1000],
                 "published": str(item.get("published") or "")[:100],
+                # Preserve source event/availability times across the service boundary.
+                # Gagarin must stamp its own decision_time when it evaluates the event.
+                "event_time": str(item.get("event_time") or "")[:100],
+                "available_at": str(item.get("available_at") or item.get("detected_at") or "")[:100],
+                "source": str(item.get("source") or "")[:120],
+                "evidence": str(item.get("evidence") or "")[:80],
                 "domains": list(item.get("domains") or []),
                 "text": str(item.get("text") or "")[:1500],
             }
