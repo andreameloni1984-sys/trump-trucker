@@ -1,3 +1,4 @@
+import hashlib
 import json
 import os
 import unittest
@@ -63,6 +64,11 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
+        self.assertEqual(
+            item["content_sha256"],
+            hashlib.sha256(item["text"].encode("utf-8")).hexdigest(),
+        )
+        self.assertEqual(len(item["content_sha256"]), 64)
 
     def test_feed_candidates_need_valid_publication_time_and_item_permalink(self):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
