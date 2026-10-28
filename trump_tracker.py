@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from email.utils import parsedate_to_datetime
 import os
 import re
@@ -407,7 +408,7 @@ def _configured_rss_feeds() -> list[str]:
     # in the default scan. The archive homepage is useful for discovery only;
     # its RSS feed supplies individual posts with their own URL/date/text.
     return [
-        "https://www.whitehouse.gov/feed/",
+        "https://www.whitehouse.gov/news/feed/",
         "https://www.trumpstruth.org/feed",
     ]
 
@@ -462,11 +463,27 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     for feed_url in _configured_rss_feeds():
         feed_is_new = feed_url not in initialized_feeds
         source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
+        retry_remaining = _public_feed_retry_remaining(state, feed_url)
+        if retry_remaining > 0:
+            print(
+                f"SPUTNIK: RSS feed cooldown active | source={source} | "
+                f"retry_in={retry_remaining}s",
+                flush=True,
+            )
+            continue
         try:
             rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
         except Exception as exc:
-            print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
+            delay = _record_public_feed_failure(state, feed_url, exc)
+            print(
+                f"SPUTNIK: RSS feed unavailable | source={source} | "
+                f"error={type(exc).__name__} | retry_in={delay}s",
+                flush=True,
+            )
             continue
+        backoff_state = state.get("intelligence_feed_backoff")
+        if isinstance(backoff_state, dict):
+            backoff_state.pop(feed_url, None)
 
         for row in rows:
             published = str(row.get("published") or "").strip()
@@ -717,6 +734,87 @@ def _parse_public_item_timestamp(value: Any) -> datetime | None:
         return parsed.astimezone(timezone.utc)
     except (TypeError, ValueError, OverflowError):
         return None
+
+
+def _public_feed_retry_after_seconds(exc: Exception, now: datetime) -> int | None:
+    """Parse numeric or HTTP-date Retry-After values without trusting malformed input."""
+    headers = getattr(exc, "headers", None)
+    raw = str(headers.get("Retry-After", "") if headers is not None else "").strip()
+    if not raw:
+        return None
+    try:
+        numeric = float(raw)
+        if math.isfinite(numeric):
+            return max(0, int(numeric))
+    except (TypeError, ValueError, OverflowError):
+        pass
+    parsed = _parse_public_item_timestamp(raw)
+    if parsed is None:
+        return None
+    return max(0, int((parsed - now).total_seconds()))
+
+
+def _public_feed_retry_remaining(
+    state: dict[str, Any], feed_url: str, now: datetime | None = None
+) -> int:
+    backoffs = state.get("intelligence_feed_backoff")
+    if not isinstance(backoffs, dict):
+        return 0
+    entry = backoffs.get(feed_url)
+    if not isinstance(entry, dict):
+        return 0
+    deadline = _parse_public_item_timestamp(entry.get("retry_at"))
+    if deadline is None:
+        return 0
+    current = now or utc_now()
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    current = current.astimezone(timezone.utc)
+    return max(0, int((deadline - current).total_seconds()))
+
+
+def _record_public_feed_failure(
+    state: dict[str, Any], feed_url: str, exc: Exception, now: datetime | None = None
+) -> int:
+    """Persist a per-feed cooldown so a failing public RSS source is not hammered."""
+    backoffs = state.get("intelligence_feed_backoff")
+    if not isinstance(backoffs, dict):
+        backoffs = {}
+        state["intelligence_feed_backoff"] = backoffs
+    previous = backoffs.get(feed_url, {})
+    try:
+        failures = max(0, min(20, int(previous.get("failures", 0)))) + 1
+    except (AttributeError, TypeError, ValueError, OverflowError):
+        failures = 1
+
+    current = now or utc_now()
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    current = current.astimezone(timezone.utc)
+    status = getattr(exc, "code", None)
+    if status is None:
+        status = getattr(getattr(exc, "response", None), "status_code", None)
+    try:
+        status = int(status) if status is not None else None
+    except (TypeError, ValueError, OverflowError):
+        status = None
+
+    if status in {401, 403, 404}:
+        delay = 6 * 60 * 60
+    elif status == 429:
+        delay = _public_feed_retry_after_seconds(exc, current)
+        if delay is None:
+            delay = 15 * 60
+        delay = max(60, min(delay, 6 * 60 * 60))
+    else:
+        delay = min(60 * 60, 60 * (2 ** min(failures - 1, 6)))
+
+    backoffs[feed_url] = {
+        "failures": failures,
+        "retry_at": (current + timedelta(seconds=delay)).isoformat(),
+        "reason": f"HTTP_{status}" if status is not None else type(exc).__name__,
+    }
+    return delay
 
 
 def _valid_public_item_timestamp(value: Any) -> bool:
