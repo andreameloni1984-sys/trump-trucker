@@ -138,7 +138,7 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 
 - **Observed gap:** RSS ingestion validates each item's publication timestamp, but the action/reaction audit record only retained detection time. Without a normalized publication timestamp, later analysis could not measure how stale a catalyst was when detected or displayed.
 - **Implemented on the existing PR #59 branch:** persist the normalized source `published_at` in intelligence history, pass it into the SPUTNIK analysis journal, and record `publication_to_detection_seconds` only when both timestamps parse. Missing/invalid timestamps remain null; no latency is inferred.
-- **Regression test:** a synthetic item published 120 seconds before detection must retain the timestamp and report approximately 120 seconds; records without timestamp metadata must keep the latency null.
+- **Regression tests:** a synthetic ISO-timestamped item published 120 seconds before detection reports approximately 120 seconds; a legacy RFC 822 timestamp is parsed; records without timestamp metadata keep latency null.
 - **Evidence limits:** the tracked historical state does not contain complete source publication timestamps for older records, and the durable live journal has not been inspected. This enables measurement for newly ingested items only; it does not backfill past events or prove predictive edge.
 - **Validation:** PR CI will run against the updated head. No Render workspace was selected because the available workspace must be explicitly confirmed before querying live resources. No merge, deployment, Telegram test message, or broker order.
 - **Safety:** SPUTNIK remains a separate PAPER-only intelligence/audit service; no GAGARIN runtime integration was changed.
