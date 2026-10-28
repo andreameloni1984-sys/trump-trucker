@@ -137,3 +137,9 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Base/diff:** current main 87520479046e70d0722f231ae15e62d5b3e6d060; branch ahead 2, behind 0; changed files are trump_tracker.py, tests/test_sputnik_item_intelligence.py, tests/test_sputnik_public_feed_backoff.py and this log. Draft PR #56 reports mergeable/clean at the last metadata check.
 - **Deploy/runtime:** no Render workspace or logs available; no deploy or Telegram test. This is CI evidence only, not proof of live feed ingestion.
 - **Empirical/safety:** mocked 403/429 responses and synthetic RSS fixtures only; no market replay/OOS claim; PAPER ONLY.
+
+## 2026-10-28 CI wiring correction — include the new RSS backoff regression tests
+
+- **Finding:** the first successful Sputnik ranking/item-intelligence workflows ran on the feature branch, but the new backoff file used pytest-style functions and was not included in the item-intelligence workflow's path filter/command. Those green checks therefore did not prove the new tests had executed.
+- **Correction:** converted tests/test_sputnik_public_feed_backoff.py to unittest.TestCase and added it to .github/workflows/sputnik-item-intelligence-tests.yml path filters and test command. The ranking workflow also uses unittest discovery and will include the new class.
+- **Status:** new workflow run pending on the corrected head. Do not claim the RSS-backoff regression tests pass until the latest commit's runs complete.

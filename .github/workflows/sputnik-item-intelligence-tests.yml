@@ -11,6 +11,7 @@ on:
       - "tests/test_sputnik_public_sources.py"
       - "tests/test_sputnik_action_reaction.py"
       - "tests/test_sputnik_catalyst.py"
+      - "tests/test_sputnik_public_feed_backoff.py"
       - ".github/workflows/sputnik-item-intelligence-tests.yml"
 
 permissions:
@@ -25,4 +26,4 @@ jobs:
         with:
           python-version: "3.12"
       - name: Run item intelligence tests
-        run: python -m unittest tests/test_sputnik_item_intelligence.py tests/test_sputnik_public_sources.py tests/test_sputnik_action_reaction.py tests/test_sputnik_catalyst.py -v
+        run: python -m unittest tests/test_sputnik_item_intelligence.py tests/test_sputnik_public_sources.py tests/test_sputnik_action_reaction.py tests/test_sputnik_catalyst.py tests/test_sputnik_public_feed_backoff.py -v
