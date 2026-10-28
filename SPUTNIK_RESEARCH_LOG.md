@@ -129,3 +129,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 
 - Read-only endpoint check: the official https://www.whitehouse.gov/news/feed/ endpoint responded as RSS/XML to the web fetcher (the viewer reported an unsupported RSS content type rather than rendering the XML). The root https://www.whitehouse.gov/feed/ endpoint could not be verified by that viewer.
 - Updated the Sputnik default feed and its regression assertion to use /news/feed/, matching the White House news feed path already configured in Gagarin. This verifies endpoint reachability only; it does not prove that every item parses or that Telegram ingestion is live.
+
+## 2026-10-28 verification — public RSS backoff and White House endpoint
+
+- **Code/test head checked:** 81d8cce16dba9483dbbf7a39bd608b2e8019e816 (source/backoff commit 4440e419bf053b98b27913bff7abc08827c3f01e plus White House endpoint/test follow-up).
+- **Regression/CI:** PASS — SPUTNIK ranking tests [run 40628499169](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40628499169) and SPUTNIK item intelligence tests [run 40628499093](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40628499093).
+- **Base/diff:** current main 87520479046e70d0722f231ae15e62d5b3e6d060; branch ahead 2, behind 0; changed files are trump_tracker.py, tests/test_sputnik_item_intelligence.py, tests/test_sputnik_public_feed_backoff.py and this log. Draft PR #56 reports mergeable/clean at the last metadata check.
+- **Deploy/runtime:** no Render workspace or logs available; no deploy or Telegram test. This is CI evidence only, not proof of live feed ingestion.
+- **Empirical/safety:** mocked 403/429 responses and synthetic RSS fixtures only; no market replay/OOS claim; PAPER ONLY.
