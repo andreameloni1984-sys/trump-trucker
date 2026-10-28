@@ -316,7 +316,7 @@ def action_reaction_result(state: dict[str, Any]) -> str:
             quotes,
             event_id=str(evidence_row.get("event_id") or ""),
             event_detected_at=str(evidence_row.get("detected_at") or ""),
-            event_published_at=str(evidence_row.get("published_at") or ""),
+            event_published_at=str(evidence_row.get("published_at") or evidence_row.get("published") or ""),
         )
         append_signal_record(record)
     except Exception as exc:
