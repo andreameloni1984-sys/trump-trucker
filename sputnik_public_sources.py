@@ -78,6 +78,16 @@ def _text(node, names):
     child = _direct(node, names)
     return "".join(child.itertext()).strip() if child is not None else ""
 
+
+def _content_markup(node, names):
+    """Preserve nested HTML tags until visibility filtering, but support escaped HTML text."""
+    child = _direct(node, names)
+    if child is None:
+        return ""
+    if list(child):
+        return ET.tostring(child, encoding="unicode", method="html")
+    return "".join(child.itertext()).strip()
+
 def _link(node):
     """Choose an individual entry's alternate link, not Atom self/enclosure links."""
     candidates = []
@@ -116,7 +126,7 @@ def parse_public_feed(raw, base_url):
     result = []
     for index, entry in enumerate(entries):
         title = clean_public_text(_text(entry, {"title"}))
-        body = clean_public_text(_text(entry, {"encoded", "description", "summary", "content"}))
+        body = clean_public_text(_content_markup(entry, {"encoded", "description", "summary", "content"}))
         if not title and not body:
             continue
         raw_link = _link(entry)
