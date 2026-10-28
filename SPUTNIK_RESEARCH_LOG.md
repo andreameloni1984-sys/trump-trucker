@@ -114,3 +114,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+## 2026-10-28 — Persist per-feed cooldowns for White House/public RSS failures
+
+- **Finding:** SEC HTTP 403 has its own cooldown path, and RSS parsing already rejects malformed/non-item feeds, but the public RSS scan retried a failing White House or other feed on every collector run. Repeated 403/429/timeouts could waste requests and obscure the difference between an unavailable source and no new event.
+- **Implemented on branch:** fix/sputnik-public-feed-backoff-20261028. trump_tracker.py intelligence_snapshot now checks a per-feed UTC retry deadline in the existing persisted state before fetching. HTTP 429 honours numeric or HTTP-date Retry-After (bounded to 60 seconds–6 hours); HTTP 401/403/404 cool down for six hours; transient failures use exponential backoff from 60 seconds to one hour. A successful parse clears only that feed's cooldown; other feeds continue.
+- **Regression tests:** tests/test_sputnik_public_feed_backoff.py covers 429 Retry-After persistence, cooldown across repeated scans of the same state, expiry/retry, and a 403 cooldown that does not block a second feed.
+- **Operational path:** configured public RSS → fetch_public_feed → parse_public_feed → per-feed cooldown in state → existing save_state; SEC cooldown remains separate. News remains a hypothesis only, not a trade trigger.
+- **CI:** branch push will be checked via GitHub Actions; no pass is claimed until the exact head has completed.
+- **Deployment/runtime:** no Render access is exposed in the available connectors; no deployment or Telegram test was triggered. No secret values were read; only the configured variable names GAGARIN_CLOUD_API_URL and GAGARIN_CLOUD_API_KEY were checked in code.
+- **Empirical limits/safety:** tests use mocked HTTP responses, not a live White House feed replay or market event study. No predictive-performance claim. PAPER ONLY; no broker/orders.
