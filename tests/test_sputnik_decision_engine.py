@@ -144,6 +144,17 @@ class ConditionalTradePlanTests(unittest.TestCase):
             [],
         )
 
+    def test_curly_apostrophe_negation_blocks_catalyst(self):
+        for text in (
+            "Iran won't hit tankers near Hormuz and oil exports.",
+            "Iran won’t hit tankers near Hormuz and oil exports.",
+        ):
+            self.assertEqual(conditional_plans(text), [])
+
+        self.assertTrue(
+            conditional_plans("Iran will hit tankers near Hormuz and oil exports.")
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
