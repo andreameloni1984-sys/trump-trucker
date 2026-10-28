@@ -114,3 +114,15 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-28 — Add a controlled adjacent-sentence anticipation tier
+
+- **Finding:** the strict catalyst matcher requires the action and asset-relevant topic in the same sentence. A concise public item can state the action and the affected route/asset in two adjacent sentences, causing the decision engine to return WAIT despite a potentially coherent catalyst.
+- **Implemented:** added `sputnik_anticipation.py`. It runs only after the existing strict matcher abstains, requires an action/topic pair across adjacent sentences, rejects negated pairs, and abstains if more than one scenario matches. Telegram labels the result **OPPORTUNITÀ ANTICIPATA**, not a confirmed signal. Entry/SL/TP are shown only if the existing fresh-quote/ATR planner can calculate them.
+- **Operational path:** item-level source text → strict `conditional_plans` → WAIT fallback → unique adjacent-sentence matcher → anticipation message → existing conditional quote/ATR planner.
+- **Regression tests:** positive oil-route example; ambiguous trade-policy example; explicit negation; strict same-sentence match stays with the primary engine.
+- **Lesson crosswalk:** the session-9 IBKR register requires news to remain a hypothesis until market reaction is measured, with event/availability/decision timestamps and fixed reaction horizons. This change improves recall only; it does not establish price/volume confirmation, point-in-time completeness, or predictive edge.
+- **Files:** `telegram_listener.py`, new `sputnik_anticipation.py`, new `tests/test_sputnik_anticipation.py`.
+- **CI:** PR-triggered workflow status to be recorded after the new head runs; no local repository test run was available in this cycle.
+- **Deployment / limits:** branch only; no merge/deploy, no Render workspace selected, no live Telegram log inspection, no test Telegram message, no secrets read, no broker connection or order. PAPER ONLY.
