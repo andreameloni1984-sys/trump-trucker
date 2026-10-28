@@ -124,3 +124,8 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **CI:** branch push will be checked via GitHub Actions; no pass is claimed until the exact head has completed.
 - **Deployment/runtime:** no Render access is exposed in the available connectors; no deployment or Telegram test was triggered. No secret values were read; only the configured variable names GAGARIN_CLOUD_API_URL and GAGARIN_CLOUD_API_KEY were checked in code.
 - **Empirical limits/safety:** tests use mocked HTTP responses, not a live White House feed replay or market event study. No predictive-performance claim. PAPER ONLY; no broker/orders.
+
+## 2026-10-28 follow-up — Use the verified White House news RSS endpoint
+
+- Read-only endpoint check: the official https://www.whitehouse.gov/news/feed/ endpoint responded as RSS/XML to the web fetcher (the viewer reported an unsupported RSS content type rather than rendering the XML). The root https://www.whitehouse.gov/feed/ endpoint could not be verified by that viewer.
+- Updated the Sputnik default feed and its regression assertion to use /news/feed/, matching the White House news feed path already configured in Gagarin. This verifies endpoint reachability only; it does not prove that every item parses or that Telegram ingestion is live.

@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 import trump_tracker
 
-WHITE_HOUSE = "https://www.whitehouse.gov/feed/"
+WHITE_HOUSE = "https://www.whitehouse.gov/news/feed/"
 OTHER_FEED = "https://example.gov/feed.xml"
 EMPTY_RSS = b"<rss version='2.0'><channel></channel></rss>"
 

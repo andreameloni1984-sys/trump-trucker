@@ -408,7 +408,7 @@ def _configured_rss_feeds() -> list[str]:
     # in the default scan. The archive homepage is useful for discovery only;
     # its RSS feed supplies individual posts with their own URL/date/text.
     return [
-        "https://www.whitehouse.gov/feed/",
+        "https://www.whitehouse.gov/news/feed/",
         "https://www.trumpstruth.org/feed",
     ]
 

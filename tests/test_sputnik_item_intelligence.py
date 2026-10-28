@@ -102,7 +102,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         with patch.dict(os.environ, {}, clear=True):
             feeds = trump_tracker._configured_rss_feeds()
 
-        self.assertIn("https://www.whitehouse.gov/feed/", feeds)
+        self.assertIn("https://www.whitehouse.gov/news/feed/", feeds)
         self.assertIn("https://www.trumpstruth.org/feed", feeds)
 
     def test_page_level_archive_message_warns_not_an_individual_catalyst(self):
