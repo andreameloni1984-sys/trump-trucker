@@ -225,3 +225,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Commits:** code `67af9292064c3a36bebbe857149205c88b421f4a`; test `eee1bbeda8defc509115def85074ddf096aa98e1`.
 - **CI:** pending verification after the branch workflow finishes. This is a synthetic text regression, not an event replay or predictive-performance test.
 - **Deployment/safety:** PR #55 research branch only; no merge/deploy. PAPER ONLY; no broker action, test Telegram message or secret-value inspection.
+
+
+## 2026-10-28 — Normalize Unicode apostrophes before negation matching
+
+- **Finding:** the catalyst rule table includes ASCII contractions such as `won't` and `didn't`, but public headlines often use curly apostrophes (for example, `won’t`). Without normalization, a negated action could evade the negation guard and be treated as positive evidence.
+- **Change/files:** added `_normalize_apostrophes()` in `sputnik_decision_engine.py` and applied it only to the matching copy in `_evidence()`; original source casing/punctuation remains in the returned evidence.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_curly_apostrophe_negation_blocks_catalyst` checks ASCII and curly-apostrophe negative headlines and a positive control.
+- **Commits:** code `df57db561b2d4671897b734206001cab3c8e8aab`; test `91c8c840e71e59724ec49f0ecdeb9299f76ef453`.
+- **CI:** SPUTNIK ranking tests passed on test commit `91c8c840...`, run [40611179509](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40611179509).
+- **Operational path:** public item → sentence split → dash/apostrophe normalization for matching → negation guard → catalyst evidence → conditional hypothesis. No direction/order authorization added.
+- **Base/deploy/limits:** PR #55 remains based on an older `main` SHA and needs deliberate reconciliation. No merge/deploy. Synthetic language tests only; no historical replay, event study, or OOS performance claim. PAPER ONLY.
