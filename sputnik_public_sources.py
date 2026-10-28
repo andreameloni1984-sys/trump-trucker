@@ -7,10 +7,53 @@ from html.parser import HTMLParser
 from urllib.parse import urljoin
 
 class _Text(HTMLParser):
+    """Extract readable RSS/Atom description text, excluding hidden markup."""
+
+    _IGNORED_TAGS = {"script", "style", "noscript", "svg", "template", "title"}
+    _VOID_TAGS = {
+        "area", "base", "br", "col", "embed", "hr", "img", "input",
+        "link", "meta", "param", "source", "track", "wbr",
+    }
+
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.parts = []
+        self._ignored_stack = []
+
+    def handle_starttag(self, tag, attrs):
+        tag = tag.lower()
+        attributes = {name.lower(): (value or "").strip().lower() for name, value in attrs}
+        style_values = {}
+        for declaration in attributes.get("style", "").split(";"):
+            if ":" in declaration:
+                name, value = declaration.split(":", 1)
+                style_values[name.strip()] = value.strip().split("!important", 1)[0].strip()
+        hidden = (
+            "hidden" in attributes
+            or attributes.get("aria-hidden") == "true"
+            or style_values.get("display") == "none"
+            or style_values.get("visibility") in {"hidden", "collapse"}
+            or style_values.get("content-visibility") == "hidden"
+        )
+        if self._ignored_stack:
+            # Keep nesting balanced while inside ignored markup, including same-name tags.
+            self._ignored_stack.append(tag)
+            return
+        if tag in self._IGNORED_TAGS or (hidden and tag not in self._VOID_TAGS):
+            self._ignored_stack.append(tag)
+
+    def handle_endtag(self, tag):
+        if not self._ignored_stack:
+            return
+        tag = tag.lower()
+        for index in range(len(self._ignored_stack) - 1, -1, -1):
+            if self._ignored_stack[index] == tag:
+                del self._ignored_stack[index:]
+                return
+
     def handle_data(self, data):
+        if self._ignored_stack:
+            return
         value = " ".join(data.split()).strip()
         if value:
             self.parts.append(value)
