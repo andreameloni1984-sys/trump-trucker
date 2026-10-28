@@ -114,3 +114,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-28 — Exclude non-visible markup from RSS/Atom description evidence
+
+- **Finding:** the page-level TextExtractor hardening proposed in PR #40 applies to trump_tracker.py; the separate RSS/Atom description cleaner in sputnik_public_sources.py::clean_public_text() still passed script/style/template/title/SVG and hidden-element text into catalyst evidence.
+- **Change:** _Text now skips script, style, noscript, SVG, template and title content, and ignores elements marked hidden, aria-hidden=true, display:none, visibility:hidden/collapse or content-visibility:hidden. Void hidden elements do not leave the parser in a stuck skip state. Visible description text is retained.
+- **Operational path:** RSS/Atom item → description HTML cleaning → evidence text → catalyst classification. This does not alter permalink or publication-time parsing and does not turn a news item into a directional signal.
+- **Regression tests:** test_clean_public_text_ignores_non_visible_markup_content and test_clean_public_text_does_not_leave_hidden_void_element_open in tests/test_sputnik_public_sources.py.
+- **Commits:** code 6b11174a8cab1eeb05bd704f21bb97b29afff087; tests 47d2c6283a7a40747435b6d644efd877dfaa29fe.
+- **CI/deploy:** no GitHub Actions run or combined status is visible yet for this research branch. No Render workspace was selected in this run, so live commit/logs and feed ingestion were not verified. No merge or deploy.
+- **Empirical limit:** regression cases are synthetic; no historical feed replay, event-price study or out-of-sample performance result. PAPER/DEMO ONLY.
