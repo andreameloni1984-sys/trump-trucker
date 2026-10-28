@@ -23,6 +23,14 @@ class StrictDecisionTests(unittest.TestCase):
         watch = _fallback_watch("Oil\u2014price volatility rose after the report.")
         self.assertEqual(watch["topic"], "PETROLIO / OFFERTA ENERGETICA")
 
+    def test_evidence_preserves_original_source_casing(self):
+        rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
+        row = next(item for item in rows if item["id"] == "oil_supply_disruption")
+        self.assertEqual(
+            row["evidence"],
+            "Iran threatens shipping near Hormuz and oil exports",
+        )
+
     def test_oil_flow_risk(self):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
         self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
