@@ -56,7 +56,7 @@ def run_all(state: dict[str, Any]) -> dict[str, str]:
         quote["name"] = contract["name"]
         delay = int(quote.get("delay_seconds") or 0)
         delay_text = f"ritardo stimato {delay // 60} min" if delay else "timestamp recente"
-        message = "\\n".join([
+        message = "\n".join([
             f"🛰️ SPUTNIK — {contract['name']} / ALERT CAMBIO STATO",
             "━━━━━━━━━━━━━━━━━━",
             f"🚦 STATO: {classification['state']}",
