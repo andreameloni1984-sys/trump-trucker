@@ -89,5 +89,17 @@ class PublicFeedParserTests(unittest.TestCase):
         html = '<p hidden>Oil</p><img hidden src="x"><p>Visible tariff notice.</p>'
         self.assertEqual(clean_public_text(html), "Visible tariff notice.")
 
+    def test_rss_nested_markup_is_preserved_until_visibility_filtering(self):
+        raw = b"""<rss><channel><item>
+          <title>Routine public notice</title>
+          <link>/notices/1</link>
+          <pubDate>Mon, 12 Oct 2026 06:00:00 GMT</pubDate>
+          <description><script>Oil disruption and gold surge</script>
+            <p>Meeting postponed.</p></description>
+        </item></channel></rss>"""
+        rows = parse_public_feed(raw, "https://example.gov/feed/")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["text"], "Meeting postponed.")
+
 if __name__ == "__main__":
     unittest.main()
