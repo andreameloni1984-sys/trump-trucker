@@ -33,5 +33,5 @@ def domains_for(text: str) -> list[str]:
     value = str(text or "").lower()
     return [
         name for name, words in OPERATIONAL_ASSET_KEYWORDS.items()
-        if any(re.search(rf"\\b{re.escape(word)}\\b", value) for word in words)
+        if any(re.search(rf"\b{re.escape(word)}\b", value) for word in words)
     ]
