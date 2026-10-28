@@ -37,12 +37,17 @@ def _normalize_phrase_separators(text: str) -> str:
     return re.sub(r"[-\u2010-\u2015\u2212]+", " ", str(text or ""))
 
 
+def _normalize_apostrophes(text: str) -> str:
+    """Normalize common Unicode apostrophes so contraction-based negations match."""
+    return re.sub(r"[\u2018\u2019\u02bc\uff07]", "'", str(text or ""))
+
+
 def _evidence(text: str, rule: dict[str, tuple[str, ...]]) -> str:
     for sentence in _sentences(text):
         # Trigger ranking normalizes hyphens to spaces. Apply the same
         # normalization for evidence matching, but preserve the original
         # sentence in the returned evidence shown to operators.
-        match_sentence = _normalize_phrase_separators(sentence)
+        match_sentence = _normalize_apostrophes(_normalize_phrase_separators(sentence))
         # Match negation tokens as whole words, including when punctuation
         # touches the token (for example, an em dash after "never").
         if any(_contains_term(match_sentence, term.strip()) for term in NEGATIONS):
