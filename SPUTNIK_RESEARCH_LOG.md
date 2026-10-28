@@ -114,3 +114,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-28 — Fingerprint the exact RSS evidence retained in history
+
+- **Finding:** item-level deduplication uses a stable source/feed/item identity. The retained finding did not separately identify the exact capped text used as evidence, making later audit of text changes less reproducible.
+- **Change:** `trump_tracker.py` computes SHA-256 over the exact `text` string stored in the finding (after the existing 6,000-character cap) and records `content_sha256`. The finding is then saved through the existing `intelligence_history` path.
+- **Operational path:** public RSS/Atom item → title/body normalization → capped evidence text → SHA-256 fingerprint → finding/history → existing catalyst classification. The stable `event_id` and dedup behavior are unchanged; this does not replace canonical-permalink deduplication proposed separately in PR #43.
+- **Regression:** `test_rss_items_are_saved_with_title_date_url_and_deduplicated` now verifies that the fingerprint equals SHA-256 of the exact stored text and is 64 hex characters.
+- **Validation:** test added to the branch. No repository-wide CI run is visible for this branch; no full-suite PASS is claimed. No event replay or predictive-performance study was run.
+- **Deployment:** research branch only; no PR, merge, Render build or deploy. Runtime state durability is not inferred from the code.
+- **Safety:** PAPER/DEMO ONLY; no secrets read, Telegram test messages, broker connection or orders.
