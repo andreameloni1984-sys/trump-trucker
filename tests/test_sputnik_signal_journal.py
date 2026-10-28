@@ -76,6 +76,19 @@ class SputnikSignalJournalTests(unittest.TestCase):
             self.assertIsNone(row["take_profit_1"])
             self.assertIsNone(row["quote_timestamp"])
 
+    def test_legacy_rfc822_publication_timestamp_is_parsed(self):
+        record = sputnik_signal_journal.build_signal_record(
+            "No specific market catalyst.",
+            "Legacy RSS source",
+            {},
+            event_detected_at="Wed, 28 Oct 2026 10:02:00 +0000",
+            event_published_at="Wed, 28 Oct 2026 10:00:00 +0000",
+        )
+        self.assertEqual(
+            record["event_published_at"], "Wed, 28 Oct 2026 10:00:00 +0000"
+        )
+        self.assertEqual(record["publication_to_detection_seconds"], 120.0)
+
     def test_non_specific_text_is_recorded_as_wait_not_as_a_trade(self):
         record = sputnik_signal_journal.build_signal_record(
             "Hello world, no market catalyst here.",
