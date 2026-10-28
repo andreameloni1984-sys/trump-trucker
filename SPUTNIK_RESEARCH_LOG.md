@@ -732,3 +732,20 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - Documentation-head run [40617005428](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40617005428) also completed successfully on `86544ba2bfdb4959d1e19fb41a8a2975a2f474cf`; retrieved job log confirms the same new regression, `Ran 131 tests in 0.052s`, `OK`. The documentation commit did not change executable code.
 - CI logs still report source fetch errors for WHITE_HOUSE, TRUTH_ARCHIVE and OGE, and GAGARIN cloud handoff disabled because `GAGARIN_CLOUD_API_URL/API_KEY` are not configured. Test success is not evidence of live-source availability or production connectivity.
 - PR #45 remains open/unmerged and GitHub reports `mergeable=false`; comparison to `main` at this check is 173 commits ahead / 14 behind. No rebase, merge, deployment, broker action, order or Telegram test message.
+
+
+## 2026-10-28 02:36 UTC — CLZ26 recheck and expose ambiguous-exit mix in paired comparison
+
+### CLZ26 hypothesis outcome audit
+- Hypothesis under review: recorded 2026-10-27 14:16:51 UTC; NYMEX December 2026 WTI (CLZ26), conditional SHORT only after a break below $100.50; reference ~$101.45; stop $101.55; TP1 $98.25; TP2 $97.15. No order was placed.
+- Farmbucks' exact-contract page was rechecked during this run. Its search-indexed snapshot showed **$100.36/bbl** at **2026-10-27 19:16 UTC-5 (2026-10-28 00:16 UTC)**, session range $99.75–$100.47, bid $100.35 / ask $100.37, and prior settlement $99.90. It explicitly labels NYMEX data **delayed 10 minutes** and says it was updated 15 minutes before the page snapshot: https://farmbucks.com/futures/energy/wti-crude?contract=CLZ26 . At this audit's 2026-10-28 02:36 UTC time, the quote timestamp was about 2 h 20 min old; it is not a current executable quote.
+- That session snapshot is below the $100.50 trigger but cannot prove when the first crossing happened after the hypothesis. Earlier same-day range data reported $99.51–$102.82 without timestamps for the extrema, spanning both trigger and stop. **Classification: NON-VERIFIABLE** due to missing reliable, timestamped post-hypothesis 1-minute/5-minute CLZ26 OHLCV. No interpolation or order was used.
+
+### One backtest improvement — report exit-status mix and ambiguous stop-first outcomes
+- **Finding:** paired summary R averages did not show how often each strategy ended in each exit status. In particular, STOP_AMBIGUOUS_STOP_FIRST is a conservative modelling rule when a candle touches both stop and target; without counts, readers could not see how much each strategy's result distribution depended on that ambiguity.
+- **Implemented in sputnik_event_backtest.py:** summarize_comparison_results() now reports stable, sorted early_status_counts and breakout_status_counts, plus explicit early_ambiguous_stop_first_count and breakout_ambiguous_stop_first_count. Existing paired P&L and unscored accounting are unchanged; missing P&L remains unscored and is not converted to zero.
+- **Regression:** added test_summary_reports_exit_status_mix_and_ambiguous_stop_first_counts with synthetic scored and unscored results. It verifies per-strategy status distributions, ambiguous stop-first counts, and preservation of unscored statuses. No market data are used.
+- **Files changed:** sputnik_event_backtest.py; tests/test_sputnik_event_backtest.py; this log.
+- **Code/test verification:** pending a GitHub Actions run on the new commit. No test pass is claimed until the workflow log is inspected.
+- **Existing baseline evidence:** current branch head before this change was 7a0dfc96036cd52926a5022b02711800b267b80a; push-triggered run [40617054173](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40617054173) succeeded with the prior 131-test suite. It does not verify this new change.
+- **Remaining blockers:** timestamped intraday CLZ26 bars and exact catalyst publication/availability/decision times remain unavailable. PR #45 is open/unmerged and diverged from main; no rebase/merge, broker action, order, Telegram test message, or production deployment is claimed.

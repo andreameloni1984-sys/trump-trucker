@@ -721,9 +721,14 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
     gross_paired = []
     early_unscored = {}
     breakout_unscored = {}
+    early_status_counts = {}
+    breakout_status_counts = {}
     for result in results:
         early = result.get("early", {})
         breakout = result.get("breakout", {})
+        for trade, counts in ((early, early_status_counts), (breakout, breakout_status_counts)):
+            status = str(trade.get("status") or "UNKNOWN")
+            counts[status] = counts.get(status, 0) + 1
         early_r = early.get("pnl_r")
         breakout_r = breakout.get("pnl_r")
         if _is_scored_pnl(early_r) and _is_scored_pnl(breakout_r):
@@ -769,6 +774,10 @@ def summarize_comparison_results(results: list[dict[str, Any]]) -> dict[str, Any
     non_overlap_sign_test_p = _exact_two_sided_sign_test_p_value(non_overlap_differences)
     return {
         "events_total": len(results),
+        "early_status_counts": dict(sorted(early_status_counts.items())),
+        "breakout_status_counts": dict(sorted(breakout_status_counts.items())),
+        "early_ambiguous_stop_first_count": early_status_counts.get("STOP_AMBIGUOUS_STOP_FIRST", 0),
+        "breakout_ambiguous_stop_first_count": breakout_status_counts.get("STOP_AMBIGUOUS_STOP_FIRST", 0),
         "early_scored_trade_windows": early_windows,
         "breakout_scored_trade_windows": breakout_windows,
         "overlapping_trade_pairs_early": early_overlaps,

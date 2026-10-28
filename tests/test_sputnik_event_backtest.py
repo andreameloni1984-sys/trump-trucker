@@ -78,6 +78,42 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertAlmostEqual(summary["mean_breakout_round_trip_cost_r_paired"], 0.3)
         self.assertAlmostEqual(summary["net_minus_gross_difference_r_paired"], 0.2)
 
+    def test_summary_reports_exit_status_mix_and_ambiguous_stop_first_counts(self):
+        results = [
+            {
+                "event_time": "2026-01-01T00:00:00+00:00",
+                "early": {"status": "STOP_AMBIGUOUS_STOP_FIRST", "pnl_r": -1.0},
+                "breakout": {"status": "TARGET", "pnl_r": 2.0},
+            },
+            {
+                "event_time": "2026-01-01T00:05:00+00:00",
+                "early": {"status": "STOP", "pnl_r": -1.0},
+                "breakout": {"status": "STOP_AMBIGUOUS_STOP_FIRST", "pnl_r": -1.0},
+            },
+            {
+                "event_time": "2026-01-01T00:10:00+00:00",
+                "early": {"status": "INSUFFICIENT_FORWARD_DATA", "pnl_r": None},
+                "breakout": {"status": "NO_BREAKOUT_WITHIN_WINDOW", "pnl_r": None},
+            },
+        ]
+
+        summary = summarize_comparison_results(results)
+
+        self.assertEqual(summary["early_status_counts"], {
+            "INSUFFICIENT_FORWARD_DATA": 1,
+            "STOP": 1,
+            "STOP_AMBIGUOUS_STOP_FIRST": 1,
+        })
+        self.assertEqual(summary["breakout_status_counts"], {
+            "NO_BREAKOUT_WITHIN_WINDOW": 1,
+            "STOP_AMBIGUOUS_STOP_FIRST": 1,
+            "TARGET": 1,
+        })
+        self.assertEqual(summary["early_ambiguous_stop_first_count"], 1)
+        self.assertEqual(summary["breakout_ambiguous_stop_first_count"], 1)
+        self.assertEqual(summary["unscored_early_status_counts"], {"INSUFFICIENT_FORWARD_DATA": 1})
+        self.assertEqual(summary["unscored_breakout_status_counts"], {"NO_BREAKOUT_WITHIN_WINDOW": 1})
+
     def test_execution_cost_model_rejects_invalid_cost_inputs(self):
         data = candles([(100.0, 100.5, 99.5, 100.2, 1000)])
         with self.assertRaisesRegex(ValueError, "must be non-negative"):
