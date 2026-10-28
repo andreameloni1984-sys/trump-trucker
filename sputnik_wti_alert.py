@@ -91,7 +91,8 @@ def classify_state(bars: list[dict[str, Any]]) -> dict[str, Any] | None:
     if len(bars) < 8:
         return None
     recent = bars[-1]
-    prior = bars[-13:-1]
+    # Freeze support before the latest two bars so both closes can confirm a break.
+    prior = bars[-13:-2]
     if len(prior) < 6:
         return None
     support = min(row["low"] for row in prior)
