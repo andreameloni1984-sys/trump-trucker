@@ -131,3 +131,10 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - An isolated Python harness reproduced the updated RSS description cleaner and passed visible/hidden markup cases, including hidden void elements. This is a focused harness, not the repository's full unittest suite.
 - GitHub combined status and PR-triggered workflow queries returned no checks/runs for this research branch head; CI is therefore **not claimed**.
 - Render/Telegram runtime was not checked: no Render or Telegram connector is available in this run. No merge/deploy or outbound Telegram message.
+
+
+### Follow-up — preserve nested XML markup before HTML filtering (2026-10-28)
+- A further inspection found that ElementTree's itertext() flattened nested XML description elements before the HTML cleaner could see their tags. Added _content_markup() for RSS/Atom body fields: nested tags are serialized until visibility filtering; escaped/CDATA HTML continues through the existing text path.
+- Added test_rss_nested_markup_is_preserved_until_visibility_filtering.
+- Follow-up code commit: e87dd8767909e1b69d10b286580bd516c31642d3; test commit: 3828443af8ceb2fbd2dd0c4d479f27eb51d5a7c5.
+- Isolated parser harness PASS for both nested XML markup and escaped/CDATA HTML. This is not a full repository test run; GitHub CI remains unobserved on this branch.
