@@ -1,7 +1,7 @@
 import json
 import tempfile
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -11,7 +11,9 @@ import telegram_listener
 
 class SputnikSignalJournalTests(unittest.TestCase):
     def state(self, quotes=None):
-        detected = datetime.now(timezone.utc).isoformat()
+        detected_dt = datetime.now(timezone.utc)
+        detected = detected_dt.isoformat()
+        published = (detected_dt - timedelta(seconds=120)).isoformat()
         return {
             "intelligence_history": {
                 "evt-oil-1": {
@@ -21,6 +23,7 @@ class SputnikSignalJournalTests(unittest.TestCase):
                     "domains": ["ENERGY"],
                     "text": "Iran threatens shipping near Hormuz and oil exports.",
                     "detected_at": detected,
+                    "published_at": published,
                 }
             },
             "market_quotes": quotes or {},
@@ -53,6 +56,8 @@ class SputnikSignalJournalTests(unittest.TestCase):
             self.assertEqual(row["take_profit_1"], 103.0)
             self.assertEqual(row["take_profit_2"], 106.0)
             self.assertEqual(row["quote_timestamp"], quote_time)
+            self.assertTrue(row["event_published_at"])
+            self.assertAlmostEqual(row["publication_to_detection_seconds"], 120.0, delta=1.0)
             self.assertEqual(row["outcome_status"], "NOT_YET_SCORED")
             self.assertIsNone(row["outcome"])
 
@@ -81,6 +86,7 @@ class SputnikSignalJournalTests(unittest.TestCase):
         self.assertEqual(record["decision_status"], "WAIT")
         self.assertIsNone(record["instrument"])
         self.assertEqual(record["outcome_status"], "NOT_SCORABLE_NO_SPECIFIC_CATALYST")
+        self.assertIsNone(record["publication_to_detection_seconds"])
 
 
 if __name__ == "__main__":
