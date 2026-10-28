@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import os
 import uuid
+from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -20,10 +21,14 @@ def _parse_utc_timestamp(value: str) -> datetime | None:
     """Parse an ISO timestamp without guessing when source metadata is absent."""
     if not str(value or "").strip():
         return None
+    raw = str(value).strip()
     try:
-        parsed = datetime.fromisoformat(str(value).strip().replace("Z", "+00:00"))
+        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
     except (TypeError, ValueError):
-        return None
+        try:
+            parsed = parsedate_to_datetime(raw)
+        except (TypeError, ValueError, OverflowError):
+            return None
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=timezone.utc)
     return parsed.astimezone(timezone.utc)
