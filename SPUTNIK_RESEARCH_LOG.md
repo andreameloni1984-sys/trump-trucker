@@ -724,3 +724,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - Verification status at log update: GitHub's PR-triggered workflow-run wrapper returned no runs for either commit. This wrapper filters to pull-request-triggered runs, so this result alone does not prove that no push-triggered run exists. A full current-head test pass is not claimed until the Actions run/job log is retrieved. Local full-suite execution was not available in this run.
 - PR #45 remains open and unmerged; latest observed head after test commit: `b214914dde5fda2fcd0d2aab05c3306efd11b29b`; GitHub reports `mergeable=false`. No rebase/merge, deployment, broker action, order or Telegram test message.
 - Remaining blockers: reliable timestamped post-hypothesis CLZ26 intraday bars and exact catalyst publication/availability/decision times; current branch still diverges from `main`. No real-event profitability claim.
+
+
+### Follow-up verification — 2026-10-28 01:46 UTC
+- Push-triggered GitHub Actions run [40616963453](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40616963453) completed successfully on code commit `9cb3f609a2df9055cfc4c3ed090e805336ae4e7f`.
+- Regression-test run [40616976858](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40616976858) completed successfully on test commit `b214914dde5fda2fcd0d2aab05c3306efd11b29b`. Retrieved job log confirms `test_gap_after_completed_breakout_window_does_not_invalidate_no_breakout ... ok`, `Ran 131 tests in 0.047s`, `OK`.
+- Documentation-head run [40617005428](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40617005428) also completed successfully on `86544ba2bfdb4959d1e19fb41a8a2975a2f474cf`; retrieved job log confirms the same new regression, `Ran 131 tests in 0.052s`, `OK`. The documentation commit did not change executable code.
+- CI logs still report source fetch errors for WHITE_HOUSE, TRUTH_ARCHIVE and OGE, and GAGARIN cloud handoff disabled because `GAGARIN_CLOUD_API_URL/API_KEY` are not configured. Test success is not evidence of live-source availability or production connectivity.
+- PR #45 remains open/unmerged and GitHub reports `mergeable=false`; comparison to `main` at this check is 173 commits ahead / 14 behind. No rebase, merge, deployment, broker action, order or Telegram test message.
