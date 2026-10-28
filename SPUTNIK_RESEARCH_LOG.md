@@ -125,3 +125,9 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Commits:** code 6b11174a8cab1eeb05bd704f21bb97b29afff087; tests 47d2c6283a7a40747435b6d644efd877dfaa29fe.
 - **CI/deploy:** no GitHub Actions run or combined status is visible yet for this research branch. No Render workspace was selected in this run, so live commit/logs and feed ingestion were not verified. No merge or deploy.
 - **Empirical limit:** regression cases are synthetic; no historical feed replay, event-price study or out-of-sample performance result. PAPER/DEMO ONLY.
+
+
+### Follow-up verification — 2026-10-28
+- An isolated Python harness reproduced the updated RSS description cleaner and passed visible/hidden markup cases, including hidden void elements. This is a focused harness, not the repository's full unittest suite.
+- GitHub combined status and PR-triggered workflow queries returned no checks/runs for this research branch head; CI is therefore **not claimed**.
+- Render/Telegram runtime was not checked: no Render or Telegram connector is available in this run. No merge/deploy or outbound Telegram message.
