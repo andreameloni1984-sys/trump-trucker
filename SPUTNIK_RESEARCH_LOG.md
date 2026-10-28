@@ -125,3 +125,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Validation:** test added to the branch. No repository-wide CI run is visible for this branch; no full-suite PASS is claimed. No event replay or predictive-performance study was run.
 - **Deployment:** research branch only; no PR, merge, Render build or deploy. Runtime state durability is not inferred from the code.
 - **Safety:** PAPER/DEMO ONLY; no secrets read, Telegram test messages, broker connection or orders.
+
+
+## 2026-10-28 — Verification snapshot for evidence fingerprint branch
+
+- **Base:** `main` at `87520479046e70d0722f231ae15e62d5b3e6d060`; branch is 3 commits ahead, 0 behind.
+- **Code:** `fb93d8762b5535f4313709cc6f82989153de6bf7` (`trump_tracker.py`).
+- **Regression test:** `a17aea66b078d1bb4109343eb269c05c1470ed66` (`tests/test_sputnik_item_intelligence.py`).
+- **Prior log commit:** `c3d4b9d2adb6838b5e42e6e27a6dea805344ef85`.
+- **Checks:** GitHub combined status is empty and the available commit-workflow query returned no runs for the branch; CI is therefore **not verified**. A separate Python smoke harness confirmed the SHA-256 fingerprint is deterministic and 64 hex characters, but the repository test suite was not run.
+- **Deployment:** no PR, merge or deploy. Render workspace is not selected; service/deploy/Telegram logs were not inspected.
+- **Limits:** fingerprint is audit metadata, not a new deduplication key or evidence of predictive performance. Existing canonical-permalink and timestamp work in other PRs remains unmerged.
