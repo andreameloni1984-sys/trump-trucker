@@ -114,3 +114,31 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-28 — Persist SPUTNIK action/reaction decisions for outcome review
+
+- **Observed evidence gap:** the tracked `sputnik_state.json` snapshot contains 247 intelligence-history entries but an empty `events` map. Legacy findings preserve source/domain metadata, while the Telegram action/reaction path rendered a conditional opportunity without writing a structured record of the actual instrument, direction, quote timestamp, entry, SL and TP used in that analysis. This prevents later signal-by-signal scoring from those records alone.
+- **Implemented on branch `fix/sputnik-signal-audit-journal-20261028`:** add `sputnik_signal_journal.py` and call it from the existing action/reaction view. Each displayed analysis appends one JSONL audit record with event ID/detection time, source, catalyst excerpt, instrument, direction, decision status, quote timestamp and available entry/SL/TP/ATR. Missing/stale quotes remain null and are explicitly marked not scorable; outcomes are initialized as unscored, never guessed.
+- **Regression tests:** verify a fresh timestamped Brent quote yields the expected conditional levels; missing quotes do not invent prices; non-specific text records WAIT; source event identity is retained.
+- **Empirical limit:** this creates a signal-analysis audit trail for future scoring; it does not backfill historical prices or prove a directional edge. Existing tracked state does not provide historical quote sequences or verified outcomes. Render's configured journal path/durable storage and live Telegram logs were not accessed.
+- **Validation status:** branch/PR CI must complete before this is considered verified. No Telegram test message, broker connection, order, merge or deployment was made.
+- **Safety:** PAPER ONLY; analysis journal, not an execution ledger.
+
+
+## 2026-10-28 — Live log check: no outcome-grade SPUTNIK signal records
+
+- **Render evidence checked:** the `sputnik-telegram-listener` application logs between 2026-10-27 05:45 UTC and 2026-10-28 05:50 UTC returned six service-start/Telegram-bootstrap sequences, but no structured decision, instrument, entry, SL/TP or outcome records. This does not prove no user-requested analysis occurred; the current listener does not log its rendered decision text.
+- **Tracked state evidence:** `sputnik_state.json` was last updated at 2026-10-28T02:21:51Z. Its `events` map is empty; the intelligence history contains source/domain/status metadata, not price-level trade outcomes.
+- **Conclusion:** no defensible SPUTNIK hit rate or realized directional accuracy can be calculated from the accessible records. PR #59 starts an audit record for future action/reaction analyses, but the Render journal path and durable storage have not been verified; do not treat file logging as durable until the service has a confirmed persistent destination.
+- **Safety:** logs inspected read-only. No Telegram test message, broker connection, order, merge or deployment.
+
+
+## 2026-10-28 — Preserve publication-to-detection latency in the SPUTNIK audit journal
+
+- **Observed gap:** RSS ingestion validates each item's publication timestamp, but the action/reaction audit record only retained detection time. Without a normalized publication timestamp, later analysis could not measure how stale a catalyst was when detected or displayed.
+- **Implemented on the existing PR #59 branch:** persist the normalized source `published_at` in intelligence history, pass it into the SPUTNIK analysis journal, and record `publication_to_detection_seconds` only when both timestamps parse. Missing/invalid timestamps remain null; no latency is inferred.
+- **Regression tests:** a synthetic ISO-timestamped item published 120 seconds before detection reports approximately 120 seconds; a legacy RFC 822 timestamp is parsed; records without timestamp metadata keep latency null.
+- **Evidence limits:** the tracked historical state does not contain complete source publication timestamps for older records, and the durable live journal has not been inspected. This enables measurement for newly ingested items only; it does not backfill past events or prove predictive edge.
+- **Validation:** PR CI will run against the updated head. No Render workspace was selected because the available workspace must be explicitly confirmed before querying live resources. No merge, deployment, Telegram test message, or broker order.
+- **Safety:** SPUTNIK remains a separate PAPER-only intelligence/audit service; no GAGARIN runtime integration was changed.

@@ -302,7 +302,26 @@ def action_reaction_result(state: dict[str, Any]) -> str:
     if url:
         source = f"{source} — {url}"
     quotes = state.get("market_quotes") or state.get("quotes") or {}
-    return decision_message(evidence_text, source, quotes=quotes)
+    message = decision_message(evidence_text, source, quotes=quotes)
+
+    # Keep the analysis shown to the user auditable. This records the actual
+    # source/quote timestamps and levels used; it does not send an extra message
+    # or imply that an order was placed or an outcome has been verified.
+    try:
+        from sputnik_signal_journal import append_signal_record, build_signal_record
+
+        record = build_signal_record(
+            evidence_text,
+            source,
+            quotes,
+            event_id=str(evidence_row.get("event_id") or ""),
+            event_detected_at=str(evidence_row.get("detected_at") or ""),
+            event_published_at=str(evidence_row.get("published_at") or evidence_row.get("published") or ""),
+        )
+        append_signal_record(record)
+    except Exception as exc:
+        print(f"SPUTNIK signal audit journal unavailable: {type(exc).__name__}: {exc}")
+    return message
 
 
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:

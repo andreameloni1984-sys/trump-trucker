@@ -511,6 +511,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "primary_url": str(row.get("primary_url") or ""),
                 "title": title[:300],
                 "published": str(row.get("published") or "")[:100],
+                "published_at": published_at.isoformat(),
                 "domains": domains,
                 "text": body[:6000],
                 "evidence": "PUBLIC_RSS_ITEM",
