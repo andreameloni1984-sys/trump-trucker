@@ -505,6 +505,11 @@ def backtest_event(
     else:
         signal_bars_observed = 0
         for i in range(start, len(candles)):
+            # Once the full signal window has been observed, later bars are outside
+            # the comparison window. Do not let a subsequent data gap overwrite a
+            # completed NO_BREAKOUT_WITHIN_WINDOW result.
+            if signal_bars_observed >= max_breakout_wait_bars:
+                break
             if i > 0:
                 gap_minutes = (candles[i]["timestamp"] - candles[i - 1]["timestamp"]).total_seconds() / 60.0
                 if gap_minutes > bar_interval_minutes:
@@ -520,8 +525,6 @@ def backtest_event(
             prior = candles[max(0, i - breakout_lookback):i]
             if len(prior) < breakout_lookback:
                 continue
-            if signal_bars_observed >= max_breakout_wait_bars:
-                break
             signal_bars_observed += 1
             if side == "SHORT":
                 triggered = candles[i]["close"] < min(c["low"] for c in prior)
