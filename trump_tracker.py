@@ -625,7 +625,13 @@ def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> 
     ]
     if not eligible:
         return None
-    eligible.sort(key=lambda item: str(item.get("published") or ""), reverse=True)
+    def _published_sort_key(item: dict[str, Any]) -> datetime:
+        parsed = _parse_public_item_timestamp(item.get("published"))
+        return parsed if parsed is not None else datetime.min.replace(tzinfo=timezone.utc)
+
+    # RFC-822 weekday names are not chronological sort keys (e.g. "Sun" sorts
+    # after "Mon" lexically even when the Sunday item is older).
+    eligible.sort(key=_published_sort_key, reverse=True)
     candidates = directional_news_candidates(eligible, limit=3)
     lines = [
         "🛰️ SPUTNIK — NOTIZIE → IPOTESI DI MERCATO",

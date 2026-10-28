@@ -114,3 +114,17 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-28 — Sort Sputnik digest by parsed publication time
+
+- **Finding:** `intelligence_digest_message()` sorted the raw `published` string. RFC-822 weekday names are not chronological keys: an older `Sun, ...` item sorts ahead of a newer `Mon, ...` item in reverse lexical order, so the digest can foreground the wrong catalyst.
+- **Change:** sort with the existing timestamp parser and UTC-aware datetimes; unparseable dates sort last. Eligibility, catalyst rules, and the requirement for independent price/volume/structure confirmation are unchanged.
+- **Files / operational path:** `trump_tracker.py::intelligence_digest_message` (validated item list → parsed publication instant → digest order); `tests/test_sputnik_item_intelligence.py`.
+- **Regression:** `test_intelligence_digest_sorts_rfc822_dates_chronologically` uses Sunday and Monday RFC-822 strings and asserts the newer event appears first.
+- **Commits:** code `e71352cc7c2692b0b78df46673d2f82c4e9cd372`; regression test `e31dae77a73ab3a4704b6d376da0a7b57f9420bd`.
+- **CI:** PR #57 code/test head `2f4dde6850a66af2dd07ab43ea1ca24276b7065b` passed SPUTNIK ranking tests (run `40629783175`) and item-intelligence tests (run `40629783275`). The following research-log-only commit does not alter executable files; CI on the updated PR head is checked separately.
+- **Deployment / limits:** research branch only; no merge or Render deploy. Render build-pipeline minutes remain exhausted; workspace selection and live Telegram logs were not used. No Telegram test message was sent.
+- **Empirical validation:** no historical event replay or price-outcome test was run. This fixes display ordering only; it does not establish a predictive edge.
+- **Research crosswalk:** the recovered IBKR session-9 register calls for separating publication time, first availability, and decision time, fixing reaction horizons before testing, and treating options/positioning as non-directional until compared with a price/volatility baseline. Related open work includes point-in-time handoff PR #50, canonical-permalink dedup PR #43, and feed cooldown PR #56; those PRs are separate from this digest-ordering change.
+- **Historical records:** the Library contains the 2026-09-26 freshness patch and 2026-09-27 agriculture-symbol mapping for Gagarin, but no canonical 100-rule/100-point catalog was retrieved. No missing rules are reconstructed from memory.

@@ -249,6 +249,35 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
+
+    def test_intelligence_digest_sorts_rfc822_dates_chronologically(self):
+        items = [
+            {
+                "event_id": "older",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "source": "PUBLIC_RSS",
+                "title": "Older Sunday bulletin",
+                "published": "Sun, 25 Oct 2026 06:00:00 GMT",
+                "url": "https://example.gov/news/older",
+                "domains": ["MEDIA"],
+            },
+            {
+                "event_id": "newer",
+                "evidence": "PUBLIC_RSS_ITEM",
+                "source": "PUBLIC_RSS",
+                "title": "Newer Monday bulletin",
+                "published": "Mon, 26 Oct 2026 06:00:00 GMT",
+                "url": "https://example.gov/news/newer",
+                "domains": ["MEDIA"],
+            },
+        ]
+        message = trump_tracker.intelligence_digest_message(items)
+        self.assertLess(
+            message.index("Newer Monday bulletin"),
+            message.index("Older Sunday bulletin"),
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
 
