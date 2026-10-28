@@ -143,3 +143,9 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Finding:** the first successful Sputnik ranking/item-intelligence workflows ran on the feature branch, but the new backoff file used pytest-style functions and was not included in the item-intelligence workflow's path filter/command. Those green checks therefore did not prove the new tests had executed.
 - **Correction:** converted tests/test_sputnik_public_feed_backoff.py to unittest.TestCase and added it to .github/workflows/sputnik-item-intelligence-tests.yml path filters and test command. The ranking workflow also uses unittest discovery and will include the new class.
 - **Status:** new workflow run pending on the corrected head. Do not claim the RSS-backoff regression tests pass until the latest commit's runs complete.
+
+## 2026-10-28 final CI verification — public RSS backoff tests are wired and passing
+
+- **Tested code/test head:** abb4575c57cdc1a3bace71b2691e52ba44c53463. The new test file is now a unittest.TestCase module and is included in the item-intelligence workflow path filter/command.
+- **CI PASS:** SPUTNIK item intelligence [run 40628878976](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40628878976) and ranking/unittest discovery [run 40628878978](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40628878978). The item-intelligence job log explicitly contains both test_public_feed_429_retry_after_persists_per_feed_then_retries_after_expiry and test_public_feed_403_cooldown_is_scoped_to_failing_feed.
+- **Current PR:** #56 draft. Its later log-only update does not change the tested code; no deployment or live Telegram delivery is claimed.
