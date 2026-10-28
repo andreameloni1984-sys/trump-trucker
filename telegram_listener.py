@@ -22,6 +22,7 @@ from sputnik_cfd import build_cfd_cart
 from sputnik_catalyst import catalyst_watchlist
 from sputnik_action_reaction import action_reaction_message
 from sputnik_decision_engine import decision_message
+from sputnik_anticipation import adjacent_sentence_plan, anticipation_message
 from sputnik_aggressive import aggressive_message
 from sputnik_history import anticipatory_selector, build_public_history, CORE_ADMINISTRATION
 from trump_tracker import (
@@ -302,7 +303,14 @@ def action_reaction_result(state: dict[str, Any]) -> str:
     if url:
         source = f"{source} — {url}"
     quotes = state.get("market_quotes") or state.get("quotes") or {}
-    return decision_message(evidence_text, source, quotes=quotes)
+    message = decision_message(evidence_text, source, quotes=quotes)
+    # Keep the strict same-sentence matcher as the first choice. If it abstains,
+    # allow one uniquely supported adjacent-sentence catalyst as anticipation only.
+    if "DIREZIONE: WAIT" in message:
+        plan = adjacent_sentence_plan(evidence_text)
+        if plan is not None:
+            return anticipation_message(plan, source, quotes=quotes)
+    return message
 
 
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
