@@ -504,6 +504,8 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             # are eligible for an alert; older entries are seeded silently.
             if feed_is_new and age_minutes > 5:
                 continue
+            evidence_text = body[:6000]
+            content_sha256 = hashlib.sha256(evidence_text.encode("utf-8")).hexdigest()
             finding = {
                 "source": source,
                 "feed_url": feed_url,
@@ -512,7 +514,8 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "title": title[:300],
                 "published": str(row.get("published") or "")[:100],
                 "domains": domains,
-                "text": body[:6000],
+                "text": evidence_text,
+                "content_sha256": content_sha256,
                 "evidence": "PUBLIC_RSS_ITEM",
                 "status": "POTENTIAL_CORRELATION",
                 "detected_at": utc_now().isoformat(),
