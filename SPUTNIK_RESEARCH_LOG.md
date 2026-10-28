@@ -124,3 +124,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Empirical limit:** this creates a signal-analysis audit trail for future scoring; it does not backfill historical prices or prove a directional edge. Existing tracked state does not provide historical quote sequences or verified outcomes. Render's configured journal path/durable storage and live Telegram logs were not accessed.
 - **Validation status:** branch/PR CI must complete before this is considered verified. No Telegram test message, broker connection, order, merge or deployment was made.
 - **Safety:** PAPER ONLY; analysis journal, not an execution ledger.
+
+
+## 2026-10-28 — Live log check: no outcome-grade SPUTNIK signal records
+
+- **Render evidence checked:** the `sputnik-telegram-listener` application logs between 2026-10-27 05:45 UTC and 2026-10-28 05:50 UTC returned six service-start/Telegram-bootstrap sequences, but no structured decision, instrument, entry, SL/TP or outcome records. This does not prove no user-requested analysis occurred; the current listener does not log its rendered decision text.
+- **Tracked state evidence:** `sputnik_state.json` was last updated at 2026-10-28T02:21:51Z. Its `events` map is empty; the intelligence history contains source/domain/status metadata, not price-level trade outcomes.
+- **Conclusion:** no defensible SPUTNIK hit rate or realized directional accuracy can be calculated from the accessible records. PR #59 starts an audit record for future action/reaction analyses, but the Render journal path and durable storage have not been verified; do not treat file logging as durable until the service has a confirmed persistent destination.
+- **Safety:** logs inspected read-only. No Telegram test message, broker connection, order, merge or deployment.
