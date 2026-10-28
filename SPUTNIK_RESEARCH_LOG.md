@@ -114,3 +114,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-28 — Restore discovery of stale-feed bootstrap regression test
+
+- **Observed gap:** in `tests/test_sputnik_item_intelligence.py`, the `if __name__ == "__main__": unittest.main()` guard appeared before `test_first_scan_seeds_feed_backlog_without_emitting_old_items`. The latter was indented beneath that guard rather than defined as a test method during normal test discovery, so CI could pass without running the stale-feed/bootstrap regression.
+- **Correction:** move the main guard to the end of the file, leaving the regression method in the test class so pytest/unittest discovery can collect it.
+- **Why it matters to signal quality:** first-run RSS backfill can surface old posts as if they were new catalysts. The implementation already contains a stale/backlog gate; this change ensures its regression test is actually exercised.
+- **Validation:** branch/PR CI is pending; no local execution is claimed. No production behavior changed, no Telegram test message, no order, no merge or deployment.
