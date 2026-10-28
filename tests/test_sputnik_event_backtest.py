@@ -864,5 +864,34 @@ class SputnikEventBacktestTests(unittest.TestCase):
         self.assertIsNone(breakout.get("pnl_r"))
 
 
+    def test_decision_inside_unmodeled_bar_gap_fails_closed_for_both_strategies(self):
+        start = datetime(2026, 1, 1, 0, 0, tzinfo=timezone.utc)
+        data = candles([
+            (100, 100.5, 99.5, 100, 1000),
+            (100, 100.5, 99.5, 100, 1000),
+        ], start=start)
+        # Decision occurs 3 minutes before the next bar, but the bars are 30 minutes apart.
+        # Checking decision_time -> next bar alone would miss the gap and score the early entry.
+        data[1]["timestamp"] = start + timedelta(minutes=30)
+        result = run_backtest(
+            data,
+            "2026-01-01T00:20:00+00:00",
+            "LONG",
+            1.0,
+            available_at="2026-01-01T00:20:00+00:00",
+            decision_time="2026-01-01T00:27:00+00:00",
+            breakout_lookback=1,
+            max_breakout_wait_bars=3,
+            max_holding_bars=1,
+            bar_interval_minutes=5,
+        )
+        for strategy in ("early", "breakout"):
+            self.assertEqual(result[strategy]["status"], "UNMODELED_SESSION_GAP")
+            self.assertIsNone(result[strategy].get("pnl_r"))
+            self.assertEqual(result[strategy]["gap_start_time"], data[0]["timestamp"].isoformat())
+            self.assertEqual(result[strategy]["gap_end_time"], data[1]["timestamp"].isoformat())
+            self.assertEqual(result[strategy]["gap_minutes"], 30.0)
+
+
 if __name__ == "__main__":
     unittest.main()
