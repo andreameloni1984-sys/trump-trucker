@@ -25,7 +25,7 @@ def _sentences(text: str) -> list[str]:
     parts = []
     for line in normalized.splitlines():
         parts.extend(line.split("."))
-    return [" ".join(part.lower().split()) for part in parts if part.strip()]
+    return [" ".join(part.split()) for part in parts if part.strip()]
 
 def _contains_term(text: str, term: str) -> bool:
     """Match a whole word/phrase, not a substring inside an unrelated word."""
