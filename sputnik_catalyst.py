@@ -1,58 +1,34 @@
 """SPUTNIK catalyst-to-market mapping.
 
-Maps documented public-policy themes to instruments/sectors worth monitoring.
-It deliberately produces WATCH candidates, not trade directions. No company
-or private relationship is inferred from a policy event.
+Maps public policy and macro themes to the agreed operational watch universe.
+All outputs are hypotheses or WATCH candidates only; this module never places
+orders or treats a news headline as a confirmed market signal.
 """
 from __future__ import annotations
+import re
 from typing import Any
 
 DOMAIN_INSTRUMENTS = {
-    "ENERGY": [
-        ("WTI", "Crude oil / energy"),
-        ("BRENT", "Brent crude / energy"),
-    ],
-    "METALS": [
-        ("GOLD", "Gold / metals"),
-        ("SILVER", "Silver / metals"),
-    ],
-    "AGRICULTURE": [
-        ("CORN", "Corn / agriculture"),
-        ("WHEAT", "Wheat / agriculture"),
-        ("SUGAR", "Sugar / agriculture"),
-        ("COCOA", "Cocoa / agriculture"),
-        ("COFFEE", "Coffee / agriculture"),
-    ],
-    "DEFENSE": [
-        ("US_DEFENSE", "US defense sector"),
-    ],
-    "AI_TECH": [
-        ("NASDAQ100", "US technology / AI"),
-        ("SEMICONDUCTORS", "Semiconductors"),
-    ],
-    "SPACE": [
-        ("US_AEROSPACE", "US aerospace / space"),
-    ],
-    "CRYPTO": [
-        ("BTCUSD", "Bitcoin"),
-    ],
-    "MEDIA": [
-        ("MEDIA", "US media sector"),
-    ],
-    "REAL_ESTATE": [
-        ("US_REIT", "US real estate / REIT"),
-    ],
-    # These are watch candidates only: headline direction must be confirmed by
-    # live price/volume before GAGARIN can consider an entry.
+    "ENERGY": [("WTI", "WTI crude oil"), ("BRENT", "Brent crude oil")],
+    "METALS": [("GOLD", "Gold"), ("SILVER", "Silver"), ("COPPER", "Copper")],
+    "AGRICULTURE": [("CORN", "Corn"), ("WHEAT", "Wheat"), ("SOYBEAN", "Soybean")],
+    # Keep these source themes for intelligence, but do not create candidates
+    # outside the agreed tradable universe.
+    "DEFENSE": [],
+    "AI_TECH": [("QQQ", "Nasdaq-100 ETF")],
+    "SPACE": [],
+    "CRYPTO": [],
+    "MEDIA": [],
+    "REAL_ESTATE": [],
     "TRADE_POLICY": [
-        ("NASDAQ100", "US technology / growth equities"),
-        ("GOLD", "Gold / defensive asset"),
-        ("USD", "US dollar"),
+        ("SPY", "S&P 500 ETF"),
+        ("QQQ", "Nasdaq-100 ETF"),
+        ("GOLD", "Gold"),
     ],
     "RATES_MACRO": [
-        ("GOLD", "Gold / metals"),
-        ("NASDAQ100", "US technology / growth equities"),
-        ("USD", "US dollar"),
+        ("GOLD", "Gold"),
+        ("SPY", "S&P 500 ETF"),
+        ("QQQ", "Nasdaq-100 ETF"),
     ],
 }
 
@@ -73,8 +49,7 @@ def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[
         for domain in domains:
             domain = str(domain).upper()
             for instrument, description in DOMAIN_INSTRUMENTS.get(domain, []):
-                key = instrument
-                row = merged.setdefault(key, {
+                row = merged.setdefault(instrument, {
                     "instrument": instrument,
                     "description": description,
                     "status": "WATCH",
@@ -99,7 +74,7 @@ def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[
         result.append({
             "instrument": row["instrument"],
             "description": row["description"],
-            "status": row["status"],
+            "status": "WATCH",
             "score": score,
             "sources": sorted(row["sources"]),
             "events": len(row["events"]),
@@ -132,29 +107,29 @@ _DIRECTION_RULES = [
         "id": "trade_escalation",
         "domains": {"TRADE_POLICY"},
         "patterns": [r"\b(new tariffs|tariff increase|raises tariffs|tariffs on|trade war|trade restrictions|export ban|sanctions imposed|sanctions expanded)\b"],
-        "bias": {"NASDAQ100": "SHORT_BIAS", "GOLD": "LONG_BIAS"},
-        "reason": "trade escalation may pressure growth assets and support defensive demand",
+        "bias": {"SPY": "SHORT_BIAS", "QQQ": "SHORT_BIAS", "GOLD": "LONG_BIAS"},
+        "reason": "trade escalation may pressure risk assets and support defensive demand",
     },
     {
         "id": "trade_deescalation",
         "domains": {"TRADE_POLICY"},
         "patterns": [r"\b(tariffs reduced|tariffs lifted|tariff rollback|trade deal|trade agreement|sanctions lifted|sanctions eased|ceasefire agreement)\b"],
-        "bias": {"NASDAQ100": "LONG_BIAS", "GOLD": "SHORT_BIAS"},
+        "bias": {"SPY": "LONG_BIAS", "QQQ": "LONG_BIAS", "GOLD": "SHORT_BIAS"},
         "reason": "trade de-escalation may support risk appetite and reduce defensive demand",
     },
     {
         "id": "hawkish_rates",
         "domains": {"RATES_MACRO"},
         "patterns": [r"\b(rate hike|raises interest rates|higher for longer|hawkish|inflation hotter than expected|inflation accelerates)\b"],
-        "bias": {"USD": "LONG_BIAS", "GOLD": "SHORT_BIAS", "NASDAQ100": "SHORT_BIAS"},
-        "reason": "higher expected rates may support USD and pressure duration-sensitive assets",
+        "bias": {"GOLD": "SHORT_BIAS", "SPY": "SHORT_BIAS", "QQQ": "SHORT_BIAS"},
+        "reason": "higher expected rates may pressure gold and duration-sensitive ETFs",
     },
     {
         "id": "dovish_rates",
         "domains": {"RATES_MACRO"},
         "patterns": [r"\b(rate cut|cuts interest rates|dovish|rate cuts expected|inflation cools|inflation lower than expected)\b"],
-        "bias": {"USD": "SHORT_BIAS", "GOLD": "LONG_BIAS", "NASDAQ100": "LONG_BIAS"},
-        "reason": "lower expected rates may weaken USD and support duration-sensitive assets",
+        "bias": {"GOLD": "LONG_BIAS", "SPY": "LONG_BIAS", "QQQ": "LONG_BIAS"},
+        "reason": "lower expected rates may support gold and duration-sensitive ETFs",
     },
 ]
 
@@ -182,7 +157,7 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 5) 
         for rule in _DIRECTION_RULES:
             if not domains.intersection(rule["domains"]):
                 continue
-            if not any(__import__("re").search(pattern, text, __import__("re").I) for pattern in rule["patterns"]):
+            if not any(re.search(pattern, text, re.I) for pattern in rule["patterns"]):
                 continue
             for instrument, bias in rule["bias"].items():
                 key = (str(finding["event_id"]), instrument)
