@@ -67,5 +67,24 @@ class PublicFeedParserTests(unittest.TestCase):
     def test_empty_feed_is_valid(self):
         self.assertEqual(parse_public_feed(b"<rss><channel/></rss>", "https://example.gov/feed"), [])
 
+    def test_clean_public_text_ignores_non_visible_markup_content(self):
+        from sputnik_public_sources import clean_public_text
+
+        html = """
+          <p>Official statement: shipping remains open.</p>
+          <script>Oil supply disrupted; tariffs imposed.</script>
+          <style>.war { color: red; }</style>
+          <template>Hormuz closed; exports halted.</template>
+          <noscript>Iran attacks tankers.</noscript>
+          <p>Continue monitoring official data.</p>
+        """
+        cleaned = clean_public_text(html)
+        self.assertEqual(
+            cleaned,
+            "Official statement: shipping remains open. Continue monitoring official data.",
+        )
+        for hidden_term in ("disrupted", "tariffs", "war", "Hormuz", "tankers"):
+            self.assertNotIn(hidden_term.lower(), cleaned.lower())
+
 if __name__ == "__main__":
     unittest.main()
