@@ -89,7 +89,7 @@ def run(state: dict[str, Any]) -> dict[str, str]:
             continue
         message, details = opportunity
         previous = sent_state.get(key) or {}
-        signature = f"{details['state']}|{details['timestamp']}"
+        signature = str(details["state"])  # one alert per state transition, not every 5-minute candle
         if previous.get("signature") == signature:
             outcomes[key] = "DUPLICATE"
             continue
