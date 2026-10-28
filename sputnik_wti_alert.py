@@ -95,7 +95,7 @@ def classify_state(bars: list[dict[str, Any]]) -> dict[str, Any] | None:
     if len(prior) < 6:
         return None
     support = min(row["low"] for row in prior)
-    ranges = [max(0.0, row["high"] - row["low"]) for row in bars[-13:-1]]
+    ranges = [max(0.0, row["high"] - row["low"]) for row in bars[-14:-2]]
     median_range = statistics.median(ranges) if ranges else 0.0
     last_range = recent["high"] - recent["low"]
     # An early warning needs only one observable, reproducible weakness signal.
