@@ -451,17 +451,34 @@ def backtest_event(
 
     next_index = next((i for i, c in enumerate(candles) if c["timestamp"] > decision_dt), None)
     availability_gap_minutes = None
+    availability_gap_start_time = decision_dt.isoformat()
+    availability_gap_end_time = None
     availability_gap_unmodeled = False
     if next_index is None:
         early = {"status": "NO_POST_AVAILABILITY_CANDLE"}
     else:
         availability_gap_minutes = (candles[next_index]["timestamp"] - decision_dt).total_seconds() / 60.0
-        availability_gap_unmodeled = availability_gap_minutes > bar_interval_minutes
+        # Also inspect the bar-to-bar interval that straddles decision_time. A decision
+        # near the end of a missing/session gap can be only minutes before the next bar,
+        # so measuring from decision_time alone would incorrectly score the early entry.
+        crossing_gap_minutes = None
+        if next_index > 0:
+            crossing_gap_minutes = (
+                candles[next_index]["timestamp"] - candles[next_index - 1]["timestamp"]
+            ).total_seconds() / 60.0
+        if crossing_gap_minutes is not None and crossing_gap_minutes > bar_interval_minutes:
+            availability_gap_unmodeled = True
+            availability_gap_start_time = candles[next_index - 1]["timestamp"].isoformat()
+            availability_gap_end_time = candles[next_index]["timestamp"].isoformat()
+            availability_gap_minutes = crossing_gap_minutes
+        elif availability_gap_minutes > bar_interval_minutes:
+            availability_gap_unmodeled = True
+            availability_gap_end_time = candles[next_index]["timestamp"].isoformat()
         if availability_gap_unmodeled:
             early = {
                 "status": "UNMODELED_SESSION_GAP",
-                "gap_start_time": decision_dt.isoformat(),
-                "gap_end_time": candles[next_index]["timestamp"].isoformat(),
+                "gap_start_time": availability_gap_start_time,
+                "gap_end_time": availability_gap_end_time,
                 "gap_minutes": round(availability_gap_minutes, 2),
             }
         else:
@@ -473,8 +490,8 @@ def backtest_event(
     if availability_gap_unmodeled:
         breakout = {
             "status": "UNMODELED_SESSION_GAP",
-            "gap_start_time": decision_dt.isoformat(),
-            "gap_end_time": candles[next_index]["timestamp"].isoformat(),
+            "gap_start_time": availability_gap_start_time,
+            "gap_end_time": availability_gap_end_time,
             "gap_minutes": round(availability_gap_minutes, 2),
             "signal_bars_observed": 0,
             "required_signal_bars": max_breakout_wait_bars,
