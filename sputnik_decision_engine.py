@@ -32,12 +32,17 @@ def _contains_term(text: str, term: str) -> bool:
     return re.search(rf"(?<!\w){re.escape(term.lower())}(?!\w)", text.lower()) is not None
 
 
+def _normalize_phrase_separators(text: str) -> str:
+    """Normalize ASCII and Unicode dash variants before whole-phrase matching."""
+    return re.sub(r"[-\u2010-\u2015\u2212]+", " ", str(text or ""))
+
+
 def _evidence(text: str, rule: dict[str, tuple[str, ...]]) -> str:
     for sentence in _sentences(text):
         # Trigger ranking normalizes hyphens to spaces. Apply the same
         # normalization for evidence matching, but preserve the original
         # sentence in the returned evidence shown to operators.
-        match_sentence = re.sub(r"-+", " ", sentence)
+        match_sentence = _normalize_phrase_separators(sentence)
         # Match negation tokens as whole words, including when punctuation
         # touches the token (for example, an em dash after "never").
         if any(_contains_term(match_sentence, term.strip()) for term in NEGATIONS):
@@ -57,7 +62,7 @@ def conditional_plans(text: str, limit: int = 3) -> list[dict[str, Any]]:
         evidence = _evidence(text, rule)
         if not evidence:
             continue
-        trigger_text = re.sub(r"-+", " ", " ".join(str(text or "").lower().split()))
+        trigger_text = _normalize_phrase_separators(" ".join(str(text or "").lower().split()))
         hits = [term for term in scenario.get("trigger", ()) if _contains_term(trigger_text, term)]
         row = {key: value for key, value in scenario.items() if key != "trigger"}
         row.update(matched_terms=hits, match_count=len(hits), evidence=evidence)
@@ -68,7 +73,7 @@ def conditional_plans(text: str, limit: int = 3) -> list[dict[str, Any]]:
 def _fallback_watch(text: str) -> dict[str, str] | None:
     """Broad watch mode: always return a useful result without turning mentions into trades."""
     # Normalize hyphenated phrases (for example, "oil-price") before whole-term matching.
-    body = re.sub(r"-+", " ", " ".join(str(text or "").lower().split()))
+    body = _normalize_phrase_separators(" ".join(str(text or "").lower().split()))
     topics = [
         (("tariff", "tariffs", "dazi", "trade war", "trade wars", "trade deal", "accordo commerciale"),
          "COMMERCIO / DAZI", "NASDAQ-100 e oro", "Una notizia commerciale può muovere sia gli asset rischiosi sia i beni rifugio; la direzione dipende dai dettagli e dalla reazione dei prezzi."),

@@ -16,6 +16,13 @@ class StrictDecisionTests(unittest.TestCase):
         rows = conditional_plans("The countries signed a trade-deal after negotiations.")
         self.assertTrue(any(row["id"] == "trade_deescalation" for row in rows))
 
+    def test_unicode_dash_variants_match_compound_market_terms(self):
+        rows = conditional_plans("The countries signed a trade\u2011deal after negotiations.")
+        self.assertTrue(any(row["id"] == "trade_deescalation" for row in rows))
+
+        watch = _fallback_watch("Oil\u2014price volatility rose after the report.")
+        self.assertEqual(watch["topic"], "PETROLIO / OFFERTA ENERGETICA")
+
     def test_oil_flow_risk(self):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
         self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
