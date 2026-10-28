@@ -21,7 +21,7 @@ def _sentences(text: str) -> list[str]:
 def _has_term(text: str, terms: tuple[str, ...]) -> bool:
     body = str(text or "").lower()
     return any(
-        re.search(rf"(?<!\\w){re.escape(str(term).strip().lower())}(?!\\w)", body) is not None
+        re.search(rf"(?<!\w){re.escape(str(term).strip().lower())}(?!\w)", body) is not None
         for term in terms
         if str(term).strip()
     )
