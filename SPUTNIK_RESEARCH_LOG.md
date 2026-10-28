@@ -706,3 +706,21 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 ### Follow-up CI after the verification note — 2026-10-28 01:11 UTC
 - GitHub Actions run [40613460197](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/40613460197) completed successfully on the log-update commit `bba9ba1d89819d976507a527ea6f03b9e81dc280`. The `tests` job log explicitly contains `test_decision_inside_unmodeled_bar_gap_fails_closed_for_both_strategies ... ok`, `Ran 130 tests in 0.052s`, and `OK`.
 - The workflow log again reports external source access failures for WHITE_HOUSE, TRUTH_ARCHIVE and OGE, plus GAGARIN handoff disabled because cloud URL/API key are not configured. This is test-suite success only, not a live-source or production connectivity claim.
+
+
+## 2026-10-28 01:44 UTC — Do not let a post-window gap overwrite a completed breakout observation
+
+### CLZ26 hypothesis outcome audit
+- Hypothesis under review: 2026-10-27 14:16:51 UTC; NYMEX December 2026 WTI (CLZ26), conditional SHORT only after a break below $100.50; reference ~$101.45; stop $101.55; TP1 $98.25; TP2 $97.15. No order was placed.
+- Farmbucks' exact-contract page currently shows **$100.36/bbl** at **2026-10-27 19:16 UTC-5 (2026-10-28 00:16 UTC)**, open $100.17, session range $99.75–$100.47, prior settlement $99.90, bid $100.35 / ask $100.37, volume 3.79K. The page labels NYMEX data **delayed 10 min** and “Updated 15 min ago” at retrieval: https://farmbucks.com/futures/energy/wti-crude?contract=CLZ26
+- The displayed price is below the $100.50 trigger, but the snapshot is stale/delayed and its current-session range does not reconstruct the prior session's post-hypothesis sequence. The earlier Oct 27 range ($99.51–$102.82) spans both trigger and stop, with no timestamps for the extrema. **Classification remains NON-VERIFIABLE**: no reliable timestamped 1-minute/5-minute CLZ26 path was obtained to order trigger, stop and targets after 14:16:51 UTC. Do not infer outcome from delayed ranges. No order was placed.
+
+### One backtest improvement — honor the completed breakout observation window
+- Finding: the breakout scan checked for a timestamp gap before checking whether `max_breakout_wait_bars` had already been observed. A gap on a later candle, outside the configured observation window, could overwrite the correct `NO_BREAKOUT_WITHIN_WINDOW` status with `UNMODELED_SESSION_GAP`. That incorrectly made a fully observed no-breakout result unscored because of a gap that occurred after the decision window.
+- Implemented in `sputnik_event_backtest.py`: at the start of each scan iteration, the loop now stops once the configured number of eligible signal bars has been observed, before inspecting the next bar for a gap. Gaps inside the observation window still fail closed; gaps after the window no longer alter its completed result.
+- Regression test: `test_gap_after_completed_breakout_window_does_not_invalidate_no_breakout` uses synthetic bars, completes a two-bar signal window without a trigger, then inserts a 20-minute gap on the next bar. Expected result: `NO_BREAKOUT_WITHIN_WINDOW`, 2/2 bars observed, no gap fields and no P&L. The fixture is synthetic, not market data.
+- Files changed: `sputnik_event_backtest.py`; `tests/test_sputnik_event_backtest.py`; this log.
+- Code commit: `9cb3f609a2df9055cfc4c3ed090e805336ae4e7f`. Test commit: `b214914dde5fda2fcd0d2aab05c3306efd11b29b`.
+- Verification status at log update: GitHub's PR-triggered workflow-run wrapper returned no runs for either commit. This wrapper filters to pull-request-triggered runs, so this result alone does not prove that no push-triggered run exists. A full current-head test pass is not claimed until the Actions run/job log is retrieved. Local full-suite execution was not available in this run.
+- PR #45 remains open and unmerged; latest observed head after test commit: `b214914dde5fda2fcd0d2aab05c3306efd11b29b`; GitHub reports `mergeable=false`. No rebase/merge, deployment, broker action, order or Telegram test message.
+- Remaining blockers: reliable timestamped post-hypothesis CLZ26 intraday bars and exact catalyst publication/availability/decision times; current branch still diverges from `main`. No real-event profitability claim.
