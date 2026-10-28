@@ -214,3 +214,14 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Operational path:** public text → evidence gate → trigger ranking → conditional hypothesis → independent price/volume confirmation. No order authorization is added.
 - **Validation:** synthetic text regression; no event replay, event-study or out-of-sample performance claim. CI result and commit SHA will be recorded in the PR conversation after the run completes.
 - **Deployment/safety:** research PR #55 only; no merge or deploy. PAPER ONLY.
+
+
+## 2026-10-28 — Preserve original case in Sputnik evidence snippets
+
+- **Finding:** `_sentences()` lowercased source text before `_evidence()` returned the matching sentence. This made the evidence shown to operators differ from the publisher's original casing, weakening audit readability even though matching is case-insensitive.
+- **Change/files:** `sputnik_decision_engine.py::_sentences` now normalizes whitespace without lowercasing the stored sentence. `_contains_term()` remains case-insensitive, so matching behavior is unchanged.
+- **Regression:** `tests/test_sputnik_decision_engine.py::test_evidence_preserves_original_source_casing` verifies the evidence keeps “Iran”, “Hormuz” and the original sentence text.
+- **Operational path:** public item text → sentence/clause split → normalized matching → evidence attached to conditional catalyst → operator review. No direction or order authorization is added.
+- **Commits:** code `67af9292064c3a36bebbe857149205c88b421f4a`; test `eee1bbeda8defc509115def85074ddf096aa98e1`.
+- **CI:** pending verification after the branch workflow finishes. This is a synthetic text regression, not an event replay or predictive-performance test.
+- **Deployment/safety:** PR #55 research branch only; no merge/deploy. PAPER ONLY; no broker action, test Telegram message or secret-value inspection.
