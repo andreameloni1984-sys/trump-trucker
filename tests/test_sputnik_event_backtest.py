@@ -27,6 +27,32 @@ def candles(rows, start=None):
 
 
 class SputnikEventBacktestTests(unittest.TestCase):
+    def test_summary_compares_entry_delay_from_shared_decision_time(self):
+        start = datetime(2026, 1, 1, 0, 0, tzinfo=timezone.utc)
+        data = candles([
+            (100.0, 100.5, 99.5, 100.0, 1000),
+            (100.0, 100.5, 99.5, 100.0, 1000),
+            (99.0, 99.2, 98.0, 98.5, 1000),
+            (98.5, 99.0, 98.2, 98.8, 1000),
+        ], start=start)
+        result = run_backtest(
+            data,
+            "2025-12-31T23:59:00+00:00",
+            "SHORT",
+            1.0,
+            breakout_lookback=2,
+            max_breakout_wait_bars=3,
+            max_holding_bars=1,
+        )
+
+        self.assertEqual(result["early"]["entry_delay_minutes"], 1.0)
+        self.assertEqual(result["breakout"]["entry_delay_minutes"], 16.0)
+        summary = summarize_comparison_results([result])
+        self.assertEqual(summary["entry_timing_paired_events"], 1)
+        self.assertEqual(summary["mean_early_entry_delay_minutes"], 1.0)
+        self.assertEqual(summary["mean_breakout_entry_delay_minutes"], 16.0)
+        self.assertEqual(summary["mean_early_minus_breakout_entry_delay_minutes"], -15.0)
+
     def test_execution_cost_model_deducts_commission_and_two_sided_slippage(self):
         start = datetime(2026, 1, 1, 0, 5, tzinfo=timezone.utc)
         data = candles([(100.0, 100.5, 99.5, 100.2, 1000)], start=start)
