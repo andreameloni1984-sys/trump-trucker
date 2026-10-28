@@ -114,3 +114,11 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+## 2026-10-28 — Ignore non-visible markup in RSS/Atom evidence
+
+- **Finding:** `sputnik_public_sources.py::clean_public_text()` used `HTMLParser` but accepted data inside `script`, `style`, `noscript` and `template` elements in feed descriptions. Such text is not reliable visible evidence and could contribute catalyst keywords.
+- **Change/files:** suppress those inert regions in `sputnik_public_sources.py::_Text`; add `tests/test_sputnik_public_sources.py::test_clean_public_text_ignores_non_visible_markup_content`.
+- **Operational path:** RSS/Atom title/body → HTML cleanup → public evidence text → catalyst matcher. The original feed permalink and publication text are otherwise unchanged.
+- **Verification:** regression added; CI status is checked on this branch after the push. No result is claimed until a visible workflow run completes.
+- **Deployment/empirical limits:** research branch only; no merge or deploy. No live-feed replay, event study or OOS performance claim. Render build-pipeline minutes remain exhausted. PAPER/DEMO ONLY; no broker or order actions.
