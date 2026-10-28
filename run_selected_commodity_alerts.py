@@ -4,7 +4,7 @@ from __future__ import annotations
 import os
 from typing import Any
 
-from sputnik_wti_alert import fetch_intraday, classify_state, build_alert
+from sputnik_wti_alert import fetch_intraday, classify_state
 from trump_tracker import load_state, save_state, send_telegram
 
 # Explicit futures contracts, not continuous symbols. Verify availability from returned
@@ -54,11 +54,23 @@ def run_all(state: dict[str, Any]) -> dict[str, str]:
             continue
         quote["expiry"] = contract["expiry"]
         quote["name"] = contract["name"]
-        message = build_alert(quote, classification).replace(
-            "SPUTNIK — WTI / ALERT CAMBIO STATO",
-            f"SPUTNIK — {contract['name']} / ALERT CAMBIO STATO",
-            1,
-        )
+        delay = int(quote.get("delay_seconds") or 0)
+        delay_text = f"ritardo stimato {delay // 60} min" if delay else "timestamp recente"
+        message = "\\n".join([
+            f"🛰️ SPUTNIK — {contract['name']} / ALERT CAMBIO STATO",
+            "━━━━━━━━━━━━━━━━━━",
+            f"🚦 STATO: {classification['state']}",
+            f"📊 Contratto: {quote['symbol']} | scadenza: {contract['expiry']}",
+            f"💵 Prezzo: {float(quote['price']):.4f} {quote.get('currency') or 'valuta non verificata'}",
+            f"🕒 Ultima candela: {quote['timestamp']} UTC ({delay_text})",
+            f"📡 Fonte: {quote.get('source', 'N/D')} | mercato: {quote.get('exchange', 'N/D')}",
+            f"🔎 Evidenze: {classification['evidence']}",
+            f"🧱 Supporto intraday calcolato: {classification['support']:.4f}",
+            f"🌡️ Range ultima candela: {classification['last_range']:.4f} | mediana recente: {classification['median_range']:.4f}",
+            f"⛔ Invalidazione: {classification['invalidation']}",
+            f"↔️ Scenario alternativo: {classification['alternative']}",
+            "⚠️ Analisi preliminare; PAPER ONLY, nessun ordine inviato.",
+        ])
         if send_telegram(message, chat_id=chat_id or None):
             alert_state[key] = {
                 "state": current,
