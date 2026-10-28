@@ -1,5 +1,5 @@
 import unittest
-from sputnik_public_sources import parse_public_feed
+from sputnik_public_sources import clean_public_text, parse_public_feed
 
 class PublicFeedParserTests(unittest.TestCase):
     def test_rss_keeps_title_date_url_and_plain_text(self):
@@ -66,6 +66,28 @@ class PublicFeedParserTests(unittest.TestCase):
 
     def test_empty_feed_is_valid(self):
         self.assertEqual(parse_public_feed(b"<rss><channel/></rss>", "https://example.gov/feed"), [])
+
+    def test_clean_public_text_ignores_non_visible_markup_content(self):
+        html = (
+            "<p>Oil deliveries slowed.</p>"
+            "<script>gold tariffs</script>"
+            "<style>.x { content: 'crude'; }</style>"
+            "<noscript>copper wheat</noscript>"
+            "<svg><text>natural gas</text></svg>"
+            "<template>silver prices</template>"
+            "<title>hidden title about oil</title>"
+            '<div hidden><div>oil and gold</div><div>crude tariffs</div></div>'
+            '<span aria-hidden="true">wheat and copper</span>'
+            '<p style="display:none !important">oil futures</p>'
+            '<div style="visibility: hidden"><p>gold prices</p></div>'
+            '<div style="content-visibility: hidden">natural gas</div>'
+            "<p>Meeting postponed.</p>"
+        )
+        self.assertEqual(clean_public_text(html), "Oil deliveries slowed. Meeting postponed.")
+
+    def test_clean_public_text_does_not_leave_hidden_void_element_open(self):
+        html = '<p hidden>Oil</p><img hidden src="x"><p>Visible tariff notice.</p>'
+        self.assertEqual(clean_public_text(html), "Visible tariff notice.")
 
 if __name__ == "__main__":
     unittest.main()
