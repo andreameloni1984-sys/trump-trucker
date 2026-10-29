@@ -1,20 +1,17 @@
 """
 SPUTNIK — Telegram Polling Runner (one-shot)
 
-Alternativa al listener persistente su Render.
+Alternativa al listener persistente.
 Esegue getUpdates, processa i comandi in sospeso usando la logica esistente e termina.
 Adatto a GitHub Actions.
 """
 
 from __future__ import annotations
 
-import json
 import os
 import sys
-import urllib.request
 from typing import Any
 
-# Importa le funzioni utili dal listener esistente
 try:
     from telegram_listener import (
         api,
@@ -22,10 +19,8 @@ try:
         answer_for_callback,
         remote_state,
         telegram_menu,
-        LOCAL_STATE,
     )
 except ImportError:
-    # Fallback minimo se l'import fallisce
     print("Impossibile importare da telegram_listener.py", flush=True)
     sys.exit(1)
 
@@ -55,18 +50,19 @@ def process_message(message: dict[str, Any], state: dict[str, Any]) -> None:
 
     print(f"Processing message | chat_id={chat_id} | text={text[:80]}", flush=True)
 
-    # Mappa i testi dei pulsanti e i comandi ai callback esistenti
     command_map = {
         "/start": "home",
         "/help": "help",
         "🟢 cosa comprare": "buy",
         "📡 segnale cfd": "segnale",
         "🎯 strumento": "strumento",
+        "📊 dashboard": "home",
         "🔄 aggiorna": "scan",
         "ℹ️ aiuto": "help",
         "cosa comprare": "buy",
         "segnale": "segnale",
         "strumento": "strumento",
+        "dashboard": "home",
         "aggiorna": "scan",
         "aiuto": "help",
     }
@@ -92,7 +88,6 @@ def main() -> None:
         print("TELEGRAM_BOT_TOKEN mancante", flush=True)
         raise SystemExit(1)
 
-    # Carica lo stato remoto (sputnik_state.json)
     state = remote_state()
     print(f"Remote state loaded: {bool(state)}", flush=True)
 
@@ -109,7 +104,6 @@ def main() -> None:
         if message:
             process_message(message, state)
 
-        # Callback query handling minimale (opzionale)
         callback_query = update.get("callback_query")
         if callback_query:
             data = str(callback_query.get("data") or "")
@@ -121,7 +115,6 @@ def main() -> None:
                 except Exception as exc:
                     print(f"Callback error: {exc}", flush=True)
 
-    # Acknowledge updates
     if max_offset is not None:
         get_updates(offset=max_offset)
 
