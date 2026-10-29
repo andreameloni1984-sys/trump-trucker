@@ -1,0 +1,70 @@
+name: SPUTNIK Daily Summary
+
+on:
+  schedule:
+    # Ogni giorno alle 06:00 UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  summary:
+    name: Send daily opportunity summary
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Send summary
+        run: |
+          python - <<'PY'
+          import os, json, urllib.request
+          from telegram.sputnik_watch import build_watch_message
+
+          token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+          chat = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+          if not token or not chat:
+              print("Missing Telegram secrets")
+              raise SystemExit(0)
+
+          # Carica stato remoto
+          try:
+              req = urllib.request.Request(
+                  "https://raw.githubusercontent.com/andreameloni1984-sys/trump-trucker/main/sputnik_state.json",
+                  headers={"User-Agent": "SPUTNIK Daily Summary"},
+              )
+              with urllib.request.urlopen(req, timeout=15) as r:
+                  state = json.loads(r.read().decode())
+          except Exception as e:
+              print(f"State load failed: {e}")
+              state = {}
+
+          watch = build_watch_message(state, min_score=55)
+          text = "🛰️ **SPUTNIK — RIEPILOGO GIORNALIERO**\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n"
+          if watch:
+              text += watch
+          else:
+              text += "Nessun candidato in watch oggi.\nControlla i pulsanti per i dettagli."
+
+          payload = json.dumps({"chat_id": chat, "text": text}).encode()
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              headers={"Content-Type": "application/json"},
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=20) as r:
+                  print("Summary sent")
+          except Exception as e:
+              print(f"Send failed: {e}")
+          PY
