@@ -2,7 +2,7 @@ name: SPUTNIK Telegram Polling
 
 on:
   schedule:
-    # Ogni 5 minuti (allineato al tracker principale)
+    # Ogni 5 minuti
     - cron: "*/5 * * * *"
   workflow_dispatch:
 
@@ -29,7 +29,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
 
       - name: Install dependencies
         run: |
