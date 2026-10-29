@@ -1,8 +1,8 @@
 """Persistent SPUTNIK Telegram listener.
 
 Telegram transport is deliberately separated from the GitHub Actions collector.
-GitHub Actions periodically bootstraps the bot token and pings /health so a free
-Render web service stays awake. The listener owns the single getUpdates session.
+The listener owns the single getUpdates session (legacy). Primary path is now
+GitHub Actions polling.
 """
 
 from __future__ import annotations
@@ -82,7 +82,6 @@ def bootstrap_state(token: str, chat_id: str = "") -> None:
         save_local_state(LOCAL_STATE)
 
 
-
 def api(method: str, payload: dict[str, Any], timeout: int = 35) -> dict[str, Any]:
     token = BOT_TOKEN
     if not token:
@@ -114,22 +113,38 @@ def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | N
         return False
 
 
-
 def telegram_menu() -> dict[str, Any]:
-    """Pulsantiera essenziale: solo cosa comprare."""
+    """Pulsantiera persistente SPUTNIK."""
     return {
         "keyboard": [
             [{"text": "🟢 COSA COMPRARE"}],
             [{"text": "📡 SEGNALE CFD"}, {"text": "🎯 STRUMENTO"}],
-            [{"text": "🔄 AGGIORNA"}, {"text": "ℹ️ AIUTO"}],
+            [{"text": "📊 DASHBOARD"}, {"text": "🔄 AGGIORNA"}],
+            [{"text": "ℹ️ AIUTO"}],
         ],
         "resize_keyboard": True,
         "is_persistent": True,
-        "input_field_placeholder": "Cosa comprare?",
+        "one_time_keyboard": False,
+        "input_field_placeholder": "Scegli un'azione…",
     }
 
 
-
+def menu_markup() -> dict[str, Any]:
+    """Inline keyboard per risposte rapide."""
+    return {
+        "inline_keyboard": [
+            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
+            [
+                {"text": "📡 SEGNALE CFD", "callback_data": "segnale"},
+                {"text": "🎯 STRUMENTO", "callback_data": "strumento"},
+            ],
+            [
+                {"text": "📊 DASHBOARD", "callback_data": "home"},
+                {"text": "🔄 AGGIORNA", "callback_data": "scan"},
+            ],
+            [{"text": "ℹ️ AIUTO", "callback_data": "help"}],
+        ]
+    }
 
 
 def sputnik_home_message(state: dict[str, Any]) -> str:
@@ -138,7 +153,6 @@ def sputnik_home_message(state: dict[str, Any]) -> str:
     findings = list((state.get("intelligence_history") or {}).values())
     catalysts = catalyst_watchlist(findings, limit=5)
 
-    # Build an operational dashboard without fabricating market levels.
     cart = build_cfd_cart(rows, quotes, capital=300.0, risk_pct=1.0, limit=5)
     by_security = {item.get("security"): item for item in cart}
 
@@ -247,33 +261,17 @@ def anticipation_message(state: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def menu_markup() -> dict[str, Any]:
-    """Inline keyboard essenziale: cosa comprare in evidenza."""
-    return {
-        "inline_keyboard": [
-            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
-            [{"text": "📡 SEGNALE CFD", "callback_data": "segnale"},
-             {"text": "🎯 STRUMENTO", "callback_data": "strumento"}],
-            [{"text": "🔄 AGGIORNA", "callback_data": "scan"},
-             {"text": "ℹ️ AIUTO", "callback_data": "help"}],
-        ]
-    }
-
-
 def action_reaction_result(state: dict[str, Any]) -> str:
     """Build a useful result from persisted findings, including legacy rows without text."""
     findings = list((state.get("intelligence_history") or {}).values())
     findings.sort(key=lambda row: str(row.get("detected_at") or ""), reverse=True)
     latest = findings[0] if findings else {}
-    # Prefer the newest finding that actually retained its source text.
     evidence_row = next(
         (row for row in findings if str(row.get("text") or row.get("snippet") or "").strip()),
         latest,
     )
     body = str(evidence_row.get("text") or evidence_row.get("snippet") or "").strip()
     url = str(evidence_row.get("url") or "")
-    # Legacy snapshots stored only domains and links. Refresh the public source
-    # on demand rather than interpreting domain labels as proof of an event.
     if not body and url:
         try:
             body = fetch_public_text(url)[:12000]
@@ -352,7 +350,7 @@ def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
         for row in rows:
             lines.append(f'{row["security"]} — {row["company"]}: {row["score"]}/100 ({row["signal"]})')
         return "\n".join(lines)
-    if callback=="status": return "🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n📡 Telegram: ONLINE\n🟢 Listener: PERMANENTE\n🔎 Motore: GitHub Actions\n📡 Fonte: SEC EDGAR"
+    if callback=="status": return "🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n📡 Telegram: ONLINE\n🟢 Motore: GitHub Actions\n📡 Fonte: SEC EDGAR"
     if callback=="help": return telegram_help_message()
     if callback=="scan": return "🔄 SPUTNIK — AGGIORNAMENTO\n━━━━━━━━━━━━━━━━━━\n📡 Raccolta dati affidata al motore GitHub Actions.\n⏳ Attendi il prossimo snapshot."
     return "🛰️ SPUTNIK"
@@ -388,350 +386,31 @@ def dispatch(message: dict[str, Any]) -> None:
         LOCAL_STATE["chat_id"] = chat_id
         LOCAL_STATE["active"] = True
         save_local_state(LOCAL_STATE)
-        # Force remove any old keyboard, then set the simplified one
-        send(
-            "🛰️ SPUTNIK ATTIVO\n━━━━━━━━━━━━━━━━━━\n"
-            "✅ Tastiera pulita: solo 5 pulsanti.\n"
-            "🟢 COSA COMPRARE  |  📡 SEGNALE CFD  |  🎯 STRUMENTO\n"
-            "🔄 AGGIORNA  |  ℹ️ AIUTO",
-            chat_id,
-            reply_markup={"remove_keyboard": True},
-        )
-        send(
-            "Scegli una delle cinque funzioni:",
-            chat_id,
-            reply_markup=telegram_menu(),
-        )
+        send("🛰️ SPUTNIK attivo. Usa i pulsanti qui sotto.", chat_id=chat_id, reply_markup=telegram_menu())
         return
 
-    if chat_id != str(LOCAL_STATE.get("chat_id") or ""):
-        return
+    # Map button texts and commands
+    command_map = {
+        "/start": "home",
+        "/help": "help",
+        "🟢 cosa comprare": "buy",
+        "📡 segnale cfd": "segnale",
+        "🎯 strumento": "strumento",
+        "📊 dashboard": "home",
+        "🔄 aggiorna": "scan",
+        "ℹ️ aiuto": "help",
+        "cosa comprare": "buy",
+        "segnale": "segnale",
+        "strumento": "strumento",
+        "dashboard": "home",
+        "aggiorna": "scan",
+        "aiuto": "help",
+    }
 
-    if command == "/stop":
-        LOCAL_STATE["active"] = False
-        save_local_state(LOCAL_STATE)
-        send("🛰️ SPUTNIK FERMATO\n━━━━━━━━━━━━━━━━━━\n⛔ Monitoraggio Telegram sospeso.", chat_id)
-        return
-
-    if not LOCAL_STATE.get("active", True):
-        return
-
-    state = remote_state()
-    if not state:
-        state = {"telegram_active": True}
-
-    if command in {"carrello cfd", "carrello cfd 300"}:
-        send(cfd_cart_message(state, 300.0), chat_id, reply_markup=telegram_menu())
-    elif command_key in {
-        "cosa compro",
-        "cosa compro oggi",
-        "cosa comprare",
-        "cosa comprare oggi",
-        "cosa acquistare",
-        "cosa acquistare oggi",
-        "quale compro",
-        "quale compro oggi",
-        "quale azione compro",
-        "quale azione comprare",
-        "trump ordina",
-        "trump cosa compro",
-        "trump cosa comprare",
-        "/ranking",
-    }:
-        rows = rank_purchase_candidates(
-            list((state.get("transactions") or {}).values()),
-            limit=5,
-        )
-        if not rows:
-            send(
-                "🛰️ SPUTNIK — CLASSIFICA\n━━━━━━━━━━━━━━━━━━\n"
-                "⚪ NESSUN CANDIDATO\n"
-                "Dati pubblici insufficienti per costruire una classifica verificabile.",
-                chat_id,
-            )
-        else:
-            lines = [
-                "🛰️ SPUTNIK — CLASSIFICA",
-                "━━━━━━━━━━━━━━━━━━",
-                "🎯 Cosa osservare secondo le evidenze pubbliche:",
-            ]
-            for row in rows:
-                emoji = "🟢" if row["signal"] == "COMPRA" else ("🟡" if row["signal"] == "OSSERVA" else "🔴")
-                lines.extend([
-                    f'{row["rank"]}. {emoji} {row["security"]} — {row["company"]}',
-                    f'   Voto: {row["score"]}/100 | {row["signal"]}',
-                    f'   Fonti: SEC primaria | Filing distinti: {row["filings"]}',
-                    f'   Recenza: {row["recency"]}/10',
-                    f'   {row["reason"]}',
-                ])
-            lines.extend([
-                "",
-                "⚠️ Il voto misura solo evidenza pubblica disponibile.",
-                "⚠️ Non prova rendimento futuro, intenzioni o transazioni private.",
-            ])
-            send("\n".join(lines), chat_id, reply_markup=telegram_menu())
-    elif command == "🎯 catalizzatori":
-        send(catalyst_watch_message(state), chat_id, reply_markup=telegram_menu())
-    elif command == "🧠 azione → reazione":
-        send(action_reaction_result(state), chat_id, reply_markup=telegram_menu())
-    elif command == "🛒 carrello cfd":
-        send(cfd_cart_message(state), chat_id, reply_markup=telegram_menu())
-    elif command == "🏠 home":
-        send(sputnik_home_message(state), chat_id, reply_markup=telegram_menu())
-    elif command == "🏆 classifica":
-        send(answer_for_callback("ranking", state), chat_id, reply_markup=telegram_menu())
-    elif command == "🟢 cosa comprare":
-        send(answer_for_callback("buy", state), chat_id, reply_markup=telegram_menu())
-    elif command == "🔵 anticipo":
-        send(anticipation_message(state), chat_id, reply_markup=telegram_menu())
-    elif command in {"🔥 sputnik aggressivo", "sputnik aggressivo", "/aggressive"}:
-        send(aggressive_message(state), chat_id, reply_markup=telegram_menu())
-    elif command == "💰 acquisti":
-        send(telegram_purchases_message(state), chat_id, reply_markup=telegram_menu())
-    # Legacy menu contract: command in {"🧾 filings sec", "🧾 sec / oge"} remains supported.
-    elif command == "🧾 filings sec":
-        send(answer_for_callback("filings", state), chat_id, reply_markup=telegram_menu())
-    elif command == "🧾 sec / oge":
-        send(answer_for_callback("filings", state), chat_id, reply_markup=telegram_menu())
-    elif command == "📊 settori / impatto":
-        send(answer_for_callback("sectors", state), chat_id, reply_markup=telegram_menu())
-    elif command == "🔎 analisi":
-        send(answer_for_callback("analysis", state), chat_id, reply_markup=telegram_menu())
-    elif command == "📰 news":
-        send(telegram_news_message(state), chat_id, reply_markup=telegram_menu())
-    elif command == "🏛️ trump / white house":
-        send(telegram_brief_message(state), chat_id, reply_markup=telegram_menu())
-    elif command == "📊 brief":
-        send(telegram_brief_message(state), chat_id, reply_markup=telegram_menu())
-    elif command == "🔄 aggiorna":
-        send(answer_for_callback("scan", state), chat_id, reply_markup=telegram_menu())
-    elif command == "⚙️ stato":
-        send(answer_for_callback("status", state), chat_id, reply_markup=telegram_menu())
-    elif command == "ℹ️ aiuto":
-        send(telegram_help_message(), chat_id, reply_markup=telegram_menu())
-    elif command in {"/help"}:
-        send(telegram_help_message(), chat_id, reply_markup=menu_markup())
-    elif command == "/filings":
-        send(telegram_filings_message(state), chat_id)
-    elif command == "/transactions":
-        send(telegram_transactions_message(state), chat_id)
-    elif command in {"/purchases", "💰 acquisti"}:
-        send(telegram_purchases_message(state), chat_id)
-    elif command == "/sales":
-        send(telegram_sales_message(state), chat_id)
-    elif command == "/positions":
-        send(telegram_positions_message(state), chat_id)
-    elif command in {"/news", "📰 news"}:
-        send(telegram_news_message(state), chat_id)
-    elif command in {"/strumento", "/strumento_da_tradare"}:
-        try:
-            from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
-            recent = list((state.get("intelligence_history") or {}).values())[-30:]
-            rec = recommend_trading_instrument(recent)
-            send(format_trading_instrument_message(rec), chat_id, reply_markup=telegram_menu())
-        except Exception as exc:
-            send(
-                f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
-                chat_id,
-            )
-    elif command in {"🎯 strumento", "strumento", "/strumento", "/strumento_da_tradare"}:
-        try:
-            from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
-            recent = list((state.get("intelligence_history") or {}).values())[-30:]
-            rec = recommend_trading_instrument(recent)
-            send(format_trading_instrument_message(rec), chat_id, reply_markup=telegram_menu())
-        except Exception as exc:
-            send(f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}", chat_id)
-    elif command in {"📡 segnale cfd", "segnale cfd", "segnale", "/segnale", "/cfd", "/segnale_cfd"}:
-        try:
-            from sputnik_trading_instrument import recommend_trading_instrument
-            from sputnik_cfd import build_cfd_signal, format_cfd_signal
-            recent = list((state.get("intelligence_history") or {}).values())[-30:]
-            rec = recommend_trading_instrument(recent)
-            quotes = state.get("market_quotes") or state.get("quotes") or {}
-            signal = build_cfd_signal(rec, quotes)
-            send(format_cfd_signal(signal), chat_id, reply_markup=telegram_menu())
-        except Exception as exc:
-            send(
-                f"🛰️ SPUTNIK — SEGNALE CFD\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
-                chat_id,
-            )
-    elif command in {"/brief", "📊 brief", "🏛️ trump / white house"}:
-        send(telegram_brief_message(state), chat_id)
-    elif command in {"/status", "⚙️ stato"}:
-        send(
-            "🛰️ SPUTNIK — STATO\n━━━━━━━━━━━━━━━━━━\n"
-            "📡 Telegram: ONLINE\n"
-            "🟢 Listener: PERMANENTE\n"
-            "🔎 Motore: GitHub Actions\n"
-            "📡 Fonte principale: SEC EDGAR\n"
-            "🎯 Comando naturale: Trump ordina /ranking",
-            chat_id,
-        )
-    elif command == "/test":
-        send(telegram_test_message(), chat_id)
-    elif command in {"/scan", "🔄 aggiorna"}:
-        send(
-            "🛰️ SPUTNIK — SCAN\n━━━━━━━━━━━━━━━━━━\n"
-            "🔎 Il comando è ricevuto dal listener.\n"
-            "📡 La raccolta SEC viene eseguita dal motore GitHub Actions.",
-            chat_id,
-        )
-
-
-
-def dispatch_callback(query: dict[str, Any]) -> None:
-    data = str(query.get("data") or "")
-    message = query.get("message") or {}
-    chat = message.get("chat") or {}
-    chat_id = str(chat.get("id", ""))
-    if not chat_id or chat_id != str(LOCAL_STATE.get("chat_id") or ""):
-        return
+    callback = command_map.get(command_key, "home")
     try:
-        api("answerCallbackQuery", {"callback_query_id": str(query.get("id"))}, timeout=10)
-        state = remote_state() or {"telegram_active": True}
-        text = answer_for_callback(data, state)
-        api("editMessageText", {"chat_id": chat_id, "message_id": message.get("message_id"), "text": text, "reply_markup": menu_markup()}, timeout=20)
+        reply = answer_for_callback(callback, remote_state())
+        send(reply, chat_id=chat_id, reply_markup=telegram_menu())
     except Exception as exc:
-        print(f"SPUTNIK callback error: {type(exc).__name__}: {exc}")
-
-
-def poll_loop() -> None:
-    global BOT_TOKEN
-    last_token = ""
-    while not STOP_EVENT.is_set():
-        with BOT_LOCK:
-            token = BOT_TOKEN
-        if not token:
-            time.sleep(2)
-            continue
-
-        if token != last_token:
-            # A Telegram bot token can own exactly one update transport:
-            # either a webhook or getUpdates polling. Never let SPUTNIK
-            # silently delete GAGARIN's webhook if the two services were
-            # accidentally configured with the same bot token.
-            try:
-                webhook_info = api("getWebhookInfo", {}, timeout=15)
-                active_webhook = str((webhook_info.get("result") or {}).get("url") or "")
-                if "soyuz-gagarin-telegram-v2.onrender.com/telegram/webhook" in active_webhook:
-                    print(
-                        "SPUTNIK: CONFLICT — token già usato da GAGARIN webhook; "
-                        "non disattivo il webhook. Configurare un token Telegram distinto per SPUTNIK.",
-                        flush=True,
-                    )
-                    time.sleep(10)
-                    continue
-            except Exception as exc:
-                print(f"SPUTNIK: getWebhookInfo check failed: {type(exc).__name__}", flush=True)
-                time.sleep(3)
-                continue
-
-            try:
-                api("deleteWebhook", {"drop_pending_updates": False}, timeout=15)
-                print("SPUTNIK: webhook Telegram disattivato; listener permanente pronto.", flush=True)
-                last_token = token
-            except Exception as exc:
-                print(f"SPUTNIK: deleteWebhook error: {type(exc).__name__}", flush=True)
-                time.sleep(3)
-                continue
-
-        try:
-            result = api(
-                "getUpdates",
-                {
-                    "offset": int(LOCAL_STATE.get("offset", 0) or 0),
-                    "timeout": POLL_TIMEOUT,
-                    "allowed_updates": ["message", "callback_query"],
-                },
-                timeout=POLL_TIMEOUT + 10,
-            )
-            if not result.get("ok"):
-                print(f"SPUTNIK: Telegram API error: {result.get('description', 'unknown')}")
-                time.sleep(2)
-                continue
-
-            updates = result.get("result") or []
-            for update in updates:
-                update_id = int(update.get("update_id", 0))
-                LOCAL_STATE["offset"] = max(int(LOCAL_STATE.get("offset", 0) or 0), update_id + 1)
-                save_local_state(LOCAL_STATE)
-                
-                if update.get("callback_query"):
-                    dispatch_callback(update["callback_query"])
-                else:
-                    dispatch(update.get("message") or {})
-        except urllib.error.HTTPError as exc:
-            print(f"SPUTNIK: Telegram HTTP {exc.code}")
-            time.sleep(3)
-        except Exception as exc:
-            print(f"SPUTNIK: Telegram listener error: {type(exc).__name__}: {exc}")
-            time.sleep(3)
-
-
-class Handler(BaseHTTPRequestHandler):
-    def log_message(self, fmt: str, *args: Any) -> None:
-        return
-
-    def do_GET(self) -> None:
-        if self.path in {"/", "/health"}:
-            body = json.dumps({
-                "status": "ok",
-                "service": "sputnik-telegram-listener",
-                "telegram_configured": bool(BOT_TOKEN),
-                "authorized_chat": bool(str(LOCAL_STATE.get("chat_id") or "").strip()),
-            }).encode("utf-8")
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.send_header("Content-Length", str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
-            return
-        self.send_response(404)
-        self.end_headers()
-
-    def do_POST(self) -> None:
-        global BOT_TOKEN
-        if self.path != "/bootstrap":
-            self.send_response(404)
-            self.end_headers()
-            return
-
-        token = self.headers.get("X-Telegram-Bot-Token", "").strip()
-        chat_id = self.headers.get("X-Telegram-Chat-Id", "").strip()
-        if not token or ":" not in token:
-            self.send_response(400)
-            self.end_headers()
-            return
-
-        bootstrap_state(token, chat_id)
-        print(
-            "SPUTNIK: Telegram bootstrap ricevuto; "
-            f"listener autorizzato; chat_configured={bool(chat_id)}",
-            flush=True,
-        )
-
-        body = b'{"status":"bootstrapped"}'
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
-
-
-def main() -> None:
-    thread = threading.Thread(target=poll_loop, daemon=True)
-    thread.start()
-    server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
-    print(f"SPUTNIK: Telegram listener HTTP online on port {PORT}.", flush=True)
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        STOP_EVENT.set()
-        server.server_close()
-
-
-if __name__ == "__main__":
-    main()
+        print(f"Dispatch error: {exc}")
+        send("⚠️ Errore temporaneo.", chat_id=chat_id)
