@@ -1589,6 +1589,19 @@ def main() -> None:
         print(digest)
         send_telegram(digest, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
+    # Trading instrument recommendation after catalyst analysis
+    try:
+        from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
+        recent = list((state.get("intelligence_history") or {}).values())[-30:]
+        all_findings = recent + (intelligence or [])
+        rec = recommend_trading_instrument(all_findings)
+        if rec:
+            instr_msg = format_trading_instrument_message(rec)
+            print(instr_msg)
+            send_telegram(instr_msg, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+    except Exception as exc:
+        print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
+
     if gagarin_confirmation:
         message = gagarin_confirmation_message(gagarin_confirmation)
         print(message)

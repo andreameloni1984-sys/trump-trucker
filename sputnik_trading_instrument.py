@@ -1,1 +1,159 @@
-"""SPUTNIK Trading Instrument Recommender.\n\nAfter the catalyst analysis, produces one concrete instrument to monitor/trade\n(paper only). Never places orders. Always requires price/volume confirmation.\n"""\nfrom __future__ import annotations\n\nfrom typing import Any\n\nfrom sputnik_catalyst import catalyst_watchlist, directional_news_candidates\nfrom sputnik_action_reaction import match_historical_reactions, infer_direction, classify_event\n\n\nCOMMODITY_PRIORITY = {\n    \"WTI\", \"BRENT\", \"GOLD\", \"SILVER\", \"COPPER\", \"NATURAL_GAS\",\n    \"CORN\", \"WHEAT\", \"SOYBEAN\", \"COFFEE\", \"COCOA\", \"SUGAR\",\n}\n\n\ndef recommend_trading_instrument(\n    findings: list[dict[str, Any]],\n    limit: int = 1,\n) -> dict[str, Any] | None:\n    if not findings:\n        return None\n\n    directional = directional_news_candidates(findings, limit=10)\n    commodity_directional = [\n        d for d in directional\n        if d.get(\"instrument\") in COMMODITY_PRIORITY\n    ]\n    if commodity_directional:\n        best = commodity_directional[0]\n        return {\n            \"instrument\": best[\"instrument\"],\n            \"bias\": best[\"bias\"].replace(\"_BIAS\", \"\"),\n            \"score\": 85.0,\n            \"reason\": best[\"reason\"],\n            \"source\": best.get(\"source\", \"\"),\n            \"url\": best.get(\"url\", \"\"),\n            \"title\": best.get(\"title\", \"\"),\n            \"status\": \"BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION\",\n            \"confirmation\": \"Verificare prezzo e volume live prima di qualsiasi operazione paper.\",\n            \"type\": \"DIRECTIONAL_NEWS\",\n        }\n\n    watches = catalyst_watchlist(findings, limit=15)\n    scored = []\n    for w in watches:\n        inst = str(w.get(\"instrument\") or \"\").upper()\n        if inst not in COMMODITY_PRIORITY and inst not in {\"NASDAQ100\", \"USD\"}:\n            continue\n        hist_dirs: dict[str, str] = {}\n        for finding in findings:\n            domains = set(finding.get(\"domains\") or [])\n            if not domains.intersection(set(w.get(\"domains\") or [])):\n                continue\n            text = \" \".join([\n                str(finding.get(\"title\") or \"\"),\n                \" \".join(finding.get(\"domains\") or []),\n                str(finding.get(\"text\") or \"\")[:500],\n            ])\n            matches = match_historical_reactions(text, limit=2)\n            if matches:\n                hist_dirs.update(infer_direction(matches))\n        bias = \"NEUTRAL\"\n        for asset, direction in hist_dirs.items():\n            if asset in {\"OIL\", \"WTI\", \"BRENT\"} and direction == \"UP\": bias = \"LONG\"\n            elif asset in {\"OIL\", \"WTI\", \"BRENT\"} and direction == \"DOWN\": bias = \"SHORT\"\n            elif asset == \"GOLD\" and direction == \"UP\": bias = \"LONG\"\n            elif asset == \"GOLD\" and direction == \"DOWN\": bias = \"SHORT\"\n        base = float(w.get(\"score\") or 0)\n        if w.get(\"primary_source\"): base += 12\n        if hist_dirs: base += 8\n        if inst in COMMODITY_PRIORITY: base += 5\n        scored.append({\n            \"instrument\": inst,\n            \"description\": w.get(\"description\", \"\"),\n            \"bias\": bias,\n            \"score\": min(100.0, base),\n            \"domains\": w.get(\"domains\") or [],\n            \"sources\": w.get(\"sources\") or [],\n            \"primary_source\": bool(w.get(\"primary_source\")),\n            \"historical_bias\": hist_dirs,\n            \"reason\": \"Catalizzatore pubblico prioritario + analogo storico\" if hist_dirs else \"Catalizzatore pubblico da verificare\",\n        })\n    if not scored:\n        return None\n    scored.sort(key=lambda x: -x[\"score\"])\n    best = scored[0]\n    return {\n        \"instrument\": best[\"instrument\"],\n        \"bias\": best[\"bias\"],\n        \"score\": best[\"score\"],\n        \"reason\": best[\"reason\"],\n        \"description\": best[\"description\"],\n        \"sources\": best[\"sources\"],\n        \"primary_source\": best[\"primary_source\"],\n        \"historical_bias\": best.get(\"historical_bias\") or {},\n        \"status\": \"WATCH_PRIORITY\" if best[\"bias\"] == \"NEUTRAL\" else \"BIAS_READY\",\n        \"confirmation\": \"Conferma tecnica obbligatoria: prezzo, volume e ATR prima di qualsiasi operazione paper.\",\n        \"type\": \"CATALYST_WATCH\",\n    }\n\n\ndef format_trading_instrument_message(rec: dict[str, Any] | None) -> str:\n    if not rec:\n        return (\n            \"🛰️ SPUTNIK — STRUMENTO DA TRADARE\\n\"\n            \"━━━━━━━━━━━━━━━━━━\\n\"\n            \"🟡 Nessun catalizzatore commodity sufficientemente forte.\\n\"\n            \"Monitorare: WTI, BRENT, GOLD.\\n\"\n            \"⚠️ Solo paper. Nessun ordine reale.\"\n        )\n    bias_emoji = \"🟢\" if rec[\"bias\"] == \"LONG\" else \"🔴\" if rec[\"bias\"] == \"SHORT\" else \"🟡\"\n    lines = [\n        \"🛰️ SPUTNIK — STRUMENTO DA TRADARE\",\n        \"━━━━━━━━━━━━━━━━━━\",\n        f\"🎯 STRUMENTO: {rec[\\\"instrument\\\"]}\",\n        f\"{bias_emoji} BIAS: {rec[\\\"bias\\\"]}\",\n        f\"📊 SCORE: {rec[\\\"score\\\"]:.0f}/100\",\n        f\"📌 MOTIVO: {rec[\\\"reason\\\"]}\",\n    ]\n    if rec.get(\"description\"):\n        lines.append(f\"📝 {rec[\\\"description\\\"]}\")\n    if rec.get(\"title\"):\n        lines.append(f\"📰 {rec[\\\"title\\\"][:200]}\")\n    if rec.get(\"url\"):\n        lines.append(f\"🔗 {rec[\\\"url\\\"]}\")\n    lines.extend([\n        \"\",\n        f\"✅ CONFERMA: {rec[\\\"confirmation\\\"]}\",\n        f\"🧪 STATO: {rec[\\\"status\\\"]}\",\n        \"⚠️ PAPER TRADING ONLY — nessun ordine reale.\",\n    ])\n    return \"\\n\".join(lines)\n
+"""SPUTNIK Trading Instrument Recommender.
+
+After the catalyst analysis, produces one concrete instrument to monitor/trade
+(paper only). Never places orders. Always requires price/volume confirmation.
+"""
+from __future__ import annotations
+
+from typing import Any
+
+from sputnik_catalyst import catalyst_watchlist, directional_news_candidates
+from sputnik_action_reaction import match_historical_reactions, infer_direction, classify_event
+
+
+COMMODITY_PRIORITY = {
+    "WTI", "BRENT", "GOLD", "SILVER", "COPPER", "NATURAL_GAS",
+    "CORN", "WHEAT", "SOYBEAN", "COFFEE", "COCOA", "SUGAR",
+}
+
+
+def recommend_trading_instrument(
+    findings: list[dict[str, Any]],
+    limit: int = 1,
+) -> dict[str, Any] | None:
+    """Return the single best instrument recommendation after analysis.
+
+    Priority:
+    1. Explicit directional news bias (RSS item-level)
+    2. High-score catalyst watch with historical bias
+    3. Highest catalyst score overall
+    """
+    if not findings:
+        return None
+
+    directional = directional_news_candidates(findings, limit=10)
+    commodity_directional = [
+        d for d in directional
+        if d.get("instrument") in COMMODITY_PRIORITY
+    ]
+    if commodity_directional:
+        best = commodity_directional[0]
+        return {
+            "instrument": best["instrument"],
+            "bias": best["bias"].replace("_BIAS", ""),
+            "score": 85.0,
+            "reason": best["reason"],
+            "source": best.get("source", ""),
+            "url": best.get("url", ""),
+            "title": best.get("title", ""),
+            "status": "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION",
+            "confirmation": "Verificare prezzo e volume live prima di qualsiasi operazione paper.",
+            "type": "DIRECTIONAL_NEWS",
+        }
+
+    watches = catalyst_watchlist(findings, limit=15)
+    scored = []
+    for w in watches:
+        inst = str(w.get("instrument") or "").upper()
+        if inst not in COMMODITY_PRIORITY and inst not in {"NASDAQ100", "USD"}:
+            continue
+
+        hist_dirs: dict[str, str] = {}
+        for finding in findings:
+            domains = set(finding.get("domains") or [])
+            if not domains.intersection(set(w.get("domains") or [])):
+                continue
+            text = " ".join([
+                str(finding.get("title") or ""),
+                " ".join(finding.get("domains") or []),
+                str(finding.get("text") or "")[:500],
+            ])
+            matches = match_historical_reactions(text, limit=2)
+            if matches:
+                hist_dirs.update(infer_direction(matches))
+
+        bias = "NEUTRAL"
+        for asset, direction in hist_dirs.items():
+            if asset in {"OIL", "WTI", "BRENT"} and direction == "UP":
+                bias = "LONG"
+            elif asset in {"OIL", "WTI", "BRENT"} and direction == "DOWN":
+                bias = "SHORT"
+            elif asset == "GOLD" and direction == "UP":
+                bias = "LONG"
+            elif asset == "GOLD" and direction == "DOWN":
+                bias = "SHORT"
+
+        base = float(w.get("score") or 0)
+        if w.get("primary_source"):
+            base += 12
+        if hist_dirs:
+            base += 8
+        if inst in COMMODITY_PRIORITY:
+            base += 5
+
+        scored.append({
+            "instrument": inst,
+            "description": w.get("description", ""),
+            "bias": bias,
+            "score": min(100.0, base),
+            "domains": w.get("domains") or [],
+            "sources": w.get("sources") or [],
+            "primary_source": bool(w.get("primary_source")),
+            "historical_bias": hist_dirs,
+            "reason": "Catalizzatore pubblico prioritario + analogo storico" if hist_dirs else "Catalizzatore pubblico da verificare",
+        })
+
+    if not scored:
+        return None
+
+    scored.sort(key=lambda x: -x["score"])
+    best = scored[0]
+
+    return {
+        "instrument": best["instrument"],
+        "bias": best["bias"],
+        "score": best["score"],
+        "reason": best["reason"],
+        "description": best["description"],
+        "sources": best["sources"],
+        "primary_source": best["primary_source"],
+        "historical_bias": best.get("historical_bias") or {},
+        "status": "WATCH_PRIORITY" if best["bias"] == "NEUTRAL" else "BIAS_READY",
+        "confirmation": "Conferma tecnica obbligatoria: prezzo, volume e ATR prima di qualsiasi operazione paper.",
+        "type": "CATALYST_WATCH",
+    }
+
+
+def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
+    """Telegram-ready message with the recommended instrument."""
+    if not rec:
+        return (
+            "🛰️ SPUTNIK — STRUMENTO DA TRADARE\n"
+            "━━━━━━━━━━━━━━━━━━\n"
+            "🟡 Nessun catalizzatore commodity sufficientemente forte.\n"
+            "Monitorare: WTI, BRENT, GOLD.\n"
+            "⚠️ Solo paper. Nessun ordine reale."
+        )
+
+    bias_emoji = "🟢" if rec["bias"] == "LONG" else "🔴" if rec["bias"] == "SHORT" else "🟡"
+    lines = [
+        "🛰️ SPUTNIK — STRUMENTO DA TRADARE",
+        "━━━━━━━━━━━━━━━━━━",
+        f"🎯 STRUMENTO: {rec['instrument']}",
+        f"{bias_emoji} BIAS: {rec['bias']}",
+        f"📊 SCORE: {rec['score']:.0f}/100",
+        f"📌 MOTIVO: {rec['reason']}",
+    ]
+    if rec.get("description"):
+        lines.append(f"📝 {rec['description']}")
+    if rec.get("title"):
+        lines.append(f"📰 {rec['title'][:200]}")
+    if rec.get("url"):
+        lines.append(f"🔗 {rec['url']}")
+    lines.extend([
+        "",
+        f"✅ CONFERMA: {rec['confirmation']}",
+        f"🧪 STATO: {rec['status']}",
+        "⚠️ PAPER TRADING ONLY — nessun ordine reale.",
+    ])
+    return "\n".join(lines)
