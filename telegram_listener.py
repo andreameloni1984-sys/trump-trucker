@@ -119,8 +119,8 @@ def telegram_menu() -> dict[str, Any]:
         "keyboard": [
             [{"text": "🟢 COSA COMPRARE"}],
             [{"text": "📡 SEGNALE CFD"}, {"text": "🎯 STRUMENTO"}],
-            [{"text": "📊 DASHBOARD"}, {"text": "🔄 AGGIORNA"}],
-            [{"text": "ℹ️ AIUTO"}],
+            [{"text": "🟡 WATCH"}, {"text": "📊 DASHBOARD"}],
+            [{"text": "🔄 AGGIORNA"}, {"text": "ℹ️ AIUTO"}],
         ],
         "resize_keyboard": True,
         "is_persistent": True,
@@ -139,10 +139,13 @@ def menu_markup() -> dict[str, Any]:
                 {"text": "🎯 STRUMENTO", "callback_data": "strumento"},
             ],
             [
+                {"text": "🟡 WATCH", "callback_data": "watch"},
                 {"text": "📊 DASHBOARD", "callback_data": "home"},
-                {"text": "🔄 AGGIORNA", "callback_data": "scan"},
             ],
-            [{"text": "ℹ️ AIUTO", "callback_data": "help"}],
+            [
+                {"text": "🔄 AGGIORNA", "callback_data": "scan"},
+                {"text": "ℹ️ AIUTO", "callback_data": "help"},
+            ],
         ]
     }
 
@@ -389,19 +392,20 @@ def dispatch(message: dict[str, Any]) -> None:
         send("🛰️ SPUTNIK attivo. Usa i pulsanti qui sotto.", chat_id=chat_id, reply_markup=telegram_menu())
         return
 
-    # Map button texts and commands
     command_map = {
         "/start": "home",
         "/help": "help",
         "🟢 cosa comprare": "buy",
         "📡 segnale cfd": "segnale",
         "🎯 strumento": "strumento",
+        "🟡 watch": "watch",
         "📊 dashboard": "home",
         "🔄 aggiorna": "scan",
         "ℹ️ aiuto": "help",
         "cosa comprare": "buy",
         "segnale": "segnale",
         "strumento": "strumento",
+        "watch": "watch",
         "dashboard": "home",
         "aggiorna": "scan",
         "aiuto": "help",
