@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-29T18:46:28.853342+00:00",
+  "updated_at": "2026-10-29T19:08:11.649586+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "67bb6e6613a6614c1cbcaba2",
-    "TRUTH_ARCHIVE": "519df518801874c67be225f4",
+    "TRUTH_ARCHIVE": "b96399d0d29b0c949dd0004f",
     "OGE": "34885a64ac17f66a3396213a"
   },
   "intelligence_history": {
@@ -6588,6 +6588,31 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "b96399d0d29b0c949dd0004f": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA",
+        "RATES_MACRO"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 29, 2026, 3:05 PM Original Post Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania’s 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and the Transgender Mutilization of your Children. Janelle Stelson is Reckless, Radical, and Dangerous! On the other hand, in Congress, Scott is working tirelessly with me to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military and Veterans, Uphold the Rule of Law, Protect our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Scott Perry has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR SCOTT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/states/pen nsylvania/ Read full post swampthevoteusa.com Pennsylvania Bureau of Elections, Pennsylvania Department of State Address 401 North Street Rm 210 Harrisburg, PA 17120 Phone (717) 787-5280 Email [email protected] Republican Party of Pennsylvania Address 115… Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 29, 2026, 12:15 PM Original Post Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania’s 9th Congressional District! A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “loaded up” with accolades and wins. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Dan’s opponent, Rachel Wallace, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Rachel Wallace is Reckless, Radical, and Dangerous! Dan Meuser has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 2:55 PM Original Post It is my Great Honor to endorse America First Patriot, David Stumbo, who is running to be the next Attorney General of the wonderful State of South Carolina, a place I love and WON BIG in 2016, 2020, and 2024! A Strong Conservative Fighter who has distinguished himself as a Criminal Prosecutor and Solicitor for the Eighth Judicial Circuit of South Carolina, David has proven he has the Courage and Wisdom to deliver strong results for the tremendous people of his incredible State, and our Nation. As your next Attorney General, David will continue fighting tirelessly to Ensure LAW AND ORDER, Champion our Law Enforcement and First Responders, Support our Military/Veterans, Advance Election Integrity, Keep our Border SECURE, Stop Migrant Crime, Uphold our Constitution, and Defend our always under siege Second Amendment. David Stumbo has my Complete and Total Endorsement to be the next Attorney General of South Carolina — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 2:53 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 2:53 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 2:52 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 2:52 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 2:52 PM Original Post Today I am pleased to report, in Breaking News this morning, that the U.S. Economy is BOOMING at 3.4 PERCENT — A Historic Level of Economic Growth. Consumer spending is WAY UP, Business Investment is WAY UP, and Investment in new Equipment EXPLODED by 21%, which means Record Numbers of Factories and Companies are being built and expanded in the U.S.A. Very importantly, Core Inflation remained LOW. We are smashing expectations — with today’s numbers beating 72% of economists’ forecasts. Our Economy is ROARING but, if the Dumocrats win the Midterms, they will burn it all down. If you want to keep this Growth going, you must vote REPUBLICAN! President DONALD J",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T19:08:06.689366+00:00",
+      "event_id": "b96399d0d29b0c949dd0004f",
+      "action_reaction": {
+        "event_id": "b96399d0d29b0c949dd0004f",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -6733,6 +6758,6 @@
     "4ef6b84a72eeb5a3d4f0c4ac": "2026-10-29T17:58:36.522888+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-29T18:46:28.835302+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-29T19:08:11.631452+00:00"
   }
 }
