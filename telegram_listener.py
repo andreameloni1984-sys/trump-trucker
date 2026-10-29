@@ -517,6 +517,17 @@ def dispatch(message: dict[str, Any]) -> None:
         send(telegram_positions_message(state), chat_id)
     elif command in {"/news", "📰 news"}:
         send(telegram_news_message(state), chat_id)
+    elif command in {"/strumento", "/strumento_da_tradare"}:
+        try:
+            from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
+            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            rec = recommend_trading_instrument(recent)
+            send(format_trading_instrument_message(rec), chat_id, reply_markup=telegram_menu())
+        except Exception as exc:
+            send(
+                f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
+                chat_id,
+            )
     elif command in {"/brief", "📊 brief", "🏛️ trump / white house"}:
         send(telegram_brief_message(state), chat_id)
     elif command in {"/status", "⚙️ stato"}:

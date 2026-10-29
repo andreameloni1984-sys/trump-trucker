@@ -1439,6 +1439,18 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
             send_telegram(telegram_news_message(state), chat_id=chat_id)
         elif command == "/brief":
             send_telegram(telegram_brief_message(state), chat_id=chat_id)
+        elif command in {"/strumento", "/strumento_da_tradare"}:
+            try:
+                from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
+                recent = list((state.get("intelligence_history") or {}).values())[-30:]
+                rec = recommend_trading_instrument(recent)
+                msg = format_trading_instrument_message(rec)
+                send_telegram(msg, chat_id=chat_id)
+            except Exception as exc:
+                send_telegram(
+                    f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
+                    chat_id=chat_id,
+                )
         elif command == "/scan":
             send_telegram("🛰️ SPUTNIK — SCAN AVVIATA\n━━━━━━━━━━━━━━━━━━\n🔎 Controllo SEC in corso...", chat_id=chat_id)
             scan_events = collect()
@@ -1468,7 +1480,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 "🔐 Chat Telegram riconosciuta automaticamente.\n"
                 "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\n"
                 "⏱️ Frequenza: ogni 5 minuti.\n"
-                "⏱️ Comandi: /status /scan /filings /transactions /purchases /sales /positions /news /brief /help /stop /test",
+                "⏱️ Comandi: /status /scan /strumento /filings /transactions /purchases /sales /positions /news /brief /help /stop /test",
                 chat_id=chat_id,
             )
         elif command == "/stop":
