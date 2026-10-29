@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-29T14:25:51.609709+00:00",
+  "updated_at": "2026-10-29T15:53:40.390645+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "418cae1fa25f9bf81d99092d",
-    "TRUTH_ARCHIVE": "e17ab40acdadf5ac303c8858",
+    "WHITE_HOUSE": "67bb6e6613a6614c1cbcaba2",
+    "TRUTH_ARCHIVE": "3db67420b745e7ec241e9154",
     "OGE": "34885a64ac17f66a3396213a"
   },
   "intelligence_history": {
@@ -5983,7 +5983,7 @@
       "text": "{\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"isPartOf\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\"},\"about\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"primaryImageOfPage\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"datePublished\":\"2026-01-22T14:00:00+00:00\",\"dateModified\":\"2026-10-28T17:42:41+00:00\",\"description\":\"President Donald J. Trump and Vice President JD Vance are committed to lowering costs for all Americans, securing our borders, unleashing American energy dominance, restoring peace through strength, and making all Americans safe and secure once again.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/www.whitehouse.gov\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"width\":800,\"height\":450},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"description\":\"\",\"publisher\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\\/\\/www.whitehouse.gov\\/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"},{\"@type\":\"GovernmentOrganization\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\",\"name\":\"The White House\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"width\":918,\"height\":918,\"caption\":\"The White House\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\"},\"sameAs\":[\"https:\\/\\/www.facebook.com\\/WhiteHouse\\/\",\"https:\\/\\/x.com\\/whitehouse\",\"https:\\/\\/www.instagram.com\\/whitehouse\\/\",\"https:\\/\\/www.youtube.com\\/@whitehouse\"]}]} The White House img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px} /*# sourceURL=wp-img-auto-sizes-contain-inline-css */ .wp-block-social-link{background:none!important;color:inherit!important}.wp-block-social-link-anchor{padding:0!important}.wp-block-social-link:focus,.wp-block-social-link:hover{transform:none!important} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-social-link.css */ .is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*=\"writing-mode:vertical-lr\"],p.has-text-align-right[style*=\"writing-mode:vertical-rl\"]{rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/paragraph/style.min.css */ .wp-block-spacer{clear:both} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/spacer/style.min.css */ .wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/group/style.min.css */ .wp-block-group.has-hyperlink{position:relative}.wp-block-group.has-hyperlink:not(.block-editor-block-list__block)>:nth-child(2){margin-block-start:0}.wp-block-group.has-hyperlink a.wp-block-group__action{height:100%;left:0;position:absolute;top:0;width:100%;z-index:3}.wp-block-group.has-hyperlink .wp-block-button,.wp-block-group.has-hyperlink a{position:relative;z-index:4} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-group.css */ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-inclu",
       "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
       "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T05:47:55.432735+00:00",
+      "detected_at": "2026-10-29T15:53:39.600183+00:00",
       "event_id": "67bb6e6613a6614c1cbcaba2",
       "action_reaction": {
         "event_id": "67bb6e6613a6614c1cbcaba2",
@@ -6381,6 +6381,76 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "3db67420b745e7ec241e9154": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 29, 2026, 10:30 AM Original Post TO THE GREAT PEOPLE OF KENTUCKY, GET OUT AND VOTE FOR: – Andy Barr for U.S. Senate – James Comer for U.S. Congress (KY-01) – Brett Guthrie for U.S. Congress (KY-02) – Ed Gallrein for U.S. Congress (KY-04) – Hal Rogers for U.S. Congress (KY-05) – Ralph Alvarado for U.S. Congress (KY-06) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/kentucky/ Read full post swampthevoteusa.com KENTUCKY: MAKE A PLAN TO VOTE! The Kentucky general election is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 29, 2026, 10:30 AM Original Post 🚨 KENTUCKY! Early Voting, in-person, is UNDERWAY NOW in the Great Commonwealth of Kentucky. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Kentucky, you can cast your early Vote, in-person, all the way through October 31st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/kentucky/ swampthevoteusa.com KENTUCKY: MAKE A PLAN TO VOTE! The Kentucky general election is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 29, 2026, 10:30 AM Original Post 🚨 KENTUCKY! Early Voting, in-person, is UNDERWAY NOW in the Great Commonwealth of Kentucky. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Kentucky, you can cast your early Vote, in-person, all the way through October 31st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/kentucky/ Read full post swampthevoteusa.com KENTUCKY: MAKE A PLAN TO VOTE! The Kentucky general election is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 29, 2026, 7:48 AM Original Post We are drawing the BIGGEST CROWDS at Trump Rallies in the history of Midterm Elections, by a factor of five times. There has never been anything like it! My Approval Rating in the Republican Party is now at 99%. Thank you, such an honor!!! Big Rally in South Carolina for the wonderful Darline Graham, today. She is fantastic. Lindsey is watching, and very proud of her!!! President DJT Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 7:22 AM Original Post Aaron Flint has my Complete and Total Endorsement to be the next U.S. Representative from Montana’s 1st Congressional District — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 7:20 AM Original Post Ralph Alvarado has my Complete and Total Endorsement to be the next U.S. Representative from Kentucky’s 6th Congressional District — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 7:20 AM Original Post Rhett Marques has my Complete and Total Endorsement to be the next U.S. Representative from Alabama’s 2nd Congressional District — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 7:20 AM Original Post Anthony Constantino has my Complete and Total Endorsement to be the next U.S. Representative from New York’s 21st Congressional District — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 28, 2026, 10:43 PM Original Post East Potomac Golf Course is highly dangerous, dilapidated, and absolutely disgusting. Below are new photos of the deplorable conditions of the driving range building, including excrement in the stairwell. The gaping holes in the driving range’s “protective” netting are highly hazardous. Golf balls soar through the holes at high speed and hit unexpecting Golfers—including a White House staffer who was, sadly, hit violently in the chest. The driving range building itself is falling apart, and its structural stability is terrible. It should be closed immediately for safety reasons! The exposed nails and disintegrating wood also endanger young Golfers — Not a good situation! The people of Washington,",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T15:53:40.049184+00:00",
+      "event_id": "3db67420b745e7ec241e9154",
+      "action_reaction": {
+        "event_id": "3db67420b745e7ec241e9154",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "eb4b0735c24b479b27b088fe": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42832",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117524676590414089",
+      "title": "TO THE GREAT PEOPLE OF KENTUCKY, GET OUT AND VOTE FOR: – Andy Barr for U.S. Senate– James Comer for U.S. Congress (KY-01)– Brett Guthrie for U.S. Congress (KY-02)– Ed Gallrein for U.S. Congress (KY-04)– Hal Rogers for U.S. Congress (KY-05)– Ralph Alvarado for U.S. Congress (KY-06) These Great Patrio",
+      "published": "Thu, 29 Oct 2026 14:30:49 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "TO THE GREAT PEOPLE OF KENTUCKY, GET OUT AND VOTE FOR: – Andy Barr for U.S. Senate– James Comer for U.S. Congress (KY-01)– Brett Guthrie for U.S. Congress (KY-02)– Ed Gallrein for U.S. Congress (KY-04)– Hal Rogers for U.S. Congress (KY-05)– Ralph Alvarado for U.S. Congress (KY-06) These Great Patrio RT: https://truthsocial.com/users/realDonaldTrump/statuses/117524674249671299 TO THE GREAT PEOPLE OF KENTUCKY, GET OUT AND VOTE FOR: – Andy Barr for U.S. Senate – James Comer for U.S. Congress (KY-01) – Brett Guthrie for U.S. Congress (KY-02) – Ed Gallrein for U.S. Congress (KY-04) – Hal Rogers for U.S. Congress (KY-05) – Ralph Alvarado for U.S. Congress (KY-06) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/kentucky/ Quoted Donald J. Trump 🚨 KENTUCKY! Early Voting, in-person, is UNDERWAY NOW in the Great Commonwealth of Kentucky. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Kentucky, you can cast your early Vote, in-person, all the way through October 31st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/kentucky/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T15:53:40.360335+00:00",
+      "event_id": "eb4b0735c24b479b27b088fe",
+      "action_reaction": {
+        "event_id": "eb4b0735c24b479b27b088fe",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "2e1da2f248d41777a7959cb9": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42833",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117524674249671299",
+      "title": "🚨 KENTUCKY!Early Voting, in-person, is UNDERWAY NOW in the Great Commonwealth of Kentucky. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT!Whether you VOTE earl",
+      "published": "Thu, 29 Oct 2026 14:30:14 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "🚨 KENTUCKY!Early Voting, in-person, is UNDERWAY NOW in the Great Commonwealth of Kentucky. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT!Whether you VOTE earl 🚨 KENTUCKY! Early Voting, in-person, is UNDERWAY NOW in the Great Commonwealth of Kentucky. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Kentucky, you can cast your early Vote, in-person, all the way through October 31st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/kentucky/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T15:53:40.360603+00:00",
+      "event_id": "2e1da2f248d41777a7959cb9",
+      "action_reaction": {
+        "event_id": "2e1da2f248d41777a7959cb9",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -6516,9 +6586,11 @@
     "8f8f20045a8d86ad579c33ca": "2026-10-29T00:21:13.490150+00:00",
     "9755010deceac2d907a89806": "2026-10-29T00:21:13.490507+00:00",
     "1e210d4059ef569f6953e24c": "2026-10-29T04:05:46.635539+00:00",
-    "50f4d35707ddb2ad90d6a8e3": "2026-10-29T04:05:46.635883+00:00"
+    "50f4d35707ddb2ad90d6a8e3": "2026-10-29T04:05:46.635883+00:00",
+    "eb4b0735c24b479b27b088fe": "2026-10-29T15:53:40.360321+00:00",
+    "2e1da2f248d41777a7959cb9": "2026-10-29T15:53:40.360597+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-29T14:25:51.592970+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-29T15:53:40.368034+00:00"
   }
 }
