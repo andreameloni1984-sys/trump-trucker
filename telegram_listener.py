@@ -388,13 +388,16 @@ def dispatch(message: dict[str, Any]) -> None:
         LOCAL_STATE["chat_id"] = chat_id
         LOCAL_STATE["active"] = True
         save_local_state(LOCAL_STATE)
+        # Force remove any old keyboard, then set the simplified one
         send(
             "🛰️ SPUTNIK ATTIVO\n━━━━━━━━━━━━━━━━━━\n"
-            "✅ Telegram collegato al listener permanente.\n"
-            "📡 Motore dati: GitHub Actions.\n"
-            "🔐 Questa chat privata è autorizzata.\n"
-            "⏱️ Puoi usare /status /test /brief /filings /transactions /purchases /sales /positions /news /help\n"
-            "🎯 Usa il menu qui sotto oppure scrivi: Trump ordina",
+            "✅ Menu semplificato attivo.\n"
+            "🟢 Usa il pulsante **COSA COMPRARE**.",
+            chat_id,
+            reply_markup={"remove_keyboard": True},
+        )
+        send(
+            "Pulsantiera aggiornata:",
             chat_id,
             reply_markup=telegram_menu(),
         )
