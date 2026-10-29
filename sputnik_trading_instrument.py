@@ -46,7 +46,7 @@ def recommend_trading_instrument(
             "source": best.get("source", ""),
             "url": best.get("url", ""),
             "title": best.get("title", ""),
-            "status": "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION",
+            "status": "PRELIMINARY_DIRECTIONAL_BIAS_NEEDS_TECHNICAL_CHECK",
             "confirmation": "Verificare prezzo e volume live prima di qualsiasi operazione paper.",
             "type": "DIRECTIONAL_NEWS",
         }
@@ -118,7 +118,7 @@ def recommend_trading_instrument(
         "sources": best["sources"],
         "primary_source": best["primary_source"],
         "historical_bias": best.get("historical_bias") or {},
-        "status": "WATCH_PRIORITY" if best["bias"] == "NEUTRAL" else "BIAS_READY",
+        "status": "WATCH_NEUTRAL_NO_DIRECTION" if best["bias"] == "NEUTRAL" else "PRELIMINARY_DIRECTIONAL_BIAS_NEEDS_TECHNICAL_CHECK",
         "confirmation": "Conferma tecnica obbligatoria: prezzo, volume e ATR prima di qualsiasi operazione paper.",
         "type": "CATALYST_WATCH",
     }
@@ -144,6 +144,10 @@ def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
         f"📊 SCORE CATALIZZATORE: {rec['score']:.0f}/100",
         f"📌 MOTIVO: {rec['reason']}",
     ]
+    if rec["bias"] == "NEUTRAL":
+        lines.append("🧭 DECISIONE: WATCH — lo score misura la priorità del catalizzatore, NON la direzione. Nessun LONG/SHORT dedotto.")
+    else:
+        lines.append(f"🧭 DECISIONE: BIAS {rec['bias']} PRELIMINARE — non è un ingresso; attendere verifica di prezzo, volume e ATR.")
     if rec.get("description"):
         lines.append(f"📝 {rec['description']}")
     if rec.get("title"):
