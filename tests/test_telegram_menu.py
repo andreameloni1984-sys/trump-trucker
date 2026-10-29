@@ -41,8 +41,8 @@ class SputnikTelegramMenuTests(unittest.TestCase):
             'if callback == "home":',
             'if callback in {"strumento", "strumento_da_tradare"}:',
             'if callback in {"segnale", "cfd_signal", "segnale_cfd"}:',
-            'if callback == "help":',
-            'if callback == "scan":',
+            'if callback=="help":',
+            'if callback=="scan":',
         ):
             self.assertIn(callback, self.source)
 
