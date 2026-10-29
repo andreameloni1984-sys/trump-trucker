@@ -391,13 +391,14 @@ def dispatch(message: dict[str, Any]) -> None:
         # Force remove any old keyboard, then set the simplified one
         send(
             "🛰️ SPUTNIK ATTIVO\n━━━━━━━━━━━━━━━━━━\n"
-            "✅ Menu semplificato attivo.\n"
-            "🟢 Usa il pulsante **COSA COMPRARE**.",
+            "✅ Tastiera pulita: solo 5 pulsanti.\n"
+            "🟢 COSA COMPRARE  |  📡 SEGNALE CFD  |  🎯 STRUMENTO\n"
+            "🔄 AGGIORNA  |  ℹ️ AIUTO",
             chat_id,
             reply_markup={"remove_keyboard": True},
         )
         send(
-            "Pulsantiera aggiornata:",
+            "Scegli una delle cinque funzioni:",
             chat_id,
             reply_markup=telegram_menu(),
         )
