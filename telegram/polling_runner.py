@@ -26,8 +26,9 @@ try:
         remote_state,
         telegram_menu,
     )
+    from telegram.sputnik_watch import build_watch_message
 except ImportError as e:
-    print(f"Impossibile importare da telegram_listener.py: {e}", flush=True)
+    print(f"Impossibile importare moduli: {e}", flush=True)
     sys.exit(1)
 
 
@@ -47,8 +48,6 @@ def get_updates(offset: int | None = None) -> list[dict[str, Any]]:
 
 
 def normalize_text(text: str) -> str:
-    """Rimuove emoji e normalizza il testo per il matching."""
-    # Rimuove la maggior parte degli emoji e simboli
     cleaned = re.sub(r"[\U0001F300-\U0001F9FF\u2600-\u26FF\u2700-\u27BF\u2B00-\u2BFF]+", "", text)
     return " ".join(cleaned.lower().split()).rstrip("?!.,:;")
 
@@ -63,14 +62,14 @@ def process_message(message: dict[str, Any], state: dict[str, Any]) -> None:
 
     print(f"Processing message | chat_id={chat_id} | text={text[:80]}", flush=True)
 
-    # Gestione speciale per /start
     if text.lower().startswith("/start"):
         welcome = (
             "🛰️ **SPUTNIK attivo**\n\n"
-            "Usa i pulsanti qui sotto per interagire:\n"
+            "Usa i pulsanti qui sotto:\n"
             "🟢 COSA COMPRARE\n"
             "📡 SEGNALE CFD\n"
             "🎯 STRUMENTO\n"
+            "🟡 WATCH\n"
             "📊 DASHBOARD\n"
             "🔄 AGGIORNA\n"
             "ℹ️ AIUTO"
@@ -79,9 +78,17 @@ def process_message(message: dict[str, Any], state: dict[str, Any]) -> None:
         print(f"Welcome sent: {ok}", flush=True)
         return
 
-    # Matching robusto (ignora emoji e case)
     norm = normalize_text(text)
     print(f"Normalized: '{norm}'", flush=True)
+
+    # Gestione speciale WATCH
+    if norm in {"watch", "riepilogo", "summary"}:
+        watch_text = build_watch_message(state, min_score=50)
+        if not watch_text:
+            watch_text = "🟡 Nessun candidato in WATCH al momento."
+        ok = send(watch_text, chat_id=chat_id, reply_markup=telegram_menu())
+        print(f"WATCH sent: {ok}", flush=True)
+        return
 
     command_map = {
         "/help": "help",
@@ -138,7 +145,10 @@ def main() -> None:
             chat_id = str((callback_query.get("message") or {}).get("chat", {}).get("id", ""))
             if chat_id and data:
                 try:
-                    reply = answer_for_callback(data, state)
+                    if data == "watch":
+                        reply = build_watch_message(state, min_score=50) or "🟡 Nessun candidato in WATCH."
+                    else:
+                        reply = answer_for_callback(data, state)
                     send(reply, chat_id=chat_id, reply_markup=telegram_menu())
                 except Exception as exc:
                     print(f"Callback error: {exc}", flush=True)
