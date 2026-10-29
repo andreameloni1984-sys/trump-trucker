@@ -116,21 +116,21 @@ def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | N
 
 
 def telegram_menu() -> dict[str, Any]:
+    """Reply keyboard (pulsantiera) principale SPUTNIK — orientata ai segnali CFD."""
     return {
         "keyboard": [
-            [{"text": "🏠 HOME"}, {"text": "🏆 CLASSIFICA"}],
+            [{"text": "🏠 HOME"}, {"text": "🎯 STRUMENTO"}, {"text": "📡 SEGNALE CFD"}],
             [{"text": "🟢 COSA COMPRARE"}, {"text": "🛒 CARRELLO CFD"}],
+            [{"text": "🏆 CLASSIFICA"}, {"text": "🔥 AGGRESSIVO"}],
             [{"text": "🎯 CATALIZZATORI"}, {"text": "🧠 AZIONE → REAZIONE"}],
-            [{"text": "🔥 SPUTNIK AGGRESSIVO"}],
-            [{"text": "🏛️ TRUMP / WHITE HOUSE"}],
-            [{"text": "📰 NEWS"}, {"text": "🧾 SEC / OGE"}],
-            [{"text": "📊 SETTORI / IMPATTO"}, {"text": "🔎 ANALISI"}],
-            [{"text": "💰 ACQUISTI"}, {"text": "🔄 AGGIORNA"}],
-            [{"text": "⚙️ STATO"}, {"text": "ℹ️ AIUTO"}],
+            [{"text": "🏛️ TRUMP / WHITE HOUSE"}, {"text": "📰 NEWS"}],
+            [{"text": "🧾 SEC / OGE"}, {"text": "💰 ACQUISTI"}],
+            [{"text": "📊 SETTORI"}, {"text": "🔎 ANALISI"}],
+            [{"text": "🔄 AGGIORNA"}, {"text": "⚙️ STATO"}, {"text": "ℹ️ AIUTO"}],
         ],
         "resize_keyboard": True,
         "is_persistent": True,
-        "input_field_placeholder": "SPUTNIK • scegli un'operazione",
+        "input_field_placeholder": "SPUTNIK • segnali CFD",
     }
 
 
@@ -253,26 +253,27 @@ def anticipation_message(state: dict[str, Any]) -> str:
 
 
 def menu_markup() -> dict[str, Any]:
-    """SPUTNIK dashboard: Commodities-style inline control panel."""
+    """Inline keyboard (pulsantiera) SPUTNIK — segnali CFD in evidenza."""
     return {
         "inline_keyboard": [
-            [{"text": "🏠 HOME", "callback_data": "home"}],
+            [{"text": "🏠 HOME", "callback_data": "home"},
+             {"text": "🎯 STRUMENTO", "callback_data": "strumento"},
+             {"text": "📡 SEGNALE CFD", "callback_data": "segnale"}],
             [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"},
-             {"text": "🔵 ANTICIPO", "callback_data": "anticipation"}],
-            [{"text": "🔥 SPUTNIK AGGRESSIVO", "callback_data": "aggressive"}],
-            [{"text": "🧠 AZIONE → REAZIONE", "callback_data": "action_reaction"}],
-            [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"}],
-            [{"text": "🛒 CARRELLO CFD", "callback_data": "cfd"},
-             {"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"}],
-            [{"text": "🏛️ TRUMP / WHITE HOUSE", "callback_data": "brief"},
+             {"text": "🛒 CARRELLO CFD", "callback_data": "cfd"}],
+            [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"},
+             {"text": "🔥 AGGRESSIVO", "callback_data": "aggressive"}],
+            [{"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"},
+             {"text": "🧠 AZIONE → REAZIONE", "callback_data": "action_reaction"}],
+            [{"text": "🏛️ TRUMP / WH", "callback_data": "brief"},
              {"text": "📰 NEWS", "callback_data": "news"}],
             [{"text": "🧾 SEC / OGE", "callback_data": "filings"},
              {"text": "💰 ACQUISTI", "callback_data": "purchases"}],
-            [{"text": "📊 SETTORI / IMPATTO", "callback_data": "sectors"},
+            [{"text": "📊 SETTORI", "callback_data": "sectors"},
              {"text": "🔎 ANALISI", "callback_data": "analysis"}],
             [{"text": "🔄 AGGIORNA", "callback_data": "scan"},
-             {"text": "⚙️ STATO", "callback_data": "status"}],
-            [{"text": "ℹ️ AIUTO", "callback_data": "help"}],
+             {"text": "⚙️ STATO", "callback_data": "status"},
+             {"text": "ℹ️ AIUTO", "callback_data": "help"}],
         ]
     }
 
@@ -308,6 +309,25 @@ def action_reaction_result(state: dict[str, Any]) -> str:
 def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
     if callback == "home":
         return sputnik_home_message(state)
+    if callback in {"strumento", "strumento_da_tradare"}:
+        try:
+            from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
+            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            rec = recommend_trading_instrument(recent)
+            return format_trading_instrument_message(rec)
+        except Exception as exc:
+            return f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}"
+    if callback in {"segnale", "cfd_signal", "segnale_cfd"}:
+        try:
+            from sputnik_trading_instrument import recommend_trading_instrument
+            from sputnik_cfd import build_cfd_signal, format_cfd_signal
+            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            rec = recommend_trading_instrument(recent)
+            quotes = state.get("market_quotes") or state.get("quotes") or {}
+            signal = build_cfd_signal(rec, quotes)
+            return format_cfd_signal(signal)
+        except Exception as exc:
+            return f"🛰️ SPUTNIK — SEGNALE CFD\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}"
     if callback == "action_reaction":
         return action_reaction_result(state)
     if callback == "cfd":
@@ -528,7 +548,15 @@ def dispatch(message: dict[str, Any]) -> None:
                 f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
                 chat_id,
             )
-    elif command in {"/segnale", "/cfd", "/segnale_cfd"}:
+    elif command in {"🎯 strumento", "strumento", "/strumento", "/strumento_da_tradare"}:
+        try:
+            from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
+            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            rec = recommend_trading_instrument(recent)
+            send(format_trading_instrument_message(rec), chat_id, reply_markup=telegram_menu())
+        except Exception as exc:
+            send(f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}", chat_id)
+    elif command in {"📡 segnale cfd", "segnale cfd", "segnale", "/segnale", "/cfd", "/segnale_cfd"}:
         try:
             from sputnik_trading_instrument import recommend_trading_instrument
             from sputnik_cfd import build_cfd_signal, format_cfd_signal
