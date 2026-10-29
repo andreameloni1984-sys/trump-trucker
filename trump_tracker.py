@@ -1451,6 +1451,20 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                     f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
                     chat_id=chat_id,
                 )
+        elif command in {"/segnale", "/cfd", "/segnale_cfd"}:
+            try:
+                from sputnik_trading_instrument import recommend_trading_instrument
+                from sputnik_cfd import build_cfd_signal, format_cfd_signal
+                recent = list((state.get("intelligence_history") or {}).values())[-30:]
+                rec = recommend_trading_instrument(recent)
+                quotes = state.get("market_quotes") or state.get("quotes") or {}
+                signal = build_cfd_signal(rec, quotes)
+                send_telegram(format_cfd_signal(signal), chat_id=chat_id)
+            except Exception as exc:
+                send_telegram(
+                    f"🛰️ SPUTNIK — SEGNALE CFD\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
+                    chat_id=chat_id,
+                )
         elif command == "/scan":
             send_telegram("🛰️ SPUTNIK — SCAN AVVIATA\n━━━━━━━━━━━━━━━━━━\n🔎 Controllo SEC in corso...", chat_id=chat_id)
             scan_events = collect()
@@ -1480,7 +1494,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 "🔐 Chat Telegram riconosciuta automaticamente.\n"
                 "📡 Controllo SEC ad ogni esecuzione GitHub Actions.\n"
                 "⏱️ Frequenza: ogni 5 minuti.\n"
-                "⏱️ Comandi: /status /scan /strumento /filings /transactions /purchases /sales /positions /news /brief /help /stop /test",
+                "⏱️ Comandi: /status /scan /strumento /segnale /cfd /filings /transactions /purchases /sales /positions /news /brief /help /stop /test",
                 chat_id=chat_id,
             )
         elif command == "/stop":

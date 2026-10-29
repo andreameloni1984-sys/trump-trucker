@@ -528,6 +528,20 @@ def dispatch(message: dict[str, Any]) -> None:
                 f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
                 chat_id,
             )
+    elif command in {"/segnale", "/cfd", "/segnale_cfd"}:
+        try:
+            from sputnik_trading_instrument import recommend_trading_instrument
+            from sputnik_cfd import build_cfd_signal, format_cfd_signal
+            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            rec = recommend_trading_instrument(recent)
+            quotes = state.get("market_quotes") or state.get("quotes") or {}
+            signal = build_cfd_signal(rec, quotes)
+            send(format_cfd_signal(signal), chat_id, reply_markup=telegram_menu())
+        except Exception as exc:
+            send(
+                f"🛰️ SPUTNIK — SEGNALE CFD\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
+                chat_id,
+            )
     elif command in {"/brief", "📊 brief", "🏛️ trump / white house"}:
         send(telegram_brief_message(state), chat_id)
     elif command in {"/status", "⚙️ stato"}:
