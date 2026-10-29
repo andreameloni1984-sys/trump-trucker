@@ -9,6 +9,7 @@ Adatto a GitHub Actions.
 from __future__ import annotations
 
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -45,6 +46,13 @@ def get_updates(offset: int | None = None) -> list[dict[str, Any]]:
         return []
 
 
+def normalize_text(text: str) -> str:
+    """Rimuove emoji e normalizza il testo per il matching."""
+    # Rimuove la maggior parte degli emoji e simboli
+    cleaned = re.sub(r"[\U0001F300-\U0001F9FF\u2600-\u26FF\u2700-\u27BF\u2B00-\u2BFF]+", "", text)
+    return " ".join(cleaned.lower().split()).rstrip("?!.,:;")
+
+
 def process_message(message: dict[str, Any], state: dict[str, Any]) -> None:
     chat = message.get("chat") or {}
     chat_id = str(chat.get("id", ""))
@@ -55,7 +63,7 @@ def process_message(message: dict[str, Any], state: dict[str, Any]) -> None:
 
     print(f"Processing message | chat_id={chat_id} | text={text[:80]}", flush=True)
 
-    # Gestione speciale per /start: messaggio di benvenuto + tastiera
+    # Gestione speciale per /start
     if text.lower().startswith("/start"):
         welcome = (
             "🛰️ **SPUTNIK attivo**\n\n"
@@ -71,24 +79,24 @@ def process_message(message: dict[str, Any], state: dict[str, Any]) -> None:
         print(f"Welcome sent: {ok}", flush=True)
         return
 
+    # Matching robusto (ignora emoji e case)
+    norm = normalize_text(text)
+    print(f"Normalized: '{norm}'", flush=True)
+
     command_map = {
         "/help": "help",
-        "🟢 cosa comprare": "buy",
-        "📡 segnale cfd": "segnale",
-        "🎯 strumento": "strumento",
-        "📊 dashboard": "home",
-        "🔄 aggiorna": "scan",
-        "ℹ️ aiuto": "help",
         "cosa comprare": "buy",
+        "segnale cfd": "segnale",
         "segnale": "segnale",
         "strumento": "strumento",
         "dashboard": "home",
         "aggiorna": "scan",
         "aiuto": "help",
+        "help": "help",
     }
 
-    key = text.lower().rstrip("?!.,:;")
-    callback = command_map.get(key, "home")
+    callback = command_map.get(norm, "home")
+    print(f"Mapped to callback: {callback}", flush=True)
 
     try:
         reply = answer_for_callback(callback, state)
