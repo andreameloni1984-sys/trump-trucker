@@ -10,7 +10,12 @@ from __future__ import annotations
 
 import os
 import sys
+from pathlib import Path
 from typing import Any
+
+# Assicura che la root del repo sia nel path (necessario quando lanciato da Actions)
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 try:
     from telegram_listener import (
@@ -20,8 +25,8 @@ try:
         remote_state,
         telegram_menu,
     )
-except ImportError:
-    print("Impossibile importare da telegram_listener.py", flush=True)
+except ImportError as e:
+    print(f"Impossibile importare da telegram_listener.py: {e}", flush=True)
     sys.exit(1)
 
 
