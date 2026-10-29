@@ -1,6 +1,6 @@
 {
   "events": {},
-  "updated_at": "2026-10-29T17:58:36.553833+00:00",
+  "updated_at": "2026-10-29T18:46:28.853342+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
@@ -6733,6 +6733,6 @@
     "4ef6b84a72eeb5a3d4f0c4ac": "2026-10-29T17:58:36.522888+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-29T17:58:36.529613+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-29T18:46:28.835302+00:00"
   }
 }
