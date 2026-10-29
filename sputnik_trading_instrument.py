@@ -150,6 +150,12 @@ def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
         lines.append(f"🧭 DECISIONE: BIAS {rec['bias']} PRELIMINARE — non è un ingresso; attendere verifica di prezzo, volume e ATR.")
     if rec.get("description"):
         lines.append(f"📝 {rec['description']}")
+    source_items = rec.get("sources") or []
+    if rec.get("source"):
+        source_items = [rec.get("source")] + list(source_items)
+    source_items = list(dict.fromkeys(str(item).strip() for item in source_items if str(item).strip()))
+    if source_items:
+        lines.append("🔎 FONTI: " + " | ".join(source_items[:3]))
     if rec.get("title"):
         lines.append(f"📰 {rec['title'][:200]}")
     if rec.get("url"):
