@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-29T15:53:40.390645+00:00",
+  "updated_at": "2026-10-29T17:58:36.553833+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "67bb6e6613a6614c1cbcaba2",
-    "TRUTH_ARCHIVE": "3db67420b745e7ec241e9154",
+    "TRUTH_ARCHIVE": "519df518801874c67be225f4",
     "OGE": "34885a64ac17f66a3396213a"
   },
   "intelligence_history": {
@@ -6451,6 +6451,143 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "519df518801874c67be225f4": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 29, 2026, 1:30 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:24 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:26 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:24 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:24 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:24 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:12 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:02 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:02 PM Original Post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 29, 2026, 12:40 PM Original Post Just arrived in South Carolina! Watching the Right Side Broadcasting Network (RSBN) Interviews of the people outside that are unable to get into the Arena. Special Jumbotrons put up. See you soon! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 1:00 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 12:57 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 12:57 PM Original Post Donald J. Trump @realDonaldTrump · October 29, 2026, 12:54 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 29, 2026, 12:46 PM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T17:58:35.870848+00:00",
+      "event_id": "519df518801874c67be225f4",
+      "action_reaction": {
+        "event_id": "519df518801874c67be225f4",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "e22b5cfa912e0c2e178e41d7": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42844",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525264716938628",
+      "title": "Quote post from October 29, 2026",
+      "published": "Thu, 29 Oct 2026 17:00:23 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 29, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117525253098313435 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T17:58:36.522340+00:00",
+      "event_id": "e22b5cfa912e0c2e178e41d7",
+      "action_reaction": {
+        "event_id": "e22b5cfa912e0c2e178e41d7",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "2da82aa7b2865cae9e7b60b3": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42839",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525243080324771",
+      "title": "Quote post from October 29, 2026",
+      "published": "Thu, 29 Oct 2026 16:54:53 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 29, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117525209478143119 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T17:58:36.522472+00:00",
+      "event_id": "2da82aa7b2865cae9e7b60b3",
+      "action_reaction": {
+        "event_id": "2da82aa7b2865cae9e7b60b3",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "d8ba3b2386ab17dcc98c27b8": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42840",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525241684892239",
+      "title": "Quote post from October 29, 2026",
+      "published": "Thu, 29 Oct 2026 16:54:32 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 29, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117525211152165520 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T17:58:36.522540+00:00",
+      "event_id": "d8ba3b2386ab17dcc98c27b8",
+      "action_reaction": {
+        "event_id": "d8ba3b2386ab17dcc98c27b8",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "681b9ea9641327b795d50480": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42841",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525239970226458",
+      "title": "Quote post from October 29, 2026",
+      "published": "Thu, 29 Oct 2026 16:54:06 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 29, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117525209425440097 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T17:58:36.522601+00:00",
+      "event_id": "681b9ea9641327b795d50480",
+      "action_reaction": {
+        "event_id": "681b9ea9641327b795d50480",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "4ef6b84a72eeb5a3d4f0c4ac": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42834",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525088652931553",
+      "title": "Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania’s 9th Congressional District!A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “load",
+      "published": "Thu, 29 Oct 2026 16:15:37 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania’s 9th Congressional District!A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “load Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania’s 9th Congressional District! A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “loaded up” with accolades and wins. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Dan’s opponent, Rachel Wallace, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Rachel Wallace is Reckless, Radical, and Dangerous! Dan Meuser has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-29T17:58:36.522892+00:00",
+      "event_id": "4ef6b84a72eeb5a3d4f0c4ac",
+      "action_reaction": {
+        "event_id": "4ef6b84a72eeb5a3d4f0c4ac",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -6588,9 +6725,14 @@
     "1e210d4059ef569f6953e24c": "2026-10-29T04:05:46.635539+00:00",
     "50f4d35707ddb2ad90d6a8e3": "2026-10-29T04:05:46.635883+00:00",
     "eb4b0735c24b479b27b088fe": "2026-10-29T15:53:40.360321+00:00",
-    "2e1da2f248d41777a7959cb9": "2026-10-29T15:53:40.360597+00:00"
+    "2e1da2f248d41777a7959cb9": "2026-10-29T15:53:40.360597+00:00",
+    "e22b5cfa912e0c2e178e41d7": "2026-10-29T17:58:36.522326+00:00",
+    "2da82aa7b2865cae9e7b60b3": "2026-10-29T17:58:36.522466+00:00",
+    "d8ba3b2386ab17dcc98c27b8": "2026-10-29T17:58:36.522536+00:00",
+    "681b9ea9641327b795d50480": "2026-10-29T17:58:36.522598+00:00",
+    "4ef6b84a72eeb5a3d4f0c4ac": "2026-10-29T17:58:36.522888+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-29T15:53:40.368034+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-29T17:58:36.529613+00:00"
   }
 }
