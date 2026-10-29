@@ -141,7 +141,7 @@ def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
         "━━━━━━━━━━━━━━━━━━",
         f"🎯 STRUMENTO: {rec['instrument']}",
         f"{bias_emoji} BIAS: {rec['bias']}",
-        f"📊 SCORE: {rec['score']:.0f}/100",
+        f"📊 SCORE CATALIZZATORE: {rec['score']:.0f}/100",
         f"📌 MOTIVO: {rec['reason']}",
     ]
     if rec.get("description"):
