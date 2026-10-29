@@ -116,21 +116,16 @@ def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | N
 
 
 def telegram_menu() -> dict[str, Any]:
-    """Reply keyboard (pulsantiera) principale SPUTNIK — orientata ai segnali CFD."""
+    """Pulsantiera essenziale: solo cosa comprare."""
     return {
         "keyboard": [
-            [{"text": "🏠 HOME"}, {"text": "🎯 STRUMENTO"}, {"text": "📡 SEGNALE CFD"}],
-            [{"text": "🟢 COSA COMPRARE"}, {"text": "🛒 CARRELLO CFD"}],
-            [{"text": "🏆 CLASSIFICA"}, {"text": "🔥 AGGRESSIVO"}],
-            [{"text": "🎯 CATALIZZATORI"}, {"text": "🧠 AZIONE → REAZIONE"}],
-            [{"text": "🏛️ TRUMP / WHITE HOUSE"}, {"text": "📰 NEWS"}],
-            [{"text": "🧾 SEC / OGE"}, {"text": "💰 ACQUISTI"}],
-            [{"text": "📊 SETTORI"}, {"text": "🔎 ANALISI"}],
-            [{"text": "🔄 AGGIORNA"}, {"text": "⚙️ STATO"}, {"text": "ℹ️ AIUTO"}],
+            [{"text": "🟢 COSA COMPRARE"}],
+            [{"text": "📡 SEGNALE CFD"}, {"text": "🎯 STRUMENTO"}],
+            [{"text": "🔄 AGGIORNA"}, {"text": "ℹ️ AIUTO"}],
         ],
         "resize_keyboard": True,
         "is_persistent": True,
-        "input_field_placeholder": "SPUTNIK • segnali CFD",
+        "input_field_placeholder": "Cosa comprare?",
     }
 
 
@@ -253,26 +248,13 @@ def anticipation_message(state: dict[str, Any]) -> str:
 
 
 def menu_markup() -> dict[str, Any]:
-    """Inline keyboard (pulsantiera) SPUTNIK — segnali CFD in evidenza."""
+    """Inline keyboard essenziale: cosa comprare in evidenza."""
     return {
         "inline_keyboard": [
-            [{"text": "🏠 HOME", "callback_data": "home"},
-             {"text": "🎯 STRUMENTO", "callback_data": "strumento"},
-             {"text": "📡 SEGNALE CFD", "callback_data": "segnale"}],
-            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"},
-             {"text": "🛒 CARRELLO CFD", "callback_data": "cfd"}],
-            [{"text": "🏆 CLASSIFICA", "callback_data": "ranking"},
-             {"text": "🔥 AGGRESSIVO", "callback_data": "aggressive"}],
-            [{"text": "🎯 CATALIZZATORI", "callback_data": "catalysts"},
-             {"text": "🧠 AZIONE → REAZIONE", "callback_data": "action_reaction"}],
-            [{"text": "🏛️ TRUMP / WH", "callback_data": "brief"},
-             {"text": "📰 NEWS", "callback_data": "news"}],
-            [{"text": "🧾 SEC / OGE", "callback_data": "filings"},
-             {"text": "💰 ACQUISTI", "callback_data": "purchases"}],
-            [{"text": "📊 SETTORI", "callback_data": "sectors"},
-             {"text": "🔎 ANALISI", "callback_data": "analysis"}],
+            [{"text": "🟢 COSA COMPRARE", "callback_data": "buy"}],
+            [{"text": "📡 SEGNALE CFD", "callback_data": "segnale"},
+             {"text": "🎯 STRUMENTO", "callback_data": "strumento"}],
             [{"text": "🔄 AGGIORNA", "callback_data": "scan"},
-             {"text": "⚙️ STATO", "callback_data": "status"},
              {"text": "ℹ️ AIUTO", "callback_data": "help"}],
         ]
     }
