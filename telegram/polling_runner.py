@@ -55,8 +55,23 @@ def process_message(message: dict[str, Any], state: dict[str, Any]) -> None:
 
     print(f"Processing message | chat_id={chat_id} | text={text[:80]}", flush=True)
 
+    # Gestione speciale per /start: messaggio di benvenuto + tastiera
+    if text.lower().startswith("/start"):
+        welcome = (
+            "🛰️ **SPUTNIK attivo**\n\n"
+            "Usa i pulsanti qui sotto per interagire:\n"
+            "🟢 COSA COMPRARE\n"
+            "📡 SEGNALE CFD\n"
+            "🎯 STRUMENTO\n"
+            "📊 DASHBOARD\n"
+            "🔄 AGGIORNA\n"
+            "ℹ️ AIUTO"
+        )
+        ok = send(welcome, chat_id=chat_id, reply_markup=telegram_menu())
+        print(f"Welcome sent: {ok}", flush=True)
+        return
+
     command_map = {
-        "/start": "home",
         "/help": "help",
         "🟢 cosa comprare": "buy",
         "📡 segnale cfd": "segnale",
