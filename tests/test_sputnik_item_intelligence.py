@@ -132,7 +132,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         candidates = trump_tracker.directional_news_candidates(findings)
         self.assertEqual({x["instrument"] for x in candidates}, {"NASDAQ100", "GOLD"})
         self.assertEqual({x["bias"] for x in candidates}, {"SHORT_BIAS", "LONG_BIAS"})
-        self.assertTrue(all(x["status"] == "BIAS_ONLY_NEEDS_PRICE_VOLUME_CONFIRMATION" for x in candidates))
+        self.assertTrue(all(x["status"] == "EARLY_BIAS_NEEDS_PRICE_VOLUME_CONFIRMATION" for x in candidates))
 
     def test_directional_news_candidates_rejects_page_level_and_ambiguous_headlines(self):
         page_level = [{
