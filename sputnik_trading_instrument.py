@@ -27,6 +27,7 @@ _EARLY_RULES = (
         r"strait of hormuz|shipping disruption|oil supply disruption|"
         r"crude exports? disrupted|refinery.{0,30}(attack|shut|damage)|"
         r"(tanker|oil vessel).{0,50}(hormuz|saudi|red sea).{0,35}(attack|struck|hit|seized)|"
+        r"(tanker|oil vessel).{0,35}(attack|struck|hit|seized).{0,50}(hormuz|saudi|red sea)|"
         r"(attack|strike).{0,50}(tanker|oil vessel).{0,35}(hormuz|saudi|red sea)|"
         r"(us troops|american troops|military personnel).{0,70}(leave|depart|evacuat|withdraw).{0,50}saudi)\b", re.I),
      "Rischio concreto per infrastrutture o trasporto fisico del greggio: possibile premio di offerta."),
