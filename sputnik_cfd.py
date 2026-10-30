@@ -3,8 +3,8 @@
 Produces standardized CFD signals (Entry / SL / TP1 / TP2) from a
 recommendation + fresh broker quote + ATR.
 
-Never fabricates prices. If quote or ATR is missing/stale → status=PREPARE
-and levels are omitted.
+Never fabricates prices. If quote or ATR is missing/stale → status=WAIT
+and levels are omitted; PREPARE is reserved for a fresh, priced setup below trigger.
 """
 from __future__ import annotations
 
@@ -42,6 +42,17 @@ def _quote_is_fresh(quote: dict[str, Any], max_age_minutes: int = QUOTE_MAX_AGE_
 def _find_quote(instrument: str, quotes: dict[str, Any]) -> dict[str, Any] | None:
     """Map common commodity names to possible quote keys."""
     instrument = (instrument or "").upper()
+    # Decision scenarios use display labels such as "ORO (XAU/USD)" and
+    # "BRENT (petrolio)". Resolve the instrument family before quote lookup.
+    base_name = instrument.split("(", 1)[0].strip()
+    if base_name in {"ORO", "GOLD"}:
+        base_name = "GOLD"
+    elif base_name.startswith("BRENT"):
+        base_name = "BRENT"
+    elif base_name.startswith("WTI") or base_name == "PETROLIO WTI":
+        base_name = "WTI"
+    elif base_name.startswith("NASDAQ"):
+        base_name = "NASDAQ100"
     mapping = {
         "WTI": ["WTI", "USOIL", "CL", "USOIL.cash"],
         "BRENT": ["BRENT", "UKOIL", "BRN", "UKOIL.cash"],
@@ -51,7 +62,7 @@ def _find_quote(instrument: str, quotes: dict[str, Any]) -> dict[str, Any] | Non
         "NATURAL_GAS": ["NATGAS", "NG", "NATURALGAS"],
         "NASDAQ100": ["NASDAQ100", "NAS100", "USTEC", "QQQ"],
     }
-    keys = mapping.get(instrument, [instrument])
+    keys = mapping.get(base_name, [base_name])
     for key in keys:
         q = quotes.get(key) or quotes.get(key.lower()) or quotes.get(key.upper())
         if isinstance(q, dict):
@@ -107,14 +118,14 @@ def build_cfd_signal(
     quotes = quotes or {}
     quote = _find_quote(instrument, quotes)
     if not quote or not _quote_is_fresh(quote):
-        base["status"] = "PREPARE"
+        base["status"] = "WAIT"
         base["reason"] += " | Quotazione fresca non disponibile."
         return base
 
     entry = _number(quote.get("price") or quote.get("bid") or quote.get("last"))
     atr = _number(quote.get("atr") or quote.get("ATR") or quote.get("atr_14"))
     if entry is None or atr is None:
-        base["status"] = "PREPARE"
+        base["status"] = "WAIT"
         base["reason"] += " | Prezzo o ATR mancanti."
         return base
 
