@@ -108,7 +108,7 @@ def build_cfd_signal(
 
     base.update({
         "instrument": instrument,
-        "direction": "LONG" if bias == "LONG" else "SHORT" if bias == "SHORT" else "NEUTRAL",
+        "direction": "LONG" if "LONG" in bias else "SHORT" if "SHORT" in bias else "NEUTRAL",
         "score": score,
         "reason": reason,
         "confirmation": confirmation,
