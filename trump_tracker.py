@@ -27,6 +27,7 @@ from typing import Any
 from sputnik_action_reaction import build_action_reaction_record
 from sputnik_public_sources import parse_public_feed
 from sputnik_catalyst import directional_news_candidates
+from telegram_delivery import confirmed_message_id
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -1104,14 +1105,20 @@ def send_telegram(message: str, chat_id: str | None = None) -> bool:
     try:
         with urllib.request.urlopen(request, timeout=20) as response:
             payload = json.loads(response.read().decode("utf-8"))
-        if payload.get("ok") is True:
+        message_id = confirmed_message_id(payload)
+        if message_id is not None:
+            print(f"SPUTNIK: Telegram delivery confirmed | message_id={message_id}.")
             return True
-        print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
+        if isinstance(payload, dict) and payload.get("ok") is False:
+            print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
+        else:
+            print("SPUTNIK: Telegram delivery NOT confirmed; missing or invalid message_id.")
     except urllib.error.HTTPError as exc:
         print(f"SPUTNIK: Telegram HTTP error {exc.code}.")
         try:
             payload = json.loads(exc.read().decode("utf-8", errors="replace"))
-            print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
+            if isinstance(payload, dict):
+                print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
         except Exception:
             pass
     except urllib.error.URLError as exc:
