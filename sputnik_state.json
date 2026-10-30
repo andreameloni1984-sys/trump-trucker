@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-30T09:05:37.811354+00:00",
+  "updated_at": "2026-10-30T14:57:59.944465+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "67bb6e6613a6614c1cbcaba2",
-    "TRUTH_ARCHIVE": "57a1670d0d862f86eb77d6d3",
+    "TRUTH_ARCHIVE": "6c56d5cdbb3a661b2a969e15",
     "OGE": "34885a64ac17f66a3396213a"
   },
   "intelligence_history": {
@@ -7185,6 +7185,207 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "6c56d5cdbb3a661b2a969e15": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AGRICULTURE",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 30, 2026, 7:29 AM Original Post https:// conservativebrief.com/senate-r ace-poll-midterm-105503/ Read full post conservativebrief.com Midterm Earthquake — Two States FLIP As New Voting Numbers Show Major Turnaround For Candidates Amid Dramatic Fight For Senate Control Get that popcorn ready! Donald J. Trump @realDonaldTrump · October 30, 2026, 7:28 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:25 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:25 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:25 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:25 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:24 AM Original Post https://www. newsbreak.com/share/4974811915 102-maria-bartiromo-lands-first-hosting-gig-since-fox-news-exit Read full post www.newsbreak.com Maria Bartiromo Lands First Hosting Gig Since Fox News Exit - NewsBreak The longtime Fox anchor will host December’s America Business Forum in Miami, more than three months after her abrupt departure from the network The post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:15 AM Original Post I will be doing a live radio interview for our GREAT Republican Senator, Roger Marshall of Kansas, with Pete Mundo, KCMO, at 7:30 AM. Roger LOVES KANSAS, as do I. Enjoy!!! President DJT Read full post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-30T14:57:59.371961+00:00",
+      "event_id": "6c56d5cdbb3a661b2a969e15",
+      "action_reaction": {
+        "event_id": "6c56d5cdbb3a661b2a969e15",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "3cc3cb5b85fa6bea1d7c76f0": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42885",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529620076918108",
+      "title": "Quote post from October 30, 2026",
+      "published": "Fri, 30 Oct 2026 11:28:01 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529619259512950 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-30T14:57:59.918493+00:00",
+      "event_id": "3cc3cb5b85fa6bea1d7c76f0",
+      "action_reaction": {
+        "event_id": "3cc3cb5b85fa6bea1d7c76f0",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "9d41184265a760750052df9b": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42887",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529618350160774",
+      "title": "Quote post from October 30, 2026",
+      "published": "Fri, 30 Oct 2026 11:27:35 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529617188189235 View image View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-30T14:57:59.918635+00:00",
+      "event_id": "9d41184265a760750052df9b",
+      "action_reaction": {
+        "event_id": "9d41184265a760750052df9b",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b0bb0783ef5b88c1b41eb10d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42889",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529611252882085",
+      "title": "Quote post from October 30, 2026",
+      "published": "Fri, 30 Oct 2026 11:25:46 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529610420067199 View image Quoted Donald J. Trump View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-30T14:57:59.918732+00:00",
+      "event_id": "b0bb0783ef5b88c1b41eb10d",
+      "action_reaction": {
+        "event_id": "b0bb0783ef5b88c1b41eb10d",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "d9e04f123deef066a482c203": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42883",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529394978444089",
+      "title": "INFLATION IS WAY DOWN UNDER “TRUMP.” INCOME FOR PEOPLE & COMPANIES IS WAY UP! The Golden Age of America Is Upon Us.",
+      "published": "Fri, 30 Oct 2026 10:30:46 +0000",
+      "domains": [
+        "METALS",
+        "RATES_MACRO"
+      ],
+      "text": "INFLATION IS WAY DOWN UNDER “TRUMP.” INCOME FOR PEOPLE & COMPANIES IS WAY UP! The Golden Age of America Is Upon Us. INFLATION IS WAY DOWN UNDER “TRUMP.” INCOME FOR PEOPLE & COMPANIES IS WAY UP! The Golden Age of America Is Upon Us.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-30T14:57:59.918931+00:00",
+      "event_id": "d9e04f123deef066a482c203",
+      "action_reaction": {
+        "event_id": "d9e04f123deef066a482c203",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "eb850c7366c7fc15930024da": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42881",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529191919987147",
+      "title": "RT @marklevinshowTHE DEMOCRAT PARTY AND THEIR MEDIA ARE LYING ABOUT OUR ECONOMY AND MUCH MORE! CAPITALISM WORKS, SOCIALISM IS A DISASTER!Have you looked at the price of gasoline today? It is DOWN.Have you looked at the price of food today? It is flat and, in many cases, DOWN.Have you looked at the e",
+      "published": "Fri, 30 Oct 2026 09:39:08 +0000",
+      "domains": [
+        "MEDIA",
+        "RATES_MACRO"
+      ],
+      "text": "RT @marklevinshowTHE DEMOCRAT PARTY AND THEIR MEDIA ARE LYING ABOUT OUR ECONOMY AND MUCH MORE! CAPITALISM WORKS, SOCIALISM IS A DISASTER!Have you looked at the price of gasoline today? It is DOWN.Have you looked at the price of food today? It is flat and, in many cases, DOWN.Have you looked at the e RT @ marklevinshow THE DEMOCRAT PARTY AND THEIR MEDIA ARE LYING ABOUT OUR ECONOMY AND MUCH MORE! CAPITALISM WORKS, SOCIALISM IS A DISASTER! Have you looked at the price of gasoline today? It is DOWN. Have you looked at the price of food today? It is flat and, in many cases, DOWN. Have you looked at the economic growth figure today? It is UP. Have you looked at consumer confidence today? It is UP. Have you looked at take-home pay today? It is UP. Have you looked at inflation today, compared to the Biden-Democrats inflation? It is DOWN. Have you looked at foreign investment in our country today? It is UP and setting all-time records. Have you looked at manufacturing growth today? It is UP and setting records. Have you looked at the trade deficit today? It is DOWN. Have you looked at tax rates for working people and the middle class today? They are DOWN. Have you looked at unemployment today? It is DOWN. Have you looked at illegal immigration today? It is NONEXISTENT. Have you looked at the crime rate today? It is at RECORD LOWS. THE TRUMP/GOP AGENDA IS WORKING AND REVERSED THE DISASTROUS AMERICA-KILLING SOCIALIST POLICIES OF THE BIDEN DEMOCRATS! Reposted Mark Levin THE DEMOCRAT PARTY AND THEIR MEDIA ARE LYING ABOUT OUR ECONOMY AND MUCH MORE! CAPITALISM WORKS, SOCIALISM IS A DISASTER! Have you looked at the price of gasoline today? It is DOWN. Have you looked at the price of food today? It is flat and, in many cases, DOWN. Have you looked at the economic growth figure today? It is UP. Have you looked at consumer confidence today? It is UP. Have you looked at take-home pay today? It is UP. Have you looked at inflation today, compared to the Biden-Democrats inflation? It is DOWN. Have you looked at foreign investment in our country today? It is UP and setting all-time records. Have you looked at manufacturing growth today? It is UP and setting records. Have you looked at the trade deficit today? It is DOWN. Have you looked at tax rates for working people and the middle class today? They are DOWN. Have you looked at unemployment today? It is DOWN. Have you looked at illegal immigration today? It is NONEXISTENT. Have you looked at the crime rate today? It is at RECORD LOWS. THE TRUMP/GOP AGENDA IS WORKING AND REVERSED THE DISASTROUS AMERICA-KILLING SOCIALIST POLICIES OF THE BIDEN DEMOCRATS!",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-30T14:57:59.919117+00:00",
+      "event_id": "eb850c7366c7fc15930024da",
+      "action_reaction": {
+        "event_id": "eb850c7366c7fc15930024da",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "e6c9b354fdf9224fe49f6100": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42879",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529183862932823",
+      "title": "Quote post from October 30, 2026",
+      "published": "Fri, 30 Oct 2026 09:37:05 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529183120003107 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-30T14:57:59.919304+00:00",
+      "event_id": "e6c9b354fdf9224fe49f6100",
+      "action_reaction": {
+        "event_id": "e6c9b354fdf9224fe49f6100",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "fc3d676a1f2168a046ad0049": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42877",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529171874638931",
+      "title": "Quote post from October 30, 2026",
+      "published": "Fri, 30 Oct 2026 09:34:02 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529171135970725 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-30T14:57:59.919408+00:00",
+      "event_id": "fc3d676a1f2168a046ad0049",
+      "action_reaction": {
+        "event_id": "fc3d676a1f2168a046ad0049",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -7349,9 +7550,16 @@
     "65a2cf53f1eddf0d771975a2": "2026-10-30T02:32:18.056847+00:00",
     "915eef847f8a6a3d142ff629": "2026-10-30T02:32:18.057128+00:00",
     "9797fa0d38e57b6ad91150b4": "2026-10-30T02:32:18.057364+00:00",
-    "1cba67ab81e811ea3648d2a6": "2026-10-30T02:32:18.057583+00:00"
+    "1cba67ab81e811ea3648d2a6": "2026-10-30T02:32:18.057583+00:00",
+    "3cc3cb5b85fa6bea1d7c76f0": "2026-10-30T14:57:59.918476+00:00",
+    "9d41184265a760750052df9b": "2026-10-30T14:57:59.918630+00:00",
+    "b0bb0783ef5b88c1b41eb10d": "2026-10-30T14:57:59.918728+00:00",
+    "d9e04f123deef066a482c203": "2026-10-30T14:57:59.918927+00:00",
+    "eb850c7366c7fc15930024da": "2026-10-30T14:57:59.919113+00:00",
+    "e6c9b354fdf9224fe49f6100": "2026-10-30T14:57:59.919300+00:00",
+    "fc3d676a1f2168a046ad0049": "2026-10-30T14:57:59.919404+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-30T09:05:37.765338+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-30T14:57:59.924975+00:00"
   }
 }
