@@ -21,7 +21,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
     @patch("trump_tracker.urllib.request.urlopen")
     def test_send_telegram_removes_persistent_reply_keyboard(self, urlopen):
         response = MagicMock()
-        response.__enter__.return_value.read.return_value = json.dumps({"ok": True}).encode("utf-8")
+        response.__enter__.return_value.read.return_value = json.dumps({"ok": True, "result": {"message_id": 731}}).encode("utf-8")
         urlopen.return_value = response
         with patch.dict(os.environ, {
             "TELEGRAM_BOT_TOKEN": "test-token",
@@ -35,6 +35,25 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         payload = parse_qs(request.data.decode("utf-8"))
         self.assertEqual(json.loads(payload["reply_markup"][0]), {"remove_keyboard": True})
         self.assertEqual(payload["text"][0], "Sputnik test")
+
+    @patch("trump_tracker.urllib.request.urlopen")
+    def test_send_telegram_rejects_missing_or_invalid_message_id(self, urlopen):
+        invalid_responses = [
+            {"ok": True, "result": {}},
+            {"ok": True, "result": {"message_id": 0}},
+            {"ok": True, "result": {"message_id": "731"}},
+            {"ok": "true", "result": {"message_id": 731}},
+        ]
+        with patch.dict(os.environ, {
+            "TELEGRAM_BOT_TOKEN": "test-token",
+            "TELEGRAM_CHAT_ID": "12345",
+        }):
+            for payload in invalid_responses:
+                response = MagicMock()
+                response.__enter__.return_value.read.return_value = json.dumps(payload).encode("utf-8")
+                urlopen.return_value = response
+                with self.subTest(payload=payload):
+                    self.assertFalse(trump_tracker.send_telegram("Sputnik test"))
 
     def test_tariff_headline_is_classified_as_a_market_catalyst(self):
         domains = trump_tracker._domains_for_public_text(
