@@ -1446,6 +1446,9 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
                 rec = recommend_trading_instrument(recent)
                 msg = format_trading_instrument_message(rec)
                 send_telegram(msg, chat_id=chat_id)
+                from sputnik_cfd import build_cfd_signal, format_cfd_signal
+                quotes = state.get("market_quotes") or state.get("quotes") or {}
+                send_telegram(format_cfd_signal(build_cfd_signal(rec, quotes)), chat_id=chat_id)
             except Exception as exc:
                 send_telegram(
                     f"🛰️ SPUTNIK — STRUMENTO\n━━━━━━━━━━━━━━━━━━\n⚠️ Errore: {type(exc).__name__}",
@@ -1624,7 +1627,13 @@ def main() -> None:
         if rec:
             instr_msg = format_trading_instrument_message(rec)
             print(instr_msg)
-            send_telegram(instr_msg, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+            target_chat = str(state.get("telegram_chat_id") or "").strip() or None
+            send_telegram(instr_msg, chat_id=target_chat)
+            from sputnik_cfd import build_cfd_signal, format_cfd_signal
+            quotes = state.get("market_quotes") or state.get("quotes") or {}
+            cfd_message = format_cfd_signal(build_cfd_signal(rec, quotes))
+            print(cfd_message)
+            send_telegram(cfd_message, chat_id=target_chat)
     except Exception as exc:
         print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
 
