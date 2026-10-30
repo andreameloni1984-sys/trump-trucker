@@ -81,6 +81,27 @@ def recommend_trading_instrument(
     if not findings:
         return None
 
+    # A specific, dated Brent risk headline must take precedence over the
+    # broader ENERGY classifier, which can otherwise return WTI first for the
+    # same Hormuz/Saudi tanker event.
+    early_brent = _early_direction(findings, "BRENT")
+    if early_brent:
+        return {
+            "instrument": "BRENT",
+            "bias": early_brent["bias"],
+            "score": 85.0,
+            "reason": early_brent["reason"],
+            "source": early_brent.get("source", ""),
+            "url": early_brent.get("url", ""),
+            "title": early_brent.get("title", ""),
+            "published": early_brent.get("published", ""),
+            "status": "PRELIMINARY_DIRECTIONAL_BIAS",
+            "confirmation": "Ipotesi preliminare: verificare prezzo, volume e ATR live prima dell'ingresso paper.",
+            "type": "EARLY_CATALYST_RULE",
+            "alternative": "Se il catalizzatore viene smentito o il prezzo non reagisce, non inseguire il movimento.",
+            "invalidation": "Notizia smentita, catalizzatore rientrato o struttura di prezzo contraria.",
+        }
+
     directional = directional_news_candidates(findings, limit=10)
     commodity_directional = [d for d in directional if d.get("instrument") in COMMODITY_PRIORITY]
     if commodity_directional:
