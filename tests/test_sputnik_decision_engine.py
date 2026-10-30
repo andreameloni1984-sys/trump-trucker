@@ -1,6 +1,7 @@
 import unittest
 from sputnik_decision_engine import conditional_plans, decision_message
 from sputnik_cfd import build_conditional_trade_plan
+from sputnik_analyst_reasoning import build_reasoning, format_reasoning
 
 class StrictDecisionTests(unittest.TestCase):
     def test_tariff_action(self):
@@ -84,6 +85,29 @@ class ConditionalTradePlanTests(unittest.TestCase):
         result = build_conditional_trade_plan(plan, quote)
         self.assertEqual(result["status"], "WAIT")
         self.assertIsNone(result["entry"])
+
+
+class AnalystReasoningTests(unittest.TestCase):
+    def test_specific_catalyst_is_a_news_thesis_not_an_authorized_trade(self):
+        plan = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")[0]
+        result = build_reasoning(plan["evidence"], plan, {"status": "WAIT", "reason": "fresh quote missing"})
+        self.assertIn(result["thesis"], {"LONG", "SHORT"})
+        self.assertTrue(result["missing"])
+        self.assertIn("non autorizzare ingresso", result["conclusion"])
+
+    def test_generic_mention_stays_wait(self):
+        result = build_reasoning("A speech mentioned tariffs and trade.", None, {})
+        self.assertEqual(result["thesis"], "WAIT")
+        self.assertTrue(result["contradictions"])
+
+    def test_telegram_reasoning_exposes_evidence_and_alternative(self):
+        plan = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")[0]
+        result = build_reasoning(plan["evidence"], plan, {"status": "PREPARE", "entry": 100})
+        message = "\\n".join(format_reasoning(result))
+        self.assertIn("RAGIONAMENTO SPUTNIK", message)
+        self.assertIn("Scenario alternativo", message)
+        self.assertIn("Invalidazione", message)
+
 
 if __name__ == "__main__":
     unittest.main()
