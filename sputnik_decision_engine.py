@@ -105,6 +105,7 @@ def _fallback_watch(text: str) -> dict[str, str] | None:
 def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str, Any] | None = None) -> str:
     """Render one Telegram-ready market opportunity; never fabricate quote-based levels."""
     from sputnik_cfd import build_conditional_trade_plan
+    from sputnik_analyst_reasoning import build_reasoning, format_reasoning
 
     plans = conditional_plans(text, limit=1)
     lines = [
@@ -135,6 +136,8 @@ def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str
             f"🔎 Fonte: {source}",
             "⚠️ Ipotesi sperimentale. PAPER TRADING: nessun ordine reale.",
         ])
+        reasoning = build_reasoning(text, None, {})
+        lines.extend(format_reasoning(reasoning))
         return "\n".join(lines)
 
     plan = plans[0]
@@ -179,4 +182,6 @@ def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str
         "",
         "⚠️ Segnale sperimentale. Nessun ordine reale.",
     ])
+    reasoning = build_reasoning(text, plan, trade)
+    lines.extend(format_reasoning(reasoning))
     return "\n".join(lines)
