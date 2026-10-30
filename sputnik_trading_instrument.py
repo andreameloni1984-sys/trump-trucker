@@ -21,26 +21,26 @@ COMMODITY_PRIORITY = {
 # These create a preliminary thesis, never a confirmed entry.
 _EARLY_RULES = (
     ("BRENT", "LONG", re.compile(
-        r"\\b(attacks? on .{0,50}(oil|energy|refiner|pipeline)|"
+        r"\b(attacks? on .{0,50}(oil|energy|refiner|pipeline)|"
         r"(oil|energy) (facility|infrastructure|pipeline).{0,35}(attack|strike|hit)|"
         r"tanker.{0,35}(attack|mine|explod|struck)|"
         r"strait of hormuz|shipping disruption|oil supply disruption|"
-        r"crude exports? disrupted|refinery.{0,30}(attack|shut|damage))\\b", re.I),
+        r"crude exports? disrupted|refinery.{0,30}(attack|shut|damage))\b", re.I),
      "Rischio concreto per infrastrutture o trasporto fisico del greggio: possibile premio di offerta."),
     ("WTI", "LONG", re.compile(
-        r"\\b(us crude supply disruption|u\.s\. crude supply disruption|"
+        r"\b(us crude supply disruption|u\.s\. crude supply disruption|"
         r"oil supply disruption|production outage|pipeline outage|"
-        r"crude exports? disrupted|oil production cut)\\b", re.I),
+        r"crude exports? disrupted|oil production cut)\b", re.I),
      "Possibile restringimento dell'offerta petrolifera."),
     ("BRENT", "SHORT", re.compile(
-        r"\\b(ceasefire agreement|peace deal|hormuz reopened|shipping restored|"
+        r"\b(ceasefire agreement|peace deal|hormuz reopened|shipping restored|"
         r"oil exports? resume|sanctions lifted.{0,30}oil|"
-        r"iran.{0,40}(agreement|deal|settlement))\\b", re.I),
+        r"iran.{0,40}(agreement|deal|settlement))\b", re.I),
      "Possibile riduzione del premio geopolitico e dei rischi sulle forniture."),
     ("WTI", "SHORT", re.compile(
-        r"\\b(ceasefire agreement|peace deal|hormuz reopened|shipping restored|"
+        r"\b(ceasefire agreement|peace deal|hormuz reopened|shipping restored|"
         r"oil exports? resume|sanctions lifted.{0,30}oil|"
-        r"iran.{0,40}(agreement|deal|settlement))\\b", re.I),
+        r"iran.{0,40}(agreement|deal|settlement))\b", re.I),
      "Possibile riduzione del premio geopolitico e dei rischi sulle forniture."),
 )
 
@@ -187,8 +187,8 @@ def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
     """Telegram-ready analyst brief; never fabricates entry/SL/targets."""
     if not rec:
         return (
-            "🛰️ SPUTNIK — ANALISI DI MERCATO\\n━━━━━━━━━━━━━━━━━━\\n"
-            "🟡 Nessun catalizzatore commodity verificabile.\\n"
+            "🛰️ SPUTNIK — ANALISI DI MERCATO\n━━━━━━━━━━━━━━━━━━\n"
+            "🟡 Nessun catalizzatore commodity verificabile.\n"
             "⚠️ PAPER TRADING ONLY — nessun ordine reale."
         )
     bias = str(rec.get("bias") or "NEUTRAL").upper()
@@ -226,4 +226,4 @@ def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
         f"🧪 STATO: {rec.get('status', 'WATCH')}",
         "⚠️ PAPER TRADING ONLY — nessun ordine reale.",
     ])
-    return "\\n".join(lines)
+    return "\n".join(lines)
