@@ -17,6 +17,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+from telegram_delivery import confirmed_message_id
 from sputnik_ranking import rank_purchase_candidates
 from sputnik_cfd import build_cfd_cart
 from sputnik_catalyst import catalyst_watchlist
@@ -107,7 +108,7 @@ def send(text: str, chat_id: str | None = None, reply_markup: dict[str, Any] | N
         if reply_markup:
             payload["reply_markup"] = reply_markup
         result = api("sendMessage", payload, timeout=20)
-        return bool(result.get("ok"))
+        return confirmed_message_id(result) is not None
     except Exception as exc:
         print(f"SPUTNIK Telegram send error: {type(exc).__name__}: {exc}")
         return False
