@@ -168,6 +168,23 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(trump_tracker.directional_news_candidates(page_level), [])
         self.assertEqual(trump_tracker.directional_news_candidates(vague), [])
 
+    def test_directional_news_candidates_rejects_blank_event_identity(self):
+        for event_id in ("", "   "):
+            with self.subTest(event_id=event_id):
+                finding = {
+                    "event_id": event_id,
+                    "evidence": "PUBLIC_RSS_ITEM",
+                    "title": "President announces new tariffs on China",
+                    "text": "New tariffs on imports were announced.",
+                    "url": "https://example.gov/tariffs",
+                    "published": "2026-10-26T10:00:00Z",
+                    "source": "WHITE_HOUSE",
+                    "domains": ["TRADE_POLICY"],
+                }
+                self.assertEqual(
+                    trump_tracker.directional_news_candidates([finding]), []
+                )
+
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
