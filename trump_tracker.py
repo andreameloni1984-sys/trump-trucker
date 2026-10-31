@@ -14,6 +14,7 @@ from email.utils import parsedate_to_datetime
 import os
 import re
 import threading
+import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -816,9 +817,46 @@ def save_state(state: dict[str, Any]) -> None:
         return
 
     state["updated_at"] = utc_now().isoformat()
-    tmp = STATE_FILE.with_suffix(".tmp")
-    tmp.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
-    tmp.replace(STATE_FILE)
+    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    temporary_path: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            newline="",
+            dir=str(STATE_FILE.parent),
+            prefix=f".{STATE_FILE.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as temporary_file:
+            temporary_path = Path(temporary_file.name)
+            json.dump(state, temporary_file, ensure_ascii=False, indent=2)
+            temporary_file.write("\\n")
+            temporary_file.flush()
+            os.fsync(temporary_file.fileno())
+
+        os.replace(temporary_path, STATE_FILE)
+        temporary_path = None
+
+        # Persist the directory entry as well as the file contents where the
+        # platform supports directory fsync.
+        try:
+            directory_fd = os.open(STATE_FILE.parent, os.O_RDONLY)
+        except OSError:
+            directory_fd = None
+        if directory_fd is not None:
+            try:
+                os.fsync(directory_fd)
+            except OSError:
+                pass
+            finally:
+                os.close(directory_fd)
+    finally:
+        if temporary_path is not None:
+            try:
+                temporary_path.unlink(missing_ok=True)
+            except OSError:
+                pass
 
 
 def event_id(cik: str, accession: str, form: str, document: str) -> str:
