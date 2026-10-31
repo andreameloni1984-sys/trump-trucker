@@ -265,6 +265,7 @@ class SilvCrosscheckTests(unittest.TestCase):
             "unit": "troy_oz",
             "market_type": "SPOT",
             "age_seconds": 10.0,
+            "source_components": ["kitco", "fault", "chainlink", "nfusion"],
         }
         value.update(overrides)
         return value
@@ -282,6 +283,10 @@ class SilvCrosscheckTests(unittest.TestCase):
                     "last_updated": now,
                     "timestamp": now,
                     "symbol": "Ag",
+                    "source_prices": [
+                        {"source": "kitco", "price": 49.0},
+                        {"source": "fault", "price": 49.1},
+                    ],
                 }
             },
             "metadata": {"updated": now},
@@ -351,6 +356,49 @@ class SilvCrosscheckTests(unittest.TestCase):
                 self.assertEqual(result["crosscheck_status"], expected_status)
                 self.assertIsNone(result["spot_futures_basis_price"])
                 self.assertIsNone(result["spot_futures_basis_pct"])
+
+    def test_yahoo_source_overlap_disables_spot_futures_basis(self):
+        quote = {
+            "price": 6.50,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "currency": "USD",
+            "unit": "pound",
+            "market_type": "FUTURES_CONTINUOUS",
+            "provider": "Yahoo Finance chart (1m futures)",
+            "symbol": "HG=F",
+        }
+        reference = self.reference(
+            price=6.48,
+            unit="pound",
+            symbol="Cu",
+            source_components=["yahoo", "fault"],
+        )
+        with patch("sputnik_cfd.fetch_silv_reference", return_value=reference):
+            result = attach_silv_crosscheck(quote, "COPPER")
+
+        self.assertEqual(result["crosscheck_status"], "SOURCE_OVERLAP")
+        self.assertFalse(result["crosscheck_independent"])
+        self.assertEqual(result["crosscheck_source_components"], ["yahoo", "fault"])
+        self.assertIsNone(result["spot_futures_basis_price"])
+        self.assertIsNone(result["spot_futures_basis_pct"])
+
+    def test_missing_source_composition_is_not_claimed_independent(self):
+        quote = {
+            "price": 50.0,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "currency": "USD",
+            "unit": "troy_oz",
+            "market_type": "FUTURES_CONTINUOUS",
+            "provider": "Yahoo Finance chart (1m futures)",
+            "symbol": "SI=F",
+        }
+        reference = self.reference(source_components=[])
+        with patch("sputnik_cfd.fetch_silv_reference", return_value=reference):
+            result = attach_silv_crosscheck(quote, "SILVER")
+
+        self.assertEqual(result["crosscheck_status"], "UNVERIFIED_SOURCE_COMPOSITION")
+        self.assertIsNone(result["crosscheck_independent"])
+        self.assertIsNone(result["spot_futures_basis_pct"])
 
     def test_cfd_signal_keeps_futures_execution_price_and_exposes_basis_metadata(self):
         timestamp = datetime.now(timezone.utc).isoformat()
