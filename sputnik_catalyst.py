@@ -57,6 +57,19 @@ DOMAIN_INSTRUMENTS = {
 
 PRIMARY_SOURCES = {"WHITE_HOUSE", "OGE", "SEC"}
 
+# ENERGY is a broad policy domain, not proof of an oil-market catalyst.
+# Only surface WTI/Brent watches when the item text names a crude/oil market
+# or a concrete oil-shipping event. Generic slogans such as "energy dominance"
+# must not create commodity candidates by themselves.
+_ENERGY_MARKET_CONTEXT = re.compile(
+    r"\\b(?:crude(?:\\s+oil)?|petroleum|wti|brent|opec|barrels?|bpd|"
+    r"oil\\s+(?:price|prices|production|output|exports?|supply|shipments?|flows?|embargo|sanctions|tanker|pipeline|refinery)|"
+    r"(?:gasoline|diesel|heating\\s+oil)\\s+(?:price|prices|supply|exports?|production)|"
+    r"(?:strait of hormuz|hormuz).{0,60}(?:oil|crude|tanker|shipping|transit|reopen(?:ed|ing)?|clos(?:ed|ure)|block(?:ed|ade)|attack|seizure)|"
+    r"(?:oil|crude|tanker|shipping|transit|reopen(?:ed|ing)?|clos(?:ed|ure)|block(?:ed|ade)|attack|seizure).{0,60}(?:strait of hormuz|hormuz))\\b",
+    re.I,
+)
+
 _NEGATION_PATTERN = re.compile(
     r"\b(?:no|not|never|without|deny|denies|denied|unconfirmed|"
     r"unsubstantiated|false|didn't|doesn't|hasn't|wasn't|weren't|"
@@ -95,9 +108,18 @@ def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[
     merged: dict[str, dict[str, Any]] = {}
     for finding in findings:
         source = str(finding.get("source") or "UNKNOWN")
-        domains = finding.get("domains") or []
+        domains = list(finding.get("domains") or [])
         event_id = str(finding.get("event_id") or "")
         evidence = str(finding.get("evidence") or "")
+        finding_text = " ".join(
+            str(finding.get(key) or "") for key in ("title", "text", "snippet")
+        )
+        if any(str(domain).upper() == "ENERGY" for domain in domains):
+            if not _ENERGY_MARKET_CONTEXT.search(finding_text):
+                domains = [
+                    domain for domain in domains
+                    if str(domain).upper() != "ENERGY"
+                ]
         for domain in domains:
             domain = str(domain).upper()
             for instrument, description in DOMAIN_INSTRUMENTS.get(domain, []):
