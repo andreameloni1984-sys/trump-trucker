@@ -144,5 +144,52 @@ class EarlyBrentCatalystTests(unittest.TestCase):
         self.assertEqual(recommendation["bias"], "NEUTRAL")
 
 
+    def test_us_crude_inventory_draw_maps_specifically_to_wti_long(self):
+        recommendation = recommend_trading_instrument([
+            _finding("EIA reports U.S. crude inventories fell by 2.1 million barrels")
+        ])
+
+        self.assertEqual(recommendation["instrument"], "WTI")
+        self.assertEqual(recommendation["bias"], "LONG")
+        self.assertEqual(recommendation["type"], "US_CRUDE_INVENTORY_EARLY_RULE")
+
+    def test_us_crude_inventory_build_maps_specifically_to_wti_short(self):
+        recommendation = recommend_trading_instrument([
+            _finding("API reports U.S. crude stockpiles built by 3.4 million barrels")
+        ])
+
+        self.assertEqual(recommendation["instrument"], "WTI")
+        self.assertEqual(recommendation["bias"], "SHORT")
+        self.assertEqual(recommendation["type"], "US_CRUDE_INVENTORY_EARLY_RULE")
+
+    def test_negated_us_crude_inventory_draw_does_not_create_wti_long(self):
+        recommendation = recommend_trading_instrument([
+            _finding("EIA says U.S. crude inventories did not fall")
+        ])
+
+        self.assertIsNotNone(recommendation)
+        self.assertEqual(recommendation["bias"], "NEUTRAL")
+
+    def test_conflicting_us_inventory_draw_and_build_stays_neutral(self):
+        recommendation = recommend_trading_instrument([
+            _finding(
+                "EIA says U.S. crude inventories fell, but EIA later says "
+                "U.S. crude inventories rose"
+            )
+        ])
+
+        self.assertIsNotNone(recommendation)
+        self.assertEqual(recommendation["bias"], "NEUTRAL")
+
+    def test_non_us_crude_inventory_move_does_not_map_to_wti(self):
+        recommendation = recommend_trading_instrument([
+            _finding("European crude inventories fell by 1.2 million barrels")
+        ])
+
+        self.assertIsNotNone(recommendation)
+        self.assertEqual(recommendation["bias"], "NEUTRAL")
+
+
+
 if __name__ == "__main__":
     unittest.main()
