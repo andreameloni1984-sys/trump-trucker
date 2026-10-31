@@ -204,6 +204,11 @@ def fetch_silv_reference(instrument: str, timeout: int = 6) -> dict[str, Any] | 
             "unit": item.get("unit"),
             "market_type": "SPOT",
             "age_seconds": _quote_age_seconds({"timestamp": stamp}),
+            "source_components": sorted({
+                str(source.get("source") or "").strip().lower()
+                for source in (item.get("source_prices") or [])
+                if isinstance(source, dict) and str(source.get("source") or "").strip()
+            }),
         }
         return reference if _quote_is_fresh(reference, 30) else None
     except (OSError, ValueError, KeyError, TypeError):
@@ -246,6 +251,8 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
     quote["crosscheck_currency"] = None
     quote["crosscheck_unit"] = None
     quote["crosscheck_market_type"] = None
+    quote["crosscheck_source_components"] = []
+    quote["crosscheck_independent"] = None
     quote["spot_futures_basis_price"] = None
     quote["spot_futures_basis_pct"] = None
     quote["crosscheck_status"] = "UNAVAILABLE_OR_STALE"
@@ -262,6 +269,8 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
     quote["crosscheck_currency"] = reference.get("currency")
     quote["crosscheck_unit"] = reference.get("unit")
     quote["crosscheck_market_type"] = reference.get("market_type")
+    source_components = list(reference.get("source_components") or [])
+    quote["crosscheck_source_components"] = source_components
 
     execution_price = _number(quote.get("price"))
     execution_currency = str(quote.get("currency") or "").upper()
@@ -271,7 +280,13 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
     execution_market = str(quote.get("market_type") or "").upper()
     reference_market = str(reference.get("market_type") or "").upper()
 
-    if execution_price is None or ref_price is None:
+    execution_provider = str(quote.get("provider") or "").lower()
+    if not source_components:
+        quote["crosscheck_status"] = "UNVERIFIED_SOURCE_COMPOSITION"
+    elif "yahoo" in source_components and "yahoo" in execution_provider:
+        quote["crosscheck_status"] = "SOURCE_OVERLAP"
+        quote["crosscheck_independent"] = False
+    elif execution_price is None or ref_price is None:
         quote["crosscheck_status"] = "UNCOMPARABLE_PRICE"
     elif not execution_currency or not reference_currency or not execution_unit or not reference_unit:
         quote["crosscheck_status"] = "UNCOMPARABLE_METADATA_MISSING"
@@ -288,6 +303,7 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
         quote["spot_futures_basis_price"] = round(basis, 6)
         quote["spot_futures_basis_pct"] = round(basis / execution_price * 100, 4)
         quote["spot_futures_basis_definition"] = "spot_minus_futures"
+        quote["crosscheck_independent"] = True
         quote["crosscheck_status"] = "SPOT_VS_FUTURES_BASIS_CHECK"
 
     return quote
@@ -398,6 +414,8 @@ def build_cfd_signal(
         "crosscheck_currency": quote.get("crosscheck_currency"),
         "crosscheck_unit": quote.get("crosscheck_unit"),
         "crosscheck_market_type": quote.get("crosscheck_market_type"),
+        "crosscheck_source_components": quote.get("crosscheck_source_components"),
+        "crosscheck_independent": quote.get("crosscheck_independent"),
         "spot_futures_basis_price": quote.get("spot_futures_basis_price"),
         "spot_futures_basis_pct": quote.get("spot_futures_basis_pct"),
         "spot_futures_basis_definition": quote.get("spot_futures_basis_definition"),
