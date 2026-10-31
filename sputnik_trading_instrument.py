@@ -484,9 +484,7 @@ def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
     ]
     if rec.get("technical_bias"):
         lines.extend([f"📈 DIREZIONE TECNICA: {rec.get('technical_bias')} ({rec.get('technical_timeframe', '5m')})", f"🧠 LETTURA PREZZO: {rec.get('technical_reason', '')}", f"📰 ALLINEAMENTO NOTIZIE: {rec.get('catalyst_alignment', 'N/D')}"])
-    lines.extend([
-        f"📌 TESI: {rec.get('reason', 'Nessuna tesi disponibile.')}",
-    ]
+    lines.append(f"📌 TESI: {rec.get('reason', 'Nessuna tesi disponibile.')}")
     if rec.get("title"):
         lines.extend(["", f"📰 EVENTO: {str(rec['title'])[:240]}"])
     if rec.get("published"):
