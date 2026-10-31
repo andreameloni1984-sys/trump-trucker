@@ -111,7 +111,7 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                     quote = fetch_yahoo_quote(instrument)
                 self.assertIsNotNone(quote)
                 self.assertEqual(quote["symbol"], symbol)
-                self.assertEqual(urlopen.call_args.args[1], 8)
+                self.assertEqual(urlopen.call_args.kwargs["timeout"], 8)
 
     def test_yahoo_fallback_calculates_atr_from_fourteen_true_ranges(self):
         with patch(
