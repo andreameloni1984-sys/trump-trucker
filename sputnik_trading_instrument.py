@@ -97,6 +97,98 @@ def _early_direction(findings: list[dict[str, Any]], instrument: str) -> dict[st
     candidates.sort(key=lambda x: x["published"], reverse=True)
     return candidates[0]
 
+
+# U.S. crude-inventory releases are primarily a WTI catalyst. Keep this
+# market-specific mapping ahead of the broader Brent geopolitical rules.
+_US_CRUDE_INVENTORY_LONG = re.compile(
+    r"\b(?:eia|api|u\.s\.|us|american|cushing).{0,35}"
+    r"(?:crude|oil)\s+(?:inventor(?:y|ies)|stocks?|stockpiles?)"
+    r".{0,45}\b(?:fell|fall|dropped|declined|decreased|shrank|draw|drawdown|draws|lower|lowered)\b|"
+    r"\b(?:larger[- ]than[- ]expected|bigger[- ]than[- ]expected|unexpected|surprise)"
+    r".{0,25}\b(?:draw|drawdown|decline|drop|fall)\b.{0,35}"
+    r"\b(?:eia|api|u\.s\.|us|american|cushing).{0,35}"
+    r"(?:crude|oil)\s+(?:inventor(?:y|ies)|stocks?|stockpiles?)\b|"
+    r"\b(?:draw|drawdown|decline|drop|fall)\b.{0,35}"
+    r"\b(?:eia|api|u\.s\.|us|american|cushing).{0,35}"
+    r"(?:crude|oil)\s+(?:inventor(?:y|ies)|stocks?|stockpiles?)\b",
+    re.I,
+)
+_US_CRUDE_INVENTORY_SHORT = re.compile(
+    r"\b(?:eia|api|u\.s\.|us|american|cushing).{0,35}"
+    r"(?:crude|oil)\s+(?:inventor(?:y|ies)|stocks?|stockpiles?)"
+    r".{0,45}\b(?:rose|risen|increased|climbed|grew|built|build|builds|higher)\b|"
+    r"\b(?:larger[- ]than[- ]expected|bigger[- ]than[- ]expected|unexpected|surprise)"
+    r".{0,25}\b(?:build|build[- ]up|increase|rise)\b.{0,35}"
+    r"\b(?:eia|api|u\.s\.|us|american|cushing).{0,35}"
+    r"(?:crude|oil)\s+(?:inventor(?:y|ies)|stocks?|stockpiles?)\b|"
+    r"\b(?:build|build[- ]up|increase|rise)\b.{0,35}"
+    r"\b(?:eia|api|u\.s\.|us|american|cushing).{0,35}"
+    r"(?:crude|oil)\s+(?:inventor(?:y|ies)|stocks?|stockpiles?)\b",
+    re.I,
+)
+
+
+def _early_us_crude_inventory_direction(
+    findings: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    """Map explicit U.S. crude stock draws/builds to WTI, never Brent."""
+    candidates = []
+    for finding in findings:
+        if (
+            finding.get("evidence") != "PUBLIC_RSS_ITEM"
+            or not str(finding.get("event_id") or "").strip()
+            or not finding.get("url")
+            or not finding.get("published")
+        ):
+            continue
+        text = " ".join(
+            str(finding.get(key) or "") for key in ("title", "text")
+        )
+        long_match = next(
+            non_negated_pattern_matches(text, _US_CRUDE_INVENTORY_LONG), None
+        )
+        short_match = next(
+            non_negated_pattern_matches(text, _US_CRUDE_INVENTORY_SHORT), None
+        )
+        # A single report can contain revisions or conflicting inventory
+        # figures. Do not force a side when both draw and build are present.
+        if bool(long_match) == bool(short_match):
+            continue
+        direction = "LONG" if long_match else "SHORT"
+        candidates.append({
+            "instrument": "WTI",
+            "bias": direction,
+            "score": 90.0,
+            "reason": (
+                "Preallarme WTI da riduzione delle scorte commerciali USA."
+                if direction == "LONG"
+                else "Preallarme WTI da aumento delle scorte commerciali USA."
+            ),
+            "source": str(finding.get("source") or "PUBLIC_RSS"),
+            "url": str(finding.get("url") or ""),
+            "title": str(finding.get("title") or "")[:240],
+            "published": str(finding.get("published") or ""),
+            "event_id": str(finding.get("event_id") or ""),
+            "status": "PRELIMINARY_DIRECTIONAL_BIAS",
+            "confirmation": (
+                "Verificare sorpresa rispetto alle attese, prezzo WTI e ATR live "
+                "prima di qualsiasi ipotesi PAPER."
+            ),
+            "alternative": (
+                "Una revisione delle scorte o una sorpresa opposta può annullare "
+                "il bias iniziale."
+            ),
+            "invalidation": (
+                "Dato smentito/revisionato o reazione del WTI contraria al "
+                "catalizzatore."
+            ),
+            "type": "US_CRUDE_INVENTORY_EARLY_RULE",
+        })
+    if not candidates:
+        return None
+    candidates.sort(key=lambda item: item["published"], reverse=True)
+    return candidates[0]
+
 def recommend_trading_instrument(
     findings: list[dict[str, Any]],
     limit: int = 1,
@@ -104,6 +196,12 @@ def recommend_trading_instrument(
     """Return one prioritized commodity and a reasoned conditional thesis."""
     if not findings:
         return None
+
+    # Explicit U.S. crude inventory releases are a WTI-specific catalyst;
+    # evaluate them before generic geopolitical Brent headlines.
+    early_wti_inventory = _early_us_crude_inventory_direction(findings)
+    if early_wti_inventory:
+        return early_wti_inventory
 
     # A specific, dated Brent risk headline must take precedence over the
     # broader ENERGY classifier, which can otherwise return WTI first for the
