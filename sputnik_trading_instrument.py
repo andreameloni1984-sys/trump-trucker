@@ -60,7 +60,14 @@ _EARLY_RULES = (
 def _early_direction(findings: list[dict[str, Any]], instrument: str) -> dict[str, Any] | None:
     candidates = []
     for finding in findings:
-        if finding.get("evidence") != "PUBLIC_RSS_ITEM" or not finding.get("url") or not finding.get("published"):
+        # Require stable event identity so a directional pre-alert can be
+        # deduplicated and joined to downstream GAGARIN feedback.
+        if (
+            finding.get("evidence") != "PUBLIC_RSS_ITEM"
+            or not str(finding.get("event_id") or "").strip()
+            or not finding.get("url")
+            or not finding.get("published")
+        ):
             continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         matched_rules = []
