@@ -39,14 +39,12 @@ class EarlyBrentCatalystTests(unittest.TestCase):
         self.assertEqual(recommendation["instrument"], "BRENT")
         self.assertEqual(recommendation["bias"], "LONG")
 
-    def test_us_troop_withdrawal_from_saudi_arabia_creates_preliminary_brent_long(self):
+    def test_us_troop_withdrawal_without_oil_supply_link_does_not_create_brent_bias(self):
         recommendation = recommend_trading_instrument([
             _finding("US troops withdraw from Saudi Arabia")
         ])
 
-        self.assertIsNotNone(recommendation)
-        self.assertEqual(recommendation["instrument"], "BRENT")
-        self.assertEqual(recommendation["bias"], "LONG")
+        self.assertIsNone(recommendation)
 
     def test_early_brent_bias_still_requires_dated_url_backed_rss_item(self):
         base = _finding("Oil tanker near Saudi Arabia was struck")
