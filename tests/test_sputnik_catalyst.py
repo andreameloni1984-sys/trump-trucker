@@ -48,6 +48,23 @@ class CatalystWatchlistTests(unittest.TestCase):
         }])
         self.assertEqual({row["instrument"] for row in rows}, {"WTI", "BRENT"})
 
+    def test_oil_vessel_and_hormuz_closure_are_market_context(self):
+        for title in (
+            "Oil vessel struck near Saudi Arabia",
+            "Iran warns it could close the Strait of Hormuz",
+        ):
+            with self.subTest(title=title):
+                rows = catalyst_watchlist([{
+                    "source": "WHITE_HOUSE",
+                    "domains": ["ENERGY"],
+                    "evidence": "PUBLIC_SOURCE_TEXT",
+                    "event_id": title,
+                    "title": title,
+                }])
+                self.assertEqual(
+                    {row["instrument"] for row in rows}, {"WTI", "BRENT"}
+                )
+
     def test_unknown_domain_is_ignored(self):
         self.assertEqual(catalyst_watchlist([{"source": "WHITE_HOUSE", "domains": ["UNKNOWN"], "event_id": "x"}]), [])
 
