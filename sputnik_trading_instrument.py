@@ -9,7 +9,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from sputnik_catalyst import catalyst_watchlist, directional_news_candidates
+from sputnik_catalyst import catalyst_watchlist, directional_news_candidates, non_negated_pattern_matches
 from sputnik_action_reaction import match_historical_reactions, infer_direction
 
 COMMODITY_PRIORITY = {
@@ -24,7 +24,10 @@ _EARLY_RULES = (
         r"\b(attacks? on .{0,50}(oil|energy|refiner|pipeline)|"
         r"(oil|energy) (facility|infrastructure|pipeline).{0,35}(attack|strike|hit)|"
         r"tanker.{0,35}(attack|mine|explod|struck)|"
-        r"strait of hormuz|shipping disruption|oil supply disruption|"
+        r"(iran|iranian|tehran).{0,45}(threatens?|threatened|warns?|warned|vows?|plans?|moves?|considers?|could).{0,35}(close|block|mine|shut).{0,25}(the )?(strait of hormuz|hormuz)|"
+        r"(strait of hormuz|hormuz).{0,30}(closed|blocked|mined|shut|closure)|"
+        r"(closure|blockade|mining).{0,30}(strait of hormuz|hormuz)|"
+        r"shipping disruption|oil supply disruption|"
         r"crude exports? disrupted|refinery.{0,30}(attack|shut|damage)|"
         r"(tanker|oil vessel).{0,50}(hormuz|saudi|red sea).{0,35}(attack|struck|hit|seized)|"
         r"(tanker|oil vessel).{0,35}(attack|struck|hit|seized).{0,50}(hormuz|saudi|red sea)|"
@@ -37,7 +40,11 @@ _EARLY_RULES = (
         r"crude exports? disrupted|oil production cut)\b", re.I),
      "Possibile restringimento dell'offerta petrolifera."),
     ("BRENT", "SHORT", re.compile(
-        r"\b(ceasefire agreement|peace deal|hormuz reopened|shipping restored|"
+        r"\b(ceasefire agreement|peace deal|hormuz reopened|"
+        r"strait of hormuz.{0,25}(reopens?|reopened|reopening|open again)|"
+        r"hormuz.{0,25}(reopens?|reopened|reopening|open again)|"
+        r"shipping.{0,20}(restored|resumes|resumed|back to normal)|"
+        r"(passage|traffic|transit).{0,30}(resumes|resumed|restored|reopened).{0,30}(hormuz|strait)|"
         r"oil exports? resume|sanctions lifted.{0,30}oil|"
         r"iran.{0,40}(agreement|deal|settlement))\b", re.I),
      "Possibile riduzione del premio geopolitico e dei rischi sulle forniture."),
@@ -55,23 +62,32 @@ def _early_direction(findings: list[dict[str, Any]], instrument: str) -> dict[st
         if finding.get("evidence") != "PUBLIC_RSS_ITEM" or not finding.get("url") or not finding.get("published"):
             continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
+        matched_rules = []
         for asset, direction, pattern, reason in _EARLY_RULES:
-            if asset != instrument or not pattern.search(text):
+            if asset != instrument:
                 continue
-            candidates.append({
-                "bias": direction,
-                "reason": reason,
-                "title": str(finding.get("title") or "")[:240],
-                "source": str(finding.get("source") or "PUBLIC_RSS"),
-                "url": str(finding.get("url") or ""),
-                "published": str(finding.get("published") or ""),
-                "event_id": str(finding.get("event_id") or ""),
-            })
+            if next(non_negated_pattern_matches(text, pattern), None) is not None:
+                matched_rules.append((direction, reason))
+
+        directions = {direction for direction, _ in matched_rules}
+        # Mixed escalation/de-escalation wording is not assigned a direction.
+        if len(directions) != 1:
+            continue
+        direction = next(iter(directions))
+        reason = next(reason for matched_direction, reason in matched_rules if matched_direction == direction)
+        candidates.append({
+            "bias": direction,
+            "reason": reason,
+            "title": str(finding.get("title") or "")[:240],
+            "source": str(finding.get("source") or "PUBLIC_RSS"),
+            "url": str(finding.get("url") or ""),
+            "published": str(finding.get("published") or ""),
+            "event_id": str(finding.get("event_id") or ""),
+        })
     if not candidates:
         return None
     candidates.sort(key=lambda x: x["published"], reverse=True)
     return candidates[0]
-
 
 def recommend_trading_instrument(
     findings: list[dict[str, Any]],
