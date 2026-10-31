@@ -3,7 +3,13 @@ import unittest
 from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
-from sputnik_cfd import (\n    attach_silv_crosscheck,\n    build_cfd_cart,\n    build_cfd_signal,\n    fetch_silv_reference,\n    fetch_yahoo_quote,\n)
+from sputnik_cfd import (
+    attach_silv_crosscheck,
+    build_cfd_cart,
+    build_cfd_signal,
+    fetch_silv_reference,
+    fetch_yahoo_quote,
+)
 
 
 class CfdCartTests(unittest.TestCase):
