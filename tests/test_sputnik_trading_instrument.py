@@ -83,6 +83,14 @@ class EarlyBrentCatalystTests(unittest.TestCase):
 
         self.assertEqual(recommendation["bias"], "NEUTRAL")
 
+    def test_unrelated_negation_in_previous_clause_does_not_hide_tanker_attack(self):
+        recommendation = recommend_trading_instrument([
+            _finding("No details were released, an oil tanker was struck near Hormuz")
+        ])
+
+        self.assertEqual(recommendation["instrument"], "BRENT")
+        self.assertEqual(recommendation["bias"], "LONG")
+
     def test_negated_tanker_attack_does_not_create_long(self):
         recommendation = recommend_trading_instrument([
             _finding("No attack was reported on an oil tanker near Hormuz")
