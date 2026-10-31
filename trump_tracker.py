@@ -831,7 +831,7 @@ def save_state(state: dict[str, Any]) -> None:
         ) as temporary_file:
             temporary_path = Path(temporary_file.name)
             json.dump(state, temporary_file, ensure_ascii=False, indent=2)
-            temporary_file.write("\\n")
+            temporary_file.write("\n")
             temporary_file.flush()
             os.fsync(temporary_file.fileno())
 
