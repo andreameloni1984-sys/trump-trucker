@@ -285,20 +285,24 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self, _fetch_page):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
+        fresh_item = FEED.replace(
+            b"Mon, 19 Oct 2026 06:00:00 GMT", b"Mon, 26 Oct 2026 05:56:00 GMT"
+        )
         two_hours_old = FEED.replace(
             b"Mon, 19 Oct 2026 06:00:00 GMT", b"Mon, 26 Oct 2026 04:00:00 GMT"
         )
         two_days_old = FEED.replace(
             b"Mon, 19 Oct 2026 06:00:00 GMT", b"Sat, 24 Oct 2026 06:00:00 GMT"
         )
-        for label, feed in (("recent backlog", two_hours_old), ("stale item", two_days_old)):
+        cases = (
+            ("fresh item", fresh_item, 1),
+            ("recent backlog", two_hours_old, 0),
+            ("stale item", two_days_old, 0),
+        )
+        for label, feed, expected_findings in cases:
             with self.subTest(case=label):
                 state = {}
                 with (
@@ -311,6 +315,18 @@ if __name__ == "__main__":
                     patch.object(trump_tracker, "utc_now", return_value=fixed_now),
                 ):
                     findings = trump_tracker.intelligence_snapshot(state)
-                self.assertEqual(findings, [])
+                self.assertEqual(len(findings), expected_findings)
                 self.assertEqual(len(state.get("intelligence_items", {})), 1)
-                self.assertIn("https://example.gov/feed.xml", state.get("intelligence_feed_initialized", {}))
+                self.assertIn(
+                    "https://example.gov/feed.xml",
+                    state.get("intelligence_feed_initialized", {}),
+                )
+                if expected_findings:
+                    self.assertEqual(
+                        findings[0]["event_id"],
+                        next(iter(state["intelligence_items"])),
+                    )
+
+
+if __name__ == "__main__":
+    unittest.main()
