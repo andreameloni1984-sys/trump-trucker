@@ -145,6 +145,44 @@ class YahooQuoteFallbackTests(unittest.TestCase):
         ):
             self.assertIsNone(fetch_yahoo_quote("WTI"))
 
+    def test_yahoo_fallback_rejects_misaligned_ohlc_arrays(self):
+        payload = self.payload()
+        payload["chart"]["result"][0]["indicators"]["quote"][0]["high"].pop()
+        with patch(
+            "sputnik_cfd.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            self.assertIsNone(fetch_yahoo_quote("WTI"))
+
+    def test_yahoo_fallback_rejects_non_finite_ohlc_values(self):
+        payload = self.payload()
+        payload["chart"]["result"][0]["indicators"]["quote"][0]["close"][8] = float("nan")
+        with patch(
+            "sputnik_cfd.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            self.assertIsNone(fetch_yahoo_quote("WTI"))
+
+    def test_yahoo_fallback_rejects_close_outside_candle_range(self):
+        payload = self.payload()
+        quote = payload["chart"]["result"][0]["indicators"]["quote"][0]
+        quote["high"][8] = quote["close"][8] - 0.5
+        with patch(
+            "sputnik_cfd.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            self.assertIsNone(fetch_yahoo_quote("WTI"))
+
+    def test_yahoo_fallback_rejects_non_chronological_timestamps(self):
+        payload = self.payload()
+        timestamps = payload["chart"]["result"][0]["timestamp"]
+        timestamps[8], timestamps[9] = timestamps[9], timestamps[8]
+        with patch(
+            "sputnik_cfd.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            self.assertIsNone(fetch_yahoo_quote("WTI"))
+
     def test_yahoo_fallback_fails_closed_on_malformed_response(self):
         with patch(
             "sputnik_cfd.urllib.request.urlopen",
