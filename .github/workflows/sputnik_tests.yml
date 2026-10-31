@@ -29,6 +29,9 @@ on:
     branches:
       - main
     paths:
+      - "sputnik_trading_instrument.py"
+      - "sputnik_catalyst.py"
+      - ".github/workflows/sputnik_tests.yml"
       - "sputnik_decision.py"
       - "sputnik_decision_engine.py"
       - "sputnik_cfd.py"
