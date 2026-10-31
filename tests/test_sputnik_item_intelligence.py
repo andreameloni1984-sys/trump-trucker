@@ -1,6 +1,8 @@
 import json
 import os
+import tempfile
 import unittest
+from pathlib import Path
 from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
@@ -326,6 +328,46 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                         findings[0]["event_id"],
                         next(iter(state["intelligence_items"])),
                     )
+
+
+    def test_save_state_writes_valid_json_and_cleans_temporary_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = Path(directory) / "sputnik_state.json"
+            state = {"events": {"evt-1": {"filed_at": "2026-10-31"}}, "transactions": {}}
+            with (
+                patch.object(trump_tracker, "STATE_FILE", state_path),
+                patch.object(
+                    trump_tracker,
+                    "utc_now",
+                    return_value=datetime(2026, 10, 31, tzinfo=timezone.utc),
+                ),
+            ):
+                trump_tracker.save_state(state)
+
+            self.assertEqual(json.loads(state_path.read_text(encoding="utf-8")), state)
+            self.assertEqual(list(state_path.parent.glob(".sputnik_state.json.*.tmp")), [])
+
+    def test_save_state_preserves_previous_file_and_cleans_temp_on_replace_failure(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = Path(directory) / "sputnik_state.json"
+            previous = {"events": {"old": {"filed_at": "2026-10-30"}}, "updated_at": "old"}
+            state_path.write_text(json.dumps(previous), encoding="utf-8")
+            next_state = {"events": {"new": {"filed_at": "2026-10-31"}}}
+
+            with (
+                patch.object(trump_tracker, "STATE_FILE", state_path),
+                patch.object(trump_tracker.os, "replace", side_effect=OSError("simulated replace failure")),
+                patch.object(
+                    trump_tracker,
+                    "utc_now",
+                    return_value=datetime(2026, 10, 31, tzinfo=timezone.utc),
+                ),
+            ):
+                with self.assertRaisesRegex(OSError, "simulated replace failure"):
+                    trump_tracker.save_state(next_state)
+
+            self.assertEqual(json.loads(state_path.read_text(encoding="utf-8")), previous)
+            self.assertEqual(list(state_path.parent.glob(".sputnik_state.json.*.tmp")), [])
 
 
 if __name__ == "__main__":
