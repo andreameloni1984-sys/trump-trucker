@@ -29,18 +29,22 @@ def _number(value: Any) -> float | None:
     return number if math.isfinite(number) and number > 0 else None
 
 
-def _quote_is_fresh(quote: dict[str, Any], max_age_minutes: int = QUOTE_MAX_AGE_MIN) -> bool:
+def _quote_age_seconds(quote: dict[str, Any]) -> float | None:
     stamp = quote.get("timestamp") or quote.get("updated_at") or quote.get("as_of")
     if not stamp:
-        return False
+        return None
     try:
         dt = datetime.fromisoformat(str(stamp).replace("Z", "+00:00"))
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=timezone.utc)
-        age = (datetime.now(timezone.utc) - dt.astimezone(timezone.utc)).total_seconds()
-        return -60 <= age <= max_age_minutes * 60
+        return (datetime.now(timezone.utc) - dt.astimezone(timezone.utc)).total_seconds()
     except (TypeError, ValueError):
-        return False
+        return None
+
+
+def _quote_is_fresh(quote: dict[str, Any], max_age_minutes: int = QUOTE_MAX_AGE_MIN) -> bool:
+    age = _quote_age_seconds(quote)
+    return age is not None and -60 <= age <= max_age_minutes * 60
 
 
 def _find_quote(instrument: str, quotes: dict[str, Any]) -> dict[str, Any] | None:
@@ -83,6 +87,30 @@ YAHOO_FUTURES = {
     "SOYBEAN": "ZS=F", "SOIA": "ZS=F",
 }
 
+# Yahoo continuous futures are execution-basis quotes. Yahoo does not expose
+# the exact delivery month through this chart symbol, so it is never treated
+# as an exact-expiry match with a spot reference.
+YAHOO_FUTURES_METADATA = {
+    "GC=F": {"currency": "USD", "unit": "troy_oz", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "COMEX gold continuous futures; exact expiry not exposed"},
+    "SI=F": {"currency": "USD", "unit": "troy_oz", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "COMEX silver continuous futures; exact expiry not exposed"},
+    "HG=F": {"currency": "USD", "unit": "pound", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "COMEX copper continuous futures; exact expiry not exposed"},
+    "CL=F": {"currency": "USD", "unit": "barrel", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "NYMEX WTI continuous futures; exact expiry not exposed"},
+    "BZ=F": {"currency": "USD", "unit": "barrel", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "ICE Brent continuous futures; exact expiry not exposed"},
+    "NG=F": {"currency": "USD", "unit": "MMBtu", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "NYMEX natural gas continuous futures; exact expiry not exposed"},
+    "ZW=F": {"currency": "USD", "unit": "bushel", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "CBOT wheat continuous futures; exact expiry not exposed"},
+    "ZC=F": {"currency": "USD", "unit": "bushel", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "CBOT corn continuous futures; exact expiry not exposed"},
+    "ZS=F": {"currency": "USD", "unit": "bushel", "market_type": "FUTURES_CONTINUOUS",
+             "contract_description": "CBOT soybean continuous futures; exact expiry not exposed"},
+}
+
 
 def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | None:
     """Fetch latest Yahoo 1-minute futures candle and calculate ATR(14)."""
@@ -120,10 +148,18 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
             previous_close = close
         atr = sum(true_ranges[-14:]) / 14
         high, low, close, stamp = candles[-1]
+        timestamp = datetime.fromtimestamp(stamp, timezone.utc).isoformat()
+        metadata = YAHOO_FUTURES_METADATA.get(symbol, {})
         return {
             "price": close, "atr": atr,
-            "timestamp": datetime.fromtimestamp(stamp, timezone.utc).isoformat(),
+            "timestamp": timestamp,
             "provider": "Yahoo Finance chart (1m futures)", "symbol": symbol,
+            "currency": metadata.get("currency"),
+            "unit": metadata.get("unit"),
+            "market_type": metadata.get("market_type", "FUTURES_CONTINUOUS"),
+            "contract_description": metadata.get("contract_description"),
+            "bid": None, "ask": None,
+            "age_seconds": _quote_age_seconds({"timestamp": timestamp}),
             "candle_high": high, "candle_low": low,
         }
     except (OSError, ValueError, KeyError, IndexError, TypeError):
@@ -157,33 +193,103 @@ def fetch_silv_reference(instrument: str, timeout: int = 6) -> dict[str, Any] | 
         if price is None or not stamp:
             return None
         reference = {
-            "price": price, "timestamp": stamp,
+            "price": price,
+            "bid": _number(item.get("bid")),
+            "ask": _number(item.get("ask")),
+            "timestamp": stamp,
+            "observed_at": item.get("timestamp") or (payload.get("metadata") or {}).get("updated"),
             "provider": "SILV DATA spot reference",
-            "symbol": key.upper(), "unit": item.get("unit"),
+            "symbol": item.get("symbol") or key.upper(),
+            "currency": str(item.get("currency") or "").upper() or None,
+            "unit": item.get("unit"),
+            "market_type": "SPOT",
+            "age_seconds": _quote_age_seconds({"timestamp": stamp}),
         }
         return reference if _quote_is_fresh(reference, 30) else None
     except (OSError, ValueError, KeyError, TypeError):
         return None
 
 
+def _canonical_unit(value: Any) -> str | None:
+    if value is None:
+        return None
+    normalized = str(value).strip().lower().replace(" ", "_").replace("-", "_")
+    aliases = {
+        "troy_oz": "troy_oz",
+        "troy_ounce": "troy_oz",
+        "troy_ounces": "troy_oz",
+        "troy_ounce(s)": "troy_oz",
+        "lb": "pound",
+        "lbs": "pound",
+        "pounds": "pound",
+        "pound": "pound",
+        "bbl": "barrel",
+        "bbls": "barrel",
+        "barrels": "barrel",
+        "barrel": "barrel",
+        "bushels": "bushel",
+        "bushel": "bushel",
+        "mmbtu": "mmbtu",
+    }
+    return aliases.get(normalized, normalized or None)
+
+
 def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, Any]:
-    """Add spot/futures comparison metadata; keep Yahoo futures as execution basis."""
+    """Attach a separately labelled spot/futures basis; never blend price bases."""
     reference = fetch_silv_reference(instrument)
+    quote["crosscheck_provider"] = "SILV DATA"
+    quote["crosscheck_price"] = None
+    quote["crosscheck_bid"] = None
+    quote["crosscheck_ask"] = None
+    quote["crosscheck_timestamp"] = None
+    quote["crosscheck_age_seconds"] = None
+    quote["crosscheck_currency"] = None
+    quote["crosscheck_unit"] = None
+    quote["crosscheck_market_type"] = None
+    quote["spot_futures_basis_price"] = None
+    quote["spot_futures_basis_pct"] = None
+    quote["crosscheck_status"] = "UNAVAILABLE_OR_STALE"
+
     if not reference:
-        quote["crosscheck_provider"] = "SILV DATA"
-        quote["crosscheck_status"] = "UNAVAILABLE_OR_STALE"
         return quote
-    price = _number(quote.get("price"))
+
     ref_price = _number(reference.get("price"))
-    quote["crosscheck_provider"] = reference["provider"]
     quote["crosscheck_price"] = ref_price
-    quote["crosscheck_timestamp"] = reference["timestamp"]
+    quote["crosscheck_bid"] = _number(reference.get("bid"))
+    quote["crosscheck_ask"] = _number(reference.get("ask"))
+    quote["crosscheck_timestamp"] = reference.get("timestamp")
+    quote["crosscheck_age_seconds"] = reference.get("age_seconds")
+    quote["crosscheck_currency"] = reference.get("currency")
     quote["crosscheck_unit"] = reference.get("unit")
-    if price and ref_price:
-        quote["crosscheck_spread_pct"] = round(abs(price - ref_price) / ref_price * 100, 3)
-        quote["crosscheck_status"] = "SPOT_VS_FUTURES_BASIS_CHECK"
+    quote["crosscheck_market_type"] = reference.get("market_type")
+
+    execution_price = _number(quote.get("price"))
+    execution_currency = str(quote.get("currency") or "").upper()
+    reference_currency = str(reference.get("currency") or "").upper()
+    execution_unit = _canonical_unit(quote.get("unit"))
+    reference_unit = _canonical_unit(reference.get("unit"))
+    execution_market = str(quote.get("market_type") or "").upper()
+    reference_market = str(reference.get("market_type") or "").upper()
+
+    if execution_price is None or ref_price is None:
+        quote["crosscheck_status"] = "UNCOMPARABLE_PRICE"
+    elif not execution_currency or not reference_currency or not execution_unit or not reference_unit:
+        quote["crosscheck_status"] = "UNCOMPARABLE_METADATA_MISSING"
+    elif execution_currency != reference_currency:
+        quote["crosscheck_status"] = "UNCOMPARABLE_CURRENCY"
+    elif execution_unit != reference_unit:
+        quote["crosscheck_status"] = "UNCOMPARABLE_UNIT"
+    elif execution_market not in {"FUTURES", "FUTURES_CONTINUOUS"} or reference_market != "SPOT":
+        quote["crosscheck_status"] = "UNCOMPARABLE_MARKET_TYPE"
     else:
-        quote["crosscheck_status"] = "UNCOMPARABLE"
+        # Signed basis is spot minus futures. This is not a like-for-like
+        # price spread and is never used to replace the futures execution price.
+        basis = ref_price - execution_price
+        quote["spot_futures_basis_price"] = round(basis, 6)
+        quote["spot_futures_basis_pct"] = round(basis / execution_price * 100, 4)
+        quote["spot_futures_basis_definition"] = "spot_minus_futures"
+        quote["crosscheck_status"] = "SPOT_VS_FUTURES_BASIS_CHECK"
+
     return quote
 
 
@@ -274,10 +380,27 @@ def build_cfd_signal(
         "quote_time": quote.get("timestamp") or quote.get("updated_at"),
         "quote_provider": quote.get("provider") or "state/provider",
         "quote_symbol": quote.get("symbol") or instrument,
+        "quote_currency": quote.get("currency"),
+        "quote_unit": quote.get("unit"),
+        "quote_market_type": quote.get("market_type"),
+        "quote_contract_description": quote.get("contract_description"),
+        "quote_bid": _number(quote.get("bid")),
+        "quote_ask": _number(quote.get("ask")),
+        "quote_age_seconds": _quote_age_seconds(quote),
+        "quote_status": "FRESH",
         "crosscheck_provider": quote.get("crosscheck_provider"),
         "crosscheck_status": quote.get("crosscheck_status"),
         "crosscheck_price": quote.get("crosscheck_price"),
-        "crosscheck_spread_pct": quote.get("crosscheck_spread_pct"),
+        "crosscheck_bid": quote.get("crosscheck_bid"),
+        "crosscheck_ask": quote.get("crosscheck_ask"),
+        "crosscheck_timestamp": quote.get("crosscheck_timestamp"),
+        "crosscheck_age_seconds": quote.get("crosscheck_age_seconds"),
+        "crosscheck_currency": quote.get("crosscheck_currency"),
+        "crosscheck_unit": quote.get("crosscheck_unit"),
+        "crosscheck_market_type": quote.get("crosscheck_market_type"),
+        "spot_futures_basis_price": quote.get("spot_futures_basis_price"),
+        "spot_futures_basis_pct": quote.get("spot_futures_basis_pct"),
+        "spot_futures_basis_definition": quote.get("spot_futures_basis_definition"),
     })
     return base
 
