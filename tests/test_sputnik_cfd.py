@@ -3,7 +3,7 @@ import unittest
 from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
-from sputnik_cfd import build_cfd_cart, build_cfd_signal, fetch_yahoo_quote
+from sputnik_cfd import (\n    attach_silv_crosscheck,\n    build_cfd_cart,\n    build_cfd_signal,\n    fetch_silv_reference,\n    fetch_yahoo_quote,\n)
 
 
 class CfdCartTests(unittest.TestCase):
@@ -242,6 +242,145 @@ class YahooQuoteFallbackTests(unittest.TestCase):
         self.assertEqual(signal["tp1"], 73.5)
         self.assertEqual(signal["tp2"], 72.0)
         self.assertEqual(signal["quote_provider"], "broker")
+
+
+class SilvCrosscheckTests(unittest.TestCase):
+    @staticmethod
+    def reference(**overrides):
+        value = {
+            "price": 49.0,
+            "bid": 48.9,
+            "ask": 49.1,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "observed_at": datetime.now(timezone.utc).isoformat(),
+            "provider": "SILV DATA spot reference",
+            "symbol": "Ag",
+            "currency": "USD",
+            "unit": "troy_oz",
+            "market_type": "SPOT",
+            "age_seconds": 10.0,
+        }
+        value.update(overrides)
+        return value
+
+    def test_silv_reference_preserves_currency_unit_bid_ask_and_source_time(self):
+        now = datetime.now(timezone.utc).isoformat()
+        payload = {
+            "commodities": {
+                "silver": {
+                    "price": 49.0,
+                    "bid": 48.9,
+                    "ask": 49.1,
+                    "currency": "USD",
+                    "unit": "troy_oz",
+                    "last_updated": now,
+                    "timestamp": now,
+                    "symbol": "Ag",
+                }
+            },
+            "metadata": {"updated": now},
+        }
+
+        class FakeResponse:
+            def __enter__(self):
+                return self
+            def __exit__(self, exc_type, exc, traceback):
+                return False
+            def read(self):
+                return json.dumps(payload).encode("utf-8")
+
+        with patch("sputnik_cfd.urllib.request.urlopen", return_value=FakeResponse()):
+            reference = fetch_silv_reference("SILVER")
+
+        self.assertIsNotNone(reference)
+        self.assertEqual(reference["currency"], "USD")
+        self.assertEqual(reference["unit"], "troy_oz")
+        self.assertEqual(reference["market_type"], "SPOT")
+        self.assertEqual(reference["bid"], 48.9)
+        self.assertEqual(reference["ask"], 49.1)
+        self.assertEqual(reference["timestamp"], now)
+        self.assertIsNotNone(reference["age_seconds"])
+
+    def test_matching_currency_and_unit_produce_signed_basis_not_generic_spread(self):
+        quote = {
+            "price": 50.0,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "currency": "USD",
+            "unit": "troy_oz",
+            "market_type": "FUTURES_CONTINUOUS",
+            "provider": "Yahoo Finance chart (1m futures)",
+            "symbol": "SI=F",
+        }
+        with patch("sputnik_cfd.fetch_silv_reference", return_value=self.reference()):
+            result = attach_silv_crosscheck(quote, "SILVER")
+
+        self.assertEqual(result["crosscheck_status"], "SPOT_VS_FUTURES_BASIS_CHECK")
+        self.assertEqual(result["spot_futures_basis_definition"], "spot_minus_futures")
+        self.assertEqual(result["spot_futures_basis_price"], -1.0)
+        self.assertEqual(result["spot_futures_basis_pct"], -2.0)
+        self.assertNotIn("crosscheck_spread_pct", result)
+        self.assertEqual(result["price"], 50.0)
+
+    def test_currency_unit_and_market_type_mismatches_are_not_compared(self):
+        cases = [
+            ({"currency": "EUR"}, "UNCOMPARABLE_CURRENCY"),
+            ({"unit": "pound"}, "UNCOMPARABLE_UNIT"),
+            ({"market_type": "CFD"}, "UNCOMPARABLE_MARKET_TYPE"),
+            ({"unit": None}, "UNCOMPARABLE_METADATA_MISSING"),
+        ]
+        for overrides, expected_status in cases:
+            with self.subTest(overrides=overrides):
+                quote = {
+                    "price": 50.0,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "currency": "USD",
+                    "unit": "troy_oz",
+                    "market_type": "FUTURES_CONTINUOUS",
+                    "provider": "broker",
+                    "symbol": "SI=F",
+                }
+                reference = self.reference(**overrides)
+                with patch("sputnik_cfd.fetch_silv_reference", return_value=reference):
+                    result = attach_silv_crosscheck(quote, "SILVER")
+                self.assertEqual(result["crosscheck_status"], expected_status)
+                self.assertIsNone(result["spot_futures_basis_price"])
+                self.assertIsNone(result["spot_futures_basis_pct"])
+
+    def test_cfd_signal_keeps_futures_execution_price_and_exposes_basis_metadata(self):
+        timestamp = datetime.now(timezone.utc).isoformat()
+        quote = {
+            "price": 50.0,
+            "atr": 1.0,
+            "timestamp": timestamp,
+            "provider": "Yahoo Finance chart (1m futures)",
+            "symbol": "SI=F",
+            "currency": "USD",
+            "unit": "troy_oz",
+            "market_type": "FUTURES_CONTINUOUS",
+            "bid": None,
+            "ask": None,
+        }
+        with patch("sputnik_cfd.fetch_yahoo_quote", return_value=quote):
+            with patch("sputnik_cfd.fetch_silv_reference", return_value=self.reference()):
+                signal = build_cfd_signal(
+                    {"instrument": "SILVER", "bias": "LONG", "score": 80, "reason": "test"},
+                    {},
+                )
+
+        self.assertEqual(signal["entry"], 50.0)
+        self.assertEqual(signal["quote_provider"], "Yahoo Finance chart (1m futures)")
+        self.assertEqual(signal["quote_symbol"], "SI=F")
+        self.assertEqual(signal["quote_currency"], "USD")
+        self.assertEqual(signal["quote_unit"], "troy_oz")
+        self.assertEqual(signal["quote_market_type"], "FUTURES_CONTINUOUS")
+        self.assertEqual(signal["crosscheck_status"], "SPOT_VS_FUTURES_BASIS_CHECK")
+        self.assertEqual(signal["spot_futures_basis_price"], -1.0)
+        self.assertEqual(signal["crosscheck_currency"], "USD")
+        self.assertEqual(signal["crosscheck_unit"], "troy_oz")
+        self.assertEqual(signal["crosscheck_bid"], 48.9)
+        self.assertEqual(signal["crosscheck_ask"], 49.1)
+
+
 
 
 if __name__ == "__main__":
