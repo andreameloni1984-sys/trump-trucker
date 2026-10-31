@@ -281,9 +281,17 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
     reference_market = str(reference.get("market_type") or "").upper()
 
     execution_provider = str(quote.get("provider") or "").lower()
+    execution_source = (
+        "yahoo" if "yahoo" in execution_provider
+        else "biquote" if "biquote" in execution_provider
+        else "twelvedata" if "twelve data" in execution_provider or "twelvedata" in execution_provider
+        else None
+    )
     if not source_components:
         quote["crosscheck_status"] = "UNVERIFIED_SOURCE_COMPOSITION"
-    elif "yahoo" in source_components and "yahoo" in execution_provider:
+    elif execution_source is None:
+        quote["crosscheck_status"] = "UNVERIFIED_EXECUTION_SOURCE"
+    elif execution_source in source_components:
         quote["crosscheck_status"] = "SOURCE_OVERLAP"
         quote["crosscheck_independent"] = False
     elif execution_price is None or ref_price is None:
