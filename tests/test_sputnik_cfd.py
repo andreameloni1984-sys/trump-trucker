@@ -347,7 +347,7 @@ class SilvCrosscheckTests(unittest.TestCase):
                     "currency": "USD",
                     "unit": "troy_oz",
                     "market_type": "FUTURES_CONTINUOUS",
-                    "provider": "broker",
+                    "provider": "Yahoo Finance chart (1m futures)",
                     "symbol": "SI=F",
                 }
                 reference = self.reference(**overrides)
@@ -397,6 +397,23 @@ class SilvCrosscheckTests(unittest.TestCase):
             result = attach_silv_crosscheck(quote, "SILVER")
 
         self.assertEqual(result["crosscheck_status"], "UNVERIFIED_SOURCE_COMPOSITION")
+        self.assertIsNone(result["crosscheck_independent"])
+        self.assertIsNone(result["spot_futures_basis_pct"])
+
+    def test_unknown_execution_provider_is_not_claimed_independent(self):
+        quote = {
+            "price": 50.0,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "currency": "USD",
+            "unit": "troy_oz",
+            "market_type": "FUTURES_CONTINUOUS",
+            "provider": "unknown broker feed",
+            "symbol": "SI=F",
+        }
+        with patch("sputnik_cfd.fetch_silv_reference", return_value=self.reference()):
+            result = attach_silv_crosscheck(quote, "SILVER")
+
+        self.assertEqual(result["crosscheck_status"], "UNVERIFIED_EXECUTION_SOURCE")
         self.assertIsNone(result["crosscheck_independent"])
         self.assertIsNone(result["spot_futures_basis_pct"])
 
