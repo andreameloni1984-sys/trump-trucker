@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-31T19:21:45.218344+00:00",
+  "updated_at": "2026-10-31T22:38:29.701330+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "060fef1163ab50b7ba1ad230",
-    "TRUTH_ARCHIVE": "540c90801dea05f946b38989",
+    "WHITE_HOUSE": "b5ba0fa73550508de2d7c661",
+    "TRUTH_ARCHIVE": "19b614cd27fc846b2a180af6",
     "OGE": "34885a64ac17f66a3396213a"
   },
   "intelligence_history": {
@@ -10146,6 +10146,249 @@
         },
         "evidence": "HISTORICAL_ANALOGUE"
       }
+    },
+    "b5ba0fa73550508de2d7c661": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:[\"bam.nr-data.net\"]},feature_flags:[\"rum_v2\"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:\"NRJS-478cab472aef3db5069\",applicationID:\"1352821653\",browserID:\"1386236136\"};;/*! For license information please see nr-loader-rum-1.324.1.min.js.LICENSE.txt */ (()=>{var e={8122(e,t,r){\"use strict\";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||\"object\"!=typeof e)return(0,n.R)(3);if(!t||\"object\"!=typeof t)return(0,n.R)(4);const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),a=0===Object.keys(r).length?e:r;for(let s in a)if(void 0!==e[s])try{if(null===e[s]){r[s]=null;continue}Array.isArray(e[s])&&Array.isArray(t[s])?r[s]=Array.from(new Set([...e[s],...t[s]])):e[s]instanceof Map||e[s]instanceof Set||e[s]instanceof Date||e[s]instanceof RegExp?r[s]=e[s]:\"object\"==typeof e[s]&&null!==t[s]&&\"object\"==typeof t[s]?r[s]=i(e[s],t[s]):r[s]=e[s]}catch(e){r[s]||(0,n.R)(1,e)}return r}catch(e){(0,n.R)(2,e)}}},2555(e,t,r){\"use strict\";r.d(t,{f:()=>s});var n=r(384),i=r(8122);const a={beacon:n.NT.beacon,errorBeacon:n.NT.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0};function s(e){try{return!!e.licenseKey&&!!e.errorBeacon&&!!e.applicationID}catch(e){return!1}}r.d(t,[\"D\",0,e=>(0,i.a)(e,a)])},7699(e,t,r){\"use strict\";var n=r(860);const i=1e6,a={[n.K7.logging]:!0,[n.K7.genericEvents]:!0,[n.K7.jserrors]:!0,[n.K7.ajax]:!0};r.d(t,[\"It\",0,i,\"KC\",0,a,\"qh\",0,\"SESSION_ERROR\",\"zd\",0,5e5])},9324(e,t,r){\"use strict\";r.d(t,[\"xv\",0,\"1.324.1\"])},981(e,t,r){\"use strict\";r.d(t,[\"R\",0,{AJAX:\"AjaxRequest\",PA:\"PageAction\",UA:\"UserAction\",BP:\"BrowserPerformance\",WS:\"WebSocket\",SPV:\"SecurityPolicyViolation\",JSE:\"JavaScriptError\",LOG:\"Log\",PVE:\"PageView\",PVT:\"PageViewTiming\",SR:\"SessionReplay\",ST:\"SessionTrace\",BI:\"BrowserInteraction\"}])},6154(e,t,r){\"use strict\";var n=r(1863);const i=\"undefined\"!=typeof window&&!!window.document,a=\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),s=i?window:\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),o=Boolean(\"hidden\"===s?.document?.visibilityState),c=\"\"+s?.location,u=/iPad|iPhone|iPod/.test(s.navigator?.userAgent),d=u&&\"undefined\"==typeof SharedWorker,l=((()=>{const e=s.navigator?.userAgent?.match(/Firefox[/\\s](\\d+\\.\\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Date.now()-(0,n.t)());r.d(t,[\"OF\",0,u,\"RI\",0,i,\"WN\",0,l,\"bv\",0,a,\"gm\",0,s,\"m\",0,c,\"mw\",0,o,\"sb\",0,d,\"zk\",0,()=>{const e=s?.performance?.getEntriesByType?.(\"navigation\")?.[0];if(e&&e.responseStart>0&&e.responseStart<s.performance.now())return e}])},3241(e,t,r){\"use strict\";r.d(t,{W:()=>i});var n=r(6154);function i(e={}){try{n.gm.dispatchEvent(new CustomEvent(\"newrelic\",{detail:e}))}catch(e){}}},1687(e,t,r){\"use strict\";r.d(t,{Ak:()=>o,Ze:()=>u,x3:()=>c});var n=r(3241),i=r(3606),a=r(860),s=r(2646);function o(e,t){if(!e)return;const r={staged:!1,priority:a.P3[t]||0};e.runtime.drainRegistry.get(t)||e.runtime.drainRegistry.set(t,r)}function c(e,t){if(!e)return;const r=e.runtime.drainRegistry;r&&(r.get(t)&&r.delete(t),l(e,t,!1),r.size&&d(e))}function u(e,t=\"feature\",r=!1){if(e){if(!e.runtime.drainRegistry.get(t)||r)return l(e,t);e.runtime.drainRegistry.get(t).staged=!0,d(e)}}function d(e){if(!e)return;const t=Array.from(e.runtime.drainRegistry);t.every(([e,t])=>t.staged)&&(t.sort((e,t)=>e[1].priority-t[1].priority),t.forEach(([t])=>{e.runtime.drainRegistry.delete(t),l(e,t)}))}function l(e,t,r=!0){if(!e)return;const a=e.ee,o=i.i.handlers;if(a&&!a.aborted&&a.backlog&&o){if((0,n.W)({type:\"lifecycle\",name:\"drain\",feature:t}),r){const e=a.backlog[t],r=o[t];if(r){for(let t=0;e&&t<e.length;++t)f(e[t],r);Object.entries(r).forEach(([e,t])=>{Object.values(t||{}).forEach(t=>{t[0]?.on&&t[0].context()instanceof s.y&&!t[0].listeners(e).includes(t[1])&&t[0].on(e,t[1])})})}}a.isolatedBacklog||delete o[t],a.backlog[t]=null,a.emit(\"drain-\"+t,[])}}function f(e,t){var r=e[1];Object.values(t[r]||{}).forEach(t=>{var r=e[0];if(t[0]===r){var n=t[1],i=e[3],a=e[2];n.apply(i,a)}})}},7836(e,t,r){\"use strict\";var n=r(384),i=r(8990),a=r(2646),s=r(5607);const o=\"nr@context:\".concat(s.W),c=function e(t,r){var n={},s={},d={},l=!1;try{l=16===r.length&&u.initializedAgents?.[r]?.runtime.isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,a){!1!==a&&(a=!0);if(c.aborted&&!i)return;t&&a&&t.emit(e,r,n);var o=g(n);m(e).forEach(e=>{e.apply(o,r)});var u=v()[s[e]];u&&u.push([f,e,r,o]);return o},get:h,listeners:m,context:g,buffer:function(e,t){const r=v();if(t=t||\"feature\",f.aborted)return;Object.entries(e||{}).forEach(([e,n])=>{s[n]=t,t in r||(r[t]=[])})},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach(e=>{delete f.backlog[e]})},isBuffering:function(e){return!!v()[s[e]]},debugId:r,backlog:l?{}:t&&\"object\"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,\"aborted\",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof a.y?e:e?(0,i.I)(e,o,()=>new a.y(o)):new a.y(o)}function p(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function h(t){return d[t]=d[t]||e(f,t)}function v(){return f.backlog}}(void 0,\"globalEE\"),u=(0,n.Zm)();u.ee||(u.ee=c),r.d(t,[\"P\",0,o,\"ee\",0,c])},2646(e,t,r){\"use strict\";r.d(t,{y:()=>n});class n{constructor(e){this.contextId=e}}},9908(e,t,r){\"use ",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:28.927366+00:00",
+      "event_id": "b5ba0fa73550508de2d7c661",
+      "action_reaction": {
+        "event_id": "b5ba0fa73550508de2d7c661",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "19b614cd27fc846b2a180af6": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 31, 2026, 4:50 PM Original Post TO THE GREAT PEOPLE OF MICHIGAN, I will doing a TeleRally, LIVE, at 5:15pm ET — Answer your phones, and ENJOY! President DONALD J. TRUMP https:// swampthevoteusa.com/michigan/ Read full post ↻ Image Also posted October 31, 2026 swampthevoteusa.com MICHIGAN: MAKE A PLAN TO VOTE! Election Day in Michigan is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 4:53 PM Original Post TO THE GREAT PEOPLE OF MICHIGAN, GET OUT AND VOTE FOR: – Mike Rogers for U.S. Senate – John James for Governor – Jack Bergman for U.S. Congress (MI-01) – John Moolenaar for U.S. Congress (MI-02) – Bill Huizenga for U.S. Congress (MI-04) – Tim Walberg for U.S. Congress (MI-05) – Tom Barrett for U.S. Congress (MI-07) – Lisa McClain for U.S. Congress (MI-09) – Mike Bouchard for U.S. Congress (MI-10) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/michigan/ Read full post swampthevoteusa.com MICHIGAN: MAKE A PLAN TO VOTE! Election Day in Michigan is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 4:53 PM Original Post 🚨 MICHIGAN! Early Voting, in-person, is UNDERWAY NOW in the Great State of Michigan. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Michigan, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/michigan/ ↻ Image Previously posted October 31, 2026 swampthevoteusa.com MICHIGAN: MAKE A PLAN TO VOTE! Election Day in Michigan is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 4:53 PM Original Post 🚨 MICHIGAN! Early Voting, in-person, is UNDERWAY NOW in the Great State of Michigan. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Michigan, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/michigan/ Read full post ↻ Image Previously posted October 31, 2026 swampthevoteusa.com MICHIGAN: MAKE A PLAN TO VOTE! Election Day in Michigan is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 4:52 PM Original Post It is my Great Honor to endorse America First Patriot, Mike Rogers, who is running for U.S. Senate in the Great State of Michigan, a State I love and WON BIG! From the U.S. Army to Congress, Mike has served our Nation with distinction, and will bring that same Fighting Spirit to the U.S. Senate. His opponent, Abdul El-Sayed, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Abdul El-Sayed is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Mike will work tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Support our Incredible Military/Veterans, and Defend our always under siege Second Amendment. Mike Rogers has my Complete and Total Endorsement to be the next United States Senator from the Great State of Michigan. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/michigan/ Read full post swampthevoteusa.com MICHIGAN: MAKE A PLAN TO VOTE! Election Day in Michigan is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 4:52 PM Original Post It is my Great Honor to endorse America First Congressman, John James, who is running to become the next Governor of the Beautiful State of Michigan! A West Point Graduate, Combat Pilot, Brave Iraq War Veteran, Successful Businessman and Job Creator, and now, as a Highly Respected U.S. Congressman, John has proven he has the Courage and Wisdom to deliver strong results for the incredible people of his wonderful State, and our Nation. His opponent, Jocelyn Benson, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCI",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.258689+00:00",
+      "event_id": "19b614cd27fc846b2a180af6",
+      "action_reaction": {
+        "event_id": "19b614cd27fc846b2a180af6",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "3846b88df31f0bb6fb9422a8": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43027",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117537255606142938",
+      "title": "Congresswoman Claudia Tenney is a Fantastic Advocate for the Wonderful People of New York's 24th Congressional District! As the Chairwoman of the House Election Integrity Caucus, Claudia is an America First Fighter for Safeguarding our Cherished Right to Free and Fair Elections. She is working tirel",
+      "published": "Sat, 31 Oct 2026 19:49:50 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "Congresswoman Claudia Tenney is a Fantastic Advocate for the Wonderful People of New York's 24th Congressional District! As the Chairwoman of the House Election Integrity Caucus, Claudia is an America First Fighter for Safeguarding our Cherished Right to Free and Fair Elections. She is working tirel Congresswoman Claudia Tenney is a Fantastic Advocate for the Wonderful People of New York's 24th Congressional District! As the Chairwoman of the House Election Integrity Caucus, Claudia is an America First Fighter for Safeguarding our Cherished Right to Free and Fair Elections. She is working tirelessly to Grow the Economy, Cut Taxes and Regulations, Keep our Border SECURE, Strengthen our Military/Veterans, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Claudia's opponent, Alissa Ellman, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Alissa Ellman is Reckless, Radical, and Dangerous! Claudia Tenney has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR CLAUDIA — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/new-york/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.665130+00:00",
+      "event_id": "3846b88df31f0bb6fb9422a8",
+      "action_reaction": {
+        "event_id": "3846b88df31f0bb6fb9422a8",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f59f03973e44b62c81384888": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43022",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117537152994154582",
+      "title": "TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR:– Ashley Moody for U.S. Senate– Byron Donalds for Governor– James Uthmeier for Attorney General– Wilton Simpson for Agriculture Commissioner– Jimmy Patronis for U.S. Congress (FL-01)– Austin Rogers for U.S. Congress (FL-02)– Kat Cammack for U.S. C",
+      "published": "Sat, 31 Oct 2026 19:23:44 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR:– Ashley Moody for U.S. Senate– Byron Donalds for Governor– James Uthmeier for Attorney General– Wilton Simpson for Agriculture Commissioner– Jimmy Patronis for U.S. Congress (FL-01)– Austin Rogers for U.S. Congress (FL-02)– Kat Cammack for U.S. C RT: https://truthsocial.com/users/realDonaldTrump/statuses/117537149496244852 TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR: – Ashley Moody for U.S. Senate – Byron Donalds for Governor – James Uthmeier for Attorney General – Wilton Simpson for Agriculture Commissioner – Jimmy Patronis for U.S. Congress (FL-01) – Austin Rogers for U.S. Congress (FL-02) – Kat Cammack for U.S. Congress (FL-03) – Aaron Bean for U.S. Congress (FL-04) – John Rutherford for U.S. Congress (FL-05) – Randy Fine for U.S. Congress (FL-06) – Ryan Elijah for U.S. Congress (FL-07) – Mike Haridopolos for U.S. Congress (FL-08) – Dan Green for U.S. Congress (FL-09) – Joe Strada for U.S. Congress (FL-11) – Gus Bilirakis for U.S. Congress (FL-12) – Anna Paulina Luna for U.S. Congress (FL-13) – Mike Beltran for U.S. Congress (FL-14) – Laurel Lee for U.S. Congress (FL-15) – Sydney Gruters for U.S. Congress (FL-16) – Greg Steube for U.S. Congress (FL-17) – Scott Franklin for U.S. Congress (FL-18) – Jim Schwartzel for U.S. Congress (FL-19) – Brian Mast for U.S. Congress (FL-21) – Casey Askar for U.S. Congress (FL-22) – Scott Singer for U.S. Congress (FL-25) – Mario Diaz-Balart for U.S. Congress (FL-26) – Maria Elvira Salazar for U.S. Congress (FL-27) – Carlos Gimenez for U.S. Congress (FL-28) – Meg Weinberger for State House (FL-HD-94) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/ View image Quoted Donald J. Trump 🚨 FLORIDA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Florida. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/florida/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.665643+00:00",
+      "event_id": "f59f03973e44b62c81384888",
+      "action_reaction": {
+        "event_id": "f59f03973e44b62c81384888",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b956e55d9347db9a8c5adbae": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43023",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117537149496244852",
+      "title": "🚨 FLORIDA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Florida. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, abse",
+      "published": "Sat, 31 Oct 2026 19:22:51 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "🚨 FLORIDA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Florida. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, abse 🚨 FLORIDA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Florida. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/florida/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.665913+00:00",
+      "event_id": "b956e55d9347db9a8c5adbae",
+      "action_reaction": {
+        "event_id": "b956e55d9347db9a8c5adbae",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ca398957826b102cd01e3fc5": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43024",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117537148773878750",
+      "title": "Senator Ashley Moody is doing a tremendous job representing the incredible people of Florida, a State I love, and WON BIG, in 2016, 2020, and 2024! A fifth generation Floridian, Ashley served as State Attorney General for six years prior to becoming a very distinguished and well respected U.S. Senat",
+      "published": "Sat, 31 Oct 2026 19:22:40 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Senator Ashley Moody is doing a tremendous job representing the incredible people of Florida, a State I love, and WON BIG, in 2016, 2020, and 2024! A fifth generation Floridian, Ashley served as State Attorney General for six years prior to becoming a very distinguished and well respected U.S. Senat Senator Ashley Moody is doing a tremendous job representing the incredible people of Florida, a State I love, and WON BIG, in 2016, 2020, and 2024! A fifth generation Floridian, Ashley served as State Attorney General for six years prior to becoming a very distinguished and well respected U.S. Senator. Ashley is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Strengthen our Great Military/Veterans, and Defend our always under siege Second Amendment. Ashley's opponent, Angie Nixon, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Angie Nixon is Reckless, Radical, and Dangerous! Ashley Moody has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR ASHLEY — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.666122+00:00",
+      "event_id": "ca398957826b102cd01e3fc5",
+      "action_reaction": {
+        "event_id": "ca398957826b102cd01e3fc5",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "83abb686415c55c1bfe191f4": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43025",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117537147729168099",
+      "title": "It is my Great Honor to endorse America First Congressman, Byron Donalds, who is running for Governor of Florida, a State that I love, and WON BIG, in 2016, 2020, and 2024! I know Byron well, have seen him tested at the highest and most difficult levels, and he is a TOTAL WINNER! Byron has a great w",
+      "published": "Sat, 31 Oct 2026 19:22:24 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "It is my Great Honor to endorse America First Congressman, Byron Donalds, who is running for Governor of Florida, a State that I love, and WON BIG, in 2016, 2020, and 2024! I know Byron well, have seen him tested at the highest and most difficult levels, and he is a TOTAL WINNER! Byron has a great w It is my Great Honor to endorse America First Congressman, Byron Donalds, who is running for Governor of Florida, a State that I love, and WON BIG, in 2016, 2020, and 2024! I know Byron well, have seen him tested at the highest and most difficult levels, and he is a TOTAL WINNER! Byron has a great wife, Erika, and three beautiful sons. They are very proud of him! His opponent, David Jolly, is a Radical Left Dumocrat who wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. David Jolly is Reckless, Radical, and Dangerous! On the other hand, as your next Governor, Byron will have a BIG Voice, and work closely with me to advance our America First Agenda. He will fight tirelessly to help Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military, Protect our Veterans, Advance American Energy DOMINANCE, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., and Defend our always under siege Second Amendment. Byron Donalds has my Complete and Total Endorsement to be the next Governor of the Great State of Florida. GET OUT AND VOTE FOR BYRON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.666376+00:00",
+      "event_id": "83abb686415c55c1bfe191f4",
+      "action_reaction": {
+        "event_id": "83abb686415c55c1bfe191f4",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "27f5efb66ee7bf84abb79810": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43026",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117537147157441096",
+      "title": "Florida Attorney General James Uthmeier is doing a GREAT job for the Sunshine State, which I won BIG in 2016, 2020, and 2024. James is an America First Warrior, who is a true champion for “MAGA.” He is THE MAN behind ALLIGATOR ALCATRAZ, and argued strongly at the United States Supreme Court in defen",
+      "published": "Sat, 31 Oct 2026 19:22:15 +0000",
+      "domains": [
+        "DEFENSE"
+      ],
+      "text": "Florida Attorney General James Uthmeier is doing a GREAT job for the Sunshine State, which I won BIG in 2016, 2020, and 2024. James is an America First Warrior, who is a true champion for “MAGA.” He is THE MAN behind ALLIGATOR ALCATRAZ, and argued strongly at the United States Supreme Court in defen Florida Attorney General James Uthmeier is doing a GREAT job for the Sunshine State, which I won BIG in 2016, 2020, and 2024. James is an America First Warrior, who is a true champion for “MAGA.” He is THE MAN behind ALLIGATOR ALCATRAZ, and argued strongly at the United States Supreme Court in defense of my Executive Power to fire Deep State bureaucrats. Under James' fearless leadership, over 1,000 CRIMINAL PEDOPHILES have been arrested, missing children have been SAVED, and our Great Members of Law Enforcement have been empowered to do their jobs and, KEEP FLORIDA SAFE. In his next term, James will continue to work tirelessly to Ensure Law and Order, Uphold our Constitutional Rights, and Protect our always under siege Second Amendment. James Uthmeier is a Strong Conservative Fighter and Prosecutor, and has my Complete and Total Endorsement! GET OUT AND VOTE FOR JAMES — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.666645+00:00",
+      "event_id": "27f5efb66ee7bf84abb79810",
+      "action_reaction": {
+        "event_id": "27f5efb66ee7bf84abb79810",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "96baf9451743ff7bdac4fc41": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43016",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536924395377337",
+      "title": "It is my Great Honor to endorse America First Patriot, Derek Merrin, who is running to represent the wonderful people of Ohio's 9th Congressional District! As a Highly Successful State Legislator, Waterville City Councilman, and Civic Leader, prior to running for U.S. Congress, Derek Merrin has dedi",
+      "published": "Sat, 31 Oct 2026 18:25:36 +0000",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Derek Merrin, who is running to represent the wonderful people of Ohio's 9th Congressional District! As a Highly Successful State Legislator, Waterville City Councilman, and Civic Leader, prior to running for U.S. Congress, Derek Merrin has dedi It is my Great Honor to endorse America First Patriot, Derek Merrin, who is running to represent the wonderful people of Ohio's 9th Congressional District! As a Highly Successful State Legislator, Waterville City Councilman, and Civic Leader, prior to running for U.S. Congress, Derek Merrin has dedicated his life to serving his Community. His opponent, Marcy Kaptur, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things would be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender for Everybody. Marcy Kaptur is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Derek will fight hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Strengthen our Brave Military/Veterans, Ensure PEACE THROUGH STRENGTH, and Defend our always under siege Second Amendment. Derek Merrin has my Complete and Total Endorsement to be the next Representative from Ohio's 9th Congressional District. GET OUT AND VOTE FOR DEREK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.668265+00:00",
+      "event_id": "96baf9451743ff7bdac4fc41",
+      "action_reaction": {
+        "event_id": "96baf9451743ff7bdac4fc41",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "18336e9714a82564cade57c8": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43017",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536923739685502",
+      "title": "Congressman Mike Turner is doing a truly fantastic job representing the wonderful people of Ohio's 10th Congressional District! As a Senior Member of the POWERFUL House Armed Services Committee, Mike understands the Wisdom and Courage required to Defend our Country, Support our incredible Military/V",
+      "published": "Sat, 31 Oct 2026 18:25:26 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Mike Turner is doing a truly fantastic job representing the wonderful people of Ohio's 10th Congressional District! As a Senior Member of the POWERFUL House Armed Services Committee, Mike understands the Wisdom and Courage required to Defend our Country, Support our incredible Military/V Congressman Mike Turner is doing a truly fantastic job representing the wonderful people of Ohio's 10th Congressional District! As a Senior Member of the POWERFUL House Armed Services Committee, Mike understands the Wisdom and Courage required to Defend our Country, Support our incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, he is fighting tirelessly to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Mike's opponent, Kristina Knickerbocker, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Kristina Knickerbocker is Reckless, Radical, and Dangerous! Mike Turner has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T22:38:29.668536+00:00",
+      "event_id": "18336e9714a82564cade57c8",
+      "action_reaction": {
+        "event_id": "18336e9714a82564cade57c8",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -10423,9 +10666,17 @@
     "526e0f70800409062be67864": "2026-10-31T19:21:45.191481+00:00",
     "c180c4cefdac44d81ac13e77": "2026-10-31T19:21:45.191700+00:00",
     "41ad8b70d879b62e845632bd": "2026-10-31T19:21:45.191969+00:00",
-    "81de61bd180dffce2beeee80": "2026-10-31T19:21:45.192371+00:00"
+    "81de61bd180dffce2beeee80": "2026-10-31T19:21:45.192371+00:00",
+    "3846b88df31f0bb6fb9422a8": "2026-10-31T22:38:29.665118+00:00",
+    "f59f03973e44b62c81384888": "2026-10-31T22:38:29.665636+00:00",
+    "b956e55d9347db9a8c5adbae": "2026-10-31T22:38:29.665909+00:00",
+    "ca398957826b102cd01e3fc5": "2026-10-31T22:38:29.666117+00:00",
+    "83abb686415c55c1bfe191f4": "2026-10-31T22:38:29.666371+00:00",
+    "27f5efb66ee7bf84abb79810": "2026-10-31T22:38:29.666639+00:00",
+    "96baf9451743ff7bdac4fc41": "2026-10-31T22:38:29.668259+00:00",
+    "18336e9714a82564cade57c8": "2026-10-31T22:38:29.668531+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-31T19:21:45.198802+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-31T22:38:29.675428+00:00"
   }
 }
