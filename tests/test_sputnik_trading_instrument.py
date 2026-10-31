@@ -73,16 +73,14 @@ class EarlyBrentCatalystTests(unittest.TestCase):
             _finding("Ceasefire agreement reached in Gaza after negotiations")
         ])
 
-        self.assertEqual(recommendation["instrument"], "BRENT")
-        self.assertEqual(recommendation["bias"], "NEUTRAL")
+        self.assertIsNone(recommendation)
 
     def test_bare_hormuz_mention_stays_neutral(self):
         recommendation = recommend_trading_instrument([
             _finding("Officials discuss the Strait of Hormuz at a diplomatic summit")
         ])
 
-        self.assertEqual(recommendation["instrument"], "BRENT")
-        self.assertEqual(recommendation["bias"], "NEUTRAL")
+        self.assertIsNone(recommendation)
 
     def test_negated_oil_supply_disruption_does_not_create_long(self):
         recommendation = recommend_trading_instrument([
