@@ -35,7 +35,6 @@ on:
       - "sputnik_decision.py"
       - "sputnik_decision_engine.py"
       - "sputnik_cfd.py"
-      - "sputnik_trading_instrument.py"
       - "tests/test_sputnik_trading_instrument.py"
       - "tests/test_sputnik_item_intelligence.py"
       - "telegram_listener.py"
@@ -47,7 +46,6 @@ on:
       - "trump_tracker.py"
       - "sputnik_ranking.py"
       - "tests/test_sputnik_ranking.py"
-      - ".github/workflows/sputnik_tests.yml"
 
 permissions:
   contents: read
