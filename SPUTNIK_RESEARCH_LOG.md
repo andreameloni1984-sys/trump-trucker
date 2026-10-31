@@ -123,3 +123,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Freshness guard:** the existing 30-minute timestamp check remains in force. If Yahoo returns stale/closed-market data, insufficient candles, or an error, SPUTNIK still withholds entry/SL/TP rather than inventing prices.
 - **Source:** Yahoo Finance chart endpoint, no API key required. Quotes may be delayed or unavailable for some instruments; this is a fallback source, not an exchange-direct feed.
 - **Verification:** implementation committed as `b99642c4593f9bf2703fed553dc5241480968392`. Automated CI and production Render/Telegram deployment have not yet been verified. PAPER ONLY; no orders sent.
+
+
+## 2026-10-31 — Add free independent SILV spot cross-check
+
+- **Change:** after Sputnik obtains a timestamped Yahoo 1-minute futures quote, it now requests SILV DATA's public no-auth JSON feed for gold, silver and copper. It records the independent spot reference, timestamp, unit, and percentage difference in the signal metadata.
+- **Important basis rule:** SILV is a spot reference while Yahoo symbols are futures. The calculated difference is labelled `SPOT_VS_FUTURES_BASIS_CHECK`; it is informational and does not replace the Yahoo futures entry price, ATR, SL or TP, nor automatically block a signal.
+- **Freshness:** SILV reference is accepted only with a valid timestamp no older than 30 minutes. Timeout, missing symbol or stale data are reported as unavailable; no value is fabricated.
+- **Cost:** SILV endpoint requires no API key and is documented as free. Its published update schedule is 15 minutes for precious metals; it is not a tick feed.
+- **Verification:** code committed as `8acdd7677be751425818f3458abacce82e8eda5c`. Automated tests, live endpoint behavior from the bot runtime, GitHub Actions and Render/Telegram deployment have not yet been verified. PAPER ONLY; no orders sent.
