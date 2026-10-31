@@ -133,9 +133,38 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
         timestamps = result.get("timestamp") or []
         quote_data = result["indicators"]["quote"][0]
         highs, lows, closes = quote_data.get("high") or [], quote_data.get("low") or [], quote_data.get("close") or []
-        candles = [(float(h), float(l), float(cl), int(ts))
-                   for h, l, cl, ts in zip(highs, lows, closes, timestamps)
-                   if h is not None and l is not None and cl is not None]
+        # Yahoo's parallel arrays must remain aligned. zip() alone would silently
+        # truncate a malformed response and could pair a price with the wrong time.
+        if not (len(timestamps) == len(highs) == len(lows) == len(closes)):
+            return None
+
+        candles = []
+        previous_stamp = None
+        for raw_high, raw_low, raw_close, raw_stamp in zip(highs, lows, closes, timestamps):
+            try:
+                stamp = int(raw_stamp)
+            except (TypeError, ValueError, OverflowError):
+                return None
+            # ATR is sequence-dependent: reject duplicate or out-of-order bars
+            # rather than calculating volatility from a scrambled time series.
+            if stamp <= 0 or (previous_stamp is not None and stamp <= previous_stamp):
+                return None
+            previous_stamp = stamp
+
+            # Yahoo may return null OHLC values for an incomplete/no-trade minute.
+            # Keep the time sequence checked, but do not use that candle in ATR.
+            if raw_high is None or raw_low is None or raw_close is None:
+                continue
+            try:
+                high, low, close = float(raw_high), float(raw_low), float(raw_close)
+            except (TypeError, ValueError, OverflowError):
+                return None
+            if not all(math.isfinite(value) and value > 0 for value in (high, low, close)):
+                return None
+            if high < low or not low <= close <= high:
+                return None
+            candles.append((high, low, close, stamp))
+
         if len(candles) < 15:
             return None
         true_ranges = []
@@ -147,6 +176,8 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
             true_ranges.append(tr)
             previous_close = close
         atr = sum(true_ranges[-14:]) / 14
+        if not math.isfinite(atr) or atr <= 0:
+            return None
         high, low, close, stamp = candles[-1]
         timestamp = datetime.fromtimestamp(stamp, timezone.utc).isoformat()
         metadata = YAHOO_FUTURES_METADATA.get(symbol, {})
