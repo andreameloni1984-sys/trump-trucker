@@ -10,6 +10,9 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 from typing import Any
+import json
+import urllib.parse
+import urllib.request
 
 DEFAULT_RISK_PCT = 1.0
 DEFAULT_CAPITAL = 300.0
@@ -70,6 +73,62 @@ def _find_quote(instrument: str, quotes: dict[str, Any]) -> dict[str, Any] | Non
     return None
 
 
+
+YAHOO_FUTURES = {
+    "GOLD": "GC=F", "ORO": "GC=F", "SILVER": "SI=F", "ARGENTO": "SI=F",
+    "COPPER": "HG=F", "RAME": "HG=F", "WTI": "CL=F", "PETROLIO WTI": "CL=F",
+    "BRENT": "BZ=F", "NATURAL_GAS": "NG=F", "GAS NATURALE": "NG=F",
+    "WHEAT": "ZW=F", "GRANO": "ZW=F", "CORN": "ZC=F", "MAIS": "ZC=F",
+    "SOYBEAN": "ZS=F", "SOIA": "ZS=F",
+}
+
+
+def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | None:
+    """Fetch latest Yahoo 1-minute futures candle and calculate ATR(14)."""
+    label = str(instrument or "").upper().split("(", 1)[0].strip()
+    symbol = YAHOO_FUTURES.get(label)
+    if not symbol:
+        for name, ticker in YAHOO_FUTURES.items():
+            if label.startswith(name):
+                symbol = ticker
+                break
+    if not symbol:
+        return None
+    url = "https://query1.finance.yahoo.com/v8/finance/chart/" + urllib.parse.quote(symbol, safe="=")
+    url += "?range=1d&interval=1m&includePrePost=true"
+    request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 SputnikMarketData/1.0"})
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        result = payload["chart"]["result"][0]
+        timestamps = result.get("timestamp") or []
+        quote_data = result["indicators"]["quote"][0]
+        highs, lows, closes = quote_data.get("high") or [], quote_data.get("low") or [], quote_data.get("close") or []
+        candles = [(float(h), float(l), float(cl), int(ts))
+                   for h, l, cl, ts in zip(highs, lows, closes, timestamps)
+                   if h is not None and l is not None and cl is not None]
+        if len(candles) < 15:
+            return None
+        true_ranges = []
+        previous_close = None
+        for high, low, close, _ in candles:
+            tr = high - low if previous_close is None else max(
+                high - low, abs(high - previous_close), abs(low - previous_close)
+            )
+            true_ranges.append(tr)
+            previous_close = close
+        atr = sum(true_ranges[-14:]) / 14
+        high, low, close, stamp = candles[-1]
+        return {
+            "price": close, "atr": atr,
+            "timestamp": datetime.fromtimestamp(stamp, timezone.utc).isoformat(),
+            "provider": "Yahoo Finance chart (1m futures)", "symbol": symbol,
+            "candle_high": high, "candle_low": low,
+        }
+    except (OSError, ValueError, KeyError, IndexError, TypeError):
+        return None
+
+
 def build_cfd_signal(
     recommendation: dict[str, Any] | None,
     quotes: dict[str, Any] | None = None,
@@ -118,8 +177,11 @@ def build_cfd_signal(
     quotes = quotes or {}
     quote = _find_quote(instrument, quotes)
     if not quote or not _quote_is_fresh(quote):
+        # Pull a fresh public 1m futures candle and calculate ATR automatically.
+        quote = fetch_yahoo_quote(instrument)
+    if not quote or not _quote_is_fresh(quote):
         base["status"] = "WAIT"
-        base["reason"] += " | Quotazione fresca non disponibile."
+        base["reason"] += " | Quotazione live/fresca non disponibile anche dal fallback Yahoo Finance."
         return base
 
     entry = _number(quote.get("price") or quote.get("bid") or quote.get("last"))
@@ -150,6 +212,8 @@ def build_cfd_signal(
         "atr": round(atr, 4),
         "status": "SIGNAL" if score >= 70 else "PREPARE",
         "quote_time": quote.get("timestamp") or quote.get("updated_at"),
+        "quote_provider": quote.get("provider") or "state/provider",
+        "quote_symbol": quote.get("symbol") or instrument,
     })
     return base
 
