@@ -114,3 +114,12 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Delivery limits:** code now feeds the Telegram callback response, but this change alone does not prove a scheduled/live Telegram message was sent. Render deployment status and credentials were not verified in this run.
 - **Safety:** PAPER TRADING only; no real orders sent.
 - **CI correction:** the first test run exposed two stale expectations and a missing explicit confirmation line. Updated the output to include the catalyst's confirmation criteria and adjusted the legacy-domain test to expect WAIT rather than an invented directional trade. Follow-up CI runs are pending.
+
+
+## 2026-10-31 — Add automatic fresh commodity quote fallback
+
+- **Observed issue:** SPUTNIK's CFD builder only read quotes already persisted in state. The Telegram alert showed “quote/ATR unavailable” and stopped, even though the user wanted an instant price lookup.
+- **Implemented:** `sputnik_cfd.py` now requests the latest Yahoo Finance 1-minute futures candles when the stored quote is absent or stale. It maps Gold, Silver, Copper, WTI, Brent, Natural Gas, Wheat, Corn and Soybeans to Yahoo futures symbols, calculates ATR(14) from the returned candles, and uses the source candle timestamp.
+- **Freshness guard:** the existing 30-minute timestamp check remains in force. If Yahoo returns stale/closed-market data, insufficient candles, or an error, SPUTNIK still withholds entry/SL/TP rather than inventing prices.
+- **Source:** Yahoo Finance chart endpoint, no API key required. Quotes may be delayed or unavailable for some instruments; this is a fallback source, not an exchange-direct feed.
+- **Verification:** implementation committed as `b99642c4593f9bf2703fed553dc5241480968392`. Automated CI and production Render/Telegram deployment have not yet been verified. PAPER ONLY; no orders sent.
