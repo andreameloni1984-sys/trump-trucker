@@ -181,6 +181,46 @@ class YahooQuoteFallbackTests(unittest.TestCase):
         self.assertIsNone(signal["tp1"])
         self.assertIsNone(signal["tp2"])
 
+    def test_build_cfd_signal_rejects_infinite_price_without_levels(self):
+        quote = {
+            "price": float("inf"),
+            "atr": 2.0,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "provider": "test",
+            "symbol": "CL=F",
+        }
+        with patch("sputnik_cfd.fetch_yahoo_quote") as fallback:
+            signal = build_cfd_signal(
+                {"instrument": "WTI", "bias": "LONG", "score": 80},
+                {"WTI": quote},
+            )
+        fallback.assert_not_called()
+        self.assertEqual(signal["status"], "WAIT")
+        self.assertIsNone(signal["entry"])
+        self.assertIsNone(signal["stop"])
+        self.assertIsNone(signal["tp1"])
+        self.assertIsNone(signal["tp2"])
+
+    def test_build_cfd_signal_rejects_infinite_atr_without_levels(self):
+        quote = {
+            "price": 80.0,
+            "atr": float("inf"),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "provider": "test",
+            "symbol": "CL=F",
+        }
+        with patch("sputnik_cfd.fetch_yahoo_quote") as fallback:
+            signal = build_cfd_signal(
+                {"instrument": "WTI", "bias": "LONG", "score": 80},
+                {"WTI": quote},
+            )
+        fallback.assert_not_called()
+        self.assertEqual(signal["status"], "WAIT")
+        self.assertIsNone(signal["entry"])
+        self.assertIsNone(signal["stop"])
+        self.assertIsNone(signal["tp1"])
+        self.assertIsNone(signal["tp2"])
+
     def test_fresh_stored_quote_avoids_yahoo_network_fallback(self):
         quote = {
             "price": 75.0,
