@@ -132,3 +132,13 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Freshness:** SILV reference is accepted only with a valid timestamp no older than 30 minutes. Timeout, missing symbol or stale data are reported as unavailable; no value is fabricated.
 - **Cost:** SILV endpoint requires no API key and is documented as free. Its published update schedule is 15 minutes for precious metals; it is not a tick feed.
 - **Verification:** code committed as `8acdd7677be751425818f3458abacce82e8eda5c`. Automated tests, live endpoint behavior from the bot runtime, GitHub Actions and Render/Telegram deployment have not yet been verified. PAPER ONLY; no orders sent.
+
+## 2026-10-31 — Preserve directional catalyst hypotheses when technical confirmation is neutral or opposed
+
+- **Finding:** the news engine could produce a dated, URL-backed preliminary LONG/SHORT hypothesis, but the public recommendation wrapper then replaced it with NEUTRAL whenever 5-minute technical direction was neutral, or replaced it with the opposite technical direction. This contradicted the intended separation between catalyst hypothesis and technical confirmation and caused eight failures in the 2026-10-31 SPUTNIK test workflow.
+- **Implemented:** keep the verified catalyst direction as the preliminary hypothesis; expose technical direction and ALIGNS / CONTRASTS / NOT_CONFIRMED separately. Technical-only direction remains available when no directional catalyst exists. Conflicting technical evidence is explicitly labelled as unconfirmed, not converted into an entry.
+- **Files:** `sputnik_trading_instrument.py`; `tests/test_sputnik_trading_instrument.py`.
+- **Regression tests:** added mocked tests for LONG catalyst vs SHORT technical bias and SHORT catalyst vs neutral technical confirmation. Existing tests continue to check WTI inventory mapping and Brent/Hormuz direction.
+- **Commits:** implementation `d2f4e7fcf9913ceec43c2d7e4377cb9e37b2f375`; regression tests `cda1caadcc6c026dcc7fedc41f5c330b56f697e8`.
+- **Branch:** `fix/preserve-sputnik-catalyst-bias-20261031`; PR/Actions verification pending at log creation.
+- **Open limits:** this change does not validate a market-price feed or create entry/SL/TP levels. Those still require fresh, correctly mapped execution-basis prices and ATR. No paid provider, broker order, live trade or Telegram delivery was used or claimed. PAPER TRADING only.

@@ -436,18 +436,58 @@ def recommend_trading_instrument(
     rec["technical_timeframe"] = technical.get("timeframe", "5m")
     rec["technical_quote_timestamp"] = technical.get("quote_timestamp")
 
-    if technical["bias"] in {"LONG", "SHORT"}:
+    if news_bias in {"LONG", "SHORT"}:
+        # A dated, URL-backed catalyst can create a preliminary directional
+        # hypothesis. Technical data grades confirmation; it must not erase
+        # or reverse that hypothesis. Keep both directions visible when they
+        # conflict so the operator can decide whether to wait or paper-test.
+        rec["bias"] = news_bias
+        rec["status"] = "PRELIMINARY_DIRECTIONAL_BIAS"
+        if technical["bias"] == news_bias:
+            rec["catalyst_alignment"] = "ALIGNS"
+            rec["reason"] = (
+                "Catalizzatore e struttura tecnica concordano su "
+                + news_bias + "."
+            )
+        elif technical["bias"] in {"LONG", "SHORT"}:
+            rec["catalyst_alignment"] = "CONTRASTS"
+            rec["reason"] = (
+                "Il catalizzatore suggerisce " + news_bias
+                + ", mentre la struttura tecnica 5m indica "
+                + technical["bias"]
+                + ": ipotesi preliminare in conflitto, non ingresso confermato."
+            )
+        else:
+            rec["catalyst_alignment"] = "NOT_CONFIRMED"
+            rec["reason"] = (
+                "Ipotesi " + news_bias
+                + " dal catalizzatore; direzione tecnica non confermata: "
+                + technical["reason"]
+            )
+        rec["alternative"] = (
+            "Se il rischio di offerta si attenua, la notizia viene smentita "
+            "o il prezzo rompe la struttura a favore dei venditori, il LONG perde validità."
+            if news_bias == "LONG" else
+            "Se l'escalation riprende, i flussi si interrompono o il prezzo "
+            "recupera la struttura a favore degli acquirenti, lo SHORT perde validità."
+        )
+        rec["invalidation"] = (
+            "Notizia smentita/ritirata oppure reazione del prezzo persistentemente "
+            "contraria al catalizzatore; nessun livello operativo senza prezzo e ATR freschi."
+            if news_bias == "LONG" else
+            "Notizia smentita/ritirata oppure reazione del prezzo persistentemente "
+            "contraria al catalizzatore; nessun livello operativo senza prezzo e ATR freschi."
+        )
+    elif technical["bias"] in {"LONG", "SHORT"}:
+        # Technical-only direction remains available when no verified news
+        # catalyst has supplied a directional thesis.
         rec["bias"] = technical["bias"]
         rec["status"] = "TECHNICAL_DIRECTIONAL_BIAS"
-        if news_bias in {"LONG", "SHORT"} and news_bias != technical["bias"]:
-            rec["catalyst_alignment"] = "CONTRASTS"
-            rec["reason"] = "Direzione tecnica " + technical["bias"] + "; catalizzatore/notizie suggeriscono " + news_bias + " e quindi contrastano il movimento."
-        elif news_bias == technical["bias"]:
-            rec["catalyst_alignment"] = "ALIGNS"
-            rec["reason"] = "Direzione tecnica e catalizzatore concordano su " + technical["bias"] + "."
-        else:
-            rec["catalyst_alignment"] = "NO_DIRECTIONAL_NEWS"
-            rec["reason"] = "Direzione tecnica " + technical["bias"] + "; nessun catalizzatore USA direzionale verificato."
+        rec["catalyst_alignment"] = "NO_DIRECTIONAL_NEWS"
+        rec["reason"] = (
+            "Direzione tecnica " + technical["bias"]
+            + "; nessun catalizzatore USA direzionale verificato."
+        )
         rec["alternative"] = (
             "Un recupero sopra EMA20/EMA50 e il ritorno a massimi/minimi crescenti può invalidare lo SHORT."
             if technical["bias"] == "SHORT" else
