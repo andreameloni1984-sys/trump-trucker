@@ -1,12 +1,12 @@
 {
   "events": {},
-  "updated_at": "2026-10-31T15:15:05.559758+00:00",
+  "updated_at": "2026-10-31T19:21:45.218344+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "67bb6e6613a6614c1cbcaba2",
-    "TRUTH_ARCHIVE": "262aeee477f763e119935502",
+    "WHITE_HOUSE": "060fef1163ab50b7ba1ad230",
+    "TRUTH_ARCHIVE": "540c90801dea05f946b38989",
     "OGE": "34885a64ac17f66a3396213a"
   },
   "intelligence_history": {
@@ -9471,6 +9471,681 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "060fef1163ab50b7ba1ad230": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "SPACE",
+        "CRYPTO",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:[\"bam.nr-data.net\"]},feature_flags:[\"rum_v2\"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:\"NRJS-478cab472aef3db5069\",applicationID:\"1352821653\",browserID:\"1386236136\"};;/*! For license information please see nr-loader-rum-1.324.1.min.js.LICENSE.txt */ (()=>{var e={8122(e,t,r){\"use strict\";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||\"object\"!=typeof e)return(0,n.R)(3);if(!t||\"object\"!=typeof t)return(0,n.R)(4);const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),a=0===Object.keys(r).length?e:r;for(let s in a)if(void 0!==e[s])try{if(null===e[s]){r[s]=null;continue}Array.isArray(e[s])&&Array.isArray(t[s])?r[s]=Array.from(new Set([...e[s],...t[s]])):e[s]instanceof Map||e[s]instanceof Set||e[s]instanceof Date||e[s]instanceof RegExp?r[s]=e[s]:\"object\"==typeof e[s]&&null!==t[s]&&\"object\"==typeof t[s]?r[s]=i(e[s],t[s]):r[s]=e[s]}catch(e){r[s]||(0,n.R)(1,e)}return r}catch(e){(0,n.R)(2,e)}}},2555(e,t,r){\"use strict\";r.d(t,{f:()=>s});var n=r(384),i=r(8122);const a={beacon:n.NT.beacon,errorBeacon:n.NT.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0};function s(e){try{return!!e.licenseKey&&!!e.errorBeacon&&!!e.applicationID}catch(e){return!1}}r.d(t,[\"D\",0,e=>(0,i.a)(e,a)])},7699(e,t,r){\"use strict\";var n=r(860);const i=1e6,a={[n.K7.logging]:!0,[n.K7.genericEvents]:!0,[n.K7.jserrors]:!0,[n.K7.ajax]:!0};r.d(t,[\"It\",0,i,\"KC\",0,a,\"qh\",0,\"SESSION_ERROR\",\"zd\",0,5e5])},9324(e,t,r){\"use strict\";r.d(t,[\"xv\",0,\"1.324.1\"])},981(e,t,r){\"use strict\";r.d(t,[\"R\",0,{AJAX:\"AjaxRequest\",PA:\"PageAction\",UA:\"UserAction\",BP:\"BrowserPerformance\",WS:\"WebSocket\",SPV:\"SecurityPolicyViolation\",JSE:\"JavaScriptError\",LOG:\"Log\",PVE:\"PageView\",PVT:\"PageViewTiming\",SR:\"SessionReplay\",ST:\"SessionTrace\",BI:\"BrowserInteraction\"}])},6154(e,t,r){\"use strict\";var n=r(1863);const i=\"undefined\"!=typeof window&&!!window.document,a=\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),s=i?window:\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),o=Boolean(\"hidden\"===s?.document?.visibilityState),c=\"\"+s?.location,u=/iPad|iPhone|iPod/.test(s.navigator?.userAgent),d=u&&\"undefined\"==typeof SharedWorker,l=((()=>{const e=s.navigator?.userAgent?.match(/Firefox[/\\s](\\d+\\.\\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Date.now()-(0,n.t)());r.d(t,[\"OF\",0,u,\"RI\",0,i,\"WN\",0,l,\"bv\",0,a,\"gm\",0,s,\"m\",0,c,\"mw\",0,o,\"sb\",0,d,\"zk\",0,()=>{const e=s?.performance?.getEntriesByType?.(\"navigation\")?.[0];if(e&&e.responseStart>0&&e.responseStart<s.performance.now())return e}])},3241(e,t,r){\"use strict\";r.d(t,{W:()=>i});var n=r(6154);function i(e={}){try{n.gm.dispatchEvent(new CustomEvent(\"newrelic\",{detail:e}))}catch(e){}}},1687(e,t,r){\"use strict\";r.d(t,{Ak:()=>o,Ze:()=>u,x3:()=>c});var n=r(3241),i=r(3606),a=r(860),s=r(2646);function o(e,t){if(!e)return;const r={staged:!1,priority:a.P3[t]||0};e.runtime.drainRegistry.get(t)||e.runtime.drainRegistry.set(t,r)}function c(e,t){if(!e)return;const r=e.runtime.drainRegistry;r&&(r.get(t)&&r.delete(t),l(e,t,!1),r.size&&d(e))}function u(e,t=\"feature\",r=!1){if(e){if(!e.runtime.drainRegistry.get(t)||r)return l(e,t);e.runtime.drainRegistry.get(t).staged=!0,d(e)}}function d(e){if(!e)return;const t=Array.from(e.runtime.drainRegistry);t.every(([e,t])=>t.staged)&&(t.sort((e,t)=>e[1].priority-t[1].priority),t.forEach(([t])=>{e.runtime.drainRegistry.delete(t),l(e,t)}))}function l(e,t,r=!0){if(!e)return;const a=e.ee,o=i.i.handlers;if(a&&!a.aborted&&a.backlog&&o){if((0,n.W)({type:\"lifecycle\",name:\"drain\",feature:t}),r){const e=a.backlog[t],r=o[t];if(r){for(let t=0;e&&t<e.length;++t)f(e[t],r);Object.entries(r).forEach(([e,t])=>{Object.values(t||{}).forEach(t=>{t[0]?.on&&t[0].context()instanceof s.y&&!t[0].listeners(e).includes(t[1])&&t[0].on(e,t[1])})})}}a.isolatedBacklog||delete o[t],a.backlog[t]=null,a.emit(\"drain-\"+t,[])}}function f(e,t){var r=e[1];Object.values(t[r]||{}).forEach(t=>{var r=e[0];if(t[0]===r){var n=t[1],i=e[3],a=e[2];n.apply(i,a)}})}},7836(e,t,r){\"use strict\";var n=r(384),i=r(8990),a=r(2646),s=r(5607);const o=\"nr@context:\".concat(s.W),c=function e(t,r){var n={},s={},d={},l=!1;try{l=16===r.length&&u.initializedAgents?.[r]?.runtime.isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,a){!1!==a&&(a=!0);if(c.aborted&&!i)return;t&&a&&t.emit(e,r,n);var o=g(n);m(e).forEach(e=>{e.apply(o,r)});var u=v()[s[e]];u&&u.push([f,e,r,o]);return o},get:h,listeners:m,context:g,buffer:function(e,t){const r=v();if(t=t||\"feature\",f.aborted)return;Object.entries(e||{}).forEach(([e,n])=>{s[n]=t,t in r||(r[t]=[])})},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach(e=>{delete f.backlog[e]})},isBuffering:function(e){return!!v()[s[e]]},debugId:r,backlog:l?{}:t&&\"object\"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,\"aborted\",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof a.y?e:e?(0,i.I)(e,o,()=>new a.y(o)):new a.y(o)}function p(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function h(t){return d[t]=d[t]||e(f,t)}function v(){return f.backlog}}(void 0,\"globalEE\"),u=(0,n.Zm)();u.ee||(u.ee=c),r.d(t,[\"P\",0,o,\"ee\",0,c])},2646(e,t,r){\"use strict\";r.d(t,{y:()=>n});class n{constructor(e){this.contextId=e}}},9908(e,t,r){\"use ",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:44.439351+00:00",
+      "event_id": "060fef1163ab50b7ba1ad230",
+      "action_reaction": {
+        "event_id": "060fef1163ab50b7ba1ad230",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "540c90801dea05f946b38989": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 31, 2026, 2:23 PM Original Post OHIO, I will doing a TeleRally, LIVE, at 2:45pm ET, for U.S. Senator Jon Husted, Vivek Ramaswamy for Governor, Congressman Mike Carey (OH-15), Eric Conroy for Congress (OH-01), and Derek Merrin for Congress (OH-09) — All have my Complete and Total Endorsement, and will never let you down. They LOVE the Great People of Ohio, and so do I — Answer your phones, and ENJOY! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 31, 2026, 2:28 PM Original Post TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR: – Jon Husted for U.S. Senate – Vivek Ramaswamy for Governor – Keith Faber for Attorney General – Eric Conroy for U.S. Congress (OH-01) – David Taylor for U.S. Congress (OH-02) – Jim Jordan for U.S. Congress (OH-04) – Bob Latta for U.S. Congress (OH-05) – Michael Rulli for U.S. Congress (OH-06) – Max Miller for U.S. Congress (OH-07) – Warren Davidson for U.S. Congress (OH-08) – Derek Merrin for U.S. Congress (OH-09) – Michael Turner for U.S. Congress (OH-10) – Troy Balderson for U.S. Congress (OH-12) – David Joyce for U.S. Congress (OH-14) – Mike Carey for U.S. Congress (OH-15) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/ Read full post swampthevoteusa.com OHIO: MAKE A PLAN TO VOTE! Election Day in Ohio is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 2:27 PM Original Post 🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/ohio/ swampthevoteusa.com OHIO: MAKE A PLAN TO VOTE! Election Day in Ohio is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 2:27 PM Original Post 🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/ohio/ Read full post swampthevoteusa.com OHIO: MAKE A PLAN TO VOTE! Election Day in Ohio is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 2:27 PM Original Post Jon Husted is doing an incredible job as Senator for the Great State of Ohio! He served as your Lieutenant Governor for seven years prior to becoming a very distinguished and well respected Senator. Jon is a wonderful man, has ALWAYS delivered for Ohio, and will continue doing so in the U.S. Senate. He is working hard to Create Jobs, Lower Costs, Promote Products and Services MADE IN AMERICA by our incredible Ohio Workers, Support our Great Farmers, Champion Innovation, Keep our Border SECURE, Stop Criminals, Strengthen our Military/Veterans, and Strongly Protect our always under siege Second Amendment. Jon's opponent, Sherrod Brown, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Sherrod Brown is Reckless, Radical, and Dangerous! Jon Husted has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/ Read full post swampthevoteusa.com OHIO: MAKE A PLAN TO VOTE! Election Day in Ohio is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 31, 2026, 2:27 PM Original Post It is my Great Honor to endorse America First Patriot, Vivek Ramaswamy, who is running for Governor of the Great State of Ohio, a place I love and WON BIG, THREE TIMES, in 2016, 2020, and 2024! I know Vivek well, competed against him, and he is something SPECIAL. He is Young, Strong, and Smart! Vivek is also a very good person, who truly loves our Country. His opponent, Amy Acton, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY an",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:44.928825+00:00",
+      "event_id": "540c90801dea05f946b38989",
+      "action_reaction": {
+        "event_id": "540c90801dea05f946b38989",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "a1917ecd6ea8b4a4f7bc3278": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43008",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536936573653701",
+      "title": "TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR:– Jon Husted for U.S. Senate– Vivek Ramaswamy for Governor– Keith Faber for Attorney General– Eric Conroy for U.S. Congress (OH-01)– David Taylor for U.S. Congress (OH-02)– Jim Jordan for U.S. Congress (OH-04)– Bob Latta for U.S. Congress (OH-05)– Mi",
+      "published": "Sat, 31 Oct 2026 18:28:42 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR:– Jon Husted for U.S. Senate– Vivek Ramaswamy for Governor– Keith Faber for Attorney General– Eric Conroy for U.S. Congress (OH-01)– David Taylor for U.S. Congress (OH-02)– Jim Jordan for U.S. Congress (OH-04)– Bob Latta for U.S. Congress (OH-05)– Mi RT: https://truthsocial.com/users/realDonaldTrump/statuses/117536932223796834 TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR: – Jon Husted for U.S. Senate – Vivek Ramaswamy for Governor – Keith Faber for Attorney General – Eric Conroy for U.S. Congress (OH-01) – David Taylor for U.S. Congress (OH-02) – Jim Jordan for U.S. Congress (OH-04) – Bob Latta for U.S. Congress (OH-05) – Michael Rulli for U.S. Congress (OH-06) – Max Miller for U.S. Congress (OH-07) – Warren Davidson for U.S. Congress (OH-08) – Derek Merrin for U.S. Congress (OH-09) – Michael Turner for U.S. Congress (OH-10) – Troy Balderson for U.S. Congress (OH-12) – David Joyce for U.S. Congress (OH-14) – Mike Carey for U.S. Congress (OH-15) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/ View image Quoted Donald J. Trump 🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.186248+00:00",
+      "event_id": "a1917ecd6ea8b4a4f7bc3278",
+      "action_reaction": {
+        "event_id": "a1917ecd6ea8b4a4f7bc3278",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "04ee655418ca27933ec4b89c": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43009",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536932223796834",
+      "title": "🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE",
+      "published": "Sat, 31 Oct 2026 18:27:35 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE 🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.186501+00:00",
+      "event_id": "04ee655418ca27933ec4b89c",
+      "action_reaction": {
+        "event_id": "04ee655418ca27933ec4b89c",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "698810320293fbe51eb2664c": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43010",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536931163560869",
+      "title": "Jon Husted is doing an incredible job as Senator for the Great State of Ohio! He served as your Lieutenant Governor for seven years prior to becoming a very distinguished and well respected Senator. Jon is a wonderful man, has ALWAYS delivered for Ohio, and will continue doing so in the U.S. Senate.",
+      "published": "Sat, 31 Oct 2026 18:27:19 +0000",
+      "domains": [
+        "DEFENSE"
+      ],
+      "text": "Jon Husted is doing an incredible job as Senator for the Great State of Ohio! He served as your Lieutenant Governor for seven years prior to becoming a very distinguished and well respected Senator. Jon is a wonderful man, has ALWAYS delivered for Ohio, and will continue doing so in the U.S. Senate. Jon Husted is doing an incredible job as Senator for the Great State of Ohio! He served as your Lieutenant Governor for seven years prior to becoming a very distinguished and well respected Senator. Jon is a wonderful man, has ALWAYS delivered for Ohio, and will continue doing so in the U.S. Senate. He is working hard to Create Jobs, Lower Costs, Promote Products and Services MADE IN AMERICA by our incredible Ohio Workers, Support our Great Farmers, Champion Innovation, Keep our Border SECURE, Stop Criminals, Strengthen our Military/Veterans, and Strongly Protect our always under siege Second Amendment. Jon's opponent, Sherrod Brown, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Sherrod Brown is Reckless, Radical, and Dangerous! Jon Husted has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.186705+00:00",
+      "event_id": "698810320293fbe51eb2664c",
+      "action_reaction": {
+        "event_id": "698810320293fbe51eb2664c",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "e85b151e3511d474e5097d63": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43011",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536930513150839",
+      "title": "It is my Great Honor to endorse America First Patriot, Vivek Ramaswamy, who is running for Governor of the Great State of Ohio, a place I love and WON BIG, THREE TIMES, in 2016, 2020, and 2024! I know Vivek well, competed against him, and he is something SPECIAL. He is Young, Strong, and Smart! Vive",
+      "published": "Sat, 31 Oct 2026 18:27:09 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Vivek Ramaswamy, who is running for Governor of the Great State of Ohio, a place I love and WON BIG, THREE TIMES, in 2016, 2020, and 2024! I know Vivek well, competed against him, and he is something SPECIAL. He is Young, Strong, and Smart! Vive It is my Great Honor to endorse America First Patriot, Vivek Ramaswamy, who is running for Governor of the Great State of Ohio, a place I love and WON BIG, THREE TIMES, in 2016, 2020, and 2024! I know Vivek well, competed against him, and he is something SPECIAL. He is Young, Strong, and Smart! Vivek is also a very good person, who truly loves our Country. His opponent, Amy Acton, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Amy Acton is Reckless, Radical, and Dangerous! On the other hand, as your next Governor, Vivek will fight tirelessly to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Ensure LAW AND ORDER, Advance Election Integrity, and Protect our always under siege Second Amendment. Vivek Ramaswamy has my Complete and Total Endorsement to be the next Governor of the Great State of Ohio. GET OUT AND VOTE FOR VIVEK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.186988+00:00",
+      "event_id": "e85b151e3511d474e5097d63",
+      "action_reaction": {
+        "event_id": "e85b151e3511d474e5097d63",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "8c112cd0a42b8de601b7d820": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43012",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536929437881251",
+      "title": "It is my Great Honor to endorse America First Patriot, Keith Faber, who is running to be the next Attorney General of the Incredible State of Ohio, a place I love and WON BIG in 2016, 2020, and 2024! As the Highly Respected Ohio Auditor of State, and former President of the Ohio Senate, Keith has pr",
+      "published": "Sat, 31 Oct 2026 18:26:53 +0000",
+      "domains": [
+        "DEFENSE"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Keith Faber, who is running to be the next Attorney General of the Incredible State of Ohio, a place I love and WON BIG in 2016, 2020, and 2024! As the Highly Respected Ohio Auditor of State, and former President of the Ohio Senate, Keith has pr It is my Great Honor to endorse America First Patriot, Keith Faber, who is running to be the next Attorney General of the Incredible State of Ohio, a place I love and WON BIG in 2016, 2020, and 2024! As the Highly Respected Ohio Auditor of State, and former President of the Ohio Senate, Keith has proven he has the Courage and Wisdom to deliver strong results for the incredible people of his fantastic State and Nation. His opponent, John Kulewicz, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. John Kulewicz is Reckless, Radical, and Dangerous! On the other hand, as your next Attorney General, Keith will continue working tirelessly to Ensure LAW AND ORDER, Champion our Law Enforcement and First Responders, Support our Brave Military/Veterans, Advance Election Integrity, Keep our Border SECURE, Stop Migrant Crime, Uphold our Constitution, and Defend our always under siege Second Amendment. Keith Faber has my Complete and Total Endorsement to be the next Attorney General of the Great State of Ohio. GET OUT AND VOTE FOR KEITH — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.187259+00:00",
+      "event_id": "8c112cd0a42b8de601b7d820",
+      "action_reaction": {
+        "event_id": "8c112cd0a42b8de601b7d820",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f24149c0a3f0cd5838987815": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43013",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536928870631494",
+      "title": "It is my Great Honor to endorse America First Patriot, Eric Conroy, who is running to represent the wonderful people of Ohio's 1st Congressional District! A Brave U.S. Air Force Veteran, and former Central Intelligence Agency (CIA) Officer, Eric knows the Wisdom and Courage it takes to Ensure LAW AN",
+      "published": "Sat, 31 Oct 2026 18:26:44 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Eric Conroy, who is running to represent the wonderful people of Ohio's 1st Congressional District! A Brave U.S. Air Force Veteran, and former Central Intelligence Agency (CIA) Officer, Eric knows the Wisdom and Courage it takes to Ensure LAW AN It is my Great Honor to endorse America First Patriot, Eric Conroy, who is running to represent the wonderful people of Ohio's 1st Congressional District! A Brave U.S. Air Force Veteran, and former Central Intelligence Agency (CIA) Officer, Eric knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support our Great Heroes in Law Enforcement, and Champion our Military and Veterans. His opponent, Greg Landsman, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender for Everybody. Greg Landsman is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Eric will work hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, and Defend our always under siege Second Amendment. Eric Conroy has my Complete and Total Endorsement to be the next Representative from Ohio's 1st Congressional District. GET OUT AND VOTE FOR ERIC — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.187519+00:00",
+      "event_id": "f24149c0a3f0cd5838987815",
+      "action_reaction": {
+        "event_id": "f24149c0a3f0cd5838987815",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "1b5d40349dd1be78985232bc": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43003",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536928276306293",
+      "title": "Congressman Dave Taylor is doing an incredible job representing the wonderful people of Ohio's 2nd Congressional District! A very successful Small Businessman, Dave knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Restore American Energy DOMINANCE. He is fight",
+      "published": "Sat, 31 Oct 2026 18:26:35 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Dave Taylor is doing an incredible job representing the wonderful people of Ohio's 2nd Congressional District! A very successful Small Businessman, Dave knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Restore American Energy DOMINANCE. He is fight Congressman Dave Taylor is doing an incredible job representing the wonderful people of Ohio's 2nd Congressional District! A very successful Small Businessman, Dave knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Restore American Energy DOMINANCE. He is fighting tirelessly to Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Keep our Border SECURE, Champion our Farmers and American Agriculture, Support our Brave Military/Veterans, and Defend our always under siege Second Amendment. Dave's opponent, Jen Mazzuckelli, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Jen Mazzuckelli is Reckless, Radical, and Dangerous! Dave Taylor has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAVE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.187759+00:00",
+      "event_id": "1b5d40349dd1be78985232bc",
+      "action_reaction": {
+        "event_id": "1b5d40349dd1be78985232bc",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "975e475d08cf3386bde2af1c": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43004",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536927650738881",
+      "title": "Congressman Jim Jordan is an America First Patriot who is doing an incredible job representing Ohio's 4th Congressional District! As Chairman of the House Judiciary Committee, Jim is fighting tirelessly to Protect our Country against the Marxists, Socialists, and Communists on the Radical Left. A tr",
+      "published": "Sat, 31 Oct 2026 18:26:26 +0000",
+      "domains": [
+        "ENERGY",
+        "AI_TECH"
+      ],
+      "text": "Congressman Jim Jordan is an America First Patriot who is doing an incredible job representing Ohio's 4th Congressional District! As Chairman of the House Judiciary Committee, Jim is fighting tirelessly to Protect our Country against the Marxists, Socialists, and Communists on the Radical Left. A tr Congressman Jim Jordan is an America First Patriot who is doing an incredible job representing Ohio's 4th Congressional District! As Chairman of the House Judiciary Committee, Jim is fighting tirelessly to Protect our Country against the Marxists, Socialists, and Communists on the Radical Left. A true MAGA Warrior, Jim is also relentlessly focused on helping us Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, and Defend our always under siege Second Amendment. Jim's opponent, Josh Kolasinski, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Josh Kolasinski is Reckless, Radical, and Dangerous! Jim Jordan is a very good friend, fighter, and WINNER, and has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JIM — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.188016+00:00",
+      "event_id": "975e475d08cf3386bde2af1c",
+      "action_reaction": {
+        "event_id": "975e475d08cf3386bde2af1c",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "b1f7996f2eb8b3eb5e0d3a82": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43005",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536926997970103",
+      "title": "Congressman Bob Latta is a Tremendous Champion for Ohio's 5th Congressional District! A Proven Leader, Bob has served his Community well as a Highly Respected State Legislator, Wood County Commissioner, and Attorney, prior to becoming a distinguished Congressman. In Congress, he is working hard to G",
+      "published": "Sat, 31 Oct 2026 18:26:16 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Bob Latta is a Tremendous Champion for Ohio's 5th Congressional District! A Proven Leader, Bob has served his Community well as a Highly Respected State Legislator, Wood County Commissioner, and Attorney, prior to becoming a distinguished Congressman. In Congress, he is working hard to G Congressman Bob Latta is a Tremendous Champion for Ohio's 5th Congressional District! A Proven Leader, Bob has served his Community well as a Highly Respected State Legislator, Wood County Commissioner, and Attorney, prior to becoming a distinguished Congressman. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Strengthen our Brave Military/Veterans, and Defend our always under siege Second Amendment. Bob's opponent, Brian Shaver, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Brian Shaver is Reckless, Radical, and Dangerous! Bob Latta has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR BOB — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.188256+00:00",
+      "event_id": "b1f7996f2eb8b3eb5e0d3a82",
+      "action_reaction": {
+        "event_id": "b1f7996f2eb8b3eb5e0d3a82",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c109c75561def8ea60e3b7bd": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43006",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536926379586039",
+      "title": "Congressman Mike Rulli is an America First Patriot who is doing a fantastic job representing Ohio's 6th Congressional District! A successful Businessman, Civic Leader, and State Senator, prior to becoming a respected Congressman, Mike has dedicated his life to serving his Community. In Congress, he",
+      "published": "Sat, 31 Oct 2026 18:26:06 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Mike Rulli is an America First Patriot who is doing a fantastic job representing Ohio's 6th Congressional District! A successful Businessman, Civic Leader, and State Senator, prior to becoming a respected Congressman, Mike has dedicated his life to serving his Community. In Congress, he Congressman Mike Rulli is an America First Patriot who is doing a fantastic job representing Ohio's 6th Congressional District! A successful Businessman, Civic Leader, and State Senator, prior to becoming a respected Congressman, Mike has dedicated his life to serving his Community. In Congress, he is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our now very Secure Border, SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Advance Election Integrity, and Protect our always under siege Second Amendment. Mike's opponent, Elizabeth Kirtley, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Elizabeth Kirtley is Reckless, Radical, and Dangerous! Mike Rulli has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.188489+00:00",
+      "event_id": "c109c75561def8ea60e3b7bd",
+      "action_reaction": {
+        "event_id": "c109c75561def8ea60e3b7bd",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "96ee02e3006016bcd77b6443": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43014",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536925807830483",
+      "title": "Congressman Max Miller is a fantastic Champion for the Great People of Ohio's 7th Congressional District! Max bravely served our Country in the U.S. Marine Corps and, during my First Administration, worked hard to advance our AMERICA FIRST Agenda. In Congress, Max continues to fight tirelessly to Ke",
+      "published": "Sat, 31 Oct 2026 18:25:57 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Max Miller is a fantastic Champion for the Great People of Ohio's 7th Congressional District! Max bravely served our Country in the U.S. Marine Corps and, during my First Administration, worked hard to advance our AMERICA FIRST Agenda. In Congress, Max continues to fight tirelessly to Ke Congressman Max Miller is a fantastic Champion for the Great People of Ohio's 7th Congressional District! Max bravely served our Country in the U.S. Marine Corps and, during my First Administration, worked hard to advance our AMERICA FIRST Agenda. In Congress, Max continues to fight tirelessly to Keep our Border SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Strengthen our Great Military/Veterans, Cut Taxes and Regulations, Support our Incredible Farmers, Champion American Energy DOMINANCE, and Defend our always under siege Second Amendment. Max's opponent, Brian Poindexter, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Brian Poindexter is Reckless, Radical, and Dangerous! Max Miller has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MAX — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.188726+00:00",
+      "event_id": "96ee02e3006016bcd77b6443",
+      "action_reaction": {
+        "event_id": "96ee02e3006016bcd77b6443",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "966855211a1bcd8caee1159a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43015",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536924988499960",
+      "title": "Warren Davidson is a fantastic Representative for the Great People of Ohio's 8th Congressional District! A West Point Graduate and U.S. Army Ranger, Warren knows the Wisdom and Courage that is required to Defend our Country, Support our incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH",
+      "published": "Sat, 31 Oct 2026 18:25:45 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Warren Davidson is a fantastic Representative for the Great People of Ohio's 8th Congressional District! A West Point Graduate and U.S. Army Ranger, Warren knows the Wisdom and Courage that is required to Defend our Country, Support our incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH Warren Davidson is a fantastic Representative for the Great People of Ohio's 8th Congressional District! A West Point Graduate and U.S. Army Ranger, Warren knows the Wisdom and Courage that is required to Defend our Country, Support our incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, Warren is fighting tirelessly to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Promote LAW AND ORDER, Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, and Defend our always under siege Second Amendment. Warren's opponent, Vanessa Enoch, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Vanessa Enoch is Reckless, Radical, and Dangerous! Warren Davidson has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR WARREN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.188995+00:00",
+      "event_id": "966855211a1bcd8caee1159a",
+      "action_reaction": {
+        "event_id": "966855211a1bcd8caee1159a",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "281f3b9824253d3a93219d8e": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43001",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536920928719302",
+      "title": "Congressman Dave Joyce is doing an incredible job representing the wonderful people of Ohio's 14th Congressional District! A former Criminal Prosecutor, Dave strongly supports our incredible Law Enforcement, Military, and Veterans. He knows the Wisdom and Courage required to ensure LAW AND ORDER, an",
+      "published": "Sat, 31 Oct 2026 18:24:43 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Dave Joyce is doing an incredible job representing the wonderful people of Ohio's 14th Congressional District! A former Criminal Prosecutor, Dave strongly supports our incredible Law Enforcement, Military, and Veterans. He knows the Wisdom and Courage required to ensure LAW AND ORDER, an Congressman Dave Joyce is doing an incredible job representing the wonderful people of Ohio's 14th Congressional District! A former Criminal Prosecutor, Dave strongly supports our incredible Law Enforcement, Military, and Veterans. He knows the Wisdom and Courage required to ensure LAW AND ORDER, and protect our Country — He is a true America First Patriot! In Congress, Dave is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, and Defend our always under siege Second Amendment. Dave's opponent, Maria Jukic, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Maria Jukic is Reckless, Radical, and Dangerous! Dave Joyce has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAVE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.189225+00:00",
+      "event_id": "281f3b9824253d3a93219d8e",
+      "action_reaction": {
+        "event_id": "281f3b9824253d3a93219d8e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "fd7e5d5942462ec584430be5": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43002",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536920218712868",
+      "title": "Congressman Mike Carey is a Fantastic Advocate for Ohio's 15th Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN TH",
+      "published": "Sat, 31 Oct 2026 18:24:32 +0000",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "DEFENSE"
+      ],
+      "text": "Congressman Mike Carey is a Fantastic Advocate for Ohio's 15th Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN TH Congressman Mike Carey is a Fantastic Advocate for Ohio's 15th Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., and Champion our Nation's Golden Age. A Brave U.S. Army Veteran, Mike knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE THROUGH STRENGTH. He is also working hard to Keep our now very Secure Border, SECURE, Stop Migrant Crime, and Protect our always under siege Second Amendment. Mike's opponent, Don Leonard, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Don Leonard is Reckless, Radical, and Dangerous! Mike Carey has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.189459+00:00",
+      "event_id": "fd7e5d5942462ec584430be5",
+      "action_reaction": {
+        "event_id": "fd7e5d5942462ec584430be5",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ff72068007a3fa89eebb84ff": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42992",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536884257691019",
+      "title": "Congressman Mike Kelly, who has been with us from the very beginning, is a Tremendous Champion of Pennsylvania's 16th Congressional District! As a Senior Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regu",
+      "published": "Sat, 31 Oct 2026 18:15:23 +0000",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "DEFENSE"
+      ],
+      "text": "Congressman Mike Kelly, who has been with us from the very beginning, is a Tremendous Champion of Pennsylvania's 16th Congressional District! As a Senior Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regu Congressman Mike Kelly, who has been with us from the very beginning, is a Tremendous Champion of Pennsylvania's 16th Congressional District! As a Senior Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., and Champion our Nation's Golden Age. He is fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Defend our always under siege Second Amendment, and Advocate for the Working Men and Women of Pennsylvania. Mike's opponent, Justin Wagner, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Justin Wagner is Reckless, Radical, and Dangerous! Mike Kelly has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.189892+00:00",
+      "event_id": "ff72068007a3fa89eebb84ff",
+      "action_reaction": {
+        "event_id": "ff72068007a3fa89eebb84ff",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "47eb4d373b20569bf1866832": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42993",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536883409549082",
+      "title": "Congressman Glenn “GT” Thompson is a Tremendous Champion for Pennsylvania's 15th Congressional District! As Chairman of the House Agriculture Committee, GT is a strong and effective voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, he is fighting tirelessly to Grow o",
+      "published": "Sat, 31 Oct 2026 18:15:11 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "Congressman Glenn “GT” Thompson is a Tremendous Champion for Pennsylvania's 15th Congressional District! As Chairman of the House Agriculture Committee, GT is a strong and effective voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, he is fighting tirelessly to Grow o Congressman Glenn “GT” Thompson is a Tremendous Champion for Pennsylvania's 15th Congressional District! As Chairman of the House Agriculture Committee, GT is a strong and effective voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, he is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment. GT's opponent, Ray Bilger, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Ray Bilger is Reckless, Radical, and Dangerous! GT Thompson has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR “GT” — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.190130+00:00",
+      "event_id": "47eb4d373b20569bf1866832",
+      "action_reaction": {
+        "event_id": "47eb4d373b20569bf1866832",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "164c90869375b4e8618d2755": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42994",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536882773810242",
+      "title": "Congressman Guy Reschenthaler is doing an incredible job representing Pennsylvania's 14th Congressional District! As the Chief Deputy Whip, Guy is working closely with me to Advance our America First Agenda. He is fighting hard to Keep our Border SECURE, Stop Migrant Crime, Grow the Economy, Cut Tax",
+      "published": "Sat, 31 Oct 2026 18:15:01 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Guy Reschenthaler is doing an incredible job representing Pennsylvania's 14th Congressional District! As the Chief Deputy Whip, Guy is working closely with me to Advance our America First Agenda. He is fighting hard to Keep our Border SECURE, Stop Migrant Crime, Grow the Economy, Cut Tax Congressman Guy Reschenthaler is doing an incredible job representing Pennsylvania's 14th Congressional District! As the Chief Deputy Whip, Guy is working closely with me to Advance our America First Agenda. He is fighting hard to Keep our Border SECURE, Stop Migrant Crime, Grow the Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Support our Military/Veterans, Promote MADE IN THE U.S.A., and Defend our always under siege Second Amendment. Guy's opponent, Alan Bradstock, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Alan Bradstock is Reckless, Radical, and Dangerous! Guy Reschenthaler has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR GUY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.190357+00:00",
+      "event_id": "164c90869375b4e8618d2755",
+      "action_reaction": {
+        "event_id": "164c90869375b4e8618d2755",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "269b1ec8b49c5a5d7ab1ba53": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42995",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536881089239372",
+      "title": "Congressman John Joyce is a fantastic Champion for Pennsylvania's 13th Congressional District! John is fighting hard in Congress to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Unleash American Energy DOMINANCE, Support our Military/Veterans, Defend our always under siege Second Ame",
+      "published": "Sat, 31 Oct 2026 18:14:35 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman John Joyce is a fantastic Champion for Pennsylvania's 13th Congressional District! John is fighting hard in Congress to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Unleash American Energy DOMINANCE, Support our Military/Veterans, Defend our always under siege Second Ame Congressman John Joyce is a fantastic Champion for Pennsylvania's 13th Congressional District! John is fighting hard in Congress to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Unleash American Energy DOMINANCE, Support our Military/Veterans, Defend our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. John's opponent, Beth Farnham, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Beth Farnham is Reckless, Radical, and Dangerous! John Joyce has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JOHN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.190569+00:00",
+      "event_id": "269b1ec8b49c5a5d7ab1ba53",
+      "action_reaction": {
+        "event_id": "269b1ec8b49c5a5d7ab1ba53",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "bd4a9bb6acc0a6df38a6057e": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42997",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536880264668820",
+      "title": "Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania's 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirel",
+      "published": "Sat, 31 Oct 2026 18:14:23 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania's 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirel Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania's 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirelessly to Champion our Amazing Farmers and Ranchers, Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Advocate for our Great Military/Veterans, and Defend our always under siege Second Amendment. Lloyd's opponent, Nancy Mannion, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Nancy Mannion is Reckless, Radical, and Dangerous! Lloyd Smucker has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR LLOYD — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.190788+00:00",
+      "event_id": "bd4a9bb6acc0a6df38a6057e",
+      "action_reaction": {
+        "event_id": "bd4a9bb6acc0a6df38a6057e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "8f41f3b094a0d9005b9f240d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42998",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536879575938742",
+      "title": "Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania's 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON T",
+      "published": "Sat, 31 Oct 2026 18:14:12 +0000",
+      "domains": [
+        "DEFENSE"
+      ],
+      "text": "Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania's 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON T Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania's 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Janelle Stelson is Reckless, Radical, and Dangerous! On the other hand, in Congress, Scott is working tirelessly with me to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military and Veterans, Uphold the Rule of Law, Protect our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Scott Perry has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR SCOTT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.191043+00:00",
+      "event_id": "8f41f3b094a0d9005b9f240d",
+      "action_reaction": {
+        "event_id": "8f41f3b094a0d9005b9f240d",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "63cbf88b40b6fa4d0eed5921": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42999",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536878911861398",
+      "title": "Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania's 9th Congressional District! A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “loa",
+      "published": "Sat, 31 Oct 2026 18:14:02 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania's 9th Congressional District! A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “loa Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania's 9th Congressional District! A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “loaded up” with accolades and wins. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Dan's opponent, Rachel Wallace, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Rachel Wallace is Reckless, Radical, and Dangerous! Dan Meuser has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.191263+00:00",
+      "event_id": "63cbf88b40b6fa4d0eed5921",
+      "action_reaction": {
+        "event_id": "63cbf88b40b6fa4d0eed5921",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "526e0f70800409062be67864": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42989",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536877502975725",
+      "title": "Congressman Rob Bresnahan is a terrific Representative of Pennsylvania's 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop",
+      "published": "Sat, 31 Oct 2026 18:13:40 +0000",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "Congressman Rob Bresnahan is a terrific Representative of Pennsylvania's 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop Congressman Rob Bresnahan is a terrific Representative of Pennsylvania's 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military, Support our Veterans, and Protect our always under siege Second Amendment. Rob's opponent, Paige Cognetti, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Paige Cognetti is Reckless, Radical, and Dangerous! Rob Bresnahan has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR ROB — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.191485+00:00",
+      "event_id": "526e0f70800409062be67864",
+      "action_reaction": {
+        "event_id": "526e0f70800409062be67864",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c180c4cefdac44d81ac13e77": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42990",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536876652936988",
+      "title": "Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania's 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migran",
+      "published": "Sat, 31 Oct 2026 18:13:27 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania's 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migran Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania's 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migrant Crime, Support our Incredible Military/Vets, Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Ryan's opponent, Bob Brooks, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Bob Brooks is Reckless, Radical, and Dangerous! Ryan Mackenzie has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR RYAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.191704+00:00",
+      "event_id": "c180c4cefdac44d81ac13e77",
+      "action_reaction": {
+        "event_id": "c180c4cefdac44d81ac13e77",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "41ad8b70d879b62e845632bd": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42991",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536875845240708",
+      "title": "It is my Great Honor to endorse Highly Respected and very popular State Treasurer, Stacy Garrity, who is running to be the next Governor of the GREAT Commonwealth of Pennsylvania, a very special place to me in that we had a LANDSLIDE Presidential Election Win on November 5, 2024! A successful Busine",
+      "published": "Sat, 31 Oct 2026 18:13:15 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "It is my Great Honor to endorse Highly Respected and very popular State Treasurer, Stacy Garrity, who is running to be the next Governor of the GREAT Commonwealth of Pennsylvania, a very special place to me in that we had a LANDSLIDE Presidential Election Win on November 5, 2024! A successful Busine It is my Great Honor to endorse Highly Respected and very popular State Treasurer, Stacy Garrity, who is running to be the next Governor of the GREAT Commonwealth of Pennsylvania, a very special place to me in that we had a LANDSLIDE Presidential Election Win on November 5, 2024! A successful Businesswoman, retired U.S. Army Reserve Colonel, and now, as State Treasurer, Stacy is a true America First Patriot, who has been with me from the beginning. Her opponent, Josh Shapiro, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Josh Shapiro is Reckless, Radical, and Dangerous! On the other hand, as your next Governor, Stacy will work tirelessly to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Strengthen our Military/Veterans, Keep our Border SECURE, Ensure LAW AND ORDER, Safeguard our Elections, and Defend our always under siege Second Amendment. Stacy Garrity has my Complete and Total Endorsement to be the next Governor of the Great Commonwealth of Pennsylvania. GET OUT AND VOTE FOR STACY — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.191975+00:00",
+      "event_id": "41ad8b70d879b62e845632bd",
+      "action_reaction": {
+        "event_id": "41ad8b70d879b62e845632bd",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "81de61bd180dffce2beeee80": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42986",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536719518293568",
+      "title": "So, in Los Angeles, our Acting U.S. Attorney for the Central District of California (and various other titles which were forced upon us by the ridiculous Blue Slip SCAM where nobody can get confirmed without the Dumocrats’ approval — which is IMPOSSIBLE to get in that they are all Trump Deranged Lun",
+      "published": "Sat, 31 Oct 2026 17:33:30 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "So, in Los Angeles, our Acting U.S. Attorney for the Central District of California (and various other titles which were forced upon us by the ridiculous Blue Slip SCAM where nobody can get confirmed without the Dumocrats’ approval — which is IMPOSSIBLE to get in that they are all Trump Deranged Lun So, in Los Angeles, our Acting U.S. Attorney for the Central District of California (and various other titles which were forced upon us by the ridiculous Blue Slip SCAM where nobody can get confirmed without the Dumocrats’ approval — which is IMPOSSIBLE to get in that they are all Trump Deranged Lunatics!), Bill Essayli, has done a fantastic job. He is one of the best, EVER! He caught a massive number of Illegal Votes, 20,000, but potentially Hundreds of Thousands, and maybe even Millions, and the Court has just ruled against it. Why would they reject fixing Election Fraud? That’s like, in the 2020 Rigged and Stolen Election, when we had a great case, but the Supreme Court would not hear it because they said I, the President of the United States of America, had NO STANDING to bring such a case. Think of it, the President, on a Federal Election, has NO STANDING over himself, and so it goes. We are going to continue our yearslong fight on Election Integrity. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-10-31T19:21:45.192376+00:00",
+      "event_id": "81de61bd180dffce2beeee80",
+      "action_reaction": {
+        "event_id": "81de61bd180dffce2beeee80",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -9723,9 +10398,34 @@
     "813950b8c9c14ac1d4938f4d": "2026-10-31T08:58:05.681861+00:00",
     "e01a282d9ff2ff7fbb5927c2": "2026-10-31T08:58:05.682005+00:00",
     "45744815fb540bbb2fd10b0b": "2026-10-31T08:58:05.682167+00:00",
-    "5eacd70379a06cee32503c31": "2026-10-31T08:58:05.682355+00:00"
+    "5eacd70379a06cee32503c31": "2026-10-31T08:58:05.682355+00:00",
+    "a1917ecd6ea8b4a4f7bc3278": "2026-10-31T19:21:45.186232+00:00",
+    "04ee655418ca27933ec4b89c": "2026-10-31T19:21:45.186494+00:00",
+    "698810320293fbe51eb2664c": "2026-10-31T19:21:45.186700+00:00",
+    "e85b151e3511d474e5097d63": "2026-10-31T19:21:45.186982+00:00",
+    "8c112cd0a42b8de601b7d820": "2026-10-31T19:21:45.187254+00:00",
+    "f24149c0a3f0cd5838987815": "2026-10-31T19:21:45.187514+00:00",
+    "1b5d40349dd1be78985232bc": "2026-10-31T19:21:45.187755+00:00",
+    "975e475d08cf3386bde2af1c": "2026-10-31T19:21:45.188011+00:00",
+    "b1f7996f2eb8b3eb5e0d3a82": "2026-10-31T19:21:45.188251+00:00",
+    "c109c75561def8ea60e3b7bd": "2026-10-31T19:21:45.188485+00:00",
+    "96ee02e3006016bcd77b6443": "2026-10-31T19:21:45.188722+00:00",
+    "966855211a1bcd8caee1159a": "2026-10-31T19:21:45.188990+00:00",
+    "281f3b9824253d3a93219d8e": "2026-10-31T19:21:45.189221+00:00",
+    "fd7e5d5942462ec584430be5": "2026-10-31T19:21:45.189454+00:00",
+    "ff72068007a3fa89eebb84ff": "2026-10-31T19:21:45.189886+00:00",
+    "47eb4d373b20569bf1866832": "2026-10-31T19:21:45.190126+00:00",
+    "164c90869375b4e8618d2755": "2026-10-31T19:21:45.190353+00:00",
+    "269b1ec8b49c5a5d7ab1ba53": "2026-10-31T19:21:45.190565+00:00",
+    "bd4a9bb6acc0a6df38a6057e": "2026-10-31T19:21:45.190784+00:00",
+    "8f41f3b094a0d9005b9f240d": "2026-10-31T19:21:45.191038+00:00",
+    "63cbf88b40b6fa4d0eed5921": "2026-10-31T19:21:45.191259+00:00",
+    "526e0f70800409062be67864": "2026-10-31T19:21:45.191481+00:00",
+    "c180c4cefdac44d81ac13e77": "2026-10-31T19:21:45.191700+00:00",
+    "41ad8b70d879b62e845632bd": "2026-10-31T19:21:45.191969+00:00",
+    "81de61bd180dffce2beeee80": "2026-10-31T19:21:45.192371+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-10-31T15:15:05.536217+00:00"
+    "https://www.trumpstruth.org/feed": "2026-10-31T19:21:45.198802+00:00"
   }
 }
