@@ -130,6 +130,63 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
         return None
 
 
+
+SILV_SPOT_KEYS = {
+    "GOLD": "gold", "ORO": "gold",
+    "SILVER": "silver", "ARGENTO": "silver",
+    "COPPER": "copper", "RAME": "copper",
+}
+
+
+def fetch_silv_reference(instrument: str, timeout: int = 6) -> dict[str, Any] | None:
+    """Free keyless spot reference; never substitutes a futures execution quote."""
+    label = str(instrument or "").upper().split("(", 1)[0].strip()
+    key = SILV_SPOT_KEYS.get(label)
+    if not key:
+        return None
+    request = urllib.request.Request(
+        "https://data.silv.app/commodities.json",
+        headers={"User-Agent": "Mozilla/5.0 SputnikMultiSource/1.0"},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        item = (payload.get("commodities") or {}).get(key) or {}
+        price = _number(item.get("price"))
+        stamp = item.get("last_updated") or item.get("timestamp")
+        if price is None or not stamp:
+            return None
+        reference = {
+            "price": price, "timestamp": stamp,
+            "provider": "SILV DATA spot reference",
+            "symbol": key.upper(), "unit": item.get("unit"),
+        }
+        return reference if _quote_is_fresh(reference, 30) else None
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
+def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, Any]:
+    """Add spot/futures comparison metadata; keep Yahoo futures as execution basis."""
+    reference = fetch_silv_reference(instrument)
+    if not reference:
+        quote["crosscheck_provider"] = "SILV DATA"
+        quote["crosscheck_status"] = "UNAVAILABLE_OR_STALE"
+        return quote
+    price = _number(quote.get("price"))
+    ref_price = _number(reference.get("price"))
+    quote["crosscheck_provider"] = reference["provider"]
+    quote["crosscheck_price"] = ref_price
+    quote["crosscheck_timestamp"] = reference["timestamp"]
+    quote["crosscheck_unit"] = reference.get("unit")
+    if price and ref_price:
+        quote["crosscheck_spread_pct"] = round(abs(price - ref_price) / ref_price * 100, 3)
+        quote["crosscheck_status"] = "SPOT_VS_FUTURES_BASIS_CHECK"
+    else:
+        quote["crosscheck_status"] = "UNCOMPARABLE"
+    return quote
+
+
 def build_cfd_signal(
     recommendation: dict[str, Any] | None,
     quotes: dict[str, Any] | None = None,
@@ -180,6 +237,8 @@ def build_cfd_signal(
     if not quote or not _quote_is_fresh(quote):
         # Pull a fresh public 1m futures candle and calculate ATR automatically.
         quote = fetch_yahoo_quote(instrument)
+    if quote and _quote_is_fresh(quote):
+        quote = attach_silv_crosscheck(quote, instrument)
     if not quote or not _quote_is_fresh(quote):
         base["status"] = "WAIT"
         base["reason"] += " | Quotazione live/fresca non disponibile anche dal fallback Yahoo Finance."
@@ -215,6 +274,10 @@ def build_cfd_signal(
         "quote_time": quote.get("timestamp") or quote.get("updated_at"),
         "quote_provider": quote.get("provider") or "state/provider",
         "quote_symbol": quote.get("symbol") or instrument,
+        "crosscheck_provider": quote.get("crosscheck_provider"),
+        "crosscheck_status": quote.get("crosscheck_status"),
+        "crosscheck_price": quote.get("crosscheck_price"),
+        "crosscheck_spread_pct": quote.get("crosscheck_spread_pct"),
     })
     return base
 
