@@ -64,7 +64,7 @@ _NEGATION_PATTERN = re.compile(
     re.I,
 )
 _CONTRAST_PATTERN = re.compile(
-    r"[.;!?]|\b(?:but|however|although|yet|nevertheless)\b",
+    r"[.;!?,]|\b(?:but|however|although|yet|nevertheless)\b",
     re.I,
 )
 
