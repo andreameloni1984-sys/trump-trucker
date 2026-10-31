@@ -241,7 +241,7 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
     for finding in findings:
         if (
             finding.get("evidence") != "PUBLIC_RSS_ITEM"
-            or not finding.get("event_id")
+            or not str(finding.get("event_id") or "").strip()
             or not finding.get("url")
             or not finding.get("published")
         ):
