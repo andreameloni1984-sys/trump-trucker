@@ -40,7 +40,8 @@ _EARLY_RULES = (
         r"crude exports? disrupted|oil production cut)\b", re.I),
      "Possibile restringimento dell'offerta petrolifera."),
     ("BRENT", "SHORT", re.compile(
-        r"\b(ceasefire agreement|peace deal|hormuz reopened|"
+        r"\b((ceasefire|peace (agreement|deal)).{0,50}(iran|hormuz|oil|shipping|energy)|"
+        r"(iran|hormuz|oil|shipping|energy).{0,50}(ceasefire|peace (agreement|deal))|hormuz reopened|"
         r"strait of hormuz.{0,25}(reopens?|reopened|reopening|open again)|"
         r"hormuz.{0,25}(reopens?|reopened|reopening|open again)|"
         r"shipping.{0,20}(restored|resumes|resumed|back to normal)|"
@@ -49,7 +50,8 @@ _EARLY_RULES = (
         r"iran.{0,40}(agreement|deal|settlement))\b", re.I),
      "Possibile riduzione del premio geopolitico e dei rischi sulle forniture."),
     ("WTI", "SHORT", re.compile(
-        r"\b(ceasefire agreement|peace deal|hormuz reopened|shipping restored|"
+        r"\b((ceasefire|peace (agreement|deal)).{0,50}(iran|hormuz|oil|shipping|energy)|"
+        r"(iran|hormuz|oil|shipping|energy).{0,50}(ceasefire|peace (agreement|deal))|hormuz reopened|shipping restored|"
         r"oil exports? resume|sanctions lifted.{0,30}oil|"
         r"iran.{0,40}(agreement|deal|settlement))\b", re.I),
      "Possibile riduzione del premio geopolitico e dei rischi sulle forniture."),
