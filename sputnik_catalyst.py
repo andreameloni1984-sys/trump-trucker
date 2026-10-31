@@ -63,10 +63,10 @@ PRIMARY_SOURCES = {"WHITE_HOUSE", "OGE", "SEC"}
 # must not create commodity candidates by themselves.
 _ENERGY_MARKET_CONTEXT = re.compile(
     r"\b(?:crude(?:\s+oil)?|petroleum|wti|brent|opec|barrels?|bpd|"
-    r"oil\s+(?:price|prices|production|output|exports?|supply|shipments?|flows?|embargo|sanctions|tanker|pipeline|refinery)|"
+    r"oil\s+(?:price|prices|production|output|exports?|supply|shipments?|flows?|embargo|sanctions|tanker|vessel|pipeline|refinery)|"
     r"(?:gasoline|diesel|heating\s+oil)\s+(?:price|prices|supply|exports?|production)|"
-    r"(?:strait of hormuz|hormuz).{0,60}(?:oil|crude|tanker|shipping|transit|reopen(?:ed|ing)?|clos(?:ed|ure)|block(?:ed|ade)|attack|seizure)|"
-    r"(?:oil|crude|tanker|shipping|transit|reopen(?:ed|ing)?|clos(?:ed|ure)|block(?:ed|ade)|attack|seizure).{0,60}(?:strait of hormuz|hormuz))\b",
+    r"(?:strait of hormuz|hormuz).{0,60}(?:oil|crude|tanker|vessel|shipping|transit|reopen(?:ed|ing)?|clos(?:e|ed|ure|ing)|block(?:ed|ade)|attack|seizure|mine(?:d|s)?)|"
+    r"(?:oil|crude|tanker|vessel|shipping|transit|reopen(?:ed|ing)?|clos(?:e|ed|ure|ing)|block(?:ed|ade)|attack|seizure|mine(?:d|s)?).{0,60}(?:strait of hormuz|hormuz))\b",
     re.I,
 )
 
