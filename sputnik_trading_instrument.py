@@ -7,6 +7,9 @@ No prices are invented and no orders are placed.
 from __future__ import annotations
 
 import re
+import json
+import urllib.parse
+import urllib.request
 from typing import Any
 
 from sputnik_catalyst import catalyst_watchlist, directional_news_candidates, non_negated_pattern_matches
@@ -189,7 +192,7 @@ def _early_us_crude_inventory_direction(
     candidates.sort(key=lambda item: item["published"], reverse=True)
     return candidates[0]
 
-def recommend_trading_instrument(
+def _recommend_trading_instrument_from_news(
     findings: list[dict[str, Any]],
     limit: int = 1,
 ) -> dict[str, Any] | None:
@@ -330,6 +333,139 @@ def recommend_trading_instrument(
     }
 
 
+
+def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] | None:
+    """Infer an independent short-term market direction from Yahoo 5m candles.
+
+    The technical direction is deliberately separate from political/news bias.
+    It requires enough fresh candles and agreement between EMA structure and
+    recent swing structure; otherwise it returns None rather than guessing.
+    """
+    label = str(instrument or "").upper().split("(", 1)[0].strip()
+    symbols = {
+        "GOLD": "GC=F", "ORO": "GC=F", "SILVER": "SI=F", "ARGENTO": "SI=F",
+        "BRENT": "BZ=F", "WTI": "CL=F", "PETROLIO WTI": "CL=F",
+        "COPPER": "HG=F", "RAME": "HG=F", "NATURAL_GAS": "NG=F",
+        "WHEAT": "ZW=F", "GRANO": "ZW=F", "CORN": "ZC=F", "MAIS": "ZC=F",
+        "SOYBEAN": "ZS=F", "SOIA": "ZS=F",
+    }
+    symbol = symbols.get(label)
+    if not symbol:
+        return None
+    url = "https://query1.finance.yahoo.com/v8/finance/chart/" + urllib.parse.quote(symbol, safe="=")
+    url += "?range=5d&interval=5m&includePrePost=true"
+    request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 SputnikTechnical/1.0"})
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        result = payload["chart"]["result"][0]
+        stamps = result.get("timestamp") or []
+        quote = result["indicators"]["quote"][0]
+        closes = [
+            float(value) for value in (quote.get("close") or [])
+            if value is not None and float(value) > 0
+        ]
+        if len(closes) < 60 or len(stamps) < 60:
+            return None
+
+        def ema(values: list[float], period: int) -> float:
+            alpha = 2.0 / (period + 1)
+            current = values[0]
+            for value in values[1:]:
+                current = alpha * value + (1 - alpha) * current
+            return current
+
+        recent = closes[-60:]
+        ema20 = ema(recent[-40:], 20)
+        ema50 = ema(recent, 50)
+        prior_ema20 = ema(recent[-50:-10], 20)
+        last = recent[-1]
+        # Compare the last two 10-candle blocks as a simple swing proxy.
+        first_block = recent[-30:-15]
+        second_block = recent[-15:]
+        lower_structure = max(second_block) < max(first_block) and min(second_block) < min(first_block)
+        higher_structure = max(second_block) > max(first_block) and min(second_block) > min(first_block)
+
+        bearish = last < ema20 < ema50 and ema20 < prior_ema20 and lower_structure
+        bullish = last > ema20 > ema50 and ema20 > prior_ema20 and higher_structure
+        if bearish:
+            direction, score = "SHORT", 78.0
+            reason = "Prezzo sotto EMA20/EMA50, EMA20 inclinata al ribasso e struttura con massimi/minimi decrescenti."
+        elif bullish:
+            direction, score = "LONG", 78.0
+            reason = "Prezzo sopra EMA20/EMA50, EMA20 inclinata al rialzo e struttura con massimi/minimi crescenti."
+        else:
+            return {
+                "bias": "NEUTRAL", "score": 45.0,
+                "reason": "Struttura tecnica mista: EMA e swing non concordano.",
+                "price": last, "ema20": ema20, "ema50": ema50,
+                "timeframe": "5m", "candles": len(recent),
+            }
+        return {
+            "bias": direction, "score": score, "reason": reason,
+            "price": last, "ema20": ema20, "ema50": ema50,
+            "timeframe": "5m", "candles": len(recent),
+            "quote_timestamp": int(stamps[-1]),
+        }
+    except (OSError, ValueError, KeyError, IndexError, TypeError, urllib.error.URLError):
+        return None
+
+
+def recommend_trading_instrument(
+    findings: list[dict[str, Any]],
+    limit: int = 1,
+) -> dict[str, Any] | None:
+    """Use price structure for direction; use verified US news as catalyst context."""
+    rec = _recommend_trading_instrument_from_news(findings, limit=limit)
+    if not rec:
+        return None
+    technical = _technical_market_bias(str(rec.get("instrument") or ""))
+    if not technical:
+        rec["technical_bias"] = "UNAVAILABLE"
+        rec["technical_reason"] = "Dati tecnici 5m insufficienti o non aggiornati."
+        return rec
+
+    news_bias = str(rec.get("bias") or "NEUTRAL").upper()
+    rec["catalyst_bias"] = news_bias
+    rec["technical_bias"] = technical["bias"]
+    rec["technical_score"] = technical["score"]
+    rec["technical_reason"] = technical["reason"]
+    rec["technical_price"] = technical.get("price")
+    rec["technical_ema20"] = technical.get("ema20")
+    rec["technical_ema50"] = technical.get("ema50")
+    rec["technical_timeframe"] = technical.get("timeframe", "5m")
+    rec["technical_quote_timestamp"] = technical.get("quote_timestamp")
+
+    if technical["bias"] in {"LONG", "SHORT"}:
+        rec["bias"] = technical["bias"]
+        rec["status"] = "TECHNICAL_DIRECTIONAL_BIAS"
+        if news_bias in {"LONG", "SHORT"} and news_bias != technical["bias"]:
+            rec["catalyst_alignment"] = "CONTRASTS"
+            rec["reason"] = "Direzione tecnica " + technical["bias"] + "; catalizzatore/notizie suggeriscono " + news_bias + " e quindi contrastano il movimento."
+        elif news_bias == technical["bias"]:
+            rec["catalyst_alignment"] = "ALIGNS"
+            rec["reason"] = "Direzione tecnica e catalizzatore concordano su " + technical["bias"] + "."
+        else:
+            rec["catalyst_alignment"] = "NO_DIRECTIONAL_NEWS"
+            rec["reason"] = "Direzione tecnica " + technical["bias"] + "; nessun catalizzatore USA direzionale verificato."
+        rec["alternative"] = (
+            "Un recupero sopra EMA20/EMA50 e il ritorno a massimi/minimi crescenti può invalidare lo SHORT."
+            if technical["bias"] == "SHORT" else
+            "Una perdita di EMA20/EMA50 e il ritorno a massimi/minimi decrescenti può invalidare il LONG."
+        )
+        rec["invalidation"] = (
+            "Chiusure 5m stabili sopra EMA50 e inversione della struttura dei massimi/minimi."
+            if technical["bias"] == "SHORT" else
+            "Chiusure 5m stabili sotto EMA50 e inversione della struttura dei massimi/minimi."
+        )
+    else:
+        rec["bias"] = "NEUTRAL"
+        rec["status"] = "WATCH_NEUTRAL"
+        rec["reason"] = "Direzione tecnica non dimostrata: " + technical["reason"]
+        rec["catalyst_alignment"] = "NOT_CONFIRMED"
+    return rec
+
+
 def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
     """Telegram-ready analyst brief; never fabricates entry/SL/targets."""
     if not rec:
@@ -345,6 +481,10 @@ def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
         f"🎯 STRUMENTO: {rec.get('instrument', 'N/D')}",
         f"{icon} BIAS PRELIMINARE: {bias}",
         f"📊 PRIORITÀ CATALIZZATORE: {float(rec.get('score') or 0):.0f}/100",
+    ]
+    if rec.get("technical_bias"):
+        lines.extend([f"📈 DIREZIONE TECNICA: {rec.get('technical_bias')} ({rec.get('technical_timeframe', '5m')})", f"🧠 LETTURA PREZZO: {rec.get('technical_reason', '')}", f"📰 ALLINEAMENTO NOTIZIE: {rec.get('catalyst_alignment', 'N/D')}"])
+    lines.extend([
         f"📌 TESI: {rec.get('reason', 'Nessuna tesi disponibile.')}",
     ]
     if rec.get("title"):
