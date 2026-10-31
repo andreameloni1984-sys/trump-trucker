@@ -98,17 +98,17 @@ class YahooQuoteFallbackTests(unittest.TestCase):
 
     def test_yahoo_fallback_maps_all_supported_commodity_futures(self):
         expected = {
-            "GOLD": "GC=F",
-            "SILVER": "SI=F",
-            "COPPER": "HG=F",
-            "WTI": "CL=F",
-            "BRENT": "BZ=F",
-            "NATURAL_GAS": "NG=F",
-            "WHEAT": "ZW=F",
-            "CORN": "ZC=F",
-            "SOYBEAN": "ZS=F",
+            "GOLD": ("GC=F", "troy_oz"),
+            "SILVER": ("SI=F", "troy_oz"),
+            "COPPER": ("HG=F", "pound"),
+            "WTI": ("CL=F", "barrel"),
+            "BRENT": ("BZ=F", "barrel"),
+            "NATURAL_GAS": ("NG=F", "MMBtu"),
+            "WHEAT": ("ZW=F", "bushel"),
+            "CORN": ("ZC=F", "bushel"),
+            "SOYBEAN": ("ZS=F", "bushel"),
         }
-        for instrument, symbol in expected.items():
+        for instrument, (symbol, unit) in expected.items():
             with self.subTest(instrument=instrument):
                 with patch(
                     "sputnik_cfd.urllib.request.urlopen",
@@ -117,6 +117,13 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                     quote = fetch_yahoo_quote(instrument)
                 self.assertIsNotNone(quote)
                 self.assertEqual(quote["symbol"], symbol)
+                self.assertEqual(quote["currency"], "USD")
+                self.assertEqual(quote["unit"], unit)
+                self.assertEqual(quote["market_type"], "FUTURES_CONTINUOUS")
+                self.assertIn("exact expiry not exposed", quote["contract_description"])
+                self.assertIsNone(quote["bid"])
+                self.assertIsNone(quote["ask"])
+                self.assertIsNotNone(quote["age_seconds"])
                 self.assertEqual(urlopen.call_args.kwargs["timeout"], 8)
 
     def test_yahoo_fallback_calculates_atr_from_fourteen_true_ranges(self):
