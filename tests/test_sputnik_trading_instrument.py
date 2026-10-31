@@ -48,7 +48,7 @@ class EarlyBrentCatalystTests(unittest.TestCase):
 
     def test_early_brent_bias_still_requires_dated_url_backed_rss_item(self):
         base = _finding("Oil tanker near Saudi Arabia was struck")
-        for missing_field in ("url", "published"):
+        for missing_field in ("url", "published", "event_id"):
             with self.subTest(missing_field=missing_field):
                 item = dict(base)
                 item.pop(missing_field)
@@ -57,6 +57,21 @@ class EarlyBrentCatalystTests(unittest.TestCase):
                 self.assertIsNotNone(recommendation)
                 self.assertEqual(recommendation["bias"], "NEUTRAL")
 
+
+    def test_blank_event_id_cannot_create_directional_pre_alert(self):
+        for event_id in ("", "   "):
+            with self.subTest(event_id=event_id):
+                recommendation = recommend_trading_instrument([
+                    _finding(
+                        "Oil tanker near Saudi Arabia was struck",
+                        event_id=event_id,
+                    )
+                ])
+
+                self.assertIsNotNone(recommendation)
+                self.assertEqual(recommendation["instrument"], "BRENT")
+                self.assertEqual(recommendation["bias"], "NEUTRAL")
+                self.assertEqual(recommendation["status"], "WATCH_NEUTRAL")
 
     def test_hormuz_reopening_is_brent_short_not_long(self):
         recommendation = recommend_trading_instrument([
