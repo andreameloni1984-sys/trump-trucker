@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 
 from sputnik_trading_instrument import recommend_trading_instrument
 
@@ -188,6 +189,40 @@ class EarlyBrentCatalystTests(unittest.TestCase):
 
         self.assertIsNotNone(recommendation)
         self.assertEqual(recommendation["bias"], "NEUTRAL")
+
+
+    def test_catalyst_long_remains_preliminary_when_technical_bias_is_short(self):
+        technical = {
+            "bias": "SHORT", "score": 72, "reason": "Prezzo sotto EMA20/EMA50.",
+            "price": 70.0, "ema20": 70.5, "ema50": 71.0,
+            "timeframe": "5m", "quote_timestamp": 1793394000,
+        }
+        with patch("sputnik_trading_instrument._technical_market_bias", return_value=technical):
+            recommendation = recommend_trading_instrument([
+                _finding("Oil tanker near Saudi Arabia was struck")
+            ])
+
+        self.assertEqual(recommendation["bias"], "LONG")
+        self.assertEqual(recommendation["technical_bias"], "SHORT")
+        self.assertEqual(recommendation["catalyst_alignment"], "CONTRASTS")
+        self.assertEqual(recommendation["status"], "PRELIMINARY_DIRECTIONAL_BIAS")
+        self.assertIn("non ingresso confermato", recommendation["reason"])
+
+    def test_catalyst_short_survives_neutral_technical_confirmation(self):
+        technical = {
+            "bias": "NEUTRAL", "score": 40, "reason": "Struttura 5m mista.",
+            "price": 70.0, "ema20": 70.1, "ema50": 70.0,
+            "timeframe": "5m", "quote_timestamp": 1793394000,
+        }
+        with patch("sputnik_trading_instrument._technical_market_bias", return_value=technical):
+            recommendation = recommend_trading_instrument([
+                _finding("Strait of Hormuz reopened after ceasefire; shipping resumes")
+            ])
+
+        self.assertEqual(recommendation["bias"], "SHORT")
+        self.assertEqual(recommendation["technical_bias"], "NEUTRAL")
+        self.assertEqual(recommendation["catalyst_alignment"], "NOT_CONFIRMED")
+        self.assertEqual(recommendation["status"], "PRELIMINARY_DIRECTIONAL_BIAS")
 
 
 
