@@ -398,8 +398,10 @@ def build_cfd_signal(
                 base["direction"] = focused["direction"]
                 base["reason"] += " | Analisi tecnica focused: " + str(focused.get("reason") or "")
             elif focused.get("status") == "WAIT_CONFIRMATION":
-                base["direction"] = "NEUTRAL"
-                base["reason"] += " | Tesi news in attesa di conferma tecnica: " + str(focused.get("reason") or "")
+                # Keep the directional news thesis; missing trigger confirmation
+                # lowers readiness but does not erase the market hypothesis.
+                base["reason"] += " | Bias news non ancora confermato dal trigger tecnico: " + str(focused.get("reason") or "")
+                base["execution_readiness"] = "EARLY_BIAS"
         except Exception as exc:
             base["reason"] += " | Analisi tecnica focused non disponibile: " + type(exc).__name__
     # Professional-style execution gate: Direction -> Location -> Aggression.
@@ -413,25 +415,24 @@ def build_cfd_signal(
                 base["direction"] = setup["direction"]
                 base["reason"] += " | Setup D-L-A confermato: " + "; ".join(setup.get("confirmations") or [])
             else:
-                base["direction"] = "NEUTRAL"
-                base["status"] = "WAIT"
-                base["reason"] += " | Filtro professionale D-L-A: " + "; ".join(setup.get("reasons") or ["conferme non allineate"])
-                return base
+                # D-L-A grades entry timing; it is not a veto on the news direction.
+                base["execution_readiness"] = "EARLY_BIAS"
+                base["reason"] += " | D-L-A non ancora allineato (bias mantenuto): " + "; ".join(setup.get("reasons") or ["conferme parziali"])
         except Exception as exc:
-            base["status"] = "WAIT"
-            base["direction"] = "NEUTRAL"
-            base["reason"] += " | Filtro D-L-A non verificabile: " + type(exc).__name__
-            return base
+            base["execution_readiness"] = "UNVERIFIED"
+            base["reason"] += " | D-L-A non verificabile; bias direzionale mantenuto: " + type(exc).__name__
     if not quote or not _quote_is_fresh(quote):
-        base["status"] = "WAIT"
-        base["reason"] += " | Quotazione live/fresca non disponibile anche dal fallback Yahoo Finance."
+        base["status"] = "DIRECTIONAL_BIAS_NO_LEVELS" if base["direction"] in {"LONG", "SHORT"} else "NO_DIRECTION_NO_LEVELS"
+        base["execution_readiness"] = "PRICE_DATA_MISSING"
+        base["reason"] += " | Quotazione fresca assente: direzione mostrata come ipotesi, senza inventare entry/SL/TP."
         return base
 
     entry = _number(quote.get("price") or quote.get("bid") or quote.get("last"))
     atr = _number(quote.get("atr") or quote.get("ATR") or quote.get("atr_14"))
     if entry is None or atr is None:
-        base["status"] = "WAIT"
-        base["reason"] += " | Prezzo o ATR mancanti."
+        base["status"] = "DIRECTIONAL_BIAS_NO_LEVELS" if base["direction"] in {"LONG", "SHORT"} else "NO_DIRECTION_NO_LEVELS"
+        base["execution_readiness"] = "ATR_OR_PRICE_MISSING"
+        base["reason"] += " | Prezzo o ATR mancanti: mantengo la direzione ipotizzata ma non invento i livelli."
         return base
 
     distance = ATR_MULTIPLIER * atr
@@ -444,7 +445,8 @@ def build_cfd_signal(
         tp1 = entry - distance
         tp2 = entry - 2 * distance
     else:
-        base["status"] = "NEUTRAL"
+        base["status"] = "NO_DIRECTION"
+        base["execution_readiness"] = "NO_DIRECTIONAL_EDGE"
         return base
 
     base.update({
@@ -453,7 +455,8 @@ def build_cfd_signal(
         "tp1": round(tp1, 4),
         "tp2": round(tp2, 4),
         "atr": round(atr, 4),
-        "status": "SIGNAL" if score >= 70 else "PREPARE",
+        "status": "SIGNAL" if score >= 70 and base.get("execution_readiness") != "EARLY_BIAS" else "EARLY_SETUP" if base.get("execution_readiness") == "EARLY_BIAS" else "PREPARE",
+        "execution_readiness": base.get("execution_readiness", "PRICE_LEVELS_AVAILABLE"),
         "quote_time": quote.get("timestamp") or quote.get("updated_at"),
         "quote_provider": quote.get("provider") or "state/provider",
         "quote_symbol": quote.get("symbol") or instrument,
