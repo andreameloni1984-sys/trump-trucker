@@ -117,7 +117,7 @@ def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str
         lines.extend([
             "",
             "🎯 STRUMENTO: da identificare",
-            "🟡 DIREZIONE: WAIT — catalizzatore non abbastanza specifico",
+            "🟡 BIAS: NEUTRAL / NO_DIRECTION — catalizzatore non abbastanza specifico",
             "⏱️ ORIZZONTE: INTRADAY",
             "🧪 MODALITÀ: PAPER TRADING",
             "",
@@ -129,7 +129,7 @@ def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str
             "• Entrata / stop loss / take profit: non calcolabili senza strumento, quotazione aggiornata e ATR.",
             "",
             "🧠 4. DECISIONE SPUTNIK",
-            f"Stato: IN ATTESA DI CATALIZZATORE E QUOTAZIONI",
+            "Stato: NO_DIRECTION — catalizzatore non identificato; nessun livello operativo calcolato.",
             f"Da monitorare: {fallback['instruments'] if fallback else 'mercati pertinenti alla notizia'}",
             f"Motivo: {fallback['explanation'] if fallback else 'Il testo non identifica un evento collegabile con sufficiente affidabilità a uno strumento.'}",
             "",
@@ -142,14 +142,15 @@ def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str
 
     plan = plans[0]
     trade = build_conditional_trade_plan(plan, quotes or {})
-    direction = "SHORT" if "SHORT" in str(plan.get("bias", "")).upper() else "LONG"
+    plan_bias = str(plan.get("bias", "")).upper()
+    direction = "SHORT" if "SHORT" in plan_bias else "LONG" if "LONG" in plan_bias else "NEUTRAL"
     entry, stop, tp1, tp2 = (trade.get(k) for k in ("entry", "stop", "tp1", "tp2"))
     rr1 = trade.get("rr_tp1")
     rr2 = trade.get("rr_tp2")
     lines.extend([
         "",
         f"🎯 STRUMENTO: {plan.get('candidate', 'da identificare')}",
-        f"🔴 DIREZIONE: {direction} ipotetico",
+        f"🧭 BIAS: {direction}",
         "⏱️ ORIZZONTE: INTRADAY",
         "🧪 MODALITÀ: PAPER TRADING",
         "",
@@ -178,7 +179,7 @@ def decision_message(text: str, source: str = "Fonte pubblica", quotes: dict[str
         f"Prezzo: {entry if entry is not None else 'da aggiornare'}",
         f"Conferma tecnica: {'da verificare sul trigger di prezzo/volume' if trade.get('status') != 'TRIGGER CONFIRMED' else 'presente nei dati quotazione forniti'}",
         f"Conferma richiesta: {plan.get('confirmation', 'verificare il catalizzatore e la reazione del prezzo')}",
-        f"Stato: {trade.get('status', 'WAIT')} — {trade.get('reason', 'quotazioni aggiornate necessarie')}",
+        f"Stato: {trade.get('status', 'NO_DIRECTION')} — {trade.get('reason', 'quotazioni aggiornate necessarie')}",
         "",
         "⚠️ Segnale sperimentale. Nessun ordine reale.",
     ])
