@@ -339,3 +339,11 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Validation status at branch creation:** code and tests committed; GitHub Actions/PR checks pending. No live Telegram message, secret readback, deployment, or market order was performed.
 - **Security limits/open:** this protects the current persisted top-level field, not historical Git objects or copies/forks. Review repository history and rotate the bot token only if a credential is found in a public commit; no token exposure is asserted by this change. Durable Telegram routing requires the destination to be configured in GitHub Secrets.
 - **PAPER ONLY:** no trading behavior, signal, risk threshold, or order authorization changed.
+
+
+### CI and merge follow-up — Telegram state redaction
+
+- **PR #85:** merged into main with squash commit e1e5dd0525caa3289e67301fb48fc2fc4e9a44ae. The main branch was three commits ahead of its base and zero commits behind when compared; the PR diff contained only the state sanitizer, two regressions, and this research record.
+- **GitHub Actions on final PR head 87956114827c61c0b364455cd4f1b9b8aa3c3827:** SPUTNIK ranking run 41353450546 — SUCCESS, 174 tests in 3.744s; item-intelligence run 41353450521 — SUCCESS, 42 tests in 0.043s. Both jobs and all their steps completed successfully. The item-intelligence suite includes the two new persistence-redaction regressions.
+- **Main readback:** merge commit created successfully. The persisted sputnik_state.json itself has not yet been observed after a scheduled collector run; save_state() will redact the legacy field on its next successful write. No separate post-merge workflow run, live Telegram delivery, deployment, or runtime cleanup is claimed.
+- **Compatibility:** durable outbound Telegram routing now relies on TELEGRAM_CHAT_ID in GitHub Actions Secrets. If that secret is absent, an auto-discovered destination remains in memory only for the current process and is intentionally not persisted publicly.
