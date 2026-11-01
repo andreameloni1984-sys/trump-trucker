@@ -196,3 +196,11 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - Tests added: default disabled; missing key causes no network call; delayed quote preserves provenance and is reference-only; stale quote flagged; Telegram shows reference without changing Yahoo execution entry.
 - Runtime limitation: no user Narwhal API key was available in this run, so the real authenticated endpoint response and production freshness were not verified. CI uses mocked endpoint responses only. Feature remains disabled until a free key is supplied through repository secret NARWHAL_API_KEY and variable NARWHAL_REFERENCE_ENABLED=1.
 - Sources: Narwhal official futures API reference and pricing page. PAPER ONLY; no real orders.
+
+
+### CI verification — Narwhal reference integration
+
+- Merged PR #80; squash commit b5abfbfe0c4c3bf784ea0bf951500157a292179a.
+- Final PR-head validation: SPUTNIK ranking workflow runs 41292920380 and 41292929636 — SUCCESS, 160 tests passed; Telegram menu/CFD workflow runs 41292920274 and 41292929656 — SUCCESS, 60 tests passed.
+- One initial test-only failure was caused by a case-sensitive expected substring after lowercasing the Telegram message; corrected the assertion and reran both workflows successfully. No production signal logic was changed in that correction.
+- These are mocked CI endpoint tests. No authenticated Narwhal request, live market quote, Telegram delivery or deployment was verified. Narwhal remains opt-in and disabled until the free API key is configured. PAPER ONLY.
