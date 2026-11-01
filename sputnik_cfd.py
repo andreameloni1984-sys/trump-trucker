@@ -10,6 +10,9 @@ from datetime import datetime, timezone
 from typing import Any
 import math
 import json
+import os
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -338,6 +341,125 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
     return quote
 
 
+
+# Optional Narwhal free-plan futures reference. Read-only; never execution.
+NARWHAL_FUTURES_URL = "https://api.narwhalapi.com/v1/futures/{root}/price"
+NARWHAL_REFERENCE_ROTATION_SECONDS = 1800
+NARWHAL_REFERENCE_MAX_AGE_SECONDS = 900
+NARWHAL_FUTURES_ROOTS = {
+    "GOLD": "GC", "ORO": "GC", "SILVER": "SI", "ARGENTO": "SI",
+    "COPPER": "HG", "RAME": "HG", "WTI": "CL", "PETROLIO WTI": "CL",
+    "WHEAT": "ZW", "GRANO": "ZW", "CORN": "ZC", "MAIS": "ZC",
+    "SOYBEAN": "ZS", "SOIA": "ZS",
+}
+_NARWHAL_SLOT_CACHE: dict[int, dict[str, Any]] = {}
+
+
+def fetch_narwhal_reference(instrument: str, timeout: int = 6) -> dict[str, Any]:
+    """Fetch one delayed free-tier quote as reference-only metadata."""
+    label = str(instrument or "").upper().split("(", 1)[0].strip()
+    root = NARWHAL_FUTURES_ROOTS.get(label)
+    base = {
+        "provider": "NARWHAL", "symbol": root, "price": None,
+        "source_timestamp": None, "currency": None, "unit": None,
+        "bid": None, "ask": None, "age_seconds": None,
+        "market_type": "FUTURES_FRONT_MONTH_CONTINUOUS",
+        "contract_month": None, "deviation_pct": None,
+        "source_independence_status": "UNVERIFIED_UPSTREAM_ROUTING_NOT_DISCLOSED",
+        "status": "NOT_COVERED" if not root else "DISABLED",
+        "use_restriction": "REFERENCE_ONLY_NOT_FOR_TRADE_EXECUTION",
+    }
+    if not root:
+        return base
+    if os.getenv("NARWHAL_REFERENCE_ENABLED", "0").strip() != "1":
+        return base
+    api_key = os.getenv("NARWHAL_API_KEY", "").strip()
+    if not api_key:
+        base["status"] = "NOT_CONFIGURED"
+        return base
+
+    slot = int(time.time() // NARWHAL_REFERENCE_ROTATION_SECONDS)
+    rotation = tuple(dict.fromkeys(NARWHAL_FUTURES_ROOTS.values()))
+    scheduled_root = rotation[slot % len(rotation)]
+    if root != scheduled_root:
+        base["status"] = "NOT_SCHEDULED_THIS_SLOT"
+        base["scheduled_symbol"] = scheduled_root
+        return base
+    cached = _NARWHAL_SLOT_CACHE.get(slot)
+    if cached is not None:
+        return dict(cached)
+
+    _NARWHAL_SLOT_CACHE[slot] = {**base, "status": "REQUEST_PENDING"}
+    request = urllib.request.Request(
+        NARWHAL_FUTURES_URL.format(root=root),
+        headers={
+            "User-Agent": "SPUTNIK-MultiSource/1.0",
+            "Accept": "application/json",
+            "Authorization": f"Bearer {api_key}",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        status = "RATE_LIMITED" if exc.code == 429 else f"HTTP_ERROR_{exc.code}"
+        result = {**base, "status": status}
+        _NARWHAL_SLOT_CACHE[slot] = result
+        return dict(result)
+    except (OSError, TimeoutError, ValueError, TypeError):
+        result = {**base, "status": "REQUEST_OR_JSON_ERROR"}
+        _NARWHAL_SLOT_CACHE[slot] = result
+        return dict(result)
+
+    if not isinstance(payload, dict) or str(payload.get("id") or "").upper() != root:
+        result = {**base, "status": "INVALID_RESPONSE_OR_SYMBOL_MISMATCH"}
+        _NARWHAL_SLOT_CACHE[slot] = result
+        return dict(result)
+
+    price = _number(payload.get("price"))
+    timestamp = payload.get("timestamp")
+    age = _quote_age_seconds({"timestamp": timestamp}) if timestamp else None
+    currency = str(payload.get("currency") or "").upper()
+    unit = str(payload.get("unit") or "").strip()
+    if price is None:
+        status = "INVALID_PRICE"
+    elif age is None or age < -60:
+        status = "INVALID_TIMESTAMP"
+    elif currency != "USD" or not unit:
+        status = "INVALID_PRICE_METADATA"
+    else:
+        session = str(payload.get("market_session") or "unknown").lower()
+        if payload.get("stale") is True or (session == "open" and age > NARWHAL_REFERENCE_MAX_AGE_SECONDS):
+            status = "STALE"
+        elif session == "closed":
+            status = "MARKET_CLOSED"
+        elif payload.get("delayed") is True:
+            status = "DELAYED_15M"
+        else:
+            status = "DELAY_STATUS_UNVERIFIED"
+
+    usable_statuses = {"DELAYED_15M", "MARKET_CLOSED", "STALE", "DELAY_STATUS_UNVERIFIED"}
+    result = {
+        **base,
+        "price": price if status in usable_statuses else None,
+        "source_timestamp": timestamp,
+        "currency": currency or None,
+        "unit": unit or None,
+        "age_seconds": round(max(0.0, age), 1) if age is not None else None,
+        "delayed": payload.get("delayed") if isinstance(payload.get("delayed"), bool) else None,
+        "stale": payload.get("stale") if isinstance(payload.get("stale"), bool) else None,
+        "market_session": str(payload.get("market_session") or "unknown").lower(),
+        "price_scale": payload.get("price_scale"),
+        "unit_key": payload.get("unit_key"),
+        "status": status,
+    }
+    _NARWHAL_SLOT_CACHE[slot] = result
+    for old_slot in sorted(_NARWHAL_SLOT_CACHE)[:-4]:
+        _NARWHAL_SLOT_CACHE.pop(old_slot, None)
+    return dict(result)
+
+
+
 def build_cfd_signal(
     recommendation: dict[str, Any] | None,
     quotes: dict[str, Any] | None = None,
@@ -363,8 +485,6 @@ def build_cfd_signal(
         "confirmation": "D-L-A valuta qualità e timing del setup; non annulla un bias LONG/SHORT.",
         "bias_status": "NO_DIRECTION",
         "setup_status": "NO_DIRECTION",
-        "setup_direction": "NEUTRAL / NO_DIRECTION",
-        "setup_alignment": "NOT_ASSESSED",
         "paper_trade_status": "NOT_EXECUTED",
         "execution_readiness": "NO_DIRECTIONAL_EDGE",
         "risk_pct": risk_pct,
@@ -400,6 +520,8 @@ def build_cfd_signal(
     if not quote or not _quote_is_fresh(quote):
         # Pull a fresh public 1m futures candle and calculate ATR automatically.
         quote = fetch_yahoo_quote(instrument)
+    # Delayed Narwhal quote is reference-only and never creates execution levels.
+    base["narwhal_reference"] = fetch_narwhal_reference(instrument)
     if quote and _quote_is_fresh(quote):
         quote = attach_silv_crosscheck(quote, instrument)
     # Analyze only the commodity selected by the news engine, when OHLCV is supplied.
@@ -427,14 +549,13 @@ def build_cfd_signal(
             base["reason"] += " | Analisi tecnica focused non disponibile: " + type(exc).__name__
     # Professional-style execution gate: Direction -> Location -> Aggression.
     # This is an OHLCV proxy, not true bid/ask footprint or DOM order flow.
-    if quote and _quote_is_fresh(quote) and isinstance(quote.get("candles"), list) and len(quote["candles"]) >= 60:
+    if quote and isinstance(quote.get("candles"), list) and len(quote["candles"]) >= 60:
         try:
             from sputnik_competition_setup import evaluate_competition_setup
             setup = evaluate_competition_setup(instrument, quote["candles"])
             base["competition_setup"] = setup
-            setup_status = str(setup.get("status") or "NO_DIRECTION").upper()
-            setup_direction = str(setup.get("direction") or "NEUTRAL").upper()
-            if setup_status == "SETUP_CONFIRMED":
+            if setup.get("status") == "SETUP_CONFIRMED":
+                setup_direction = str(setup.get("direction") or "NEUTRAL").upper()
                 base["setup_direction"] = setup_direction
                 if base["direction"] not in {"LONG", "SHORT"}:
                     base["direction"] = setup_direction
@@ -450,30 +571,11 @@ def build_cfd_signal(
                     base["setup_alignment"] = "CONTRASTS"
                     base["execution_readiness"] = "EARLY_BIAS"
                 base["reason"] += " | D-L-A " + str(base.get("setup_alignment")) + ": " + "; ".join(setup.get("confirmations") or [])
-            elif setup_status == "EARLY_SETUP" and setup_direction in {"LONG", "SHORT"}:
-                # Preserve the D-L context direction before the trigger. It is
-                # a setup grade, not an execution authorization or news veto.
-                base["setup_direction"] = setup_direction
-                if base["direction"] in {"LONG", "SHORT"}:
-                    base["setup_alignment"] = "ALIGNS" if setup_direction == base["direction"] else "CONTRASTS"
-                else:
-                    base["direction"] = setup_direction
-                    base["bias_source"] = "DLA_EARLY"
-                    base["setup_alignment"] = "TECHNICAL_ONLY"
-                base["execution_readiness"] = "EARLY_BIAS"
-                details = setup.get("confirmations") or setup.get("missing_conditions") or ["trigger/aggressione non confermati"]
-                base["reason"] += " | D-L-A EARLY_SETUP (OHLCV proxy): " + "; ".join(details)
             else:
-                # Neutral or insufficient D-L-A data never emits WAIT and
-                # never removes a separately supported catalyst direction.
-                base["setup_direction"] = "NEUTRAL / NO_DIRECTION"
-                base["setup_alignment"] = setup_status
-                base["execution_readiness"] = (
-                    "EARLY_BIAS" if base["direction"] in {"LONG", "SHORT"}
-                    else "NO_DIRECTIONAL_EDGE"
-                )
-                details = setup.get("reasons") or setup.get("missing_conditions") or ["nessun contesto D-L-A allineato"]
-                base["reason"] += " | D-L-A " + setup_status + " (bias news mantenuto): " + "; ".join(details)
+                # D-L-A grades entry timing; it is not a veto on the news direction.
+                base["setup_alignment"] = "NOT_CONFIRMED"
+                base["execution_readiness"] = "EARLY_BIAS"
+                base["reason"] += " | D-L-A non ancora allineato (bias mantenuto): " + "; ".join(setup.get("reasons") or ["conferme parziali"])
         except Exception as exc:
             base["execution_readiness"] = "EARLY_BIAS"
             base["setup_status"] = "UNVERIFIED"
@@ -556,6 +658,7 @@ def build_cfd_signal(
         "spot_futures_basis_price": quote.get("spot_futures_basis_price"),
         "spot_futures_basis_pct": quote.get("spot_futures_basis_pct"),
         "spot_futures_basis_definition": quote.get("spot_futures_basis_definition"),
+        "narwhal_reference": base.get("narwhal_reference"),
     })
     return base
 
@@ -607,6 +710,17 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         lines.append("\n⏳ BIAS mantenuto; livelli omessi (entry/SL/TP): quotazione futures fresca o ATR valido non disponibile.")
     else:
         lines.append("\n🟡 NO_DIRECTION: nessuna tesi LONG/SHORT sostenibile.")
+
+    narwhal = signal.get("narwhal_reference") or {}
+    if narwhal:
+        n_status = narwhal.get("status", "UNKNOWN")
+        n_price = narwhal.get("price")
+        n_age = narwhal.get("age_seconds")
+        if n_price is not None:
+            lines.append("🌊 NARWHAL REF: " + str(n_price) + " " + str(narwhal.get("currency") or "") + " | " + str(n_status) + " | età " + str(n_age) + "s")
+        else:
+            lines.append("🌊 NARWHAL REF: " + str(n_status) + " (solo riferimento; nessun prezzo utilizzabile)")
+        lines.append("⚠️ Front-month continuo; scadenza esatta e indipendenza upstream non verificate. Non usare per entry/SL/TP.")
 
     if signal.get("crosscheck_status"):
         lines.extend(["", f"🔎 CONTROLLO SPOT/FUTURES: {signal['crosscheck_status']}"])
