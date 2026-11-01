@@ -816,7 +816,7 @@ def utc_now() -> datetime:
 
 
 def _parse_public_item_timestamp(value: Any) -> datetime | None:
-    """Parse ISO-8601 or RFC 822 publication timestamps as UTC."""
+    """Parse source publication time; reject timestamps without an explicit timezone."""
     text = str(value or "").strip()
     if not text:
         return None
@@ -827,8 +827,11 @@ def _parse_public_item_timestamp(value: Any) -> datetime | None:
             parsed = parsedate_to_datetime(text)
         if not isinstance(parsed, datetime):
             return None
-        if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=timezone.utc)
+        # A timezone-naive value is ambiguous (including date-only values).
+        # Never invent UTC: an incorrect assumed offset can reorder catalysts
+        # and contaminate freshness checks and historical event studies.
+        if parsed.tzinfo is None or parsed.utcoffset() is None:
+            return None
         return parsed.astimezone(timezone.utc)
     except (TypeError, ValueError, OverflowError):
         return None
