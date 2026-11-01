@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 
 from sputnik_trading_instrument import recommend_trading_instrument
 
@@ -19,6 +20,27 @@ def _finding(title, **overrides):
 
 
 class EarlyBrentCatalystTests(unittest.TestCase):
+    def test_mixed_technical_snapshot_does_not_erase_news_direction(self):
+        finding = _finding("EIA reports U.S. crude inventories fell by 2.1 million barrels")
+        mixed = {
+            "bias": "NEUTRAL",
+            "score": 45.0,
+            "reason": "EMA and swing structure are mixed",
+            "price": 80.0,
+            "ema20": 80.1,
+            "ema50": 79.9,
+            "timeframe": "5m",
+            "candles": 60,
+        }
+        with patch("sputnik_trading_instrument._technical_market_bias", return_value=mixed):
+            recommendation = recommend_trading_instrument([finding])
+
+        self.assertEqual(recommendation["instrument"], "WTI")
+        self.assertEqual(recommendation["catalyst_bias"], "LONG")
+        self.assertEqual(recommendation["technical_bias"], "NEUTRAL")
+        self.assertEqual(recommendation["bias"], "LONG")
+        self.assertEqual(recommendation["status"], "EARLY_BIAS_TECHNICAL_UNCONFIRMED")
+
     def test_tanker_near_saudi_struck_creates_preliminary_brent_long(self):
         recommendation = recommend_trading_instrument([
             _finding("Oil tanker near Saudi Arabia was struck")
