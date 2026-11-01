@@ -8,6 +8,8 @@ on:
       - "trump_tracker.py"
       - "sputnik_action_reaction.py"
       - "sputnik_decision.py"
+      - "sputnik_cfd.py"
+      - "tests/test_sputnik_cfd.py"
       - "tests/test_sputnik_decision.py"
       - "telegram_listener.py"
       - ".github/workflows/trump_tracker.yml"
@@ -70,6 +72,8 @@ jobs:
           SPUTNIK_SOCIAL_ENABLED: "1"
           GAGARIN_CLOUD_API_URL: ${{ secrets.GAGARIN_CLOUD_API_URL }}
           GAGARIN_CLOUD_API_KEY: ${{ secrets.GAGARIN_CLOUD_API_KEY }}
+          NARWHAL_REFERENCE_ENABLED: "1"
+          NARWHAL_API_KEY: ${{ secrets.NARWHAL_API_KEY }}
           SPUTNIK_MORNING_HOUR: "5"
           SPUTNIK_TELEGRAM_POLLING: "0"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
