@@ -1,6 +1,6 @@
 {
   "events": {},
-  "updated_at": "2026-11-01T08:01:26.965379+00:00",
+  "updated_at": "2026-11-01T08:09:58.936795+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
@@ -11821,6 +11821,75 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
+    },
+    "393c68dbbe35d0e1d9878065": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43007",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536940868452472",
+      "title": "RT @realDonaldTrumpOHIO, I will doing a TeleRally, LIVE, at 2:45pm ET, for U.S. Senator Jon Husted, Vivek Ramaswamy for Governor, Congressman Mike Carey (OH-15), Eric Conroy for Congress (OH-01), and Derek Merrin for Congress (OH-09) — All have my Complete and Total Endorsement, and will never let y",
+      "published": "Sat, 31 Oct 2026 18:29:47 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "RT @realDonaldTrumpOHIO, I will doing a TeleRally, LIVE, at 2:45pm ET, for U.S. Senator Jon Husted, Vivek Ramaswamy for Governor, Congressman Mike Carey (OH-15), Eric Conroy for Congress (OH-01), and Derek Merrin for Congress (OH-09) — All have my Complete and Total Endorsement, and will never let y RT @ realDonaldTrump OHIO, I will doing a TeleRally, LIVE, at 2:45pm ET, for U.S. Senator Jon Husted, Vivek Ramaswamy for Governor, Congressman Mike Carey (OH-15), Eric Conroy for Congress (OH-01), and Derek Merrin for Congress (OH-09) — All have my Complete and Total Endorsement, and will never let you down. They LOVE the Great People of Ohio, and so do I — Answer your phones, and ENJOY! President DONALD J. TRUMP Reposted Donald J. Trump OHIO, I will doing a TeleRally, LIVE, at 2:45pm ET, for U.S. Senator Jon Husted, Vivek Ramaswamy for Governor, Congressman Mike Carey (OH-15), Eric Conroy for Congress (OH-01), and Derek Merrin for Congress (OH-09) — All have my Complete and Total Endorsement, and will never let you down. They LOVE the Great People of Ohio, and so do I — Answer your phones, and ENJOY! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T08:09:58.908294+00:00",
+      "event_id": "393c68dbbe35d0e1d9878065",
+      "action_reaction": {
+        "event_id": "393c68dbbe35d0e1d9878065",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "cc8521db5853647540365a10": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43000",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536916209515375",
+      "title": "OHIO, I will doing a TeleRally, LIVE, at 2:45pm ET, for U.S. Senator Jon Husted, Vivek Ramaswamy for Governor, Congressman Mike Carey (OH-15), Eric Conroy for Congress (OH-01), and Derek Merrin for Congress (OH-09) — All have my Complete and Total Endorsement, and will never let you down. They LOVE",
+      "published": "Sat, 31 Oct 2026 18:23:31 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "OHIO, I will doing a TeleRally, LIVE, at 2:45pm ET, for U.S. Senator Jon Husted, Vivek Ramaswamy for Governor, Congressman Mike Carey (OH-15), Eric Conroy for Congress (OH-01), and Derek Merrin for Congress (OH-09) — All have my Complete and Total Endorsement, and will never let you down. They LOVE OHIO, I will doing a TeleRally, LIVE, at 2:45pm ET, for U.S. Senator Jon Husted, Vivek Ramaswamy for Governor, Congressman Mike Carey (OH-15), Eric Conroy for Congress (OH-01), and Derek Merrin for Congress (OH-09) — All have my Complete and Total Endorsement, and will never let you down. They LOVE the Great People of Ohio, and so do I — Answer your phones, and ENJOY! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T08:09:58.913091+00:00",
+      "event_id": "cc8521db5853647540365a10",
+      "action_reaction": {
+        "event_id": "cc8521db5853647540365a10",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "31c2c39c084fb1f4e785639a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/42996",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536901725087025",
+      "title": "RT @realDonaldTrumpTO THE GREAT PEOPLE OF PENNSYLVANIA, MAKE A PLAN TO VOTE FOR:– Stacy Garrity for Governor– Ryan Mackenzie for U.S. Congress (PA-07)– Rob Bresnahan for U.S. Congress (PA-08)– Dan Meuser for U.S. Congress (PA-09)– Scott Perry for U.S. Congress (PA-10)– Lloyd Smucker for U.S. Congres",
+      "published": "Sat, 31 Oct 2026 18:19:50 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "RT @realDonaldTrumpTO THE GREAT PEOPLE OF PENNSYLVANIA, MAKE A PLAN TO VOTE FOR:– Stacy Garrity for Governor– Ryan Mackenzie for U.S. Congress (PA-07)– Rob Bresnahan for U.S. Congress (PA-08)– Dan Meuser for U.S. Congress (PA-09)– Scott Perry for U.S. Congress (PA-10)– Lloyd Smucker for U.S. Congres RT @ realDonaldTrump TO THE GREAT PEOPLE OF PENNSYLVANIA, MAKE A PLAN TO VOTE FOR: – Stacy Garrity for Governor – Ryan Mackenzie for U.S. Congress (PA-07) – Rob Bresnahan for U.S. Congress (PA-08) – Dan Meuser for U.S. Congress (PA-09) – Scott Perry for U.S. Congress (PA-10) – Lloyd Smucker for U.S. Congress (PA-11) – John Joyce for U.S. Congress (PA-13) – Guy Reschenthaler for U.S. Congress (PA-14) – Glenn Thompson for U.S. Congress (PA-15) – Mike Kelly for U.S. Congress (PA-16) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/ Reposted Donald J. Trump TO THE GREAT PEOPLE OF PENNSYLVANIA, MAKE A PLAN TO VOTE FOR: – Stacy Garrity for Governor – Ryan Mackenzie for U.S. Congress (PA-07) – Rob Bresnahan for U.S. Congress (PA-08) – Dan Meuser for U.S. Congress (PA-09) – Scott Perry for U.S. Congress (PA-10) – Lloyd Smucker for U.S. Congress (PA-11) – John Joyce for U.S. Congress (PA-13) – Guy Reschenthaler for U.S. Congress (PA-14) – Glenn Thompson for U.S. Congress (PA-15) – Mike Kelly for U.S. Congress (PA-16) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/ View image View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T08:09:58.913433+00:00",
+      "event_id": "31c2c39c084fb1f4e785639a",
+      "action_reaction": {
+        "event_id": "31c2c39c084fb1f4e785639a",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
     }
   },
   "transactions": {},
@@ -12161,9 +12230,12 @@
     "c19b89ed82a5821c9e5fa043": "2026-11-01T08:01:26.942721+00:00",
     "ad723e646fb7c11dfeb6b4aa": "2026-11-01T08:01:26.942924+00:00",
     "b31399b5b89039b4d18f5460": "2026-11-01T08:01:26.943130+00:00",
-    "dfe7e9301ee4e8c7acde2c76": "2026-11-01T08:01:26.945034+00:00"
+    "dfe7e9301ee4e8c7acde2c76": "2026-11-01T08:01:26.945034+00:00",
+    "393c68dbbe35d0e1d9878065": "2026-11-01T08:09:58.908281+00:00",
+    "cc8521db5853647540365a10": "2026-11-01T08:09:58.913085+00:00",
+    "31c2c39c084fb1f4e785639a": "2026-11-01T08:09:58.913430+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-01T08:01:26.946099+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-01T08:09:58.914854+00:00"
   }
 }
