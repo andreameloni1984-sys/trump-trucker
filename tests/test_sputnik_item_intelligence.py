@@ -468,10 +468,9 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             / "trump_tracker.yml"
         )
         workflow = workflow_path.read_text(encoding="utf-8")
-        self.assertIn(
-            "concurrency:\\n  group: sputnik-main\\n  cancel-in-progress: false",
-            workflow,
-        )
+        self.assertIn("group: sputnik-main", workflow)
+        self.assertIn("cancel-in-progress: false", workflow)
+        self.assertNotIn("cancel-in-progress: true", workflow)
         self.assertIn('    - cron: "2-59/5 * * * *"', workflow)
 
     def test_scheduled_workflow_fails_closed_without_telegram_chat_id(self):
