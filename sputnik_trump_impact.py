@@ -118,6 +118,38 @@ def _sentiment(text: str) -> float:
     return max(-1.0, min(1.0, score / max(2.0, len(tokens) ** 0.5)))
 
 
+def _normalized_name(value: str) -> str:
+    return " ".join(re.findall(r"[a-z0-9]+", str(value or "").lower()))
+
+
+def resolve_public_actor_role(author: str) -> str | None:
+    """Resolve an author only through an explicit, user-maintained public-role map.
+
+    SPUTNIK_ACTOR_ROLE_MAP must be a JSON object: {"Public Name": "family"}.
+    No relationship is inferred from a name or from social proximity.
+    """
+    import json
+    import os
+
+    raw = os.getenv("SPUTNIK_ACTOR_ROLE_MAP", "").strip()
+    if not raw:
+        return None
+    try:
+        mapping = json.loads(raw)
+    except (TypeError, ValueError):
+        return None
+    if not isinstance(mapping, dict):
+        return None
+    target = _normalized_name(author)
+    if not target:
+        return None
+    allowed = {"president", "administration", "cabinet", "family", "adviser", "advisor", "ally", "associate", "friend", "entourage"}
+    for name, role in mapping.items():
+        if _normalized_name(name) == target and str(role or "").strip().lower() in allowed:
+            return str(role).strip().lower()
+    return None
+
+
 def _actor_context(finding: dict[str, Any]) -> tuple[str, float]:
     role = str(finding.get("actor_role") or finding.get("author_role") or "").strip().lower()
     if role:
@@ -129,9 +161,10 @@ def _actor_context(finding: dict[str, Any]) -> tuple[str, float]:
             return "PUBLICLY_IDENTIFIED_ASSOCIATE", 0.65
         return "OTHER_PUBLIC_ACTOR", 0.5
     source = str(finding.get("source") or "").upper()
-    if source in {"TRUTH_ARCHIVE", "TRUTH SOCIAL"}:
+    feed_url = str(finding.get("feed_url") or finding.get("url") or "").lower()
+    if source in {"TRUTH_ARCHIVE", "TRUTH SOCIAL"} or "trumpstruth.org" in feed_url or "truthsocial.com" in feed_url:
         return "PRESIDENT_OFFICIAL_CHANNEL", 1.0
-    if source == "WHITE_HOUSE":
+    if source in {"WHITE_HOUSE", "WHITE_HOUSE_RSS"} or "whitehouse.gov" in feed_url:
         return "ADMINISTRATION_OFFICIAL_CHANNEL", 0.85
     if source == "OGE":
         return "PUBLIC_ETHICS_DISCLOSURE", 0.75
@@ -166,7 +199,7 @@ def analyze_public_policy_item(finding: dict[str, Any]) -> list[dict[str, Any]]:
         if _NEGATION.search(clause):
             continue
         for instrument, bias in rule["bias"].items():
-            priority = round(min(95, 55 + abs(sentiment) * 12 + actor_weight * 10 + (8 if source in {"WHITE_HOUSE", "TRUTH_ARCHIVE"} else 0)))
+            priority = round(min(95, 55 + abs(sentiment) * 12 + actor_weight * 10 + (8 if source in {"WHITE_HOUSE", "WHITE_HOUSE_RSS", "TRUTH_ARCHIVE"} or "whitehouse.gov" in str(finding.get("feed_url") or "").lower() or "trumpstruth.org" in str(finding.get("feed_url") or "").lower() else 0)))
             matches.append({
                 "event_id": str(finding["event_id"]),
                 "title": str(finding.get("title") or "")[:240],
