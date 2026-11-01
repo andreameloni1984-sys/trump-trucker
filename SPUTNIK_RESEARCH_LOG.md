@@ -357,3 +357,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Scope:** this is an operational delivery guard only. It does not change event collection, event classification, market bias, GAGARIN handoff, or any trading authorization. No Telegram request is sent by the test.
 - **Validation status:** source and regression test committed on the feature branch. GitHub Actions and PR checks are pending; no live `ok=true`/`message_id`, secret readback, or deployment is claimed.
 - **Safety:** PAPER ONLY; no broker order or paid service.
+## 2026-11-02 — Preserve in-flight scheduled monitor runs
+
+- **Audit finding:** the SPUTNIK workflow runs on a five-minute cron but used concurrency.cancel-in-progress=true. GitHub Actions documents that a new run in the same concurrency group cancels the currently running run. A slow feed/SEC/Telegram cycle could therefore be interrupted before state persistence and notification handling complete.
+- **Public technical reference:** GitHub Actions official concurrency documentation: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax. With cancellation disabled, the active run is allowed to finish; the default concurrency group still retains only one pending run and a newer pending run may replace an older pending run. This change does not claim a lossless queue.
+- **Implemented:** changed the SPUTNIK workflow cancel-in-progress from true to false. Added a regression test asserting that the active monitor is not configured for cancellation and that the five-minute schedule remains present.
+- **Files:** .github/workflows/trump_tracker.yml; tests/test_sputnik_item_intelligence.py; this log.
+- **Safety:** no source polling, event mapping, Telegram routing, trade decision, price or PAPER authorization changed. No live Telegram message or market order was sent.
+- **Validation status:** PR CI pending at time of this entry; report only the actual workflow results after GitHub Actions completes.
+- **Remaining limitation:** GitHub Actions default concurrency behavior allows one pending run; additional pending runs can replace each other. The active run is protected, but the schedule is not a durable per-tick queue.
