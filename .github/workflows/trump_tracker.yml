@@ -11,6 +11,7 @@ on:
       - "sputnik_cfd.py"
       - "tests/test_sputnik_cfd.py"
       - "tests/test_sputnik_decision.py"
+      - "tests/test_sputnik_item_intelligence.py"
       - "telegram_listener.py"
       - ".github/workflows/trump_tracker.yml"
   workflow_dispatch:
@@ -58,7 +59,8 @@ jobs:
             exit 1
           fi
           if [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "Telegram chat ID: AUTO-DISCOVERY ATTIVO"
+            echo "::error::TELEGRAM_CHAT_ID is required: the scheduled collector sets SPUTNIK_TELEGRAM_POLLING=0 and cannot auto-discover a destination."
+            exit 1
           fi
 
       - name: Run SPUTNIK Telegram delivery regression tests
