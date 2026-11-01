@@ -85,6 +85,18 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
 
+    def test_public_item_timestamp_requires_explicit_timezone_and_normalizes_utc(self):
+        self.assertIsNone(
+            trump_tracker._parse_public_item_timestamp("2026-10-26T06:00:00")
+        )
+        self.assertIsNone(
+            trump_tracker._parse_public_item_timestamp("2026-10-26")
+        )
+        parsed = trump_tracker._parse_public_item_timestamp(
+            "2026-10-26T08:00:00+02:00"
+        )
+        self.assertEqual(parsed, datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc))
+
     def test_feed_candidates_need_valid_publication_time_and_item_permalink(self):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
         cases = [
@@ -94,6 +106,10 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             ("unparseable publication date", FEED.replace(
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
                 b"<pubDate>soon</pubDate>",
+            )),
+            ("timezone missing", FEED.replace(
+                b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
+                b"<pubDate>2026-10-26T06:00:00</pubDate>",
             )),
             ("future publication date", FEED.replace(
                 b"<pubDate>Mon, 19 Oct 2026 06:00:00 GMT</pubDate>",
