@@ -403,8 +403,15 @@ def build_cfd_signal(
             focused = analyze_focused_market(instrument, quote["candles"])
             base["focused_analysis"] = focused
             if focused.get("status") == "DIRECTIONAL":
-                base["direction"] = focused["direction"]
-                base["reason"] += " | Analisi tecnica focused: " + str(focused.get("reason") or "")
+                technical_direction = str(focused.get("direction") or "NEUTRAL").upper()
+                base["technical_direction"] = technical_direction
+                if base["direction"] not in {"LONG", "SHORT"}:
+                    base["direction"] = technical_direction
+                    base["bias_source"] = "TECHNICAL_ONLY"
+                    base["technical_alignment"] = "TECHNICAL_ONLY"
+                else:
+                    base["technical_alignment"] = "ALIGNS" if technical_direction == base["direction"] else "CONTRASTS"
+                base["reason"] += " | Analisi tecnica focused " + base["technical_alignment"] + ": " + str(focused.get("reason") or "")
             elif focused.get("status") == "WAIT_CONFIRMATION":
                 # Keep the directional news thesis; missing trigger confirmation
                 # lowers readiness but does not erase the market hypothesis.
@@ -420,16 +427,31 @@ def build_cfd_signal(
             setup = evaluate_competition_setup(instrument, quote["candles"])
             base["competition_setup"] = setup
             if setup.get("status") == "SETUP_CONFIRMED":
-                base["direction"] = setup["direction"]
-                base["execution_readiness"] = "CONFIRMED"
-                base["reason"] += " | Setup D-L-A confermato: " + "; ".join(setup.get("confirmations") or [])
+                setup_direction = str(setup.get("direction") or "NEUTRAL").upper()
+                base["setup_direction"] = setup_direction
+                if base["direction"] not in {"LONG", "SHORT"}:
+                    base["direction"] = setup_direction
+                    base["bias_source"] = "DLA_ONLY"
+                    base["setup_alignment"] = "TECHNICAL_ONLY"
+                    base["execution_readiness"] = "CONFIRMED"
+                elif setup_direction == base["direction"]:
+                    base["setup_alignment"] = "ALIGNS"
+                    base["execution_readiness"] = "CONFIRMED"
+                else:
+                    # A confirmed technical setup in the opposite direction
+                    # grades the catalyst as CONTRASTS; it never flips the bias.
+                    base["setup_alignment"] = "CONTRASTS"
+                    base["execution_readiness"] = "EARLY_BIAS"
+                base["reason"] += " | D-L-A " + str(base.get("setup_alignment")) + ": " + "; ".join(setup.get("confirmations") or [])
             else:
                 # D-L-A grades entry timing; it is not a veto on the news direction.
+                base["setup_alignment"] = "NOT_CONFIRMED"
                 base["execution_readiness"] = "EARLY_BIAS"
                 base["reason"] += " | D-L-A non ancora allineato (bias mantenuto): " + "; ".join(setup.get("reasons") or ["conferme parziali"])
         except Exception as exc:
             base["execution_readiness"] = "EARLY_BIAS"
             base["setup_status"] = "UNVERIFIED"
+            base["setup_alignment"] = "UNVERIFIED"
             base["reason"] += " | D-L-A non verificabile; bias direzionale mantenuto: " + type(exc).__name__
     base["bias_status"] = "DIRECTIONAL_BIAS" if base["direction"] in {"LONG", "SHORT"} else "NO_DIRECTION"
     if not quote or not _quote_is_fresh(quote):
@@ -538,6 +560,8 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"📈 STRUMENTO: {signal.get('instrument')}",
         f"🧭 BIAS: {direction}",
         f"🎯 SETUP: {setup_status}",
+        f"🧭 TECNICA: {signal.get('technical_direction', 'N/D')} ({signal.get('technical_alignment', 'NOT_ASSESSED')})",
+        f"🧪 D-L-A: {signal.get('setup_direction', 'N/D')} ({signal.get('setup_alignment', 'NOT_ASSESSED')})",
         f"🧪 TRADE PAPER: {paper_status}",
         f"📊 SCORE: {signal.get('score', 0):.0f}/100",
         f"📌 STATO: {status}",
