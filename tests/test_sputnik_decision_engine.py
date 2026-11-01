@@ -47,24 +47,29 @@ class StrictDecisionTests(unittest.TestCase):
     def test_unrelated_text_still_returns_operational_monitoring_result(self):
         message = decision_message("Hello world, nothing market-related here.")
         self.assertIn("SPUTNIK — OPPORTUNITÀ DI MERCATO", message)
-        self.assertIn("DIREZIONE: WAIT", message)
+        self.assertIn("BIAS: NEUTRAL / NO_DIRECTION", message)
+        self.assertNotIn("WAIT", message)
         self.assertIn("PAPER TRADING", message)
 
     def test_empty_legacy_snapshot_still_returns_result(self):
         message = decision_message("")
         self.assertIn("SPUTNIK — OPPORTUNITÀ DI MERCATO", message)
-        self.assertIn("IN ATTESA DI CATALIZZATORE", message)
+        self.assertIn("NO_DIRECTION", message)
+        self.assertNotIn("WAIT", message)
 
     def test_legacy_domain_labels_produce_domain_watchlist(self):
         message = decision_message("ENERGY METALS DEFENSE")
-        self.assertIn("DIREZIONE: WAIT", message)
+        self.assertIn("BIAS: NEUTRAL / NO_DIRECTION", message)
+        self.assertNotIn("WAIT", message)
         self.assertIn("Settore difesa, petrolio e oro", message)
 
 class ConditionalTradePlanTests(unittest.TestCase):
     def test_levels_require_fresh_quote_and_atr(self):
         plan = {"candidate": "BRENT (petrolio)", "bias": "LONG condizionale"}
         missing = build_conditional_trade_plan(plan, {})
-        self.assertEqual(missing["status"], "WAIT")
+        self.assertEqual(missing["status"], "EARLY_BIAS")
+        self.assertEqual(missing["direction"], "LONG")
+        self.assertEqual(missing["paper_trade_status"], "NOT_EXECUTED")
         self.assertIsNone(missing["stop"])
 
     def test_atr_levels_are_calculated_but_not_auto_confirmed(self):
@@ -73,7 +78,9 @@ class ConditionalTradePlanTests(unittest.TestCase):
         plan = {"candidate": "BRENT (petrolio)", "bias": "LONG condizionale"}
         quote = {"BRENT": {"price": 100.0, "atr": 2.0, "timestamp": stamp}}
         result = build_conditional_trade_plan(plan, quote)
-        self.assertEqual(result["status"], "PREPARE")
+        self.assertEqual(result["status"], "EARLY_SETUP")
+        self.assertEqual(result["setup_status"], "EARLY_SETUP")
+        self.assertEqual(result["paper_trade_status"], "NOT_EXECUTED")
         self.assertEqual(result["entry"], 100.0)
         self.assertEqual(result["stop"], 97.0)
         self.assertEqual(result["tp1"], 103.0)
@@ -83,7 +90,9 @@ class ConditionalTradePlanTests(unittest.TestCase):
         plan = {"candidate": "ORO (XAU/USD)", "bias": "LONG condizionale"}
         quote = {"GOLD": {"price": 4200.0, "atr": 20.0, "timestamp": "2020-01-01T00:00:00+00:00"}}
         result = build_conditional_trade_plan(plan, quote)
-        self.assertEqual(result["status"], "WAIT")
+        self.assertEqual(result["status"], "EARLY_BIAS")
+        self.assertEqual(result["direction"], "LONG")
+        self.assertEqual(result["paper_trade_status"], "NOT_EXECUTED")
         self.assertIsNone(result["entry"])
 
 
@@ -95,10 +104,12 @@ class AnalystReasoningTests(unittest.TestCase):
         self.assertTrue(result["missing"])
         self.assertIn("non autorizzare ingresso", result["conclusion"])
 
-    def test_generic_mention_stays_wait(self):
+    def test_generic_mention_returns_no_direction_not_wait(self):
         result = build_reasoning("A speech mentioned tariffs and trade.", None, {})
-        self.assertEqual(result["thesis"], "WAIT")
+        self.assertEqual(result["thesis"], "NEUTRAL")
+        self.assertIn("NO_DIRECTION", result["conclusion"])
         self.assertTrue(result["contradictions"])
+        self.assertNotIn("WAIT", "\\n".join(format_reasoning(result)))
 
     def test_telegram_reasoning_exposes_evidence_and_alternative(self):
         plan = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")[0]

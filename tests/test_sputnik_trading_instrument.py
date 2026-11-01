@@ -49,7 +49,7 @@ class EarlyBrentCatalystTests(unittest.TestCase):
         self.assertIsNotNone(recommendation)
         self.assertEqual(recommendation["instrument"], "BRENT")
         self.assertEqual(recommendation["bias"], "LONG")
-        self.assertEqual(recommendation["status"], "PRELIMINARY_DIRECTIONAL_BIAS")
+        self.assertEqual(recommendation["status"], "EARLY_BIAS_TECHNICAL_UNCONFIRMED")
         self.assertEqual(recommendation["url"], "https://example.com/energy-event")
 
     def test_attack_on_oil_vessel_near_hormuz_creates_preliminary_brent_long(self):
@@ -93,7 +93,7 @@ class EarlyBrentCatalystTests(unittest.TestCase):
                 self.assertIsNotNone(recommendation)
                 self.assertEqual(recommendation["instrument"], "BRENT")
                 self.assertEqual(recommendation["bias"], "NEUTRAL")
-                self.assertEqual(recommendation["status"], "WATCH_NEUTRAL")
+                self.assertEqual(recommendation["status"], "NO_DIRECTION")
 
     def test_hormuz_reopening_is_brent_short_not_long(self):
         recommendation = recommend_trading_instrument([
