@@ -576,5 +576,114 @@ class SilvCrosscheckTests(unittest.TestCase):
 
 
 
+class NarwhalReferenceTests(unittest.TestCase):
+    class FakeResponse:
+        def __init__(self, payload):
+            self.payload = payload
+        def __enter__(self):
+            return self
+        def __exit__(self, exc_type, exc, traceback):
+            return False
+        def read(self):
+            return json.dumps(self.payload).encode("utf-8")
+
+    @staticmethod
+    def payload(root="CL", **overrides):
+        value = {
+            "id": root, "name": "WTI Crude Oil", "exchange": "NYMEX",
+            "currency": "USD", "unit": "usd_per_barrel", "price": "75.25",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "market_session": "open", "stale": False, "delayed": True,
+        }
+        value.update(overrides)
+        return value
+
+    def setUp(self):
+        import sputnik_cfd
+        sputnik_cfd._NARWHAL_SLOT_CACHE.clear()
+
+    def test_free_reference_is_disabled_without_explicit_opt_in(self):
+        import sputnik_cfd
+        with patch.dict("os.environ", {}, clear=True):
+            with patch("sputnik_cfd.urllib.request.urlopen") as urlopen:
+                result = sputnik_cfd.fetch_narwhal_reference("WTI")
+        self.assertEqual(result["status"], "DISABLED")
+        urlopen.assert_not_called()
+
+    def test_missing_key_never_calls_endpoint(self):
+        import sputnik_cfd
+        with patch.dict("os.environ", {"NARWHAL_REFERENCE_ENABLED": "1"}, clear=True):
+            with patch("sputnik_cfd.urllib.request.urlopen") as urlopen:
+                result = sputnik_cfd.fetch_narwhal_reference("WTI")
+        self.assertEqual(result["status"], "NOT_CONFIGURED")
+        urlopen.assert_not_called()
+
+    def test_delayed_price_keeps_provenance_and_is_reference_only(self):
+        import sputnik_cfd
+        with patch.dict("os.environ", {
+            "NARWHAL_REFERENCE_ENABLED": "1", "NARWHAL_API_KEY": "free-test-key"
+        }):
+            slot = next(i for i in range(100) if i % 7 == 3)
+            with patch("sputnik_cfd.time.time", return_value=slot * 1800 + 10):
+                with patch("sputnik_cfd.urllib.request.urlopen", return_value=self.FakeResponse(
+                    self.payload(timestamp=datetime.now(timezone.utc).isoformat())
+                )) as urlopen:
+                    result = sputnik_cfd.fetch_narwhal_reference("WTI")
+        self.assertEqual(result["status"], "DELAYED_15M")
+        self.assertEqual(result["price"], 75.25)
+        self.assertEqual(result["symbol"], "CL")
+        self.assertEqual(result["currency"], "USD")
+        self.assertIsNone(result["bid"])
+        self.assertIsNone(result["ask"])
+        self.assertIsNone(result["contract_month"])
+        self.assertIsNone(result["deviation_pct"])
+        self.assertIn("REFERENCE_ONLY", result["use_restriction"])
+        self.assertIn("Authorization", urlopen.call_args.args[0].headers)
+
+    def test_stale_reference_is_flagged(self):
+        import sputnik_cfd
+        with patch.dict("os.environ", {
+            "NARWHAL_REFERENCE_ENABLED": "1", "NARWHAL_API_KEY": "free-test-key"
+        }):
+            slot = next(i for i in range(100) if i % 7 == 3)
+            old_stamp = (datetime.now(timezone.utc) - timedelta(minutes=25)).isoformat()
+            with patch("sputnik_cfd.time.time", return_value=slot * 1800 + 10):
+                with patch("sputnik_cfd.urllib.request.urlopen", return_value=self.FakeResponse(
+                    self.payload(timestamp=old_stamp, stale=True)
+                )):
+                    result = sputnik_cfd.fetch_narwhal_reference("WTI")
+        self.assertEqual(result["status"], "STALE")
+        self.assertIsNone(result["deviation_pct"])
+
+    def test_signal_and_telegram_expose_reference_without_changing_execution(self):
+        import sputnik_cfd
+        quote = {
+            "price": 80.0, "atr": 2.0,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "provider": "Yahoo Finance chart (1m futures)", "symbol": "CL=F",
+        }
+        reference = {
+            "provider": "NARWHAL", "symbol": "CL", "price": 75.25,
+            "currency": "USD", "unit": "usd_per_barrel",
+            "source_timestamp": datetime.now(timezone.utc).isoformat(),
+            "age_seconds": 900, "status": "DELAYED_15M",
+            "deviation_pct": None,
+            "use_restriction": "REFERENCE_ONLY_NOT_FOR_TRADE_EXECUTION",
+        }
+        with patch("sputnik_cfd.fetch_yahoo_quote", return_value=quote):
+            with patch("sputnik_cfd.fetch_narwhal_reference", return_value=reference):
+                with patch("sputnik_cfd.attach_silv_crosscheck", side_effect=lambda q, instrument: q):
+                    signal = sputnik_cfd.build_cfd_signal(
+                        {"instrument": "WTI", "bias": "LONG", "score": 80}, {}
+                    )
+        self.assertEqual(signal["entry"], 80.0)
+        self.assertEqual(signal["quote_provider"], "Yahoo Finance chart (1m futures)")
+        self.assertEqual(signal["narwhal_reference"]["price"], 75.25)
+        message = sputnik_cfd.format_cfd_signal(signal)
+        self.assertIn("NARWHAL REF", message)
+        self.assertIn("non usare per entry/SL/TP", message.lower())
+
+
+
 if __name__ == "__main__":
     unittest.main()
