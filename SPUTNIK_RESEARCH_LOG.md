@@ -158,6 +158,6 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Implemented:** keep the signed spot-minus-futures basis separately labelled; set independence to unknown with `PROVIDER_REPORTED_NOT_AUDITED`; retain `false` only for a known source overlap. Expose the caveat in the Telegram CFD message.
 - **Execution safety:** Yahoo futures remain the only execution/ATR/entry/SL/TP basis. SILV remains spot-reference only; no averaging, no substitution, no orders.
 - **Files:** `sputnik_cfd.py`, `tests/test_sputnik_cfd.py`, `SPUTNIK_RESEARCH_LOG.md`.
-- **Validation:** targeted CFD/Telegram CI pending on rebased current-main PR. No live quote, deployment or Telegram delivery claimed.
+- **Validation:** after rebasing PR #74 onto current main, CI passed before merge: SPUTNIK ranking **147 tests** (run `41286827801`) and Telegram/menu/CFD **53 tests** (run `41286827810`), both SUCCESS. No live quote, deployment or Telegram delivery claimed.
 - **Limit:** SILV component independence remains unaudited; status is explicitly unknown rather than independent.
 - **Safety:** PAPER TRADING only; no paid APIs or real orders.
