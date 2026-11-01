@@ -421,12 +421,44 @@ def fetch_public_text(url: str) -> str:
     parser.feed(raw.decode("utf-8", errors="replace"))
     return parser.text()
 
+_POLITICAL_ENDORSEMENT = re.compile(
+    r"\b(?:endorse(?:s|d|ment)?|"
+    r"doing (?:an? )?(?:incredible|fantastic|great) job representing|"
+    r"is an? (?:incredible|fantastic|great) representative|"
+    r"running to represent|maga warrior)\b",
+    re.I,
+)
+_CONCRETE_COMMODITY_EVENT = re.compile(
+    r"\b(?:opec|crude|oil|petroleum|wti|brent|natural gas|lng|gold|silver|"
+    r"copper|corn|wheat|soybean|sugar|coffee|cocoa)\b.{0,90}\b"
+    r"(?:cut|cuts|increase|increased|fell|fall|rose|rise|disruption|disrupted|"
+    r"attack|attacked|sanction|sanctions|embargo|outage|inventor(?:y|ies)|"
+    r"stockpiles?|exports?|production|supply|shipment|strike|struck|"
+    r"blockade|closed|reopened)\b|"
+    r"\b(?:cut|cuts|increase|increased|fell|fall|rose|rise|disruption|"
+    r"disrupted|attack|attacked|sanction|sanctions|embargo|outage|"
+    r"inventor(?:y|ies)|stockpiles?|exports?|production|supply|shipment|"
+    r"strike|struck|blockade|closed|reopened)\b.{0,90}\b"
+    r"(?:opec|crude|oil|petroleum|wti|brent|natural gas|lng|gold|silver|"
+    r"copper|corn|wheat|soybean|sugar|coffee|cocoa)\b",
+    re.I,
+)
+
+
 def _domains_for_public_text(text: str) -> list[str]:
     normalized = str(text or "").lower()
-    return [
+    domains = [
         domain for domain, keywords in ASSET_KEYWORDS.items()
         if any(keyword in normalized for keyword in keywords)
     ]
+    # Candidate endorsements and routine praise are political campaign events,
+    # not commodity/defense catalysts. Preserve a market tag only when the
+    # same item also describes a concrete commodity-market action.
+    if _POLITICAL_ENDORSEMENT.search(normalized):
+        if not _CONCRETE_COMMODITY_EVENT.search(normalized):
+            return ["POLITICAL_CAMPAIGN"]
+        domains.append("POLITICAL_CAMPAIGN")
+    return list(dict.fromkeys(domains))
 
 
 def fetch_public_feed(url: str) -> bytes:
@@ -702,7 +734,7 @@ def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> 
         lines.append(f"… e altri {len(eligible) - max(1, limit)} eventi nel registro locale.")
     lines.extend([
         "",
-        "📊 Nessun LONG/SHORT viene emesso senza identificazione dello strumento e conferma indipendente di prezzo/volume.",
+        "📊 LONG/SHORT preliminare solo se evento e mapping sostengono una direzione; prezzo/volume/ATR graduano SETUP e livelli, non cancellano il BIAS. Se i dati mancano: niente entry/SL/TP.",
     ])
     return "\n".join(lines)
 

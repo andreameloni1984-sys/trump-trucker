@@ -264,7 +264,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         message = trump_tracker.intelligence_digest_message(items)
         self.assertIn("Nuovi eventi pubblici verificabili: 60", message)
         self.assertIn("NON segnali confermati", message)
-        self.assertIn("Nessun LONG/SHORT viene emesso senza identificazione dello strumento", message)
+        self.assertIn("prezzo/volume/ATR graduano SETUP e livelli, non cancellano il BIAS", message)
         self.assertIn("e altri 55 eventi", message)
         self.assertEqual(message.count("https://example.gov/news/"), 5)
 
@@ -368,6 +368,33 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
 
             self.assertEqual(json.loads(state_path.read_text(encoding="utf-8")), previous)
             self.assertEqual(list(state_path.parent.glob(".sputnik_state.json.*.tmp")), [])
+
+
+    def test_political_candidate_endorsements_do_not_receive_market_domain_tags(self):
+        samples = [
+            "Congressman John Rutherford is an incredible Representative for Florida; "
+            "as the former Sheriff he is doing a fantastic job representing his district.",
+            "It is my Great Honor to endorse Ryan Elijah, a MAGA Warrior running to "
+            "represent Florida's 7th Congressional District.",
+            "Congressman Randy Fine is a MAGA Warrior doing a fantastic job representing "
+            "his district; he is a Harvard educated businessman.",
+        ]
+        for text in samples:
+            with self.subTest(text=text):
+                self.assertEqual(
+                    trump_tracker._domains_for_public_text(text),
+                    ["POLITICAL_CAMPAIGN"],
+                )
+
+    def test_endorsement_with_concrete_oil_market_action_keeps_energy_tag(self):
+        text = (
+            "I endorse the candidate. OPEC announced a crude oil production cut "
+            "that reduces physical supply."
+        )
+        domains = trump_tracker._domains_for_public_text(text)
+        self.assertIn("ENERGY", domains)
+        self.assertIn("POLITICAL_CAMPAIGN", domains)
+
 
 
 if __name__ == "__main__":
