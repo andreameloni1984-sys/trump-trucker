@@ -327,3 +327,15 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **No SPUTNIK functional change in this execution:** the one functional improvement was made in GAGARIN. This entry records the security/privacy diagnosis only.
 - **Next remediation:** stop serializing Telegram destination identifiers into the tracked state file; source them only from environment/secrets at runtime. Review whether the old identifier should be purged from public Git history, and confirm no bot token or other credential was ever committed. Keep non-sensitive event IDs and polling offsets only if their public exposure is explicitly accepted.
 - **Validation:** repository visibility and commit diff were inspected. No source code was changed and no SPUTNIK tests, live Telegram delivery, deployment, or order were performed. PAPER ONLY.
+
+
+## 2026-11-01 — Redact Telegram destination from public runtime state
+
+- **Audit basis:** the public repository's prior sputnik_state.json commit diff included a Telegram destination identifier. poll_telegram_commands() loaded that value preferentially, assigned it after a private /start, and save_state() serialized the full state. The workflow already supplies TELEGRAM_CHAT_ID through a GitHub Actions secret when configured.
+- **Implemented on branch fix/sputnik-redact-telegram-chat-id-20261101:** introduced _state_for_persistence() to remove the top-level telegram_chat_id from every persisted snapshot. The in-memory state retains the discovered identifier for the current process, so same-run command responses and notifications can still use it. A configured TELEGRAM_CHAT_ID secret remains the durable destination across scheduled runs. If no secret is configured, auto-discovery can serve the current run but the destination will not persist publicly; configure the secret for durable delivery.
+- **Legacy migration:** save_state() forces a rewrite when the existing public JSON still contains telegram_chat_id, even if all non-private state is otherwise unchanged. The next successful workflow persistence removes the field from the current tracked state; this does not erase earlier Git history.
+- **Files:** trump_tracker.py; tests/test_sputnik_item_intelligence.py; this log.
+- **Regression tests added:** newly saved state omits the identifier while preserving it in memory; a legacy state containing the identifier is rewritten and redacted even when no other substantive state changed.
+- **Validation status at branch creation:** code and tests committed; GitHub Actions/PR checks pending. No live Telegram message, secret readback, deployment, or market order was performed.
+- **Security limits/open:** this protects the current persisted top-level field, not historical Git objects or copies/forks. Review repository history and rotate the bot token only if a credential is found in a public commit; no token exposure is asserted by this change. Durable Telegram routing requires the destination to be configured in GitHub Secrets.
+- **PAPER ONLY:** no trading behavior, signal, risk threshold, or order authorization changed.
