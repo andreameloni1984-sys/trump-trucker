@@ -208,7 +208,8 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                 {"WTI": quote},
             )
         fallback.assert_not_called()
-        self.assertEqual(signal["status"], "WAIT")
+        self.assertEqual(signal["status"], "DIRECTIONAL_BIAS_NO_LEVELS")
+        self.assertEqual(signal["direction"], "LONG")
         self.assertIsNone(signal["entry"])
         self.assertIsNone(signal["stop"])
         self.assertIsNone(signal["tp1"])
