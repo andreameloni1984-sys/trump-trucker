@@ -369,6 +369,20 @@ def build_cfd_signal(
         quote = fetch_yahoo_quote(instrument)
     if quote and _quote_is_fresh(quote):
         quote = attach_silv_crosscheck(quote, instrument)
+    # Analyze only the commodity selected by the news engine, when OHLCV is supplied.
+    if quote and isinstance(quote.get("candles"), list):
+        try:
+            from sputnik_focused_trader import analyze_focused_market
+            focused = analyze_focused_market(instrument, quote["candles"])
+            base["focused_analysis"] = focused
+            if focused.get("status") == "DIRECTIONAL":
+                base["direction"] = focused["direction"]
+                base["reason"] += " | Analisi tecnica focused: " + str(focused.get("reason") or "")
+            elif focused.get("status") == "WAIT_CONFIRMATION":
+                base["direction"] = "NEUTRAL"
+                base["reason"] += " | Tesi news in attesa di conferma tecnica: " + str(focused.get("reason") or "")
+        except Exception as exc:
+            base["reason"] += " | Analisi tecnica focused non disponibile: " + type(exc).__name__
     if not quote or not _quote_is_fresh(quote):
         base["status"] = "WAIT"
         base["reason"] += " | Quotazione live/fresca non disponibile anche dal fallback Yahoo Finance."
