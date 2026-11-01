@@ -89,6 +89,28 @@ class TrumpPolicyImpactTests(unittest.TestCase):
         self.assertIn("policy_impact", wti)
         self.assertEqual(wti["policy_impact"]["model"], "TRANSPARENT_TOPIC_EVENT_SENTIMENT_V1")
 
+
+    def test_actor_role_mapping_requires_exact_explicit_public_registry(self):
+        import json
+        from unittest.mock import patch
+        from sputnik_trump_impact import resolve_public_actor_role
+        with patch.dict("os.environ", {
+            "SPUTNIK_ACTOR_ROLE_MAP": json.dumps({
+                "Jane Public": "family",
+                "Alex Adviser": "adviser",
+            })
+        }, clear=True):
+            self.assertEqual(resolve_public_actor_role("Jane Public"), "family")
+            self.assertEqual(resolve_public_actor_role("Unknown Person"), None)
+            self.assertEqual(resolve_public_actor_role("Jane Public Jr"), None)
+
+    def test_feed_url_identifies_truth_archive_and_white_house_official_roles(self):
+        from sputnik_trump_impact import _actor_context
+        truth = {"source": "PUBLIC_RSS", "feed_url": "https://www.trumpstruth.org/feed"}
+        white_house = {"source": "WHITE_HOUSE_RSS", "feed_url": "https://www.whitehouse.gov/news/feed/"}
+        self.assertEqual(_actor_context(truth)[0], "PRESIDENT_OFFICIAL_CHANNEL")
+        self.assertEqual(_actor_context(white_house)[0], "ADMINISTRATION_OFFICIAL_CHANNEL")
+
     def test_sentiment_is_context_only_and_does_not_override_event_direction(self):
         rows = analyze_public_policy_item(item(
             "A positive breakthrough: new sanctions threaten crude oil exports",
