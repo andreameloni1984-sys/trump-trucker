@@ -206,7 +206,7 @@ def sputnik_home_message(state: dict[str, Any]) -> str:
     lines.extend([
         "",
         "🛒 CARRELLO CFD: €300 | rischio modello 1% per candidato.",
-        "⚠️ Entry/SL/TP/Size compaiono solo con dati verificabili.",
+        "⚠️ Entry/SL/TP condizionali solo con dati verificabili; sizing non mostrato senza specifiche complete.",
         "⚠️ Nessuna inferenza di transazioni private o intenzioni personali.",
     ])
     return "\n".join(lines)

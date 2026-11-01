@@ -222,3 +222,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Tests:** add state-mapping regressions for missing quote, early setup, neutral side and unknown status; assert both user-facing dashboard/cart blocks contain no `WAIT` and expose PAPER/NO_DIRECTION.
 - **Verification:** GitHub Actions pending at commit creation. No live Telegram send, live quote, deploy or order is claimed. PAPER ONLY.
 - **Open:** Gagarin still needs a verified independent same-contract futures source; both bots still need a real 100-setup out-of-sample journal/metrics and production Telegram delivery verification.
+
+
+### Verification — dashboard/cart state fix
+
+- **Implementation commit:** `39ea9bf90dcc048a42f1520b96886ef1801dd6a4`.
+- **GitHub Actions:** Telegram/menu workflow `41294183551` — SUCCESS, 65 tests; ranking/full test workflow `41294183516` — SUCCESS, 165 tests; SPUTNIK runtime workflow `41294183535` — SUCCESS.
+- **Telegram runtime evidence:** the SPUTNIK runtime log recorded confirmed sendMessage responses with positive message IDs `631` and `632`. The confirmation helper accepts a message only when Telegram returns `ok=true` and a positive `result.message_id`. Four other send attempts in that same run were explicitly NOT confirmed; delivery is therefore partial, not fully reliable.
+- **Runtime problems:** WHITE_HOUSE, TRUTH_ARCHIVE and OGE fetches reported `OSError`; the GAGARIN cloud handoff was disabled because its URL/key were not configured; one Form 4 XML could not be found. No live quote, Render deployment or order is claimed.
+- **Follow-up:** dashboard footer now states that sizing is not displayed without complete specifications. PAPER ONLY; no paid data service or real order.
+
