@@ -188,7 +188,7 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                 {"instrument": "WTI", "bias": "LONG", "score": 80},
                 {},
             )
-        self.assertEqual(signal["status"], "WAIT")
+        self.assertEqual(signal["status"], "DIRECTIONAL_BIAS_NO_LEVELS")
         self.assertIsNone(signal["entry"])
         self.assertIsNone(signal["stop"])
         self.assertIsNone(signal["tp1"])
