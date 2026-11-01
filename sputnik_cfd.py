@@ -1,10 +1,8 @@
 """SPUTNIK CFD signal helpers.
 
-Produces standardized CFD signals (Entry / SL / TP1 / TP2) from a
-recommendation + fresh broker quote + ATR.
-
-Never fabricates prices. If quote or ATR is missing/stale → status=WAIT
-and levels are omitted; PREPARE is reserved for a fresh, priced setup below trigger.
+Keep a supported LONG/SHORT catalyst visible as BIAS when setup confirmation
+or fresh execution data is missing. D-L-A grades setup timing; it does not veto
+the directional hypothesis. This module never executes a paper or live order.
 """
 from __future__ import annotations
 
@@ -349,16 +347,20 @@ def build_cfd_signal(
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     base = {
         "instrument": "N/D",
-        "direction": "WAIT",
+        "direction": "NEUTRAL",
         "entry": None,
         "stop": None,
         "tp1": None,
         "tp2": None,
         "atr": None,
         "score": 0,
-        "status": "NO_SIGNAL",
-        "reason": "Nessuna raccomandazione disponibile.",
-        "confirmation": "Conferma tecnica obbligatoria.",
+        "status": "NO_DIRECTION",
+        "reason": "Nessuna raccomandazione direzionale disponibile.",
+        "confirmation": "D-L-A valuta qualità e timing del setup; non annulla un bias LONG/SHORT.",
+        "bias_status": "NO_DIRECTION",
+        "setup_status": "NO_DIRECTION",
+        "paper_trade_status": "NOT_EXECUTED",
+        "execution_readiness": "NO_DIRECTIONAL_EDGE",
         "risk_pct": risk_pct,
         "timestamp": now,
         "paper_only": True,
@@ -372,13 +374,19 @@ def build_cfd_signal(
     reason = str(recommendation.get("reason") or "")
     confirmation = str(recommendation.get("confirmation") or "Verifica prezzo e volume live.")
 
+    direction = "LONG" if "LONG" in bias else "SHORT" if "SHORT" in bias else "NEUTRAL"
+    directional = direction in {"LONG", "SHORT"}
     base.update({
         "instrument": instrument,
-        "direction": "LONG" if "LONG" in bias else "SHORT" if "SHORT" in bias else "NEUTRAL",
+        "direction": direction,
         "score": score,
         "reason": reason,
         "confirmation": confirmation,
-        "status": "BIAS_ONLY",
+        "status": "EARLY_BIAS" if directional else "NO_DIRECTION",
+        "bias_status": "DIRECTIONAL_BIAS" if directional else "NO_DIRECTION",
+        "setup_status": "EARLY_BIAS" if directional else "NO_DIRECTION",
+        "paper_trade_status": "NOT_EXECUTED",
+        "execution_readiness": "EARLY_BIAS" if directional else "NO_DIRECTIONAL_EDGE",
     })
 
     quotes = quotes or {}
@@ -413,26 +421,35 @@ def build_cfd_signal(
             base["competition_setup"] = setup
             if setup.get("status") == "SETUP_CONFIRMED":
                 base["direction"] = setup["direction"]
+                base["execution_readiness"] = "CONFIRMED"
                 base["reason"] += " | Setup D-L-A confermato: " + "; ".join(setup.get("confirmations") or [])
             else:
                 # D-L-A grades entry timing; it is not a veto on the news direction.
                 base["execution_readiness"] = "EARLY_BIAS"
                 base["reason"] += " | D-L-A non ancora allineato (bias mantenuto): " + "; ".join(setup.get("reasons") or ["conferme parziali"])
         except Exception as exc:
-            base["execution_readiness"] = "UNVERIFIED"
+            base["execution_readiness"] = "EARLY_BIAS"
+            base["setup_status"] = "UNVERIFIED"
             base["reason"] += " | D-L-A non verificabile; bias direzionale mantenuto: " + type(exc).__name__
+    base["bias_status"] = "DIRECTIONAL_BIAS" if base["direction"] in {"LONG", "SHORT"} else "NO_DIRECTION"
     if not quote or not _quote_is_fresh(quote):
-        base["status"] = "DIRECTIONAL_BIAS_NO_LEVELS" if base["direction"] in {"LONG", "SHORT"} else "NO_DIRECTION_NO_LEVELS"
-        base["execution_readiness"] = "PRICE_DATA_MISSING"
-        base["reason"] += " | Quotazione fresca assente: direzione mostrata come ipotesi, senza inventare entry/SL/TP."
+        directional = base["direction"] in {"LONG", "SHORT"}
+        base["status"] = "EARLY_BIAS" if directional else "NO_DIRECTION"
+        base["setup_status"] = "EARLY_BIAS" if directional else "NO_DIRECTION"
+        base["execution_readiness"] = "EARLY_BIAS" if directional else "NO_DIRECTIONAL_EDGE"
+        base["paper_trade_status"] = "NOT_EXECUTED"
+        base["reason"] += " | Quotazione futures fresca assente: il bias resta visibile, entry/SL/TP omessi."
         return base
 
     entry = _number(quote.get("price") or quote.get("bid") or quote.get("last"))
     atr = _number(quote.get("atr") or quote.get("ATR") or quote.get("atr_14"))
     if entry is None or atr is None:
-        base["status"] = "DIRECTIONAL_BIAS_NO_LEVELS" if base["direction"] in {"LONG", "SHORT"} else "NO_DIRECTION_NO_LEVELS"
-        base["execution_readiness"] = "ATR_OR_PRICE_MISSING"
-        base["reason"] += " | Prezzo o ATR mancanti: mantengo la direzione ipotizzata ma non invento i livelli."
+        directional = base["direction"] in {"LONG", "SHORT"}
+        base["status"] = "EARLY_BIAS" if directional else "NO_DIRECTION"
+        base["setup_status"] = "EARLY_BIAS" if directional else "NO_DIRECTION"
+        base["execution_readiness"] = "EARLY_BIAS" if directional else "NO_DIRECTIONAL_EDGE"
+        base["paper_trade_status"] = "NOT_EXECUTED"
+        base["reason"] += " | Prezzo futures o ATR non valido/mancante: bias mantenuto, entry/SL/TP omessi."
         return base
 
     distance = ATR_MULTIPLIER * atr
@@ -446,17 +463,24 @@ def build_cfd_signal(
         tp2 = entry - 2 * distance
     else:
         base["status"] = "NO_DIRECTION"
+        base["bias_status"] = "NO_DIRECTION"
+        base["setup_status"] = "NO_DIRECTION"
         base["execution_readiness"] = "NO_DIRECTIONAL_EDGE"
+        base["paper_trade_status"] = "NOT_EXECUTED"
         return base
 
+    setup_state = "CONFIRMED" if base.get("execution_readiness") == "CONFIRMED" else "EARLY_SETUP"
     base.update({
         "entry": round(entry, 4),
         "stop": round(stop, 4),
         "tp1": round(tp1, 4),
         "tp2": round(tp2, 4),
         "atr": round(atr, 4),
-        "status": "SIGNAL" if score >= 70 and base.get("execution_readiness") != "EARLY_BIAS" else "EARLY_SETUP" if base.get("execution_readiness") == "EARLY_BIAS" else "PREPARE",
-        "execution_readiness": base.get("execution_readiness", "PRICE_LEVELS_AVAILABLE"),
+        "status": setup_state,
+        "bias_status": "DIRECTIONAL_BIAS",
+        "setup_status": setup_state,
+        "paper_trade_status": "NOT_EXECUTED",
+        "execution_readiness": setup_state,
         "quote_time": quote.get("timestamp") or quote.get("updated_at"),
         "quote_provider": quote.get("provider") or "state/provider",
         "quote_symbol": quote.get("symbol") or instrument,
@@ -488,30 +512,35 @@ def build_cfd_signal(
 
 
 def format_cfd_signal(signal: dict[str, Any]) -> str:
-    """Telegram-ready standardized CFD signal message."""
+    """Telegram-ready BIAS / SETUP / PAPER status message; never implies an order."""
     if not signal or signal.get("status") == "NO_SIGNAL":
         return (
-            "🛰️ SPUTNIK — SEGNALE CFD\n"
+            "🛰️ SPUTNIK — ANALISI CFD\n"
             "━━━━━━━━━━━━━━━━━━\n"
-            "🟡 Nessun segnale operativo.\n"
-            "Monitorare: WTI, BRENT, GOLD.\n"
-            "⚠️ PAPER ONLY"
+            "🟡 BIAS: NEUTRAL / NO_DIRECTION\n"
+            "🎯 SETUP: NO_DIRECTION\n"
+            "🧪 TRADE PAPER: NOT_EXECUTED\n"
+            "⚠️ Nessun ordine inviato."
         )
 
     direction = signal.get("direction", "NEUTRAL")
     icon = "🟢" if direction == "LONG" else "🔴" if direction == "SHORT" else "🟡"
-    status = signal.get("status", "PREPARE")
+    status = signal.get("status", "NO_DIRECTION")
+    setup_status = signal.get("setup_status", status)
+    paper_status = signal.get("paper_trade_status", "NOT_EXECUTED")
 
     lines = [
-        f"{icon} SPUTNIK CFD SIGNAL",
+        f"{icon} SPUTNIK — ANALISI CFD",
         "━━━━━━━━━━━━━━━━━━",
         "🧪 PAPER ONLY • NESSUN ORDINE AUTOMATICO",
         f"🕒 {signal.get('timestamp', '')}",
         "",
         f"📈 STRUMENTO: {signal.get('instrument')}",
-        f"📌 DIREZIONE: {direction}",
+        f"🧭 BIAS: {direction}",
+        f"🎯 SETUP: {setup_status}",
+        f"🧪 TRADE PAPER: {paper_status}",
         f"📊 SCORE: {signal.get('score', 0):.0f}/100",
-        f"🧪 STATO: {status}",
+        f"📌 STATO: {status}",
     ]
 
     if signal.get("entry") is not None:
@@ -523,16 +552,18 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
             f"🎯 TP2:   {signal['tp2']} (2R)",
             f"📏 ATR:   {signal.get('atr')}",
         ])
+    elif direction in {"LONG", "SHORT"}:
+        lines.append("\n⏳ BIAS mantenuto; entry/SL/TP omessi: quotazione futures fresca o ATR valido non disponibile.")
     else:
-        lines.append("\n⏳ Livelli non disponibili (manca quote/ATR fresca).")
+        lines.append("\n🟡 NO_DIRECTION: nessuna tesi LONG/SHORT sostenibile.")
 
     lines.extend([
         "",
         f"📌 MOTIVO: {signal.get('reason', '')[:280]}",
-        f"✅ CONFERMA: {signal.get('confirmation', '')}",
+        f"ℹ️ D-L-A: {signal.get('confirmation', '')}",
         f"⚠️ RISK: {signal.get('risk_pct', 1.0):.1f}% max",
         "",
-        "⚠️ Segnale informativo. Verifica contesto e rischio. Nessun ordine inviato.",
+        "⚠️ Analisi informativa. TRADE PAPER non eseguito da questo modulo.",
     ])
     return "\n".join(lines)
 
@@ -575,7 +606,7 @@ def build_cfd_cart(
     risk_pct: float = DEFAULT_RISK_PCT,
     limit: int = 3,
 ) -> list[dict[str, Any]]:
-    """Legacy cart builder. Prefer individual signals for new flows."""
+    """Legacy cart builder with explicit BIAS/SETUP states; never executes a trade."""
     capital_value = _number(capital)
     if capital_value is None:
         raise ValueError("capital must be positive")
@@ -586,13 +617,17 @@ def build_cfd_cart(
     cart = []
     for row in ranked_rows[:limit]:
         signal = str(row.get("signal") or "")
+        directional = signal == "COMPRA"
         item = {
             "security": row.get("security") or "N/D",
             "company": row.get("company") or "N/D",
             "score": row.get("score", 0),
             "evidence_signal": signal,
-            "direction": "LONG" if signal == "COMPRA" else "WAIT",
-            "status": "WAIT",
+            "direction": "LONG" if directional else "NEUTRAL",
+            "bias_status": "DIRECTIONAL_BIAS" if directional else "NO_DIRECTION",
+            "setup_status": "EARLY_BIAS" if directional else "NO_DIRECTION",
+            "paper_trade_status": "NOT_EXECUTED",
+            "status": "EARLY_BIAS" if directional else "NO_DIRECTION",
             "entry": None,
             "stop": None,
             "target": None,
@@ -600,32 +635,33 @@ def build_cfd_cart(
             "units": None,
             "reason": "",
         }
-        if signal != "COMPRA":
-            item["reason"] = "Evidenza sotto soglia BUY."
+        if not directional:
+            item["reason"] = "NO_DIRECTION: evidenza sotto soglia BUY; nessun lato sostenibile."
             cart.append(item)
             continue
         quote = _quote_for(row, quotes or {})
         if not quote or not _quote_is_fresh(quote):
-            item["reason"] = "WAIT: quotazione fresca non disponibile."
+            item["reason"] = "Bias LONG mantenuto; quotazione fresca non disponibile, livelli omessi."
             cart.append(item)
             continue
         entry = _number(quote.get("price"))
         stop = _number(quote.get("stop"))
         target = _number(quote.get("target"))
         if entry is None or stop is None or target is None or not (stop < entry < target):
-            item["reason"] = "WAIT: livelli non coerenti."
+            item["reason"] = "Bias LONG mantenuto; livelli non validi o incompleti, nessun sizing calcolato."
             cart.append(item)
             continue
         risk_per_unit = entry - stop
         units = (capital_value * risk_pct / 100) / risk_per_unit
         item.update({
-            "status": "TRADE",
+            "status": "EARLY_SETUP",
+            "setup_status": "EARLY_SETUP",
             "entry": entry,
             "stop": stop,
             "target": target,
             "units": round(units, 6),
             "rr": round((target - entry) / risk_per_unit, 2),
-            "reason": "BUY + quote fresca.",
+            "reason": "Bias LONG con livelli disponibili; nessuna operazione PAPER è stata registrata o eseguita.",
         })
         cart.append(item)
     return cart
