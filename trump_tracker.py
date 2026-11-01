@@ -422,25 +422,25 @@ def fetch_public_text(url: str) -> str:
     return parser.text()
 
 _POLITICAL_ENDORSEMENT = re.compile(
-    r"\\b(?:endorse(?:s|d|ment)?|"
+    r"\b(?:endorse(?:s|d|ment)?|"
     r"doing (?:an? )?(?:incredible|fantastic|great) job representing|"
     r"is an? (?:incredible|fantastic|great) representative|"
-    r"running to represent|maga warrior)\\b",
+    r"running to represent|maga warrior)\b",
     re.I,
 )
 _CONCRETE_COMMODITY_EVENT = re.compile(
-    r"\\b(?:opec|crude|oil|petroleum|wti|brent|natural gas|lng|gold|silver|"
-    r"copper|corn|wheat|soybean|sugar|coffee|cocoa)\\b.{0,90}\\b"
+    r"\b(?:opec|crude|oil|petroleum|wti|brent|natural gas|lng|gold|silver|"
+    r"copper|corn|wheat|soybean|sugar|coffee|cocoa)\b.{0,90}\b"
     r"(?:cut|cuts|increase|increased|fell|fall|rose|rise|disruption|disrupted|"
     r"attack|attacked|sanction|sanctions|embargo|outage|inventor(?:y|ies)|"
     r"stockpiles?|exports?|production|supply|shipment|strike|struck|"
-    r"blockade|closed|reopened)\\b|"
-    r"\\b(?:cut|cuts|increase|increased|fell|fall|rose|rise|disruption|"
+    r"blockade|closed|reopened)\b|"
+    r"\b(?:cut|cuts|increase|increased|fell|fall|rose|rise|disruption|"
     r"disrupted|attack|attacked|sanction|sanctions|embargo|outage|"
     r"inventor(?:y|ies)|stockpiles?|exports?|production|supply|shipment|"
-    r"strike|struck|blockade|closed|reopened)\\b.{0,90}\\b"
+    r"strike|struck|blockade|closed|reopened)\b.{0,90}\b"
     r"(?:opec|crude|oil|petroleum|wti|brent|natural gas|lng|gold|silver|"
-    r"copper|corn|wheat|soybean|sugar|coffee|cocoa)\\b",
+    r"copper|corn|wheat|soybean|sugar|coffee|cocoa)\b",
     re.I,
 )
 
