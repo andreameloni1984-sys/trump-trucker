@@ -232,3 +232,5 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Runtime problems:** WHITE_HOUSE, TRUTH_ARCHIVE and OGE fetches reported `OSError`; the GAGARIN cloud handoff was disabled because its URL/key were not configured; one Form 4 XML could not be found. No live quote, Render deployment or order is claimed.
 - **Follow-up:** dashboard footer now states that sizing is not displayed without complete specifications. PAPER ONLY; no paid data service or real order.
 
+
+- **Post-footer rerun on main:** Telegram/menu workflow `41294250310` — SUCCESS, 65 tests; ranking/full tests `41294250217` — SUCCESS, 165 tests; runtime workflow `41294250220` — SUCCESS, 25 smoke tests. Runtime again confirmed Telegram messages `633` and `634`; four other attempts remained unconfirmed. The runtime workflow then persisted state to main. The repeated partial-delivery pattern remains open.
