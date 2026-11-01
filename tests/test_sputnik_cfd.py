@@ -1,6 +1,7 @@
 import json
 import unittest
 from datetime import datetime, timedelta, timezone
+from types import ModuleType
 from unittest.mock import patch
 
 from sputnik_cfd import (
@@ -312,6 +313,43 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
         self.assertIn("TRADE PAPER: NOT_EXECUTED", message)
         self.assertIn("NO_DIRECTION", message)
         self.assertNotIn("WAIT", message)
+
+
+    def test_opposite_confirmed_dla_does_not_flip_news_bias(self):
+        now = datetime.now(timezone.utc).isoformat()
+        quote = {
+            "price": 80.0,
+            "atr": 2.0,
+            "timestamp": now,
+            "provider": "Yahoo Finance chart (1m futures)",
+            "symbol": "CL=F",
+            "candles": [{"timestamp": now} for _ in range(60)],
+        }
+        focused_module = ModuleType("sputnik_focused_trader")
+        focused_module.analyze_focused_market = lambda instrument, candles: {
+            "status": "DIRECTIONAL", "direction": "SHORT", "reason": "short-term trend down"
+        }
+        setup_module = ModuleType("sputnik_competition_setup")
+        setup_module.evaluate_competition_setup = lambda instrument, candles: {
+            "status": "SETUP_CONFIRMED", "direction": "SHORT",
+            "confirmations": ["trend", "location", "retest", "volume proxy"], "reasons": []
+        }
+        with patch.dict("sys.modules", {
+            "sputnik_focused_trader": focused_module,
+            "sputnik_competition_setup": setup_module,
+        }):
+            with patch("sputnik_cfd.attach_silv_crosscheck", side_effect=lambda q, instrument: q):
+                signal = build_cfd_signal(
+                    {"instrument": "WTI", "bias": "LONG", "score": 85, "reason": "supply disruption catalyst"},
+                    {"WTI": quote},
+                )
+        self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["technical_direction"], "SHORT")
+        self.assertEqual(signal["technical_alignment"], "CONTRASTS")
+        self.assertEqual(signal["setup_direction"], "SHORT")
+        self.assertEqual(signal["setup_alignment"], "CONTRASTS")
+        self.assertEqual(signal["status"], "EARLY_SETUP")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
 
 
 class SilvCrosscheckTests(unittest.TestCase):
