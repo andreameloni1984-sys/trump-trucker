@@ -137,3 +137,5 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 ## 2026-11-01 — Competition-style execution filter
 
 Studied the CME Trading Challenge framework and published futures-trader material describing Direction, Location, Aggression, VWAP, breakout/retest, volume and strict risk controls. Added `sputnik_competition_setup.py` and tests. `sputnik_cfd.py` now requires the D-L-A setup to confirm when at least 60 timestamped OHLCV candles are available; otherwise it returns WAIT. OHLCV volume is explicitly only an aggression proxy, not true bid/ask footprint or DOM order flow. PAPER ONLY; CI and production deployment remain unverified.
+
+- Follow-up integration: Yahoo's existing 1-minute futures fallback now preserves OHLCV and timestamps (not just the latest close/ATR), so the focused trend layer and D-L-A filter can consume a real one-day candle series. This is still Yahoo continuous-futures data, not exchange-native DOM/footprint; availability and volume quality vary by contract/session.
