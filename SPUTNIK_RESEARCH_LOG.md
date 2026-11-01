@@ -349,3 +349,11 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Compatibility:** durable outbound Telegram routing now relies on TELEGRAM_CHAT_ID in GitHub Actions Secrets. If that secret is absent, an auto-discovered destination remains in memory only for the current process and is intentionally not persisted publicly.
 
 - **Scheduled-workflow routing clarification:** the current trump_tracker GitHub Actions workflow sets SPUTNIK_TELEGRAM_POLLING=0, so that collector does not perform /start auto-discovery. For scheduled collector notifications, TELEGRAM_CHAT_ID must be present in GitHub Secrets; the separate listener's local chat state is not automatically shared with the Actions runner. Without the secret, the collector has no durable outbound destination and fails closed.
+
+## 2026-11-01 — Scheduled Telegram destination preflight
+
+- **Finding:** `.github/workflows/trump_tracker.yml` set `SPUTNIK_TELEGRAM_POLLING=0` but printed `AUTO-DISCOVERY ATTIVO` when `TELEGRAM_CHAT_ID` was absent. The scheduled collector therefore could not discover a recipient in that runner, despite the preflight message implying otherwise. `send_telegram()` fails closed when the destination is empty, so monitoring could run without deliverable notifications.
+- **Implemented:** the workflow now requires both `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` before running the scheduled collector; missing destination exits with an explicit GitHub Actions error. The item-intelligence test file is added to push path filters, and a regression test asserts the polling-disabled workflow cannot claim auto-discovery.
+- **Scope:** this is an operational delivery guard only. It does not change event collection, event classification, market bias, GAGARIN handoff, or any trading authorization. No Telegram request is sent by the test.
+- **Validation status:** source and regression test committed on the feature branch. GitHub Actions and PR checks are pending; no live `ok=true`/`message_id`, secret readback, or deployment is claimed.
+- **Safety:** PAPER ONLY; no broker order or paid service.
