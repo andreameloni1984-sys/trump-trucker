@@ -183,3 +183,16 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Results:** early LONG/SHORT D-L context survives missing trigger; a supported news BIAS is not flipped by opposite D-L-A; technical-only early bias is labelled separately; no levels are emitted by the D-L-A evaluator before trigger, volume and structural stop confirmation.
 - **Limitations:** these are deterministic CI tests, not historical-market performance validation. The Actions log includes mocked Telegram delivery fixtures; no live Telegram delivery, production deployment, real quote freshness, DOM/footprint feed or real order was verified.
 - **Open:** independent same-contract futures references, source-independence audit, real 100-setup out-of-sample diary/metrics, and runtime monitoring verification remain open.
+
+
+## 2026-11-01 — Add optional Narwhal free futures reference to SPUTNIK
+
+- Provider terms checked: Narwhal official pricing lists Free at $0/month, 5,000 successful requests/month, 30 requests/minute and no overage charges. The futures reference documents 15-minute-delayed free latest prices; free one-minute bars are not included. The API requires a Bearer key.
+- Implemented: SPUTNIK now has an opt-in, reference-only Narwhal quote reader for shared futures roots GC, SI, HG, CL, ZW, ZC and ZS. It is disabled by default and requires NARWHAL_REFERENCE_ENABLED=1 plus NARWHAL_API_KEY.
+- Quota control: deterministic one-root rotation every 30 minutes. If the same free key is shared with GAGARIN's 15-minute rotation, nominal load is about 4,320 successful quote calls per 30-day month (2,880 GAGARIN + 1,440 SPUTNIK), below 5,000. Actual usage must still be monitored.
+- Data contract: preserves provider, root symbol, source timestamp, USD currency, raw unit, price, age, delayed/stale/session flags and price-scale metadata. Bid/ask are null because this endpoint does not provide them. No exact delivery month or upstream source routing is disclosed.
+- Safety: quote is shown in Telegram as NARWHAL REF only. It never replaces Yahoo futures execution price, ATR, entry, SL or TP. No percentage deviation is calculated because exact expiry and upstream independence cannot be verified. Stale or malformed values are status-labelled and not treated as live.
+- Files: sputnik_cfd.py; tests/test_sputnik_cfd.py.
+- Tests added: default disabled; missing key causes no network call; delayed quote preserves provenance and is reference-only; stale quote flagged; Telegram shows reference without changing Yahoo execution entry.
+- Runtime limitation: no user Narwhal API key was available in this run, so the real authenticated endpoint response and production freshness were not verified. CI uses mocked endpoint responses only. Feature remains disabled until a free key is supplied through repository secret NARWHAL_API_KEY and variable NARWHAL_REFERENCE_ENABLED=1.
+- Sources: Narwhal official futures API reference and pricing page. PAPER ONLY; no real orders.
