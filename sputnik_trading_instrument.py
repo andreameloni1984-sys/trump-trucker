@@ -459,10 +459,22 @@ def recommend_trading_instrument(
             "Chiusure 5m stabili sotto EMA50 e inversione della struttura dei massimi/minimi."
         )
     else:
-        rec["bias"] = "NEUTRAL"
-        rec["status"] = "WATCH_NEUTRAL"
-        rec["reason"] = "Direzione tecnica non dimostrata: " + technical["reason"]
-        rec["catalyst_alignment"] = "NOT_CONFIRMED"
+        # A mixed technical snapshot must not erase a directional, dated news
+        # catalyst. Preserve it as an early hypothesis and label the missing
+        # trigger explicitly; only remain neutral when news itself has no side.
+        if news_bias in {"LONG", "SHORT"}:
+            rec["bias"] = news_bias
+            rec["status"] = "EARLY_BIAS_TECHNICAL_UNCONFIRMED"
+            rec["reason"] = (
+                "Bias da catalizzatore " + news_bias +
+                "; trigger tecnico 5m non ancora allineato: " + technical["reason"]
+            )
+            rec["catalyst_alignment"] = "NEWS_DIRECTION_RETAINED_TECHNICAL_MIXED"
+        else:
+            rec["bias"] = "NEUTRAL"
+            rec["status"] = "NO_DIRECTION"
+            rec["reason"] = "Nessuna direzione dimostrata: " + technical["reason"]
+            rec["catalyst_alignment"] = "NOT_CONFIRMED"
     return rec
 
 
