@@ -76,6 +76,19 @@ class TrumpPolicyImpactTests(unittest.TestCase):
         ))
         self.assertEqual({row["instrument"] for row in rows}, {"WHEAT", "CORN", "SOYBEAN"})
 
+
+    def test_policy_model_is_integrated_into_existing_directional_candidates(self):
+        from sputnik_catalyst import directional_news_candidates
+        finding = item(
+            "New sanctions threaten crude oil exports and tanker shipments",
+            ["ENERGY"],
+        )
+        rows = directional_news_candidates([finding], limit=8)
+        wti = next(row for row in rows if row["instrument"] == "WTI")
+        self.assertEqual(wti["bias"], "LONG_BIAS")
+        self.assertIn("policy_impact", wti)
+        self.assertEqual(wti["policy_impact"]["model"], "TRANSPARENT_TOPIC_EVENT_SENTIMENT_V1")
+
     def test_sentiment_is_context_only_and_does_not_override_event_direction(self):
         rows = analyze_public_policy_item(item(
             "A positive breakthrough: new sanctions threaten crude oil exports",
