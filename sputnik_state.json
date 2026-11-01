@@ -1,15 +1,703 @@
 {
   "events": {},
-  "updated_at": "2026-11-01T19:30:06.777200+00:00",
+  "updated_at": "2026-11-01T21:44:09.291406+00:00",
   "telegram_update_offset": 275590742,
-  "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "1b8fe57b0d3efe7c99a2ba5d",
+    "TRUTH_ARCHIVE": "b5f7aad90d306aae407bb8ff",
     "OGE": "128573526291bf1f4e0bc089"
   },
   "intelligence_history": {
+    "fbe675e77f4deb4119e0d12d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43114",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542719988886194",
+      "title": "Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas’ 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Ex",
+      "published": "Sun, 01 Nov 2026 18:59:30 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas’ 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Ex Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas’ 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Executive, Jon knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, and Champion our Nation’s Golden Age. In Congress, he will fight tirelessly to Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Safeguard our Elections, and Protect our always under siege Second Amendment. Jon Bonck has my Complete and Total Endorsement to be the next Representative from Texas’ 38th Congressional District. GET OUT AND VOTE FOR JON BONCK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.241378+00:00",
+      "event_id": "fbe675e77f4deb4119e0d12d",
+      "action_reaction": {
+        "event_id": "fbe675e77f4deb4119e0d12d",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "00d5c9bcb89f22921b3bf091": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43119",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542735806062008",
+      "title": "It is my Great Honor to endorse Carlos De La Cruz, a fantastic America First Candidate running to be the next Congressman from Texas’ 35th Congressional District! A Brave, 20 Year Air Force Veteran, and now, as a successful Businessman, Carlos has a Proven Record of Success — He is a WINNER! In Cong",
+      "published": "Sun, 01 Nov 2026 19:03:31 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse Carlos De La Cruz, a fantastic America First Candidate running to be the next Congressman from Texas’ 35th Congressional District! A Brave, 20 Year Air Force Veteran, and now, as a successful Businessman, Carlos has a Proven Record of Success — He is a WINNER! In Cong It is my Great Honor to endorse Carlos De La Cruz, a fantastic America First Candidate running to be the next Congressman from Texas’ 35th Congressional District! A Brave, 20 Year Air Force Veteran, and now, as a successful Businessman, Carlos has a Proven Record of Success — He is a WINNER! In Congress, Carlos will work tirelessly to Grow the Economy, Promote our Amazing Farmers and Ranchers, Cut Taxes and Regulations, Champion MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our Border SECURE, Strengthen our Military/Veterans, Ensure LAW AND ORDER, Advocate for Election Integrity, and Protect our always under siege Second Amendment. Carlos’s opponent, Johnny Garcia, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Johnny Garcia is Reckless, Radical, and Dangerous! Carlos De La Cruz has my Complete and Total Endorsement to be the next Representative from Texas’ 35th Congressional District. GET OUT AND VOTE FOR CARLOS DE LA CRUZ — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.240859+00:00",
+      "event_id": "00d5c9bcb89f22921b3bf091",
+      "action_reaction": {
+        "event_id": "00d5c9bcb89f22921b3bf091",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "a6a6f6a86bc0a24a77b0185e": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43118",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542736509174199",
+      "title": "It is my Great Honor to endorse America First Patriot, Eric Flores, who is running to represent the wonderful people of Texas’ 34th Congressional District. A Brave U.S. Army Veteran, and former Criminal Prosecutor, Eric knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support",
+      "published": "Sun, 01 Nov 2026 19:03:42 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Eric Flores, who is running to represent the wonderful people of Texas’ 34th Congressional District. A Brave U.S. Army Veteran, and former Criminal Prosecutor, Eric knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support It is my Great Honor to endorse America First Patriot, Eric Flores, who is running to represent the wonderful people of Texas’ 34th Congressional District. A Brave U.S. Army Veteran, and former Criminal Prosecutor, Eric knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support our Great Heroes in Law Enforcement, and Champion our Military and Veterans. In Congress, Eric will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, and Protect our always under siege Second Amendment. His opponent, Vicente Gonzalez, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Vicente Gonzalez is Reckless, Radical, and Dangerous! Eric Flores has my Complete and Total Endorsement to be the next Congressman from Texas’ 34th Congressional District. GET OUT AND VOTE FOR ERIC — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.240230+00:00",
+      "event_id": "a6a6f6a86bc0a24a77b0185e",
+      "action_reaction": {
+        "event_id": "a6a6f6a86bc0a24a77b0185e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "2d9b465907dee2078ee8aa5c": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43117",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542737147309219",
+      "title": "It is my Great Honor to endorse America First Patriot, Jace Yarbrough, who is running to represent the wonderful people of Texas’ 32nd Congressional District! A Brave Air Force Veteran, Jace knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE",
+      "published": "Sun, 01 Nov 2026 19:03:51 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Jace Yarbrough, who is running to represent the wonderful people of Texas’ 32nd Congressional District! A Brave Air Force Veteran, Jace knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE It is my Great Honor to endorse America First Patriot, Jace Yarbrough, who is running to represent the wonderful people of Texas’ 32nd Congressional District! A Brave Air Force Veteran, Jace knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE THROUGH STRENGTH. Additionally, as a very successful Stanford Law School Graduate and Business Attorney, Jace knows how to Create Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy Dominance, and Champion our Nation’s Golden Age. His opponent, Dan Barrios, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Dan Barrios is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Jace will fight tirelessly to Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Safeguard our Elections, and Protect our always under siege Second Amendment. Jace Yarbrough has my Complete and Total Endorsement to be the next Representative from Texas’ 32nd Congressional District. GET OUT AND VOTE FOR JACE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.239627+00:00",
+      "event_id": "2d9b465907dee2078ee8aa5c",
+      "action_reaction": {
+        "event_id": "2d9b465907dee2078ee8aa5c",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "85a4d90dd196e3cfa43f3116": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43116",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542737699149189",
+      "title": "Congressman John “Judge” Carter is a Fantastic Representative for the Great People of Texas’ 31st Congressional District! “Judge” served over 20 years as a District Court Judge in Williamson County prior to becoming a very distinguished and respected U.S. Congressman. He is working tirelessly to Gro",
+      "published": "Sun, 01 Nov 2026 19:04:00 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman John “Judge” Carter is a Fantastic Representative for the Great People of Texas’ 31st Congressional District! “Judge” served over 20 years as a District Court Judge in Williamson County prior to becoming a very distinguished and respected U.S. Congressman. He is working tirelessly to Gro Congressman John “Judge” Carter is a Fantastic Representative for the Great People of Texas’ 31st Congressional District! “Judge” served over 20 years as a District Court Judge in Williamson County prior to becoming a very distinguished and respected U.S. Congressman. He is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment. Judge Carter has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JUDGE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.239017+00:00",
+      "event_id": "85a4d90dd196e3cfa43f3116",
+      "action_reaction": {
+        "event_id": "85a4d90dd196e3cfa43f3116",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ca968bdaa70ba0ec2ce4b3b0": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43115",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542738281356865",
+      "title": "It is my Great Honor to endorse America First Patriot, Tano Tijerina, who is running to represent the wonderful people of Texas’ 28th Congressional District. A Great and Highly Respected Hispanic Judge, very successful Businessman, and Rancher, Tano Tijerina has dedicated his life to serving his Com",
+      "published": "Sun, 01 Nov 2026 19:04:09 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Tano Tijerina, who is running to represent the wonderful people of Texas’ 28th Congressional District. A Great and Highly Respected Hispanic Judge, very successful Businessman, and Rancher, Tano Tijerina has dedicated his life to serving his Com It is my Great Honor to endorse America First Patriot, Tano Tijerina, who is running to represent the wonderful people of Texas’ 28th Congressional District. A Great and Highly Respected Hispanic Judge, very successful Businessman, and Rancher, Tano Tijerina has dedicated his life to serving his Community. In Congress, he will fight tirelessly to Grow our Economy, Promote our Amazing Farmers and Ranchers, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. His opponent, Henry Cuellar, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Henry Cuellar is Reckless, Radical, and Dangerous! Tano Tijerina has my Complete and Total Endorsement to be the next Representative from Texas’ 28th Congressional District. GET OUT AND VOTE FOR TANO — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.238537+00:00",
+      "event_id": "ca968bdaa70ba0ec2ce4b3b0",
+      "action_reaction": {
+        "event_id": "ca968bdaa70ba0ec2ce4b3b0",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "353ad5091a64aadc0d0c3e62": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43121",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542802183019946",
+      "title": "Congressman Michael Cloud is a Tremendous Advocate for the Great People of Texas’ 27th Congressional District! As a Member of the POWERFUL House Appropriations Committee, Michael is fighting hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMI",
+      "published": "Sun, 01 Nov 2026 19:20:24 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Michael Cloud is a Tremendous Advocate for the Great People of Texas’ 27th Congressional District! As a Member of the POWERFUL House Appropriations Committee, Michael is fighting hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMI Congressman Michael Cloud is a Tremendous Advocate for the Great People of Texas’ 27th Congressional District! As a Member of the POWERFUL House Appropriations Committee, Michael is fighting hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Support our Brave Military/Veterans, and Defend our always under siege Second Amendment. Michael’s opponent, Tanya Lloyd, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Tanya Lloyd is Reckless, Radical, and Dangerous! Michael Cloud has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MICHAEL — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.237925+00:00",
+      "event_id": "353ad5091a64aadc0d0c3e62",
+      "action_reaction": {
+        "event_id": "353ad5091a64aadc0d0c3e62",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "82801c44a1c21b6e70e6e30d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43120",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542802931196989",
+      "title": "Congressman Brandon Gill is a “MAGA” Warrior for the wonderful people of Texas’ 26th Congressional District! I have known Brandon’s family for many years. He has an incredible wife, Danielle, two beautiful children, and a truly great father-in-law, Dinesh D’Souza. As the Freshman Class President in",
+      "published": "Sun, 01 Nov 2026 19:20:35 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Brandon Gill is a “MAGA” Warrior for the wonderful people of Texas’ 26th Congressional District! I have known Brandon’s family for many years. He has an incredible wife, Danielle, two beautiful children, and a truly great father-in-law, Dinesh D’Souza. As the Freshman Class President in Congressman Brandon Gill is a “MAGA” Warrior for the wonderful people of Texas’ 26th Congressional District! I have known Brandon’s family for many years. He has an incredible wife, Danielle, two beautiful children, and a truly great father-in-law, Dinesh D’Souza. As the Freshman Class President in Congress, Brandon is doing a tremendous job advancing our AMERICA FIRST Agenda. He is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Strengthen our Incredible Military/Veterans, Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Brandon’s opponent, Steven Shook, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Steven Shook is Reckless, Radical, and Dangerous! Brandon Gill has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR BRANDON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.237188+00:00",
+      "event_id": "82801c44a1c21b6e70e6e30d",
+      "action_reaction": {
+        "event_id": "82801c44a1c21b6e70e6e30d",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ec3f9644a50cc23a5df53b8e": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43122",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542813847321210",
+      "title": "Mark Teixeira is a former Major League Baseball STAR, and tremendous America First Candidate, who is running to represent the incredible people of Texas’ 21st Congressional District! I know Mark well, and he is a TOTAL WINNER, on and off the field! An MLB All-Star, Mark’s career was “loaded up” with",
+      "published": "Sun, 01 Nov 2026 19:23:22 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Mark Teixeira is a former Major League Baseball STAR, and tremendous America First Candidate, who is running to represent the incredible people of Texas’ 21st Congressional District! I know Mark well, and he is a TOTAL WINNER, on and off the field! An MLB All-Star, Mark’s career was “loaded up” with Mark Teixeira is a former Major League Baseball STAR, and tremendous America First Candidate, who is running to represent the incredible people of Texas’ 21st Congressional District! I know Mark well, and he is a TOTAL WINNER, on and off the field! An MLB All-Star, Mark’s career was “loaded up” with Accolades and WINS, including five Gold Gloves, three Silver Sluggers, and a World Series Championship. Mark has a great wife, Leigh, and three beautiful children. In Congress, Mark will work hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Ensure LAW AND ORDER, Champion School Choice, Safeguard our Elections, and Defend our always under siege Second Amendment. Mark Teixeira has my Complete and Total Endorsement to be the next Representative from Texas’ 21st Congressional District. GET OUT AND VOTE FOR MARK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.236501+00:00",
+      "event_id": "ec3f9644a50cc23a5df53b8e",
+      "action_reaction": {
+        "event_id": "ec3f9644a50cc23a5df53b8e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "974a2c818a2a9a29c502c722": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43124",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542821002881416",
+      "title": "Congressman August Pfluger is a Tremendous Champion for Texas’ 11th Congressional District! As the Chairman of the Republican Study Committee, August is doing an incredible job advancing our America First Agenda. He is working hard to Grow our Economy, Cut Taxes and Regulations, Champion our Great F",
+      "published": "Sun, 01 Nov 2026 19:25:11 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman August Pfluger is a Tremendous Champion for Texas’ 11th Congressional District! As the Chairman of the Republican Study Committee, August is doing an incredible job advancing our America First Agenda. He is working hard to Grow our Economy, Cut Taxes and Regulations, Champion our Great F Congressman August Pfluger is a Tremendous Champion for Texas’ 11th Congressional District! As the Chairman of the Republican Study Committee, August is doing an incredible job advancing our America First Agenda. He is working hard to Grow our Economy, Cut Taxes and Regulations, Champion our Great Farmers and American Agriculture, Promote MADE IN THE U.S.A., Ensure American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Strengthen our Incredible Military/Veterans, and Defend our always under siege Second Amendment. August Pfluger has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR AUGUST — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.235956+00:00",
+      "event_id": "974a2c818a2a9a29c502c722",
+      "action_reaction": {
+        "event_id": "974a2c818a2a9a29c502c722",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "baf2f987c19d4657de257065": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43123",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542821674954692",
+      "title": "It is my Great Honor to endorse MAGA Warrior, Chris Gober, who is running to represent the wonderful people of Texas’ 10th Congressional District. A Harvard Law School Graduate, and very successful Lawyer, Chris knows the Wisdom and Courage required to uphold our Constitution, and promote LAW AND OR",
+      "published": "Sun, 01 Nov 2026 19:25:21 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse MAGA Warrior, Chris Gober, who is running to represent the wonderful people of Texas’ 10th Congressional District. A Harvard Law School Graduate, and very successful Lawyer, Chris knows the Wisdom and Courage required to uphold our Constitution, and promote LAW AND OR It is my Great Honor to endorse MAGA Warrior, Chris Gober, who is running to represent the wonderful people of Texas’ 10th Congressional District. A Harvard Law School Graduate, and very successful Lawyer, Chris knows the Wisdom and Courage required to uphold our Constitution, and promote LAW AND ORDER. In Congress, Chris will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Strongly Support our incredible Law Enforcement, Military, and Veterans, and Protect our always under siege Second Amendment. Chris Gober has my Complete and Total Endorsement. GET OUT AND VOTE FOR CHRIS — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.235518+00:00",
+      "event_id": "baf2f987c19d4657de257065",
+      "action_reaction": {
+        "event_id": "baf2f987c19d4657de257065",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "59d275fbd18cf701a763cf83": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43143",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542822587044108",
+      "title": "It is my Great Honor to endorse America First Patriot Alex Mealer, who is running to represent the incredible people of Texas’ 9th Congressional District. A West Point Graduate, and Combat Decorated Army Bomb Squad Officer, Alex knows the Wisdom and Courage required to Defend our Country, Support ou",
+      "published": "Sun, 01 Nov 2026 19:25:35 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot Alex Mealer, who is running to represent the incredible people of Texas’ 9th Congressional District. A West Point Graduate, and Combat Decorated Army Bomb Squad Officer, Alex knows the Wisdom and Courage required to Defend our Country, Support ou It is my Great Honor to endorse America First Patriot Alex Mealer, who is running to represent the incredible people of Texas’ 9th Congressional District. A West Point Graduate, and Combat Decorated Army Bomb Squad Officer, Alex knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE THROUGH STRENGTH. A Graduate of Harvard Business School and Harvard Law School, Alex is also a successful Business Executive who knows the America First Policies necessary to Create GREAT Jobs, Cut Taxes and Regulations, Unleash Innovation, Promote MADE IN THE U.S.A., and Ensure American Energy DOMINANCE. In Congress, she will work hard to Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Safeguard our Elections, and Defend our always under siege Second Amendment. Alex’s opponent, Leticia Gutierrez, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Leticia Gutierrez is Reckless, Radical, and Dangerous! Alex Mealer has my Complete and Total Endorsement to be the next Representative from Texas’ 9th Congressional District. GET OUT AND VOTE FOR ALEX MEALER — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.235024+00:00",
+      "event_id": "59d275fbd18cf701a763cf83",
+      "action_reaction": {
+        "event_id": "59d275fbd18cf701a763cf83",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "128ec47bfb67cd4a2aeafccc": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43142",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542823304368768",
+      "title": "It is my Great Honor to endorse Jessica Steinmann, who is running to represent the amazing people of Texas’ 8th Congressional District. Jessica is strongly supported by many of the greatest America First Patriots in Texas, including Governor Greg Abbott, Lieutenant Governor Dan Patrick, Senator Ted",
+      "published": "Sun, 01 Nov 2026 19:25:46 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse Jessica Steinmann, who is running to represent the amazing people of Texas’ 8th Congressional District. Jessica is strongly supported by many of the greatest America First Patriots in Texas, including Governor Greg Abbott, Lieutenant Governor Dan Patrick, Senator Ted It is my Great Honor to endorse Jessica Steinmann, who is running to represent the amazing people of Texas’ 8th Congressional District. Jessica is strongly supported by many of the greatest America First Patriots in Texas, including Governor Greg Abbott, Lieutenant Governor Dan Patrick, Senator Ted Cruz, and Congressman Morgan Luttrell, among others! As a former appointee in my First Term, and now, as a Highly Respected Attorney, Jessica continues to prove that she has the Wisdom and Courage necessary to uphold our Constitution, and ensure LAW AND ORDER. In Congress, Jessica will fight tirelessly to Strengthen our Military, Care for our Brave Veterans, Stand with our Law Enforcement, Keep our Border SECURE, Stop Migrant Crime, Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, and Defend our always under siege Second Amendment. Jessica Steinmann has my Complete and Total Endorsement to be the next Representative from Texas’ 8th Congressional District. GET OUT AND VOTE FOR JESSICA STEINMANN — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.234377+00:00",
+      "event_id": "128ec47bfb67cd4a2aeafccc",
+      "action_reaction": {
+        "event_id": "128ec47bfb67cd4a2aeafccc",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "06c7e86cfbce1b7ac1955747": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43141",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542823928871383",
+      "title": "Congressman Jake Ellzey is an America First Patriot who is doing an incredible job representing Texas’ 6th Congressional District! A former Navy fighter pilot and Combat Veteran, Jake knows the Wisdom and Courage required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE T",
+      "published": "Sun, 01 Nov 2026 19:25:56 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Jake Ellzey is an America First Patriot who is doing an incredible job representing Texas’ 6th Congressional District! A former Navy fighter pilot and Combat Veteran, Jake knows the Wisdom and Courage required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE T Congressman Jake Ellzey is an America First Patriot who is doing an incredible job representing Texas’ 6th Congressional District! A former Navy fighter pilot and Combat Veteran, Jake knows the Wisdom and Courage required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, he is working hard to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Grow our Economy, and Protect our always under siege Second Amendment. Jake Ellzey has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JAKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.233844+00:00",
+      "event_id": "06c7e86cfbce1b7ac1955747",
+      "action_reaction": {
+        "event_id": "06c7e86cfbce1b7ac1955747",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "cc1cb939afeb9da6f5138c31": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43140",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542824877845816",
+      "title": "Congressman Lance Gooden is an America First Patriot, who is doing a fantastic job representing Texas’ 5th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lance is working hard to Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Pr",
+      "published": "Sun, 01 Nov 2026 19:26:10 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Lance Gooden is an America First Patriot, who is doing a fantastic job representing Texas’ 5th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lance is working hard to Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Pr Congressman Lance Gooden is an America First Patriot, who is doing a fantastic job representing Texas’ 5th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lance is working hard to Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our now very Secure Border, SECURE, Support our Military/Veterans, and Protect our always under siege Second Amendment. Lance Gooden has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR LANCE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.233428+00:00",
+      "event_id": "cc1cb939afeb9da6f5138c31",
+      "action_reaction": {
+        "event_id": "cc1cb939afeb9da6f5138c31",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "907b3704a94acb7079b58033": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43139",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542825596529553",
+      "title": "Congressman Pat Fallon is a fantastic Representative for the wonderful People of Texas’ 4th Congressional District! An Air Force Veteran, successful Businessman, former National Championship Winning Notre Dame football player under the LEGENDARY Coach Lou Holtz, and now, as Congressman, Pat has a Pr",
+      "published": "Sun, 01 Nov 2026 19:26:21 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Pat Fallon is a fantastic Representative for the wonderful People of Texas’ 4th Congressional District! An Air Force Veteran, successful Businessman, former National Championship Winning Notre Dame football player under the LEGENDARY Coach Lou Holtz, and now, as Congressman, Pat has a Pr Congressman Pat Fallon is a fantastic Representative for the wonderful People of Texas’ 4th Congressional District! An Air Force Veteran, successful Businessman, former National Championship Winning Notre Dame football player under the LEGENDARY Coach Lou Holtz, and now, as Congressman, Pat has a Proven Record of Success — He is a WARRIOR! In Congress, Pat is fighting hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Strengthen our Military/Veterans, Ensure LAW AND ORDER, Advance Election Integrity, and Protect our always under siege Second Amendment. Pat Fallon has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR PAT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.233011+00:00",
+      "event_id": "907b3704a94acb7079b58033",
+      "action_reaction": {
+        "event_id": "907b3704a94acb7079b58033",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "00f8c00f9f32094d43ed6200": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43138",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542826301949797",
+      "title": "Congressman Keith Self is a Tremendous Advocate for the Great People of Texas’ 3rd Congressional District! A West Point Graduate and retired Army Ranger, Keith knows the Wisdom and Courage required to Defend our Country, Support our Incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In",
+      "published": "Sun, 01 Nov 2026 19:26:32 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Keith Self is a Tremendous Advocate for the Great People of Texas’ 3rd Congressional District! A West Point Graduate and retired Army Ranger, Keith knows the Wisdom and Courage required to Defend our Country, Support our Incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congressman Keith Self is a Tremendous Advocate for the Great People of Texas’ 3rd Congressional District! A West Point Graduate and retired Army Ranger, Keith knows the Wisdom and Courage required to Defend our Country, Support our Incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, he is working hard to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Safeguard our Elections, and Defend our always under siege Second Amendment. Keith’s opponent, Evan Hunt, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Evan Hunt is Reckless, Radical, and Dangerous! Keith Self has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR KEITH — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.232552+00:00",
+      "event_id": "00f8c00f9f32094d43ed6200",
+      "action_reaction": {
+        "event_id": "00f8c00f9f32094d43ed6200",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "a1310809be7a0c91c39c93d8": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43137",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542827427827682",
+      "title": "It is my Great Honor to endorse MAGA Warrior, Steve Toth, who is running to represent the Tremendous People of Texas’ 2nd Congressional District! A Highly Respected State Legislator, and Very Successful Small Business Owner, Steve has been an incredible Voice for MAGA, and has been with me from the",
+      "published": "Sun, 01 Nov 2026 19:26:49 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse MAGA Warrior, Steve Toth, who is running to represent the Tremendous People of Texas’ 2nd Congressional District! A Highly Respected State Legislator, and Very Successful Small Business Owner, Steve has been an incredible Voice for MAGA, and has been with me from the It is my Great Honor to endorse MAGA Warrior, Steve Toth, who is running to represent the Tremendous People of Texas’ 2nd Congressional District! A Highly Respected State Legislator, and Very Successful Small Business Owner, Steve has been an incredible Voice for MAGA, and has been with me from the very beginning! As your next Congressman, he will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Champion School Choice, Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Support our Military/Veterans, Advance Election Integrity, and Protect our always under siege Second Amendment. Steve Toth has my Complete and Total Endorsement to be the next Representative from Texas’ 2nd Congressional District. GET OUT AND VOTE FOR STEVE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.231958+00:00",
+      "event_id": "a1310809be7a0c91c39c93d8",
+      "action_reaction": {
+        "event_id": "a1310809be7a0c91c39c93d8",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "1762e0486feb6f3aeec19274": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43136",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542828067511679",
+      "title": "Congressman Nathaniel Moran is doing a fantastic job representing the Great People of Texas’ 1st Congressional District! Nathaniel has an incredible Record of Success, and strong support from his Community. In Congress, he is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote",
+      "published": "Sun, 01 Nov 2026 19:26:59 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Nathaniel Moran is doing a fantastic job representing the Great People of Texas’ 1st Congressional District! Nathaniel has an incredible Record of Success, and strong support from his Community. In Congress, he is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote Congressman Nathaniel Moran is doing a fantastic job representing the Great People of Texas’ 1st Congressional District! Nathaniel has an incredible Record of Success, and strong support from his Community. In Congress, he is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Support our Amazing Farmers and Ranchers, Ensure American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Champion our Brave Military/Veterans, and Protect our always under siege Second Amendment. Nathaniel Moran has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR NATHANIEL — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.231507+00:00",
+      "event_id": "1762e0486feb6f3aeec19274",
+      "action_reaction": {
+        "event_id": "1762e0486feb6f3aeec19274",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "d414feae9654f4c98a487a8d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43135",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542828779415652",
+      "title": "Dr. Dawn Buckingham is the strong and highly popular Land Commissioner for Texas, a place I love and WON BIG three times, including with 6.4 Million Votes in 2024, the most in History (BY FAR)! Dawn is a Ninth Generation Texan, successful Surgeon, avid Hunter, former State Senator, and now, as Land",
+      "published": "Sun, 01 Nov 2026 19:27:10 +0000",
+      "domains": [
+        "ENERGY",
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Dr. Dawn Buckingham is the strong and highly popular Land Commissioner for Texas, a place I love and WON BIG three times, including with 6.4 Million Votes in 2024, the most in History (BY FAR)! Dawn is a Ninth Generation Texan, successful Surgeon, avid Hunter, former State Senator, and now, as Land Dr. Dawn Buckingham is the strong and highly popular Land Commissioner for Texas, a place I love and WON BIG three times, including with 6.4 Million Votes in 2024, the most in History (BY FAR)! Dawn is a Ninth Generation Texan, successful Surgeon, avid Hunter, former State Senator, and now, as Land Commissioner, has served the Lone Star State during a career “loaded up” with accolades and wins. A true America First Patriot, who has been with us from the very beginning, Dawn is an incredibly effective steward of Texas’ 13 Million Acres of Precious, Energy Rich, State Land — She is a Strong Supporter of Texas Oil & Gas! Dawn is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Champion our Amazing Farmers and Ranchers, Keep our Border SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, and Protect our always under siege Second Amendment. Land Commissioner Dawn Buckingham, M.D., has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAWN — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.231044+00:00",
+      "event_id": "d414feae9654f4c98a487a8d",
+      "action_reaction": {
+        "event_id": "d414feae9654f4c98a487a8d",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "90c0482f6cc7cb147725eb84": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43131",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542829364549863",
+      "title": "Don Huffines is a MAGA Warrior — He has been with me from the very beginning, and is running for Comptroller of Public Accounts in Texas, which I love and WON BIG in 2016, 2020, and 2024, getting the highest vote in the State’s History. As a successful Businessman, Don knows the America First Polici",
+      "published": "Sun, 01 Nov 2026 19:27:19 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Don Huffines is a MAGA Warrior — He has been with me from the very beginning, and is running for Comptroller of Public Accounts in Texas, which I love and WON BIG in 2016, 2020, and 2024, getting the highest vote in the State’s History. As a successful Businessman, Don knows the America First Polici Don Huffines is a MAGA Warrior — He has been with me from the very beginning, and is running for Comptroller of Public Accounts in Texas, which I love and WON BIG in 2016, 2020, and 2024, getting the highest vote in the State’s History. As a successful Businessman, Don knows the America First Policies required to Grow our Economy, Create GREAT Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., and Unleash American Energy DOMINANCE. As your next Comptroller, Don will fight tirelessly to Keep our Border SECURE, Ensure LAW AND ORDER, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment. Don Huffines has my Complete and Total Endorsement to be the next Texas Comptroller of Public Accounts. GET OUT AND VOTE FOR DON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.230570+00:00",
+      "event_id": "90c0482f6cc7cb147725eb84",
+      "action_reaction": {
+        "event_id": "90c0482f6cc7cb147725eb84",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "441842861904bc18ba1078cb": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43130",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542830409841130",
+      "title": "It is my Great Honor to endorse “MAGA” Mayes Middleton, who is running to be the next Attorney General of the Wonderful State of Texas, a place I love and WON BIG three times, including with 6.4 Million Votes in 2024 (The most Votes in History, BY FAR)! As a 7th Generation Texan, dedicated Rancher,",
+      "published": "Sun, 01 Nov 2026 19:27:35 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse “MAGA” Mayes Middleton, who is running to be the next Attorney General of the Wonderful State of Texas, a place I love and WON BIG three times, including with 6.4 Million Votes in 2024 (The most Votes in History, BY FAR)! As a 7th Generation Texan, dedicated Rancher, It is my Great Honor to endorse “MAGA” Mayes Middleton, who is running to be the next Attorney General of the Wonderful State of Texas, a place I love and WON BIG three times, including with 6.4 Million Votes in 2024 (The most Votes in History, BY FAR)! As a 7th Generation Texan, dedicated Rancher, highly respected State Senator, and very successful President of Middleton Oil Company, Mayes has served the Lone Star State during a career “loaded up” with accolades and wins. Mayes has a great wife, Martha Ann, and four beautiful children. His opponent, Nathan Johnson, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Nathan Johnson is Reckless, Radical, and Dangerous! On the other hand, as your next Attorney General, Mayes will continue working tirelessly to Ensure LAW AND ORDER, Champion our Brave Law Enforcement and First Responders, Support our Incredible Military/Veterans, Safeguard our Elections, Keep our Border SECURE, Stop Migrant Crime, Uphold our Constitution, Keep Men out of Women’s Sports, and Protect our always under siege Second Amendment. “MAGA” Mayes Middleton has my Complete and Total Endorsement to be the next Attorney General of the Great State of Texas. GET OUT AND VOTE FOR MAYES — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.230036+00:00",
+      "event_id": "441842861904bc18ba1078cb",
+      "action_reaction": {
+        "event_id": "441842861904bc18ba1078cb",
+        "event_type": "ENERGY",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "025f662207725091f8f2caa7": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43129",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542831198371222",
+      "title": "I am proud to once again endorse Texas Lieutenant Governor, Dan Patrick, for Re-Election! As Texas Chair of our Presidential Campaigns in 2016, 2020, and 2024, Dan has been an incredible friend to our Movement, helping us WIN BIG in the Primaries and General Elections. In his next Term, Dan will fig",
+      "published": "Sun, 01 Nov 2026 19:27:47 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "I am proud to once again endorse Texas Lieutenant Governor, Dan Patrick, for Re-Election! As Texas Chair of our Presidential Campaigns in 2016, 2020, and 2024, Dan has been an incredible friend to our Movement, helping us WIN BIG in the Primaries and General Elections. In his next Term, Dan will fig I am proud to once again endorse Texas Lieutenant Governor, Dan Patrick, for Re-Election! As Texas Chair of our Presidential Campaigns in 2016, 2020, and 2024, Dan has been an incredible friend to our Movement, helping us WIN BIG in the Primaries and General Elections. In his next Term, Dan will fight tirelessly alongside of us to Keep our Border SECURE, Stop Migrant Crime, Grow the Economy, Cut Taxes and Regulations, Champion School Choice, Support our Great Military/Vets, Restore American Energy DOMINANCE, and Strongly Protect our always under siege Second Amendment. Dan’s opponent, Vikki Goodwin, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Vikki Goodwin is Reckless, Radical, and Dangerous! Dan Patrick has my Complete and Total Endorsement for Re-Election as Lieutenant Governor of the Great State of Texas. GET OUT AND VOTE FOR DAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.229339+00:00",
+      "event_id": "025f662207725091f8f2caa7",
+      "action_reaction": {
+        "event_id": "025f662207725091f8f2caa7",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "af46fffd832f5d2ac1440f11": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43127",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542831858109940",
+      "title": "Greg Abbott is the strong and highly respected Governor of Texas, a State I love and WON BIG three times, including with 6.4 Million Votes in 2024 (The most Votes in History, BY FAR)! As Governor, Greg is also fighting tirelessly to Champion Texas Values, Grow the Economy, Cut Taxes and Regulations,",
+      "published": "Sun, 01 Nov 2026 19:27:57 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Greg Abbott is the strong and highly respected Governor of Texas, a State I love and WON BIG three times, including with 6.4 Million Votes in 2024 (The most Votes in History, BY FAR)! As Governor, Greg is also fighting tirelessly to Champion Texas Values, Grow the Economy, Cut Taxes and Regulations, Greg Abbott is the strong and highly respected Governor of Texas, a State I love and WON BIG three times, including with 6.4 Million Votes in 2024 (The most Votes in History, BY FAR)! As Governor, Greg is also fighting tirelessly to Champion Texas Values, Grow the Economy, Cut Taxes and Regulations, Support our Amazing Farmers and Ranchers, Advance MADE IN THE U.S.A., Unleash American Energy Dominance, Promote School Choice, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Ensure LAW AND ORDER, Protect our Brave Military, Veterans, and Law Enforcement, and Defend our always under siege Second Amendment. Greg Abbott has my Complete and Total Endorsement for Re-Election. He is an exceptional Governor and man. GET OUT AND VOTE FOR GREG — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.228768+00:00",
+      "event_id": "af46fffd832f5d2ac1440f11",
+      "action_reaction": {
+        "event_id": "af46fffd832f5d2ac1440f11",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "7cbde3f2e1ca152c6a3710b8": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43126",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542832649607144",
+      "title": "It is my Great Honor to endorse the Highly Respected Attorney General of Texas, Ken Paxton, an America First Patriot, and someone who has always been extremely loyal to me and our AMAZING MAGA MOVEMENT, who is running for the United States Senate, to represent a place I love and WON, BIG, three time",
+      "published": "Sun, 01 Nov 2026 19:28:09 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse the Highly Respected Attorney General of Texas, Ken Paxton, an America First Patriot, and someone who has always been extremely loyal to me and our AMAZING MAGA MOVEMENT, who is running for the United States Senate, to represent a place I love and WON, BIG, three time It is my Great Honor to endorse the Highly Respected Attorney General of Texas, Ken Paxton, an America First Patriot, and someone who has always been extremely loyal to me and our AMAZING MAGA MOVEMENT, who is running for the United States Senate, to represent a place I love and WON, BIG, three times, with 6.4 Million Votes in 2024 (The Most Votes in the History of the State, BY FAR)! I know Ken well, have seen him tested at the highest and most difficult levels, and he is a WINNER! Ken is a true MAGA Warrior who has ALWAYS delivered for Texas, and will continue to do so in the United States Senate. His opponent, James TalaFREAKO, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. James TalaFREAKO is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Ken will tirelessly fight to continue the Great Growth of our Economy, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Champion Texas Oil & Gas, Advocate for our Amazing Farmers and Ranchers, Promote School Choice, Keep our Border SECURE, Stop Migrant Crime, Support our Incredible Military/Veterans, Safeguard our Elections, and Protect our always under siege Second Amendment. Ken Paxton has my Complete and Total Endorsement to be the next United States Senator from the Great State of Texas. GET OUT AND VOTE FOR KEN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.228165+00:00",
+      "event_id": "7cbde3f2e1ca152c6a3710b8",
+      "action_reaction": {
+        "event_id": "7cbde3f2e1ca152c6a3710b8",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "9f1942d0a61cb61826e34c1e": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43125",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542836089265376",
+      "title": "TO THE GREAT PEOPLE OF TEXAS, GET OUT AND VOTE FOR:– Ken Paxton for U.S. Senate– Greg Abbott for Governor– Dan Patrick for Lieutenant Governor– Mayes Middleton for Attorney General– Don Huffines for Comptroller– Dawn Buckingham for Land Commissioner– Nathaniel Moran for U.S. Congress (TX-01)– Steve",
+      "published": "Sun, 01 Nov 2026 19:29:01 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF TEXAS, GET OUT AND VOTE FOR:– Ken Paxton for U.S. Senate– Greg Abbott for Governor– Dan Patrick for Lieutenant Governor– Mayes Middleton for Attorney General– Don Huffines for Comptroller– Dawn Buckingham for Land Commissioner– Nathaniel Moran for U.S. Congress (TX-01)– Steve TO THE GREAT PEOPLE OF TEXAS, GET OUT AND VOTE FOR: – Ken Paxton for U.S. Senate – Greg Abbott for Governor – Dan Patrick for Lieutenant Governor – Mayes Middleton for Attorney General – Don Huffines for Comptroller – Dawn Buckingham for Land Commissioner – Nathaniel Moran for U.S. Congress (TX-01) – Steve Toth for U.S. Congress (TX-02) – Keith Self for U.S. Congress (TX-03) – Pat Fallon for U.S. Congress (TX-04) – Lance Gooden for U.S. Congress (TX-05) – Jake Ellzey for U.S. Congress (TX-06) – Jessica Steinmann for U.S. Congress (TX-08) – Alex Mealer for U.S. Congress (TX-09) – Chris Gober for U.S. Congress (TX-10) – August Pfluger for U.S. Congress (TX-11) – Craig Goldman for U.S. Congress (TX-12) – Ronny Jackson for U.S. Congress (TX-13) – Randy Weber for U.S. Congress (TX-14) – Monica De La Cruz for U.S. Congress (TX-15) – Pete Sessions for U.S. Congress (TX-17) – Tom Sell for U.S. Congress (TX-19) – Mark Teixeira for U.S. Congress (TX-21) – Trever Nehls for U.S. Congress (TX-22) – Brandon Herrera for U.S. Congress (TX-23) – Beth Van Duyne for U.S. Congress (TX-24) – Roger Williams for U.S. Congress (TX-25) – Brandon Gill for U.S. Congress (TX-26) – Michael Cloud for U.S. Congress (TX-27) – Tano Tijerina for U.S. Congress (TX-28) – John Carter for U.S. Congress (TX-31) – Jace Yarbrough for U.S. Congress (TX-32) – Eric Flores for U.S. Congress (TX-34) – Carlos De La Cruz for U.S. Congress (TX-35) – Brian Babin for U.S. Congress (TX-36) – Jon Bonck for U.S. Congress (TX-38) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.227381+00:00",
+      "event_id": "9f1942d0a61cb61826e34c1e",
+      "action_reaction": {
+        "event_id": "9f1942d0a61cb61826e34c1e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ba68ef859c85e0f70c7f444f": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43128",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542836979977717",
+      "title": "The Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left Activist “Lawyer” No",
+      "published": "Sun, 01 Nov 2026 19:29:15 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "The Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left Activist “Lawyer” No The Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left Activist “Lawyer” Norm Eisen. Others that are really bad, and corrupt, in so many ways, include Political Activists and Lowlives, Reid Hoffman, and Neville Roy Singham. These are CRIMINALS who totally abuse the Laws of our Land, and are destructive to our Country at levels never thought possible before. Thank you for your attention to this matter! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.226628+00:00",
+      "event_id": "ba68ef859c85e0f70c7f444f",
+      "action_reaction": {
+        "event_id": "ba68ef859c85e0f70c7f444f",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "4a3b373069ac7ec4ac054aa8": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43133",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542869270637596",
+      "title": "RT @realDonaldTrumpWow, this is BIG! Congresswoman Haley Stevens, a Highly Respected Democrat, who narrowly lost in the Primary to Abdul Mohamed El-Sayed, and who has been breathlessly wined and dined by the Dumocrats to help in their Michigan Campaign for the United States Senate against Mike Roger",
+      "published": "Sun, 01 Nov 2026 19:37:28 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "RT @realDonaldTrumpWow, this is BIG! Congresswoman Haley Stevens, a Highly Respected Democrat, who narrowly lost in the Primary to Abdul Mohamed El-Sayed, and who has been breathlessly wined and dined by the Dumocrats to help in their Michigan Campaign for the United States Senate against Mike Roger RT @ realDonaldTrump Wow, this is BIG! Congresswoman Haley Stevens, a Highly Respected Democrat, who narrowly lost in the Primary to Abdul Mohamed El-Sayed, and who has been breathlessly wined and dined by the Dumocrats to help in their Michigan Campaign for the United States Senate against Mike Rogers, has just ENDORSED Mike Rogers for Senate! Her following is huge, and the level of respect from the People of Michigan, especially our African American and Jewish populations, is virtually unparalleled. Haley said what few people are willing to say. She showed great and almost unprecedented loyalty to the Great People of Michigan with what she did. It’s a thing called bravery, and few people have it like just displayed by Congresswoman Haley Stevens! President DONALD J. TRUMP Reposted Donald J. Trump Wow, this is BIG! Congresswoman Haley Stevens, a Highly Respected Democrat, who narrowly lost in the Primary to Abdul Mohamed El-Sayed, and who has been breathlessly wined and dined by the Dumocrats to help in their Michigan Campaign for the United States Senate against Mike Rogers, has just ENDORSED Mike Rogers for Senate! Her following is huge, and the level of respect from the People of Michigan, especially our African American and Jewish populations, is virtually unparalleled. Haley said what few people are willing to say. She showed great and almost unprecedented loyalty to the Great People of Michigan with what she did. It’s a thing called bravery, and few people have it like just displayed by Congresswoman Haley Stevens! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.226161+00:00",
+      "event_id": "4a3b373069ac7ec4ac054aa8",
+      "action_reaction": {
+        "event_id": "4a3b373069ac7ec4ac054aa8",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "06e3545b56818cd55fdb155e": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43132",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542869626398603",
+      "title": "RT @realDonaldTrumpThe Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left A",
+      "published": "Sun, 01 Nov 2026 19:37:33 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "RT @realDonaldTrumpThe Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left A RT @ realDonaldTrump The Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left Activist “Lawyer” Norm Eisen. Others that are really bad, and corrupt, in so many ways, include Political Activists and Lowlives, Reid Hoffman, and Neville Roy Singham. These are CRIMINALS who totally abuse the Laws of our Land, and are destructive to our Country at levels never thought possible before. Thank you for your attention to this matter! President DONALD J. TRUMP Reposted Donald J. Trump The Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left Activist “Lawyer” Norm Eisen. Others that are really bad, and corrupt, in so many ways, include Political Activists and Lowlives, Reid Hoffman, and Neville Roy Singham. These are CRIMINALS who totally abuse the Laws of our Land, and are destructive to our Country at levels never thought possible before. Thank you for your attention to this matter! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.225436+00:00",
+      "event_id": "06e3545b56818cd55fdb155e",
+      "action_reaction": {
+        "event_id": "06e3545b56818cd55fdb155e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b5f7aad90d306aae407bb8ff": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · November 1, 2026, 2:29 PM Original Post The Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left Activist “Lawyer” Norm Eisen. Others that are really bad, and corrupt, in so many ways, include Political Activists and Lowlives, Reid Hoffman, and Neville Roy Singham. These are CRIMINALS who totally abuse the Laws of our Land, and are destructive to our Country at levels never thought possible before. Thank you for your attention to this matter! President DONALD J. TRUMP Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · November 1, 2026, 1:38 PM Original Post Wow, this is BIG! Congresswoman Haley Stevens, a Highly Respected Democrat, who narrowly lost in the Primary to Abdul Mohamed El-Sayed, and who has been breathlessly wined and dined by the Dumocrats to help in their Michigan Campaign for the United States Senate against Mike Rogers, has just ENDORSED Mike Rogers for Senate! Her following is huge, and the level of respect from the People of Michigan, especially our African American and Jewish populations, is virtually unparalleled. Haley said what few people are willing to say. She showed great and almost unprecedented loyalty to the Great People of Michigan with what she did. It’s a thing called bravery, and few people have it like just displayed by Congresswoman Haley Stevens! President DONALD J. TRUMP Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · November 1, 2026, 1:38 PM Original Post Heading to lowa, and then, so importantly, Kansas (Will be my last stop!), to make sure our Great Patriots get out and vote for truly incredible Candidates, Ashley Hinson for Senate and Zach Lahn for Governor in lowa, and Roger Marshall for Senate and Ty Masterson for Governor in Kansas — In addition to all of our fabulous Warrior Republicans running for Congress, and other vital positions. Big day, and Tuesday will be the Most Important Midterm Election in the History of the U.S.A. See you soon! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 1, 2026, 2:29 PM Original Post The Fake Daniel J. Sullivan, Jr., has DISAPPEARED! Nobody can find him, including Law Enforcement. He knows that he committed a Criminal Act, but he also knows that there are those around him who, in a certain way, were far worse, like Lawyer Marc Elias, and Liberal Radical Left Activist “Lawyer” Norm Eisen. Others that are really bad, and corrupt, in so many ways, include Political Activists and Lowlives, Reid Hoffman, and Neville Roy Singham. These are CRIMINALS who totally abuse the Laws of our Land, and are destructive to our Country at levels never thought possible before. Thank you for your attention to this matter! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 1, 2026, 2:29 PM Original Post TO THE GREAT PEOPLE OF TEXAS, GET OUT AND VOTE FOR: – Ken Paxton for U.S. Senate – Greg Abbott for Governor – Dan Patrick for Lieutenant Governor – Mayes Middleton for Attorney General – Don Huffines for Comptroller – Dawn Buckingham for Land Commissioner – Nathaniel Moran for U.S. Congress (TX-01) – Steve Toth for U.S. Congress (TX-02) – Keith Self for U.S. Congress (TX-03) – Pat Fallon for U.S. Congress (TX-04) – Lance Gooden for U.S. Congress (TX-05) – Jake Ellzey for U.S. Congress (TX-06) – Jessica Steinmann for U.S. Congress (TX-08) – Alex Mealer for U.S. Congress (TX-09) – Chris Gober for U.S. Congress (TX-10) – August Pfluger for U.S. Congress (TX-11) – Craig Goldman for U.S. Congress (TX-12) – Ronny Jackson for U.S. Congress (TX-13) – Randy Weber for U.S. Congress (TX-14) – Monica De La Cruz for U.S. Congress (TX-15) – Pete Sessions for U.S. Congress (TX-17) – Tom Sell for U.S. Congress (TX-19) – Mark Teixeira for U.S. Congress (TX-21) – Trever Nehls for U.S. Congress (TX-22) – Brandon Herrera for U.S. Congress (TX-23) – Beth Van Duyne for U.S. Congress (TX-24) – Roger Williams for U.S. Congress (TX-25) – Brandon Gill for U.S. Congress (TX-26) – Michael Cloud for U.S. Congress (TX-27) – Tano Tijerina for U.S. Congress (TX-28) – John Carter for U.S. Congress (TX-31) – Jace Yarbrough for U.S. Congress (TX-32) – Eric Flores for U.S. Congress (TX-34) – Carlos De La Cruz for U.S. Congress (TX-35) – Brian Babin for U.S. Congress (TX-36) – Jon Bonck for U.S. Congress (TX-38) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ swampthevoteusa.com TEXAS: MAKE A PLAN TO VOTE! Election Day in Texas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · November 1, 2026, 2:28 PM Original Post It is my Great Honor to endorse the Highly Respected Attorney General of Texas, Ken Paxton, an America First Patriot, and someone who has always been extremely loyal to me and our AMAZING MAGA MOVEMENT, who is running for the United States Senate, to represent a place I love and WON, BIG, three times, with 6.4 Million Votes in 2024 (The Most Votes in the History of the State, BY FAR)! I know Ken well, have seen him tested at the highest and most difficult levels, and he is a WINNER! Ken is a true MAGA Warrior who has ALWAYS deliv",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T21:44:09.079514+00:00",
+      "event_id": "b5f7aad90d306aae407bb8ff",
+      "action_reaction": {
+        "event_id": "b5f7aad90d306aae407bb8ff",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "57a782b4ea83dafaa0164442": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11450,658 +12138,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "34d955585366f802563e54de": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AGRICULTURE",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 13, 2026, 11:17 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:38 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:37 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:37 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:33 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:33 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:33 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 6:51 PM Original Post Gregg Jarrett is fantastic — A MUST WATCH! President DONALD J. TRUMP GREGG JARRETT: Trump was framed by the Russia collusion hoax. Now the whole story is exposed: https://www. foxnews.com/opinion/gregg-jarr ett-trump-framed-russia-collusion-hoax-story-exposed Read full post www.foxnews.com GREGG JARRETT: Trump was framed by the Russia collusion hoax. Now the whole story is exposed Hillary Clinton allegedly approved a scheme to frame Trump using a phony Christopher Steele dossier, then funneled it to the FBI, CIA and DOJ. Donald J. Trump @realDonaldTrump · October 13, 2026, 6:51 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 6:51 PM Original Post Image previously posted. View 5 matching posts. May 22, 2026, 6:20 PM — Visual match May 23, 2026, 9:08 AM — Visual match May 30, 2026, 4:54 PM — Visual match August 1, 2026, 2:04 PM — Visual match October 4, 2026, 1:06 PM — Visual match Donald J. Trump @realDonaldTrump · October 13, 2026, 6:11 PM Original Post Why would black people vote for Mohammed El-Sayed when he openly scorns them, mocks them, and disrespects them? THEY WON’T! President DJT Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 6:08 PM Original Post Dave Bronson of Alaska begged me for my support and Endorsement, but I wouldn’t do it because he didn’t win the Primary and, therefore, wasn’t deserving of it. I then asked him to get out of the Race, and he agreed! I said, “Too many Republicans, three, are running against one Dumocrat, and you won’t be able to win!” He agreed to get out, but three days later, without notification, quickly jumped back in, along with a third “Republican” Candidate, who I never heard of, named Treg Taylor. Bernadette Wilson is outstanding. She will make a GREAT Governor. She easily won the Race, and all Bronson and Taylor will do is take away Votes from the Candidate that has, by far, the best chance of winning. Now is the time for all Republicans to unite behind Bernadette to ensure she has a tremendous Victory in November! The Dumocrats have a bad Radical Left Candidate, and we have a GREAT one! Bernadette Wilson is a FANTASTIC choice to replace my friend, Governor Mike Dunleavy, and will work tirelessly to Grow the Economy, Unleash American Energy DOMINANCE, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Support our Brave Military, Veterans, and Law Enforcement, Safeguard our Elections, and Protect our always under siege Second Amendment. Bernadette Wilson truly deserves to WIN, and has my Complete and Total Endorsement to be the next Governor of Alaska — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-14T03:48:30.174752+00:00",
-      "event_id": "34d955585366f802563e54de",
-      "action_reaction": {
-        "event_id": "34d955585366f802563e54de",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "32bc025295343901ca3805d4": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AGRICULTURE",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 13, 2026, 7:38 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:37 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:37 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:33 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:33 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:33 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 6:51 PM Original Post Gregg Jarrett is fantastic — A MUST WATCH! President DONALD J. TRUMP GREGG JARRETT: Trump was framed by the Russia collusion hoax. Now the whole story is exposed: https://www. foxnews.com/opinion/gregg-jarr ett-trump-framed-russia-collusion-hoax-story-exposed Read full post www.foxnews.com GREGG JARRETT: Trump was framed by the Russia collusion hoax. Now the whole story is exposed Hillary Clinton allegedly approved a scheme to frame Trump using a phony Christopher Steele dossier, then funneled it to the FBI, CIA and DOJ. Donald J. Trump @realDonaldTrump · October 13, 2026, 6:51 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 6:51 PM Original Post Image previously posted. View 5 matching posts. May 22, 2026, 6:20 PM — Visual match May 23, 2026, 9:08 AM — Visual match May 30, 2026, 4:54 PM — Visual match August 1, 2026, 2:04 PM — Visual match October 4, 2026, 1:06 PM — Visual match Donald J. Trump @realDonaldTrump · October 13, 2026, 6:11 PM Original Post Why would black people vote for Mohammed El-Sayed when he openly scorns them, mocks them, and disrespects them? THEY WON’T! President DJT Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 6:08 PM Original Post Dave Bronson of Alaska begged me for my support and Endorsement, but I wouldn’t do it because he didn’t win the Primary and, therefore, wasn’t deserving of it. I then asked him to get out of the Race, and he agreed! I said, “Too many Republicans, three, are running against one Dumocrat, and you won’t be able to win!” He agreed to get out, but three days later, without notification, quickly jumped back in, along with a third “Republican” Candidate, who I never heard of, named Treg Taylor. Bernadette Wilson is outstanding. She will make a GREAT Governor. She easily won the Race, and all Bronson and Taylor will do is take away Votes from the Candidate that has, by far, the best chance of winning. Now is the time for all Republicans to unite behind Bernadette to ensure she has a tremendous Victory in November! The Dumocrats have a bad Radical Left Candidate, and we have a GREAT one! Bernadette Wilson is a FANTASTIC choice to replace my friend, Governor Mike Dunleavy, and will work tirelessly to Grow the Economy, Unleash American Energy DOMINANCE, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Support our Brave Military, Veterans, and Law Enforcement, Safeguard our Elections, and Protect our always under siege Second Amendment. Bernadette Wilson truly deserves to WIN, and has my Complete and Total Endorsement to be the next Governor of Alaska — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 6:05 PM Original Post Heading to Alaska to do a major Rally for Senator Dan S. Sullivan, one of the best and most respected Senators in D.C., Congressman Nick Begich, a fantastic Warrior and Advocate for everything that is important for Alaska, and Bernadette Wilson, who is running for Governor, unfortunately, against two lesser Candidates, who she beat in the Primary, making it difficult in that three Republicans are running against one weak, Radical Left Dumocrat, but threesomes always make it hard to win — Very unfair! President DONALD J. TRUMP Read full post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-14T00:40:16.630687+00:00",
-      "event_id": "32bc025295343901ca3805d4",
-      "action_reaction": {
-        "event_id": "32bc025295343901ca3805d4",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "2675d879795003e646da444a": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AGRICULTURE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 13, 2026, 5:43 PM Original Post How can “New York State Attorney General,” Letitia James, be allowed to investigate the Cornell rape scandal, when she is a DIRTY AND DISGUSTING COP herself, and has ZERO credibility? Any decision will be appealed by her mere presence on this case. The stench of Letitia James will greatly add to the anguish that everybody feels in viewing how this case is being handled. The Governor should take James off this case, IMMEDIATELY, and replace her with somebody who is not a Third Rate, Crooked Politician! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 4:25 PM Original Post Why did Ilhan Omar report a Net Worth of up to 30 Million Dollars just a short time ago, and then immediately say, “Oh, I made a mistake! It’s really $100,000.” Could it be that her highly paid accountant actually reported the money that was stolen from her fraudulent activities in Minnesota? Would something like that be possible? Do you think the accountant actually gave the right number the first time, 30 Million Dollars, and then she was forced to disavow because she never would have been able to report where that much money came from? She must have freaked out when she saw that money! Where did her house come from, where did her cars come from, and what about her lovely place in Washington, D.C.? I didn’t know that Congressmen and women made that kind of money, but I do know her husband, according to information and belief, makes almost nothing, so it couldn’t have come from him. How many people did she illegally bring into our Country from Somalia? America wants answers, and we want them, NOW! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 3:55 PM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 3:54 PM Original Post Don’t ever mess with nature! President DJT Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 3:09 PM Original Post Jon Husted, who was a Great Football Player in College, had Record Setting numbers of interceptions. In fact, he was known as “Interception Jon.” I found out when Jon Gruden spoke at our first Ohio Rally. I asked the Coach, “Why are you here Jon?” He said, “I’m here to support my teammate for Senator of Ohio,” and I said, “What do you mean, teammate, did Jon Husted play football?” And Jon Gruden said, “Yeah, we had a great team, and he was the best player, by far. He played safety, and he had 17 interceptions, A RECORD!” I said, “Wow, I didn’t know that about Jon.” He said, “Yep, he was a great player, but because of the man he is, HUMBLE, he doesn’t go around talking about it like everyone else would have.” Such a great story! OHIO, VOTE FOR JON HUSTED FOR THE U.S. SENATE — HE IS A WINNER, A CHAMPION, AND A GREAT GUY. HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 12:04 PM Original Post The Houthis are behaving very badly. I thought they learned their lesson a year ago when we bombed the HELL out of them and, at their request, stopped. They’ve been silent for a long time, but now they’ve emerged again, probably at the behest of Iran, which is a Failing Nation, with No Navy, No Airforce, the World’s Worst Economy, and 301% Inflation, in a very nasty way, hitting Saudi Arabia, and purposefully trying to drive up Oil Prices, probably prior to the U.S. Elections — NOT NICE. Somebody should explain to them that I’m not running in the Elections, I’ve already won, IN A MASSIVE LANDSLIDE, but I’ll be there after the Elections, and I will never forget! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 11:56 AM Original Post Happy Birthday to the United States Navy! It is now 251 years of Victories, Old and New. What they’ve done with the impenetrable Steel Wall (Sometimes referred to as the Blockade) in the Hormuz Strait is another Historic Achievement, one of many. HAPPY BIRTHDAY U.S. NAVY! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:22 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:22 AM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:22 AM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:21 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:21 AM Original Post ↻ Previously posted October 12, 2026 Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-13T21:49:55.013011+00:00",
-      "event_id": "2675d879795003e646da444a",
-      "action_reaction": {
-        "event_id": "2675d879795003e646da444a",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "129dc75502092d5d9569d292": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 13, 2026, 12:04 PM Original Post The Houthis are behaving very badly. I thought they learned their lesson a year ago when we bombed the HELL out of them and, at their request, stopped. They’ve been silent for a long time, but now they’ve emerged again, probably at the behest of Iran, which is a Failing Nation, with No Navy, No Airforce, the World’s Worst Economy, and 301% Inflation, in a very nasty way, hitting Saudi Arabia, and purposefully trying to drive up Oil Prices, probably prior to the U.S. Elections — NOT NICE. Somebody should explain to them that I’m not running in the Elections, I’ve already won, IN A MASSIVE LANDSLIDE, but I’ll be there after the Elections, and I will never forget! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 11:56 AM Original Post Happy Birthday to the United States Navy! It is now 251 years of Victories, Old and New. What they’ve done with the impenetrable Steel Wall (Sometimes referred to as the Blockade) in the Hormuz Strait is another Historic Achievement, one of many. HAPPY BIRTHDAY U.S. NAVY! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:22 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:22 AM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:22 AM Original Post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:21 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 13, 2026, 7:21 AM Original Post ↻ Previously posted October 12, 2026 Donald J. Trump @realDonaldTrump · October 13, 2026, 7:21 AM Original Post ↻ Previously posted October 12, 2026 Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 PM Original Post I see so many comments from the Radical Left Morons and Lunatics that China and Russia are helping the “wonderful” Islamic Republic of Iran. If they are, it’s at a very low level, but I don’t believe they are at all. They have too much to lose, and we would know about it, and know about it very fast! Thank you for your attention to this matter. President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:23 PM Original Post Look what happened in Ohio since my last Rally, and I have another one today. It’s The Golden Age of America! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:17 PM Original Post Senator Roger Marshall is working incredibly hard for the Great State of Kansas, which I love and WON BIG in 2016, 2020, and 2024. Roger is one of my favorite Senators — He is absolutely GREAT, a wonderful person, given a “bum rap” because he was mandated by Law to request money owed from patients. If he didn’t make these requests, he would be breaking the Law, and subject to criminal liability and arrest. A judge ordering a patient’s arrest for not showing up to court many, many times is not Roger Marshall’s fault — IT IS THE LAW, and his Crooked Opponent is using that against him. Roger is running against a Radical Left Dumocrat named Adam Hamilton, a Trump Deranged Phony who pretends to be a “Moderate,” but he’s not! He gave money to Kamala Harris, Crooked Joe Biden, and Barack Hussein Obuma — What else needs to be said? Additionally, Adam Hamilton loves High Taxes, Open Borders, No Consequences for Violent Criminals, Men in Women’s Sports, the Transgender Mutilization of your Children, among other CRAZY ideas, and says that the Great People of Kansas need to repent for eating beef (much like James TalaFREAKo, a Vegan who is running for the United States Senate in Texas). I won the Evangelical Christian Vote IN A LANDSLIDE, a Record Number, the Highest in History, and am more popular with them now, than ever before, because of what I have done, and gotten them — And I wouldn’t want Adam Hamilton being my pastor. He’s caused nothing but turmoil in his church, which has broken up, and is virtually at war with each other because of him. In his church, he has caused great anger and dissension, setting it back decades with discord and vitriol that will never be healed. “Pastor” Hamilton hired a child PREDATOR as a camp counselor, who was caught sneaking into boys' cabins at night. Hamilton DISMISSED their concerns, REFUSED to call the police, and brought this person back to camp the next year — He was caught again. DISGUSTING! As someone who got a massive Majority of the Evangelical Vote, I can state unequivocally that Adam Hamilton is not one of us! He is a Radical Left LUNATIC Dumocrat, whose values are not those of the People of Kansas, or the United States of America, and now he’s trying to take out one of the best and most respected Senators in our Country — But the good news is that ",
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-13T17:06:53.561579+00:00",
-      "event_id": "129dc75502092d5d9569d292",
-      "action_reaction": {
-        "event_id": "129dc75502092d5d9569d292",
-        "event_type": "TRADE_ESCALATION",
-        "historical_matches": [
-          "china_tariff_escalation_2025_10"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "DOWN",
-          "NASDAQ": "DOWN",
-          "USD": "DOWN",
-          "TREASURY_YIELDS": "DOWN",
-          "OIL": "DOWN"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
-    },
-    "3981aebc7972df4d2fbd2c9c": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 PM Original Post I see so many comments from the Radical Left Morons and Lunatics that China and Russia are helping the “wonderful” Islamic Republic of Iran. If they are, it’s at a very low level, but I don’t believe they are at all. They have too much to lose, and we would know about it, and know about it very fast! Thank you for your attention to this matter. President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:23 PM Original Post Look what happened in Ohio since my last Rally, and I have another one today. It’s The Golden Age of America! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:17 PM Original Post Senator Roger Marshall is working incredibly hard for the Great State of Kansas, which I love and WON BIG in 2016, 2020, and 2024. Roger is one of my favorite Senators — He is absolutely GREAT, a wonderful person, given a “bum rap” because he was mandated by Law to request money owed from patients. If he didn’t make these requests, he would be breaking the Law, and subject to criminal liability and arrest. A judge ordering a patient’s arrest for not showing up to court many, many times is not Roger Marshall’s fault — IT IS THE LAW, and his Crooked Opponent is using that against him. Roger is running against a Radical Left Dumocrat named Adam Hamilton, a Trump Deranged Phony who pretends to be a “Moderate,” but he’s not! He gave money to Kamala Harris, Crooked Joe Biden, and Barack Hussein Obuma — What else needs to be said? Additionally, Adam Hamilton loves High Taxes, Open Borders, No Consequences for Violent Criminals, Men in Women’s Sports, the Transgender Mutilization of your Children, among other CRAZY ideas, and says that the Great People of Kansas need to repent for eating beef (much like James TalaFREAKo, a Vegan who is running for the United States Senate in Texas). I won the Evangelical Christian Vote IN A LANDSLIDE, a Record Number, the Highest in History, and am more popular with them now, than ever before, because of what I have done, and gotten them — And I wouldn’t want Adam Hamilton being my pastor. He’s caused nothing but turmoil in his church, which has broken up, and is virtually at war with each other because of him. In his church, he has caused great anger and dissension, setting it back decades with discord and vitriol that will never be healed. “Pastor” Hamilton hired a child PREDATOR as a camp counselor, who was caught sneaking into boys' cabins at night. Hamilton DISMISSED their concerns, REFUSED to call the police, and brought this person back to camp the next year — He was caught again. DISGUSTING! As someone who got a massive Majority of the Evangelical Vote, I can state unequivocally that Adam Hamilton is not one of us! He is a Radical Left LUNATIC Dumocrat, whose values are not those of the People of Kansas, or the United States of America, and now he’s trying to take out one of the best and most respected Senators in our Country — But the good news is that Senator Roger Marshall loves the U.S.A., and is a Truly Great American Patriot, who has my Complete and Total Endorsement — HE ALWAYS HAS, AND HE ALWAYS WILL. In the U.S. Senate, Roger is fighting hard to Champion our Great Farmers and American Agriculture, Grow our Economy, Unleash American Energy Dominance, Cut Taxes and Regulations, Keep our Border SECURE, Take Care of, and Protect, our fabulous Military and Vets, and Defend our always under siege Second Amendment. Additionally, Roger is working tirelessly to pass the Credit Card Competition Act, in order to stop the out of control Swipe Fee ripoff! ROGER LOVES KANSAS, AND WILL NEVER LET YOU DOWN! I will be having a Kansas Style Rally, in Roger’s Honor, very soon. See you there! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:00 PM Original Post Big Crowd at Ohio Rally. Tremendous Response to Radical Left Socialists, Communists, and Lunatics trying to take over our Country. See you later, Ohio! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 11:18 AM Original Post Look what The New York Times did to my beautiful Doral! They doctored the photo. They artificially put mold all over the building when referring to it in a story! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:25 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:23 AM Original Post Results per page 10 ",
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-13T09:31:01.793500+00:00",
-      "event_id": "3981aebc7972df4d2fbd2c9c",
-      "action_reaction": {
-        "event_id": "3981aebc7972df4d2fbd2c9c",
-        "event_type": "TRADE_ESCALATION",
-        "historical_matches": [
-          "china_tariff_escalation_2025_10"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "DOWN",
-          "NASDAQ": "DOWN",
-          "USD": "DOWN",
-          "TREASURY_YIELDS": "DOWN",
-          "OIL": "DOWN"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
-    },
-    "398993a862b6de814491c6ca": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 12, 2026, 3:23 PM Original Post Look what happened in Ohio since my last Rally, and I have another one today. It’s The Golden Age of America! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:17 PM Original Post Senator Roger Marshall is working incredibly hard for the Great State of Kansas, which I love and WON BIG in 2016, 2020, and 2024. Roger is one of my favorite Senators — He is absolutely GREAT, a wonderful person, given a “bum rap” because he was mandated by Law to request money owed from patients. If he didn’t make these requests, he would be breaking the Law, and subject to criminal liability and arrest. A judge ordering a patient’s arrest for not showing up to court many, many times is not Roger Marshall’s fault — IT IS THE LAW, and his Crooked Opponent is using that against him. Roger is running against a Radical Left Dumocrat named Adam Hamilton, a Trump Deranged Phony who pretends to be a “Moderate,” but he’s not! He gave money to Kamala Harris, Crooked Joe Biden, and Barack Hussein Obuma — What else needs to be said? Additionally, Adam Hamilton loves High Taxes, Open Borders, No Consequences for Violent Criminals, Men in Women’s Sports, the Transgender Mutilization of your Children, among other CRAZY ideas, and says that the Great People of Kansas need to repent for eating beef (much like James TalaFREAKo, a Vegan who is running for the United States Senate in Texas). I won the Evangelical Christian Vote IN A LANDSLIDE, a Record Number, the Highest in History, and am more popular with them now, than ever before, because of what I have done, and gotten them — And I wouldn’t want Adam Hamilton being my pastor. He’s caused nothing but turmoil in his church, which has broken up, and is virtually at war with each other because of him. In his church, he has caused great anger and dissension, setting it back decades with discord and vitriol that will never be healed. “Pastor” Hamilton hired a child PREDATOR as a camp counselor, who was caught sneaking into boys' cabins at night. Hamilton DISMISSED their concerns, REFUSED to call the police, and brought this person back to camp the next year — He was caught again. DISGUSTING! As someone who got a massive Majority of the Evangelical Vote, I can state unequivocally that Adam Hamilton is not one of us! He is a Radical Left LUNATIC Dumocrat, whose values are not those of the People of Kansas, or the United States of America, and now he’s trying to take out one of the best and most respected Senators in our Country — But the good news is that Senator Roger Marshall loves the U.S.A., and is a Truly Great American Patriot, who has my Complete and Total Endorsement — HE ALWAYS HAS, AND HE ALWAYS WILL. In the U.S. Senate, Roger is fighting hard to Champion our Great Farmers and American Agriculture, Grow our Economy, Unleash American Energy Dominance, Cut Taxes and Regulations, Keep our Border SECURE, Take Care of, and Protect, our fabulous Military and Vets, and Defend our always under siege Second Amendment. Additionally, Roger is working tirelessly to pass the Credit Card Competition Act, in order to stop the out of control Swipe Fee ripoff! ROGER LOVES KANSAS, AND WILL NEVER LET YOU DOWN! I will be having a Kansas Style Rally, in Roger’s Honor, very soon. See you there! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 3:00 PM Original Post Big Crowd at Ohio Rally. Tremendous Response to Radical Left Socialists, Communists, and Lunatics trying to take over our Country. See you later, Ohio! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 11:18 AM Original Post Look what The New York Times did to my beautiful Doral! They doctored the photo. They artificially put mold all over the building when referring to it in a story! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:45 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:25 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:23 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 10:18 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-12T20:34:47.844459+00:00",
-      "event_id": "398993a862b6de814491c6ca",
-      "action_reaction": {
-        "event_id": "398993a862b6de814491c6ca",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "bde258390d44693e4bbe0245": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 12, 2026, 7:24 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:23 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:23 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:23 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:23 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:23 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:23 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:22 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:22 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:22 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:22 AM Original Post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:22 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 10, 2026, 8:03 PM Original Post Video previously posted. View 2 matching posts. September 28, 2026, 11:00 PM — Visual match October 1, 2026, 2:11 PM — Visual match Donald J. Trump @realDonaldTrump · October 12, 2026, 7:20 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 12, 2026, 7:20 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-12T11:51:43.793331+00:00",
-      "event_id": "bde258390d44693e4bbe0245",
-      "action_reaction": {
-        "event_id": "bde258390d44693e4bbe0245",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "c288cdb4433b1f06949a4931": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 11, 2026, 10:49 PM Original Post Adorable. Thank You! President DJT Read full post Donald J. Trump @realDonaldTrump · October 11, 2026, 10:47 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 11, 2026, 10:47 PM Original Post Donald J. Trump @realDonaldTrump · October 11, 2026, 10:47 PM Original Post Donald J. Trump @realDonaldTrump · October 11, 2026, 10:46 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 11, 2026, 10:45 PM Original Post ↻ Previously posted October 10, 2026 Donald J. Trump @realDonaldTrump · October 11, 2026, 10:45 PM Original Post ↻ Previously posted October 10, 2026 Donald J. Trump @realDonaldTrump · October 11, 2026, 8:53 PM Original Post Exclusive: Jack Smith’s Office Bent Its Own Rules to Rush Software Purchase Days Before Indicting Trump: https://www. breitbart.com/politics/2026/09 /28/exclusive-jack-smiths-office-bent-its-own-rules-rush-software-purchase-days-before-indicting-trump/ Read full post www.breitbart.com Exclusive: Jack Smith's Office Bent Its Own Rules Days Before Indicting Trump Former Special Counsel Jack Smith's office bent its own purchasing rules to acquire forensic video software days before its indictment of President Donald Trump regarding the 2020 election, according to DOJ records released by the Oversight Project. Donald J. Trump @realDonaldTrump · October 11, 2026, 7:54 PM Original Post I have just learned that Roy Cooper, the Radical Left Former Governor of North Carolina, let out 83 murderers from prisons and penitentiaries around the State, with 51 of these prisoners serving life sentences. They ended up committing 25 murders immediately after being released, and Roy Cooper’s reputation will never be the same. He is a TOTAL FRAUD! The reason for releasing them, believe it or not, was because Governor Cooper didn’t want them to catch COVID while in prison. Repeat Violent Offender DeCarlos Brown, Jr., who was put on the streets through release by Cooper, is the infamous murderer of Iryna Zarutska. He violently slashed Iryna from behind, for all to see, while she was innocently sitting on a train. This was captured on security film — So devastating for the reputation of North Carolina! What Roy Cooper has done is worse than Former Governor Michael Dukakis of Massachusetts releasing the infamous Willie Horton, previously convicted of murder, who went on to kidnap, rape, and murder again after Dukakis gave him a release and pardon. This terrible decision by Dukakis, who had an insurmountable lead in the Presidential Election of 1988, led to his resounding and conclusive defeat. Roy Cooper, likewise, has DISGRACED North Carolina, and disqualified himself from Public Office! Republican Michael Whatley is the man for the job. He was the Head of the Republican Party of North Carolina, and then the Head of the United States Republican Party, both unprecedented Victories. NORTH CAROLINA, VOTE FOR MICHAEL WHATLEY. HE HAS MY COMPLETE AND TOTAL ENDORSEMENT FOR THE UNITED STATES SENATE, AND WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 11, 2026, 5:57 PM Original Post My Rallies, legendary they have already become, have made a tremendous difference with the enthusiasm of the Republican Party. They have been waiting for them to happen, even though I never thought I’d have to be doing Rallies again. The good news is, I love them, the music, and the incredible enthusiasm, and will always be in favor of what’s good for America — and that means the Republican Party. Next stop, tomorrow, Youngstown, Ohio, for our Great Senator Jon Husted, and my friend, Vivek Ramaswamy for Governor, where the Crowds are already waiting in line — and then Alaska, for the Re-Election of one of the Greatest Senators in America, Dan S. Sullivan, and Congressman Nick Begich, who has a Big Future in Alaska. See you there! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 11, 2026, 5:37 PM Original Post I am pleased to announce that Katie Zacharia will be beginning her term as Press Secretary tomorrow, Columbus Day, and will be doing an introductory News Conference on Tuesday at 9:30 A.M. from the Press Briefing Room in the White House. Katie has been with me, in spirit, from the very beginning, and will do a fantastic job! President DONALD J. TRUMP Read full post Donald J. Trump @realDonaldTrump · October 11, 2026, 5:05 PM Original Post I just want to pay my respect and thanks to Karoline Leavitt for the fantastic job she has done as White House Press Secretary — Could not have been better! President DONALD J. TRUMP Read full post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from Presid",
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-12T03:58:07.464756+00:00",
-      "event_id": "c288cdb4433b1f06949a4931",
-      "action_reaction": {
-        "event_id": "c288cdb4433b1f06949a4931",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "5fa4d15eadc266b33ed3abb1": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-12T02:27:57.785334+00:00",
-      "event_id": "5fa4d15eadc266b33ed3abb1",
-      "action_reaction": {
-        "event_id": "5fa4d15eadc266b33ed3abb1",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "c7e39a2a2bd0099b1bdbe8be": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-11T23:12:23.011567+00:00",
-      "event_id": "c7e39a2a2bd0099b1bdbe8be",
-      "action_reaction": {
-        "event_id": "c7e39a2a2bd0099b1bdbe8be",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "2f646381797d27701af01296": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-11T15:31:48.724703+00:00",
-      "event_id": "2f646381797d27701af01296",
-      "action_reaction": {
-        "event_id": "2f646381797d27701af01296",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "fb5fee4bd8d5868b48fd2c24": {
-      "source": "WHITE_HOUSE",
-      "url": "https://www.whitehouse.gov/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AI_TECH",
-        "SPACE",
-        "CRYPTO",
-        "MEDIA",
-        "REAL_ESTATE"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-11T15:31:48.334386+00:00",
-      "event_id": "fb5fee4bd8d5868b48fd2c24",
-      "action_reaction": {
-        "event_id": "fb5fee4bd8d5868b48fd2c24",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [
-          "tariff_pause_2025_04"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "UP",
-          "RISK_ASSETS": "UP"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
-    },
-    "80600b78eceb180a7313d0fe": {
-      "source": "WHITE_HOUSE",
-      "url": "https://www.whitehouse.gov/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AI_TECH",
-        "SPACE",
-        "CRYPTO",
-        "MEDIA",
-        "REAL_ESTATE"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-11T08:56:29.476542+00:00",
-      "event_id": "80600b78eceb180a7313d0fe",
-      "action_reaction": {
-        "event_id": "80600b78eceb180a7313d0fe",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [
-          "tariff_pause_2025_04"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "UP",
-          "RISK_ASSETS": "UP"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
-    },
-    "b74916778e4c30ffdd671a2c": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-11T02:11:09.451359+00:00",
-      "event_id": "b74916778e4c30ffdd671a2c",
-      "action_reaction": {
-        "event_id": "b74916778e4c30ffdd671a2c",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "b7f240415746b7d4a4fbe384": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-10T20:11:49.397102+00:00",
-      "event_id": "b7f240415746b7d4a4fbe384",
-      "action_reaction": {
-        "event_id": "b7f240415746b7d4a4fbe384",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "d95cf9d389d1a9a2a63a31ea": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-10T16:19:42.446451+00:00",
-      "event_id": "d95cf9d389d1a9a2a63a31ea",
-      "action_reaction": {
-        "event_id": "d95cf9d389d1a9a2a63a31ea",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "4d0b8873fe613af18c5522bd": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-10T11:24:48.904245+00:00",
-      "event_id": "4d0b8873fe613af18c5522bd",
-      "action_reaction": {
-        "event_id": "4d0b8873fe613af18c5522bd",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "1711c7addb9a01bd2a368f00": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-10T05:43:17.098536+00:00",
-      "event_id": "1711c7addb9a01bd2a368f00",
-      "action_reaction": {
-        "event_id": "1711c7addb9a01bd2a368f00",
-        "event_type": "TRADE_ESCALATION",
-        "historical_matches": [
-          "china_tariff_escalation_2025_10"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "DOWN",
-          "NASDAQ": "DOWN",
-          "USD": "DOWN",
-          "TREASURY_YIELDS": "DOWN",
-          "OIL": "DOWN"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
-    },
-    "28c78d2e0895d3dc81fdc47e": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-10T00:02:28.569185+00:00",
-      "event_id": "28c78d2e0895d3dc81fdc47e",
-      "action_reaction": {
-        "event_id": "28c78d2e0895d3dc81fdc47e",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "5b3607a8ce43558ca4d11c44": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-09T20:08:43.997224+00:00",
-      "event_id": "5b3607a8ce43558ca4d11c44",
-      "action_reaction": {
-        "event_id": "5b3607a8ce43558ca4d11c44",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "87da2b1acbaf2e7ce75d4d7b": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-09T15:13:25.540467+00:00",
-      "event_id": "87da2b1acbaf2e7ce75d4d7b",
-      "action_reaction": {
-        "event_id": "87da2b1acbaf2e7ce75d4d7b",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "1bb01b4943a46d259a44662d": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-09T07:58:23.500720+00:00",
-      "event_id": "1bb01b4943a46d259a44662d",
-      "action_reaction": {
-        "event_id": "1bb01b4943a46d259a44662d",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e1872c1ef410b32e39737602": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-09T01:30:42.830198+00:00",
-      "event_id": "e1872c1ef410b32e39737602",
-      "action_reaction": {
-        "event_id": "e1872c1ef410b32e39737602",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "efe4217990aff5f3b49d3814": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-08T21:47:09.524981+00:00",
-      "event_id": "efe4217990aff5f3b49d3814",
-      "action_reaction": {
-        "event_id": "efe4217990aff5f3b49d3814",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "f7c7feb529fdb5769fcd44c3": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-08T16:52:38.640593+00:00",
-      "event_id": "f7c7feb529fdb5769fcd44c3",
-      "action_reaction": {
-        "event_id": "f7c7feb529fdb5769fcd44c3",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e53fc96ee5c8ec401999a391": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-08T09:29:53.295314+00:00",
-      "event_id": "e53fc96ee5c8ec401999a391",
-      "action_reaction": {
-        "event_id": "e53fc96ee5c8ec401999a391",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "bb8797b576c86fb2929bae06": {
-      "source": "OGE",
-      "url": "https://www.oge.gov/",
-      "domains": [
-        "AI_TECH"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-07T23:01:05.621521+00:00",
-      "event_id": "bb8797b576c86fb2929bae06",
-      "action_reaction": {
-        "event_id": "bb8797b576c86fb2929bae06",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "f10637579a836318117b2a77": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-07T23:01:04.959851+00:00",
-      "event_id": "f10637579a836318117b2a77",
-      "action_reaction": {
-        "event_id": "f10637579a836318117b2a77",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "cb788206ba0e21b10ede2271": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-07T17:59:14.494659+00:00",
-      "event_id": "cb788206ba0e21b10ede2271",
-      "action_reaction": {
-        "event_id": "cb788206ba0e21b10ede2271",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "5d85b2894c9e99f893cd70b4": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-07T11:46:58.167753+00:00",
-      "event_id": "5d85b2894c9e99f893cd70b4",
-      "action_reaction": {
-        "event_id": "5d85b2894c9e99f893cd70b4",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12463,9 +12499,38 @@
     "6139a30086f34fb8fb249b45": "2026-11-01T18:27:05.733551+00:00",
     "c5a9665a84f01a06027060fe": "2026-11-01T18:27:05.734035+00:00",
     "67a0a224cb22b82d2808792e": "2026-11-01T19:30:06.586987+00:00",
-    "57a782b4ea83dafaa0164442": "2026-11-01T19:30:06.587378+00:00"
+    "57a782b4ea83dafaa0164442": "2026-11-01T19:30:06.587378+00:00",
+    "06e3545b56818cd55fdb155e": "2026-11-01T21:44:09.225419+00:00",
+    "4a3b373069ac7ec4ac054aa8": "2026-11-01T21:44:09.226153+00:00",
+    "ba68ef859c85e0f70c7f444f": "2026-11-01T21:44:09.226622+00:00",
+    "9f1942d0a61cb61826e34c1e": "2026-11-01T21:44:09.227375+00:00",
+    "7cbde3f2e1ca152c6a3710b8": "2026-11-01T21:44:09.228160+00:00",
+    "af46fffd832f5d2ac1440f11": "2026-11-01T21:44:09.228762+00:00",
+    "025f662207725091f8f2caa7": "2026-11-01T21:44:09.229333+00:00",
+    "441842861904bc18ba1078cb": "2026-11-01T21:44:09.230031+00:00",
+    "90c0482f6cc7cb147725eb84": "2026-11-01T21:44:09.230564+00:00",
+    "d414feae9654f4c98a487a8d": "2026-11-01T21:44:09.231040+00:00",
+    "1762e0486feb6f3aeec19274": "2026-11-01T21:44:09.231502+00:00",
+    "a1310809be7a0c91c39c93d8": "2026-11-01T21:44:09.231954+00:00",
+    "00f8c00f9f32094d43ed6200": "2026-11-01T21:44:09.232546+00:00",
+    "907b3704a94acb7079b58033": "2026-11-01T21:44:09.233006+00:00",
+    "cc1cb939afeb9da6f5138c31": "2026-11-01T21:44:09.233423+00:00",
+    "06c7e86cfbce1b7ac1955747": "2026-11-01T21:44:09.233839+00:00",
+    "128ec47bfb67cd4a2aeafccc": "2026-11-01T21:44:09.234371+00:00",
+    "59d275fbd18cf701a763cf83": "2026-11-01T21:44:09.235019+00:00",
+    "baf2f987c19d4657de257065": "2026-11-01T21:44:09.235513+00:00",
+    "974a2c818a2a9a29c502c722": "2026-11-01T21:44:09.235952+00:00",
+    "ec3f9644a50cc23a5df53b8e": "2026-11-01T21:44:09.236495+00:00",
+    "82801c44a1c21b6e70e6e30d": "2026-11-01T21:44:09.237177+00:00",
+    "353ad5091a64aadc0d0c3e62": "2026-11-01T21:44:09.237917+00:00",
+    "ca968bdaa70ba0ec2ce4b3b0": "2026-11-01T21:44:09.238530+00:00",
+    "85a4d90dd196e3cfa43f3116": "2026-11-01T21:44:09.239012+00:00",
+    "2d9b465907dee2078ee8aa5c": "2026-11-01T21:44:09.239620+00:00",
+    "a6a6f6a86bc0a24a77b0185e": "2026-11-01T21:44:09.240226+00:00",
+    "00d5c9bcb89f22921b3bf091": "2026-11-01T21:44:09.240854+00:00",
+    "fbe675e77f4deb4119e0d12d": "2026-11-01T21:44:09.241372+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-01T19:30:06.612855+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-01T21:44:09.266073+00:00"
   }
 }
