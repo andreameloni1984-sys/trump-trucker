@@ -363,6 +363,8 @@ def build_cfd_signal(
         "confirmation": "D-L-A valuta qualità e timing del setup; non annulla un bias LONG/SHORT.",
         "bias_status": "NO_DIRECTION",
         "setup_status": "NO_DIRECTION",
+        "setup_direction": "NEUTRAL / NO_DIRECTION",
+        "setup_alignment": "NOT_ASSESSED",
         "paper_trade_status": "NOT_EXECUTED",
         "execution_readiness": "NO_DIRECTIONAL_EDGE",
         "risk_pct": risk_pct,
@@ -425,13 +427,14 @@ def build_cfd_signal(
             base["reason"] += " | Analisi tecnica focused non disponibile: " + type(exc).__name__
     # Professional-style execution gate: Direction -> Location -> Aggression.
     # This is an OHLCV proxy, not true bid/ask footprint or DOM order flow.
-    if quote and isinstance(quote.get("candles"), list) and len(quote["candles"]) >= 60:
+    if quote and _quote_is_fresh(quote) and isinstance(quote.get("candles"), list) and len(quote["candles"]) >= 60:
         try:
             from sputnik_competition_setup import evaluate_competition_setup
             setup = evaluate_competition_setup(instrument, quote["candles"])
             base["competition_setup"] = setup
-            if setup.get("status") == "SETUP_CONFIRMED":
-                setup_direction = str(setup.get("direction") or "NEUTRAL").upper()
+            setup_status = str(setup.get("status") or "NO_DIRECTION").upper()
+            setup_direction = str(setup.get("direction") or "NEUTRAL").upper()
+            if setup_status == "SETUP_CONFIRMED":
                 base["setup_direction"] = setup_direction
                 if base["direction"] not in {"LONG", "SHORT"}:
                     base["direction"] = setup_direction
@@ -447,11 +450,30 @@ def build_cfd_signal(
                     base["setup_alignment"] = "CONTRASTS"
                     base["execution_readiness"] = "EARLY_BIAS"
                 base["reason"] += " | D-L-A " + str(base.get("setup_alignment")) + ": " + "; ".join(setup.get("confirmations") or [])
-            else:
-                # D-L-A grades entry timing; it is not a veto on the news direction.
-                base["setup_alignment"] = "NOT_CONFIRMED"
+            elif setup_status == "EARLY_SETUP" and setup_direction in {"LONG", "SHORT"}:
+                # Preserve the D-L context direction before the trigger. It is
+                # a setup grade, not an execution authorization or news veto.
+                base["setup_direction"] = setup_direction
+                if base["direction"] in {"LONG", "SHORT"}:
+                    base["setup_alignment"] = "ALIGNS" if setup_direction == base["direction"] else "CONTRASTS"
+                else:
+                    base["direction"] = setup_direction
+                    base["bias_source"] = "DLA_EARLY"
+                    base["setup_alignment"] = "TECHNICAL_ONLY"
                 base["execution_readiness"] = "EARLY_BIAS"
-                base["reason"] += " | D-L-A non ancora allineato (bias mantenuto): " + "; ".join(setup.get("reasons") or ["conferme parziali"])
+                details = setup.get("confirmations") or setup.get("missing_conditions") or ["trigger/aggressione non confermati"]
+                base["reason"] += " | D-L-A EARLY_SETUP (OHLCV proxy): " + "; ".join(details)
+            else:
+                # Neutral or insufficient D-L-A data never emits WAIT and
+                # never removes a separately supported catalyst direction.
+                base["setup_direction"] = "NEUTRAL / NO_DIRECTION"
+                base["setup_alignment"] = setup_status
+                base["execution_readiness"] = (
+                    "EARLY_BIAS" if base["direction"] in {"LONG", "SHORT"}
+                    else "NO_DIRECTIONAL_EDGE"
+                )
+                details = setup.get("reasons") or setup.get("missing_conditions") or ["nessun contesto D-L-A allineato"]
+                base["reason"] += " | D-L-A " + setup_status + " (bias news mantenuto): " + "; ".join(details)
         except Exception as exc:
             base["execution_readiness"] = "EARLY_BIAS"
             base["setup_status"] = "UNVERIFIED"

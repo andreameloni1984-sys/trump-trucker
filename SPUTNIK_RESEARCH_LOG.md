@@ -161,3 +161,15 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Validation:** after rebasing PR #74 onto current main, CI passed before merge: SPUTNIK ranking **147 tests** (run `41286827801`) and Telegram/menu/CFD **53 tests** (run `41286827810`), both SUCCESS. No live quote, deployment or Telegram delivery claimed.
 - **Limit:** SILV component independence remains unaudited; status is explicitly unknown rather than independent.
 - **Safety:** PAPER TRADING only; no paid APIs or real orders.
+
+
+## 2026-11-01 — Preserve preliminary D-L-A direction before trigger confirmation
+
+- **Finding:** the competition evaluator returned NEUTRAL/WAIT unless EMA trend, VWAP, breakout/retest and relative volume all aligned. This hid a directional context when EMA20/EMA50 and VWAP already agreed, and the Telegram D-L-A line could show no direction even though the setup was simply early.
+- **Implemented:** the evaluator now publishes LONG/SHORT as an EARLY_SETUP bias when trend and VWAP agree. Breakout/retest, relative OHLCV volume (>=1.2x) and a valid structural stop are still required for SETUP_CONFIRMED. Insufficient history is INSUFFICIENT_DATA; unordered timestamps are INVALID_DATA; unsupported context is NEUTRAL/NO_DIRECTION. Entry and structural stop remain absent until confirmation.
+- **Integration:** Sputnik displays the preliminary D-L-A direction and ALIGNS/CONTRASTS without replacing a supported news BIAS. If the news side is neutral, an aligned D-L context may be surfaced as DLA_EARLY technical-only bias. D-L-A is skipped for stale quote candles.
+- **Data boundary:** aggression remains OHLCV volume proxy only; no DOM, footprint or exchange-native order flow is claimed. PAPER TRADING only; no orders are sent.
+- **Files:** `sputnik_competition_setup.py`, `sputnik_cfd.py`, `tests/test_sputnik_competition_setup.py`, `tests/test_sputnik_cfd.py`, `SPUTNIK_RESEARCH_LOG.md`.
+- **Tests added:** early context bias without trigger; full D-L-A confirmation requires volume and structural stop; neutral context; invalid candle ordering; Telegram visibility of early D-L-A bias; news-direction preservation and technical-only fallback.
+- **Validation:** commit and GitHub Actions verification recorded after push. No live quote, deployment or Telegram delivery claimed.
+- **Open:** add an audited independent futures reference for same-contract comparison; current Yahoo continuous futures remain the only execution basis, while SILV is spot-reference only and its source independence remains unaudited. Build the real historical 100-setup sample and out-of-sample metrics.

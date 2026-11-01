@@ -352,6 +352,79 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
         self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
 
 
+    def test_early_dla_direction_is_visible_and_does_not_override_news_bias(self):
+        now = datetime.now(timezone.utc).isoformat()
+        quote = {
+            "price": 80.0, "atr": 2.0, "timestamp": now,
+            "provider": "Yahoo Finance chart (1m futures)", "symbol": "CL=F",
+            "candles": [{"timestamp": now} for _ in range(60)],
+        }
+        focused_module = ModuleType("sputnik_focused_trader")
+        focused_module.analyze_focused_market = lambda instrument, candles: {
+            "status": "WAIT_CONFIRMATION", "direction": "NEUTRAL",
+            "reason": "trigger non confermato",
+        }
+        setup_module = ModuleType("sputnik_competition_setup")
+        setup_module.evaluate_competition_setup = lambda instrument, candles: {
+            "status": "EARLY_SETUP", "direction": "SHORT",
+            "confirmations": ["Direction SHORT", "Location SHORT"],
+            "missing_conditions": ["TRIGGER_NOT_CONFIRMED"],
+            "reasons": ["bias SHORT, trigger mancante"],
+        }
+        with patch.dict("sys.modules", {
+            "sputnik_focused_trader": focused_module,
+            "sputnik_competition_setup": setup_module,
+        }):
+            with patch("sputnik_cfd.attach_silv_crosscheck", side_effect=lambda q, instrument: q):
+                signal = build_cfd_signal(
+                    {"instrument": "WTI", "bias": "LONG", "score": 85, "reason": "supply disruption"},
+                    {"WTI": quote},
+                )
+        self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["setup_direction"], "SHORT")
+        self.assertEqual(signal["setup_alignment"], "CONTRASTS")
+        self.assertEqual(signal["status"], "EARLY_SETUP")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
+        message = format_cfd_signal(signal)
+        self.assertIn("BIAS: LONG", message)
+        self.assertIn("D-L-A: SHORT (CONTRASTS)", message)
+
+    def test_early_dla_can_publish_technical_only_bias_when_news_is_neutral(self):
+        now = datetime.now(timezone.utc).isoformat()
+        quote = {
+            "price": 80.0, "atr": 2.0, "timestamp": now,
+            "provider": "Yahoo Finance chart (1m futures)", "symbol": "CL=F",
+            "candles": [{"timestamp": now} for _ in range(60)],
+        }
+        focused_module = ModuleType("sputnik_focused_trader")
+        focused_module.analyze_focused_market = lambda instrument, candles: {
+            "status": "WAIT_CONFIRMATION", "direction": "NEUTRAL",
+            "reason": "trigger non confermato",
+        }
+        setup_module = ModuleType("sputnik_competition_setup")
+        setup_module.evaluate_competition_setup = lambda instrument, candles: {
+            "status": "EARLY_SETUP", "direction": "LONG",
+            "confirmations": ["Direction LONG", "Location LONG"],
+            "missing_conditions": ["TRIGGER_NOT_CONFIRMED"],
+            "reasons": ["bias LONG, trigger mancante"],
+        }
+        with patch.dict("sys.modules", {
+            "sputnik_focused_trader": focused_module,
+            "sputnik_competition_setup": setup_module,
+        }):
+            with patch("sputnik_cfd.attach_silv_crosscheck", side_effect=lambda q, instrument: q):
+                signal = build_cfd_signal(
+                    {"instrument": "WTI", "bias": "NEUTRAL", "score": 0, "reason": "no news side"},
+                    {"WTI": quote},
+                )
+        self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["bias_source"], "DLA_EARLY")
+        self.assertEqual(signal["setup_direction"], "LONG")
+        self.assertEqual(signal["setup_alignment"], "TECHNICAL_ONLY")
+        self.assertEqual(signal["status"], "EARLY_SETUP")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
+
+
 class SilvCrosscheckTests(unittest.TestCase):
     @staticmethod
     def reference(**overrides):
