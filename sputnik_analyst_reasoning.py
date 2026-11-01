@@ -62,7 +62,7 @@ def build_reasoning(text: str, plan: dict[str, Any] | None = None,
     elif trade_status in {"EARLY_SETUP", "PREPARE"}:
         conclusion = f"Tesi {thesis} da catalizzatore; setup preliminare, non trade paper eseguito."
     else:
-        conclusion = f"Tesi {thesis} solo da notizia: non autorizzare un trade paper finché prezzo e rischio non sono verificati."
+        conclusion = f"Tesi {thesis} solo da notizia: non autorizzare ingresso PAPER finché prezzo e rischio non sono verificati."
 
     return {
         "candidate": candidate,
