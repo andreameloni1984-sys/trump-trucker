@@ -29,7 +29,7 @@ permissions:
 
 concurrency:
   group: sputnik-main
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   sputnik:
