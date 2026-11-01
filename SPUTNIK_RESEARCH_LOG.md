@@ -283,3 +283,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Coverage verified:** a legacy WAIT no longer hides supported LONG/SHORT; unsupported direction is NEUTRAL/NO_DIRECTION; PAPER_SIGNAL alone does not imply CONFIRMED; explicit setup and explicit validated PAPER authorization are preserved separately.
 - **Runtime warning:** both CI logs still show OSError for WHITE_HOUSE, TRUTH_ARCHIVE and OGE fetches. These did not fail the two workflows, but live source availability remains unverified.
 - **Deployment / delivery:** no live GAGARIN handoff, Telegram message, quote, deployment or order was performed or verified. PAPER ONLY.
+
+
+### Merge verification — SPUTNIK → GAGARIN handoff state contract
+
+- **PR:** #82 merged successfully at 2026-11-01 15:34:33Z.
+- **Merge commit:** `cfb0cea6180b1cf90b8fd974aa68908b7c2fee19`.
+- **Main-branch readback:** `trump_tracker.py:gagarin_confirmation_message()` now renders separate BIAS / SETUP / TRADE PAPER fields; the missing-action `WAIT` fallback is absent. `tests/test_gagarin_confirmation_message.py` is present on main with six regression tests.
+- **CI on final PR head before merge:** ranking/full suite run `41321818062` — SUCCESS, 171 tests; item-intelligence run `41321818168` — SUCCESS, 39 tests. All six new handoff tests were explicitly visible as passing in the ranking log.
+- **Post-merge caveat:** the connector returned no PR-triggered workflow runs for the merge commit; the successful checks above are the final PR-head checks, not a separately verified post-merge push run. No production deployment or live Telegram handoff is claimed.
+- **Open:** WHITE_HOUSE/TRUTH_ARCHIVE/OGE still emitted OSError in CI; live source availability remains unverified. Multi-source same-contract futures verification, full Telegram delivery, and the real 100-setup out-of-sample journal remain open. PAPER ONLY.
