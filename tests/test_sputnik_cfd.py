@@ -739,6 +739,7 @@ class NarwhalReferenceTests(unittest.TestCase):
             "provider": "NARWHAL", "symbol": "CL", "price": 75.25,
             "currency": "USD", "unit": "usd_per_barrel",
             "source_timestamp": datetime.now(timezone.utc).isoformat(),
+            "observed_at": datetime.now(timezone.utc).isoformat(),
             "age_seconds": 900, "status": "DELAYED_15M",
             "deviation_pct": None,
             "use_restriction": "REFERENCE_ONLY_NOT_FOR_TRADE_EXECUTION",
@@ -754,6 +755,9 @@ class NarwhalReferenceTests(unittest.TestCase):
         self.assertEqual(signal["narwhal_reference"]["price"], 75.25)
         message = sputnik_cfd.format_cfd_signal(signal)
         self.assertIn("NARWHAL REF", message)
+        self.assertIn("usd_per_barrel", message)
+        self.assertIn("bid/ask n.d.", message)
+        self.assertIn("Fonte Narwhal:", message)
         self.assertIn("non usare per entry/SL/TP", message.lower())
 
 
