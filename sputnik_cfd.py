@@ -577,7 +577,7 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
             f"📏 ATR:   {signal.get('atr')}",
         ])
     elif direction in {"LONG", "SHORT"}:
-        lines.append("\n⏳ BIAS mantenuto; entry/SL/TP omessi: quotazione futures fresca o ATR valido non disponibile.")
+        lines.append("\n⏳ BIAS mantenuto; livelli omessi (entry/SL/TP): quotazione futures fresca o ATR valido non disponibile.")
     else:
         lines.append("\n🟡 NO_DIRECTION: nessuna tesi LONG/SHORT sostenibile.")
 
