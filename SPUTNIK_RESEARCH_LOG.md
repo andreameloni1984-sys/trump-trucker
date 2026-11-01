@@ -204,3 +204,11 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - Final PR-head validation: SPUTNIK ranking workflow runs 41292920380 and 41292929636 — SUCCESS, 160 tests passed; Telegram menu/CFD workflow runs 41292920274 and 41292929656 — SUCCESS, 60 tests passed.
 - One initial test-only failure was caused by a case-sensitive expected substring after lowercasing the Telegram message; corrected the assertion and reran both workflows successfully. No production signal logic was changed in that correction.
 - These are mocked CI endpoint tests. No authenticated Narwhal request, live market quote, Telegram delivery or deployment was verified. Narwhal remains opt-in and disabled until the free API key is configured. PAPER ONLY.
+
+
+### Runtime workflow wiring — Narwhal optional feed
+
+- Merged PR #81; commit fd46c27ad4b3e97c6c99765d1fa43711d1c88726.
+- Added sputnik_cfd.py and tests/test_sputnik_cfd.py to the SPUTNIK runtime workflow path filters, and passed NARWHAL_REFERENCE_ENABLED=1 plus the NARWHAL_API_KEY repository secret to the scheduled runtime step.
+- With the secret absent, the adapter exits as NOT_CONFIGURED before making a network request; no key or paid plan is required for the documented free tier.
+- YAML syntax parsed successfully in a local validation. The workflow's push-triggered production run was not yet visible in the Actions query at log time. No live authenticated Narwhal response, deploy or Telegram delivery is claimed.
