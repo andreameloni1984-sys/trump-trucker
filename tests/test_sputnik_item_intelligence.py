@@ -264,7 +264,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         message = trump_tracker.intelligence_digest_message(items)
         self.assertIn("Nuovi eventi pubblici verificabili: 60", message)
         self.assertIn("NON segnali confermati", message)
-        self.assertIn("Nessun LONG/SHORT viene emesso senza identificazione dello strumento", message)
+        self.assertIn("prezzo/volume/ATR graduano SETUP e livelli, non cancellano il BIAS", message)
         self.assertIn("e altri 55 eventi", message)
         self.assertEqual(message.count("https://example.gov/news/"), 5)
 
