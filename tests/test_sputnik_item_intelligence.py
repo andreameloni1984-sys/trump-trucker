@@ -363,6 +363,53 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             self.assertEqual(json.loads(state_path.read_text(encoding="utf-8")), state)
             self.assertEqual(list(state_path.parent.glob(".sputnik_state.json.*.tmp")), [])
 
+    def test_save_state_never_persists_telegram_chat_id(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = Path(directory) / "sputnik_state.json"
+            state = {
+                "events": {"evt-1": {"filed_at": "2026-10-31"}},
+                "transactions": {},
+                "telegram_chat_id": "private-chat-id",
+            }
+            with (
+                patch.object(trump_tracker, "STATE_FILE", state_path),
+                patch.object(
+                    trump_tracker,
+                    "utc_now",
+                    return_value=datetime(2026, 10, 31, tzinfo=timezone.utc),
+                ),
+            ):
+                trump_tracker.save_state(state)
+
+            persisted = json.loads(state_path.read_text(encoding="utf-8"))
+            self.assertNotIn("telegram_chat_id", persisted)
+            self.assertEqual(state["telegram_chat_id"], "private-chat-id")
+
+    def test_save_state_redacts_legacy_telegram_chat_id_even_without_other_changes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = Path(directory) / "sputnik_state.json"
+            previous = {
+                "events": {"evt-1": {"filed_at": "2026-10-31"}},
+                "transactions": {},
+                "telegram_chat_id": "legacy-private-chat-id",
+                "updated_at": "old",
+            }
+            state_path.write_text(json.dumps(previous), encoding="utf-8")
+            state = dict(previous)
+            with (
+                patch.object(trump_tracker, "STATE_FILE", state_path),
+                patch.object(
+                    trump_tracker,
+                    "utc_now",
+                    return_value=datetime(2026, 11, 1, tzinfo=timezone.utc),
+                ),
+            ):
+                trump_tracker.save_state(state)
+
+            persisted = json.loads(state_path.read_text(encoding="utf-8"))
+            self.assertNotIn("telegram_chat_id", persisted)
+            self.assertEqual(persisted["events"], previous["events"])
+
     def test_save_state_preserves_previous_file_and_cleans_temp_on_replace_failure(self):
         with tempfile.TemporaryDirectory() as directory:
             state_path = Path(directory) / "sputnik_state.json"
