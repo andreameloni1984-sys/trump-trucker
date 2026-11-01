@@ -173,3 +173,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Tests added:** early context bias without trigger; full D-L-A confirmation requires volume and structural stop; neutral context; invalid candle ordering; Telegram visibility of early D-L-A bias; news-direction preservation and technical-only fallback.
 - **Validation:** commit and GitHub Actions verification recorded after push. No live quote, deployment or Telegram delivery claimed.
 - **Open:** add an audited independent futures reference for same-contract comparison; current Yahoo continuous futures remain the only execution basis, while SILV is spot-reference only and its source independence remains unaudited. Build the real historical 100-setup sample and out-of-sample metrics.
+
+
+### CI verification — D-L-A early bias change
+
+- **Implementation commit:** `da033603596c626945d896069c3fc5fe190069db`.
+- **Files:** `sputnik_competition_setup.py`, `sputnik_cfd.py`, `tests/test_sputnik_competition_setup.py`, `tests/test_sputnik_cfd.py`, `SPUTNIK_RESEARCH_LOG.md`.
+- **GitHub Actions:** ranking/full test discovery run `41289274251` — SUCCESS, **155 tests passed**; Telegram menu/CFD regression run `41289274274` — SUCCESS, **55 tests passed**.
+- **Results:** early LONG/SHORT D-L context survives missing trigger; a supported news BIAS is not flipped by opposite D-L-A; technical-only early bias is labelled separately; no levels are emitted by the D-L-A evaluator before trigger, volume and structural stop confirmation.
+- **Limitations:** these are deterministic CI tests, not historical-market performance validation. The Actions log includes mocked Telegram delivery fixtures; no live Telegram delivery, production deployment, real quote freshness, DOM/footprint feed or real order was verified.
+- **Open:** independent same-contract futures references, source-independence audit, real 100-setup out-of-sample diary/metrics, and runtime monitoring verification remain open.
