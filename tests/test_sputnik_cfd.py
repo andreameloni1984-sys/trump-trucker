@@ -758,7 +758,7 @@ class NarwhalReferenceTests(unittest.TestCase):
         self.assertIn("usd_per_barrel", message)
         self.assertIn("bid/ask n.d.", message)
         self.assertIn("Fonte Narwhal:", message)
-        self.assertIn("non usare per entry/SL/TP", message.lower())
+        self.assertIn("non usare per entry/sl/tp", message.lower())
 
 
 
