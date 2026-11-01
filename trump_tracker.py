@@ -896,6 +896,13 @@ def load_state() -> dict[str, Any]:
         return {"events": {}, "updated_at": None}
 
 
+def _state_for_persistence(state: dict[str, Any]) -> dict[str, Any]:
+    """Remove private routing identifiers before writing public runtime state."""
+    persisted = dict(state)
+    persisted.pop("telegram_chat_id", None)
+    return persisted
+
+
 def save_state(state: dict[str, Any]) -> None:
     # Persist only when substantive state changed. This avoids a Git commit
     # every 5 minutes just because updated_at changed.
@@ -929,10 +936,18 @@ def save_state(state: dict[str, Any]) -> None:
         )[:MAX_STATE_EVENTS]
         state["events"] = dict(keep)
 
-    if comparable(current) == comparable(state):
+    persisted_current = _state_for_persistence(current)
+    persisted_state = _state_for_persistence(state)
+    # Force one rewrite when migrating an older public state file that still
+    # contains the Telegram destination, even if all other fields are equal.
+    if (
+        comparable(persisted_current) == comparable(persisted_state)
+        and "telegram_chat_id" not in current
+    ):
         return
 
     state["updated_at"] = utc_now().isoformat()
+    persisted_state["updated_at"] = state["updated_at"]
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     temporary_path: Path | None = None
     try:
@@ -946,7 +961,7 @@ def save_state(state: dict[str, Any]) -> None:
             delete=False,
         ) as temporary_file:
             temporary_path = Path(temporary_file.name)
-            json.dump(state, temporary_file, ensure_ascii=False, indent=2)
+            json.dump(persisted_state, temporary_file, ensure_ascii=False, indent=2)
             temporary_file.write("\n")
             temporary_file.flush()
             os.fsync(temporary_file.fileno())
