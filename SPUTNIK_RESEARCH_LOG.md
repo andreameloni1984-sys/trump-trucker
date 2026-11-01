@@ -273,3 +273,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Commits:** implementation commit recorded by the preceding branch update; test commit `1bc90a83355a202d1d30bd0bf05283515ec428c6`; final documentation commit follows.
 - **Verification:** updated PR branch CI must pass before merge. Earlier PR-head checks (169 ranking tests and 39 item-intelligence tests) predate this refinement and are not claimed as verification of the new tests.
 - **Open:** PR #82 was rebased onto current main after main advanced; it must be reopened and its updated CI verified. WHITE_HOUSE/TRUTH_ARCHIVE/OGE fetch reliability, full Telegram delivery, independent same-contract futures sources, and the real 100-setup out-of-sample journal remain open. PAPER ONLY.
+
+
+### CI verification — D-L-A handoff provenance correction
+
+- **PR head tested:** `6602742a810de9aec13d059cae4f01d30ecb5946`.
+- **Ranking/full test workflow:** run `41321818062` — SUCCESS, `Ran 171 tests in 3.754s`. All six tests in `tests/test_gagarin_confirmation_message.py` ran and passed.
+- **Item-intelligence workflow:** run `41321818168` — SUCCESS, `Ran 39 tests in 0.037s`.
+- **Coverage verified:** a legacy WAIT no longer hides supported LONG/SHORT; unsupported direction is NEUTRAL/NO_DIRECTION; PAPER_SIGNAL alone does not imply CONFIRMED; explicit setup and explicit validated PAPER authorization are preserved separately.
+- **Runtime warning:** both CI logs still show OSError for WHITE_HOUSE, TRUTH_ARCHIVE and OGE fetches. These did not fail the two workflows, but live source availability remains unverified.
+- **Deployment / delivery:** no live GAGARIN handoff, Telegram message, quote, deployment or order was performed or verified. PAPER ONLY.
