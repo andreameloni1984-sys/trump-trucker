@@ -68,6 +68,22 @@ class TrumpPolicyImpactTests(unittest.TestCase):
         ))
         self.assertEqual(rows, [])
 
+    def test_negated_first_clause_does_not_suppress_later_confirmed_event(self):
+        rows = analyze_public_policy_item(item(
+            "No tariffs were announced; but new tariffs take effect tomorrow",
+            ["TRADE_POLICY"],
+        ))
+        by_instrument = {row["instrument"]: row["bias"] for row in rows}
+        self.assertEqual(by_instrument["NASDAQ100"], "SHORT_BIAS")
+        self.assertEqual(by_instrument["GOLD"], "LONG_BIAS")
+
+    def test_negated_event_remains_suppressed_within_same_clause(self):
+        rows = analyze_public_policy_item(item(
+            "New tariffs were not confirmed by the administration",
+            ["TRADE_POLICY"],
+        ))
+        self.assertEqual(rows, [])
+
     def test_agricultural_export_restriction_maps_to_grains(self):
         rows = analyze_public_policy_item(item(
             "Wheat and corn export ban threatens agricultural exports",
