@@ -270,6 +270,7 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
     quote["crosscheck_market_type"] = None
     quote["crosscheck_source_components"] = []
     quote["crosscheck_independent"] = None
+    quote["crosscheck_independence_status"] = "NOT_ASSESSED"
     quote["spot_futures_basis_price"] = None
     quote["spot_futures_basis_pct"] = None
     quote["crosscheck_status"] = "UNAVAILABLE_OR_STALE"
@@ -311,6 +312,7 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
     elif execution_source in source_components:
         quote["crosscheck_status"] = "SOURCE_OVERLAP"
         quote["crosscheck_independent"] = False
+        quote["crosscheck_independence_status"] = "KNOWN_SOURCE_OVERLAP"
     elif execution_price is None or ref_price is None:
         quote["crosscheck_status"] = "UNCOMPARABLE_PRICE"
     elif not execution_currency or not reference_currency or not execution_unit or not reference_unit:
@@ -322,14 +324,16 @@ def attach_silv_crosscheck(quote: dict[str, Any], instrument: str) -> dict[str, 
     elif execution_market not in {"FUTURES", "FUTURES_CONTINUOUS"} or reference_market != "SPOT":
         quote["crosscheck_status"] = "UNCOMPARABLE_MARKET_TYPE"
     else:
-        # Signed basis is spot minus futures. This is not a like-for-like
-        # price spread and is never used to replace the futures execution price.
+        # Signed basis is spot minus futures. SILV reports component names,
+        # but their independence is not independently audited. Keep the
+        # descriptive basis while refusing to label this source independent.
         basis = ref_price - execution_price
         quote["spot_futures_basis_price"] = round(basis, 6)
         quote["spot_futures_basis_pct"] = round(basis / execution_price * 100, 4)
         quote["spot_futures_basis_definition"] = "spot_minus_futures"
-        quote["crosscheck_independent"] = True
-        quote["crosscheck_status"] = "SPOT_VS_FUTURES_BASIS_CHECK"
+        quote["crosscheck_independent"] = None
+        quote["crosscheck_independence_status"] = "PROVIDER_REPORTED_NOT_AUDITED"
+        quote["crosscheck_status"] = "SPOT_VS_FUTURES_BASIS_CHECK_INDEPENDENCE_UNVERIFIED"
 
     return quote
 
@@ -526,6 +530,7 @@ def build_cfd_signal(
         "crosscheck_market_type": quote.get("crosscheck_market_type"),
         "crosscheck_source_components": quote.get("crosscheck_source_components"),
         "crosscheck_independent": quote.get("crosscheck_independent"),
+        "crosscheck_independence_status": quote.get("crosscheck_independence_status"),
         "spot_futures_basis_price": quote.get("spot_futures_basis_price"),
         "spot_futures_basis_pct": quote.get("spot_futures_basis_pct"),
         "spot_futures_basis_definition": quote.get("spot_futures_basis_definition"),
@@ -580,6 +585,13 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         lines.append("\n⏳ BIAS mantenuto; livelli omessi (entry/SL/TP): quotazione futures fresca o ATR valido non disponibile.")
     else:
         lines.append("\n🟡 NO_DIRECTION: nessuna tesi LONG/SHORT sostenibile.")
+
+    if signal.get("crosscheck_status"):
+        lines.extend(["", f"🔎 CONTROLLO SPOT/FUTURES: {signal['crosscheck_status']}"])
+        if signal.get("crosscheck_independence_status") == "PROVIDER_REPORTED_NOT_AUDITED":
+            lines.append("⚠️ Componenti dichiarate da SILV; indipendenza non verificata.")
+        elif signal.get("crosscheck_independence_status") == "KNOWN_SOURCE_OVERLAP":
+            lines.append("⚠️ Sovrapposizione nota con la fonte di esecuzione.")
 
     lines.extend([
         "",
