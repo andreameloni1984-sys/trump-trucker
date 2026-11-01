@@ -427,10 +427,18 @@ class SilvCrosscheckTests(unittest.TestCase):
         with patch("sputnik_cfd.fetch_silv_reference", return_value=self.reference()):
             result = attach_silv_crosscheck(quote, "SILVER")
 
-        self.assertEqual(result["crosscheck_status"], "SPOT_VS_FUTURES_BASIS_CHECK")
+        self.assertEqual(
+            result["crosscheck_status"],
+            "SPOT_VS_FUTURES_BASIS_CHECK_INDEPENDENCE_UNVERIFIED",
+        )
         self.assertEqual(result["spot_futures_basis_definition"], "spot_minus_futures")
         self.assertEqual(result["spot_futures_basis_price"], -1.0)
         self.assertEqual(result["spot_futures_basis_pct"], -2.0)
+        self.assertIsNone(result["crosscheck_independent"])
+        self.assertEqual(
+            result["crosscheck_independence_status"],
+            "PROVIDER_REPORTED_NOT_AUDITED",
+        )
         self.assertNotIn("crosscheck_spread_pct", result)
         self.assertEqual(result["price"], 50.0)
 
@@ -480,6 +488,7 @@ class SilvCrosscheckTests(unittest.TestCase):
 
         self.assertEqual(result["crosscheck_status"], "SOURCE_OVERLAP")
         self.assertFalse(result["crosscheck_independent"])
+        self.assertEqual(result["crosscheck_independence_status"], "KNOWN_SOURCE_OVERLAP")
         self.assertEqual(result["crosscheck_source_components"], ["yahoo", "fault"])
         self.assertIsNone(result["spot_futures_basis_price"])
         self.assertIsNone(result["spot_futures_basis_pct"])
@@ -500,6 +509,7 @@ class SilvCrosscheckTests(unittest.TestCase):
 
         self.assertEqual(result["crosscheck_status"], "UNVERIFIED_SOURCE_COMPOSITION")
         self.assertIsNone(result["crosscheck_independent"])
+        self.assertEqual(result["crosscheck_independence_status"], "NOT_ASSESSED")
         self.assertIsNone(result["spot_futures_basis_pct"])
 
     def test_unknown_execution_provider_is_not_claimed_independent(self):
@@ -517,6 +527,7 @@ class SilvCrosscheckTests(unittest.TestCase):
 
         self.assertEqual(result["crosscheck_status"], "UNVERIFIED_EXECUTION_SOURCE")
         self.assertIsNone(result["crosscheck_independent"])
+        self.assertEqual(result["crosscheck_independence_status"], "NOT_ASSESSED")
         self.assertIsNone(result["spot_futures_basis_pct"])
 
     def test_cfd_signal_keeps_futures_execution_price_and_exposes_basis_metadata(self):
@@ -546,8 +557,17 @@ class SilvCrosscheckTests(unittest.TestCase):
         self.assertEqual(signal["quote_currency"], "USD")
         self.assertEqual(signal["quote_unit"], "troy_oz")
         self.assertEqual(signal["quote_market_type"], "FUTURES_CONTINUOUS")
-        self.assertEqual(signal["crosscheck_status"], "SPOT_VS_FUTURES_BASIS_CHECK")
+        self.assertEqual(
+            signal["crosscheck_status"],
+            "SPOT_VS_FUTURES_BASIS_CHECK_INDEPENDENCE_UNVERIFIED",
+        )
         self.assertEqual(signal["spot_futures_basis_price"], -1.0)
+        self.assertIsNone(signal["crosscheck_independent"])
+        self.assertEqual(
+            signal["crosscheck_independence_status"],
+            "PROVIDER_REPORTED_NOT_AUDITED",
+        )
+        self.assertIn("indipendenza non verificata", format_cfd_signal(signal).lower())
         self.assertEqual(signal["crosscheck_currency"], "USD")
         self.assertEqual(signal["crosscheck_unit"], "troy_oz")
         self.assertEqual(signal["crosscheck_bid"], 48.9)
