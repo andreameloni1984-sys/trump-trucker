@@ -1,0 +1,90 @@
+import unittest
+
+from sputnik_trump_impact import analyze_public_policy_item
+
+
+def item(text, domains, source="TRUTH_ARCHIVE", actor_role=None):
+    result = {
+        "evidence": "PUBLIC_RSS_ITEM",
+        "event_id": "evt-1",
+        "url": "https://example.org/public-item",
+        "published": "2026-11-01T10:00:00Z",
+        "source": source,
+        "title": text,
+        "text": text,
+        "domains": domains,
+    }
+    if actor_role:
+        result["actor_role"] = actor_role
+    return result
+
+
+class TrumpPolicyImpactTests(unittest.TestCase):
+    def test_truth_social_oil_supply_disruption_creates_early_long_bias(self):
+        rows = analyze_public_policy_item(item(
+            "New sanctions threaten crude oil exports and tanker shipments",
+            ["ENERGY"],
+        ))
+        self.assertEqual({row["instrument"] for row in rows}, {"WTI", "BRENT"})
+        self.assertTrue(all(row["bias"] == "LONG_BIAS" for row in rows))
+        self.assertTrue(all(row["paper_trade_status"] == "NOT_EXECUTED" for row in rows))
+        self.assertTrue(all(row["probability_calibrated"] is False for row in rows))
+
+    def test_trade_deal_maps_growth_and_defensive_assets_in_opposite_directions(self):
+        rows = analyze_public_policy_item(item(
+            "The administration announced a trade deal and trade agreement",
+            ["TRADE_POLICY"],
+            source="WHITE_HOUSE",
+        ))
+        by_instrument = {row["instrument"]: row["bias"] for row in rows}
+        self.assertEqual(by_instrument["NASDAQ100"], "LONG_BIAS")
+        self.assertEqual(by_instrument["GOLD"], "SHORT_BIAS")
+
+    def test_publicly_identified_family_or_adviser_role_is_weighted_but_not_assumed(self):
+        rows = analyze_public_policy_item(item(
+            "New tariffs and trade restrictions announced",
+            ["TRADE_POLICY"],
+            actor_role="publicly identified adviser",
+        ))
+        self.assertTrue(rows)
+        self.assertTrue(all(row["actor_class"] == "PUBLICLY_IDENTIFIED_ASSOCIATE" for row in rows))
+        self.assertTrue(all(row["actor_weight"] == 0.65 for row in rows))
+
+    def test_unverified_or_missing_source_metadata_does_not_create_bias(self):
+        for overrides in (
+            {"evidence": "PUBLIC_PAGE"},
+            {"url": ""},
+            {"published": ""},
+            {"event_id": ""},
+        ):
+            finding = item("New tariffs announced", ["TRADE_POLICY"])
+            finding.update(overrides)
+            self.assertEqual(analyze_public_policy_item(finding), [])
+
+    def test_negated_policy_event_is_suppressed(self):
+        rows = analyze_public_policy_item(item(
+            "No new tariffs announced; the trade restrictions are not confirmed",
+            ["TRADE_POLICY"],
+        ))
+        self.assertEqual(rows, [])
+
+    def test_agricultural_export_restriction_maps_to_grains(self):
+        rows = analyze_public_policy_item(item(
+            "Wheat and corn export ban threatens agricultural exports",
+            ["AGRICULTURE"],
+            source="WHITE_HOUSE",
+        ))
+        self.assertEqual({row["instrument"] for row in rows}, {"WHEAT", "CORN", "SOYBEAN"})
+
+    def test_sentiment_is_context_only_and_does_not_override_event_direction(self):
+        rows = analyze_public_policy_item(item(
+            "A positive breakthrough: new sanctions threaten crude oil exports",
+            ["ENERGY"],
+        ))
+        self.assertTrue(rows)
+        self.assertTrue(all(row["bias"] == "LONG_BIAS" for row in rows))
+        self.assertTrue(all(row["model"] == "TRANSPARENT_TOPIC_EVENT_SENTIMENT_V1" for row in rows))
+
+
+if __name__ == "__main__":
+    unittest.main()
