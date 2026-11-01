@@ -676,9 +676,49 @@ def gagarin_confirmation_message(result: dict[str, Any]) -> str:
         if not matched:
             lines.append("⚪ Nessuno strumento corrispondente nell'universo Gagarin.")
         for row in matched[:3]:
+            if not isinstance(row, dict):
+                continue
+            candidates = (
+                row.get("bias"),
+                row.get("direction"),
+                row.get("opportunity_direction"),
+                row.get("pre_move_direction"),
+            )
+            bias = next(
+                (str(value).strip().upper() for value in candidates
+                 if str(value or "").strip().upper() in {"LONG", "SHORT"}),
+                None,
+            )
+            action = str(row.get("action") or "").strip().upper()
+            setup = str(row.get("setup") or "").strip().upper()
+            trade_paper = str(row.get("trade_paper") or "").strip().upper()
+            if bias is None:
+                bias_label = "NEUTRAL / NO_DIRECTION"
+                setup = "NEUTRAL"
+            else:
+                bias_label = bias
+                if setup not in {"EARLY_BIAS", "EARLY_SETUP", "CONFIRMED"}:
+                    # A legacy action label is not proof of D-L-A confirmation.
+                    # Only an explicit validated GAGARIN PAPER authorization can
+                    # imply CONFIRMED when the setup field itself is absent.
+                    authorized_paper_entry = (
+                        action == "PAPER_ENTRY"
+                        and trade_paper == "ENTRY_AUTHORIZED_PAPER_ONLY"
+                    )
+                    setup = "CONFIRMED" if authorized_paper_entry else "EARLY_BIAS"
+
+            if not trade_paper:
+                if action in {"PAPER_ENTRY", "PAPER_SIGNAL"}:
+                    trade_paper = "PAPER_CANDIDATE"
+                elif action in {"BLOCKED", "BLOCKED_NOT_EXECUTED"}:
+                    trade_paper = "BLOCKED_NOT_EXECUTED"
+                else:
+                    trade_paper = "NOT_EXECUTED"
+
             lines.append(
                 f"• {row.get('commodity') or row.get('symbol')}: "
-                f"{row.get('action', 'WAIT')} | prezzo {row.get('price', 'N/D')} | "
+                f"BIAS {bias_label} | SETUP {setup} | TRADE PAPER {trade_paper} | "
+                f"prezzo {row.get('price', 'N/D')} | "
                 f"prob. {row.get('probability', 'N/D')}"
             )
     lines.append("ℹ️ L'evento è un contesto; Gagarin mantiene il proprio filtro tecnico.")

@@ -262,3 +262,24 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **No change this execution:** SPUTNIK functional code was not modified; the single functional improvement was made in GAGARIN. No new SPUTNIK tests were run by this audit and no deployment is claimed.
 - **Open:** merge/integrate PR #82 after review; remove the main-branch WAIT fallback; investigate schedule gap and source errors; reduce unconfirmed Telegram attempts; verify a live delivery only through API `ok=true` and positive `message_id`. PAPER ONLY; no real orders.
 
+
+
+## 2026-11-01 — Prevent false D-L-A confirmation in the SPUTNIK → GAGARIN handoff
+
+- **Finding:** the handoff formatter inferred `SETUP CONFIRMED` from legacy action labels `PAPER_ENTRY` or `PAPER_SIGNAL`. GAGARIN's `engine/cloud_api_status.py` instead maps a `PAPER_SIGNAL` to EARLY_SETUP only when fresh setup inputs exist (otherwise EARLY_BIAS), and only a fresh validated `PAPER_ENTRY` can be CONFIRMED.
+- **Change:** preserve an explicit valid GAGARIN setup stage. If the setup field is absent/invalid, default to EARLY_BIAS; infer CONFIRMED only when both `action=PAPER_ENTRY` and `trade_paper=ENTRY_AUTHORIZED_PAPER_ONLY` are explicitly present. The formatter is display-only and never submits an order.
+- **Files:** `trump_tracker.py`; `tests/test_gagarin_confirmation_message.py`; this log.
+- **Regression tests added:** legacy WAIT with LONG; missing action with SHORT; unsupported direction to NEUTRAL; PAPER_SIGNAL without setup remains EARLY_BIAS; explicit CONFIRMED stage is preserved; confirmation may be inferred only from explicit validated PAPER authorization.
+- **Commits:** implementation commit recorded by the preceding branch update; test commit `1bc90a83355a202d1d30bd0bf05283515ec428c6`; final documentation commit follows.
+- **Verification:** updated PR branch CI must pass before merge. Earlier PR-head checks (169 ranking tests and 39 item-intelligence tests) predate this refinement and are not claimed as verification of the new tests.
+- **Open:** PR #82 was rebased onto current main after main advanced; it must be reopened and its updated CI verified. WHITE_HOUSE/TRUTH_ARCHIVE/OGE fetch reliability, full Telegram delivery, independent same-contract futures sources, and the real 100-setup out-of-sample journal remain open. PAPER ONLY.
+
+
+### CI verification — D-L-A handoff provenance correction
+
+- **PR head tested:** `6602742a810de9aec13d059cae4f01d30ecb5946`.
+- **Ranking/full test workflow:** run `41321818062` — SUCCESS, `Ran 171 tests in 3.754s`. All six tests in `tests/test_gagarin_confirmation_message.py` ran and passed.
+- **Item-intelligence workflow:** run `41321818168` — SUCCESS, `Ran 39 tests in 0.037s`.
+- **Coverage verified:** a legacy WAIT no longer hides supported LONG/SHORT; unsupported direction is NEUTRAL/NO_DIRECTION; PAPER_SIGNAL alone does not imply CONFIRMED; explicit setup and explicit validated PAPER authorization are preserved separately.
+- **Runtime warning:** both CI logs still show OSError for WHITE_HOUSE, TRUTH_ARCHIVE and OGE fetches. These did not fail the two workflows, but live source availability remains unverified.
+- **Deployment / delivery:** no live GAGARIN handoff, Telegram message, quote, deployment or order was performed or verified. PAPER ONLY.
