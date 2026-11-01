@@ -34,19 +34,19 @@ def build_reasoning(text: str, plan: dict[str, Any] | None = None,
         else:
             thesis = "NEUTRAL"
     else:
-        thesis = "WAIT"
-        contradictions.append("Il testo non supera il filtro evento-azione: una semplice menzione non basta.")
+        thesis = "NEUTRAL"
+        contradictions.append("NO_DIRECTION: il testo non supera il filtro evento-azione; una semplice menzione non basta.")
 
-    # Distinguish a news thesis from market confirmation.
-    if trade.get("entry") is not None and trade.get("status") in {"PREPARE", "TRIGGER CONFIRMED"}:
+    # Distinguish a news thesis from market confirmation and quote availability.
+    trade_status = str(trade.get("status") or "")
+    if trade.get("entry") is not None and trade_status in {"EARLY_SETUP", "CONFIRMED", "PREPARE", "TRIGGER CONFIRMED"}:
         confirmations.append("Quotazione timestamped e ATR disponibili: livelli condizionali calcolati.")
     else:
         missing.append("Conferma indipendente di prezzo/volume e struttura non dimostrata da Sputnik.")
-    if trade.get("status") == "WAIT":
-        contradictions.append("Il controllo delle quotazioni non autorizza un piano operativo: " +
-                              str(trade.get("reason") or "dati aggiornati insufficienti")[:180])
-    elif trade.get("status") == "PREPARE":
-        missing.append("PREPARE non equivale a trigger tecnico confermato: attendere la conferma richiesta.")
+    if trade_status in {"WAIT", "EARLY_BIAS"}:
+        missing.append("Bias conservato; quotazione futures fresca o ATR valido non disponibile: entry/SL/TP omessi.")
+    elif trade_status in {"EARLY_SETUP", "PREPARE"}:
+        missing.append("EARLY_SETUP non equivale a trigger D-L-A confermato: attendere il timing richiesto.")
     if not body:
         missing.append("Testo originale dell'evento assente o vuoto.")
 
@@ -55,14 +55,14 @@ def build_reasoning(text: str, plan: dict[str, Any] | None = None,
     invalidation = str(plan.get("invalidation") or
                        "Smentita dell'evento, fonte non confermata o reazione del prezzo incompatibile.")
 
-    if thesis == "WAIT":
-        conclusion = "Nessuna direzione operativa: mantenere in monitoraggio, senza inventare un trade."
-    elif trade.get("status") == "TRIGGER CONFIRMED":
-        conclusion = f"Tesi {thesis} con trigger riportato dai dati forniti; resta soggetta ai controlli esterni."
-    elif trade.get("status") == "PREPARE":
-        conclusion = f"Tesi {thesis} da catalizzatore; preparazione condizionale, non ingresso confermato."
+    if thesis == "NEUTRAL":
+        conclusion = "NO_DIRECTION: nessun lato sostenibile dal testo; mantenere il monitoraggio senza inventare una direzione."
+    elif trade_status in {"CONFIRMED", "TRIGGER CONFIRMED"}:
+        conclusion = f"Tesi {thesis} con setup confermato dai dati disponibili; resta soggetta ai controlli esterni."
+    elif trade_status in {"EARLY_SETUP", "PREPARE"}:
+        conclusion = f"Tesi {thesis} da catalizzatore; setup preliminare, non trade paper eseguito."
     else:
-        conclusion = f"Tesi {thesis} solo da notizia: non autorizzare ingresso finché prezzo e rischio non sono verificati."
+        conclusion = f"Tesi {thesis} solo da notizia: non autorizzare un trade paper finché prezzo e rischio non sono verificati."
 
     return {
         "candidate": candidate,
@@ -80,7 +80,7 @@ def format_reasoning(reasoning: dict[str, Any]) -> list[str]:
     lines = [
         "",
         "🧠 5. RAGIONAMENTO SPUTNIK",
-        f"• Tesi: {reasoning.get('thesis', 'WAIT')} — {reasoning.get('conclusion', '')}",
+        f"• Tesi: {reasoning.get('thesis', 'NEUTRAL')} — {reasoning.get('conclusion', '')}",
     ]
     for label, key in (("A favore", "confirmations"), ("Contrasti", "contradictions"),
                        ("Da verificare", "missing")):
