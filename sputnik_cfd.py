@@ -137,28 +137,35 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
         lows = quote_data.get("low") or []
         closes = quote_data.get("close") or []
         volumes = quote_data.get("volume") or []
+        # Preserve the legacy H/L/C ATR fallback. OHLCV candles are built
+        # only when Yahoo actually supplies every required field.
+        raw_hlc = [
+            (float(h), float(l), float(cl), int(ts))
+            for h, l, cl, ts in zip(highs, lows, closes, timestamps)
+            if h is not None and l is not None and cl is not None
+            and math.isfinite(float(h)) and math.isfinite(float(l)) and math.isfinite(float(cl))
+        ]
+        if len(raw_hlc) < 15:
+            return None
         candles = [
             {"open": float(o), "high": float(h), "low": float(l),
-             "close": float(cl), "volume": float(v or 0), "timestamp": int(ts)}
+             "close": float(cl), "volume": float(v), "timestamp": int(ts)}
             for o, h, l, cl, v, ts in zip(opens, highs, lows, closes, volumes, timestamps)
-            if o is not None and h is not None and l is not None and cl is not None
+            if o is not None and h is not None and l is not None and cl is not None and v is not None
             and math.isfinite(float(o)) and math.isfinite(float(h))
-            and math.isfinite(float(l)) and math.isfinite(float(cl))
+            and math.isfinite(float(l)) and math.isfinite(float(cl)) and math.isfinite(float(v))
+            and float(v) > 0
         ]
-        if len(candles) < 15:
-            return None
         true_ranges = []
         previous_close = None
-        for candle in candles:
-            high, low, close = candle["high"], candle["low"], candle["close"]
+        for high, low, close, _ in raw_hlc:
             tr = high - low if previous_close is None else max(
                 high - low, abs(high - previous_close), abs(low - previous_close)
             )
             true_ranges.append(tr)
             previous_close = close
         atr = sum(true_ranges[-14:]) / 14
-        last = candles[-1]
-        high, low, close, stamp = last["high"], last["low"], last["close"], last["timestamp"]
+        high, low, close, stamp = raw_hlc[-1]
         timestamp = datetime.fromtimestamp(stamp, timezone.utc).isoformat()
         metadata = YAHOO_FUTURES_METADATA.get(symbol, {})
         return {
