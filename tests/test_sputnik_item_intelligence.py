@@ -460,5 +460,23 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
 
 
 
+    def test_scheduled_workflow_fails_closed_without_telegram_chat_id(self):
+        workflow_path = (
+            Path(__file__).resolve().parents[1]
+            / ".github"
+            / "workflows"
+            / "trump_tracker.yml"
+        )
+        workflow = workflow_path.read_text(encoding="utf-8")
+        self.assertIn('SPUTNIK_TELEGRAM_POLLING: "0"', workflow)
+        self.assertIn(
+            "TELEGRAM_CHAT_ID is required: the scheduled collector sets "
+            "SPUTNIK_TELEGRAM_POLLING=0 and cannot auto-discover a destination.",
+            workflow,
+        )
+        self.assertNotIn("AUTO-DISCOVERY ATTIVO", workflow)
+        self.assertIn("tests/test_sputnik_item_intelligence.py", workflow)
+
+
 if __name__ == "__main__":
     unittest.main()
