@@ -207,13 +207,18 @@ def analyze_public_policy_item(finding: dict[str, Any]) -> list[dict[str, Any]]:
     source = str(finding.get("source") or "UNKNOWN")
     matches: list[dict[str, Any]] = []
     for rule in _RULES:
-        if not domains.intersection(rule["domains"]) or not rule["pattern"].search(text):
+        if not domains.intersection(rule["domains"]):
             continue
-        # A negation invalidates only the event in its own clause. A
-        # previous clause separated by punctuation/contrast must not suppress
-        # a later, independently stated policy event.
-        matched = rule["pattern"].search(text)
-        if _match_is_negated(text, matched):
+        # Search all occurrences: a negated first mention must not hide a
+        # later, independently stated event in the same headline/body.
+        matched = next(
+            (
+                candidate for candidate in rule["pattern"].finditer(text)
+                if not _match_is_negated(text, candidate)
+            ),
+            None,
+        )
+        if matched is None:
             continue
         for instrument, bias in rule["bias"].items():
             priority = round(min(95, 55 + abs(sentiment) * 12 + actor_weight * 10 + (8 if source in {"WHITE_HOUSE", "WHITE_HOUSE_RSS", "TRUTH_ARCHIVE"} or "whitehouse.gov" in str(finding.get("feed_url") or "").lower() or "trumpstruth.org" in str(finding.get("feed_url") or "").lower() else 0)))
