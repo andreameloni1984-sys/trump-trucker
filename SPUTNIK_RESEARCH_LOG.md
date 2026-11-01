@@ -151,3 +151,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Safety:** PAPER ONLY; no broker orders, paid APIs, secret reads or Telegram test messages.
 - **Direction conflict regression:** if focused OHLCV or a D-L-A setup points opposite to a supported catalyst, SPUTNIK now keeps the catalyst BIAS and records technical/setup direction plus ALIGNS/CONTRASTS separately. A technical-only direction is used only when no catalyst side exists. The regression test covers LONG news with SHORT focused/D-L-A evidence.
 - **Telegram decision/reasoning path:** the no-plan fallback now reports NEUTRAL / NO_DIRECTION instead of WAIT. Analyst reasoning also uses NEUTRAL when no side is supported, and legacy status expectations were updated to EARLY_BIAS / EARLY_SETUP / NO_DIRECTION. The user-facing decision message no longer prints WAIT as the fallback.
+
+
+## 2026-11-01 — SILV independence claim corrected on current main
+- **Finding:** the CFD cross-check marked SILV as independent solely because its provider-reported component list did not name Yahoo. That is not an independent audit. A spot/futures basis is descriptive and does not prove independent price discovery.
+- **Implemented:** keep the signed spot-minus-futures basis separately labelled; set independence to unknown with `PROVIDER_REPORTED_NOT_AUDITED`; retain `false` only for a known source overlap. Expose the caveat in the Telegram CFD message.
+- **Execution safety:** Yahoo futures remain the only execution/ATR/entry/SL/TP basis. SILV remains spot-reference only; no averaging, no substitution, no orders.
+- **Files:** `sputnik_cfd.py`, `tests/test_sputnik_cfd.py`, `SPUTNIK_RESEARCH_LOG.md`.
+- **Validation:** targeted CFD/Telegram CI pending on rebased current-main PR. No live quote, deployment or Telegram delivery claimed.
+- **Limit:** SILV component independence remains unaudited; status is explicitly unknown rather than independent.
+- **Safety:** PAPER TRADING only; no paid APIs or real orders.
