@@ -7,6 +7,7 @@ from unittest.mock import patch
 from sputnik_cfd import (
     attach_silv_crosscheck,
     build_cfd_cart,
+    cfd_cart_display_state,
     build_cfd_signal,
     fetch_silv_reference,
     fetch_yahoo_quote,
@@ -760,6 +761,47 @@ class NarwhalReferenceTests(unittest.TestCase):
         self.assertIn("Fonte Narwhal:", message)
         self.assertIn("non usare per entry/sl/tp", message.lower())
 
+
+
+
+class CfdCartDisplayStateTests(unittest.TestCase):
+    def test_missing_quote_keeps_long_bias_and_marks_paper_not_executed(self):
+        state = cfd_cart_display_state({
+            "direction": "LONG", "status": "EARLY_BIAS",
+            "setup_status": "EARLY_BIAS", "paper_trade_status": "NOT_EXECUTED",
+        })
+        self.assertEqual(state["direction"], "LONG")
+        self.assertEqual(state["bias"], "DIRECTIONAL_BIAS")
+        self.assertEqual(state["setup"], "EARLY_BIAS")
+        self.assertEqual(state["paper_trade"], "NOT_EXECUTED")
+        self.assertNotIn("WAIT", str(state))
+
+    def test_levels_available_are_early_setup_not_an_executed_trade(self):
+        state = cfd_cart_display_state({
+            "direction": "SHORT", "status": "EARLY_SETUP",
+            "setup_status": "EARLY_SETUP", "paper_trade_status": "NOT_EXECUTED",
+        })
+        self.assertEqual(state["direction"], "SHORT")
+        self.assertEqual(state["setup"], "EARLY_SETUP")
+        self.assertEqual(state["paper_trade"], "NOT_EXECUTED")
+
+    def test_unsupported_side_is_neutral_no_direction(self):
+        state = cfd_cart_display_state({
+            "direction": "NEUTRAL", "status": "NO_DIRECTION",
+        })
+        self.assertEqual(state, {
+            "direction": "NEUTRAL", "bias": "NO_DIRECTION",
+            "setup": "NO_DIRECTION", "paper_trade": "NOT_EXECUTED",
+        })
+        self.assertNotIn("WAIT", str(state))
+
+    def test_unknown_setup_cannot_be_promoted_to_confirmed(self):
+        state = cfd_cart_display_state({
+            "direction": "LONG", "status": "TRADE",
+            "setup_status": "TRADE", "paper_trade_status": "TRADE",
+        })
+        self.assertEqual(state["setup"], "EARLY_BIAS")
+        self.assertEqual(state["paper_trade"], "NOT_EXECUTED")
 
 
 if __name__ == "__main__":

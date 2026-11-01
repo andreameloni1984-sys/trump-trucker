@@ -19,7 +19,7 @@ from typing import Any
 
 from telegram_delivery import confirmed_message_id
 from sputnik_ranking import rank_purchase_candidates
-from sputnik_cfd import build_cfd_cart
+from sputnik_cfd import build_cfd_cart, cfd_cart_display_state
 from sputnik_catalyst import catalyst_watchlist
 from sputnik_action_reaction import action_reaction_message
 from sputnik_decision_engine import decision_message
@@ -171,18 +171,25 @@ def sputnik_home_message(state: dict[str, Any]) -> str:
     if rows:
         for row in rows:
             item = by_security.get(row.get("security"))
-            status = "🟢 TRADE" if item and item.get("status") == "TRADE" else "🟡 WAIT"
-            lines.append(f'{row["rank"]}. {status} {row["security"]} — {row["score"]}/100')
+            view = cfd_cart_display_state(item)
+            direction = view["direction"]
+            icon = "🟢" if direction == "LONG" else "🔴" if direction == "SHORT" else "🟡"
+            label = f"{direction} BIAS" if direction in {"LONG", "SHORT"} else "NEUTRAL / NO_DIRECTION"
+            lines.append(
+                f'{row["rank"]}. {icon} {label} | SETUP {view["setup"]} — '
+                f'{row["security"]} — {row["score"]}/100'
+            )
             lines.append(f'   {row["signal"]} | Filing {row["filings"]} | Recenza {row["recency"]}/10')
-            if item and item.get("status") == "TRADE":
+            lines.append(f'   TRADE PAPER: {view["paper_trade"]}')
+            if item and item.get("entry") is not None:
                 lines.append(
-                    f'   Entry {item["entry"]} | SL {item["stop"]} | TP {item["target"]} | '
-                    f'R/R {item["rr"]} | Size {item["units"]}'
+                    f'   Livelli condizionali: Entry {item["entry"]} | SL {item["stop"]} | '
+                    f'TP {item["target"]} | R/R {item["rr"]}'
                 )
             elif item:
-                lines.append(f'   WAIT: {item["reason"]}')
+                lines.append(f'   {item["reason"]}')
             else:
-                lines.append("   WAIT: quotazione CFD non disponibile.")
+                lines.append("   Quotazione CFD fresca non disponibile: livelli omessi.")
     else:
         lines.append("⚪ Nessun candidato SEC verificabile.")
 
@@ -229,18 +236,21 @@ def cfd_cart_message(state: dict[str, Any], capital: float = 300.0) -> str:
         "🛒 SPUTNIK — CARRELLO CFD (€{:.0f})".format(capital),
         "━━━━━━━━━━━━━━━━━━",
         "🎯 Base: evidenze pubbliche SPUTNIK",
-        "⚠️ Un CFD entra nel carrello solo con prezzo + SL + TP forniti dal motore dati.",
+        "⚠️ Entry/SL/TP sono livelli condizionali, mostrati solo con dati verificabili; nessun ordine viene inviato.",
     ]
     if not cart:
         lines.append("⚪ Nessun candidato disponibile.")
         return "\n".join(lines)
     for i, item in enumerate(cart, 1):
-        status = "🟢 TRADE" if item["status"] == "TRADE" else "🟡 WAIT"
-        lines.append("{} {} — {} / {}".format(i, status, item["security"], item["company"]))
+        view = cfd_cart_display_state(item)
+        direction = view["direction"]
+        icon = "🟢" if direction == "LONG" else "🔴" if direction == "SHORT" else "🟡"
+        label = f"{direction} BIAS" if direction in {"LONG", "SHORT"} else "NEUTRAL / NO_DIRECTION"
+        lines.append("{} {} {} — {} / {}".format(i, icon, label, item["security"], item["company"]))
         lines.append("   Evidenza: {}/100 | {}".format(item["score"], item["evidence_signal"]))
-        if item["status"] == "TRADE":
-            lines.append("   LONG | Entry {} | SL {} | TP {} | R/R {} | Size {}".format(item["entry"], item["stop"], item["target"], item["rr"], item["units"]))
-            lines.append("   Rischio massimo modello: €{:.2f}".format(item["risk_eur"]))
+        lines.append("   SETUP: {} | TRADE PAPER: {}".format(view["setup"], view["paper_trade"]))
+        if item.get("entry") is not None:
+            lines.append("   Livelli condizionali: Entry {} | SL {} | TP {} | R/R {}".format(item["entry"], item["stop"], item["target"], item["rr"]))
         else:
             lines.append("   {}".format(item["reason"]))
     lines.extend(["", "ℹ️ Il carrello non trasforma una notizia politica in un ordine automatico.", "ℹ️ Nessuna posizione SHORT viene inferita da acquisti Form 4."])

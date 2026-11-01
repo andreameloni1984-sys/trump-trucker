@@ -53,5 +53,15 @@ class SputnikTelegramMenuTests(unittest.TestCase):
         self.assertIn("reply_markup=telegram_menu()", start_block)
 
 
+    def test_dashboard_and_cart_render_bias_setup_and_paper_states_not_wait(self):
+        home_block = self.source.split("def sputnik_home_message", 1)[1].split("def catalyst_watch_message", 1)[0]
+        cart_block = self.source.split("def cfd_cart_message", 1)[1].split("def anticipation_message", 1)[0]
+        self.assertIn("cfd_cart_display_state", self.source)
+        for block in (home_block, cart_block):
+            self.assertNotIn("WAIT", block)
+            self.assertIn("TRADE PAPER", block)
+            self.assertIn("NO_DIRECTION", block)
+
+
 if __name__ == "__main__":
     unittest.main()

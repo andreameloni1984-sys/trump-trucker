@@ -212,3 +212,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - Added sputnik_cfd.py and tests/test_sputnik_cfd.py to the SPUTNIK runtime workflow path filters, and passed NARWHAL_REFERENCE_ENABLED=1 plus the NARWHAL_API_KEY repository secret to the scheduled runtime step.
 - With the secret absent, the adapter exits as NOT_CONFIGURED before making a network request; no key or paid plan is required for the documented free tier.
 - YAML syntax parsed successfully in a local validation. The workflow's push-triggered production run was not yet visible in the Actions query at log time. No live authenticated Narwhal response, deploy or Telegram delivery is claimed.
+
+
+## 2026-11-01 — Remove false WAIT from the live dashboard/cart rendering
+
+- **Finding:** `build_cfd_cart()` returns `EARLY_BIAS`, `EARLY_SETUP` or `NO_DIRECTION` and always marks `paper_trade_status=NOT_EXECUTED`. The Telegram dashboard/cart instead checked for a nonexistent `TRADE` state and rendered every row as `WAIT`, hiding supported LONG bias and misrepresenting an unexecuted paper suggestion.
+- **Change:** add `cfd_cart_display_state()` as a single safe mapping for directional bias, setup timing and PAPER status. Dashboard and cart now show LONG/SHORT BIAS, `EARLY_BIAS`/`EARLY_SETUP`, or `NEUTRAL / NO_DIRECTION`; `TRADE PAPER: NOT_EXECUTED` is explicit. Conditional levels are shown only when present; the formatter does not label them as an executed trade or show calculated unit sizing.
+- **Files:** `sputnik_cfd.py`, `telegram_listener.py`, `tests/test_sputnik_cfd.py`, `tests/test_telegram_menu.py`.
+- **Tests:** add state-mapping regressions for missing quote, early setup, neutral side and unknown status; assert both user-facing dashboard/cart blocks contain no `WAIT` and expose PAPER/NO_DIRECTION.
+- **Verification:** GitHub Actions pending at commit creation. No live Telegram send, live quote, deploy or order is claimed. PAPER ONLY.
+- **Open:** Gagarin still needs a verified independent same-contract futures source; both bots still need a real 100-setup out-of-sample journal/metrics and production Telegram delivery verification.

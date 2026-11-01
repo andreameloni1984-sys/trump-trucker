@@ -796,6 +796,33 @@ def build_conditional_trade_plan(
     return build_cfd_signal(rec, quotes, risk_pct)
 
 
+def cfd_cart_display_state(item: dict[str, Any] | None) -> dict[str, str]:
+    """Render cart state without conflating a directional bias with an executed trade.
+
+    The legacy SEC/CFD cart never authorizes an order: a supported side remains
+    LONG/SHORT BIAS, setup timing is EARLY_BIAS or EARLY_SETUP, and PAPER stays
+    NOT_EXECUTED. Missing or unsupported direction is explicitly NO_DIRECTION.
+    """
+    item = item if isinstance(item, dict) else {}
+    direction = str(item.get("direction") or "NEUTRAL").strip().upper()
+    if direction not in {"LONG", "SHORT"}:
+        return {
+            "direction": "NEUTRAL",
+            "bias": "NO_DIRECTION",
+            "setup": "NO_DIRECTION",
+            "paper_trade": "NOT_EXECUTED",
+        }
+    setup = str(item.get("setup_status") or item.get("status") or "EARLY_BIAS").strip().upper()
+    if setup not in {"EARLY_BIAS", "EARLY_SETUP", "CONFIRMED"}:
+        setup = "EARLY_BIAS"
+    return {
+        "direction": direction,
+        "bias": "DIRECTIONAL_BIAS",
+        "setup": setup,
+        "paper_trade": "NOT_EXECUTED",
+    }
+
+
 def build_cfd_cart(
     ranked_rows: list[dict[str, Any]],
     quotes: dict[str, Any] | None,
