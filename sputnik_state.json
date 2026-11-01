@@ -1,15 +1,82 @@
 {
   "events": {},
-  "updated_at": "2026-11-01T18:27:05.795750+00:00",
+  "updated_at": "2026-11-01T19:30:06.777200+00:00",
   "telegram_update_offset": 275590742,
   "telegram_chat_id": "8002086130",
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "7494d258af4043e3596ab6a5",
+    "TRUTH_ARCHIVE": "1b8fe57b0d3efe7c99a2ba5d",
     "OGE": "128573526291bf1f4e0bc089"
   },
   "intelligence_history": {
+    "57a782b4ea83dafaa0164442": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43111",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542639036452664",
+      "title": "Wow, this is BIG! Congresswoman Haley Stevens, a Highly Respected Democrat, who narrowly lost in the Primary to Abdul Mohamed El-Sayed, and who has been breathlessly wined and dined by the Dumocrats to help in their Michigan Campaign for the United States Senate against Mike Rogers, has just ENDORSE",
+      "published": "Sun, 01 Nov 2026 18:38:54 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Wow, this is BIG! Congresswoman Haley Stevens, a Highly Respected Democrat, who narrowly lost in the Primary to Abdul Mohamed El-Sayed, and who has been breathlessly wined and dined by the Dumocrats to help in their Michigan Campaign for the United States Senate against Mike Rogers, has just ENDORSE Wow, this is BIG! Congresswoman Haley Stevens, a Highly Respected Democrat, who narrowly lost in the Primary to Abdul Mohamed El-Sayed, and who has been breathlessly wined and dined by the Dumocrats to help in their Michigan Campaign for the United States Senate against Mike Rogers, has just ENDORSED Mike Rogers for Senate! Her following is huge, and the level of respect from the People of Michigan, especially our African American and Jewish populations, is virtually unparalleled. Haley said what few people are willing to say. She showed great and almost unprecedented loyalty to the Great People of Michigan with what she did. It’s a thing called bravery, and few people have it like just displayed by Congresswoman Haley Stevens! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T19:30:06.587383+00:00",
+      "event_id": "57a782b4ea83dafaa0164442",
+      "action_reaction": {
+        "event_id": "57a782b4ea83dafaa0164442",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "67a0a224cb22b82d2808792e": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43113",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117542669978421205",
+      "title": "I have just been informed by the Great Attorney General of Kansas, Kris Kobach, that a Radical Left PAC operative was caught on camera going door to door in Wichita offering gift cards to people for votes. We have photographic evidence. This is a Criminal Offense! Press release attached. If any memb",
+      "published": "Sun, 01 Nov 2026 18:46:47 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "I have just been informed by the Great Attorney General of Kansas, Kris Kobach, that a Radical Left PAC operative was caught on camera going door to door in Wichita offering gift cards to people for votes. We have photographic evidence. This is a Criminal Offense! Press release attached. If any memb I have just been informed by the Great Attorney General of Kansas, Kris Kobach, that a Radical Left PAC operative was caught on camera going door to door in Wichita offering gift cards to people for votes. We have photographic evidence. This is a Criminal Offense! Press release attached. If any members of the Public have any information, please notify Attorney General Kris Kobach’s Office, immediately: 785-296-2215. Thank you for your attention to this matter! President DONALD J. TRUMP PRESS RELEASE: Kobach Orders Bluestem Kansas to Cease and Desist Offering Gift Cards to Voters: https://www. forth.news/lists/ksoag/CgbFYh6 E5mjCLWCwCYyzM",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T19:30:06.587000+00:00",
+      "event_id": "67a0a224cb22b82d2808792e",
+      "action_reaction": {
+        "event_id": "67a0a224cb22b82d2808792e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "1b8fe57b0d3efe7c99a2ba5d": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 1, 2026, 2:29 PM Original Post TO THE GREAT PEOPLE OF TEXAS, GET OUT AND VOTE FOR: – Ken Paxton for U.S. Senate – Greg Abbott for Governor – Dan Patrick for Lieutenant Governor – Mayes Middleton for Attorney General – Don Huffines for Comptroller – Dawn Buckingham for Land Commissioner – Nathaniel Moran for U.S. Congress (TX-01) – Steve Toth for U.S. Congress (TX-02) – Keith Self for U.S. Congress (TX-03) – Pat Fallon for U.S. Congress (TX-04) – Lance Gooden for U.S. Congress (TX-05) – Jake Ellzey for U.S. Congress (TX-06) – Jessica Steinmann for U.S. Congress (TX-08) – Alex Mealer for U.S. Congress (TX-09) – Chris Gober for U.S. Congress (TX-10) – August Pfluger for U.S. Congress (TX-11) – Craig Goldman for U.S. Congress (TX-12) – Ronny Jackson for U.S. Congress (TX-13) – Randy Weber for U.S. Congress (TX-14) – Monica De La Cruz for U.S. Congress (TX-15) – Pete Sessions for U.S. Congress (TX-17) – Tom Sell for U.S. Congress (TX-19) – Mark Teixeira for U.S. Congress (TX-21) – Trever Nehls for U.S. Congress (TX-22) – Brandon Herrera for U.S. Congress (TX-23) – Beth Van Duyne for U.S. Congress (TX-24) – Roger Williams for U.S. Congress (TX-25) – Brandon Gill for U.S. Congress (TX-26) – Michael Cloud for U.S. Congress (TX-27) – Tano Tijerina for U.S. Congress (TX-28) – John Carter for U.S. Congress (TX-31) – Jace Yarbrough for U.S. Congress (TX-32) – Eric Flores for U.S. Congress (TX-34) – Carlos De La Cruz for U.S. Congress (TX-35) – Brian Babin for U.S. Congress (TX-36) – Jon Bonck for U.S. Congress (TX-38) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ swampthevoteusa.com TEXAS: MAKE A PLAN TO VOTE! Election Day in Texas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · November 1, 2026, 2:28 PM Original Post It is my Great Honor to endorse the Highly Respected Attorney General of Texas, Ken Paxton, an America First Patriot, and someone who has always been extremely loyal to me and our AMAZING MAGA MOVEMENT, who is running for the United States Senate, to represent a place I love and WON, BIG, three times, with 6.4 Million Votes in 2024 (The Most Votes in the History of the State, BY FAR)! I know Ken well, have seen him tested at the highest and most difficult levels, and he is a WINNER! Ken is a true MAGA Warrior who has ALWAYS delivered for Texas, and will continue to do so in the United States Senate. His opponent, James TalaFREAKO, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. James TalaFREAKO is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Ken will tirelessly fight to continue the Great Growth of our Economy, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Champion Texas Oil & Gas, Advocate for our Amazing Farmers and Ranchers, Promote School Choice, Keep our Border SECURE, Stop Migrant Crime, Support our Incredible Military/Veterans, Safeguard our Elections, and Protect our always under siege Second Amendment. Ken Paxton has my Complete and Total Endorsement to be the next United States Senator from the Great State of Texas. GET OUT AND VOTE FOR KEN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ swampthevoteusa.com TEXAS: MAKE A PLAN TO VOTE! Election Day in Texas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · November 1, 2026, 2:27 PM Original Post Greg Abbott is the strong and highly respected Governor of Texas, a State I love and WON BIG three times, including with 6.4 Million Votes in 2024 (The most Votes in History, BY FAR)! As Governor, Greg is also fighting tirelessly to Champion Texas Values, Grow the Economy, Cut Taxes and Regulations, Support our Amazing Farmers and Ranchers, Advance MADE IN THE U.S.A., Unleash American Energy Dominance, Promote School Choice, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Ensure LAW AND ORDER, Protect our Brave Military, Veterans, and Law Enforcement, and Defend our always under siege Second Amendment. Greg Abbott has my Complete and Total Endorsement for Re-Election. He is an exceptional Governor and man. GET OUT AND VOTE FOR GREG — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ swampthevoteusa.com TEXAS: MAKE A PLAN TO VOTE! Election Day in Texas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · November 1, 2026, 2:25 PM Original Post It is my Great Honor to endorse MAGA Warrior, Chris Gober, who is running to represent the wonderful people of Texas’ 10th Congressional District. A Harvard Law School Graduate, and very successful Lawyer, Chris knows the Wisdom and Courage required to uphold our Constitution, and promote LAW AND ORDER. In Congress, Chris will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMIN",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-01T19:29:46.364997+00:00",
+      "event_id": "1b8fe57b0d3efe7c99a2ba5d",
+      "action_reaction": {
+        "event_id": "1b8fe57b0d3efe7c99a2ba5d",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "c5a9665a84f01a06027060fe": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -12035,48 +12102,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "0c6d6316c84d29cb1ed0ad9b": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-07T02:20:47.504107+00:00",
-      "event_id": "0c6d6316c84d29cb1ed0ad9b"
-    },
-    "882d73403e1ae0be4236b97e": {
-      "source": "OGE",
-      "url": "https://www.oge.gov/",
-      "domains": [
-        "AI_TECH"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-06T19:10:04.442749+00:00",
-      "event_id": "882d73403e1ae0be4236b97e"
-    },
-    "f7bbb6ca75767054fc4b1086": {
-      "source": "WHITE_HOUSE",
-      "url": "https://www.whitehouse.gov/",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AI_TECH",
-        "SPACE",
-        "CRYPTO",
-        "MEDIA",
-        "REAL_ESTATE"
-      ],
-      "evidence": "PUBLIC_SOURCE_TEXT",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-06T18:52:53.574327+00:00",
-      "event_id": "f7bbb6ca75767054fc4b1086"
     }
   },
   "transactions": {},
@@ -12436,9 +12461,11 @@
     "73d71cd61f7409f4e23c7124": "2026-11-01T18:27:05.732570+00:00",
     "f712ba4fb71720e8f34d5153": "2026-11-01T18:27:05.733050+00:00",
     "6139a30086f34fb8fb249b45": "2026-11-01T18:27:05.733551+00:00",
-    "c5a9665a84f01a06027060fe": "2026-11-01T18:27:05.734035+00:00"
+    "c5a9665a84f01a06027060fe": "2026-11-01T18:27:05.734035+00:00",
+    "67a0a224cb22b82d2808792e": "2026-11-01T19:30:06.586987+00:00",
+    "57a782b4ea83dafaa0164442": "2026-11-01T19:30:06.587378+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-01T18:27:05.764867+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-01T19:30:06.612855+00:00"
   }
 }
