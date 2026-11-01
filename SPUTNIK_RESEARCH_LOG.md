@@ -149,4 +149,4 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Tests added/updated:** no-recommendation neutral state; directional bias with unavailable quote; invalid ATR preserving LONG; Telegram labels and absence of WAIT; legacy cart state transitions. Fresh price/ATR still required for entry/SL/TP.
 - **Limits:** this changes SPUTNIK's CFD signal presentation/state only. It does not prove profitability, live quote availability, Telegram delivery or deployment. Multi-source futures coverage and historical 100-setup out-of-sample validation remain open.
 - **Safety:** PAPER ONLY; no broker orders, paid APIs, secret reads or Telegram test messages.
-
+- **Direction conflict regression:** if focused OHLCV or a D-L-A setup points opposite to a supported catalyst, SPUTNIK now keeps the catalyst BIAS and records technical/setup direction plus ALIGNS/CONTRASTS separately. A technical-only direction is used only when no catalyst side exists. The regression test covers LONG news with SHORT focused/D-L-A evidence.
