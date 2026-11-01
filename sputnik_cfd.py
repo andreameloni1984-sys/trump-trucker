@@ -132,22 +132,33 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
         result = payload["chart"]["result"][0]
         timestamps = result.get("timestamp") or []
         quote_data = result["indicators"]["quote"][0]
-        highs, lows, closes = quote_data.get("high") or [], quote_data.get("low") or [], quote_data.get("close") or []
-        candles = [(float(h), float(l), float(cl), int(ts))
-                   for h, l, cl, ts in zip(highs, lows, closes, timestamps)
-                   if h is not None and l is not None and cl is not None]
+        opens = quote_data.get("open") or []
+        highs = quote_data.get("high") or []
+        lows = quote_data.get("low") or []
+        closes = quote_data.get("close") or []
+        volumes = quote_data.get("volume") or []
+        candles = [
+            {"open": float(o), "high": float(h), "low": float(l),
+             "close": float(cl), "volume": float(v or 0), "timestamp": int(ts)}
+            for o, h, l, cl, v, ts in zip(opens, highs, lows, closes, volumes, timestamps)
+            if o is not None and h is not None and l is not None and cl is not None
+            and math.isfinite(float(o)) and math.isfinite(float(h))
+            and math.isfinite(float(l)) and math.isfinite(float(cl))
+        ]
         if len(candles) < 15:
             return None
         true_ranges = []
         previous_close = None
-        for high, low, close, _ in candles:
+        for candle in candles:
+            high, low, close = candle["high"], candle["low"], candle["close"]
             tr = high - low if previous_close is None else max(
                 high - low, abs(high - previous_close), abs(low - previous_close)
             )
             true_ranges.append(tr)
             previous_close = close
         atr = sum(true_ranges[-14:]) / 14
-        high, low, close, stamp = candles[-1]
+        last = candles[-1]
+        high, low, close, stamp = last["high"], last["low"], last["close"], last["timestamp"]
         timestamp = datetime.fromtimestamp(stamp, timezone.utc).isoformat()
         metadata = YAHOO_FUTURES_METADATA.get(symbol, {})
         return {
@@ -161,6 +172,7 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
             "bid": None, "ask": None,
             "age_seconds": _quote_age_seconds({"timestamp": timestamp}),
             "candle_high": high, "candle_low": low,
+            "candles": candles,
         }
     except (OSError, ValueError, KeyError, IndexError, TypeError):
         return None
