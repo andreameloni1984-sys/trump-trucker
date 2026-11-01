@@ -304,12 +304,7 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
                 existing["actor_class"] = impact["actor_class"]
                 existing["sentiment_score"] = impact["sentiment_score"]
 
-    result = sorted(
-        candidates.values(),
-        key=lambda x: (
-            -int(x.get("policy_priority_score") or 0),
-            str(x.get("published") or ""),
-        ),
-        reverse=False,
-    )
+    result = list(candidates.values())
+    result.sort(key=lambda x: str(x.get("published") or ""), reverse=True)
+    result.sort(key=lambda x: int(x.get("policy_priority_score") or 0), reverse=True)
     return result[:limit]
