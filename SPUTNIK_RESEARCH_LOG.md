@@ -132,3 +132,8 @@ The user reported receiving roughly 60 Sputnik notifications but no actionable m
 - **Freshness:** SILV reference is accepted only with a valid timestamp no older than 30 minutes. Timeout, missing symbol or stale data are reported as unavailable; no value is fabricated.
 - **Cost:** SILV endpoint requires no API key and is documented as free. Its published update schedule is 15 minutes for precious metals; it is not a tick feed.
 - **Verification:** code committed as `8acdd7677be751425818f3458abacce82e8eda5c`. Automated tests, live endpoint behavior from the bot runtime, GitHub Actions and Render/Telegram deployment have not yet been verified. PAPER ONLY; no orders sent.
+
+
+## 2026-11-01 — Competition-style execution filter
+
+Studied the CME Trading Challenge framework and published futures-trader material describing Direction, Location, Aggression, VWAP, breakout/retest, volume and strict risk controls. Added `sputnik_competition_setup.py` and tests. `sputnik_cfd.py` now requires the D-L-A setup to confirm when at least 60 timestamped OHLCV candles are available; otherwise it returns WAIT. OHLCV volume is explicitly only an aggression proxy, not true bid/ask footprint or DOM order flow. PAPER ONLY; CI and production deployment remain unverified.
