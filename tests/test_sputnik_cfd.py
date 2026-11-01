@@ -9,6 +9,7 @@ from sputnik_cfd import (
     build_cfd_signal,
     fetch_silv_reference,
     fetch_yahoo_quote,
+    format_cfd_signal,
 )
 
 
@@ -22,13 +23,15 @@ class CfdCartTests(unittest.TestCase):
             "signal": signal,
         }
 
-    def test_missing_quote_is_wait_not_invented_trade(self):
+    def test_missing_quote_preserves_long_bias_without_levels(self):
         rows = build_cfd_cart([self.candidate()], {})
-        self.assertEqual(rows[0]["status"], "WAIT")
+        self.assertEqual(rows[0]["status"], "EARLY_BIAS")
+        self.assertEqual(rows[0]["direction"], "LONG")
+        self.assertEqual(rows[0]["paper_trade_status"], "NOT_EXECUTED")
         self.assertIsNone(rows[0]["entry"])
         self.assertIn("quotazione", rows[0]["reason"])
 
-    def test_valid_long_calculates_size_and_rr(self):
+    def test_valid_long_levels_remain_a_setup_not_an_executed_trade(self):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart(
             [self.candidate()],
@@ -36,30 +39,37 @@ class CfdCartTests(unittest.TestCase):
             capital=300,
             risk_pct=1,
         )
-        self.assertEqual(rows[0]["status"], "TRADE")
+        self.assertEqual(rows[0]["status"], "EARLY_SETUP")
+        self.assertEqual(rows[0]["paper_trade_status"], "NOT_EXECUTED")
         self.assertEqual(rows[0]["direction"], "LONG")
         self.assertEqual(rows[0]["risk_eur"], 3.0)
         self.assertEqual(rows[0]["units"], 0.6)
         self.assertEqual(rows[0]["rr"], 2.0)
 
-    def test_invalid_levels_are_wait(self):
+    def test_invalid_levels_keep_long_bias_without_sizing(self):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart(
             [self.candidate()],
             {"ACME": {"price": 100, "stop": 105, "target": 110, "timestamp": fresh_timestamp}},
         )
-        self.assertEqual(rows[0]["status"], "WAIT")
+        self.assertEqual(rows[0]["status"], "EARLY_BIAS")
+        self.assertEqual(rows[0]["direction"], "LONG")
+        self.assertIsNone(rows[0]["entry"])
+        self.assertIsNone(rows[0]["units"])
 
-    def test_watch_candidate_never_becomes_cfd(self):
+    def test_watch_candidate_has_explicit_no_direction(self):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart([self.candidate("OSSERVA")], {"ACME": {"price": 100, "stop": 95, "target": 110, "timestamp": fresh_timestamp}})
-        self.assertEqual(rows[0]["status"], "WAIT")
-        self.assertEqual(rows[0]["direction"], "WAIT")
+        self.assertEqual(rows[0]["status"], "NO_DIRECTION")
+        self.assertEqual(rows[0]["direction"], "NEUTRAL")
+        self.assertEqual(rows[0]["paper_trade_status"], "NOT_EXECUTED")
 
     def test_short_is_not_inferred_from_purchase_evidence(self):
         fresh_timestamp = datetime.now(timezone.utc).isoformat()
         rows = build_cfd_cart([self.candidate("COMPRA")], {"ACME": {"price": 100, "stop": 105, "target": 90, "timestamp": fresh_timestamp}})
-        self.assertEqual(rows[0]["status"], "WAIT")
+        self.assertEqual(rows[0]["status"], "EARLY_BIAS")
+        self.assertEqual(rows[0]["direction"], "LONG")
+        self.assertIsNone(rows[0]["target"])
 
 
 class YahooQuoteFallbackTests(unittest.TestCase):
@@ -171,7 +181,9 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                 {},
             )
         fallback.assert_called_once_with("WTI")
-        self.assertEqual(signal["status"], "SIGNAL")
+        self.assertEqual(signal["status"], "EARLY_SETUP")
+        self.assertEqual(signal["setup_status"], "EARLY_SETUP")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
         self.assertEqual(signal["direction"], "LONG")
         self.assertEqual(signal["entry"], 80.0)
         self.assertEqual(signal["stop"], 77.0)
@@ -188,7 +200,9 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                 {"instrument": "WTI", "bias": "LONG", "score": 80},
                 {},
             )
-        self.assertEqual(signal["status"], "DIRECTIONAL_BIAS_NO_LEVELS")
+        self.assertEqual(signal["status"], "EARLY_BIAS")
+        self.assertEqual(signal["setup_status"], "EARLY_BIAS")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
         self.assertIsNone(signal["entry"])
         self.assertIsNone(signal["stop"])
         self.assertIsNone(signal["tp1"])
@@ -208,8 +222,10 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                 {"WTI": quote},
             )
         fallback.assert_not_called()
-        self.assertEqual(signal["status"], "DIRECTIONAL_BIAS_NO_LEVELS")
+        self.assertEqual(signal["status"], "EARLY_BIAS")
         self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["setup_status"], "EARLY_BIAS")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
         self.assertIsNone(signal["entry"])
         self.assertIsNone(signal["stop"])
         self.assertIsNone(signal["tp1"])
@@ -229,7 +245,10 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                 {"WTI": quote},
             )
         fallback.assert_not_called()
-        self.assertEqual(signal["status"], "WAIT")
+        self.assertEqual(signal["status"], "EARLY_BIAS")
+        self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["setup_status"], "EARLY_BIAS")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
         self.assertIsNone(signal["entry"])
         self.assertIsNone(signal["stop"])
         self.assertIsNone(signal["tp1"])
@@ -249,13 +268,50 @@ class YahooQuoteFallbackTests(unittest.TestCase):
                 {"WTI": quote},
             )
         fallback.assert_not_called()
-        self.assertEqual(signal["status"], "SIGNAL")
+        self.assertEqual(signal["status"], "EARLY_SETUP")
+        self.assertEqual(signal["setup_status"], "EARLY_SETUP")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
         self.assertEqual(signal["direction"], "SHORT")
         self.assertEqual(signal["entry"], 75.0)
         self.assertEqual(signal["stop"], 76.5)
         self.assertEqual(signal["tp1"], 73.5)
         self.assertEqual(signal["tp2"], 72.0)
         self.assertEqual(signal["quote_provider"], "broker")
+
+
+class DirectionStateAndTelegramTests(unittest.TestCase):
+    def test_missing_recommendation_is_neutral_not_wait(self):
+        signal = build_cfd_signal(None, {})
+        self.assertEqual(signal["direction"], "NEUTRAL")
+        self.assertEqual(signal["status"], "NO_DIRECTION")
+        self.assertEqual(signal["bias_status"], "NO_DIRECTION")
+        self.assertEqual(signal["setup_status"], "NO_DIRECTION")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
+        self.assertIsNone(signal["entry"])
+
+    def test_directional_bias_without_fresh_quote_is_preserved_in_telegram(self):
+        with patch("sputnik_cfd.fetch_yahoo_quote", return_value=None):
+            signal = build_cfd_signal(
+                {"instrument": "WTI", "bias": "LONG", "score": 80, "reason": "US crude draw"},
+                {},
+            )
+        message = format_cfd_signal(signal)
+        self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["status"], "EARLY_BIAS")
+        self.assertIsNone(signal["entry"])
+        self.assertIn("BIAS: LONG", message)
+        self.assertIn("SETUP: EARLY_BIAS", message)
+        self.assertIn("TRADE PAPER: NOT_EXECUTED", message)
+        self.assertIn("livelli omessi", message.lower())
+        self.assertNotIn("WAIT", message)
+
+    def test_no_direction_telegram_does_not_report_wait_or_missing_quote(self):
+        message = format_cfd_signal(build_cfd_signal(None, {}))
+        self.assertIn("BIAS: NEUTRAL", message)
+        self.assertIn("SETUP: NO_DIRECTION", message)
+        self.assertIn("TRADE PAPER: NOT_EXECUTED", message)
+        self.assertIn("NO_DIRECTION", message)
+        self.assertNotIn("WAIT", message)
 
 
 class SilvCrosscheckTests(unittest.TestCase):
