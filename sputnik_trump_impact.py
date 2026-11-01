@@ -27,6 +27,22 @@ _NEGATIVE = {
 }
 _NEGATION = re.compile(r"\b(?:no|not|never|deny|denied|false|unconfirmed|without)\b", re.I)
 
+_CLAUSE_BOUNDARY = re.compile(r"[.;!?]|\\b(?:but|however|although|yet|nevertheless)\\b", re.I)
+
+
+def _match_is_negated(text: str, match: re.Match[str]) -> bool:
+    """Check negation only in the matched clause, not a preceding contrast."""
+    start = 0
+    end = len(text)
+    for boundary in _CLAUSE_BOUNDARY.finditer(text):
+        if boundary.end() <= match.start():
+            start = boundary.end()
+        elif boundary.start() >= match.end():
+            end = boundary.start()
+            break
+    clause = text[start:end]
+    return bool(_NEGATION.search(clause))
+
 # Rules require concrete policy/event language. Generic positive/negative
 # tone alone never creates an instrument bias.
 _RULES = [
@@ -193,10 +209,11 @@ def analyze_public_policy_item(finding: dict[str, Any]) -> list[dict[str, Any]]:
     for rule in _RULES:
         if not domains.intersection(rule["domains"]) or not rule["pattern"].search(text):
             continue
-        # A nearby negation invalidates the rule rather than reversing it.
+        # A negation invalidates only the event in its own clause. A
+        # previous clause separated by punctuation/contrast must not suppress
+        # a later, independently stated policy event.
         matched = rule["pattern"].search(text)
-        clause = text[max(0, matched.start() - 50):min(len(text), matched.end() + 30)]
-        if _NEGATION.search(clause):
+        if _match_is_negated(text, matched):
             continue
         for instrument, bias in rule["bias"].items():
             priority = round(min(95, 55 + abs(sentiment) * 12 + actor_weight * 10 + (8 if source in {"WHITE_HOUSE", "WHITE_HOUSE_RSS", "TRUTH_ARCHIVE"} or "whitehouse.gov" in str(finding.get("feed_url") or "").lower() or "trumpstruth.org" in str(finding.get("feed_url") or "").lower() else 0)))
