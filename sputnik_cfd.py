@@ -439,10 +439,12 @@ def fetch_narwhal_reference(instrument: str, timeout: int = 6) -> dict[str, Any]
             status = "DELAY_STATUS_UNVERIFIED"
 
     usable_statuses = {"DELAYED_15M", "MARKET_CLOSED", "STALE", "DELAY_STATUS_UNVERIFIED"}
+    observed_at = datetime.now(timezone.utc).isoformat()
     result = {
         **base,
         "price": price if status in usable_statuses else None,
         "source_timestamp": timestamp,
+        "observed_at": observed_at,
         "currency": currency or None,
         "unit": unit or None,
         "age_seconds": round(max(0.0, age), 1) if age is not None else None,
@@ -739,7 +741,8 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         n_price = narwhal.get("price")
         n_age = narwhal.get("age_seconds")
         if n_price is not None:
-            lines.append("🌊 NARWHAL REF: " + str(n_price) + " " + str(narwhal.get("currency") or "") + " | " + str(n_status) + " | età " + str(n_age) + "s")
+            lines.append("🌊 NARWHAL REF: " + str(narwhal.get("symbol") or "") + " " + str(n_price) + " " + str(narwhal.get("currency") or "") + "/" + str(narwhal.get("unit") or "") + " | " + str(n_status) + " | età " + str(n_age) + "s | bid/ask n.d.")
+            lines.append("🕒 Fonte Narwhal: " + str(narwhal.get("source_timestamp") or "N/D") + " | ricevuto: " + str(narwhal.get("observed_at") or "N/D"))
         else:
             lines.append("🌊 NARWHAL REF: " + str(n_status) + " (solo riferimento; nessun prezzo utilizzabile)")
         lines.append("⚠️ Front-month continuo; scadenza esatta e indipendenza upstream non verificate. Non usare per entry/SL/TP.")
