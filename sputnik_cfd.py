@@ -383,6 +383,26 @@ def build_cfd_signal(
                 base["reason"] += " | Tesi news in attesa di conferma tecnica: " + str(focused.get("reason") or "")
         except Exception as exc:
             base["reason"] += " | Analisi tecnica focused non disponibile: " + type(exc).__name__
+    # Professional-style execution gate: Direction -> Location -> Aggression.
+    # This is an OHLCV proxy, not true bid/ask footprint or DOM order flow.
+    if quote and isinstance(quote.get("candles"), list) and len(quote["candles"]) >= 60:
+        try:
+            from sputnik_competition_setup import evaluate_competition_setup
+            setup = evaluate_competition_setup(instrument, quote["candles"])
+            base["competition_setup"] = setup
+            if setup.get("status") == "SETUP_CONFIRMED":
+                base["direction"] = setup["direction"]
+                base["reason"] += " | Setup D-L-A confermato: " + "; ".join(setup.get("confirmations") or [])
+            else:
+                base["direction"] = "NEUTRAL"
+                base["status"] = "WAIT"
+                base["reason"] += " | Filtro professionale D-L-A: " + "; ".join(setup.get("reasons") or ["conferme non allineate"])
+                return base
+        except Exception as exc:
+            base["status"] = "WAIT"
+            base["direction"] = "NEUTRAL"
+            base["reason"] += " | Filtro D-L-A non verificabile: " + type(exc).__name__
+            return base
     if not quote or not _quote_is_fresh(quote):
         base["status"] = "WAIT"
         base["reason"] += " | Quotazione live/fresca non disponibile anche dal fallback Yahoo Finance."
