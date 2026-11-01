@@ -183,3 +183,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Results:** early LONG/SHORT D-L context survives missing trigger; a supported news BIAS is not flipped by opposite D-L-A; technical-only early bias is labelled separately; no levels are emitted by the D-L-A evaluator before trigger, volume and structural stop confirmation.
 - **Limitations:** these are deterministic CI tests, not historical-market performance validation. The Actions log includes mocked Telegram delivery fixtures; no live Telegram delivery, production deployment, real quote freshness, DOM/footprint feed or real order was verified.
 - **Open:** independent same-contract futures references, source-independence audit, real 100-setup out-of-sample diary/metrics, and runtime monitoring verification remain open.
+
+
+## 2026-11-01 — Trading 212 / TradingView provider eligibility audit
+
+- **Trading 212:** official Public API documentation says the API is currently available only for Invest and Stocks ISA accounts and documents account, instrument metadata, orders, positions and account-history endpoints. The documented API surface does not provide a public market-quote/OHLC streaming endpoint for commodities or CFDs. The live prices visible in the Trading 212 app are therefore not treated as a bot-accessible data feed. No private app endpoint, screen scraping, credentials or paid access will be used.
+- **TradingView:** official widget FAQ says exchange stock/futures widget data is delayed; Forex and crypto widget data is real-time. It also says TradingView does not provide an API to retrieve data or download/export it. TradingView Terms restrict its market data to display-only and prohibit automated/algorithmic decision-making, price referencing and risk-management use. Therefore TradingView charts are suitable for a human-readable visual cross-check only, not for machine ingestion by Sputnik.
+- **Visual workflow:** a user-supplied chart screenshot may be reviewed manually as visual context, clearly separated from the bot's validated quote feed. It must not supply machine-extracted execution prices, entry, SL or TP.
+- **Decision:** no Trading 212 or TradingView feed was integrated. Existing Yahoo continuous futures remain the execution basis; independent, free, same-contract futures data remains an open requirement. PAPER ONLY.
+- **Sources checked:** Trading 212 Public API reference; TradingView widget data FAQ; TradingView Terms of Use (sections on data and non-display usage).
