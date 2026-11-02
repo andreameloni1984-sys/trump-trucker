@@ -288,6 +288,21 @@ class EarlyBrentCatalystTests(unittest.TestCase):
         self.assertEqual(recommendation["bias"], "NEUTRAL")
 
 
+
+    def test_us_crude_production_cut_maps_specifically_to_wti_long(self):
+        recommendation = recommend_trading_instrument([
+            _finding("U.S. crude oil production cut announced")
+        ])
+        self.assertEqual(recommendation["instrument"], "WTI")
+        self.assertEqual(recommendation["bias"], "LONG")
+
+    def test_generic_oil_supply_disruption_does_not_choose_a_direction(self):
+        recommendation = recommend_trading_instrument([
+            _finding("Oil supply disruption reported")
+        ])
+        self.assertEqual(recommendation["bias"], "NEUTRAL")
+        self.assertIn(recommendation["status"], {"WATCH_NEUTRAL", "NO_DIRECTION"})
+
     def test_us_crude_inventory_draw_maps_specifically_to_wti_long(self):
         recommendation = recommend_trading_instrument([
             _finding("EIA reports U.S. crude inventories fell by 2.1 million barrels")
