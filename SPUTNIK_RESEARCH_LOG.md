@@ -381,3 +381,16 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Post-merge CI:** the connector returned no separate PR-triggered workflow run for merge commit `671a4df2f2bffe60f97745dede75b5ac65b8ab27`; the successful run above is the final pre-merge PR-head validation.
 - **Other open PR:** PR #87 (no-cancel in-flight monitor) remains a separate open change and was not merged as part of this improvement.
 - **Safety:** no entry/SL/TP, risk sizing, Governor, PAPER authorization, broker action or live Telegram send changed. No production deployment or live quote availability is claimed. PAPER ONLY.
+
+
+## 2026-11-02 — Riapertura pulita della correzione di concorrenza SPUTNIK
+
+- **Audit:** PR #87 era basata su un commit precedente a PR #88 e risultava non mergeable; il suo branch aveva divergenza dalla main e nessun check CI restituito sul relativo head. Non integrare un branch obsoleto.
+- **Nuova proposta pulita:** ricreata la sola modifica di concorrenza direttamente sopra la main corrente (d4e017297a0575cfc5bde76b85330b81d60d10ae), preservando tutte le modifiche recenti già integrate.
+- **Workflow:** sostituire cancel-in-progress: true con queue: max e cancel-in-progress: false. GitHub documenta fino a 100 esecuzioni pending per gruppo; oltre il limite ulteriori run vengono cancellate. FIFO è in base al momento di ingresso in attesa e l'ordine non è garantito.
+- **Test:** aggiunto controllo di regressione per group sputnik-main, queue max, cancel-in-progress false e cron ogni cinque minuti.
+- **Files:** .github/workflows/trump_tracker.yml; tests/test_sputnik_item_intelligence.py; questo registro.
+- **Branch:** fix/sputnik-monitor-queue-max-main-20261102. PR #87 resta da chiudere come superseduta solo dopo la creazione della nuova PR.
+- **Validation:** branch creato sopra main e file aggiornati; test CI ancora da eseguire. Nessuna esecuzione live, consegna Telegram, deploy o ordine.
+- **Public reference:** GitHub Actions concurrency docs https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency
+- **Safety:** nessuna modifica a fonti, catalizzatori, prezzi, direzione, risk, Governor o autorizzazioni PAPER.
