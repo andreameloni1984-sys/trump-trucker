@@ -229,6 +229,46 @@ _DIRECTION_RULES = [
 ]
 
 
+
+# Directional oil mapping is narrower than the neutral ENERGY watchlist.
+# Generic oil headlines do not identify which benchmark is affected.
+_EXPLICIT_WTI = re.compile(r"\b(?:wti|nymex light sweet|cushing crude)\b", re.I)
+_EXPLICIT_BRENT = re.compile(r"\b(?:brent|north sea crude)\b", re.I)
+_US_DOMESTIC_CRUDE = re.compile(
+    r"\b(?:u\.s\.|us|american|eia|api|cushing|permian|bakken|texas)\b.{0,45}"
+    r"\b(?:crude|oil)\b.{0,35}\b(?:inventor(?:y|ies)|stocks?|stockpiles?|production|output|supply|pipeline|exports?)\b|"
+    r"\b(?:crude|oil)\b.{0,35}\b(?:inventor(?:y|ies)|stocks?|stockpiles?|production|output|supply|pipeline|exports?)\b.{0,45}"
+    r"\b(?:u\.s\.|us|american|eia|api|cushing|permian|bakken|texas)\b",
+    re.I,
+)
+_BRENT_PHYSICAL_CONTEXT = re.compile(
+    r"\b(?:hormuz|strait of hormuz|red sea|suez|bab el[- ]mandeb|gulf of oman|"
+    r"arabian gulf|tanker|oil vessel|seaborne|maritime|shipping lane|north sea)\b",
+    re.I,
+)
+_FOREIGN_PRODUCER_CRUDE = re.compile(
+    r"\b(?:saudi|iranian|iraqi|kuwaiti|qatari|emirati|uae|libyan|nigerian|russian|venezuelan)\b.{0,45}"
+    r"\b(?:crude|oil)\b.{0,35}\b(?:production|output|exports?|supply|pipeline)\b|"
+    r"\b(?:crude|oil)\b.{0,35}\b(?:production|output|exports?|supply|pipeline)\b.{0,45}"
+    r"\b(?:saudi|iranian|iraqi|kuwaiti|qatari|emirati|uae|libyan|nigerian|russian|venezuelan)\b",
+    re.I,
+)
+
+
+def _energy_directional_instruments(text: str) -> list[str]:
+    """Return only benchmarks supported by explicit geography or contract context."""
+    instruments = []
+    if _EXPLICIT_WTI.search(text) or _US_DOMESTIC_CRUDE.search(text):
+        instruments.append("WTI")
+    if (
+        _EXPLICIT_BRENT.search(text)
+        or _BRENT_PHYSICAL_CONTEXT.search(text)
+        or _FOREIGN_PRODUCER_CRUDE.search(text)
+    ):
+        instruments.append("BRENT")
+    return instruments
+
+
 def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) -> list[dict[str, Any]]:
     """Map dated, URL-backed public items to unambiguous directional hypotheses.
 
@@ -259,11 +299,17 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
             ):
                 matched_rules.append(rule)
 
-        instruments = list(dict.fromkeys(
-            instrument
-            for rule in matched_rules
-            for instrument in rule["bias"]
-        ))
+        instruments = []
+        for rule in matched_rules:
+            rule_instruments = list(rule["bias"])
+            if "ENERGY" in rule["domains"]:
+                rule_instruments = [
+                    instrument for instrument in _energy_directional_instruments(text)
+                    if instrument in rule["bias"]
+                ]
+            for instrument in rule_instruments:
+                if instrument not in instruments:
+                    instruments.append(instrument)
         for instrument in instruments:
             applicable = [
                 rule for rule in matched_rules if instrument in rule["bias"]
