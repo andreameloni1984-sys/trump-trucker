@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from sputnik_trading_instrument import recommend_trading_instrument
+from sputnik_trading_instrument import format_trading_instrument_message, recommend_trading_instrument
 
 
 def _finding(title, **overrides):
@@ -20,6 +20,22 @@ def _finding(title, **overrides):
 
 
 class EarlyBrentCatalystTests(unittest.TestCase):
+    def setUp(self):
+        # Ranking tests must not depend on live Yahoo candles. Each test below
+        # supplies technical evidence explicitly when that behavior is under test.
+        self.technical_patcher = patch(
+            "sputnik_trading_instrument._technical_market_bias",
+            return_value={
+                "bias": "NEUTRAL",
+                "score": 45.0,
+                "reason": "Fixture tecnica neutrale",
+                "timeframe": "5m",
+                "candles": 60,
+            },
+        )
+        self.technical_patcher.start()
+        self.addCleanup(self.technical_patcher.stop)
+
     def test_mixed_technical_snapshot_does_not_erase_news_direction(self):
         finding = _finding("EIA reports U.S. crude inventories fell by 2.1 million barrels")
         mixed = {
@@ -39,7 +55,50 @@ class EarlyBrentCatalystTests(unittest.TestCase):
         self.assertEqual(recommendation["catalyst_bias"], "LONG")
         self.assertEqual(recommendation["technical_bias"], "NEUTRAL")
         self.assertEqual(recommendation["bias"], "LONG")
-        self.assertEqual(recommendation["status"], "EARLY_BIAS_TECHNICAL_UNCONFIRMED")
+        self.assertEqual(recommendation["status"], "EARLY_BIAS")
+
+    def test_opposite_technical_direction_does_not_override_catalyst_bias(self):
+        finding = _finding("Oil tanker near Saudi Arabia was struck")
+        technical = {
+            "bias": "SHORT",
+            "score": 78.0,
+            "reason": "Prezzo sotto EMA20/EMA50 e swing decrescenti",
+            "price": 79.0,
+            "ema20": 79.2,
+            "ema50": 80.0,
+            "timeframe": "5m",
+            "candles": 60,
+            "quote_timestamp": 1793566800,
+        }
+        with patch("sputnik_trading_instrument._technical_market_bias", return_value=technical):
+            recommendation = recommend_trading_instrument([finding])
+
+        self.assertEqual(recommendation["catalyst_bias"], "LONG")
+        self.assertEqual(recommendation["technical_bias"], "SHORT")
+        self.assertEqual(recommendation["bias"], "LONG")
+        self.assertEqual(recommendation["catalyst_alignment"], "CONTRASTS")
+        self.assertEqual(recommendation["status"], "EARLY_BIAS")
+        message = format_trading_instrument_message(recommendation)
+        self.assertIn("BIAS PRELIMINARE: LONG", message)
+        self.assertIn("DIREZIONE TECNICA: SHORT", message)
+        self.assertIn("ALLINEAMENTO NOTIZIE: CONTRASTS", message)
+
+    def test_aligned_technical_direction_does_not_promote_catalyst_to_confirmed(self):
+        finding = _finding("Oil tanker near Saudi Arabia was struck")
+        technical = {
+            "bias": "LONG",
+            "score": 78.0,
+            "reason": "Prezzo sopra EMA20/EMA50 e swing crescenti",
+            "timeframe": "5m",
+            "candles": 60,
+        }
+        with patch("sputnik_trading_instrument._technical_market_bias", return_value=technical):
+            recommendation = recommend_trading_instrument([finding])
+
+        self.assertEqual(recommendation["bias"], "LONG")
+        self.assertEqual(recommendation["catalyst_alignment"], "ALIGNS")
+        self.assertEqual(recommendation["status"], "EARLY_BIAS")
+        self.assertNotEqual(recommendation["status"], "CONFIRMED")
 
     def test_tanker_near_saudi_struck_creates_preliminary_brent_long(self):
         recommendation = recommend_trading_instrument([
@@ -49,7 +108,7 @@ class EarlyBrentCatalystTests(unittest.TestCase):
         self.assertIsNotNone(recommendation)
         self.assertEqual(recommendation["instrument"], "BRENT")
         self.assertEqual(recommendation["bias"], "LONG")
-        self.assertEqual(recommendation["status"], "EARLY_BIAS_TECHNICAL_UNCONFIRMED")
+        self.assertEqual(recommendation["status"], "EARLY_BIAS")
         self.assertEqual(recommendation["url"], "https://example.com/energy-event")
 
     def test_attack_on_oil_vessel_near_hormuz_creates_preliminary_brent_long(self):
