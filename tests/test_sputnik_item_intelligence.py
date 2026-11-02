@@ -469,6 +469,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         )
         workflow = workflow_path.read_text(encoding="utf-8")
         self.assertIn("group: sputnik-main", workflow)
+        self.assertIn("queue: max", workflow)
         self.assertIn("cancel-in-progress: false", workflow)
         self.assertNotIn("cancel-in-progress: true", workflow)
         self.assertIn('    - cron: "2-59/5 * * * *"', workflow)
