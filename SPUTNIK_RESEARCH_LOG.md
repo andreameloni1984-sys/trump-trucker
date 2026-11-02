@@ -381,3 +381,14 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Post-merge CI:** the connector returned no separate PR-triggered workflow run for merge commit `671a4df2f2bffe60f97745dede75b5ac65b8ab27`; the successful run above is the final pre-merge PR-head validation.
 - **Other open PR:** PR #87 (no-cancel in-flight monitor) remains a separate open change and was not merged as part of this improvement.
 - **Safety:** no entry/SL/TP, risk sizing, Governor, PAPER authorization, broker action or live Telegram send changed. No production deployment or live quote availability is claimed. PAPER ONLY.
+
+
+## 2026-11-02 — Queue scheduled SPUTNIK monitor runs instead of cancelling them
+
+- **Finding:** the five-minute scheduled monitor shared a concurrency group with `cancel-in-progress: true`. A newer run could cancel an active cycle before collection, scoring, Telegram delivery, or state persistence completed.
+- **Implemented:** the workflow now uses `queue: max` and `cancel-in-progress: false`. GitHub permits one active run and up to 100 pending runs in that group; additional runs can still be cancelled when the queue is full. FIFO ordering is not guaranteed. This reduces dropped cycles but is not a durable event queue.
+- **Regression test:** `tests/test_sputnik_item_intelligence.py` asserts the concurrency group, queue mode, no-cancel setting, and five-minute cron remain configured.
+- **Official documentation:** GitHub Actions concurrency supports `queue: max` for up to 100 pending runs and forbids combining it with `cancel-in-progress: true` (https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency).
+- **Commits:** workflow `75850e6ad4103f5ef7af07003609aad47972b174`; regression test `8e972b803be847271fcb5c24d8638010b478f983`.
+- **Validation:** source and test have been read back from the new branch. GitHub Actions results are pending; no CI pass, live run, Telegram delivery, or deployment is claimed.
+- **Safety:** no catalyst logic, prices, entry/SL/TP, sizing, Governor, PAPER authorization, broker connection, or order behavior changed. PAPER ONLY.
