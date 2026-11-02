@@ -28,6 +28,7 @@ from typing import Any
 from sputnik_action_reaction import build_action_reaction_record
 from sputnik_public_sources import parse_public_feed
 from sputnik_catalyst import directional_news_candidates
+from sputnik_trump_impact import resolve_public_actor_role
 from telegram_delivery import confirmed_message_id
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
@@ -585,6 +586,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "url": item_url,
                 "primary_url": str(row.get("primary_url") or ""),
                 "title": title[:300],
+                "author": str(row.get("author") or "")[:200],
                 "published": str(row.get("published") or "")[:100],
                 "domains": domains,
                 "text": body[:6000],
@@ -593,6 +595,9 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
                 "detected_at": utc_now().isoformat(),
                 "event_id": digest,
             }
+            actor_role = resolve_public_actor_role(finding.get("author", ""))
+            if actor_role:
+                finding["actor_role"] = actor_role
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
         initialized_feeds[feed_url] = utc_now().isoformat()

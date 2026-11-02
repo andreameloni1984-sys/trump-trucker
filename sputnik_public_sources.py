@@ -73,6 +73,7 @@ def parse_public_feed(raw, base_url):
     result = []
     for index, entry in enumerate(entries):
         title = clean_public_text(_text(entry, {"title"}))
+        author = clean_public_text(_text(entry, {"author", "creator"}))
         body = clean_public_text(_text(entry, {"encoded", "description", "summary", "content"}))
         if not title and not body:
             continue
@@ -94,7 +95,7 @@ def parse_public_feed(raw, base_url):
             (title + "|" + published + "|" + body).encode("utf-8")
         ).hexdigest()
         result.append({
-            "id": identity[:500], "title": title[:300], "text": body[:6000],
+            "id": identity[:500], "title": title[:300], "author": author[:200], "text": body[:6000],
             "published": published[:100], "url": link[:1000],
             "primary_url": original[:1000], "feed_url": base_url[:1000],
             "item_index": str(index),

@@ -7,6 +7,7 @@ these remain hypotheses and never certify an entry or place an order.
 from __future__ import annotations
 import re
 from typing import Any
+from sputnik_trump_impact import analyze_public_policy_item
 
 DOMAIN_INSTRUMENTS = {
     "ENERGY": [
@@ -288,5 +289,22 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
                 "reason": rule["reason"],
                 "status": "EARLY_BIAS_NEEDS_PRICE_VOLUME_CONFIRMATION",
             }
-    result = sorted(candidates.values(), key=lambda x: x["published"], reverse=True)
+    # Add the transparent Trump-policy topic/sentiment model as a second,
+    # independently auditable lens. Existing explicit rules retain priority;
+    # duplicate event/instrument rows are enriched rather than duplicated.
+    for finding in findings:
+        for impact in analyze_public_policy_item(finding):
+            key = (str(impact["event_id"]), str(impact["instrument"]))
+            existing = candidates.get(key)
+            if existing is None:
+                candidates[key] = impact
+            else:
+                existing["policy_impact"] = impact
+                existing["policy_priority_score"] = impact["priority_score"]
+                existing["actor_class"] = impact["actor_class"]
+                existing["sentiment_score"] = impact["sentiment_score"]
+
+    result = list(candidates.values())
+    result.sort(key=lambda x: str(x.get("published") or ""), reverse=True)
+    result.sort(key=lambda x: int(x.get("policy_priority_score") or 0), reverse=True)
     return result[:limit]

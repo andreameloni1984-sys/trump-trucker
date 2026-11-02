@@ -17,6 +17,17 @@ class PublicFeedParserTests(unittest.TestCase):
         self.assertEqual(rows[0]["published"], "Mon, 12 Oct 2026 06:00:00 GMT")
         self.assertEqual(rows[0]["text"], "Policy details here.")
 
+
+    def test_rss_preserves_public_author_field(self):
+        raw = b'''<rss><channel><item>
+          <title>Public policy announcement</title>
+          <author>Jane Public</author>
+          <link>https://example.gov/news/1</link>
+          <pubDate>Mon, 12 Oct 2026 06:00:00 GMT</pubDate>
+        </item></channel></rss>'''
+        rows = parse_public_feed(raw, "https://example.gov/feed/")
+        self.assertEqual(rows[0]["author"], "Jane Public")
+
     def test_atom_link_and_original_url(self):
         raw = b'''<feed xmlns="http://www.w3.org/2005/Atom" xmlns:truth="https://example.test/truth">
           <entry><id>status-7</id><title>Oil supply disruption</title>
