@@ -370,3 +370,14 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Validation:** pending GitHub Actions on the new PR head. Previous PR #87 ranking run `41362036929` failed 16 of 176 tests; its log confirms unexpected live Yahoo SHORT results in catalyst tests. Item-intelligence run `41362036917` passed 44 tests. Do not claim the current change passes until fresh CI completes.
 - **Open:** source health errors for WHITE_HOUSE/TRUTH_ARCHIVE/OGE and SEC 403; verify Telegram sends only via `ok=true` plus positive `message_id`; verify post-merge runtime; third independent same-contract futures feed; Narwhal free credential/upstream independence; real 100-setup out-of-sample journal with costs.
 - **References:** OpenBB V5 docs (https://docs.openbb.co/python/); openbb-sec package details (https://pypi.org/project/openbb-sec/); GDELT official data documentation (https://www.gdeltproject.org/data.html) and event codebook (https://data.gdeltproject.org/documentation/GDELT-Event_Codebook-V2.0.pdf).
+
+
+### CI and merge follow-up — catalyst/technical bias separation
+
+- **PR:** #88 merged into `main` as squash commit `671a4df2f2bffe60f97745dede75b5ac65b8ab27`.
+- **Final code/test head validated:** `d9bc6f89455eae79e30cd3cdbd1c7be41ab926a3`; the final commit after the successful CI run changed only this research log.
+- **GitHub Actions:** SPUTNIK ranking run `41365561160` — **SUCCESS, 177 tests in 0.527s**. The run includes the recommender and decision-engine tests. The immediately preceding run `41365480421` failed during an intermediate revision because of a syntax typo and two tests that unexpectedly used live Yahoo quote fallback; the syntax was corrected and the quote-dependent tests now mock Yahoo/Narwhal explicitly. Do not count the failed intermediate run as final validation.
+- **Main readback:** `sputnik_trading_instrument.py` keeps a directional catalyst as `bias`, stores 5m direction in `technical_bias`, and exposes `CONTRASTS` without reversing the catalyst. Both opposing- and aligned-direction regressions are present. `tests/test_sputnik_decision_engine.py` isolates missing/stale-quote tests from external providers. Research log is present on main.
+- **Post-merge CI:** the connector returned no separate PR-triggered workflow run for merge commit `671a4df2f2bffe60f97745dede75b5ac65b8ab27`; the successful run above is the final pre-merge PR-head validation.
+- **Other open PR:** PR #87 (no-cancel in-flight monitor) remains a separate open change and was not merged as part of this improvement.
+- **Safety:** no entry/SL/TP, risk sizing, Governor, PAPER authorization, broker action or live Telegram send changed. No production deployment or live quote availability is claimed. PAPER ONLY.
