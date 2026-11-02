@@ -363,6 +363,8 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
         stamps = result.get("timestamp") or []
         quote = result["indicators"]["quote"][0]
         raw_closes = quote.get("close") or []
+        current_time = int(time.time())
+        bar_seconds = 5 * 60
         paired = []
         for stamp, value in zip(stamps, raw_closes):
             if stamp is None or value is None:
@@ -370,11 +372,18 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
             price = float(value)
             if price > 0:
                 paired.append((int(stamp), price))
-        # Keep the last observed quote timestamp attached to its own price.
-        if len(paired) < 4:
+
+        # Yahoo timestamps identify the bar OPEN. A current 5m candle is still
+        # forming and must not be used as a completed technical observation.
+        completed = [
+            (stamp, price)
+            for stamp, price in paired
+            if stamp + bar_seconds <= current_time
+        ]
+        if len(completed) < 4:
             return None
-        quote_timestamp, last = paired[-1]
-        if quote_timestamp < int(time.time()) - 900:
+        quote_timestamp, last = completed[-1]
+        if quote_timestamp < current_time - 900:
             return None
 
         def ema(values: list[float], period: int) -> float:
@@ -384,7 +393,7 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
                 current = alpha * value + (1 - alpha) * current
             return current
 
-        recent = [price for _, price in paired[-20:]]
+        recent = [price for _, price in completed[-20:]]
         ema20 = ema(recent, min(20, len(recent)))
         momentum_reference = recent[-4]
         momentum_pct = (last / momentum_reference - 1.0) * 100.0
