@@ -235,10 +235,10 @@ _DIRECTION_RULES = [
 _EXPLICIT_WTI = re.compile(r"\b(?:wti|nymex light sweet|cushing crude)\b", re.I)
 _EXPLICIT_BRENT = re.compile(r"\b(?:brent|north sea crude)\b", re.I)
 _US_DOMESTIC_CRUDE = re.compile(
-    r"\b(?:u\.s\.|us|american|eia|api|cushing|permian|bakken|texas)\b.{0,45}"
+    r"\b(?:u\.s\.|u\.s|us\b|american\b|eia\b|api\b|cushing\b|permian\b|bakken\b|texas\b).{0,45}"
     r"\b(?:crude|oil)\b.{0,35}\b(?:inventor(?:y|ies)|stocks?|stockpiles?|production|output|supply|pipeline|exports?)\b|"
     r"\b(?:crude|oil)\b.{0,35}\b(?:inventor(?:y|ies)|stocks?|stockpiles?|production|output|supply|pipeline|exports?)\b.{0,45}"
-    r"\b(?:u\.s\.|us|american|eia|api|cushing|permian|bakken|texas)\b",
+    r"\b(?:u\.s\.|u\.s|us\b|american\b|eia\b|api\b|cushing\b|permian\b|bakken\b|texas\b)",
     re.I,
 )
 _BRENT_PHYSICAL_CONTEXT = re.compile(
