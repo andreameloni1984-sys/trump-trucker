@@ -421,3 +421,14 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **CI:** al momento della registrazione GitHub non restituisce check-runs per il commit test; test non ancora certificati da Actions.
 - **Limiti:** freschezza 20 minuti è un controllo tecnico intraday, non garanzia di eseguibilità. Nessun livello entry/SL/TP è stato inventato; nessun ordine o deploy eseguito/verificato.
 - **Modalità:** PAPER ONLY.
+
+## 2026-11-02 — Audit correction: implement actual 5m quote freshness guard
+
+- **Correction of prior entry:** commit `f561c33d249bc1666dba67d415e596fd731e5b8a` was checked through the GitHub commit API and contains 0 files changed. The previously recorded freshness implementation was therefore not present in the repository; the subsequent test-only commit correctly exposed the failure.
+- **Actual implementation:** PR #91, branch `fix/sputnik-technical-quote-freshness-20261102`.
+- **Code commit:** `f7ee9bfb043d4bd6ff5d9af34330c0294aff05c0`, file `sputnik_trading_instrument.py`.
+- **Test commit:** `8a2785381f59b1b8f02ccc2b0aa514e8f0f03fec`, file `tests/test_sputnik_trading_instrument.py`.
+- **Behavior:** timestamp and close are kept as a pair; mismatched lengths, non-monotonic timestamps, invalid closes, stale latest valid candles (>20 minutes) and timestamps >2 minutes in the future are rejected. The valid candle timestamp is included for both LONG/SHORT and NEUTRAL technical snapshots.
+- **Regression tests:** stale series rejected; intermediate/trailing null closes preserve timestamp pairing; mismatched array lengths rejected; excessive future skew rejected.
+- **CI:** GitHub Actions ranking run `41391281130` — SUCCESS, 183 tests in 0.470s. The five freshness regressions (stale, intermediate null, trailing null, length mismatch, future skew) all passed. This run validated code/test commit `8a2785381f59b1b8f02ccc2b0aa514e8f0f03fec`; the later log-only commit was not separately rerun.
+- **Safety:** no catalyst BIAS, score threshold, entry/SL/TP, Governor, PAPER authorization, Telegram delivery, broker or order behavior changed. If technical data is stale, the technical layer is unavailable while an independently supported news BIAS remains visible. PAPER ONLY.
