@@ -464,7 +464,7 @@ def recommend_trading_instrument(
             rec["reason"] = (
                 "Bias da catalizzatore " + news_bias +
                 "; la struttura tecnica 5m non fornisce una direzione concorde: " +
-                str(technical.get("reason") or "direzione tecnica non disponibile") +
+                str(technical.get("reason") or "direzione tecnica non disponibile")
             )
         return rec
 
