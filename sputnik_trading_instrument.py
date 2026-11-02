@@ -371,7 +371,7 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
             if price > 0:
                 paired.append((int(stamp), price))
         # Keep the last observed quote timestamp attached to its own price.
-        if len(paired) < 20:
+        if len(paired) < 4:
             return None
         quote_timestamp, last = paired[-1]
         if quote_timestamp < int(time.time()) - 900:
@@ -385,7 +385,7 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
             return current
 
         recent = [price for _, price in paired[-20:]]
-        ema20 = ema(recent, 20)
+        ema20 = ema(recent, min(20, len(recent)))
         momentum_reference = recent[-4]
         momentum_pct = (last / momentum_reference - 1.0) * 100.0
         if last > momentum_reference:
