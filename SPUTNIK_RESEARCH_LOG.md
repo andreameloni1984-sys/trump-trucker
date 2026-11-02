@@ -303,3 +303,15 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Commits:** implementation `90f4d28e2021db939df4648208d00fea06261b50`; regression `11024c76fae30b4de906fbdfcf6ad31715cfdf82`.
 - **Verification:** module read back from the feature branch confirms the corrected single-backslash word-boundary pattern. No PR-triggered workflow run was returned for the new test commit at check time; CI is pending. Not merged or deployed.
 - **Safety:** classification/negation correctness only. No market data, bias mapping, entry/SL/TP, Governor, PAPER authorization, Telegram send, or broker action changed. PAPER ONLY.
+
+
+## 2026-11-02 — Preserve policy audit envelope on policy-only candidates
+
+- **Finding:** the PR #83 ranking CI exposed a real integration defect: when a policy-impact rule created a new candidate (rather than enriching an existing directional rule), the row omitted the nested `policy_impact` audit object and its priority field.
+- **Implemented:** policy-only rows now receive the same nested, auditable `policy_impact` payload and `policy_priority_score` as rows enriched from an existing catalyst.
+- **Code file:** `sputnik_catalyst.py`.
+- **Commit:** `94792283fbb90d37c803433d1abea33c8f6dd3c5`.
+- **Regression:** existing `test_policy_model_is_integrated_into_existing_directional_candidates` covers the missing nested payload. The earlier no-punctuation contrast regression `test_contrast_word_starts_a_new_clause_without_punctuation` passed in ranking run `41378381251`.
+- **CI status:** no workflow run was returned yet for the new commit at log time. The prior ranking run `41378381251` failed with two assertions: this missing policy envelope (addressed by this commit) and an unrelated WTI-vs-BRENT expected-instrument mismatch on the stale PR branch. Therefore the PR is not CI-green.
+- **Open:** PR #83 remains open and diverged from current main (17 commits ahead, 16 behind at the comparison point). It must be synchronized with current main and all CI failures resolved before merge. Public feed availability and live Telegram delivery remain unverified.
+- **Safety:** metadata/audit envelope only; no catalyst direction, score threshold, market price, entry/SL/TP, Governor, PAPER authorization or order execution changed. PAPER ONLY.
