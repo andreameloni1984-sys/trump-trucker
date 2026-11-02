@@ -1,6 +1,6 @@
 import unittest
 
-from sputnik_catalyst import catalyst_watchlist
+from sputnik_catalyst import catalyst_watchlist, directional_news_candidates
 
 
 class CatalystWatchlistTests(unittest.TestCase):
@@ -76,6 +76,59 @@ class CatalystWatchlistTests(unittest.TestCase):
         }], limit=2)
         self.assertEqual(len(rows), 2)
 
+
+
+    def test_directional_us_crude_production_cut_maps_only_to_wti(self):
+        rows = directional_news_candidates([{
+            "evidence": "PUBLIC_RSS_ITEM",
+            "event_id": "us-production-cut",
+            "url": "https://example.gov/us-oil",
+            "published": "2026-11-02T10:00:00Z",
+            "source": "WHITE_HOUSE",
+            "domains": ["ENERGY"],
+            "title": "U.S. crude oil production cut announced",
+            "text": "",
+        }])
+        self.assertEqual({row["instrument"] for row in rows}, {"WTI"})
+
+    def test_directional_hormuz_shipping_disruption_maps_only_to_brent(self):
+        rows = directional_news_candidates([{
+            "evidence": "PUBLIC_RSS_ITEM",
+            "event_id": "hormuz-shipping",
+            "url": "https://example.gov/hormuz",
+            "published": "2026-11-02T10:00:00Z",
+            "source": "WHITE_HOUSE",
+            "domains": ["ENERGY"],
+            "title": "Shipping disruption through the Strait of Hormuz",
+            "text": "",
+        }])
+        self.assertEqual({row["instrument"] for row in rows}, {"BRENT"})
+
+    def test_generic_oil_supply_disruption_has_no_directional_benchmark(self):
+        rows = directional_news_candidates([{
+            "evidence": "PUBLIC_RSS_ITEM",
+            "event_id": "generic-oil-supply",
+            "url": "https://example.gov/oil",
+            "published": "2026-11-02T10:00:00Z",
+            "source": "WHITE_HOUSE",
+            "domains": ["ENERGY"],
+            "title": "Oil supply disruption reported",
+            "text": "",
+        }])
+        self.assertEqual(rows, [])
+
+    def test_foreign_producer_crude_output_cut_maps_to_brent(self):
+        rows = directional_news_candidates([{
+            "evidence": "PUBLIC_RSS_ITEM",
+            "event_id": "foreign-output-cut",
+            "url": "https://example.gov/producer",
+            "published": "2026-11-02T10:00:00Z",
+            "source": "WHITE_HOUSE",
+            "domains": ["ENERGY"],
+            "title": "Saudi crude oil production cut announced",
+            "text": "",
+        }])
+        self.assertEqual({row["instrument"] for row in rows}, {"BRENT"})
 
 if __name__ == "__main__":
     unittest.main()

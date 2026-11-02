@@ -421,3 +421,17 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **CI:** al momento della registrazione GitHub non restituisce check-runs per il commit test; test non ancora certificati da Actions.
 - **Limiti:** freschezza 20 minuti è un controllo tecnico intraday, non garanzia di eseguibilità. Nessun livello entry/SL/TP è stato inventato; nessun ordine o deploy eseguito/verificato.
 - **Modalità:** PAPER ONLY.
+
+
+## 2026-11-02 — Distinguish WTI and Brent directional catalyst mapping
+
+- **Finding:** broad ENERGY rules emitted both WTI and BRENT for generic supply-disruption wording. The early recommender also allowed generic "oil supply disruption", "production outage", "crude exports disrupted" and unrelated de-escalation phrases to select a benchmark without enough geography or contract context.
+- **Implemented:** keep the broad WTI/Brent neutral watchlist, but require explicit benchmark or physical-market context for directional mapping. U.S. domestic crude inventory/production/pipeline evidence maps to WTI; Hormuz/Red Sea/Suez/tanker/seaborne context and named non-U.S. producer crude-output evidence maps to Brent. Generic oil-supply headlines remain non-directional until the benchmark is supported.
+- **Files:** `sputnik_catalyst.py`, `sputnik_trading_instrument.py`, `tests/test_sputnik_catalyst.py`, `tests/test_sputnik_trading_instrument.py`.
+- **Commits:** catalyst mapping `1f42b2ad6af4e5877a62f798bbefec6691caa92e`; early recommender `f34e5394a519abb31ed10d6a069439403ab42372`; catalyst regressions `f253c8d3e4db3f26ba86a2c0aa9c2c89f9cb60fa`; recommender regressions `61dcb69b9138d4991e4d99665d1cef62a86f3bda`.
+- **Tests:** four focused directional-mapping regressions added, plus two end-to-end recommender regressions. CI pending on the new branch; no test or deployment success is claimed before completed Actions runs.
+- **Limits:** this is a transparent keyword/context heuristic, not a calibrated model or proof of relative futures performance. OPEC/global events without an explicit benchmark or regional mechanism remain neutral rather than arbitrarily selecting WTI or Brent. No price, entry, SL/TP, score threshold, Governor, Telegram send, broker action or PAPER authorization changed.
+- **Mode:** PAPER ONLY.
+
+- **CI follow-up:** first ranking run `41451465390` executed 186 tests and failed only `test_stale_five_minute_candles_are_not_technical_confirmation`; this is the known main-branch freshness defect addressed separately by PR #91. All six new WTI/Brent mapping regressions passed in that run. Item-intelligence run `41451465305` and Telegram-menu run `41451465278` completed SUCCESS.
+- **Correction:** the first run exposed a boundary bug in the U.S. marker regex (`U.S.` ends in punctuation); corrected it in `sputnik_catalyst.py` at commit `53fd9153e94646c281e1d2d0b99cae8892434ef1`. The PR remains draft and must not merge until the existing PR #91 freshness fix is integrated or the branch is otherwise validated against that corrected main.

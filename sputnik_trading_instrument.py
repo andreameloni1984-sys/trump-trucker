@@ -24,22 +24,20 @@ COMMODITY_PRIORITY = {
 # These create a preliminary thesis, never a confirmed entry.
 _EARLY_RULES = (
     ("BRENT", "LONG", re.compile(
-        r"\b(attacks? on .{0,50}(oil|energy|refiner|pipeline)|"
-        r"(oil|energy) (facility|infrastructure|pipeline).{0,35}(attack|strike|hit)|"
-        r"tanker.{0,35}(attack|mine|explod|struck)|"
-        r"(iran|iranian|tehran).{0,45}(threatens?|threatened|warns?|warned|vows?|plans?|moves?|considers?|could).{0,35}(close|block|mine|shut).{0,25}(the )?(strait of hormuz|hormuz)|"
+        r"\b((iran|iranian|tehran).{0,45}(threatens?|threatened|warns?|warned|vows?|plans?|moves?|considers?|could).{0,35}(close|block|mine|shut).{0,25}(the )?(strait of hormuz|hormuz)|"
         r"(strait of hormuz|hormuz).{0,30}(closed|blocked|mined|shut|closure)|"
         r"(closure|blockade|mining).{0,30}(strait of hormuz|hormuz)|"
-        r"shipping disruption|oil supply disruption|"
-        r"crude exports? disrupted|refinery.{0,30}(attack|shut|damage)|"
-        r"(tanker|oil vessel).{0,50}(hormuz|saudi|red sea).{0,35}(attack|struck|hit|seized)|"
-        r"(tanker|oil vessel).{0,35}(attack|struck|hit|seized).{0,50}(hormuz|saudi|red sea)|"
-        r"(attack|strike).{0,50}(tanker|oil vessel).{0,35}(hormuz|saudi|red sea))\b", re.I),
+        r"(tanker|oil vessel).{0,50}(hormuz|saudi|red sea|suez|gulf of oman).{0,35}(attack|struck|hit|seized|explod)|"
+        r"(tanker|oil vessel).{0,35}(attack|struck|hit|seized|explod).{0,50}(hormuz|saudi|red sea|suez|gulf of oman)|"
+        r"(attack|strike).{0,50}(tanker|oil vessel).{0,35}(hormuz|saudi|red sea|suez|gulf of oman)|"
+        r"(shipping|maritime) disruption.{0,45}(hormuz|red sea|suez|bab el-mandeb|gulf of oman)|"
+        r"(hormuz|red sea|suez|bab el-mandeb|gulf of oman).{0,45}(shipping|maritime) disruption)\b", re.I),
      "Rischio concreto per infrastrutture o trasporto fisico del greggio: possibile premio di offerta."),
     ("WTI", "LONG", re.compile(
-        r"\b(us crude supply disruption|u\.s\. crude supply disruption|"
-        r"oil supply disruption|production outage|pipeline outage|"
-        r"crude exports? disrupted|oil production cut)\b", re.I),
+        r"\b(?:u\.s\.|us|american|eia|api|cushing|permian|bakken|texas).{0,45}"
+        r"(?:crude|oil)\s+(?:supply disruption|production outage|pipeline outage|exports? disrupted|production cut)\b|"
+        r"\b(?:crude|oil)\s+(?:supply disruption|production outage|pipeline outage|exports? disrupted|production cut).{0,45}"
+        r"(?:u\.s\.|us|american|eia|api|cushing|permian|bakken|texas)\b", re.I),
      "Possibile restringimento dell'offerta petrolifera."),
     ("BRENT", "SHORT", re.compile(
         r"\b((ceasefire|peace (agreement|deal)).{0,50}(iran|hormuz|oil|shipping|energy)|"
@@ -48,15 +46,10 @@ _EARLY_RULES = (
         r"hormuz.{0,25}(reopens?|reopened|reopening|open again)|"
         r"shipping.{0,20}(restored|resumes|resumed|back to normal)|"
         r"(passage|traffic|transit).{0,30}(resumes|resumed|restored|reopened).{0,30}(hormuz|strait)|"
-        r"oil exports? resume|sanctions lifted.{0,30}oil|"
+        r"sanctions lifted.{0,30}(iran|iranian)|"
         r"iran.{0,40}(agreement|deal|settlement))\b", re.I),
      "Possibile riduzione del premio geopolitico e dei rischi sulle forniture."),
-    ("WTI", "SHORT", re.compile(
-        r"\b((ceasefire|peace (agreement|deal)).{0,50}(iran|hormuz|oil|shipping|energy)|"
-        r"(iran|hormuz|oil|shipping|energy).{0,50}(ceasefire|peace (agreement|deal))|hormuz reopened|shipping restored|"
-        r"oil exports? resume|sanctions lifted.{0,30}oil|"
-        r"iran.{0,40}(agreement|deal|settlement))\b", re.I),
-     "Possibile riduzione del premio geopolitico e dei rischi sulle forniture."),
+
 )
 
 
