@@ -421,3 +421,15 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **CI:** al momento della registrazione GitHub non restituisce check-runs per il commit test; test non ancora certificati da Actions.
 - **Limiti:** freschezza 20 minuti è un controllo tecnico intraday, non garanzia di eseguibilità. Nessun livello entry/SL/TP è stato inventato; nessun ordine o deploy eseguito/verificato.
 - **Modalità:** PAPER ONLY.
+
+
+## 2026-11-02 — Exclude the still-forming 5m candle from SPUTNIK technical BIAS
+
+- **Finding:** Yahoo 5m chart timestamps identify each candle's opening time. The technical recommender paired timestamps and closes correctly after PR #93, but it still used the last returned bar even when that bar had not closed. A rapidly changing in-progress candle could therefore flip the displayed technical direction and timestamp before its final close.
+- **Implemented:** `sputnik_trading_instrument.py` now uses only bars whose opening timestamp plus 300 seconds is no later than the current clock. At least four completed 5m bars are required; the latest completed bar supplies the displayed price/timestamp and the last-15-minute momentum reference. The existing 15-minute freshness check remains.
+- **Regression tests:** four completed bars plus a forming bar still produce the completed-bar direction; a sharp opposite move in the forming bar cannot reverse it; three completed bars plus one forming bar are insufficient; a null close does not shift timestamp/price pairing.
+- **Research basis:** Freqtrade's official lookahead-analysis documentation explains that in-progress/full-dataframe values can create unrealistic signal changes and that signals must be validated against the data actually available at the decision time. This change applies the same completed-observation principle to SPUTNIK's 5m diagnostic without importing Freqtrade.
+- **Files:** `sputnik_trading_instrument.py`; `tests/test_sputnik_trading_instrument.py`; this log.
+- **Safety:** technical observation only. Catalyst BIAS remains separate and is not overwritten; no entry, SL, TP, sizing, Governor, PAPER authorization, Telegram transport, or order behavior changed. No live quote or trade is claimed.
+- **Status:** CI pending on the new branch; do not merge until all required checks pass.
+- **Mode:** PAPER ONLY.
