@@ -415,68 +415,88 @@ def recommend_trading_instrument(
     findings: list[dict[str, Any]],
     limit: int = 1,
 ) -> dict[str, Any] | None:
-    """Use price structure for direction; use verified US news as catalyst context."""
+    """Keep catalyst bias and technical direction as separate, visible evidence."""
     rec = _recommend_trading_instrument_from_news(findings, limit=limit)
     if not rec:
         return None
+
+    news_bias = str(rec.get("bias") or "NEUTRAL").upper()
+    rec["catalyst_bias"] = news_bias
     technical = _technical_market_bias(str(rec.get("instrument") or ""))
     if not technical:
         rec["technical_bias"] = "UNAVAILABLE"
         rec["technical_reason"] = "Dati tecnici 5m insufficienti o non aggiornati."
+        rec["bias"] = news_bias if news_bias in {"LONG", "SHORT"} else "NEUTRAL"
+        rec["status"] = "EARLY_BIAS" if rec["bias"] in {"LONG", "SHORT"} else "NO_DIRECTION"
+        rec["catalyst_alignment"] = "NOT_CONFIRMED" if rec["bias"] in {"LONG", "SHORT"} else "NO_DIRECTIONAL_NEWS"
         return rec
 
-    news_bias = str(rec.get("bias") or "NEUTRAL").upper()
-    rec["catalyst_bias"] = news_bias
-    rec["technical_bias"] = technical["bias"]
-    rec["technical_score"] = technical["score"]
-    rec["technical_reason"] = technical["reason"]
+    technical_bias = str(technical.get("bias") or "NEUTRAL").upper()
+    rec["technical_bias"] = technical_bias
+    rec["technical_score"] = technical.get("score")
+    rec["technical_reason"] = technical.get("reason", "")
     rec["technical_price"] = technical.get("price")
     rec["technical_ema20"] = technical.get("ema20")
     rec["technical_ema50"] = technical.get("ema50")
     rec["technical_timeframe"] = technical.get("timeframe", "5m")
     rec["technical_quote_timestamp"] = technical.get("quote_timestamp")
 
-    if technical["bias"] in {"LONG", "SHORT"}:
-        rec["bias"] = technical["bias"]
-        rec["status"] = "TECHNICAL_DIRECTIONAL_BIAS"
-        if news_bias in {"LONG", "SHORT"} and news_bias != technical["bias"]:
-            rec["catalyst_alignment"] = "CONTRASTS"
-            rec["reason"] = "Direzione tecnica " + technical["bias"] + "; catalizzatore/notizie suggeriscono " + news_bias + " e quindi contrastano il movimento."
-        elif news_bias == technical["bias"]:
+    if news_bias in {"LONG", "SHORT"}:
+        # A supported, dated catalyst remains the preliminary BIAS. Technical
+        # evidence grades alignment; it never silently reverses the thesis.
+        rec["bias"] = news_bias
+        rec["status"] = "EARLY_BIAS"
+        if technical_bias == news_bias:
             rec["catalyst_alignment"] = "ALIGNS"
-            rec["reason"] = "Direzione tecnica e catalizzatore concordano su " + technical["bias"] + "."
+            rec["reason"] = (
+                "Catalizzatore e struttura tecnica concordano su " + news_bias +
+                "; resta un'ipotesi EARLY_BIAS, non un ingresso confermato."
+            )
+        elif technical_bias in {"LONG", "SHORT"}:
+            rec["catalyst_alignment"] = "CONTRASTS"
+            rec["reason"] = (
+                "BIAS DEL CATALIZZATORE " + news_bias +
+                "; DIREZIONE TECNICA " + technical_bias +
+                ". Il contrasto resta visibile e non sovrascrive l'ipotesi."
+            )
         else:
-            rec["catalyst_alignment"] = "NO_DIRECTIONAL_NEWS"
-            rec["reason"] = "Direzione tecnica " + technical["bias"] + "; nessun catalizzatore USA direzionale verificato."
+            rec["catalyst_alignment"] = "NOT_CONFIRMED"
+            rec["reason"] = (
+                "Bias da catalizzatore " + news_bias +
+                "; la struttura tecnica 5m non fornisce una direzione concorde: " +
+                str(technical.get("reason") or "direzione tecnica non disponibile") +
+            )
+        return rec
+
+    if technical_bias in {"LONG", "SHORT"}:
+        # Technical-only direction is allowed only when the catalyst layer has
+        # no sustainable side.
+        rec["bias"] = technical_bias
+        rec["status"] = "EARLY_BIAS"
+        rec["catalyst_alignment"] = "NO_DIRECTIONAL_NEWS"
+        rec["reason"] = (
+            "Direzione tecnica " + technical_bias +
+            "; nessun catalizzatore USA direzionale verificato."
+        )
         rec["alternative"] = (
             "Un recupero sopra EMA20/EMA50 e il ritorno a massimi/minimi crescenti può invalidare lo SHORT."
-            if technical["bias"] == "SHORT" else
+            if technical_bias == "SHORT" else
             "Una perdita di EMA20/EMA50 e il ritorno a massimi/minimi decrescenti può invalidare il LONG."
         )
         rec["invalidation"] = (
             "Chiusure 5m stabili sopra EMA50 e inversione della struttura dei massimi/minimi."
-            if technical["bias"] == "SHORT" else
+            if technical_bias == "SHORT" else
             "Chiusure 5m stabili sotto EMA50 e inversione della struttura dei massimi/minimi."
         )
-    else:
-        # A mixed technical snapshot must not erase a directional, dated news
-        # catalyst. Preserve it as an early hypothesis and label the missing
-        # trigger explicitly; only remain neutral when news itself has no side.
-        if news_bias in {"LONG", "SHORT"}:
-            rec["bias"] = news_bias
-            rec["status"] = "EARLY_BIAS_TECHNICAL_UNCONFIRMED"
-            rec["reason"] = (
-                "Bias da catalizzatore " + news_bias +
-                "; trigger tecnico 5m non ancora allineato: " + technical["reason"]
-            )
-            rec["catalyst_alignment"] = "NEWS_DIRECTION_RETAINED_TECHNICAL_MIXED"
-        else:
-            rec["bias"] = "NEUTRAL"
-            rec["status"] = "NO_DIRECTION"
-            rec["reason"] = "Nessuna direzione dimostrata: " + technical["reason"]
-            rec["catalyst_alignment"] = "NOT_CONFIRMED"
-    return rec
+        return rec
 
+    rec["bias"] = "NEUTRAL"
+    rec["status"] = "NO_DIRECTION"
+    rec["catalyst_alignment"] = "NOT_CONFIRMED"
+    rec["reason"] = (
+        "Nessuna direzione sostenibile: catalizzatore neutrale e struttura tecnica mista."
+    )
+    return rec
 
 def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
     """Telegram-ready analyst brief; never fabricates entry/SL/targets."""
