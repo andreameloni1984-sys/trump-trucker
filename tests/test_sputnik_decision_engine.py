@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from sputnik_decision_engine import conditional_plans, decision_message
 from sputnik_cfd import build_conditional_trade_plan
 from sputnik_analyst_reasoning import build_reasoning, format_reasoning
@@ -64,6 +65,15 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertIn("Settore difesa, petrolio e oro", message)
 
 class ConditionalTradePlanTests(unittest.TestCase):
+    def setUp(self):
+        # These tests validate state transitions, not external quote availability.
+        yahoo = patch("sputnik_cfd.fetch_yahoo_quote", return_value=None)
+        narwhal = patch("sputnik_cfd.fetch_narwhal_reference", return_value=None)
+        yahoo.start()
+        narwhal.start()
+        self.addCleanup(yahoo.stop)
+        self.addCleanup(narwhal.stop)
+
     def test_levels_require_fresh_quote_and_atr(self):
         plan = {"candidate": "BRENT (petrolio)", "bias": "LONG condizionale"}
         missing = build_conditional_trade_plan(plan, {})
