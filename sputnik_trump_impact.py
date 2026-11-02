@@ -27,7 +27,7 @@ _NEGATIVE = {
 }
 _NEGATION = re.compile(r"\b(?:no|not|never|deny|denied|false|unconfirmed|without)\b", re.I)
 
-_CLAUSE_BOUNDARY = re.compile(r"[.;!?]|\\b(?:but|however|although|yet|nevertheless)\\b", re.I)
+_CLAUSE_BOUNDARY = re.compile(r"[.;!?]|\b(?:but|however|although|yet|nevertheless)\b", re.I)
 
 
 def _match_is_negated(text: str, match: re.Match[str]) -> bool:
