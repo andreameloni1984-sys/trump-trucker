@@ -408,3 +408,16 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Operational limit:** GitHub Actions supports at most 100 pending runs per concurrency group. Once full, additional runs may be canceled; FIFO order is not guaranteed. This reduces replacement of pending runs but is not a lossless event queue.
 - **Safety:** no source, catalyst, Telegram, price, BIAS, technical confirmation, risk, Governor, PAPER authorization, broker or order logic changed. No live Telegram delivery or deployment is claimed. PAPER ONLY.
 - **Official reference:** https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency
+
+
+## 2026-11-02 — Filtro freschezza e allineamento delle quotazioni tecniche 5m
+
+- **Problema individuato:** il motore tecnico Yahoo 5m filtrava i close null separatamente dai timestamp. Questo poteva disallineare prezzo e orario; inoltre una serie vecchia poteva essere interpretata come conferma tecnica attuale.
+- **Implementazione:** accoppiati timestamp e close prima della pulizia; scartati valori non numerici, non finiti o non positivi; richiesta una serie di almeno 60 coppie valide.
+- **Freschezza:** la candela più recente deve avere timestamp non oltre 2 minuti nel futuro e non più vecchio di 20 minuti. Se la serie è obsoleta, il motore tecnico restituisce dato non disponibile; il bias direzionale della notizia resta conservato come EARLY_BIAS dal recommender.
+- **Test aggiunti:** serie 5m obsoleta rifiutata; close nullo intermedio non sposta l'associazione timestamp/prezzo.
+- **Commit codice:** f561c33d249bc1666dba67d415e596fd731e5b8a.
+- **Commit test:** 60e6bee0019acee73a2c3d18db006c22b7e34f17.
+- **CI:** al momento della registrazione GitHub non restituisce check-runs per il commit test; test non ancora certificati da Actions.
+- **Limiti:** freschezza 20 minuti è un controllo tecnico intraday, non garanzia di eseguibilità. Nessun livello entry/SL/TP è stato inventato; nessun ordine o deploy eseguito/verificato.
+- **Modalità:** PAPER ONLY.
