@@ -394,3 +394,17 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Validation:** branch creato sopra main e file aggiornati; test CI ancora da eseguire. Nessuna esecuzione live, consegna Telegram, deploy o ordine.
 - **Public reference:** GitHub Actions concurrency docs https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency
 - **Safety:** nessuna modifica a fonti, catalizzatori, prezzi, direzione, risk, Governor o autorizzazioni PAPER.
+
+
+### Final CI and merge verification — bounded monitor queue (2026-11-02)
+
+- **Replacement PR:** #90 merged into main as squash commit `ef2bfef321b60a1f77284e96dd39aa08934719b9`. It was recreated from current main commit `d4e017297a0575cfc5bde76b85330b81d60d10ae` because the earlier PR #87 branch had diverged and was not mergeable.
+- **Superseded PR:** #87 closed without merge after #90 was opened.
+- **Files:** `.github/workflows/trump_tracker.yml`; `tests/test_sputnik_item_intelligence.py`; this research log.
+- **Implementation commits on PR #90:** workflow `326790173345644b63d74e93d4f128c3e8e0d7a0`; test `e3fd86b1d2f88110140087d094d32b6004bc1a2e`; initial log `1459fc6aa42d59d2c30ace158d9276488e0ab05e`.
+- **GitHub Actions:** ranking run `41378402168` — SUCCESS, 178 tests in 0.493s; item-intelligence run `41378402085` — SUCCESS, 44 tests in 0.042s. The new regression `test_scheduled_workflow_does_not_cancel_inflight_monitor_run` passed in both workflows.
+- **Main readback after merge:** workflow contains `queue: max` and `cancel-in-progress: false`; no `cancel-in-progress: true` remains in that concurrency block. The regression test is present. Main file blob SHAs at readback: workflow `fb6b635b3730afde76d1332b24ce964780349467`; test `d193a5fa93689f6e3acac47c3e9acd86fb21de10`.
+- **Post-merge caveat:** no separate workflow run was returned for the squash merge commit. The two successful runs are PR-head checks, not a post-merge runtime or deployment test.
+- **Operational limit:** GitHub Actions supports at most 100 pending runs per concurrency group. Once full, additional runs may be canceled; FIFO order is not guaranteed. This reduces replacement of pending runs but is not a lossless event queue.
+- **Safety:** no source, catalyst, Telegram, price, BIAS, technical confirmation, risk, Governor, PAPER authorization, broker or order logic changed. No live Telegram delivery or deployment is claimed. PAPER ONLY.
+- **Official reference:** https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency
