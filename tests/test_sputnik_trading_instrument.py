@@ -61,8 +61,8 @@ class TechnicalQuoteFreshnessTests(unittest.TestCase):
         from sputnik_trading_instrument import _technical_market_bias
 
         now = int(time.time())
-        stamps = [now - (19 - index) * 300 for index in range(20)]
-        closes = [100.0 + index * 0.1 for index in range(20)]
+        stamps = [now - (3 - index) * 300 for index in range(4)]
+        closes = [100.0 + index * 0.1 for index in range(4)]
         payload = {
             "chart": {
                 "result": [{
