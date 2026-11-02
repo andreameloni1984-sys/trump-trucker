@@ -460,6 +460,20 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
 
 
 
+    def test_scheduled_workflow_does_not_cancel_inflight_monitor_run(self):
+        workflow_path = (
+            Path(__file__).resolve().parents[1]
+            / ".github"
+            / "workflows"
+            / "trump_tracker.yml"
+        )
+        workflow = workflow_path.read_text(encoding="utf-8")
+        self.assertIn("group: sputnik-main", workflow)
+        self.assertIn("queue: max", workflow)
+        self.assertIn("cancel-in-progress: false", workflow)
+        self.assertNotIn("cancel-in-progress: true", workflow)
+        self.assertIn('    - cron: "2-59/5 * * * *"', workflow)
+
     def test_scheduled_workflow_fails_closed_without_telegram_chat_id(self):
         workflow_path = (
             Path(__file__).resolve().parents[1]
