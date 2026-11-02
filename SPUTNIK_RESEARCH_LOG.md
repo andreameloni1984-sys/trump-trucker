@@ -293,3 +293,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **CI on final PR head before merge:** ranking/full suite run `41321818062` — SUCCESS, 171 tests; item-intelligence run `41321818168` — SUCCESS, 39 tests. All six new handoff tests were explicitly visible as passing in the ranking log.
 - **Post-merge caveat:** the connector returned no PR-triggered workflow runs for the merge commit; the successful checks above are the final PR-head checks, not a separately verified post-merge push run. No production deployment or live Telegram handoff is claimed.
 - **Open:** WHITE_HOUSE/TRUTH_ARCHIVE/OGE still emitted OSError in CI; live source availability remains unverified. Multi-source same-contract futures verification, full Telegram delivery, and the real 100-setup out-of-sample journal remain open. PAPER ONLY.
+
+
+## 2026-11-02 — Correct contrast-word clause boundaries in policy negation
+
+- **Finding:** the policy-impact model's clause-boundary regex double-escaped the word-boundary token, so contrast words such as "but" and "however" were not reliably treated as clause separators unless punctuation was also present. A negation in the first clause could therefore suppress a confirmed event in the contrast clause.
+- **Implemented:** use actual regex word boundaries around contrast conjunctions and add a regression for "No tariffs were announced but new tariffs take effect tomorrow". The existing punctuation-separated regression remains in place.
+- **Files:** `sputnik_trump_impact.py`; `tests/test_sputnik_trump_impact.py`.
+- **Commits:** implementation `90f4d28e2021db939df4648208d00fea06261b50`; regression `11024c76fae30b4de906fbdfcf6ad31715cfdf82`.
+- **Verification:** module read back from the feature branch confirms the corrected single-backslash word-boundary pattern. No PR-triggered workflow run was returned for the new test commit at check time; CI is pending. Not merged or deployed.
+- **Safety:** classification/negation correctness only. No market data, bias mapping, entry/SL/TP, Governor, PAPER authorization, Telegram send, or broker action changed. PAPER ONLY.
