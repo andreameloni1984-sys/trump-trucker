@@ -1,3 +1,5 @@
+import json
+import time
 import unittest
 from unittest.mock import patch
 
@@ -17,6 +19,67 @@ def _finding(title, **overrides):
     }
     finding.update(overrides)
     return finding
+
+
+class TechnicalQuoteFreshnessTests(unittest.TestCase):
+    class FakeResponse:
+        def __init__(self, payload):
+            self.payload = payload
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, traceback):
+            return False
+
+        def read(self):
+            return json.dumps(self.payload).encode("utf-8")
+
+    def test_stale_five_minute_candles_are_not_technical_confirmation(self):
+        from sputnik_trading_instrument import _technical_market_bias
+
+        now = int(time.time()) - 3600
+        stamps = [now - (64 - index) * 300 for index in range(65)]
+        closes = [100.0 + index * 0.1 for index in range(65)]
+        payload = {
+            "chart": {
+                "result": [{
+                    "timestamp": stamps,
+                    "indicators": {"quote": [{"close": closes}]},
+                }]
+            }
+        }
+        with patch(
+            "sputnik_trading_instrument.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            result = _technical_market_bias("WTI")
+
+        self.assertIsNone(result)
+
+    def test_null_close_does_not_shift_price_timestamp_pairing(self):
+        from sputnik_trading_instrument import _technical_market_bias
+
+        now = int(time.time())
+        stamps = [now - (64 - index) * 300 for index in range(65)]
+        closes = [100.0 + index * 0.1 for index in range(65)]
+        closes[-2] = None
+        payload = {
+            "chart": {
+                "result": [{
+                    "timestamp": stamps,
+                    "indicators": {"quote": [{"close": closes}]},
+                }]
+            }
+        }
+        with patch(
+            "sputnik_trading_instrument.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            result = _technical_market_bias("WTI")
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result["quote_timestamp"], stamps[-1])
 
 
 class EarlyBrentCatalystTests(unittest.TestCase):
