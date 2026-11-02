@@ -6,14 +6,19 @@ No prices are invented and no orders are placed.
 """
 from __future__ import annotations
 
-import re
 import json
+import math
+import re
+import time
 import urllib.parse
 import urllib.request
 from typing import Any
 
 from sputnik_catalyst import catalyst_watchlist, directional_news_candidates, non_negated_pattern_matches
 from sputnik_action_reaction import match_historical_reactions, infer_direction
+
+MAX_TECHNICAL_QUOTE_AGE_SECONDS = 20 * 60
+MAX_TECHNICAL_QUOTE_FUTURE_SKEW_SECONDS = 2 * 60
 
 COMMODITY_PRIORITY = {
     "WTI", "BRENT", "GOLD", "SILVER", "COPPER", "NATURAL_GAS",
@@ -361,11 +366,43 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
         result = payload["chart"]["result"][0]
         stamps = result.get("timestamp") or []
         quote = result["indicators"]["quote"][0]
-        closes = [
-            float(value) for value in (quote.get("close") or [])
-            if value is not None and float(value) > 0
-        ]
-        if len(closes) < 60 or len(stamps) < 60:
+        raw_closes = quote.get("close") or []
+        # Keep each close attached to its original candle timestamp. Filtering
+        # the two arrays independently can silently pair a price with the
+        # wrong candle when Yahoo returns null closes.
+        if not stamps or len(stamps) != len(raw_closes):
+            return None
+
+        stamped_closes: list[tuple[int, float]] = []
+        previous_stamp = None
+        for raw_stamp, raw_close in zip(stamps, raw_closes):
+            try:
+                stamp = int(raw_stamp)
+            except (TypeError, ValueError, OverflowError):
+                return None
+            if previous_stamp is not None and stamp <= previous_stamp:
+                return None
+            previous_stamp = stamp
+
+            if raw_close is None:
+                continue
+            try:
+                close = float(raw_close)
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if not math.isfinite(close) or close <= 0:
+                continue
+            stamped_closes.append((stamp, close))
+
+        if len(stamped_closes) < 60:
+            return None
+
+        latest_timestamp = stamped_closes[-1][0]
+        quote_age_seconds = time.time() - latest_timestamp
+        if (
+            quote_age_seconds > MAX_TECHNICAL_QUOTE_AGE_SECONDS
+            or quote_age_seconds < -MAX_TECHNICAL_QUOTE_FUTURE_SKEW_SECONDS
+        ):
             return None
 
         def ema(values: list[float], period: int) -> float:
@@ -375,7 +412,8 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
                 current = alpha * value + (1 - alpha) * current
             return current
 
-        recent = closes[-60:]
+        recent_pairs = stamped_closes[-60:]
+        recent = [close for _, close in recent_pairs]
         ema20 = ema(recent[-40:], 20)
         ema50 = ema(recent, 50)
         prior_ema20 = ema(recent[-50:-10], 20)
@@ -400,12 +438,13 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
                 "reason": "Struttura tecnica mista: EMA e swing non concordano.",
                 "price": last, "ema20": ema20, "ema50": ema50,
                 "timeframe": "5m", "candles": len(recent),
+                "quote_timestamp": recent_pairs[-1][0],
             }
         return {
             "bias": direction, "score": score, "reason": reason,
             "price": last, "ema20": ema20, "ema50": ema50,
             "timeframe": "5m", "candles": len(recent),
-            "quote_timestamp": int(stamps[-1]),
+            "quote_timestamp": recent_pairs[-1][0],
         }
     except (OSError, ValueError, KeyError, IndexError, TypeError, urllib.error.URLError):
         return None
