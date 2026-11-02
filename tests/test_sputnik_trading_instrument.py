@@ -81,6 +81,75 @@ class TechnicalQuoteFreshnessTests(unittest.TestCase):
         self.assertIsNotNone(result)
         self.assertEqual(result["quote_timestamp"], stamps[-1])
 
+    def test_trailing_null_close_keeps_the_previous_candle_timestamp(self):
+        from sputnik_trading_instrument import _technical_market_bias
+
+        now = int(time.time())
+        stamps = [now - (64 - index) * 300 for index in range(65)]
+        closes = [100.0 + index * 0.1 for index in range(65)]
+        closes[-1] = None
+        payload = {
+            "chart": {
+                "result": [{
+                    "timestamp": stamps,
+                    "indicators": {"quote": [{"close": closes}]},
+                }]
+            }
+        }
+        with patch(
+            "sputnik_trading_instrument.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            result = _technical_market_bias("WTI")
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result["quote_timestamp"], stamps[-2])
+
+    def test_timestamp_and_close_arrays_with_different_lengths_are_rejected(self):
+        from sputnik_trading_instrument import _technical_market_bias
+
+        now = int(time.time())
+        stamps = [now - (64 - index) * 300 for index in range(65)]
+        closes = [100.0 + index * 0.1 for index in range(65)]
+        payload = {
+            "chart": {
+                "result": [{
+                    "timestamp": stamps[:-1],
+                    "indicators": {"quote": [{"close": closes}]},
+                }]
+            }
+        }
+        with patch(
+            "sputnik_trading_instrument.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            result = _technical_market_bias("WTI")
+
+        self.assertIsNone(result)
+
+    def test_future_five_minute_candle_outside_clock_skew_is_rejected(self):
+        from sputnik_trading_instrument import _technical_market_bias
+
+        now = int(time.time())
+        stamps = [now - (64 - index) * 300 for index in range(65)]
+        stamps[-1] = now + 300
+        closes = [100.0 + index * 0.1 for index in range(65)]
+        payload = {
+            "chart": {
+                "result": [{
+                    "timestamp": stamps,
+                    "indicators": {"quote": [{"close": closes}]},
+                }]
+            }
+        }
+        with patch(
+            "sputnik_trading_instrument.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            result = _technical_market_bias("WTI")
+
+        self.assertIsNone(result)
+
 
 class EarlyBrentCatalystTests(unittest.TestCase):
     def setUp(self):
