@@ -57,6 +57,31 @@ class TechnicalQuoteFreshnessTests(unittest.TestCase):
 
         self.assertIsNone(result)
 
+    def test_short_recent_history_still_surfaces_15m_direction(self):
+        from sputnik_trading_instrument import _technical_market_bias
+
+        now = int(time.time())
+        stamps = [now - (19 - index) * 300 for index in range(20)]
+        closes = [100.0 + index * 0.1 for index in range(20)]
+        payload = {
+            "chart": {
+                "result": [{
+                    "timestamp": stamps,
+                    "indicators": {"quote": [{"close": closes}]},
+                }]
+            }
+        }
+        with patch(
+            "sputnik_trading_instrument.urllib.request.urlopen",
+            return_value=self.FakeResponse(payload),
+        ):
+            result = _technical_market_bias("WTI")
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result["bias"], "LONG")
+        self.assertEqual(result["quote_timestamp"], stamps[-1])
+        self.assertGreater(result["momentum_15m_pct"], 0)
+
     def test_null_close_does_not_shift_price_timestamp_pairing(self):
         from sputnik_trading_instrument import _technical_market_bias
 
