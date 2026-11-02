@@ -297,7 +297,12 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
             key = (str(impact["event_id"]), str(impact["instrument"]))
             existing = candidates.get(key)
             if existing is None:
-                candidates[key] = impact
+                # Policy-only rows need the same nested audit envelope as
+                # rows enriched from an existing directional catalyst.
+                impact_row = dict(impact)
+                impact_row["policy_impact"] = dict(impact)
+                impact_row["policy_priority_score"] = impact["priority_score"]
+                candidates[key] = impact_row
             else:
                 existing["policy_impact"] = impact
                 existing["policy_priority_score"] = impact["priority_score"]
