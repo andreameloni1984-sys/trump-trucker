@@ -137,5 +137,15 @@ class TrumpPolicyImpactTests(unittest.TestCase):
         self.assertTrue(all(row["model"] == "TRANSPARENT_TOPIC_EVENT_SENTIMENT_V1" for row in rows))
 
 
+    def test_contrast_word_starts_a_new_clause_without_punctuation(self):
+        rows = analyze_public_policy_item(item(
+            "No tariffs were announced but new tariffs take effect tomorrow",
+            ["TRADE_POLICY"],
+        ))
+        by_instrument = {row["instrument"]: row["bias"] for row in rows}
+        self.assertEqual(by_instrument["NASDAQ100"], "SHORT_BIAS")
+        self.assertEqual(by_instrument["GOLD"], "LONG_BIAS")
+
+
 if __name__ == "__main__":
     unittest.main()
