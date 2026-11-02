@@ -361,11 +361,19 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
         result = payload["chart"]["result"][0]
         stamps = result.get("timestamp") or []
         quote = result["indicators"]["quote"][0]
-        closes = [
-            float(value) for value in (quote.get("close") or [])
-            if value is not None and float(value) > 0
-        ]
-        if len(closes) < 60 or len(stamps) < 60:
+        raw_closes = quote.get("close") or []
+        paired = []
+        for stamp, value in zip(stamps, raw_closes):
+            if stamp is None or value is None:
+                continue
+            price = float(value)
+            if price > 0:
+                paired.append((int(stamp), price))
+        # Keep the last observed quote timestamp attached to its own price.
+        if len(paired) < 20:
+            return None
+        quote_timestamp, last = paired[-1]
+        if quote_timestamp < int(time.time()) - 900:
             return None
 
         def ema(values: list[float], period: int) -> float:
@@ -375,37 +383,25 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
                 current = alpha * value + (1 - alpha) * current
             return current
 
-        recent = closes[-60:]
-        ema20 = ema(recent[-40:], 20)
-        ema50 = ema(recent, 50)
-        prior_ema20 = ema(recent[-50:-10], 20)
-        last = recent[-1]
-        # Compare the last two 10-candle blocks as a simple swing proxy.
-        first_block = recent[-30:-15]
-        second_block = recent[-15:]
-        lower_structure = max(second_block) < max(first_block) and min(second_block) < min(first_block)
-        higher_structure = max(second_block) > max(first_block) and min(second_block) > min(first_block)
-
-        bearish = last < ema20 < ema50 and ema20 < prior_ema20 and lower_structure
-        bullish = last > ema20 > ema50 and ema20 > prior_ema20 and higher_structure
-        if bearish:
-            direction, score = "SHORT", 78.0
-            reason = "Prezzo sotto EMA20/EMA50, EMA20 inclinata al ribasso e struttura con massimi/minimi decrescenti."
-        elif bullish:
-            direction, score = "LONG", 78.0
-            reason = "Prezzo sopra EMA20/EMA50, EMA20 inclinata al rialzo e struttura con massimi/minimi crescenti."
+        recent = [price for _, price in paired[-20:]]
+        ema20 = ema(recent, 20)
+        momentum_reference = recent[-4]
+        momentum_pct = (last / momentum_reference - 1.0) * 100.0
+        if last > momentum_reference:
+            direction, score = "LONG", 60.0
+            reason = f"Momentum 5m positivo negli ultimi 15 minuti ({momentum_pct:+.3f}%)."
+        elif last < momentum_reference:
+            direction, score = "SHORT", 60.0
+            reason = f"Momentum 5m negativo negli ultimi 15 minuti ({momentum_pct:+.3f}%)."
         else:
-            return {
-                "bias": "NEUTRAL", "score": 45.0,
-                "reason": "Struttura tecnica mista: EMA e swing non concordano.",
-                "price": last, "ema20": ema20, "ema50": ema50,
-                "timeframe": "5m", "candles": len(recent),
-            }
+            direction, score = "NEUTRAL", 45.0
+            reason = "Prezzo invariato negli ultimi 15 minuti."
         return {
             "bias": direction, "score": score, "reason": reason,
-            "price": last, "ema20": ema20, "ema50": ema50,
+            "price": last, "ema20": ema20, "ema50": None,
+            "momentum_15m_pct": round(momentum_pct, 3),
             "timeframe": "5m", "candles": len(recent),
-            "quote_timestamp": int(stamps[-1]),
+            "quote_timestamp": quote_timestamp,
         }
     except (OSError, ValueError, KeyError, IndexError, TypeError, urllib.error.URLError):
         return None
