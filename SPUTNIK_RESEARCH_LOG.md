@@ -452,3 +452,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - The SPUTNIK ranking regression workflow completed SUCCESS on the exact final PR head `a5ab1cfec638762ef31216bdfae046455f26b524`.
 - Verified on main: `sputnik_decision_strict.py` no longer exists. The active `sputnik_decision_engine.py` and shared `sputnik_decision.py` remain.
 - No deployment, live event processing, Telegram send, or trade is claimed.
+
+
+## 2026-11-03 — Remove abandoned public-feed monitor stub
+
+- Repository-wide code/workflow search found no import, invocation, scheduled job, or test reference to `sputnik_public_feed_monitor.py`; the only occurrence outside the file itself was a research-log mention.
+- The file contained only feed URL constants, a keyword helper, and imports from `trump_tracker.py`; it did not implement a fetch loop, persist feed results, or run as a collector.
+- The active item-level RSS implementation is in `trump_tracker.py` and `sputnik_public_sources.py`, including the White House and Trump Truth Archive feeds. Those active paths are retained.
+- Deleted only the unreferenced stub. Added its path to the Sputnik regression workflow's path filters so any future reintroduction/change triggers tests.
+- No source URLs, event classifications, Telegram behavior, ranking, or PAPER-only boundaries changed.
