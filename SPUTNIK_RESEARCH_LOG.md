@@ -452,3 +452,17 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - The SPUTNIK ranking regression workflow completed SUCCESS on the exact final PR head `a5ab1cfec638762ef31216bdfae046455f26b524`.
 - Verified on main: `sputnik_decision_strict.py` no longer exists. The active `sputnik_decision_engine.py` and shared `sputnik_decision.py` remain.
 - No deployment, live event processing, Telegram send, or trade is claimed.
+
+
+
+## 2026-11-03 — Remove unused duplicate metadata from parsed public-feed items
+
+- **Repository audit:** on current main `2ccdac3169e1c8205becb1fb9698b9f6923353c7`, exact code search found `item_index` only at its creation in `sputnik_public_sources.py`; no consumer, test, workflow, import hook or dynamic lookup referenced it. The parser's `feed_url` result field was likewise not read by consumers: `trump_tracker.py` already holds the configured feed URL in the outer loop and writes that value into the resulting finding.
+- **Call-path check:** `parse_public_feed` is imported by the active `trump_tracker.py` item-level RSS collector and its parser tests. The active collector reads the row's `id`, `title`, `text`, `published`, `url` and `primary_url`; it does not read `item_index` or row-level `feed_url`. The separate orphaned monitor stub is independently covered by open PR #100 and was not edited here.
+- **Implemented:** removed the unused `item_index` field and its now-unnecessary `enumerate()`; removed the redundant per-item `feed_url` field. The configured feed URL remains available to the collector from the existing loop and remains present on emitted findings. No RSS/Atom parser, event identity, item timestamp, permalink, deduplication, freshness, catalyst, Telegram or Gagarin handoff logic changed.
+- **Files:** `sputnik_public_sources.py`; `tests/test_sputnik_public_sources.py`; this research log.
+- **Regression:** the existing RSS parser test still checks title, publication time, permalink, event ID and extracted text, and now explicitly asserts that the two unused fields are absent. All other Atom/RSS edge-case tests remain unchanged.
+- **Public-system study:** Freqtrade's official data-download documentation describes incremental updates that fetch only missing time ranges; NautilusTrader documents bounded cache capacity per instrument/bar type; Backtrader documents the separation between data feeds, strategies and broker execution. The applicable design lesson here is to keep feed-level context at the collector boundary and pass only item-level fields that downstream processing actually consumes. No project code was copied and no third-party dependency or license exposure was introduced.
+- **Cost/benefit:** removes two dictionary entries per accepted RSS/Atom item and one `str(index)` conversion per accepted item. This is a small in-memory/CPU reduction; no external HTTP request, polling interval, dependency or timeout is removed, and no wall-clock latency saving has been measured.
+- **Safety:** SPUTNIK remains the public-event/catalyst collector; GAGARIN remains the market-analysis/planning engine. No provider, source, schedule, Telegram listener, state, journal, LUBJANKA, score, direction, Governor, entry, SL/TP, sizing or PAPER authorization changed. PAPER ONLY; no live Telegram send, deployment or trade.
+- **Status:** draft PR for CI review. Do not merge until the focused parser tests and all required PR workflows pass.

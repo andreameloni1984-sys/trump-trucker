@@ -71,7 +71,7 @@ def parse_public_feed(raw, base_url):
         raise ValueError("Fonte pubblica priva di RSS/Atom XML valido")
     entries = [n for n in root.iter() if _name(n.tag) in {"item", "entry"}]
     result = []
-    for index, entry in enumerate(entries):
+    for entry in entries:
         title = clean_public_text(_text(entry, {"title"}))
         body = clean_public_text(_text(entry, {"encoded", "description", "summary", "content"}))
         if not title and not body:
@@ -96,7 +96,6 @@ def parse_public_feed(raw, base_url):
         result.append({
             "id": identity[:500], "title": title[:300], "text": body[:6000],
             "published": published[:100], "url": link[:1000],
-            "primary_url": original[:1000], "feed_url": base_url[:1000],
-            "item_index": str(index),
+            "primary_url": original[:1000],
         })
     return result
