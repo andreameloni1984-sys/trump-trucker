@@ -6,7 +6,10 @@ these remain hypotheses and never certify an entry or place an order.
 """
 from __future__ import annotations
 import re
+from datetime import datetime
+from email.utils import parsedate_to_datetime
 from typing import Any
+from urllib.parse import urlsplit
 
 DOMAIN_INSTRUMENTS = {
     "ENERGY": [
@@ -229,6 +232,54 @@ _DIRECTION_RULES = [
 ]
 
 
+def valid_item_level_metadata(finding: Any) -> bool:
+    """Validate item-level provenance metadata before directional mapping.
+
+    This checks metadata shape only; it does not authenticate the publisher or
+    verify the truth of the underlying claim.
+    """
+    if not isinstance(finding, dict):
+        return False
+    if finding.get("evidence") != "PUBLIC_RSS_ITEM":
+        return False
+    if not str(finding.get("event_id") or "").strip():
+        return False
+    if not str(finding.get("source") or "").strip():
+        return False
+
+    url = str(finding.get("url") or "").strip()
+    if not url or any(character.isspace() for character in url):
+        return False
+    try:
+        parsed_url = urlsplit(url)
+        port = parsed_url.port
+    except ValueError:
+        return False
+    scheme = parsed_url.scheme.lower()
+    if (
+        scheme not in {"http", "https"}
+        or not parsed_url.hostname
+        or parsed_url.username is not None
+        or parsed_url.password is not None
+        or (parsed_url.path in {"", "/"} and not parsed_url.query)
+    ):
+        return False
+    expected_port = 443 if scheme == "https" else 80
+    if port is not None and port != expected_port:
+        return False
+
+    raw_published = str(finding.get("published") or "").strip()
+    if not raw_published:
+        return False
+    try:
+        published = datetime.fromisoformat(raw_published.replace("Z", "+00:00"))
+    except ValueError:
+        try:
+            published = parsedate_to_datetime(raw_published)
+        except (TypeError, ValueError, OverflowError):
+            return False
+    return published.tzinfo is not None and published.utcoffset() is not None
+
 def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) -> list[dict[str, Any]]:
     """Map dated, URL-backed public items to unambiguous directional hypotheses.
 
@@ -239,12 +290,7 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
         return []
     candidates: dict[tuple[str, str], dict[str, Any]] = {}
     for finding in findings:
-        if (
-            finding.get("evidence") != "PUBLIC_RSS_ITEM"
-            or not str(finding.get("event_id") or "").strip()
-            or not finding.get("url")
-            or not finding.get("published")
-        ):
+        if not valid_item_level_metadata(finding):
             continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
