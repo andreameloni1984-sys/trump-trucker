@@ -62,11 +62,9 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "President announces new tariffs on China"
         )
         self.assertIn("TRADE_POLICY", domains)
-
-    @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     @patch.object(trump_tracker, "fetch_public_feed", return_value=FEED)
     def test_rss_items_are_saved_with_title_date_url_and_deduplicated(
-        self, _fetch_feed, _fetch_page
+        self, _fetch_feed
     ):
         state = {}
         with (
@@ -84,6 +82,30 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertEqual(item["url"], "https://example.gov/news/tariffs")
         self.assertIn("TRADE_POLICY", item["domains"])
         self.assertEqual(item["evidence"], "PUBLIC_RSS_ITEM")
+
+    @patch("trump_tracker.urllib.request.urlopen")
+    def test_intelligence_snapshot_fetches_only_configured_item_level_feed(self, urlopen):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = FEED
+        urlopen.return_value = response
+        feed_url = "https://example.gov/feed.xml"
+        with (
+            patch.dict(os.environ, {
+                "SPUTNIK_RSS_FEEDS": feed_url,
+                "SPUTNIK_SOCIAL_ENABLED": "1",
+            }),
+            patch.object(
+                trump_tracker,
+                "utc_now",
+                return_value=datetime(2026, 10, 19, 6, 1, tzinfo=timezone.utc),
+            ),
+        ):
+            trump_tracker.intelligence_snapshot({})
+
+        self.assertEqual(urlopen.call_count, 1)
+        self.assertEqual(urlopen.call_args.args[0].full_url, feed_url)
+        self.assertFalse(hasattr(trump_tracker, "fetch_public_text"))
+        self.assertFalse(hasattr(trump_tracker, "INTELLIGENCE_SOURCES"))
 
     def test_public_item_timestamp_requires_explicit_timezone_and_normalizes_utc(self):
         self.assertIsNone(
@@ -123,7 +145,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             with self.subTest(case=label):
                 state = {}
                 with (
-                    patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test")),
                     patch.object(trump_tracker, "fetch_public_feed", return_value=feed),
                     patch.object(trump_tracker, "utc_now", return_value=fixed_now),
                     patch.dict(os.environ, {
@@ -217,8 +238,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             result = trump_tracker.forward_findings_to_gagarin([{
                 "event_id": "evt-1",
                 "evidence": "PUBLIC_RSS_ITEM",
-                "title": "Tariff headline",
-                "url": "https://example.gov/news/1",
+                "title": "Tariff headline",                "url": "https://example.gov/news/1",
                 "domains": ["TRADE_POLICY"],
             }])
         self.assertIsNone(result)
@@ -301,10 +321,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             },
         ]
         self.assertIsNone(trump_tracker.intelligence_digest_message(items))
-
-
-    @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
-    def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self, _fetch_page):
+    def test_first_scan_seeds_feed_backlog_without_emitting_old_items(self):
         fixed_now = datetime(2026, 10, 26, 6, 0, tzinfo=timezone.utc)
         fresh_item = FEED.replace(
             b"Mon, 19 Oct 2026 06:00:00 GMT", b"Mon, 26 Oct 2026 05:56:00 GMT"
