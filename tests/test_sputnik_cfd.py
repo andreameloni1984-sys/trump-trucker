@@ -382,12 +382,15 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
                     {"WTI": quote},
                 )
         self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["technical_direction"], "NEUTRAL")
+        self.assertEqual(signal["technical_alignment"], "WAIT_CONFIRMATION")
         self.assertEqual(signal["setup_direction"], "SHORT")
         self.assertEqual(signal["setup_alignment"], "CONTRASTS")
         self.assertEqual(signal["status"], "EARLY_SETUP")
         self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
         message = format_cfd_signal(signal)
         self.assertIn("BIAS: LONG", message)
+        self.assertIn("TECNICA: NEUTRAL (WAIT_CONFIRMATION)", message)
         self.assertIn("D-L-A: SHORT (CONTRASTS)", message)
 
     def test_early_dla_can_publish_technical_only_bias_when_news_is_neutral(self):
