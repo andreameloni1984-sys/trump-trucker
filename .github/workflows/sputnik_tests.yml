@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "trump_tracker.py"
+      - "sputnik_public_feed_monitor.py"
       - "sputnik_ranking.py"
       - "sputnik_decision.py"
       - "sputnik_decision_engine.py"
