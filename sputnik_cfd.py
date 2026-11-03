@@ -7,6 +7,7 @@ the directional hypothesis. This module never executes a paper or live order.
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from typing import Any
 import math
 import json
@@ -41,6 +42,40 @@ def _quote_age_seconds(quote: dict[str, Any]) -> float | None:
         return (datetime.now(timezone.utc) - dt.astimezone(timezone.utc)).total_seconds()
     except (TypeError, ValueError):
         return None
+
+def _comex_gold_session_status(signal: dict[str, Any]) -> str | None:
+    """Informational COMEX GC session label at signal time; never gates a setup."""
+    if str(signal.get("quote_symbol") or "").upper() != "GC=F":
+        return None
+    stamp = signal.get("timestamp")
+    if not stamp:
+        return "UNVERIFIED"
+    try:
+        if isinstance(stamp, datetime):
+            dt = stamp
+        else:
+            normalized = str(stamp).strip().replace(" UTC", "+00:00").replace("Z", "+00:00")
+            dt = datetime.fromisoformat(normalized)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        chicago = dt.astimezone(ZoneInfo("America/Chicago"))
+    except (TypeError, ValueError, OSError):
+        return "UNVERIFIED"
+
+    minute_of_day = chicago.hour * 60 + chicago.minute
+    weekday = chicago.weekday()
+    # CME COMEX metals regular schedule: daily maintenance break 16:00-17:00 CT,
+    # Monday through Thursday. Friday closes at 16:00 CT; the weekly session
+    # resumes Sunday at 17:00 CT. Holiday/special sessions are not inferred.
+    if weekday in {0, 1, 2, 3} and 16 * 60 <= minute_of_day < 17 * 60:
+        return "CLOSED_DAILY_MAINTENANCE_BREAK"
+    if (
+        (weekday == 4 and minute_of_day >= 16 * 60)
+        or weekday == 5
+        or (weekday == 6 and minute_of_day < 17 * 60)
+    ):
+        return "CLOSED_WEEKEND"
+    return "REGULAR_SESSION_WINDOW"
 
 
 def _quote_is_fresh(quote: dict[str, Any], max_age_minutes: int = QUOTE_MAX_AGE_MIN) -> bool:
@@ -749,6 +784,18 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
             lines.append(f"📅 CONTRATTO: {str(contract_description)[:180]}")
     else:
         lines.extend(["", "📡 QUOTAZIONE: N/D — fonte e timestamp non disponibili."])
+
+    # Market-session context is informational only. It does not change bias,
+    # setup state, levels, risk, sizing or PAPER execution state.
+    session_status = _comex_gold_session_status(signal)
+    if session_status == "CLOSED_DAILY_MAINTENANCE_BREAK":
+        lines.append("🏛️ SESSION: CLOSED — COMEX daily maintenance break (16:00–17:00 America/Chicago).")
+    elif session_status == "CLOSED_WEEKEND":
+        lines.append("🏛️ SESSION: CLOSED — COMEX weekly closure.")
+    elif session_status == "REGULAR_SESSION_WINDOW":
+        lines.append("🏛️ SESSION: within regular COMEX hours; holiday/special sessions not checked.")
+    elif session_status == "UNVERIFIED":
+        lines.append("🏛️ SESSION: UNVERIFIED — signal timestamp missing or invalid.")
 
     if signal.get("entry") is not None:
         lines.extend([
