@@ -461,3 +461,21 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - The active item-level RSS implementation is in `trump_tracker.py` and `sputnik_public_sources.py`, including the White House and Trump Truth Archive feeds. Those active paths are retained.
 - Deleted only the unreferenced stub. Added its path to the Sputnik regression workflow's path filters so any future reintroduction/change triggers tests.
 - No source URLs, event classifications, Telegram behavior, ranking, or PAPER-only boundaries changed.
+
+
+## 2026-11-03 — Remove non-actionable page-level homepage polling
+
+- **Finding:** every active SPUTNIK intelligence cycle fetched three generic HTML homepages (White House, Trump Truth Archive and OGE) via `fetch_public_text()`. The resulting page-level findings were explicitly excluded from the Telegram catalyst digest and from the GAGARIN handoff, because they lacked an individual dated article/post permalink. They could only add generic keyword correlations to local history and extra source requests.
+- **Implemented on branch** `cleanup/remove-page-level-polling-20261103`: removed the three-page homepage fetch loop, its unused `INTELLIGENCE_SOURCES` catalog, HTML text extractor and fetch helper. Kept the White House and Trump Truth Archive item-level RSS feeds, per-item IDs, publication-time validation, original permalink validation, freshness window, deduplication, history and GAGARIN handoff unchanged.
+- **Regression:** added an integration test that mocks the network and asserts a configured RSS-only snapshot makes exactly one request to that feed URL, with no page-level fetch helper/catalog remaining. Existing item-level RSS tests remain and no longer mock the deleted homepage helper.
+- **Expected request reduction:** the scheduled collector is nominally configured every five minutes (up to 288 cycles/day). Removing three homepage fetches per cycle avoids up to 864 generic HTML requests/day at that nominal cadence. Actual Actions start frequency and request savings must be measured from run logs; this is a schedule-based upper estimate, not a measured saving. Two item-level RSS feed requests remain in the default configuration.
+- **Signal impact:** no individual dated RSS item is removed. The deleted page-level items were already ineligible for the directional news digest and GAGARIN catalyst handoff, so this does not remove a confirmed catalyst, market signal, price observation or execution path.
+- **Safety:** no SEC filing collection, Form 4/13F parsing, RSS source, event mapping, directional bias, technical recommender, score, entry/SL/TP, risk, Telegram polling/delivery, GAGARIN handoff, PAPER authorization or order logic changed. PAPER ONLY; no live provider request, Telegram message, broker action, deployment or order.
+- **Validation:** PR CI must pass on the exact final head before merge.
+
+
+### CI correction — remove obsolete homepage-parser test dependency
+
+- The first SPUTNIK ranking workflow exposed one test-only import failure: `tests/test_public_text_extractor.py` still imported the deleted `TextExtractor` homepage parser. The new item-intelligence workflow itself completed SUCCESS on the first PR head.
+- Replaced the obsolete HTML extraction tests with focused tests for the still-active plain-text market-domain classifier: trade-policy headlines, routine political endorsements, and concrete oil-supply actions.
+- No runtime behavior changed in this correction. A fresh full ranking run and item-intelligence run are required on the corrected PR head before merge.
