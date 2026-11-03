@@ -857,5 +857,85 @@ class CfdQuoteProvenanceFormattingTests(unittest.TestCase):
         self.assertNotIn("QUOTE UTC: 2026-11-03T19:12:00+00:00", message)
 
 
+class CfdComexSessionStatusTests(unittest.TestCase):
+    def test_gold_signal_during_comex_daily_break_is_labelled_not_tradable_now(self):
+        signal = {
+            "instrument": "GOLD",
+            "direction": "LONG",
+            "status": "EARLY_SETUP",
+            "setup_status": "EARLY_SETUP",
+            "paper_trade_status": "NOT_EXECUTED",
+            "score": 80,
+            # 22:10 UTC on 2026-11-03 = 16:10 America/Chicago (CST),
+            # inside the regular COMEX daily maintenance break.
+            "timestamp": "2026-11-03 22:10 UTC",
+            "entry": 3940.2,
+            "stop": 3939.0428,
+            "tp1": 3941.3571,
+            "tp2": 3942.5142,
+            "atr": 0.7714,
+            "quote_provider": "Yahoo Finance chart (1m futures)",
+            "quote_symbol": "GC=F",
+            "quote_market_type": "FUTURES_CONTINUOUS",
+            "quote_currency": "USD",
+            "quote_unit": "troy_oz",
+            "quote_time": "2026-11-03T21:59:00+00:00",
+            "quote_age_seconds": 671,
+            "quote_status": "FRESH",
+        }
+
+        message = format_cfd_signal(signal)
+
+        self.assertIn("SESSION: CLOSED", message)
+        self.assertIn("daily maintenance break", message)
+        self.assertIn("16:00–17:00 America/Chicago", message)
+        self.assertIn("ENTRY: 3940.2", message)
+        self.assertIn("SL:    3939.0428", message)
+        self.assertIn("TP1:   3941.3571", message)
+        self.assertIn("TP2:   3942.5142", message)
+        self.assertIn("SETUP: EARLY_SETUP", message)
+        self.assertIn("TRADE PAPER: NOT_EXECUTED", message)
+
+    def test_gold_signal_inside_regular_hours_is_labelled_with_holiday_caveat(self):
+        message = format_cfd_signal({
+            "instrument": "GOLD",
+            "direction": "LONG",
+            "status": "EARLY_SETUP",
+            "setup_status": "EARLY_SETUP",
+            "paper_trade_status": "NOT_EXECUTED",
+            "timestamp": "2026-11-03 20:10 UTC",
+            "quote_symbol": "GC=F",
+        })
+
+        self.assertIn("within regular COMEX hours", message)
+        self.assertIn("holiday/special sessions not checked", message)
+
+    def test_gold_signal_without_timestamp_is_explicitly_unverified(self):
+        message = format_cfd_signal({
+            "instrument": "GOLD",
+            "direction": "LONG",
+            "status": "EARLY_BIAS",
+            "setup_status": "EARLY_BIAS",
+            "paper_trade_status": "NOT_EXECUTED",
+            "quote_symbol": "GC=F",
+        })
+
+        self.assertIn("SESSION: UNVERIFIED", message)
+
+    def test_non_comex_instrument_does_not_receive_gold_session_label(self):
+        message = format_cfd_signal({
+            "instrument": "WTI",
+            "direction": "LONG",
+            "status": "EARLY_SETUP",
+            "setup_status": "EARLY_SETUP",
+            "paper_trade_status": "NOT_EXECUTED",
+            "timestamp": "2026-11-03 22:10 UTC",
+            "quote_symbol": "CL=F",
+        })
+
+        self.assertNotIn("SESSION: CLOSED", message)
+        self.assertNotIn("COMEX", message)
+
+
 if __name__ == "__main__":
     unittest.main()
