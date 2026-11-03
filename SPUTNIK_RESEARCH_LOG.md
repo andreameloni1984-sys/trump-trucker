@@ -461,3 +461,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - The active item-level RSS implementation is in `trump_tracker.py` and `sputnik_public_sources.py`, including the White House and Trump Truth Archive feeds. Those active paths are retained.
 - Deleted only the unreferenced stub. Added its path to the Sputnik regression workflow's path filters so any future reintroduction/change triggers tests.
 - No source URLs, event classifications, Telegram behavior, ranking, or PAPER-only boundaries changed.
+
+
+## 2026-11-03 — Expose execution-quote provenance in SPUTNIK CFD alerts
+
+- **Observed run:** GitHub Actions SPUTNIK run #267 (2026-11-03 19:13 UTC) emitted GOLD LONG / EARLY_SETUP / PAPER NOT_EXECUTED with entry 3938.1001, SL 3937.1680, TP1 3939.0322, TP2 3939.9642 and ATR 0.6214. The run started at 19:13:19.461Z and the CFD message was accepted by the Telegram API at 19:13:23.692Z (about 4.2 seconds from run start). The message did not expose the execution quote provider, symbol, quote timestamp/age, currency/unit, market type or contract description, even though `build_cfd_signal()` already carried those fields.
+- **Implemented on this branch:** the CFD formatter now displays provider, exact Yahoo symbol, market type, currency/unit, quote timestamp, quote age, bid/ask availability and the provider's contract description. Missing fields render as N/D; no price, timestamp, spread or expiry is inferred.
+- **Regression tests:** one test checks the full futures provenance block; another confirms missing provenance is shown as unavailable rather than fabricated.
+- **Outcome:** the observed signal was `NOT_EXECUTED`, so it is not a trade result. Its historical outcome is **ESITO NON VERIFICABILE**: the old run log omitted the quote timestamp/age, Yahoo's continuous-futures symbol does not expose the exact expiry, and the Actions run had no candle artifact for chronological SL/TP evaluation.
+- **Scope:** presentation/auditability only. No scoring, direction, setup, ATR, entry, SL, TP, risk, sizing, provider routing, Telegram transport, Governor or PAPER behavior changed. No order, merge or deployment.
