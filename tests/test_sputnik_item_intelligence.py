@@ -492,5 +492,36 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("tests/test_sputnik_item_intelligence.py", workflow)
 
 
+class SputnikUnusedFeedMonitorCleanupTests(unittest.TestCase):
+    def test_orphaned_feed_monitor_is_absent_and_has_no_runtime_references(self):
+        root = Path(__file__).resolve().parents[1]
+        module_name = "sputnik_public_feed_monitor"
+        self.assertFalse((root / f"{module_name}.py").exists())
+
+        references = []
+        sources = list(root.rglob("*.py")) + list(root.rglob("*.yml")) + list(root.rglob("*.yaml"))
+        for source_path in sources:
+            if source_path.resolve() == Path(__file__).resolve():
+                continue
+            if module_name in source_path.read_text(encoding="utf-8"):
+                references.append(source_path.relative_to(root).as_posix())
+
+        self.assertEqual(references, [])
+
+    def test_active_rss_collector_and_telegram_entrypoints_remain_unchanged(self):
+        root = Path(__file__).resolve().parents[1]
+        tracker = (root / "trump_tracker.py").read_text(encoding="utf-8")
+        collector_workflow = (root / ".github/workflows/trump_tracker.yml").read_text(encoding="utf-8")
+        polling_workflow = (root / ".github/workflows/telegram-polling.yml").read_text(encoding="utf-8")
+
+        self.assertIn("from sputnik_public_sources import parse_public_feed", tracker)
+        self.assertIn("def _configured_rss_feeds", tracker)
+        self.assertIn("def _domains_for_public_text", tracker)
+        self.assertIn("parse_public_feed(fetch_public_feed(feed_url), feed_url)", tracker)
+        self.assertIn("domains = _domains_for_public_text(body)", tracker)
+        self.assertIn("run: python trump_tracker.py", collector_workflow)
+        self.assertIn("run: python telegram/polling_runner.py", polling_workflow)
+
+
 if __name__ == "__main__":
     unittest.main()
