@@ -16,6 +16,7 @@ class PublicFeedParserTests(unittest.TestCase):
         self.assertEqual(rows[0]["id"], "item-123")
         self.assertEqual(rows[0]["published"], "Mon, 12 Oct 2026 06:00:00 GMT")
         self.assertEqual(rows[0]["text"], "Policy details here.")
+        self.assertNotIn("item_index", rows[0])
 
     def test_atom_link_and_original_url(self):
         raw = b'''<feed xmlns="http://www.w3.org/2005/Atom" xmlns:truth="https://example.test/truth">
