@@ -1271,19 +1271,23 @@ def send_telegram(message: str, chat_id: str | None = None) -> bool:
     request = urllib.request.Request(url, data=data, method="POST")
     request.add_header("Content-Type", "application/x-www-form-urlencoded")
 
+    send_started = time.monotonic()
     try:
         with urllib.request.urlopen(request, timeout=20) as response:
             payload = json.loads(response.read().decode("utf-8"))
+        send_elapsed_ms = (time.monotonic() - send_started) * 1000.0
         message_id = confirmed_message_id(payload)
         if message_id is not None:
-            print(f"SPUTNIK: Telegram delivery confirmed | message_id={message_id}.")
+            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | delivery confirmed | message_id={message_id}.")
             return True
         if isinstance(payload, dict) and payload.get("ok") is False:
+            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | delivery rejected.")
             print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
         else:
-            print("SPUTNIK: Telegram delivery NOT confirmed; missing or invalid message_id.")
+            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | delivery NOT confirmed.")
     except urllib.error.HTTPError as exc:
-        print(f"SPUTNIK: Telegram HTTP error {exc.code}.")
+        send_elapsed_ms = (time.monotonic() - send_started) * 1000.0
+        print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | HTTP error {exc.code}.")
         try:
             payload = json.loads(exc.read().decode("utf-8", errors="replace"))
             if isinstance(payload, dict):
@@ -1291,9 +1295,11 @@ def send_telegram(message: str, chat_id: str | None = None) -> bool:
         except Exception:
             pass
     except urllib.error.URLError as exc:
-        print(f"SPUTNIK: Telegram network error: {exc.reason}")
+        send_elapsed_ms = (time.monotonic() - send_started) * 1000.0
+        print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | network error: {exc.reason}")
     except Exception as exc:
-        print(f"SPUTNIK: Telegram exception: {type(exc).__name__}")
+        send_elapsed_ms = (time.monotonic() - send_started) * 1000.0
+        print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | exception: {type(exc).__name__}")
     return False
 
 
@@ -1712,6 +1718,8 @@ def telegram_test_message() -> str:
 
 
 def main() -> None:
+    run_started = time.monotonic()
+    print(f"SPUTNIK: run started | utc={utc_now().isoformat()}", flush=True)
     if os.getenv("SPUTNIK_TELEGRAM_TEST", "").strip().lower() in {"1", "true", "yes"}:
         print("SPUTNIK: esecuzione test Telegram.")
         if not send_telegram(telegram_test_message()):
@@ -1745,10 +1753,14 @@ def main() -> None:
         print("SPUTNIK: monitoraggio fermo. Usa /start su Telegram.")
         return
 
+    stage_started = time.monotonic()
     events = collect()
+    print(f"SPUTNIK: SEC collection={((time.monotonic() - stage_started) * 1000.0):.0f}ms | filings={len(events)}", flush=True)
     fresh = new_events(events, state)
     all_transaction_events = events
+    stage_started = time.monotonic()
     transactions = extract_transactions(all_transaction_events)
+    print(f"SPUTNIK: transaction extraction={((time.monotonic() - stage_started) * 1000.0):.0f}ms | records={len(transactions)}", flush=True)
     stored_transactions = state.setdefault("transactions", {})
     new_transactions: list[TransactionRecord] = []
     for tx in transactions:
@@ -1756,8 +1768,12 @@ def main() -> None:
         if key not in stored_transactions:
             stored_transactions[key] = asdict(tx)
             new_transactions.append(tx)
+    stage_started = time.monotonic()
     intelligence = intelligence_snapshot(state)
+    print(f"SPUTNIK: public intelligence scan={((time.monotonic() - stage_started) * 1000.0):.0f}ms | findings={len(intelligence)}", flush=True)
+    stage_started = time.monotonic()
     gagarin_confirmation = forward_findings_to_gagarin(intelligence)
+    print(f"SPUTNIK: GAGARIN forwarding={((time.monotonic() - stage_started) * 1000.0):.0f}ms", flush=True)
     if gagarin_confirmation:
         state["gagarin_confirmations"] = {
             str(item.get("event_id") or index): item
@@ -1776,6 +1792,7 @@ def main() -> None:
     print(f"SPUTNIK: {len(new_transactions)} nuove operazioni documentate.")
     print(f"SPUTNIK: {len(intelligence)} nuove correlazioni da fonti pubbliche.")
 
+    notifications_started = time.monotonic()
     for event in fresh:
         message = telegram_message(event)
         print(message)
@@ -1822,6 +1839,9 @@ def main() -> None:
         message = telegram_morning_message(state)
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+
+    print(f"SPUTNIK: notification stage={((time.monotonic() - notifications_started) * 1000.0):.0f}ms", flush=True)
+    print(f"SPUTNIK: total run={((time.monotonic() - run_started) * 1000.0):.0f}ms", flush=True)
 
 
 if __name__ == "__main__":
