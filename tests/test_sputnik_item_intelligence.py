@@ -429,16 +429,22 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                         )
 
     def test_save_state_does_not_overwrite_corrupt_or_malformed_existing_file(self):
-        original = '{"events": []}'
+        cases = ('{"events": []}', '{not-json', '[]')
+        next_state = {"events": {"new": {"filed_at": "2026-11-03"}}}
         with tempfile.TemporaryDirectory() as directory:
             state_path = Path(directory) / "sputnik_state.json"
-            state_path.write_text(original, encoding="utf-8")
-            next_state = {"events": {"new": {"filed_at": "2026-11-03"}}}
             with patch.object(trump_tracker, "STATE_FILE", state_path):
-                trump_tracker.save_state(next_state)
-
-            self.assertEqual(state_path.read_text(encoding="utf-8"), original)
-            self.assertEqual(list(state_path.parent.glob(".sputnik_state.json.*.tmp")), [])
+                for original in cases:
+                    with self.subTest(original=original):
+                        state_path.write_text(original, encoding="utf-8")
+                        trump_tracker.save_state(next_state)
+                        self.assertEqual(
+                            state_path.read_text(encoding="utf-8"), original
+                        )
+                        self.assertEqual(
+                            list(state_path.parent.glob(".sputnik_state.json.*.tmp")),
+                            [],
+                        )
 
     def test_save_state_preserves_previous_file_and_cleans_temp_on_replace_failure(self):
         with tempfile.TemporaryDirectory() as directory:
