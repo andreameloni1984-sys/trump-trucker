@@ -289,6 +289,21 @@ class EarlyBrentCatalystTests(unittest.TestCase):
                 self.assertEqual(recommendation["bias"], "NEUTRAL")
                 self.assertEqual(recommendation["status"], "NO_DIRECTION")
 
+    def test_early_directional_rules_reject_invalid_item_metadata(self):
+        cases = [
+            ("oil tanker near Saudi Arabia was struck", {"url": "javascript:alert(1)"}),
+            ("oil tanker near Saudi Arabia was struck", {"url": "https://user:pass@example.com/event"}),
+            ("oil tanker near Saudi Arabia was struck", {"published": "2026-10-30T21:00:00"}),
+            ("EIA reports U.S. crude inventories fell by 2.1 million barrels", {"url": "https://example.com:8443/inventory"}),
+            ("EIA reports U.S. crude inventories fell by 2.1 million barrels", {"published": "Fri, 30 Oct 2026 21:00:00"}),
+            ("oil tanker near Saudi Arabia was struck", {"source": ""}),
+        ]
+        for title, overrides in cases:
+            with self.subTest(title=title, overrides=overrides):
+                recommendation = recommend_trading_instrument([_finding(title, **overrides)])
+                self.assertIsNotNone(recommendation)
+                self.assertEqual(recommendation["bias"], "NEUTRAL")
+                self.assertEqual(recommendation["status"], "NO_DIRECTION")
     def test_hormuz_reopening_is_brent_short_not_long(self):
         recommendation = recommend_trading_instrument([
             _finding("Strait of Hormuz reopened after ceasefire; shipping resumes")
