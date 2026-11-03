@@ -18,6 +18,7 @@ on:
       - "telegram_delivery.py"
       - "tests/test_telegram_delivery.py"
       - ".github/workflows/daily-summary.yml"
+      - ".github/workflows/telegram-polling.yml"
       - "tests/test_sputnik_decision_engine.py"
       - "tests/test_sputnik_decision.py"
       - "tests/test_sputnik_ranking.py"
