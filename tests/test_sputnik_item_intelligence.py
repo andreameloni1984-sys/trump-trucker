@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
 import trump_tracker
-from sputnik_catalyst import catalyst_watchlist
+from sputnik_catalyst import catalyst_watchlist, directional_news_candidates
 
 
 FEED = b"""<rss><channel><item>
@@ -203,6 +203,47 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                     trump_tracker.directional_news_candidates([finding]), []
                 )
 
+    def test_directional_news_candidates_rejects_invalid_item_metadata(self):
+        base = {
+            "event_id": "tariff-metadata-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/news/tariffs",
+            "published": "2026-10-26T10:00:00Z",
+            "source": "WHITE_HOUSE",
+            "domains": ["TRADE_POLICY"],
+        }
+        invalid_cases = [
+            ("relative permalink", {"url": "/news/tariffs"}),
+            ("unsupported scheme", {"url": "javascript:alert(1)"}),
+            ("userinfo permalink", {"url": "https://user:pass@example.gov/news/tariffs"}),
+            ("archive root", {"url": "https://example.gov/"}),
+            ("invalid port", {"url": "https://example.gov:bad/news/tariffs"}),
+            ("nonstandard port", {"url": "https://example.gov:8443/news/tariffs"}),
+            ("naive ISO timestamp", {"published": "2026-10-26T10:00:00"}),
+            ("date-only timestamp", {"published": "2026-10-26"}),
+            ("naive RFC822 timestamp", {"published": "Mon, 26 Oct 2026 10:00:00"}),
+            ("missing source", {"source": ""}),
+        ]
+        for label, overrides in invalid_cases:
+            with self.subTest(case=label):
+                finding = {**base, **overrides}
+                self.assertEqual(directional_news_candidates([finding]), [])
+
+    def test_directional_news_candidates_accepts_timezone_aware_rfc822_timestamp(self):
+        finding = {
+            "event_id": "tariff-rfc822-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "title": "President announces new tariffs on China",
+            "text": "New tariffs on imports were announced.",
+            "url": "https://example.gov/news/tariffs",
+            "published": "Mon, 26 Oct 2026 10:00:00 GMT",
+            "source": "WHITE_HOUSE",
+            "domains": ["TRADE_POLICY"],
+        }
+        candidates = directional_news_candidates([finding])
+        self.assertEqual({row["instrument"] for row in candidates}, {"NASDAQ100", "GOLD"})
     def test_trade_policy_maps_to_watch_candidates_not_orders(self):
         rows = catalyst_watchlist(
             [{"source": "WHITE_HOUSE_RSS", "domains": ["TRADE_POLICY"], "event_id": "evt-1", "evidence": "PUBLIC_RSS_ITEM"}]
