@@ -804,5 +804,58 @@ class CfdCartDisplayStateTests(unittest.TestCase):
         self.assertEqual(state["paper_trade"], "NOT_EXECUTED")
 
 
+class CfdQuoteProvenanceFormattingTests(unittest.TestCase):
+    def test_formatter_exposes_execution_quote_source_timestamp_and_market_basis(self):
+        signal = {
+            "instrument": "GOLD",
+            "direction": "LONG",
+            "status": "EARLY_SETUP",
+            "setup_status": "EARLY_SETUP",
+            "paper_trade_status": "NOT_EXECUTED",
+            "score": 100,
+            "timestamp": "2026-11-03 19:13 UTC",
+            "entry": 3938.1001,
+            "stop": 3937.168,
+            "tp1": 3939.0322,
+            "tp2": 3939.9642,
+            "atr": 0.6214,
+            "quote_provider": "Yahoo Finance chart (1m futures)",
+            "quote_symbol": "GC=F",
+            "quote_market_type": "FUTURES_CONTINUOUS",
+            "quote_currency": "USD",
+            "quote_unit": "troy_oz",
+            "quote_time": "2026-11-03T19:12:00+00:00",
+            "quote_age_seconds": 83.0,
+            "quote_status": "FRESH",
+            "quote_bid": None,
+            "quote_ask": None,
+            "quote_contract_description": "COMEX gold continuous futures; exact expiry not exposed",
+        }
+
+        message = format_cfd_signal(signal)
+
+        self.assertIn("QUOTAZIONE: Yahoo Finance chart (1m futures) | GC=F | FRESH", message)
+        self.assertIn("MERCATO: FUTURES_CONTINUOUS | USD/troy_oz", message)
+        self.assertIn("QUOTE UTC: 2026-11-03T19:12:00+00:00 | età 83s", message)
+        self.assertIn("BID/ASK: N/D/N/D", message)
+        self.assertIn("CONTRATTO: COMEX gold continuous futures; exact expiry not exposed", message)
+        self.assertIn("TRADE PAPER: NOT_EXECUTED", message)
+
+    def test_formatter_marks_missing_quote_provenance_without_inventing_it(self):
+        message = format_cfd_signal({
+            "instrument": "GOLD",
+            "direction": "LONG",
+            "status": "EARLY_BIAS",
+            "setup_status": "EARLY_BIAS",
+            "paper_trade_status": "NOT_EXECUTED",
+            "score": 100,
+            "timestamp": "2026-11-03 19:13 UTC",
+        })
+
+        self.assertIn("QUOTAZIONE: N/D", message)
+        self.assertNotIn("GC=F", message)
+        self.assertNotIn("QUOTE UTC: 2026-11-03T19:12:00+00:00", message)
+
+
 if __name__ == "__main__":
     unittest.main()
