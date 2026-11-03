@@ -13,7 +13,12 @@ import urllib.request
 import time
 from typing import Any
 
-from sputnik_catalyst import catalyst_watchlist, directional_news_candidates, non_negated_pattern_matches
+from sputnik_catalyst import (
+    catalyst_watchlist,
+    directional_news_candidates,
+    non_negated_pattern_matches,
+    valid_item_level_metadata,
+)
 from sputnik_action_reaction import match_historical_reactions, infer_direction
 
 COMMODITY_PRIORITY = {
@@ -66,12 +71,7 @@ def _early_direction(findings: list[dict[str, Any]], instrument: str) -> dict[st
     for finding in findings:
         # Require stable event identity so a directional pre-alert can be
         # deduplicated and joined to downstream GAGARIN feedback.
-        if (
-            finding.get("evidence") != "PUBLIC_RSS_ITEM"
-            or not str(finding.get("event_id") or "").strip()
-            or not finding.get("url")
-            or not finding.get("published")
-        ):
+        if not valid_item_level_metadata(finding):
             continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         matched_rules = []
@@ -138,12 +138,7 @@ def _early_us_crude_inventory_direction(
     """Map explicit U.S. crude stock draws/builds to WTI, never Brent."""
     candidates = []
     for finding in findings:
-        if (
-            finding.get("evidence") != "PUBLIC_RSS_ITEM"
-            or not str(finding.get("event_id") or "").strip()
-            or not finding.get("url")
-            or not finding.get("published")
-        ):
+        if not valid_item_level_metadata(finding):
             continue
         text = " ".join(
             str(finding.get(key) or "") for key in ("title", "text")
@@ -257,6 +252,8 @@ def _recommend_trading_instrument_from_news(
         early = _early_direction(findings, inst)
         hist_dirs: dict[str, str] = {}
         for finding in findings:
+            if not valid_item_level_metadata(finding):
+                continue
             if inst not in {"WTI", "BRENT", "GOLD"}:
                 continue
             domains = set(finding.get("domains") or [])
