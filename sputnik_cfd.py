@@ -721,6 +721,35 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"📌 STATO: {status}",
     ]
 
+    # Show the exact execution quote behind these levels. The builder already
+    # records this metadata; omitting it made a fresh-looking setup impossible
+    # to audit against its source timestamp and market basis.
+    quote_metadata_keys = (
+        "quote_provider", "quote_symbol", "quote_time", "quote_market_type",
+        "quote_age_seconds",
+    )
+    if any(signal.get(key) is not None for key in quote_metadata_keys):
+        quote_age = signal.get("quote_age_seconds")
+        try:
+            quote_age_value = float(quote_age)
+            quote_age_text = f"{quote_age_value:.0f}s" if math.isfinite(quote_age_value) else "N/D"
+        except (TypeError, ValueError, OverflowError):
+            quote_age_text = "N/D"
+        quote_bid = signal.get("quote_bid")
+        quote_ask = signal.get("quote_ask")
+        lines.extend([
+            "",
+            f"📡 QUOTAZIONE: {signal.get('quote_provider') or 'N/D'} | {signal.get('quote_symbol') or 'N/D'} | {signal.get('quote_status') or 'N/D'}",
+            f"🧾 MERCATO: {signal.get('quote_market_type') or 'N/D'} | {signal.get('quote_currency') or 'N/D'}/{signal.get('quote_unit') or 'N/D'}",
+            f"🕒 QUOTE UTC: {signal.get('quote_time') or 'N/D'} | età {quote_age_text}",
+            f"↔️ BID/ASK: {quote_bid if quote_bid is not None else 'N/D'}/{quote_ask if quote_ask is not None else 'N/D'}",
+        ])
+        contract_description = signal.get("quote_contract_description")
+        if contract_description:
+            lines.append(f"📅 CONTRATTO: {str(contract_description)[:180]}")
+    else:
+        lines.extend(["", "📡 QUOTAZIONE: N/D — fonte e timestamp non disponibili."])
+
     if signal.get("entry") is not None:
         lines.extend([
             "",
