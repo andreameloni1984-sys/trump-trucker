@@ -461,3 +461,15 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - The active item-level RSS implementation is in `trump_tracker.py` and `sputnik_public_sources.py`, including the White House and Trump Truth Archive feeds. Those active paths are retained.
 - Deleted only the unreferenced stub. Added its path to the Sputnik regression workflow's path filters so any future reintroduction/change triggers tests.
 - No source URLs, event classifications, Telegram behavior, ranking, or PAPER-only boundaries changed.
+
+
+
+## 2026-11-03 — Deduplicate SPUTNIK workflow path filters
+
+- Audit: inspected both event path filters in `.github/workflows/sputnik_tests.yml` and `.github/workflows/sputnik_menu_tests.yml` on current main. No open PR already targeted this exact cleanup.
+- Removed three repeated path entries: two duplicates in the ranking workflow pull-request filter (`tests/test_sputnik_action_reaction.py` and `sputnik_action_reaction.py`) and one duplicate `tests/test_sputnik_catalyst.py` entry in the menu workflow pull-request filter.
+- Retained each unique path, both push/pull-request triggers, all test commands, and the ranking/catalyst/action-reaction/Telegram coverage.
+- Added `tests/test_sputnik_workflow_path_filters.py` to assert event path filters contain no duplicates and critical action-reaction/catalyst paths remain present.
+- Cost/benefit: removes three redundant YAML path entries; GitHub already treats path filters as a set-like matching list, so no reduction in workflow runs or network requests is claimed. Benefit is lower config ambiguity and a regression guard.
+- No runtime code, public-source polling, event extraction, catalyst mapping, scoring, Telegram behavior, journal, or PAPER-only boundary changed.
+- PAPER ONLY; no deployment, secrets, live event polling, Telegram send, broker action, order, or merge.
