@@ -96,6 +96,6 @@ def parse_public_feed(raw, base_url):
         result.append({
             "id": identity[:500], "title": title[:300], "text": body[:6000],
             "published": published[:100], "url": link[:1000],
-            "primary_url": original[:1000], "feed_url": base_url[:1000],
+            "primary_url": original[:1000],
         })
     return result
