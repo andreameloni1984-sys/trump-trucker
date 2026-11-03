@@ -433,3 +433,14 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Safety:** technical observation only. Catalyst BIAS remains separate and is not overwritten; no entry, SL, TP, sizing, Governor, PAPER authorization, Telegram transport, or order behavior changed. No live quote or trade is claimed.
 - **Status:** CI pending on the new branch; do not merge until all required checks pass.
 - **Mode:** PAPER ONLY.
+
+
+## 2026-11-03 — Remove unreferenced duplicate decision module
+
+- Repository-wide code search on the default branch found no imports, function calls, workflow references, or test references to `sputnik_decision_strict.py`.
+- The active Telegram path imports `sputnik_decision_engine.py`; that module imports the shared scenario definitions from `sputnik_decision.py`. The focused market analyzer remains called by `sputnik_cfd.py`.
+- Cleanup: deleted only the unreferenced `sputnik_decision_strict.py` duplicate. Kept both active decision modules and their tests unchanged.
+- Expected runtime impact: no change to market processing or network requests because the removed file was not imported by the active runtime. Benefit is reduced dead-code surface and less ambiguity for future maintenance, not a claimed speed increase.
+- No strategy, event mapping, score, direction, price plan, Telegram behavior, persistence, or PAPER authorization changed.
+- Validation: repository search found no references; CI on the cleanup PR is required before merge.
+- PAPER ONLY; no live trade, deployment or Telegram send.
