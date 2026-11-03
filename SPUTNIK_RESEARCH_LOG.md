@@ -472,3 +472,10 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Signal impact:** no individual dated RSS item is removed. The deleted page-level items were already ineligible for the directional news digest and GAGARIN catalyst handoff, so this does not remove a confirmed catalyst, market signal, price observation or execution path.
 - **Safety:** no SEC filing collection, Form 4/13F parsing, RSS source, event mapping, directional bias, technical recommender, score, entry/SL/TP, risk, Telegram polling/delivery, GAGARIN handoff, PAPER authorization or order logic changed. PAPER ONLY; no live provider request, Telegram message, broker action, deployment or order.
 - **Validation:** PR CI must pass on the exact final head before merge.
+
+
+### CI correction — remove obsolete homepage-parser test dependency
+
+- The first SPUTNIK ranking workflow exposed one test-only import failure: `tests/test_public_text_extractor.py` still imported the deleted `TextExtractor` homepage parser. The new item-intelligence workflow itself completed SUCCESS on the first PR head.
+- Replaced the obsolete HTML extraction tests with focused tests for the still-active plain-text market-domain classifier: trade-policy headlines, routine political endorsements, and concrete oil-supply actions.
+- No runtime behavior changed in this correction. A fresh full ranking run and item-intelligence run are required on the corrected PR head before merge.
