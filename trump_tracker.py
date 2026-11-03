@@ -886,13 +886,42 @@ def normalize_cik(value: str) -> str:
     return digits.zfill(10)
 
 
+_STATE_MAPPING_KEYS = (
+    "events",
+    "transactions",
+    "intelligence",
+    "intelligence_items",
+    "intelligence_feed_initialized",
+    "intelligence_history",
+    "gagarin_confirmations",
+)
+
+
+def _valid_state_payload(payload: Any) -> bool:
+    """Accept only the object/map shape consumed by the collector."""
+    if not isinstance(payload, dict):
+        return False
+    return all(
+        key not in payload or isinstance(payload[key], dict)
+        for key in _STATE_MAPPING_KEYS
+    )
+
+
 def load_state() -> dict[str, Any]:
     if not STATE_FILE.exists():
         return {"events": {}, "updated_at": None}
     try:
-        return json.loads(STATE_FILE.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        # Corrupted state must not crash the whole collector.
+        payload = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        if not _valid_state_payload(payload):
+            raise ValueError("invalid SPUTNIK state schema")
+        return payload
+    except (OSError, ValueError):
+        # Keep the collector available, but save_state() will refuse to replace
+        # the existing file until its contents are repaired or restored.
+        print(
+            "SPUTNIK: state load fallback | reason=INVALID_OR_CORRUPT_STATE",
+            flush=True,
+        )
         return {"events": {}, "updated_at": None}
 
 
@@ -909,9 +938,18 @@ def save_state(state: dict[str, Any]) -> None:
     current: dict[str, Any] = {}
     if STATE_FILE.exists():
         try:
-            current = json.loads(STATE_FILE.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            current = {}
+            loaded_current = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+            if not _valid_state_payload(loaded_current):
+                raise ValueError("invalid SPUTNIK state schema")
+            current = loaded_current
+        except (OSError, ValueError):
+            # Never turn a damaged/unknown state file into a valid-looking
+            # empty snapshot: that would silently erase deduplication history.
+            print(
+                "SPUTNIK: state persistence skipped | reason=EXISTING_STATE_INVALID",
+                flush=True,
+            )
+            return
 
     def comparable(value: dict[str, Any]) -> dict[str, Any]:
         copy = dict(value)
