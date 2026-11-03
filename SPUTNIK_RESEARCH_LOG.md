@@ -470,3 +470,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Regression tests:** one test checks the full futures provenance block; another confirms missing provenance is shown as unavailable rather than fabricated.
 - **Outcome:** the observed signal was `NOT_EXECUTED`, so it is not a trade result. Its historical outcome is **ESITO NON VERIFICABILE**: the old run log omitted the quote timestamp/age, Yahoo's continuous-futures symbol does not expose the exact expiry, and the Actions run had no candle artifact for chronological SL/TP evaluation.
 - **Scope:** presentation/auditability only. No scoring, direction, setup, ATR, entry, SL, TP, risk, sizing, provider routing, Telegram transport, Governor or PAPER behavior changed. No order, merge or deployment.
+
+
+## 2026-11-03 — Separate SPUTNIK intelligence priority from operational validity
+
+- **Observed run:** SPUTNIK Actions run #267 (19:13:23 UTC) reported GOLD LONG, PRIORITÀ CATALIZZATORE 100/100, while the CFD alert showed D-L-A SHORT / CONTRASTS, EARLY_SETUP, and PAPER NOT_EXECUTED. The recommender score is inherited from the intelligence/catalyst watchlist; it is not a trade-success probability or execution-readiness score.
+- **Finding:** the CFD formatter relabelled that upstream value generically as SCORE, without an explicit operational-validity line. This could make a high intelligence priority look like an executable setup despite the separately reported early/contrasting state.
+- **Implemented on this branch:** display the value as PRIORITÀ INTELLIGENCE and explicitly state that it is neither probability nor operational validity. Add VALIDITÀ OPERATIVA, marked confirmed only when the existing status is CONFIRMED, the setup is CONFIRMED, quote status is FRESH, quote timestamp/age exist, and entry/ATR are present. Otherwise display NON CONFERMATA with the current setup state.
+- **Regression tests:** verify a 100/100 early setup with D-L-A contrast is still marked non-confirmed; verify confirmed wording requires fresh quote provenance; missing quote metadata cannot inherit the confirmed label.
+- **Scope:** presentation only. No score calculation, direction, setup evaluator, confirmation rule, quote freshness threshold, ATR, entry/SL/TP, risk, sizing, Governor, provider routing, Telegram transport, PAPER state or order behavior changed. No order, merge or deployment.

@@ -704,6 +704,20 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
     status = signal.get("status", "NO_DIRECTION")
     setup_status = signal.get("setup_status", status)
     paper_status = signal.get("paper_trade_status", "NOT_EXECUTED")
+    operationally_confirmed = (
+        status == "CONFIRMED"
+        and setup_status == "CONFIRMED"
+        and signal.get("quote_status") == "FRESH"
+        and bool(signal.get("quote_time"))
+        and signal.get("quote_age_seconds") is not None
+        and signal.get("entry") is not None
+        and signal.get("atr") is not None
+    )
+    operational_validity = (
+        "SETUP CONFERMATO — PAPER NON ESEGUITO"
+        if operationally_confirmed
+        else f"NON CONFERMATA — {setup_status}"
+    )
 
     lines = [
         f"{icon} SPUTNIK — ANALISI CFD",
@@ -717,7 +731,8 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"🧭 TECNICA: {signal.get('technical_direction', 'N/D')} ({signal.get('technical_alignment', 'NOT_ASSESSED')})",
         f"🧪 D-L-A: {signal.get('setup_direction', 'N/D')} ({signal.get('setup_alignment', 'NOT_ASSESSED')})",
         f"🧪 TRADE PAPER: {paper_status}",
-        f"📊 SCORE: {signal.get('score', 0):.0f}/100",
+        f"📊 PRIORITÀ INTELLIGENCE: {signal.get('score', 0):.0f}/100 (non è probabilità né validità operativa)",
+        f"🧭 VALIDITÀ OPERATIVA: {operational_validity}",
         f"📌 STATO: {status}",
     ]
 
