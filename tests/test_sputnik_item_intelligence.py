@@ -492,5 +492,41 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("tests/test_sputnik_item_intelligence.py", workflow)
 
 
+    def test_save_state_never_persists_private_gagarin_confirmation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = Path(directory) / "sputnik_state.json"
+            confirmation = {
+                "event_id": "evt-1",
+                "status": "PRICE_CONFIRMED",
+                "matched_instruments": [{
+                    "symbol": "WTI",
+                    "bias": "SHORT",
+                    "quote_timestamp": "2026-11-03T06:00:00Z",
+                }],
+            }
+            state = {
+                "events": {"evt-1": {"filed_at": "2026-11-03"}},
+                "transactions": {},
+                "gagarin_confirmations": {"evt-1": confirmation},
+            }
+            with (
+                patch.object(trump_tracker, "STATE_FILE", state_path),
+                patch.object(
+                    trump_tracker,
+                    "utc_now",
+                    return_value=datetime(2026, 11, 3, 6, 0, tzinfo=timezone.utc),
+                ),
+            ):
+                trump_tracker.save_state(state)
+
+            persisted = json.loads(state_path.read_text(encoding="utf-8"))
+            self.assertNotIn("gagarin_confirmations", persisted)
+            self.assertEqual(persisted["events"], state["events"])
+            self.assertEqual(
+                state["gagarin_confirmations"]["evt-1"],
+                confirmation,
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
