@@ -840,6 +840,42 @@ class CfdQuoteProvenanceFormattingTests(unittest.TestCase):
         self.assertIn("BID/ASK: N/D/N/D", message)
         self.assertIn("CONTRATTO: COMEX gold continuous futures; exact expiry not exposed", message)
         self.assertIn("TRADE PAPER: NOT_EXECUTED", message)
+        self.assertIn("PRIORITÀ INTELLIGENCE: 100/100", message)
+        self.assertIn("non è probabilità né validità operativa", message)
+        self.assertIn("VALIDITÀ OPERATIVA: NON CONFERMATA — EARLY_SETUP", message)
+
+    def test_confirmed_setup_requires_fresh_quote_provenance_for_validity_label(self):
+        confirmed = {
+            "instrument": "GOLD",
+            "direction": "LONG",
+            "status": "CONFIRMED",
+            "setup_status": "CONFIRMED",
+            "paper_trade_status": "NOT_EXECUTED",
+            "score": 85,
+            "timestamp": "2026-11-03 20:00 UTC",
+            "entry": 3940.0,
+            "stop": 3938.0,
+            "tp1": 3942.0,
+            "tp2": 3944.0,
+            "atr": 1.3333,
+            "quote_status": "FRESH",
+            "quote_time": "2026-11-03T19:59:00+00:00",
+            "quote_age_seconds": 60.0,
+        }
+        message = format_cfd_signal(confirmed)
+        self.assertIn(
+            "VALIDITÀ OPERATIVA: SETUP CONFERMATO — PAPER NON ESEGUITO",
+            message,
+        )
+        self.assertIn("PRIORITÀ INTELLIGENCE: 85/100", message)
+
+        # A stale/missing provenance record must not inherit the confirmed label.
+        confirmed["quote_status"] = "N/D"
+        message_without_quote = format_cfd_signal(confirmed)
+        self.assertIn(
+            "VALIDITÀ OPERATIVA: NON CONFERMATA — CONFIRMED",
+            message_without_quote,
+        )
 
     def test_formatter_marks_missing_quote_provenance_without_inventing_it(self):
         message = format_cfd_signal({
