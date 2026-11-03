@@ -452,3 +452,16 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - The SPUTNIK ranking regression workflow completed SUCCESS on the exact final PR head `a5ab1cfec638762ef31216bdfae046455f26b524`.
 - Verified on main: `sputnik_decision_strict.py` no longer exists. The active `sputnik_decision_engine.py` and shared `sputnik_decision.py` remain.
 - No deployment, live event processing, Telegram send, or trade is claimed.
+
+
+## 2026-11-03 — Remove orphaned SPUTNIK public-feed monitor stub
+
+- **Main baseline:** `2ccdac3169e1c8205becb1fb9698b9f6923353c7`; the repository tree and all open PRs were checked before branching. This cleanup is isolated from the existing state-integrity and security PRs.
+- **Runtime map:** `.github/workflows/trump_tracker.yml` runs `python trump_tracker.py` for the scheduled public-event collector; `.github/workflows/telegram-polling.yml` runs `python telegram/polling_runner.py`, which reuses `telegram_listener.py`; the daily summary uses `telegram.sputnik_watch` and `telegram_delivery.py`.
+- **Candidate evidence:** `sputnik_public_feed_monitor.py` was a 735-byte stub with no `main`/script entrypoint. Repository code search found no import, call, test, workflow or dynamic-import reference. Its only helper `domains_for` duplicated the active `trump_tracker._domains_for_public_text`; its White House/Truth feed constants duplicated `_configured_rss_feeds`; it imported `parse_public_feed` and several `trump_tracker` functions without calling them. The active collector already calls `parse_public_feed(fetch_public_feed(feed_url), feed_url)` directly.
+- **Removed:** only `sputnik_public_feed_monitor.py`. Kept the active RSS parser, White House/Truth feed configuration, SEC/filing collection, Telegram listener, one-shot polling runner, daily summary and Gagarin handoff unchanged. The OGE URL in the removed stub was only an unused constant; that stub made no OGE request and was not an OGE collector.
+- **Regression coverage:** `tests/test_sputnik_item_intelligence.py` now asserts the removed module is absent and has no import/string/workflow references in tracked Python/YAML sources, while asserting the active RSS parser, collector workflow and Telegram polling entrypoint remain present. Existing feed item, timestamp, permalink, deduplication and catalyst tests remain in the same CI path.
+- **Files:** delete `sputnik_public_feed_monitor.py`; update `tests/test_sputnik_item_intelligence.py`; update this log.
+- **Cost/benefit:** 735 source bytes removed; no third-party dependency and no external request were removed because the stub had no active call path. No execution-time or API-call saving is claimed. The concrete benefit is removal of a dormant, misleading duplicate collector surface and its unused imports.
+- **Limit:** Render service start commands are external to this repository and were not inspected. The file had no executable entrypoint and no tracked workflow/import reference; the static regression guard covers all tracked Python/YAML files. No live collector replay or Telegram send is claimed.
+- **Validation:** PR CI must pass on the exact final head before merge. No merge, deployment, strategy, catalyst, BIAS, score, risk, Governor, PAPER authorization or order behavior changed. PAPER ONLY.
