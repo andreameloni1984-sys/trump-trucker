@@ -19,7 +19,6 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from html.parser import HTMLParser
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -331,66 +330,6 @@ def extract_transactions(events: list[FilingEvent]) -> list[TransactionRecord]:
     return records
 
 
-class TextExtractor(HTMLParser):
-    """Extract visible page text without indexing scripts or document metadata."""
-
-    _IGNORED_TAGS = {"script", "style", "noscript", "svg", "template", "title"}
-
-    def __init__(self) -> None:
-        super().__init__(convert_charrefs=True)
-        self.parts: list[str] = []
-        self._ignored_stack: list[str] = []
-
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        tag = tag.lower()
-        attributes = {name.lower(): (value or "").strip().lower() for name, value in attrs}
-        style_values: dict[str, str] = {}
-        for declaration in attributes.get("style", "").split(";"):
-            if ":" in declaration:
-                name, value = declaration.split(":", 1)
-                style_values[name.strip()] = value.strip().split("!important", 1)[0].strip()
-        hidden = (
-            "hidden" in attributes
-            or attributes.get("aria-hidden") == "true"
-            or style_values.get("display") == "none"
-            or style_values.get("visibility") in {"hidden", "collapse"}
-            or style_values.get("content-visibility") == "hidden"
-        )
-        if self._ignored_stack:
-            # Track every nested tag while skipping a hidden container. Otherwise
-            # a same-named child (for example div inside div) could close it early.
-            self._ignored_stack.append(tag)
-            return
-        if tag in self._IGNORED_TAGS or hidden:
-            self._ignored_stack.append(tag)
-
-    def handle_endtag(self, tag: str) -> None:
-        if not self._ignored_stack:
-            return
-        tag = tag.lower()
-        # Recover from malformed nesting by closing through the matching skipped tag.
-        for index in range(len(self._ignored_stack) - 1, -1, -1):
-            if self._ignored_stack[index] == tag:
-                del self._ignored_stack[index:]
-                return
-
-    def handle_data(self, data: str) -> None:
-        if self._ignored_stack:
-            return
-        text = re.sub(r"\s+", " ", data).strip()
-        if text:
-            self.parts.append(text)
-
-    def text(self) -> str:
-        return " ".join(self.parts)
-
-
-INTELLIGENCE_SOURCES = {
-    "WHITE_HOUSE": "https://www.whitehouse.gov/",
-    "TRUTH_ARCHIVE": "https://www.trumpstruth.org/",
-    "OGE": "https://www.oge.gov/",
-}
-
 ASSET_KEYWORDS = {
     "ENERGY": ["oil", "crude", "brent", "wti", "natural gas", "lng", "energy", "petroleum"],
     "METALS": ["gold", "silver", "copper", "aluminum", "steel", "uranium"],
@@ -406,20 +345,6 @@ ASSET_KEYWORDS = {
     "TRADE_POLICY": ["tariff", "tariffs", "trade deal", "trade agreement", "export control", "import duty", "sanction", "sanctions", "dazi", "accordo commerciale"],
     "RATES_MACRO": ["federal reserve", "interest rate", "interest rates", "treasury yield", "inflation", "policy rate", "dollar", "dollaro"],
 }
-
-def fetch_public_text(url: str) -> str:
-    request = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": os.getenv("SEC_USER_AGENT", "SPUTNIK/4.0 public-source-monitor"),
-            "Accept": "text/html,application/xhtml+xml,text/plain",
-        },
-    )
-    with urllib.request.urlopen(request, timeout=20) as response:
-        raw = response.read()
-    parser = TextExtractor()
-    parser.feed(raw.decode("utf-8", errors="replace"))
-    return parser.text()
 
 _POLITICAL_ENDORSEMENT = re.compile(
     r"\b(?:endorse(?:s|d|ment)?|"
@@ -478,9 +403,7 @@ def _configured_rss_feeds() -> list[str]:
     raw = os.getenv("SPUTNIK_RSS_FEEDS", "").strip()
     if raw:
         return list(dict.fromkeys(url.strip() for url in raw.split(";") if url.strip()))
-    # Item-level public feeds: keep the White House and Trump's Truth archive
-    # in the default scan. The archive homepage is useful for discovery only;
-    # its RSS feed supplies individual posts with their own URL/date/text.
+    # Item-level feeds provide individual posts with their own URL/date/text.
     return [
         "https://www.whitehouse.gov/feed/",
         "https://www.trumpstruth.org/feed",
@@ -491,44 +414,13 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     if os.getenv("SPUTNIK_SOCIAL_ENABLED", "1").strip().lower() not in {"1", "true", "yes"}:
         return []
 
-    known = state.setdefault("intelligence", {})
     known_items = state.setdefault("intelligence_items", {})
     findings: list[dict[str, Any]] = []
 
-    # Keep the legacy homepage scan for broad discovery, but do not treat its
-    # generic page-wide keywords as an individual news event.
-    for source, url in INTELLIGENCE_SOURCES.items():
-        try:
-            body = fetch_public_text(url)
-        except Exception as exc:
-            print(f"SPUTNIK: source {source} unavailable: {type(exc).__name__}")
-            continue
-
-        digest = hashlib.sha256((source + "|" + body[:200000]).encode("utf-8")).hexdigest()[:24]
-        if known.get(source) == digest:
-            continue
-        known[source] = digest
-        domains = _domains_for_public_text(body)
-        if not domains:
-            continue
-        finding = {
-            "source": source,
-            "url": url,
-            "title": "",
-            "published": "",
-            "domains": domains,
-            "text": body[:6000],
-            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-            "status": "POTENTIAL_CORRELATION",
-            "detected_at": utc_now().isoformat(),
-            "event_id": digest,
-        }
-        finding["action_reaction"] = build_action_reaction_record(finding, body)
-        findings.append(finding)
-
+    # Poll only item-level RSS feeds; generic homepage text is not a catalyst.
     # Item-level feed scan: each article is deduplicated independently, so a
-    # page-level digest cannot hide a new post added to an otherwise unchanged
-    # archive. First scan of a feed seeds its backlog without flooding Telegram.
+    # feed-level digest cannot hide a new post added to an otherwise unchanged
+    # feed. First scan of a feed seeds its backlog without flooding Telegram.
     initialized_feeds = state.setdefault("intelligence_feed_initialized", {})
     try:
         max_public_item_age_hours = max(1, int(os.getenv("SPUTNIK_PUBLIC_ITEM_MAX_AGE_HOURS", "24")))
@@ -997,8 +889,7 @@ def event_id(cik: str, accession: str, form: str, document: str) -> str:
 
 def filing_url(cik: str, accession: str, document: str) -> str:
     accession_compact = accession.replace("-", "")
-    return (
-        f"https://www.sec.gov/Archives/edgar/data/"
+    return (        f"https://www.sec.gov/Archives/edgar/data/"
         f"{int(cik)}/{accession_compact}/{document}"
     )
 
@@ -1497,8 +1388,7 @@ def telegram_trump_order_message(state: dict[str, Any]) -> str:
     ranked = sorted(scores.values(), key=lambda x: x["score"], reverse=True)[:5]
     lines = [
         "🛰️ SPUTNIK — TRUMP ORDINA",
-        "━━━━━━━━━━━━━━━━━━",
-        "🎯 Cosa comprare secondo il motore:",
+        "━━━━━━━━━━━━━━━━━━",        "🎯 Cosa comprare secondo il motore:",
     ]
     if not ranked:
         lines.extend([
