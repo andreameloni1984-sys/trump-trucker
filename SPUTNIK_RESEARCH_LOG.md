@@ -444,3 +444,11 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - No strategy, event mapping, score, direction, price plan, Telegram behavior, persistence, or PAPER authorization changed.
 - Validation: repository search found no references; CI on the cleanup PR is required before merge.
 - PAPER ONLY; no live trade, deployment or Telegram send.
+
+
+## 2026-11-03 — Post-merge verification: remove unused decision module
+
+- PR #98 merged to main as `863db7aa0cc1c09155f5f0d34bc255f7eb712e25`.
+- The SPUTNIK ranking regression workflow completed SUCCESS on the exact final PR head `a5ab1cfec638762ef31216bdfae046455f26b524`.
+- Verified on main: `sputnik_decision_strict.py` no longer exists. The active `sputnik_decision_engine.py` and shared `sputnik_decision.py` remain.
+- No deployment, live event processing, Telegram send, or trade is claimed.
