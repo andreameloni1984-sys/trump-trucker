@@ -1,6 +1,6 @@
 {
   "events": {},
-  "updated_at": "2026-11-03T22:10:11.509572+00:00",
+  "updated_at": "2026-11-04T02:20:22.990546+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -9,6 +9,405 @@
     "OGE": "128573526291bf1f4e0bc089"
   },
   "intelligence_history": {
+    "b5204320a7cb95636b9701a2": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43413",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552656200866149",
+      "title": "Congressman Derrick Van Orden is an America First Warrior for Wisconsin’s 3rd Congressional District! A retired Navy SEAL, Derrick bravely served our Country in combat, and brings that same Fighting Spirit to Congress. Derrick is working hard to Champion our Great Farmers and American Agriculture, S",
+      "published": "Tue, 03 Nov 2026 13:06:24 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Derrick Van Orden is an America First Warrior for Wisconsin’s 3rd Congressional District! A retired Navy SEAL, Derrick bravely served our Country in combat, and brings that same Fighting Spirit to Congress. Derrick is working hard to Champion our Great Farmers and American Agriculture, S Congressman Derrick Van Orden is an America First Warrior for Wisconsin’s 3rd Congressional District! A retired Navy SEAL, Derrick bravely served our Country in combat, and brings that same Fighting Spirit to Congress. Derrick is working hard to Champion our Great Farmers and American Agriculture, Stop Illegal Immigration and Migrant Crime, Strengthen our Incredible Military and Veterans, and Protect our always under siege Second Amendment. Derrick’s opponent, Rebecca Cooke, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Rebecca Cooke is Reckless, Radical, and Dangerous! Derrick Van Orden has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DERRICK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/wisconsin/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.963953+00:00",
+      "event_id": "b5204320a7cb95636b9701a2",
+      "action_reaction": {
+        "event_id": "b5204320a7cb95636b9701a2",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "144fb836bf206a3d62fa63b1": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43412",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552656785842342",
+      "title": "Congressman Bryan Steil is a Tremendous Advocate for the Wonderful People of Wisconsin’s 1st Congressional District! As the Chair of the House Administration Committee, Bryan is an America First Fighter for Election Integrity. He is working tirelessly to Grow the Economy, Keep our Border SECURE, Str",
+      "published": "Tue, 03 Nov 2026 13:06:33 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Bryan Steil is a Tremendous Advocate for the Wonderful People of Wisconsin’s 1st Congressional District! As the Chair of the House Administration Committee, Bryan is an America First Fighter for Election Integrity. He is working tirelessly to Grow the Economy, Keep our Border SECURE, Str Congressman Bryan Steil is a Tremendous Advocate for the Wonderful People of Wisconsin’s 1st Congressional District! As the Chair of the House Administration Committee, Bryan is an America First Fighter for Election Integrity. He is working tirelessly to Grow the Economy, Keep our Border SECURE, Strengthen our Military/Vets, Promote American Agriculture and our Incredible Farmers, and Protect our always under siege Second Amendment. Bryan’s opponent, Mitchell Berman, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Mitchell Berman is Reckless, Radical, and Dangerous! Bryan Steil has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR BRYAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/wisconsin/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.963385+00:00",
+      "event_id": "144fb836bf206a3d62fa63b1",
+      "action_reaction": {
+        "event_id": "144fb836bf206a3d62fa63b1",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "a2baf97e677556a1d36726fa": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43411",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552657355663287",
+      "title": "It is my Great Honor to endorse Highly Respected State Senator, and brave U.S. Navy Veteran, John Braun, who is running to represent the amazing people of Washington’s 3rd Congressional District! John fights tirelessly to Advance Pro Growth Policies, Unleash American Energy DOMINANCE, and Prioritize",
+      "published": "Tue, 03 Nov 2026 13:06:42 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse Highly Respected State Senator, and brave U.S. Navy Veteran, John Braun, who is running to represent the amazing people of Washington’s 3rd Congressional District! John fights tirelessly to Advance Pro Growth Policies, Unleash American Energy DOMINANCE, and Prioritize It is my Great Honor to endorse Highly Respected State Senator, and brave U.S. Navy Veteran, John Braun, who is running to represent the amazing people of Washington’s 3rd Congressional District! John fights tirelessly to Advance Pro Growth Policies, Unleash American Energy DOMINANCE, and Prioritize CLEAN AIR, CLEAN WATER, AND CLEAN SOIL FOR ALL WASHINGTONIANS. His opponent, Marie Gluesenkamp Perez, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things would be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Marie Gluesenkamp Perez is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, John will work hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Support our Great Military/Veterans, and Defend our always under siege Second Amendment. John Braun has my Complete and Total Endorsement to be the next Representative from Washington’s 3rd Congressional District. GET OUT AND VOTE FOR JOHN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/washington /",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.962819+00:00",
+      "event_id": "a2baf97e677556a1d36726fa",
+      "action_reaction": {
+        "event_id": "a2baf97e677556a1d36726fa",
+        "event_type": "ENERGY",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c1c8af80856aac8d60195d66": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43410",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552657951349925",
+      "title": "Congressman John McGuire is an America First Warrior for Virginia’s 5th Congressional District! John bravely served our Great Country as a U.S. Navy SEAL, and is doing an incredible job fighting for the people of Rural Virginia. He is working hard to Grow our Economy, Create GREAT Jobs, Unleash Amer",
+      "published": "Tue, 03 Nov 2026 13:06:51 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman John McGuire is an America First Warrior for Virginia’s 5th Congressional District! John bravely served our Great Country as a U.S. Navy SEAL, and is doing an incredible job fighting for the people of Rural Virginia. He is working hard to Grow our Economy, Create GREAT Jobs, Unleash Amer Congressman John McGuire is an America First Warrior for Virginia’s 5th Congressional District! John bravely served our Great Country as a U.S. Navy SEAL, and is doing an incredible job fighting for the people of Rural Virginia. He is working hard to Grow our Economy, Create GREAT Jobs, Unleash American Energy DOMINANCE, Keep our Border SECURE, Strengthen our Military/Veterans, Defend our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. John is MAGA all the way, and has been with us from the very beginning. John’s opponent, Tom Perriello, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Tom Perriello is Reckless, Radical, and Dangerous! John McGuire has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JOHN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/virginia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.962254+00:00",
+      "event_id": "c1c8af80856aac8d60195d66",
+      "action_reaction": {
+        "event_id": "c1c8af80856aac8d60195d66",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "0ef9912a6e28370285d8304d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43409",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552658536926719",
+      "title": "Congresswoman Jen Kiggans is a Tremendous Advocate for the Great People of Virginia’s 2nd Congressional District! A former Navy helicopter pilot, Jen knows how to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, Jen is working hard to Grow the",
+      "published": "Tue, 03 Nov 2026 13:07:00 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congresswoman Jen Kiggans is a Tremendous Advocate for the Great People of Virginia’s 2nd Congressional District! A former Navy helicopter pilot, Jen knows how to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, Jen is working hard to Grow the Congresswoman Jen Kiggans is a Tremendous Advocate for the Great People of Virginia’s 2nd Congressional District! A former Navy helicopter pilot, Jen knows how to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, Jen is working hard to Grow the Economy, Cut Taxes and Regulations, Keep our Border SECURE, Unleash American Energy DOMINANCE, and Protect our always under siege Second Amendment. Jen’s opponent, Elaine Luria, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Elaine Luria is Reckless, Radical, and Dangerous! Jen Kiggans has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JEN — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/virginia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.961643+00:00",
+      "event_id": "0ef9912a6e28370285d8304d",
+      "action_reaction": {
+        "event_id": "0ef9912a6e28370285d8304d",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "e0435a63ab68efe92f4ee6e5": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43408",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552659078748311",
+      "title": "Congressman Rob Wittman is doing a truly fantastic job representing the wonderful people of Virginia’s 1st Congressional District! As the Vice Chairman of the House Armed Services Committee, Rob is working tirelessly to advance our America First Agenda. He understands the Wisdom and Courage required",
+      "published": "Tue, 03 Nov 2026 13:07:08 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Rob Wittman is doing a truly fantastic job representing the wonderful people of Virginia’s 1st Congressional District! As the Vice Chairman of the House Armed Services Committee, Rob is working tirelessly to advance our America First Agenda. He understands the Wisdom and Courage required Congressman Rob Wittman is doing a truly fantastic job representing the wonderful people of Virginia’s 1st Congressional District! As the Vice Chairman of the House Armed Services Committee, Rob is working tirelessly to advance our America First Agenda. He understands the Wisdom and Courage required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, Rob is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, and Protect our always under siege Second Amendment. Rob’s opponent, Shannon Taylor, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Shannon Taylor is Reckless, Radical, and Dangerous! Rob Wittman has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR ROB — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/virginia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.961061+00:00",
+      "event_id": "e0435a63ab68efe92f4ee6e5",
+      "action_reaction": {
+        "event_id": "e0435a63ab68efe92f4ee6e5",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "7a02e812f188ae8a3f4637f7": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43407",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552659703414122",
+      "title": "It is my Great Honor to endorse America First Patriot, Jace Yarbrough, who is running to represent the wonderful people of Texas’ 32nd Congressional District! A Brave Air Force Veteran, Jace knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE",
+      "published": "Tue, 03 Nov 2026 13:07:18 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Jace Yarbrough, who is running to represent the wonderful people of Texas’ 32nd Congressional District! A Brave Air Force Veteran, Jace knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE It is my Great Honor to endorse America First Patriot, Jace Yarbrough, who is running to represent the wonderful people of Texas’ 32nd Congressional District! A Brave Air Force Veteran, Jace knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE THROUGH STRENGTH. His opponent, Dan Barrios, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Dan Barrios is Reckless, Radical, and Dangerous! On the other hand, as a very successful Stanford Law School Graduate and Business Attorney, Jace knows how to Create Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, and Champion our Nation’s Golden Age. As your next Congressman, he will fight tirelessly to Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Safeguard our Elections, and Protect our always under siege Second Amendment. Jace Yarbrough has my Complete and Total Endorsement to be the next Representative from Texas’ 32nd Congressional District. GET OUT AND VOTE FOR JACE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.960396+00:00",
+      "event_id": "7a02e812f188ae8a3f4637f7",
+      "action_reaction": {
+        "event_id": "7a02e812f188ae8a3f4637f7",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "fe768ea5ecd78df5a5b9d053": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43406",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552660276352497",
+      "title": "It is my Great Honor to endorse America First Patriot, Brandon Herrera, who is running to represent the wonderful people of Texas’ 23rd Congressional District! Brandon is strongly supported by many Highly Respected MAGA Warriors in Texas, and Republicans in the U.S. House. As your next Congressman,",
+      "published": "Tue, 03 Nov 2026 13:07:26 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Brandon Herrera, who is running to represent the wonderful people of Texas’ 23rd Congressional District! Brandon is strongly supported by many Highly Respected MAGA Warriors in Texas, and Republicans in the U.S. House. As your next Congressman, It is my Great Honor to endorse America First Patriot, Brandon Herrera, who is running to represent the wonderful people of Texas’ 23rd Congressional District! Brandon is strongly supported by many Highly Respected MAGA Warriors in Texas, and Republicans in the U.S. House. As your next Congressman, he will work tirelessly to advance our MAKE AMERICA GREAT AGAIN Agenda. Brandon will fight hard to Grow the Economy, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Safeguard our Elections, Champion School Choice, Keep our Border SECURE, Stop Migrant Crime, Support our Brave Military, Veterans, and Law Enforcement, and Protect our always under siege Second Amendment. Brandon’s opponent, Katy Padilla Stout, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Katy Padilla Stout is Reckless, Radical, and Dangerous! Brandon Herrera has my Complete and Total Endorsement to be the next Representative from Texas’ 23rd Congressional District. GET OUT AND VOTE FOR BRANDON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.959763+00:00",
+      "event_id": "fe768ea5ecd78df5a5b9d053",
+      "action_reaction": {
+        "event_id": "fe768ea5ecd78df5a5b9d053",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "bac0e2db42b4f5853e2a41ba": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43405",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552660956499673",
+      "title": "Congressman Rob Bresnahan is a terrific Representative of Pennsylvania’s 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop",
+      "published": "Tue, 03 Nov 2026 13:07:37 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Rob Bresnahan is a terrific Representative of Pennsylvania’s 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop Congressman Rob Bresnahan is a terrific Representative of Pennsylvania’s 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military, Support our Veterans, and Protect our always under siege Second Amendment. Rob’s opponent, Paige Cognetti, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Paige Cognetti is Reckless, Radical, and Dangerous! Rob Bresnahan has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR ROB — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.959135+00:00",
+      "event_id": "bac0e2db42b4f5853e2a41ba",
+      "action_reaction": {
+        "event_id": "bac0e2db42b4f5853e2a41ba",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "08f06e9c08b87f8bb3312d9b": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43404",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552661486120628",
+      "title": "Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania’s 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migran",
+      "published": "Tue, 03 Nov 2026 13:07:45 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania’s 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migran Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania’s 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migrant Crime, Support our Incredible Military/Vets, Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Ryan’s opponent, Bob Brooks, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Bob Brooks is Reckless, Radical, and Dangerous! Ryan Mackenzie has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR RYAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.958543+00:00",
+      "event_id": "08f06e9c08b87f8bb3312d9b",
+      "action_reaction": {
+        "event_id": "08f06e9c08b87f8bb3312d9b",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "a39ab4d26029a6c6ca269288": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43403",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552662184941822",
+      "title": "Congressman Mike Carey is a Fantastic Advocate for Ohio’s 15th Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN TH",
+      "published": "Tue, 03 Nov 2026 13:07:56 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Mike Carey is a Fantastic Advocate for Ohio’s 15th Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN TH Congressman Mike Carey is a Fantastic Advocate for Ohio’s 15th Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., and Champion our Nation’s Golden Age. A Brave U.S. Army Veteran, Mike knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE THROUGH STRENGTH. He is also working hard to Keep our now very Secure Border, SECURE, Stop Migrant Crime, and Protect our always under siege Second Amendment. Mike’s opponent, Don Leonard, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Don Leonard is Reckless, Radical, and Dangerous! Mike Carey has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.958004+00:00",
+      "event_id": "a39ab4d26029a6c6ca269288",
+      "action_reaction": {
+        "event_id": "a39ab4d26029a6c6ca269288",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "480aac876b443c0fe276aba6": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43402",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552662729603121",
+      "title": "Congressman Mike Turner is doing a truly fantastic job representing the wonderful people of Ohio’s 10th Congressional District! As a Senior Member of the POWERFUL House Armed Services Committee, Mike understands the Wisdom and Courage required to Defend our Country, Support our incredible Military/V",
+      "published": "Tue, 03 Nov 2026 13:08:04 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Mike Turner is doing a truly fantastic job representing the wonderful people of Ohio’s 10th Congressional District! As a Senior Member of the POWERFUL House Armed Services Committee, Mike understands the Wisdom and Courage required to Defend our Country, Support our incredible Military/V Congressman Mike Turner is doing a truly fantastic job representing the wonderful people of Ohio’s 10th Congressional District! As a Senior Member of the POWERFUL House Armed Services Committee, Mike understands the Wisdom and Courage required to Defend our Country, Support our incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, he is fighting tirelessly to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Mike’s opponent, Kristina Knickerbocker, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Kristina Knickerbocker is Reckless, Radical, and Dangerous! Mike Turner has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.957352+00:00",
+      "event_id": "480aac876b443c0fe276aba6",
+      "action_reaction": {
+        "event_id": "480aac876b443c0fe276aba6",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "dca7f7dcb0631a5f94570881": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43401",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552663368845656",
+      "title": "It is my Great Honor to endorse America First Patriot, Derek Merrin, who is running to represent the wonderful people of Ohio’s 9th Congressional District! A Highly Successful State Legislator, Waterville City Councilman, and Civic Leader, prior to running for U.S. Congress, Derek has dedicated his",
+      "published": "Tue, 03 Nov 2026 13:08:14 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse America First Patriot, Derek Merrin, who is running to represent the wonderful people of Ohio’s 9th Congressional District! A Highly Successful State Legislator, Waterville City Councilman, and Civic Leader, prior to running for U.S. Congress, Derek has dedicated his It is my Great Honor to endorse America First Patriot, Derek Merrin, who is running to represent the wonderful people of Ohio’s 9th Congressional District! A Highly Successful State Legislator, Waterville City Councilman, and Civic Leader, prior to running for U.S. Congress, Derek has dedicated his life to serving his Community. His opponent, Marcy Kaptur, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things would be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Marcy Kaptur is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Derek will fight hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Strengthen our Brave Military/Veterans, Ensure PEACE THROUGH STRENGTH, and Defend our always under siege Second Amendment. Derek Merrin has my Complete and Total Endorsement to be the next Representative from Ohio’s 9th Congressional District. GET OUT AND VOTE FOR DEREK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.956658+00:00",
+      "event_id": "dca7f7dcb0631a5f94570881",
+      "action_reaction": {
+        "event_id": "dca7f7dcb0631a5f94570881",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "6fb6fa79d751bf1800aa883b": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43400",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552663922005966",
+      "title": "Congressman Max Miller is a fantastic Champion for the Great People of Ohio’s 7th Congressional District! Max bravely served our Country in the U.S. Marine Corps and, during my First Administration, worked hard to advance our AMERICA FIRST Agenda. In Congress, Max continues to fight tirelessly to Ke",
+      "published": "Tue, 03 Nov 2026 13:08:22 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Max Miller is a fantastic Champion for the Great People of Ohio’s 7th Congressional District! Max bravely served our Country in the U.S. Marine Corps and, during my First Administration, worked hard to advance our AMERICA FIRST Agenda. In Congress, Max continues to fight tirelessly to Ke Congressman Max Miller is a fantastic Champion for the Great People of Ohio’s 7th Congressional District! Max bravely served our Country in the U.S. Marine Corps and, during my First Administration, worked hard to advance our AMERICA FIRST Agenda. In Congress, Max continues to fight tirelessly to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Strengthen our Great Military/Veterans, Cut Taxes and Regulations, Support our Incredible Farmers, Champion American Energy DOMINANCE, and Defend our always under siege Second Amendment. Max’s opponent, Brian Poindexter, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Brian Poindexter is Reckless, Radical, and Dangerous! Max Miller has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MAX — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.956043+00:00",
+      "event_id": "6fb6fa79d751bf1800aa883b",
+      "action_reaction": {
+        "event_id": "6fb6fa79d751bf1800aa883b",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "bfa75c5ba17556a77f4b2549": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43399",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552664503113646",
+      "title": "Congressman Mike Lawler is a Strong Champion, and Highly Effective Representative, for the Great People of New York’s 17th Congressional District! A true America First Patriot, Mike is fighting hard to Grow our Economy, Create Jobs, Lower Taxes, Promote American Energy DOMINANCE, Keep our Border SEC",
+      "published": "Tue, 03 Nov 2026 13:08:31 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Mike Lawler is a Strong Champion, and Highly Effective Representative, for the Great People of New York’s 17th Congressional District! A true America First Patriot, Mike is fighting hard to Grow our Economy, Create Jobs, Lower Taxes, Promote American Energy DOMINANCE, Keep our Border SEC Congressman Mike Lawler is a Strong Champion, and Highly Effective Representative, for the Great People of New York’s 17th Congressional District! A true America First Patriot, Mike is fighting hard to Grow our Economy, Create Jobs, Lower Taxes, Promote American Energy DOMINANCE, Keep our Border SECURE, Support our Brave Military/Veterans and Law Enforcement, and Defend our always under siege Second Amendment. Additionally, he worked tirelessly to successfully increase the SALT deduction for the Working Men and Women of the Great State of New York! Mike is doing an outstanding job representing the Hudson Valley, and all of New York. Mike’s opponent, Cait Conley, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Cait Conley is Reckless, Radical, and Dangerous! Mike Lawler has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/new-york/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.955384+00:00",
+      "event_id": "bfa75c5ba17556a77f4b2549",
+      "action_reaction": {
+        "event_id": "bfa75c5ba17556a77f4b2549",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "541337128b04573fa4278966": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43398",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552665093158018",
+      "title": "It is my Great Honor to endorse U.S. Marine Corps Veteran and former Albuquerque Police Detective, Greg Cunningham, who is running to represent the wonderful people of New Mexico’s 2nd Congressional District! Greg knows the Wisdom and Courage required to Defend our Country, Support our Brave Militar",
+      "published": "Tue, 03 Nov 2026 13:08:40 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "It is my Great Honor to endorse U.S. Marine Corps Veteran and former Albuquerque Police Detective, Greg Cunningham, who is running to represent the wonderful people of New Mexico’s 2nd Congressional District! Greg knows the Wisdom and Courage required to Defend our Country, Support our Brave Militar It is my Great Honor to endorse U.S. Marine Corps Veteran and former Albuquerque Police Detective, Greg Cunningham, who is running to represent the wonderful people of New Mexico’s 2nd Congressional District! Greg knows the Wisdom and Courage required to Defend our Country, Support our Brave Military, Veterans, and Law Enforcement, and Ensure PEACE THROUGH STRENGTH. His opponent, Gabe Vasquez, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Gabe Vasquez is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Greg will work tirelessly to Grow the Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, and Defend our always under siege Second Amendment. Greg Cunningham has my Complete and Total Endorsement to be the next Representative from New Mexico’s 2nd Congressional District. GET OUT AND VOTE FOR GREG — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/new-mexico /",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.954692+00:00",
+      "event_id": "541337128b04573fa4278966",
+      "action_reaction": {
+        "event_id": "541337128b04573fa4278966",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "cb4663da11585f71da3e3aad": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43397",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552665686441284",
+      "title": "Congressman Tom Kean is a Great Representative for the People of New Jersey’s 7th Congressional District! A Tremendous Advocate of our America First Agenda, Tom is working tirelessly to Keep our Border SECURE, Stop Migrant Crime, Grow our Economy, Cut Taxes and Regulations, Champion Small Business,",
+      "published": "Tue, 03 Nov 2026 13:08:49 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Congressman Tom Kean is a Great Representative for the People of New Jersey’s 7th Congressional District! A Tremendous Advocate of our America First Agenda, Tom is working tirelessly to Keep our Border SECURE, Stop Migrant Crime, Grow our Economy, Cut Taxes and Regulations, Champion Small Business, Congressman Tom Kean is a Great Representative for the People of New Jersey’s 7th Congressional District! A Tremendous Advocate of our America First Agenda, Tom is working tirelessly to Keep our Border SECURE, Stop Migrant Crime, Grow our Economy, Cut Taxes and Regulations, Champion Small Business, Unleash American Energy DOMINANCE, Support our Brave Military and Veterans, and Protect our always under siege Second Amendment. Tom’s opponent, Rebecca Bennett, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Rebecca Bennett is Reckless, Radical, and Dangerous! Tom Kean has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR TOM — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/new-jersey /",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T02:20:22.954009+00:00",
+      "event_id": "cb4663da11585f71da3e3aad",
+      "action_reaction": {
+        "event_id": "cb4663da11585f71da3e3aad",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "24a29389da360622de506d8f": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11403,409 +11802,6 @@
         },
         "evidence": "HISTORICAL_ANALOGUE"
       }
-    },
-    "1cba67ab81e811ea3648d2a6": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42871",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117526601708258656",
-      "title": "🚨 MONTANA!Early Voting, in-person, is UNDERWAY NOW in the Great State of Montana. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absen",
-      "published": "Thu, 29 Oct 2026 22:40:24 +0000",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "🚨 MONTANA!Early Voting, in-person, is UNDERWAY NOW in the Great State of Montana. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absen 🚨 MONTANA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Montana. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Montana, you can cast your early Vote, in-person, all the way through November 2nd. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/montana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T02:32:18.057588+00:00",
-      "event_id": "1cba67ab81e811ea3648d2a6",
-      "action_reaction": {
-        "event_id": "1cba67ab81e811ea3648d2a6",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "9797fa0d38e57b6ad91150b4": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42873",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117526604215320335",
-      "title": "TO THE GREAT PEOPLE OF MONTANA, GET OUT AND VOTE FOR:– Kurt Alme for U.S. Senate– Aaron Flint for U.S. Congress (MT-01)– Troy Downing for U.S. Congress (MT-02)These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP",
-      "published": "Thu, 29 Oct 2026 22:41:02 +0000",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "TO THE GREAT PEOPLE OF MONTANA, GET OUT AND VOTE FOR:– Kurt Alme for U.S. Senate– Aaron Flint for U.S. Congress (MT-01)– Troy Downing for U.S. Congress (MT-02)These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP RT: https://truthsocial.com/users/realDonaldTrump/statuses/117526601708258656 TO THE GREAT PEOPLE OF MONTANA, GET OUT AND VOTE FOR: – Kurt Alme for U.S. Senate – Aaron Flint for U.S. Congress (MT-01) – Troy Downing for U.S. Congress (MT-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/montana/ Quoted Donald J. Trump 🚨 MONTANA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Montana. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Montana, you can cast your early Vote, in-person, all the way through November 2nd. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/montana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T02:32:18.057369+00:00",
-      "event_id": "9797fa0d38e57b6ad91150b4",
-      "action_reaction": {
-        "event_id": "9797fa0d38e57b6ad91150b4",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "915eef847f8a6a3d142ff629": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42872",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117526605975151903",
-      "title": "Republican Kurt Alme is a terrific candidate for the U.S. Senate in the Wonderful State of Montana, which I love and WON BIG in 2016, 2020, and 2024. He loves the U.S.A., and is a truly Great American Patriot! Kurt is running against a Radical Left Democrat named Alani Bankhead, who loves High Taxes",
-      "published": "Thu, 29 Oct 2026 22:41:29 +0000",
-      "domains": [
-        "AI_TECH"
-      ],
-      "text": "Republican Kurt Alme is a terrific candidate for the U.S. Senate in the Wonderful State of Montana, which I love and WON BIG in 2016, 2020, and 2024. He loves the U.S.A., and is a truly Great American Patriot! Kurt is running against a Radical Left Democrat named Alani Bankhead, who loves High Taxes Republican Kurt Alme is a terrific candidate for the U.S. Senate in the Wonderful State of Montana, which I love and WON BIG in 2016, 2020, and 2024. He loves the U.S.A., and is a truly Great American Patriot! Kurt is running against a Radical Left Democrat named Alani Bankhead, who loves High Taxes, Open Borders, No Consequences for Violent Criminals, Men in Women’s Sports, and Transgender for Everybody, among other CRAZY ideas! Kurt is one of the Strongest, and most Conservative, Republican Candidates in the Country, whereas his Opponent, Alani Bankhead, is a Radical Left Extremist, who will put our Country, and Safety, LAST. Kurt, on the other hand, will ALWAYS put Montana, and America, FIRST. Alani Bankhead is a Radical Left LUNATIC Dumocrat, whose values are not those of the people of Montana, or the United States of America — But the good news is that Kurt Alme is the PATRIOT that everyone is looking for, and has my Complete and Total Endorsement. GET OUT AND VOTE FOR KURT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/montana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T02:32:18.057134+00:00",
-      "event_id": "915eef847f8a6a3d142ff629",
-      "action_reaction": {
-        "event_id": "915eef847f8a6a3d142ff629",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "65a2cf53f1eddf0d771975a2": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42875",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117526606999074581",
-      "title": "Aaron Flint will be a tremendous Congressman for the amazing people of Montana’s 1st Congressional District! A Fifth Generation Montanan, and distinguished Combat Veteran, Aaron has dedicated his life to serving his Great State and Country. Lieutenant Colonel Flint served our Nation with Honor in Ir",
-      "published": "Thu, 29 Oct 2026 22:41:45 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Aaron Flint will be a tremendous Congressman for the amazing people of Montana’s 1st Congressional District! A Fifth Generation Montanan, and distinguished Combat Veteran, Aaron has dedicated his life to serving his Great State and Country. Lieutenant Colonel Flint served our Nation with Honor in Ir Aaron Flint will be a tremendous Congressman for the amazing people of Montana’s 1st Congressional District! A Fifth Generation Montanan, and distinguished Combat Veteran, Aaron has dedicated his life to serving his Great State and Country. Lieutenant Colonel Flint served our Nation with Honor in Iraq and Afghanistan, and was awarded two Bronze Stars for Bravery. Aaron has a wonderful wife, Jessica, and three beautiful children. As your next Congressman, Aaron will work tirelessly to Champion our Amazing Farmers and Ranchers, Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Support our Military/Veterans, Safeguard our Elections, and Defend our always under siege Second Amendment. Aaron’s opponent, Sam Forstag, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Sam Forstag is Reckless, Radical, and Dangerous! Aaron Flint has my Complete and Total Endorsement to be the next Representative from Montana’s 1st Congressional District. GET OUT AND VOTE FOR AARON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/montana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T02:32:18.056854+00:00",
-      "event_id": "65a2cf53f1eddf0d771975a2",
-      "action_reaction": {
-        "event_id": "65a2cf53f1eddf0d771975a2",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "b7fb3538a0316f4194105913": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42874",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117526608599642271",
-      "title": "Congressman Troy Downing is doing a truly fantastic job representing the incredible people of Montana’s 2nd Congressional District! Troy bravely served our Great Country in the U.S. Air Force as a Combat Veteran and, in Congress, he is fighting tirelessly to Support our Farmers and Ranchers, Champio",
-      "published": "Thu, 29 Oct 2026 22:42:09 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman Troy Downing is doing a truly fantastic job representing the incredible people of Montana’s 2nd Congressional District! Troy bravely served our Great Country in the U.S. Air Force as a Combat Veteran and, in Congress, he is fighting tirelessly to Support our Farmers and Ranchers, Champio Congressman Troy Downing is doing a truly fantastic job representing the incredible people of Montana’s 2nd Congressional District! Troy bravely served our Great Country in the U.S. Air Force as a Combat Veteran and, in Congress, he is fighting tirelessly to Support our Farmers and Ranchers, Champion American Energy DOMINANCE, Keep our Border SECURE, Strengthen our Military/Veterans, Defend our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Troy’s opponent, Brian Miller, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Brian Miller is Reckless, Radical, and Dangerous! Troy Downing has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR TROY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/montana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T02:32:18.056552+00:00",
-      "event_id": "b7fb3538a0316f4194105913",
-      "action_reaction": {
-        "event_id": "b7fb3538a0316f4194105913",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "57a1670d0d862f86eb77d6d3": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 29, 2026, 10:12 PM Original Post GREGG JARRETT: Trump was framed by the Russia collusion hoax. Now the whole story is exposed: https://www. foxnews.com/opinion/gregg-jarr ett-trump-framed-russia-collusion-hoax-story-exposed Read full post www.foxnews.com GREGG JARRETT: Trump was framed by the Russia collusion hoax. Now the whole story is exposed Hillary Clinton allegedly approved a scheme to frame Trump using a phony Christopher Steele dossier, then funneled it to the FBI, CIA and DOJ. Donald J. Trump @realDonaldTrump · October 29, 2026, 6:42 PM Original Post Congressman Troy Downing is doing a truly fantastic job representing the incredible people of Montana’s 2nd Congressional District! Troy bravely served our Great Country in the U.S. Air Force as a Combat Veteran and, in Congress, he is fighting tirelessly to Support our Farmers and Ranchers, Champion American Energy DOMINANCE, Keep our Border SECURE, Strengthen our Military/Veterans, Defend our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Troy’s opponent, Brian Miller, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Brian Miller is Reckless, Radical, and Dangerous! Troy Downing has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR TROY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/montana/ Read full post swampthevoteusa.com MONTANA: MAKE A PLAN TO VOTE! Election Day in Montana is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 29, 2026, 6:41 PM Original Post Aaron Flint will be a tremendous Congressman for the amazing people of Montana’s 1st Congressional District! A Fifth Generation Montanan, and distinguished Combat Veteran, Aaron has dedicated his life to serving his Great State and Country. Lieutenant Colonel Flint served our Nation with Honor in Iraq and Afghanistan, and was awarded two Bronze Stars for Bravery. Aaron has a wonderful wife, Jessica, and three beautiful children. As your next Congressman, Aaron will work tirelessly to Champion our Amazing Farmers and Ranchers, Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Support our Military/Veterans, Safeguard our Elections, and Defend our always under siege Second Amendment. Aaron’s opponent, Sam Forstag, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Sam Forstag is Reckless, Radical, and Dangerous! Aaron Flint has my Complete and Total Endorsement to be the next Representative from Montana’s 1st Congressional District. GET OUT AND VOTE FOR AARON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/montana/ Read full post swampthevoteusa.com MONTANA: MAKE A PLAN TO VOTE! Election Day in Montana is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 29, 2026, 6:41 PM Original Post Republican Kurt Alme is a terrific candidate for the U.S. Senate in the Wonderful State of Montana, which I love and WON BIG in 2016, 2020, and 2024. He loves the U.S.A., and is a truly Great American Patriot! Kurt is running against a Radical Left Democrat named Alani Bankhead, who loves High Taxes, Open Borders, No Consequences for Violent Criminals, Men in Women’s Sports, and Transgender for Everybody, among other CRAZY ideas! Kurt is one of the Strongest, and most Conservative, Republican Candidates in the Country, whereas his Opponent, Alani Bankhead, is a Radical Left Extremist, who will put our Country, and Safety, LAST. Kurt, on the other hand, will ALWAYS put Montana, and America, FIRST. Alani Bankhead is a Radical Left LUNATIC Dumocrat, whose values are not those of the people of Montana, or the United States of America — But the good news is that Kurt Alme is the PATRIOT that everyone is looking for, and has my Complete and Total Endorsement. GET OUT AND VOTE FOR KURT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/montana/ Read full post swampthevoteusa.com MONTANA: MAKE A PLAN TO VOTE! Election Day in Montana is almost here, and it’s time to make your voice heard. Make a plan",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T02:32:17.790927+00:00",
-      "event_id": "57a1670d0d862f86eb77d6d3",
-      "action_reaction": {
-        "event_id": "57a1670d0d862f86eb77d6d3",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "32ed8e3915ee8ebb53a07648": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42846",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525311655512373",
-      "title": "Quote post from October 29, 2026",
-      "published": "Thu, 29 Oct 2026 17:12:20 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 29, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117525273514465379 View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.096076+00:00",
-      "event_id": "32ed8e3915ee8ebb53a07648",
-      "action_reaction": {
-        "event_id": "32ed8e3915ee8ebb53a07648",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "bc7531ff159addfd06ef47b9": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42849",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525365644162218",
-      "title": "Quote post from October 29, 2026",
-      "published": "Thu, 29 Oct 2026 17:26:03 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 29, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117525359134298486 View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.095948+00:00",
-      "event_id": "bc7531ff159addfd06ef47b9",
-      "action_reaction": {
-        "event_id": "bc7531ff159addfd06ef47b9",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "b32243908cdc1b1e0c399d90": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42850",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525381204092010",
-      "title": "Quote post from October 29, 2026",
-      "published": "Thu, 29 Oct 2026 17:30:01 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 29, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117525358635690538 View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.095877+00:00",
-      "event_id": "b32243908cdc1b1e0c399d90",
-      "action_reaction": {
-        "event_id": "b32243908cdc1b1e0c399d90",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "f9c5e8734b88fc033eb8841b": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42854",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525706731349400",
-      "title": "Today I am pleased to report, in Breaking News this morning, that the U.S. Economy is BOOMING at 3.4 PERCENT — A Historic Level of Economic Growth. Consumer spending is WAY UP, Business Investment is WAY UP, and Investment in new Equipment EXPLODED by 21%, which means Record Numbers of Factories and",
-      "published": "Thu, 29 Oct 2026 18:52:48 +0000",
-      "domains": [
-        "AI_TECH",
-        "RATES_MACRO"
-      ],
-      "text": "Today I am pleased to report, in Breaking News this morning, that the U.S. Economy is BOOMING at 3.4 PERCENT — A Historic Level of Economic Growth. Consumer spending is WAY UP, Business Investment is WAY UP, and Investment in new Equipment EXPLODED by 21%, which means Record Numbers of Factories and Today I am pleased to report, in Breaking News this morning, that the U.S. Economy is BOOMING at 3.4 PERCENT — A Historic Level of Economic Growth. Consumer spending is WAY UP, Business Investment is WAY UP, and Investment in new Equipment EXPLODED by 21%, which means Record Numbers of Factories and Companies are being built and expanded in the U.S.A. Very importantly, Core Inflation remained LOW. We are smashing expectations — with today’s numbers beating 72% of economists’ forecasts. Our Economy is ROARING but, if the Dumocrats win the Midterms, they will burn it all down. If you want to keep this Growth going, you must vote REPUBLICAN! President DONALD J. TRUMP",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.095720+00:00",
-      "event_id": "f9c5e8734b88fc033eb8841b",
-      "action_reaction": {
-        "event_id": "f9c5e8734b88fc033eb8841b",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "55d155dd781a218263c34eda": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42852",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525708145400474",
-      "title": "Quote post from October 29, 2026",
-      "published": "Thu, 29 Oct 2026 18:53:10 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 29, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117525707348152529 View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.095576+00:00",
-      "event_id": "55d155dd781a218263c34eda",
-      "action_reaction": {
-        "event_id": "55d155dd781a218263c34eda",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "dd0af0f0ea16cfdab243c4f3": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42855",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525715840384199",
-      "title": "It is my Great Honor to endorse America First Patriot, David Stumbo, who is running to be the next Attorney General of the wonderful State of South Carolina, a place I love and WON BIG in 2016, 2020, and 2024!A Strong Conservative Fighter who has distinguished himself as a Criminal Prosecutor and So",
-      "published": "Thu, 29 Oct 2026 18:55:07 +0000",
-      "domains": [
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, David Stumbo, who is running to be the next Attorney General of the wonderful State of South Carolina, a place I love and WON BIG in 2016, 2020, and 2024!A Strong Conservative Fighter who has distinguished himself as a Criminal Prosecutor and So It is my Great Honor to endorse America First Patriot, David Stumbo, who is running to be the next Attorney General of the wonderful State of South Carolina, a place I love and WON BIG in 2016, 2020, and 2024! A Strong Conservative Fighter who has distinguished himself as a Criminal Prosecutor and Solicitor for the Eighth Judicial Circuit of South Carolina, David has proven he has the Courage and Wisdom to deliver strong results for the tremendous people of his incredible State, and our Nation. As your next Attorney General, David will continue fighting tirelessly to Ensure LAW AND ORDER, Champion our Law Enforcement and First Responders, Support our Military/Veterans, Advance Election Integrity, Keep our Border SECURE, Stop Migrant Crime, Uphold our Constitution, and Defend our always under siege Second Amendment. David Stumbo has my Complete and Total Endorsement to be the next Attorney General of South Carolina — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.095385+00:00",
-      "event_id": "dd0af0f0ea16cfdab243c4f3",
-      "action_reaction": {
-        "event_id": "dd0af0f0ea16cfdab243c4f3",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "fde2146687fed4b20351e0f5": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42856",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525723707964253",
-      "title": "RT @realDonaldTrumpCongressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania’s 9th Congressional District!A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community",
-      "published": "Thu, 29 Oct 2026 18:57:07 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "RT @realDonaldTrumpCongressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania’s 9th Congressional District!A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community RT @ realDonaldTrump Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania’s 9th Congressional District! A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “loaded up” with accolades and wins. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Dan’s opponent, Rachel Wallace, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Rachel Wallace is Reckless, Radical, and Dangerous! Dan Meuser has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Reposted Donald J. Trump Congressman Dan Meuser is an America First Patriot who is doing an incredible job representing Pennsylvania’s 9th Congressional District! A very successful Businessman, former Secretary of Revenue of Pennsylvania, and now, as U.S. Congressman, Dan has strongly served his Community with a career “loaded up” with accolades and wins. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Dan’s opponent, Rachel Wallace, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Rachel Wallace is Reckless, Radical, and Dangerous! Dan Meuser has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.095095+00:00",
-      "event_id": "fde2146687fed4b20351e0f5",
-      "action_reaction": {
-        "event_id": "fde2146687fed4b20351e0f5",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "760baf899ac23c6d8ba437af": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42857",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525756697578269",
-      "title": "Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania’s 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON T",
-      "published": "Thu, 29 Oct 2026 19:05:30 +0000",
-      "domains": [
-        "DEFENSE"
-      ],
-      "text": "Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania’s 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON T Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania’s 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and the Transgender Mutilization of your Children. Janelle Stelson is Reckless, Radical, and Dangerous! On the other hand, in Congress, Scott is working tirelessly with me to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military and Veterans, Uphold the Rule of Law, Protect our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Scott Perry has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR SCOTT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/states/pen nsylvania/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.094808+00:00",
-      "event_id": "760baf899ac23c6d8ba437af",
-      "action_reaction": {
-        "event_id": "760baf899ac23c6d8ba437af",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "3ff96834a0e3d4636a6a73c9": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42858",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525792951954331",
-      "title": "Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania’s 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migran",
-      "published": "Thu, 29 Oct 2026 19:14:44 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania’s 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migran Congressman Ryan Mackenzie is an America First Patriot, who is doing an incredible job representing the Great People of Pennsylvania’s 7th Congressional District! In Congress, Ryan is fighting tirelessly to Grow the Economy, Create Jobs, Cut Taxes and Regulations, Keep our Border SECURE, Stop Migrant Crime, Support our Incredible Military/Vets, Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Ryan’s opponent, Bob Brooks, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Bob Brooks is Reckless, Radical, and Dangerous! Ryan Mackenzie has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR RYAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.094588+00:00",
-      "event_id": "3ff96834a0e3d4636a6a73c9",
-      "action_reaction": {
-        "event_id": "3ff96834a0e3d4636a6a73c9",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "3b1317cc3e7f121247e794ed": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42864",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525794771199763",
-      "title": "Congressman Rob Bresnahan is a terrific Representative of Pennsylvania’s 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop",
-      "published": "Thu, 29 Oct 2026 19:15:11 +0000",
-      "domains": [
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman Rob Bresnahan is a terrific Representative of Pennsylvania’s 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop Congressman Rob Bresnahan is a terrific Representative of Pennsylvania’s 8th Congressional District! A Highly Successful Businessman, Rob is working hard to Create Jobs, Cut Taxes and Regulations, and Unleash the American Dream. In Congress, Rob is fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military, Support our Veterans, and Protect our always under siege Second Amendment. Rob’s opponent, Paige Cognetti, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Paige Cognetti is Reckless, Radical, and Dangerous! Rob Bresnahan has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR ROB — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.094372+00:00",
-      "event_id": "3b1317cc3e7f121247e794ed",
-      "action_reaction": {
-        "event_id": "3b1317cc3e7f121247e794ed",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "85dd9dd1d20db22ae14f60bd": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42863",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117525796755388768",
-      "title": "Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania’s 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirel",
-      "published": "Thu, 29 Oct 2026 19:15:42 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania’s 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirel Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania’s 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirelessly to Champion our Amazing Farmers and Ranchers, Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Advocate for our Great Military/Veterans, and Defend our always under siege Second Amendment. Lloyd’s opponent, Nancy Mannion, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Nancy Mannion is Reckless, Radical, and Dangerous! Lloyd Smucker has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR LLOYD — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-29T23:00:43.094147+00:00",
-      "event_id": "85dd9dd1d20db22ae14f60bd",
-      "action_reaction": {
-        "event_id": "85dd9dd1d20db22ae14f60bd",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12427,9 +12423,26 @@
     "11dce4c63e4ff010b51f8532": "2026-11-03T22:10:11.485502+00:00",
     "cb02faced0cabbed7cfcc2d2": "2026-11-03T22:10:11.485833+00:00",
     "fd44a0029afaf273ef07bdec": "2026-11-03T22:10:11.486185+00:00",
-    "24a29389da360622de506d8f": "2026-11-03T22:10:11.486492+00:00"
+    "24a29389da360622de506d8f": "2026-11-03T22:10:11.486492+00:00",
+    "cb4663da11585f71da3e3aad": "2026-11-04T02:20:22.953990+00:00",
+    "541337128b04573fa4278966": "2026-11-04T02:20:22.954685+00:00",
+    "bfa75c5ba17556a77f4b2549": "2026-11-04T02:20:22.955378+00:00",
+    "6fb6fa79d751bf1800aa883b": "2026-11-04T02:20:22.956036+00:00",
+    "dca7f7dcb0631a5f94570881": "2026-11-04T02:20:22.956652+00:00",
+    "480aac876b443c0fe276aba6": "2026-11-04T02:20:22.957344+00:00",
+    "a39ab4d26029a6c6ca269288": "2026-11-04T02:20:22.957998+00:00",
+    "08f06e9c08b87f8bb3312d9b": "2026-11-04T02:20:22.958538+00:00",
+    "bac0e2db42b4f5853e2a41ba": "2026-11-04T02:20:22.959129+00:00",
+    "fe768ea5ecd78df5a5b9d053": "2026-11-04T02:20:22.959758+00:00",
+    "7a02e812f188ae8a3f4637f7": "2026-11-04T02:20:22.960391+00:00",
+    "e0435a63ab68efe92f4ee6e5": "2026-11-04T02:20:22.961055+00:00",
+    "0ef9912a6e28370285d8304d": "2026-11-04T02:20:22.961638+00:00",
+    "c1c8af80856aac8d60195d66": "2026-11-04T02:20:22.962248+00:00",
+    "a2baf97e677556a1d36726fa": "2026-11-04T02:20:22.962814+00:00",
+    "144fb836bf206a3d62fa63b1": "2026-11-04T02:20:22.963380+00:00",
+    "b5204320a7cb95636b9701a2": "2026-11-04T02:20:22.963947+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-03T22:10:11.491397+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-04T02:20:22.965425+00:00"
   }
 }
