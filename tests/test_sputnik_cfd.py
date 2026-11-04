@@ -351,6 +351,8 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
         self.assertEqual(signal["setup_alignment"], "CONTRASTS")
         self.assertEqual(signal["status"], "EARLY_SETUP")
         self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
+        self.assertTrue(signal["market_direction_conflict"])
+        self.assertIn("MERCATO CONTRO BIAS", signal["market_direction_warning"])
 
 
     def test_early_dla_direction_is_visible_and_does_not_override_news_bias(self):
@@ -389,6 +391,8 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
         message = format_cfd_signal(signal)
         self.assertIn("BIAS: LONG", message)
         self.assertIn("D-L-A: SHORT (CONTRASTS)", message)
+        self.assertIn("MERCATO CONTRO BIAS", message)
+        self.assertIn("ipotesi news non confermata dal prezzo", message)
 
     def test_early_dla_can_publish_technical_only_bias_when_news_is_neutral(self):
         now = datetime.now(timezone.utc).isoformat()
