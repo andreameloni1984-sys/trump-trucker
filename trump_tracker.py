@@ -445,11 +445,19 @@ _CONCRETE_COMMODITY_EVENT = re.compile(
 )
 
 
+def _matches_asset_keyword(normalized: str, keyword: str) -> bool:
+    # "ai" is a short standalone acronym; substring matching also catches
+    # unrelated words such as "air", "campaign", and "said".
+    if keyword == "ai":
+        return re.search(r"\\bai\\b", normalized) is not None
+    return keyword in normalized
+
+
 def _domains_for_public_text(text: str) -> list[str]:
     normalized = str(text or "").lower()
     domains = [
         domain for domain, keywords in ASSET_KEYWORDS.items()
-        if any(keyword in normalized for keyword in keywords)
+        if any(_matches_asset_keyword(normalized, keyword) for keyword in keywords)
     ]
     # Candidate endorsements and routine praise are political campaign events,
     # not commodity/defense catalysts. Preserve a market tag only when the
