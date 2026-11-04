@@ -471,3 +471,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Regression coverage added:** a fresh dated catalyst ranks above an otherwise equivalent old event and remains WATCH.
 - **Commits:** `94f1bdc0ceb52c14be28e553a2f99903d494cc89` (implementation); `bd72b03ad460b609cedc44f4c7ab9f3d416918b3` (tests).
 - **Verification:** tests have been added but have not been executed in this session; CI must pass before treating the change as validated in production. No deployment or live trade was performed.
+
+
+## 2026-11-04 — Prevent AI_TECH substring matches in public-feed items
+
+- **Evidence:** SPUTNIK Actions run #270 (41808216335, 2026-11-04 09:31 UTC) persisted 32 distinct item-level RSS records. Seven were tagged AI_TECH despite containing no AI/semiconductor topic. Inspection of each matching item showed the only matching AI_TECH keyword was the short token "ai", found inside unrelated words/phrases such as "on air", "campaign" and "said" (examples: Truth Archive statuses 43484, 43438, 43443, 43448, 43449, 43450 and 43451). The active code in trump_tracker.py::_domains_for_public_text used substring matching for every keyword. The tag can map into the existing NASDAQ100/SEMICONDUCTORS watchlist, so this is a classification-provenance defect, not evidence of a market catalyst.
+- **Correction on branch:** match only the exact short token "ai" as a whole word; retain all other existing keyword matching and category mappings.
+- **Regression tests:** "on air", "presidential campaign" and "said" do not receive AI_TECH; "AI-powered policy" remains AI_TECH.
+- **Scope:** lexical domain-label correction only. No new source, category, filter, score, ranking, direction, strategy, risk, entry/SL/TP, Telegram, or PAPER authorization was added or changed.
+- **Branch:** fix/sputnik-ai-token-boundary-20261104. CI pending. No merge, deployment, main-branch write, secret/Render change, live order, or paid service. PAPER ONLY.
