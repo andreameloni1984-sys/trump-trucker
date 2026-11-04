@@ -75,7 +75,7 @@ def _has_article_specific_source(pattern: dict[str, Any]) -> bool:
 
 def classify_event(text: str) -> str:
     body = _normalise(text)
-    if any(k in body for k in ("tariff", "tariffs", "trade war", "china", "xi")):
+    if any(k in body for k in ("tariff", "tariffs", "trade war")) or re.search(r"\b(?:china|xi)\b", body):
         if any(k in body for k in ("pause", "help china", "not hurt", "soften", "deal")):
             return "TRADE_DE_ESCALATION"
         return "TRADE_ESCALATION"
