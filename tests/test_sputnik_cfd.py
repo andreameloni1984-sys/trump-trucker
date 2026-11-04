@@ -804,5 +804,54 @@ class CfdCartDisplayStateTests(unittest.TestCase):
         self.assertEqual(state["paper_trade"], "NOT_EXECUTED")
 
 
+class ContinuousFuturesLevelLabelTests(unittest.TestCase):
+    def test_continuous_futures_levels_are_reference_only(self):
+        message = format_cfd_signal({
+            "instrument": "GOLD",
+            "direction": "SHORT",
+            "status": "EARLY_SETUP",
+            "setup_status": "EARLY_SETUP",
+            "paper_trade_status": "NOT_EXECUTED",
+            "score": 80,
+            "timestamp": "2026-11-04 02:20 UTC",
+            "entry": 3947.3999,
+            "stop": 3951.5892,
+            "tp1": 3943.2106,
+            "tp2": 3939.0214,
+            "atr": 2.7928,
+            "quote_symbol": "GC=F",
+            "quote_market_type": "FUTURES_CONTINUOUS",
+            "quote_contract_description": "COMEX gold continuous futures; exact expiry not exposed",
+        })
+
+        self.assertIn("LIVELLI INDICATIVI — NON OPERATIVI", message)
+        self.assertIn("RIFERIMENTO ENTRY: 3947.3999", message)
+        self.assertIn("RIFERIMENTO SL:    3951.5892", message)
+        self.assertNotIn("💰 ENTRY:", message)
+        self.assertIn("TRADE PAPER: NOT_EXECUTED", message)
+
+    def test_explicit_contract_keeps_normal_level_labels(self):
+        message = format_cfd_signal({
+            "instrument": "GOLD",
+            "direction": "SHORT",
+            "status": "EARLY_SETUP",
+            "setup_status": "EARLY_SETUP",
+            "paper_trade_status": "NOT_EXECUTED",
+            "score": 80,
+            "timestamp": "2026-11-04 02:20 UTC",
+            "entry": 3947.4,
+            "stop": 3951.5,
+            "tp1": 3943.2,
+            "tp2": 3939.0,
+            "atr": 2.79,
+            "quote_symbol": "GCZ26",
+            "quote_market_type": "FUTURES",
+            "quote_contract_description": "COMEX Gold December 2026",
+        })
+
+        self.assertIn("💰 ENTRY: 3947.4", message)
+        self.assertNotIn("LIVELLI INDICATIVI", message)
+
+
 if __name__ == "__main__":
     unittest.main()
