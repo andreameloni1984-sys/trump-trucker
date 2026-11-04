@@ -471,3 +471,16 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Regression coverage added:** a fresh dated catalyst ranks above an otherwise equivalent old event and remains WATCH.
 - **Commits:** `94f1bdc0ceb52c14be28e553a2f99903d494cc89` (implementation); `bd72b03ad460b609cedc44f4c7ab9f3d416918b3` (tests).
 - **Verification:** tests have been added but have not been executed in this session; CI must pass before treating the change as validated in production. No deployment or live trade was performed.
+
+
+## 2026-11-04 — Avoid classifying campaign “warrior” wording as geopolitical escalation
+
+- **Observed evidence:** persisted collector commit `fb58dabbf705e3cb096b54b55e68012f2bc59ac0` contains 17 distinct Trump Truth Archive RSS items, published 2026-11-03 13:06:24–13:08:49 UTC and detected 2026-11-04 02:20:22 UTC. Three campaign-endorsement items (Derrick Van Orden, John McGuire and Brandon Herrera) were labelled `GEOPOLITICAL_ESCALATION`; their text uses “Warrior/Warriors” in an electoral endorsement, not a report of war or military escalation. No historical analogue was attached.
+- **Root cause:** `sputnik_action_reaction.py::classify_event` used substring matching for `"war"`, so “warrior” also matched.
+- **Correction on branch:** match `war` as a whole word while retaining the existing escalation classification for the standalone word. No new category, source, filter, score, direction, ranking, strategy or trade rule is introduced.
+- **Regression tests:** a campaign “Warrior” sentence remains `OTHER`; a standalone “war” sentence remains `GEOPOLITICAL_ESCALATION`.
+- **Validation:** GitHub Actions CI pending on branch `fix/sputnik-warrior-classification-20261104`; no test is claimed passed until Actions completes.
+- **Safety:** PAPER ONLY. No direct main write, merge, deployment, secret/Render change, Telegram send or order.
+
+
+- **Additional reproduced false positive in the same classifier:** the Greg Cunningham endorsement for New Mexico (RSS item `https://www.trumpstruth.org/statuses/43398`) was labelled `TRADE_ESCALATION` and matched historical analogue `china_tariff_escalation_2025_10`. The text names “New Mexico”; substring matching for `xi` matched the middle of “Mexico”. The same correction now requires `china`/`xi` as whole words, while preserving the existing explicit tariff and “trade war” terms. Regression: “New Mexico” remains `OTHER`.

@@ -4,6 +4,18 @@ from sputnik_action_reaction import classify_event, match_historical_reactions, 
 
 
 class ActionReactionTests(unittest.TestCase):
+    def test_new_mexico_does_not_trigger_xi_trade_match(self):
+        text = "Greg Cunningham is running to represent New Mexico's 2nd Congressional District."
+        self.assertEqual(classify_event(text), "OTHER")
+
+    def test_warrior_does_not_trigger_geopolitical_escalation(self):
+        text = "The candidate is an America First Warrior who supports peace through strength."
+        self.assertEqual(classify_event(text), "OTHER")
+
+    def test_standalone_war_still_classifies_as_geopolitical_escalation(self):
+        text = "Officials warn that war may resume after negotiations."
+        self.assertEqual(classify_event(text), "GEOPOLITICAL_ESCALATION")
+
     def test_tariff_escalation_matches_historical_event(self):
         text = "Trump announces massive increase in tariffs on China"
         self.assertEqual(classify_event(text), "TRADE_ESCALATION")
