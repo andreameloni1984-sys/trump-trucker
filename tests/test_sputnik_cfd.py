@@ -394,6 +394,51 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
         self.assertIn("MERCATO CONTRO BIAS", message)
         self.assertIn("ipotesi news non confermata dal prezzo", message)
 
+    def test_message_separates_momentum_focused_and_dla_sources_with_timestamps(self):
+        now = datetime.now(timezone.utc).isoformat()
+        candle_time = int(datetime.now(timezone.utc).timestamp())
+        quote = {
+            "price": 80.0, "atr": 2.0, "timestamp": now,
+            "provider": "Yahoo Finance chart (1m futures)", "symbol": "CL=F",
+            "candles": [{"timestamp": candle_time} for _ in range(60)],
+        }
+        focused_module = ModuleType("sputnik_focused_trader")
+        focused_module.analyze_focused_market = lambda instrument, candles: {
+            "status": "DIRECTIONAL", "direction": "LONG", "reason": "EMA trend long",
+            "quote_timestamp": candle_time,
+        }
+        setup_module = ModuleType("sputnik_competition_setup")
+        setup_module.evaluate_competition_setup = lambda instrument, candles: {
+            "status": "EARLY_SETUP", "direction": "LONG",
+            "confirmations": ["Direction LONG", "Location LONG"],
+            "missing_conditions": ["TRIGGER_NOT_CONFIRMED"], "reasons": [],
+            "quote_timestamp": candle_time,
+        }
+        recommendation = {
+            "instrument": "WTI", "bias": "SHORT", "score": 65,
+            "reason": "Direzione tecnica SHORT; nessun catalizzatore direzionale verificato.",
+            "technical_bias": "SHORT",
+            "technical_reason": "Momentum 5m negativo negli ultimi 15 minuti (-0.042%).",
+            "technical_quote_timestamp": candle_time - 300,
+            "technical_price": 79.9,
+            "technical_timeframe": "5m",
+        }
+        with patch.dict("sys.modules", {
+            "sputnik_focused_trader": focused_module,
+            "sputnik_competition_setup": setup_module,
+        }):
+            with patch("sputnik_cfd.attach_silv_crosscheck", side_effect=lambda q, instrument: q):
+                signal = build_cfd_signal(recommendation, {"WTI": quote})
+        message = format_cfd_signal(signal)
+        self.assertIn("MOMENTUM 5M: SHORT", message)
+        self.assertIn("TECNICA FOCUSED: LONG", message)
+        self.assertIn("D-L-A: LONG", message)
+        self.assertIn("candela", message)
+        self.assertIn("MERCATO CONTRO BIAS", message)
+        self.assertIn("MOTIVO BIAS/CATALIZZATORE", message)
+        self.assertEqual(signal["direction"], "SHORT")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
+
     def test_early_dla_can_publish_technical_only_bias_when_news_is_neutral(self):
         now = datetime.now(timezone.utc).isoformat()
         quote = {
