@@ -461,3 +461,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - The active item-level RSS implementation is in `trump_tracker.py` and `sputnik_public_sources.py`, including the White House and Trump Truth Archive feeds. Those active paths are retained.
 - Deleted only the unreferenced stub. Added its path to the Sputnik regression workflow's path filters so any future reintroduction/change triggers tests.
 - No source URLs, event classifications, Telegram behavior, ranking, or PAPER-only boundaries changed.
+
+
+## 2026-11-04 — Rank fresh dated catalysts higher in Sputnik
+
+- **Finding:** catalyst watchlist ranking rewarded source/event breadth but did not give a recency bonus to dated public items, so an old catalyst could rank alongside a newly published event with similar evidence breadth.
+- **Implemented on main:** add a bounded freshness bonus using the newest parseable publication timestamp: 10 points up to 1 hour, 7 up to 6 hours, 4 up to 24 hours, 1 up to 72 hours, otherwise 0. Invalid, missing, or future timestamps receive no bonus. Output includes `recency_score` and `newest_event_age_hours`.
+- **Scope:** ranking only. Status remains WATCH; recency cannot create LONG/SHORT, BUY/SELL, a trade plan, PAPER authorization, Telegram delivery, or an order.
+- **Regression coverage added:** a fresh dated catalyst ranks above an otherwise equivalent old event and remains WATCH.
+- **Commits:** `94f1bdc0ceb52c14be28e553a2f99903d494cc89` (implementation); `bd72b03ad460b609cedc44f4c7ab9f3d416918b3` (tests).
+- **Verification:** tests have been added but have not been executed in this session; CI must pass before treating the change as validated in production. No deployment or live trade was performed.
