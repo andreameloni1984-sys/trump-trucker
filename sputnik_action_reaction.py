@@ -6,6 +6,7 @@ does not turn a political statement into a guaranteed trade.
 """
 from __future__ import annotations
 
+import re
 from typing import Any
 from urllib.parse import urlparse
 
@@ -78,7 +79,7 @@ def classify_event(text: str) -> str:
         if any(k in body for k in ("pause", "help china", "not hurt", "soften", "deal")):
             return "TRADE_DE_ESCALATION"
         return "TRADE_ESCALATION"
-    if any(k in body for k in ("iran", "hormuz", "missile", "military strike", "war")):
+    if any(k in body for k in ("iran", "hormuz", "missile", "military strike")) or re.search(r"\bwar\b", body):
         return "GEOPOLITICAL_ESCALATION"
     if any(k in body for k in ("oil", "crude", "brent", "wti")):
         return "ENERGY"
