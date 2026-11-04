@@ -471,3 +471,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Regression coverage added:** a fresh dated catalyst ranks above an otherwise equivalent old event and remains WATCH.
 - **Commits:** `94f1bdc0ceb52c14be28e553a2f99903d494cc89` (implementation); `bd72b03ad460b609cedc44f4c7ab9f3d416918b3` (tests).
 - **Verification:** tests have been added but have not been executed in this session; CI must pass before treating the change as validated in production. No deployment or live trade was performed.
+
+
+## 2026-11-04 — Label continuous-futures levels as reference-only
+
+- **Observed run:** SPUTNIK Actions run #41760070544 (2026-11-04 02:20 UTC) displayed GOLD levels from the Yahoo continuous-futures path while the exact contract expiry was not exposed.
+- **Finding:** the formatter printed generic ENTRY/SL/TP labels even when the quote metadata identified a continuous front-month series with no exact expiry. The signal remained EARLY_SETUP and PAPER NOT_EXECUTED; no executed trade or verifiable outcome was recorded.
+- **Change proposed:** keep the calculated values visible for audit, but label them explicitly as indicative/non-operational when the quote is a continuous futures series or its description says the exact expiry is not exposed. Explicitly identified contracts retain the existing labels.
+- **Scope:** presentation and provenance clarity only. No direction, scoring, strategy, setup, ATR, levels, risk, sizing, Governor, provider routing, Telegram transport, PAPER state or order behavior changed.
+- **Regression coverage:** continuous GC=F levels are reference-only; an explicitly identified futures contract retains normal labels. CI must pass before considering the change validated.
+- **Safety:** no merge, deployment, live order, secret or Render change.
