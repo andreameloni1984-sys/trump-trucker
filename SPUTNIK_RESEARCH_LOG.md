@@ -481,3 +481,6 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Regression tests:** a campaign “Warrior” sentence remains `OTHER`; a standalone “war” sentence remains `GEOPOLITICAL_ESCALATION`.
 - **Validation:** GitHub Actions CI pending on branch `fix/sputnik-warrior-classification-20261104`; no test is claimed passed until Actions completes.
 - **Safety:** PAPER ONLY. No direct main write, merge, deployment, secret/Render change, Telegram send or order.
+
+
+- **Additional reproduced false positive in the same classifier:** the Greg Cunningham endorsement for New Mexico (RSS item `https://www.trumpstruth.org/statuses/43398`) was labelled `TRADE_ESCALATION` and matched historical analogue `china_tariff_escalation_2025_10`. The text names “New Mexico”; substring matching for `xi` matched the middle of “Mexico”. The same correction now requires `china`/`xi` as whole words, while preserving the existing explicit tariff and “trade war” terms. Regression: “New Mexico” remains `OTHER`.
