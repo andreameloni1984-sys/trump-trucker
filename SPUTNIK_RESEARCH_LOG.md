@@ -471,3 +471,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Regression coverage added:** a fresh dated catalyst ranks above an otherwise equivalent old event and remains WATCH.
 - **Commits:** `94f1bdc0ceb52c14be28e553a2f99903d494cc89` (implementation); `bd72b03ad460b609cedc44f4c7ab9f3d416918b3` (tests).
 - **Verification:** tests have been added but have not been executed in this session; CI must pass before treating the change as validated in production. No deployment or live trade was performed.
+
+
+## 2026-11-04 — Make opposing live technical direction explicit in CFD alerts
+
+- **Finding:** the CFD builder preserved a dated catalyst BIAS when the completed 5m technical direction or D-L-A setup pointed the other way. The Telegram message showed separate LONG/SHORT fields and `CONTRASTS`, but did not clearly state that the observed market direction was opposing the catalyst thesis.
+- **Implemented on branch:** add `market_direction_conflict` and a plain-language `MERCATO CONTRO BIAS` warning whenever the technical 5m or D-L-A side is opposite the catalyst BIAS. The alert explicitly says the news hypothesis is not confirmed by price.
+- **Unchanged:** do not flip the catalyst BIAS, do not add filters or thresholds, do not change entry/SL/TP calculation, risk, score, setup status, PAPER authorization or execution. No new provider calls. PAPER ONLY.
+- **Regression:** extend the opposite-direction CFD test to verify the conflict flag and Telegram warning.
+- **Validation:** pending GitHub Actions on this branch. No live quote replay, Telegram delivery, deployment or trade is claimed.
