@@ -6,6 +6,7 @@ these remain hypotheses and never certify an entry or place an order.
 """
 from __future__ import annotations
 import re
+from datetime import datetime, timezone
 from typing import Any
 
 DOMAIN_INSTRUMENTS = {
@@ -100,6 +101,31 @@ def non_negated_pattern_matches(text: str, pattern: str | re.Pattern[str]):
         yield match
 
 
+def _catalyst_recency(published: str, now: datetime | None = None) -> tuple[int, float | None]:
+    """Return a small ranking bonus for fresh, timestamped public events."""
+    if not published:
+        return 0, None
+    try:
+        stamp = datetime.fromisoformat(str(published).replace("Z", "+00:00"))
+        if stamp.tzinfo is None:
+            stamp = stamp.replace(tzinfo=timezone.utc)
+        current = now or datetime.now(timezone.utc)
+        age_hours = (current - stamp.astimezone(timezone.utc)).total_seconds() / 3600
+    except (TypeError, ValueError, OverflowError):
+        return 0, None
+    if age_hours < 0:
+        return 0, None
+    if age_hours <= 1:
+        return 10, age_hours
+    if age_hours <= 6:
+        return 7, age_hours
+    if age_hours <= 24:
+        return 4, age_hours
+    if age_hours <= 72:
+        return 1, age_hours
+    return 0, age_hours
+
+
 def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[dict[str, Any]]:
     """Return deduplicated WATCH candidates from documented public findings."""
     if limit <= 0:
@@ -132,6 +158,7 @@ def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[
                     "domains": set(),
                     "primary_source": False,
                     "evidence": [],
+                    "published": [],
                 })
                 row["sources"].add(source)
                 if event_id:
@@ -139,17 +166,32 @@ def catalyst_watchlist(findings: list[dict[str, Any]], limit: int = 10) -> list[
                 row["domains"].add(domain)
                 row["primary_source"] |= source in PRIMARY_SOURCES
                 row["evidence"].append(evidence or "PUBLIC_SOURCE_TEXT")
+                published = str(finding.get("published") or "").strip()
+                if published:
+                    row["published"].append(published)
 
     result = []
     for row in merged.values():
         source_count = len(row["sources"])
         event_count = len(row["events"])
-        score = min(100, 40 + (20 if row["primary_source"] else 0) + min(20, source_count * 10) + min(20, event_count * 5))
+        # Use the newest dated event as a ranking bonus, never as a BUY gate.
+        recency_scores = [_catalyst_recency(value) for value in row["published"]]
+        recency_score, age_hours = max(recency_scores, key=lambda item: item[0], default=(0, None))
+        score = min(
+            100,
+            30
+            + (20 if row["primary_source"] else 0)
+            + min(20, source_count * 10)
+            + min(20, event_count * 5)
+            + recency_score,
+        )
         result.append({
             "instrument": row["instrument"],
             "description": row["description"],
             "status": row["status"],
             "score": score,
+            "recency_score": recency_score,
+            "newest_event_age_hours": round(age_hours, 2) if age_hours is not None else None,
             "sources": sorted(row["sources"]),
             "events": len(row["events"]),
             "domains": sorted(row["domains"]),
