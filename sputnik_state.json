@@ -1,14 +1,36 @@
 {
   "events": {},
-  "updated_at": "2026-11-04T17:28:06.369654+00:00",
+  "updated_at": "2026-11-04T18:00:50.804053+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "cccdf5e8e6f3a217fe501d03",
+    "TRUTH_ARCHIVE": "4b3a083d2df3d98a1ec07e35",
     "OGE": "c0aba0118915c0c4100167f0"
   },
   "intelligence_history": {
+    "4b3a083d2df3d98a1ec07e35": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 4, 2026, 12:27 PM Original Post Stock Market just hit another Record High — 91 Days in just a short period of time — Less than two years. Your 401(k)s are through the roof. Record Setting All! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 4, 2026, 12:05 PM Original Post Donald J. Trump @realDonaldTrump · November 3, 2026, 11:52 PM Original Post Why does FoxNews have Bill de Blasio, the Worst Mayor in the History of New York City, on air, ranting and raving like a Lunatic? He left the City in disgrace, and the damage he caused was incalculable — It has never been the same, and now he’s telling us how to run America. FoxNews bears responsibility for these losses by constantly and consistently putting on the Dumocrat opposition, and worse. GOD BLESS AMERICA! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 11:40 PM Original Post Donald J. Trump @realDonaldTrump · November 3, 2026, 11:38 PM Original Post I’m going to become a Political Pundit, both good and bad, on the reasons these Candidates won and lost! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 11:35 PM Original Post If Greg Abbott, the Governor of Texas, hadn’t become a RINO in the last six months of his Political Life, he wouldn’t have lost. He went back to his original formula, and it wasn’t pretty! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 10:37 PM Original Post I wasn’t on the Ballot and if I was, we would have won IN A LANDSLIDE! Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 7:00 PM Original Post FoxNews Ratings are way down (27%!) because they’re spending too much time covering the Trump Deranged Dumocrats! All of those people who used to watch Fox, and no longer do, get it. It’s them, not me — My numbers are better than they have ever been. The new CNN Poll stated that “TRUMP” is at 99% among Republicans and, among Republican Presidents, “TRUMP” is at 53%, compared to Ronald Reagan at 18%, and Abraham Lincoln at 8%! Fox knows this, and so does everyone else! Also, why is Fox Corp. spending so much money donating to the Worst of the Worst, including Hakeem Jeffries, Jamie Raskin, Ted Lieu, Pete Aguilar, the California Dumocratic Party, the Dumocratic Congressional Campaign Committee, the Dumocratic Senatorial Campaign Committee, the Congressional Black Caucus PAC, the CHC Bold PAC, and the New Dumocrat Coalition Action Fund, among others? No wonder FoxNews Ratings are collapsing, and they’re going to go down a lot further. They’re way down, not because of me, but because they are AGAINST me! This happened once before, and Fox almost collapsed. It’s happening again! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 6:51 PM Original Post Video previously posted. View 6 matching posts. August 26, 2026, 10:09 PM — Identical file August 27, 2026, 5:51 PM — Identical file October 1, 2026, 2:11 PM — Identical file October 10, 2026, 8:03 PM — Visual match October 18, 2026, 1:39 PM — Visual match October 25, 2026, 8:16 PM — Identical file Donald J. Trump @realDonaldTrump · November 3, 2026, 6:51 PM Original Post Video previously posted. View 4 matching posts. September 28, 2026, 11:00 PM — Identical file October 1, 2026, 2:11 PM — Identical file October 10, 2026, 8:03 PM — Visual match October 25, 2026, 8:17 PM — Identical file Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T18:00:50.042807+00:00",
+      "event_id": "4b3a083d2df3d98a1ec07e35",
+      "action_reaction": {
+        "event_id": "4b3a083d2df3d98a1ec07e35",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "c0aba0118915c0c4100167f0": {
       "source": "OGE",
       "url": "https://www.oge.gov/",
@@ -11730,31 +11752,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "00bf45d3463584457f6971d4": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 6:38 PM Original Post Looking forward to being with you in Iowa and Kansas on Sunday! We’re going to get Ashley Hinson elected to the U.S. Senate, Zach Lahn to be the next Governor of Iowa, Roger Marshall Re-Elected to the U.S. Senate, and Ty Masterson elected to be the next Governor of Kansas! President DONALD J. TRUMP Read full post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 5:27 PM Original Post ↻ Previously posted October 27, 2026 Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 6:23 PM Original Post Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP Read full post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 5:09 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 5:09 PM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:01 PM Original Post TO THE GREAT PEOPLE OF TEXAS, GET OUT AND VOTE FOR: – Ken Paxton for U.S. Senate – Greg Abbott for Governor – Dan Patrick for Lieutenant Governor – Mayes Middleton for Attorney General – Don Huffines for Comptroller – Dawn Buckingham for Land Commissioner – Nathaniel Moran for U.S. Congress (TX-01) – Steve Toth for U.S. Congress (TX-02) – Keith Self for U.S. Congress (TX-03) – Pat Fallon for U.S. Congress (TX-04) – Lance Gooden for U.S. Congress (TX-05) – Jake Ellzey for U.S. Congress (TX-06) – Jessica Steinmann for U.S. Congress (TX-08) – Alex Mealer for U.S. Congress (TX-09) – Chris Gober for U.S. Congress (TX-10) – August Pfluger for U.S. Congress (TX-11) – Craig Goldman for U.S. Congress (TX-12) – Ronny Jackson for U.S. Congress (TX-13) – Randy Weber for U.S. Congress (TX-14) – Monica De La Cruz for U.S. Congress (TX-15) – Pete Sessions for U.S. Congress (TX-17) – Tom Sell for U.S. Congress (TX-19) – Mark Teixeira for U.S. Congress (TX-21) – Trever Nehls for U.S. Congress (TX-22) – Brandon Herrera for U.S. Congress (TX-23) – Beth Van Duyne for U.S. Congress (TX-24) – Roger Williams for U.S. Congress (TX-25) – Brandon Gill for U.S. Congress (TX-26) – Michael Cloud for U.S. Congress (TX-27) – Tano Tijerina for U.S. Congress (TX-28) – John Carter for U.S. Congress (TX-31) – Jace Yarbrough for U.S. Congress (TX-32) – Eric Flores for U.S. Congress (TX-34) – Carlos De La Cruz for U.S. Congress (TX-35) – Brian Babin for U.S. Congress (TX-36) – Jon Bonck for U.S. Congress (TX-38) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ Read full post swampthevoteusa.com TEXAS: MAKE A PLAN TO VOTE! Election Day in Texas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 30, 2026, 7:00 PM Original Post It is my Great Honor to endorse the Highly Respected Attorney General of Texas, Ken Paxton, an America First Patriot, and someone who has always been extremely loyal to me and our AMAZING MAGA MOVEMENT, who is running for the United States Senate, to represent a place I love and WON, BIG, three times, with 6.4 Million Votes in 2024 (The Most Votes in the History of the State, BY FAR)! I know Ken well, have seen him tested at the highest and most difficult levels, and he is a WINNER! Ken is a true MAGA Warrior who has ALWAYS delivered for Texas, and will continue to do so in the United States Senate. His opponent, James TalaFREAKO, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. James TalaFREAKO is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Ken will tirelessly fight to continue the Great Growth of our Economy, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Champion Texas Oil & Gas, Advocate for our Amazing Farmers and Ranchers, Promote School Choice, Keep our Border SECURE, Stop Migrant Crime, Support our Incredible Military/Veterans, Safeguard our Elections, and Protect our always under siege Second Amendment. Ken Paxton has my Complete and Total Endorsement to be the next United States Senator from the Great State of Texas. GET OUT AND VOTE FOR KEN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ Read full post swampthevoteusa.com TEXAS: MAKE A PLAN TO VO",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T02:47:36.475310+00:00",
-      "event_id": "00bf45d3463584457f6971d4",
-      "action_reaction": {
-        "event_id": "00bf45d3463584457f6971d4",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12428,6 +12425,6 @@
     "3c36ab1b17181adc8eeb0ece": "2026-11-04T09:31:38.995699+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-04T17:28:06.350626+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-04T18:00:50.747663+00:00"
   }
 }
