@@ -29,6 +29,7 @@ on:
       - "tests/test_sputnik_action_reaction.py"
       - "sputnik_action_reaction.py"
       - ".github/workflows/sputnik_tests.yml"
+      - ".github/workflows/trump_tracker.yml"
   push:
     branches:
       - main
@@ -36,6 +37,7 @@ on:
       - "sputnik_trading_instrument.py"
       - "sputnik_catalyst.py"
       - ".github/workflows/sputnik_tests.yml"
+      - ".github/workflows/trump_tracker.yml"
       - "sputnik_decision.py"
       - "sputnik_decision_engine.py"
       - "sputnik_decision_strict.py"
