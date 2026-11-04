@@ -449,7 +449,7 @@ def _matches_asset_keyword(normalized: str, keyword: str) -> bool:
     # "ai" is a short standalone acronym; substring matching also catches
     # unrelated words such as "air", "campaign", and "said".
     if keyword == "ai":
-        return re.search(r"\\bai\\b", normalized) is not None
+        return re.search(r"\bai\b", normalized) is not None
     return keyword in normalized
 
 
