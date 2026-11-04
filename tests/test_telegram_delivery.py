@@ -1,4 +1,5 @@
 import unittest
+from pathlib import Path
 
 from telegram_delivery import confirmed_message_id
 
@@ -25,6 +26,13 @@ class TelegramDeliveryConfirmationTests(unittest.TestCase):
                 self.assertIsNone(
                     confirmed_message_id({"ok": True, "result": {"message_id": message_id}})
                 )
+
+    def test_daily_summary_labels_telegram_ack_as_api_acceptance(self):
+        workflow = Path(".github/workflows/daily-summary.yml").read_text(encoding="utf-8")
+        self.assertIn("Telegram API accepted sendMessage: message_id=", workflow)
+        self.assertNotIn("Telegram delivery confirmed", workflow)
+        self.assertIn("Telegram sendMessage failed or API acknowledgement missing:", workflow)
+        self.assertNotIn("Telegram delivery failed or unconfirmed", workflow)
 
     def test_rejects_truthy_non_boolean_ok_values(self):
         self.assertIsNone(
