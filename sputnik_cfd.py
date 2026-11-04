@@ -721,15 +721,37 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"📌 STATO: {status}",
     ]
 
+    quote_market_type = str(signal.get("quote_market_type") or "").upper()
+    quote_symbol = str(signal.get("quote_symbol") or "").upper()
+    contract_description = str(signal.get("quote_contract_description") or "")
+    continuous_contract = (
+        quote_market_type in {"FUTURES_CONTINUOUS", "FUTURES_FRONT_MONTH_CONTINUOUS"}
+        or quote_symbol.endswith("=F")
+        or "exact expiry not exposed" in contract_description.lower()
+    )
+
     if signal.get("entry") is not None:
-        lines.extend([
-            "",
-            f"💰 ENTRY: {signal['entry']}",
-            f"🛑 SL:    {signal['stop']}",
-            f"🎯 TP1:   {signal['tp1']} (1R)",
-            f"🎯 TP2:   {signal['tp2']} (2R)",
-            f"📏 ATR:   {signal.get('atr')}",
-        ])
+        if continuous_contract:
+            # Keep observed levels visible, but do not present a continuous
+            # front-month series without an exact expiry as an executable plan.
+            lines.extend([
+                "",
+                "⚠️ LIVELLI INDICATIVI — NON OPERATIVI: future continuo, scadenza esatta non esposta.",
+                f"📍 RIFERIMENTO ENTRY: {signal['entry']}",
+                f"🛑 RIFERIMENTO SL:    {signal['stop']}",
+                f"🎯 RIFERIMENTO TP1:   {signal['tp1']} (1R)",
+                f"🎯 RIFERIMENTO TP2:   {signal['tp2']} (2R)",
+                f"📏 ATR DI RIFERIMENTO: {signal.get('atr')}",
+            ])
+        else:
+            lines.extend([
+                "",
+                f"💰 ENTRY: {signal['entry']}",
+                f"🛑 SL:    {signal['stop']}",
+                f"🎯 TP1:   {signal['tp1']} (1R)",
+                f"🎯 TP2:   {signal['tp2']} (2R)",
+                f"📏 ATR:   {signal.get('atr')}",
+            ])
     elif direction in {"LONG", "SHORT"}:
         lines.append("\n⏳ BIAS mantenuto; livelli omessi (entry/SL/TP): quotazione futures fresca o ATR valido non disponibile.")
     else:
