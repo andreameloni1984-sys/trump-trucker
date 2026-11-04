@@ -1,14 +1,773 @@
 {
   "events": {},
-  "updated_at": "2026-11-04T02:20:22.990546+00:00",
+  "updated_at": "2026-11-04T09:31:39.048390+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "0e3fee17563848c0b9ef55ea",
+    "TRUTH_ARCHIVE": "830a5dbaea8e5f51aed5f0b9",
     "OGE": "128573526291bf1f4e0bc089"
   },
   "intelligence_history": {
+    "3c36ab1b17181adc8eeb0ece": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43479",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552769135757700",
+      "title": "TO THE GREAT PEOPLE OF NEW HAMPSHIRE, GET OUT AND VOTE FOR: – John Sununu for U.S. Senate– Anthony DiLorenzo for U.S. Congress (NH-01) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/new-hampshire/",
+      "published": "Tue, 03 Nov 2026 13:35:07 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF NEW HAMPSHIRE, GET OUT AND VOTE FOR: – John Sununu for U.S. Senate– Anthony DiLorenzo for U.S. Congress (NH-01) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/new-hampshire/ TO THE GREAT PEOPLE OF NEW HAMPSHIRE, GET OUT AND VOTE FOR: – John Sununu for U.S. Senate – Anthony DiLorenzo for U.S. Congress (NH-01) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/new-hampshire/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.995703+00:00",
+      "event_id": "3c36ab1b17181adc8eeb0ece",
+      "action_reaction": {
+        "event_id": "3c36ab1b17181adc8eeb0ece",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f40ac7e64b3d2e32a765bebf": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43478",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552772041714561",
+      "title": "TO THE GREAT PEOPLE OF NEVADA, GET OUT AND VOTE FOR: – Joe Lombardo for Governor– Stavros Anthony for Lieutenant Governor– Jim Marchant for Secretary of State– Adriana Guzmán Fralick for Attorney General– Carrie Buck for U.S. Congress (NV-01)– David Flippo for U.S. Congress (NV-02)– Marty O'Donnell",
+      "published": "Tue, 03 Nov 2026 13:35:52 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF NEVADA, GET OUT AND VOTE FOR: – Joe Lombardo for Governor– Stavros Anthony for Lieutenant Governor– Jim Marchant for Secretary of State– Adriana Guzmán Fralick for Attorney General– Carrie Buck for U.S. Congress (NV-01)– David Flippo for U.S. Congress (NV-02)– Marty O'Donnell TO THE GREAT PEOPLE OF NEVADA, GET OUT AND VOTE FOR: – Joe Lombardo for Governor – Stavros Anthony for Lieutenant Governor – Jim Marchant for Secretary of State – Adriana Guzmán Fralick for Attorney General – Carrie Buck for U.S. Congress (NV-01) – David Flippo for U.S. Congress (NV-02) – Marty O'Donnell for U.S. Congress (NV-03) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/nevada/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.995447+00:00",
+      "event_id": "f40ac7e64b3d2e32a765bebf",
+      "action_reaction": {
+        "event_id": "f40ac7e64b3d2e32a765bebf",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "26b6bdc55b924c64e32f955d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43477",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552773993842509",
+      "title": "TO THE GREAT PEOPLE OF NEBRASKA, GET OUT AND VOTE FOR: – Pete Ricketts for U.S. Senate– Jim Pillen for Governor– Mike Hilgers for Attorney General– Mike Flood for U.S. Congress (NE-01)– Brinker Harding for U.S. Congress (NE-02)– Adrian Smith for U.S. Congress (NE-03) These Great Patriots have my Com",
+      "published": "Tue, 03 Nov 2026 13:36:22 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF NEBRASKA, GET OUT AND VOTE FOR: – Pete Ricketts for U.S. Senate– Jim Pillen for Governor– Mike Hilgers for Attorney General– Mike Flood for U.S. Congress (NE-01)– Brinker Harding for U.S. Congress (NE-02)– Adrian Smith for U.S. Congress (NE-03) These Great Patriots have my Com TO THE GREAT PEOPLE OF NEBRASKA, GET OUT AND VOTE FOR: – Pete Ricketts for U.S. Senate – Jim Pillen for Governor – Mike Hilgers for Attorney General – Mike Flood for U.S. Congress (NE-01) – Brinker Harding for U.S. Congress (NE-02) – Adrian Smith for U.S. Congress (NE-03) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/nebraska/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.995131+00:00",
+      "event_id": "26b6bdc55b924c64e32f955d",
+      "action_reaction": {
+        "event_id": "26b6bdc55b924c64e32f955d",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "70157d05abb086852e703a6b": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43476",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552775545165585",
+      "title": "TO THE GREAT PEOPLE OF MONTANA, GET OUT AND VOTE FOR: – Kurt Alme for U.S. Senate– Aaron Flint for U.S. Congress (MT-01)– Troy Downing for U.S. Congress (MT-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/mo",
+      "published": "Tue, 03 Nov 2026 13:36:45 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF MONTANA, GET OUT AND VOTE FOR: – Kurt Alme for U.S. Senate– Aaron Flint for U.S. Congress (MT-01)– Troy Downing for U.S. Congress (MT-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/mo TO THE GREAT PEOPLE OF MONTANA, GET OUT AND VOTE FOR: – Kurt Alme for U.S. Senate – Aaron Flint for U.S. Congress (MT-01) – Troy Downing for U.S. Congress (MT-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/montana/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.994842+00:00",
+      "event_id": "70157d05abb086852e703a6b",
+      "action_reaction": {
+        "event_id": "70157d05abb086852e703a6b",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "5e6a5f588f15c0cf0e6eb212": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43475",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552777144209024",
+      "title": "TO THE GREAT PEOPLE OF MISSOURI, GET OUT AND VOTE FOR: – Ann Wagner for U.S. Congress (MO-02)– Bob Onder for U.S. Congress (MO-03)– Mark Alford for U.S. Congress (MO-04)– Rick Brattin for U.S. Congress (MO-05)– Eric Burlison for U.S. Congress (MO-07)– Jason Smith for U.S. Congress (MO-08) These Grea",
+      "published": "Tue, 03 Nov 2026 13:37:10 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF MISSOURI, GET OUT AND VOTE FOR: – Ann Wagner for U.S. Congress (MO-02)– Bob Onder for U.S. Congress (MO-03)– Mark Alford for U.S. Congress (MO-04)– Rick Brattin for U.S. Congress (MO-05)– Eric Burlison for U.S. Congress (MO-07)– Jason Smith for U.S. Congress (MO-08) These Grea TO THE GREAT PEOPLE OF MISSOURI, GET OUT AND VOTE FOR: – Ann Wagner for U.S. Congress (MO-02) – Bob Onder for U.S. Congress (MO-03) – Mark Alford for U.S. Congress (MO-04) – Rick Brattin for U.S. Congress (MO-05) – Eric Burlison for U.S. Congress (MO-07) – Jason Smith for U.S. Congress (MO-08) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/missouri/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.994581+00:00",
+      "event_id": "5e6a5f588f15c0cf0e6eb212",
+      "action_reaction": {
+        "event_id": "5e6a5f588f15c0cf0e6eb212",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f29bb4b7939fb300af3596cb": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43474",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552778453242534",
+      "title": "TO THE GREAT PEOPLE OF MISSISSIPPI, GET OUT AND VOTE FOR: – Cindy Hyde-Smith for U.S. Senate– Trent Kelly for U.S. Congress (MS-01)– Michael Guest for U.S. Congress (MS-03)– Mike Ezell for U.S. Congress (MS-04) These Great Patriots have my Complete and Total Endorsement — They will never let you dow",
+      "published": "Tue, 03 Nov 2026 13:37:30 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF MISSISSIPPI, GET OUT AND VOTE FOR: – Cindy Hyde-Smith for U.S. Senate– Trent Kelly for U.S. Congress (MS-01)– Michael Guest for U.S. Congress (MS-03)– Mike Ezell for U.S. Congress (MS-04) These Great Patriots have my Complete and Total Endorsement — They will never let you dow TO THE GREAT PEOPLE OF MISSISSIPPI, GET OUT AND VOTE FOR: – Cindy Hyde-Smith for U.S. Senate – Trent Kelly for U.S. Congress (MS-01) – Michael Guest for U.S. Congress (MS-03) – Mike Ezell for U.S. Congress (MS-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/mississippi/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.994255+00:00",
+      "event_id": "f29bb4b7939fb300af3596cb",
+      "action_reaction": {
+        "event_id": "f29bb4b7939fb300af3596cb",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "3207f8d2a7386a7670e0e9a6": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43473",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552779865279715",
+      "title": "TO THE GREAT PEOPLE OF MINNESOTA, GET OUT AND VOTE FOR: – Michele Tafoya for U.S. Senate– Brad Finstad for U.S. Congress (MN-01)– Tom Emmer for U.S. Congress (MN-06)– Michelle Fischbach for U.S. Congress (MN-07)– Pete Stauber for U.S. Congress (MN-08) These Great Patriots have my Complete and Total",
+      "published": "Tue, 03 Nov 2026 13:37:51 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF MINNESOTA, GET OUT AND VOTE FOR: – Michele Tafoya for U.S. Senate– Brad Finstad for U.S. Congress (MN-01)– Tom Emmer for U.S. Congress (MN-06)– Michelle Fischbach for U.S. Congress (MN-07)– Pete Stauber for U.S. Congress (MN-08) These Great Patriots have my Complete and Total TO THE GREAT PEOPLE OF MINNESOTA, GET OUT AND VOTE FOR: – Michele Tafoya for U.S. Senate – Brad Finstad for U.S. Congress (MN-01) – Tom Emmer for U.S. Congress (MN-06) – Michelle Fischbach for U.S. Congress (MN-07) – Pete Stauber for U.S. Congress (MN-08) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/minnesota/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.993967+00:00",
+      "event_id": "3207f8d2a7386a7670e0e9a6",
+      "action_reaction": {
+        "event_id": "3207f8d2a7386a7670e0e9a6",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b28aa6d93715051e4a61a5b1": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43472",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552781341844180",
+      "title": "TO THE GREAT PEOPLE OF MICHIGAN, GET OUT AND VOTE FOR: – Mike Rogers for U.S. Senate– John James for Governor– Jack Bergman for U.S. Congress (MI-01)– John Moolenaar for U.S. Congress (MI-02)– Bill Huizenga for U.S. Congress (MI-04)– Tim Walberg for U.S. Congress (MI-05)– Tom Barrett for U.S. Congre",
+      "published": "Tue, 03 Nov 2026 13:38:14 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF MICHIGAN, GET OUT AND VOTE FOR: – Mike Rogers for U.S. Senate– John James for Governor– Jack Bergman for U.S. Congress (MI-01)– John Moolenaar for U.S. Congress (MI-02)– Bill Huizenga for U.S. Congress (MI-04)– Tim Walberg for U.S. Congress (MI-05)– Tom Barrett for U.S. Congre TO THE GREAT PEOPLE OF MICHIGAN, GET OUT AND VOTE FOR: – Mike Rogers for U.S. Senate – John James for Governor – Jack Bergman for U.S. Congress (MI-01) – John Moolenaar for U.S. Congress (MI-02) – Bill Huizenga for U.S. Congress (MI-04) – Tim Walberg for U.S. Congress (MI-05) – Tom Barrett for U.S. Congress (MI-07) – Lisa McClain for U.S. Congress (MI-09) – Mike Bouchard for U.S. Congress (MI-10) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/michigan/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.993652+00:00",
+      "event_id": "b28aa6d93715051e4a61a5b1",
+      "action_reaction": {
+        "event_id": "b28aa6d93715051e4a61a5b1",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "22fa9ad8a569b3dd35ccf283": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43471",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552783061346155",
+      "title": "TO THE GREAT PEOPLE OF MARYLAND, GET OUT AND VOTE FOR: – Andy Harris for U.S. Congress (MD-01) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/maryland/",
+      "published": "Tue, 03 Nov 2026 13:38:40 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF MARYLAND, GET OUT AND VOTE FOR: – Andy Harris for U.S. Congress (MD-01) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/maryland/ TO THE GREAT PEOPLE OF MARYLAND, GET OUT AND VOTE FOR: – Andy Harris for U.S. Congress (MD-01) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/maryland/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.993337+00:00",
+      "event_id": "22fa9ad8a569b3dd35ccf283",
+      "action_reaction": {
+        "event_id": "22fa9ad8a569b3dd35ccf283",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b6f4cdf0010c69339737fabf": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43470",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552784642263422",
+      "title": "TO THE GREAT PEOPLE OF LOUISIANA, GET OUT AND VOTE FOR: – Julia Letlow for U.S. Senate– Steve Scalise for U.S. Congress (LA-01)– Clay Higgins for U.S. Congress (LA-03)– Speaker Mike Johnson for U.S. Congress (LA-04) These Great Patriots have my Complete and Total Endorsement — They will never let yo",
+      "published": "Tue, 03 Nov 2026 13:39:04 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF LOUISIANA, GET OUT AND VOTE FOR: – Julia Letlow for U.S. Senate– Steve Scalise for U.S. Congress (LA-01)– Clay Higgins for U.S. Congress (LA-03)– Speaker Mike Johnson for U.S. Congress (LA-04) These Great Patriots have my Complete and Total Endorsement — They will never let yo TO THE GREAT PEOPLE OF LOUISIANA, GET OUT AND VOTE FOR: – Julia Letlow for U.S. Senate – Steve Scalise for U.S. Congress (LA-01) – Clay Higgins for U.S. Congress (LA-03) – Speaker Mike Johnson for U.S. Congress (LA-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/louisiana/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.993123+00:00",
+      "event_id": "b6f4cdf0010c69339737fabf",
+      "action_reaction": {
+        "event_id": "b6f4cdf0010c69339737fabf",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "cac17bf74227923d1087014c": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43469",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552785929148974",
+      "title": "TO THE GREAT PEOPLE OF KENTUCKY, GET OUT AND VOTE FOR: – Andy Barr for U.S. Senate– James Comer for U.S. Congress (KY-01)– Brett Guthrie for U.S. Congress (KY-02)– Ed Gallrein for U.S. Congress (KY-04)– Hal Rogers for U.S. Congress (KY-05)– Ralph Alvarado for U.S. Congress (KY-06) These Great Patrio",
+      "published": "Tue, 03 Nov 2026 13:39:24 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF KENTUCKY, GET OUT AND VOTE FOR: – Andy Barr for U.S. Senate– James Comer for U.S. Congress (KY-01)– Brett Guthrie for U.S. Congress (KY-02)– Ed Gallrein for U.S. Congress (KY-04)– Hal Rogers for U.S. Congress (KY-05)– Ralph Alvarado for U.S. Congress (KY-06) These Great Patrio TO THE GREAT PEOPLE OF KENTUCKY, GET OUT AND VOTE FOR: – Andy Barr for U.S. Senate – James Comer for U.S. Congress (KY-01) – Brett Guthrie for U.S. Congress (KY-02) – Ed Gallrein for U.S. Congress (KY-04) – Hal Rogers for U.S. Congress (KY-05) – Ralph Alvarado for U.S. Congress (KY-06) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/kentucky/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.992848+00:00",
+      "event_id": "cac17bf74227923d1087014c",
+      "action_reaction": {
+        "event_id": "cac17bf74227923d1087014c",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "a2772c6396502801515efe51": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43468",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552788711413722",
+      "title": "TO THE GREAT PEOPLE OF KANSAS, GET OUT AND VOTE FOR: – Roger Marshall for U.S. Senate– Ty Masterson for Governor– Tracey Mann for U.S. Congress (KS-01)– Derek Schmidt for U.S. Congress (KS-02)– Ron Estes for U.S. Congress (KS-04) These Great Patriots have my Complete and Total Endorsement — They wil",
+      "published": "Tue, 03 Nov 2026 13:40:06 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF KANSAS, GET OUT AND VOTE FOR: – Roger Marshall for U.S. Senate– Ty Masterson for Governor– Tracey Mann for U.S. Congress (KS-01)– Derek Schmidt for U.S. Congress (KS-02)– Ron Estes for U.S. Congress (KS-04) These Great Patriots have my Complete and Total Endorsement — They wil TO THE GREAT PEOPLE OF KANSAS, GET OUT AND VOTE FOR: – Roger Marshall for U.S. Senate – Ty Masterson for Governor – Tracey Mann for U.S. Congress (KS-01) – Derek Schmidt for U.S. Congress (KS-02) – Ron Estes for U.S. Congress (KS-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/kansas/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.992536+00:00",
+      "event_id": "a2772c6396502801515efe51",
+      "action_reaction": {
+        "event_id": "a2772c6396502801515efe51",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "80795e72bfde48f6d344bf06": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43467",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552790210747194",
+      "title": "TO THE GREAT PEOPLE OF IOWA, GET OUT AND VOTE FOR: – Ashley Hinson for U.S. Senate– Zach Lahn for Governor– Brenna Bird for Attorney General– Mariannette Miller-Meeks for U.S. Congress (IA-01)– Joe Mitchell for U.S. Congress (IA-02)– Zach Nunn for U.S. Congress (IA-03)– Chris McGowan for U.S. Congre",
+      "published": "Tue, 03 Nov 2026 13:40:29 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF IOWA, GET OUT AND VOTE FOR: – Ashley Hinson for U.S. Senate– Zach Lahn for Governor– Brenna Bird for Attorney General– Mariannette Miller-Meeks for U.S. Congress (IA-01)– Joe Mitchell for U.S. Congress (IA-02)– Zach Nunn for U.S. Congress (IA-03)– Chris McGowan for U.S. Congre TO THE GREAT PEOPLE OF IOWA, GET OUT AND VOTE FOR: – Ashley Hinson for U.S. Senate – Zach Lahn for Governor – Brenna Bird for Attorney General – Mariannette Miller-Meeks for U.S. Congress (IA-01) – Joe Mitchell for U.S. Congress (IA-02) – Zach Nunn for U.S. Congress (IA-03) – Chris McGowan for U.S. Congress (IA-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/iowa/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.992247+00:00",
+      "event_id": "80795e72bfde48f6d344bf06",
+      "action_reaction": {
+        "event_id": "80795e72bfde48f6d344bf06",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "e06e4b7060c829b54754158a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43466",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552791827923806",
+      "title": "TO THE GREAT PEOPLE OF INDIANA, GET OUT AND VOTE FOR: – Max Engling for Secretary of State– Barb Regnitz for U.S. Congress (IN-01)– Rudy Yakym for U.S. Congress (IN-02)– Marlin Stutzman for U.S. Congress (IN-03)– Jim Baird for U.S. Congress (IN-04)– Victoria Spartz for U.S. Congress (IN-05)– Jeffers",
+      "published": "Tue, 03 Nov 2026 13:40:54 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF INDIANA, GET OUT AND VOTE FOR: – Max Engling for Secretary of State– Barb Regnitz for U.S. Congress (IN-01)– Rudy Yakym for U.S. Congress (IN-02)– Marlin Stutzman for U.S. Congress (IN-03)– Jim Baird for U.S. Congress (IN-04)– Victoria Spartz for U.S. Congress (IN-05)– Jeffers TO THE GREAT PEOPLE OF INDIANA, GET OUT AND VOTE FOR: – Max Engling for Secretary of State – Barb Regnitz for U.S. Congress (IN-01) – Rudy Yakym for U.S. Congress (IN-02) – Marlin Stutzman for U.S. Congress (IN-03) – Jim Baird for U.S. Congress (IN-04) – Victoria Spartz for U.S. Congress (IN-05) – Jefferson Shreve for U.S. Congress (IN-06) – Mark Messmer for U.S. Congress (IN-08) – Erin Houchin for U.S. Congress (IN-09) – Trevor De Vries for State Senate (IN-SD-01) – Brian Schmutzler for State Senate (IN-SD-11) – Tyler Johnson for State Senate (IN-SD-14) – Liz Brown for State Senate (IN-SD-15) – Blake Fiechter for State Senate (IN-SD-19) – Tracey Powell for State Senate (IN-SD-21) – Ron Alting for State Senate (IN-SD-22) – Mike Gaskill for State Senate (IN-SD-25) – Scott Alexander for State Senate (IN-SD-26) – Jeff Raatz for State Senate (IN-SD-27) – Jeff Ellington for State Senate (IN-SD-39) – Michelle Davis for State Senate (IN-SD-41) – Randy Maxwell for State Senate (IN-SD-43) – Chris Garten for State Senate (IN-SD-45) – Gary Byrne for State Senate (IN-SD-47) – Daryl Schmitt for State Senate (IN-SD-48) – Jim Tomes for State Senate (IN-SD-49) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/indiana/ View image View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.991873+00:00",
+      "event_id": "e06e4b7060c829b54754158a",
+      "action_reaction": {
+        "event_id": "e06e4b7060c829b54754158a",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "e701d17c51fe25c3029412db": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43465",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552793703896847",
+      "title": "TO THE GREAT PEOPLE OF ILLINOIS, GET OUT AND VOTE FOR: – Darren Bailey for Governor– Mike Bost for U.S. Congress (IL-12)– Mary Miller for U.S. Congress (IL-15)– Darin LaHood for U.S. Congress (IL-16) These Great Patriots have my Complete and Total Endorsement — They will never let you down! Presiden",
+      "published": "Tue, 03 Nov 2026 13:41:22 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF ILLINOIS, GET OUT AND VOTE FOR: – Darren Bailey for Governor– Mike Bost for U.S. Congress (IL-12)– Mary Miller for U.S. Congress (IL-15)– Darin LaHood for U.S. Congress (IL-16) These Great Patriots have my Complete and Total Endorsement — They will never let you down! Presiden TO THE GREAT PEOPLE OF ILLINOIS, GET OUT AND VOTE FOR: – Darren Bailey for Governor – Mike Bost for U.S. Congress (IL-12) – Mary Miller for U.S. Congress (IL-15) – Darin LaHood for U.S. Congress (IL-16) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/illinois/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.991338+00:00",
+      "event_id": "e701d17c51fe25c3029412db",
+      "action_reaction": {
+        "event_id": "e701d17c51fe25c3029412db",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f089caddd865a7c2d1c24bbb": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43464",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552795061921562",
+      "title": "TO THE GREAT PEOPLE OF IDAHO, GET OUT AND VOTE FOR: – Jim Risch for U.S. Senate– Brad Little for Governor– Scott Bedke for Lieutenant Governor– Russ Fulcher for U.S. Congress (ID-01)– Mike Simpson for U.S. Congress (ID-02) These Great Patriots have my Complete and Total Endorsement — They will never",
+      "published": "Tue, 03 Nov 2026 13:41:43 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF IDAHO, GET OUT AND VOTE FOR: – Jim Risch for U.S. Senate– Brad Little for Governor– Scott Bedke for Lieutenant Governor– Russ Fulcher for U.S. Congress (ID-01)– Mike Simpson for U.S. Congress (ID-02) These Great Patriots have my Complete and Total Endorsement — They will never TO THE GREAT PEOPLE OF IDAHO, GET OUT AND VOTE FOR: – Jim Risch for U.S. Senate – Brad Little for Governor – Scott Bedke for Lieutenant Governor – Russ Fulcher for U.S. Congress (ID-01) – Mike Simpson for U.S. Congress (ID-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/idaho/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.991053+00:00",
+      "event_id": "f089caddd865a7c2d1c24bbb",
+      "action_reaction": {
+        "event_id": "f089caddd865a7c2d1c24bbb",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "bd64643c76c2c2cb8e347748": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43463",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552796496619021",
+      "title": "TO THE GREAT PEOPLE OF GEORGIA, GET OUT AND VOTE FOR: – Mike Collins for U.S. Senate– Rick Jackson for Governor– Greg Dolezal for Lieutenant Governor– Brian Strickland for Attorney General– Tim Fleming for Secretary of State– Jim Kingston for U.S. Congress (GA-01)– Brian Jack for U.S. Congress (GA-0",
+      "published": "Tue, 03 Nov 2026 13:42:05 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF GEORGIA, GET OUT AND VOTE FOR: – Mike Collins for U.S. Senate– Rick Jackson for Governor– Greg Dolezal for Lieutenant Governor– Brian Strickland for Attorney General– Tim Fleming for Secretary of State– Jim Kingston for U.S. Congress (GA-01)– Brian Jack for U.S. Congress (GA-0 TO THE GREAT PEOPLE OF GEORGIA, GET OUT AND VOTE FOR: – Mike Collins for U.S. Senate – Rick Jackson for Governor – Greg Dolezal for Lieutenant Governor – Brian Strickland for Attorney General – Tim Fleming for Secretary of State – Jim Kingston for U.S. Congress (GA-01) – Brian Jack for U.S. Congress (GA-03) – Rich McCormick for U.S. Congress (GA-07) – Austin Scott for U.S. Congress (GA-08) – Andrew Clyde for U.S. Congress (GA-09) – Houston Gaines for U.S. Congress (GA-10) – John Cowan for U.S. Congress (GA-11) – Rick Allen for U.S. Congress (GA-12) – Clay Fuller for U.S. Congress (GA-14) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/georgia/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.990754+00:00",
+      "event_id": "bd64643c76c2c2cb8e347748",
+      "action_reaction": {
+        "event_id": "bd64643c76c2c2cb8e347748",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f7cfa194d9e9804a1385c6cc": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43462",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552798491034798",
+      "title": "TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR: – Ashley Moody for U.S. Senate– Byron Donalds for Governor– James Uthmeier for Attorney General– Wilton Simpson for Agriculture Commissioner– Jimmy Patronis for U.S. Congress (FL-01)– Austin Rogers for U.S. Congress (FL-02)– Kat Cammack for U.S.",
+      "published": "Tue, 03 Nov 2026 13:42:35 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR: – Ashley Moody for U.S. Senate– Byron Donalds for Governor– James Uthmeier for Attorney General– Wilton Simpson for Agriculture Commissioner– Jimmy Patronis for U.S. Congress (FL-01)– Austin Rogers for U.S. Congress (FL-02)– Kat Cammack for U.S. TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR: – Ashley Moody for U.S. Senate – Byron Donalds for Governor – James Uthmeier for Attorney General – Wilton Simpson for Agriculture Commissioner – Jimmy Patronis for U.S. Congress (FL-01) – Austin Rogers for U.S. Congress (FL-02) – Kat Cammack for U.S. Congress (FL-03) – Aaron Bean for U.S. Congress (FL-04) – John Rutherford for U.S. Congress (FL-05) – Randy Fine for U.S. Congress (FL-06) – Ryan Elijah for U.S. Congress (FL-07) – Mike Haridopolos for U.S. Congress (FL-08) – Dan Green for U.S. Congress (FL-09) – Joe Strada for U.S. Congress (FL-11) – Gus Bilirakis for U.S. Congress (FL-12) – Anna Paulina Luna for U.S. Congress (FL-13) – Mike Beltran for U.S. Congress (FL-14) – Laurel Lee for U.S. Congress (FL-15) – Sydney Gruters for U.S. Congress (FL-16) – Greg Steube for U.S. Congress (FL-17) – Scott Franklin for U.S. Congress (FL-18) – Jim Schwartzel for U.S. Congress (FL-19) – Brian Mast for U.S. Congress (FL-21) – Casey Askar for U.S. Congress (FL-22) – Scott Singer for U.S. Congress (FL-25) – Mario Diaz-Balart for U.S. Congress (FL-26) – Maria Elvira Salazar for U.S. Congress (FL-27) – Carlos Gimenez for U.S. Congress (FL-28) – Meg Weinberger for State House (FL-HD-94) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/florida/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.990318+00:00",
+      "event_id": "f7cfa194d9e9804a1385c6cc",
+      "action_reaction": {
+        "event_id": "f7cfa194d9e9804a1385c6cc",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "d1fd485e4180fc119d55be1d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43461",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552831025987426",
+      "title": "TO THE GREAT PEOPLE OF COLORADO, GET OUT AND VOTE FOR: – Jeff Hurd for U.S. Congress (CO-03)– Lauren Boebert for U.S. Congress (CO-04)– Jeff Crank for U.S. Congress (CO-05)– Gabe Evans for U.S. Congress (CO-08) These Great Patriots have my Complete and Total Endorsement — They will never let you dow",
+      "published": "Tue, 03 Nov 2026 13:50:52 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF COLORADO, GET OUT AND VOTE FOR: – Jeff Hurd for U.S. Congress (CO-03)– Lauren Boebert for U.S. Congress (CO-04)– Jeff Crank for U.S. Congress (CO-05)– Gabe Evans for U.S. Congress (CO-08) These Great Patriots have my Complete and Total Endorsement — They will never let you dow TO THE GREAT PEOPLE OF COLORADO, GET OUT AND VOTE FOR: – Jeff Hurd for U.S. Congress (CO-03) – Lauren Boebert for U.S. Congress (CO-04) – Jeff Crank for U.S. Congress (CO-05) – Gabe Evans for U.S. Congress (CO-08) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/colorado/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.989770+00:00",
+      "event_id": "d1fd485e4180fc119d55be1d",
+      "action_reaction": {
+        "event_id": "d1fd485e4180fc119d55be1d",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "1ef4370a6dfc97a440a84220": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43460",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552833526822724",
+      "title": "TO THE GREAT PEOPLE OF CALIFORNIA, GET OUT AND VOTE FOR: – Steve Hilton for Governor– James Gallagher for U.S. Congress (CA-01)– Tom McClintock for U.S. Congress (CA-05)– Kevin Lincoln for U.S. Congress (CA-13)– Vince Fong for U.S. Congress (CA-20)– Jay Obernolte for U.S. Congress (CA-23)– Jim Desmo",
+      "published": "Tue, 03 Nov 2026 13:51:30 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF CALIFORNIA, GET OUT AND VOTE FOR: – Steve Hilton for Governor– James Gallagher for U.S. Congress (CA-01)– Tom McClintock for U.S. Congress (CA-05)– Kevin Lincoln for U.S. Congress (CA-13)– Vince Fong for U.S. Congress (CA-20)– Jay Obernolte for U.S. Congress (CA-23)– Jim Desmo TO THE GREAT PEOPLE OF CALIFORNIA, GET OUT AND VOTE FOR: – Steve Hilton for Governor – James Gallagher for U.S. Congress (CA-01) – Tom McClintock for U.S. Congress (CA-05) – Kevin Lincoln for U.S. Congress (CA-13) – Vince Fong for U.S. Congress (CA-20) – Jay Obernolte for U.S. Congress (CA-23) – Jim Desmond for U.S. Congress (CA-48) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/california/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.989481+00:00",
+      "event_id": "1ef4370a6dfc97a440a84220",
+      "action_reaction": {
+        "event_id": "1ef4370a6dfc97a440a84220",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "e20b8c76412f9beea19173ad": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43459",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552836387969672",
+      "title": "TO THE GREAT PEOPLE OF ARKANSAS, GET OUT AND VOTE FOR: – Tom Cotton for U.S. Senate– Sarah Huckabee Sanders for Governor– Rick Crawford for U.S. Congress (AR-01)– French Hill for U.S. Congress (AR-02)– Steve Womack for U.S. Congress (AR-03)– Bruce Westerman for U.S. Congress (AR-04) These Great Patr",
+      "published": "Tue, 03 Nov 2026 13:52:14 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF ARKANSAS, GET OUT AND VOTE FOR: – Tom Cotton for U.S. Senate– Sarah Huckabee Sanders for Governor– Rick Crawford for U.S. Congress (AR-01)– French Hill for U.S. Congress (AR-02)– Steve Womack for U.S. Congress (AR-03)– Bruce Westerman for U.S. Congress (AR-04) These Great Patr TO THE GREAT PEOPLE OF ARKANSAS, GET OUT AND VOTE FOR: – Tom Cotton for U.S. Senate – Sarah Huckabee Sanders for Governor – Rick Crawford for U.S. Congress (AR-01) – French Hill for U.S. Congress (AR-02) – Steve Womack for U.S. Congress (AR-03) – Bruce Westerman for U.S. Congress (AR-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/arkansas/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.989163+00:00",
+      "event_id": "e20b8c76412f9beea19173ad",
+      "action_reaction": {
+        "event_id": "e20b8c76412f9beea19173ad",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b4def9c4beed829e8e2284ba": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43457",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552838497287142",
+      "title": "TO THE GREAT PEOPLE OF ARIZONA, GET OUT AND VOTE FOR: – Andy Biggs for Governor– Warren Petersen for Attorney General– Alexander Kolodin for Secretary of State– Jay Feely for U.S. Congress (AZ-01)– Eli Crane for U.S. Congress (AZ-02)– Mark Lamb for U.S. Congress (AZ-05)– Juan Ciscomani for U.S. Cong",
+      "published": "Tue, 03 Nov 2026 13:52:46 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF ARIZONA, GET OUT AND VOTE FOR: – Andy Biggs for Governor– Warren Petersen for Attorney General– Alexander Kolodin for Secretary of State– Jay Feely for U.S. Congress (AZ-01)– Eli Crane for U.S. Congress (AZ-02)– Mark Lamb for U.S. Congress (AZ-05)– Juan Ciscomani for U.S. Cong TO THE GREAT PEOPLE OF ARIZONA, GET OUT AND VOTE FOR: – Andy Biggs for Governor – Warren Petersen for Attorney General – Alexander Kolodin for Secretary of State – Jay Feely for U.S. Congress (AZ-01) – Eli Crane for U.S. Congress (AZ-02) – Mark Lamb for U.S. Congress (AZ-05) – Juan Ciscomani for U.S. Congress (AZ-06) – Abraham Hamadeh for U.S. Congress (AZ-08) – Paul Gosar for U.S. Congress (AZ-09) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/arizona/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.988863+00:00",
+      "event_id": "b4def9c4beed829e8e2284ba",
+      "action_reaction": {
+        "event_id": "b4def9c4beed829e8e2284ba",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "646d43f961feef3be3b06468": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43456",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552843109770094",
+      "title": "TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR: – Dan S. Sullivan for U.S. Senate– Bernadette Wilson for Governor– Nick Begich for U.S. Congress (AK-AL) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/alask",
+      "published": "Tue, 03 Nov 2026 13:53:56 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR: – Dan S. Sullivan for U.S. Senate– Bernadette Wilson for Governor– Nick Begich for U.S. Congress (AK-AL) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/alask TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR: – Dan S. Sullivan for U.S. Senate – Bernadette Wilson for Governor – Nick Begich for U.S. Congress (AK-AL) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/alaska/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.988543+00:00",
+      "event_id": "646d43f961feef3be3b06468",
+      "action_reaction": {
+        "event_id": "646d43f961feef3be3b06468",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "57ca4302b7afb69d6e9331e6": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43455",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552846369178812",
+      "title": "TO THE GREAT PEOPLE OF ALABAMA, GET OUT AND VOTE FOR: – Barry Moore for U.S. Senate– Tommy Tuberville for Governor– John Wahl for Lieutenant Governor– Katherine Robertson for Attorney General– Jerry Carl for U.S. Congress (AL-01)– Rhett Marques for U.S. Congress (AL-02)– Mike Rogers for U.S. Congres",
+      "published": "Tue, 03 Nov 2026 13:54:46 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "TO THE GREAT PEOPLE OF ALABAMA, GET OUT AND VOTE FOR: – Barry Moore for U.S. Senate– Tommy Tuberville for Governor– John Wahl for Lieutenant Governor– Katherine Robertson for Attorney General– Jerry Carl for U.S. Congress (AL-01)– Rhett Marques for U.S. Congress (AL-02)– Mike Rogers for U.S. Congres TO THE GREAT PEOPLE OF ALABAMA, GET OUT AND VOTE FOR: – Barry Moore for U.S. Senate – Tommy Tuberville for Governor – John Wahl for Lieutenant Governor – Katherine Robertson for Attorney General – Jerry Carl for U.S. Congress (AL-01) – Rhett Marques for U.S. Congress (AL-02) – Mike Rogers for U.S. Congress (AL-03) – Robert Aderholt for U.S. Congress (AL-04) – Dale Strong for U.S. Congress (AL-05) – Gary Palmer for U.S. Congress (AL-06) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/alabama/ View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.988251+00:00",
+      "event_id": "57ca4302b7afb69d6e9331e6",
+      "action_reaction": {
+        "event_id": "57ca4302b7afb69d6e9331e6",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "a1942c9913ab7bc35db4f22b": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43451",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117553613220175280",
+      "title": "Trump’s Midterm Travel Runs Circles Around Obama, Biden:",
+      "published": "Tue, 03 Nov 2026 17:09:47 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Trump’s Midterm Travel Runs Circles Around Obama, Biden: Trump’s Midterm Travel Runs Circles Around Obama, Biden: https://www. dailysignal.com/2026/11/03/tru mps-midterm-travel-blitz-surpasses-predecessors/",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.987640+00:00",
+      "event_id": "a1942c9913ab7bc35db4f22b",
+      "action_reaction": {
+        "event_id": "a1942c9913ab7bc35db4f22b",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "cc191893149342953d173f3f": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43450",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117553650492622207",
+      "title": "The Daily Mail wrongly took my joke at a Presidential News Conference where the beautiful Lincoln Memorial Reflecting Pool was opened yesterday, and pretended it wasn't a joke when I said, I'm going to name it, \"TRUMP.\" Their dishonest, false headline states: \"Trump delivers final midterms speech to",
+      "published": "Tue, 03 Nov 2026 17:19:16 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "The Daily Mail wrongly took my joke at a Presidential News Conference where the beautiful Lincoln Memorial Reflecting Pool was opened yesterday, and pretended it wasn't a joke when I said, I'm going to name it, \"TRUMP.\" Their dishonest, false headline states: \"Trump delivers final midterms speech to The Daily Mail wrongly took my joke at a Presidential News Conference where the beautiful Lincoln Memorial Reflecting Pool was opened yesterday, and pretended it wasn't a joke when I said, I'm going to name it, \"TRUMP.\" Their dishonest, false headline states: \"Trump delivers final midterms speech to just 60 people at the renovated Reflecting Pool and threatens a major rename.\" It wasn't a \"Final Midterms Speech\" that only had 60 people, it was a NEWS CONFERENCE, nobody was invited, it was closed to the Public — Just Reporters. My Final Midterms Speech was the day before in lowa and Kansas, where we had 50,000 people. This just shows you how FAKE the News is. I said, very clearly, \"I'm joking.\" The Fake News is so corrupt! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.987471+00:00",
+      "event_id": "cc191893149342953d173f3f",
+      "action_reaction": {
+        "event_id": "cc191893149342953d173f3f",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "81e8f715c5b95b1dcea89e43": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43449",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117553680973466314",
+      "title": "Lightweight Congressman Ted Lieu, one of the least respected in Washington, D.C., made a knowingly malicious, false, and defamatory statement that I wanted to change the name of the Lincoln Memorial Reflecting Pool to the Trump Reflecting Pool. He posted on X, \"What are Trump and his Republican enab",
+      "published": "Tue, 03 Nov 2026 17:27:01 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Lightweight Congressman Ted Lieu, one of the least respected in Washington, D.C., made a knowingly malicious, false, and defamatory statement that I wanted to change the name of the Lincoln Memorial Reflecting Pool to the Trump Reflecting Pool. He posted on X, \"What are Trump and his Republican enab Lightweight Congressman Ted Lieu, one of the least respected in Washington, D.C., made a knowingly malicious, false, and defamatory statement that I wanted to change the name of the Lincoln Memorial Reflecting Pool to the Trump Reflecting Pool. He posted on X, \"What are Trump and his Republican enablers focused on? Changing the name of the Lincoln Memorial Reflecting Pool to the Trump Reflecting Pool. Punish them at the ballot box. Repudiate them. Vote.\" Ted Lieu knows that I said it in a jocular manner, and added, immediately after, \"Don't worry, I'm only joking.\" All of the gathered Reporters laughed. But “Lightweight” Lieu, his new moniker, didn’t add the line that I’m only joking because he is a FRAUD. This was done at a News Conference, and even the Media was aghast that Lieu would have lied like that. He's a Third Rate Congressman, and always will be! Thank you for your attention to this matter. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.987231+00:00",
+      "event_id": "81e8f715c5b95b1dcea89e43",
+      "action_reaction": {
+        "event_id": "81e8f715c5b95b1dcea89e43",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "48e271c8fd9298286d940040": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43448",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117554198887656582",
+      "title": "The Jewish community in Monsey, New York, and its surrounding neighborhoods, voted in very big numbers for me in our Historic 2024 Presidential Campaign. TREMENDOUS SUPPORT! TODAY, the eyes of the Country are on New York again! Congressman Mike Lawler has been a tremendous friend to the Jewish commu",
+      "published": "Tue, 03 Nov 2026 19:38:44 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "The Jewish community in Monsey, New York, and its surrounding neighborhoods, voted in very big numbers for me in our Historic 2024 Presidential Campaign. TREMENDOUS SUPPORT! TODAY, the eyes of the Country are on New York again! Congressman Mike Lawler has been a tremendous friend to the Jewish commu The Jewish community in Monsey, New York, and its surrounding neighborhoods, voted in very big numbers for me in our Historic 2024 Presidential Campaign. TREMENDOUS SUPPORT! TODAY, the eyes of the Country are on New York again! Congressman Mike Lawler has been a tremendous friend to the Jewish community and a strong leader in the fight against antisemitism. He has stood with the community when it mattered most, speaking out against hatred, and standing up for Religious Freedom and School Choice! Mike has worked tirelessly for his constituents, for our Country, and for the Jewish people. He understands the importance of strong leadership, protecting our communities, and delivering REAL RESULTS for the people he represents. His dedication to public service and his willingness to stand up for what he believes in have made a tremendous difference. That kind of commitment should never be taken for granted! Working together with your State Senator Bill Weber, Mike will continue to be your voice, and fight for you and your family! EVERY VOTE MATTERS. MAKE YOUR VOICE HEARD TODAY. VOTE MIKE LAWLER FOR CONGRESS — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.986918+00:00",
+      "event_id": "48e271c8fd9298286d940040",
+      "action_reaction": {
+        "event_id": "48e271c8fd9298286d940040",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "20669c0802192adb9f68dfcc": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43446",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117554563852726181",
+      "title": "Quote post from November 3, 2026",
+      "published": "Tue, 03 Nov 2026 21:11:33 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 3, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117554562841729326 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.986689+00:00",
+      "event_id": "20669c0802192adb9f68dfcc",
+      "action_reaction": {
+        "event_id": "20669c0802192adb9f68dfcc",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "7bb50dd166258ad5ac5b930a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43443",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117554852721008421",
+      "title": "Watching the Pre-Election Results on FoxNews, but I can't stand Jessica Tarlov's voice — DUMB AS A ROCK, but it's the voice that gets me. Have to go somewhere else until that LOSER is off the air — I'll be back later! President DONALD J. TRUMP",
+      "published": "Tue, 03 Nov 2026 22:25:00 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Watching the Pre-Election Results on FoxNews, but I can't stand Jessica Tarlov's voice — DUMB AS A ROCK, but it's the voice that gets me. Have to go somewhere else until that LOSER is off the air — I'll be back later! President DONALD J. TRUMP Watching the Pre-Election Results on FoxNews, but I can't stand Jessica Tarlov's voice — DUMB AS A ROCK, but it's the voice that gets me. Have to go somewhere else until that LOSER is off the air — I'll be back later! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.986537+00:00",
+      "event_id": "7bb50dd166258ad5ac5b930a",
+      "action_reaction": {
+        "event_id": "7bb50dd166258ad5ac5b930a",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "bc7c9873cf16a0462dcf5c21": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43438",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117555228889927200",
+      "title": "FoxNews Ratings are way down (27%!) because they’re spending too much time covering the Trump Deranged Dumocrats! All of those people who used to watch Fox, and no longer do, get it. It’s them, not me — My numbers are better than they have ever been. The new CNN Poll stated that “TRUMP” is at 99% am",
+      "published": "Wed, 04 Nov 2026 00:00:40 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "FoxNews Ratings are way down (27%!) because they’re spending too much time covering the Trump Deranged Dumocrats! All of those people who used to watch Fox, and no longer do, get it. It’s them, not me — My numbers are better than they have ever been. The new CNN Poll stated that “TRUMP” is at 99% am FoxNews Ratings are way down (27%!) because they’re spending too much time covering the Trump Deranged Dumocrats! All of those people who used to watch Fox, and no longer do, get it. It’s them, not me — My numbers are better than they have ever been. The new CNN Poll stated that “TRUMP” is at 99% among Republicans and, among Republican Presidents, “TRUMP” is at 53%, compared to Ronald Reagan at 18%, and Abraham Lincoln at 8%! Fox knows this, and so does everyone else! Also, why is Fox Corp. spending so much money donating to the Worst of the Worst, including Hakeem Jeffries, Jamie Raskin, Ted Lieu, Pete Aguilar, the California Dumocratic Party, the Dumocratic Congressional Campaign Committee, the Dumocratic Senatorial Campaign Committee, the Congressional Black Caucus PAC, the CHC Bold PAC, and the New Dumocrat Coalition Action Fund, among others? No wonder FoxNews Ratings are collapsing, and they’re going to go down a lot further. They’re way down, not because of me, but because they are AGAINST me! This happened once before, and Fox almost collapsed. It’s happening again! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.986137+00:00",
+      "event_id": "bc7c9873cf16a0462dcf5c21",
+      "action_reaction": {
+        "event_id": "bc7c9873cf16a0462dcf5c21",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "5ee8e8b16ca7c0f010743c28": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43484",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117556376518256698",
+      "title": "Why does FoxNews have Bill de Blasio, the Worst Mayor in the History of New York City, on air, ranting and raving like a Lunatic? He left the City in disgrace, and the damage he caused was incalculable — It has never been the same, and now he’s telling us how to run America. FoxNews bears responsibi",
+      "published": "Wed, 04 Nov 2026 04:52:32 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Why does FoxNews have Bill de Blasio, the Worst Mayor in the History of New York City, on air, ranting and raving like a Lunatic? He left the City in disgrace, and the damage he caused was incalculable — It has never been the same, and now he’s telling us how to run America. FoxNews bears responsibi Why does FoxNews have Bill de Blasio, the Worst Mayor in the History of New York City, on air, ranting and raving like a Lunatic? He left the City in disgrace, and the damage he caused was incalculable — It has never been the same, and now he’s telling us how to run America. FoxNews bears responsibility for these losses by constantly and consistently putting on the Dumocrat opposition, and worse. GOD BLESS AMERICA! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.985628+00:00",
+      "event_id": "5ee8e8b16ca7c0f010743c28",
+      "action_reaction": {
+        "event_id": "5ee8e8b16ca7c0f010743c28",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "830a5dbaea8e5f51aed5f0b9": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 3, 2026, 11:52 PM Original Post Why does FoxNews have Bill de Blasio, the Worst Mayor in the History of New York City, on air, ranting and raving like a Lunatic? He left the City in disgrace, and the damage he caused was incalculable — It has never been the same, and now he’s telling us how to run America. FoxNews bears responsibility for these losses by constantly and consistently putting on the Dumocrat opposition, and worse. GOD BLESS AMERICA! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 11:40 PM Original Post Donald J. Trump @realDonaldTrump · November 3, 2026, 11:38 PM Original Post I’m going to become a Political Pundit, both good and bad, on the reasons these Candidates won and lost! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 11:35 PM Original Post If Greg Abbott, the Governor of Texas, hadn’t become a RINO in the last six months of his Political Life, he wouldn’t have lost. He went back to his original formula, and it wasn’t pretty! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 10:37 PM Original Post I wasn’t on the Ballot and if I was, we would have won IN A LANDSLIDE! Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 7:00 PM Original Post FoxNews Ratings are way down (27%!) because they’re spending too much time covering the Trump Deranged Dumocrats! All of those people who used to watch Fox, and no longer do, get it. It’s them, not me — My numbers are better than they have ever been. The new CNN Poll stated that “TRUMP” is at 99% among Republicans and, among Republican Presidents, “TRUMP” is at 53%, compared to Ronald Reagan at 18%, and Abraham Lincoln at 8%! Fox knows this, and so does everyone else! Also, why is Fox Corp. spending so much money donating to the Worst of the Worst, including Hakeem Jeffries, Jamie Raskin, Ted Lieu, Pete Aguilar, the California Dumocratic Party, the Dumocratic Congressional Campaign Committee, the Dumocratic Senatorial Campaign Committee, the Congressional Black Caucus PAC, the CHC Bold PAC, and the New Dumocrat Coalition Action Fund, among others? No wonder FoxNews Ratings are collapsing, and they’re going to go down a lot further. They’re way down, not because of me, but because they are AGAINST me! This happened once before, and Fox almost collapsed. It’s happening again! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 6:51 PM Original Post Video previously posted. View 6 matching posts. August 26, 2026, 10:09 PM — Identical file August 27, 2026, 5:51 PM — Identical file October 1, 2026, 2:11 PM — Identical file October 10, 2026, 8:03 PM — Visual match October 18, 2026, 1:39 PM — Visual match October 25, 2026, 8:16 PM — Identical file Donald J. Trump @realDonaldTrump · November 3, 2026, 6:51 PM Original Post Video previously posted. View 4 matching posts. September 28, 2026, 11:00 PM — Identical file October 1, 2026, 2:11 PM — Identical file October 10, 2026, 8:03 PM — Visual match October 25, 2026, 8:17 PM — Identical file Donald J. Trump @realDonaldTrump · November 3, 2026, 6:36 PM Original Post The FoxNews Poll, always the worst, is so insulting with the questions they ask. Every question is a hit job, and every answer is \"BULLSHIT!\" This has been going on for years. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 3, 2026, 6:04 PM Original Post KENTUCKY CLOSING SOON. A BIG DEAL! President DJT Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-04T09:31:38.545947+00:00",
+      "event_id": "830a5dbaea8e5f51aed5f0b9",
+      "action_reaction": {
+        "event_id": "830a5dbaea8e5f51aed5f0b9",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "b5204320a7cb95636b9701a2": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11000,808 +11759,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "eea880647936d44043705e2d": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42896",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117531909275165087",
-      "title": "TO THE GREAT PEOPLE OF COLORADO, GET OUT AND VOTE FOR:– Jeff Hurd for U.S. Congress (CO-03)– Lauren Boebert for U.S. Congress (CO-04)– Jeff Crank for U.S. Congress (CO-05)– Gabe Evans for U.S. Congress (CO-08)These Great Patriots have my Complete and Total Endorsement — They will never let you down!",
-      "published": "Fri, 30 Oct 2026 21:10:11 +0000",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "TO THE GREAT PEOPLE OF COLORADO, GET OUT AND VOTE FOR:– Jeff Hurd for U.S. Congress (CO-03)– Lauren Boebert for U.S. Congress (CO-04)– Jeff Crank for U.S. Congress (CO-05)– Gabe Evans for U.S. Congress (CO-08)These Great Patriots have my Complete and Total Endorsement — They will never let you down! RT: https://truthsocial.com/users/realDonaldTrump/statuses/117531908401047469 TO THE GREAT PEOPLE OF COLORADO, GET OUT AND VOTE FOR: – Jeff Hurd for U.S. Congress (CO-03) – Lauren Boebert for U.S. Congress (CO-04) – Jeff Crank for U.S. Congress (CO-05) – Gabe Evans for U.S. Congress (CO-08) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/colorado/ Quoted Donald J. Trump 🚨 COLORADO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Colorado. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Colorado, you can cast your early Vote, in-person, all the way through November 2nd. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP https:// swampthevoteusa.com/colorado/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.617436+00:00",
-      "event_id": "eea880647936d44043705e2d",
-      "action_reaction": {
-        "event_id": "eea880647936d44043705e2d",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "8615b0f8129cf4ec5d9e20fa": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42897",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117531920826336994",
-      "title": "Congressman Jeff Hurd is an incredible Representative for the Great People of Colorado’s 3rd Congressional District! Jeff has a strong Record of SUCCESS, and resounding support from his Community. In Congress, he is fighting tirelessly to Keep our Border SECURE, Support our Incredible Military/Veter",
-      "published": "Fri, 30 Oct 2026 21:13:08 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Jeff Hurd is an incredible Representative for the Great People of Colorado’s 3rd Congressional District! Jeff has a strong Record of SUCCESS, and resounding support from his Community. In Congress, he is fighting tirelessly to Keep our Border SECURE, Support our Incredible Military/Veter Congressman Jeff Hurd is an incredible Representative for the Great People of Colorado’s 3rd Congressional District! Jeff has a strong Record of SUCCESS, and resounding support from his Community. In Congress, he is fighting tirelessly to Keep our Border SECURE, Support our Incredible Military/Veterans, Unleash American Energy DOMINANCE, Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Defend our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Jeff’s opponent, Dwayne Romero, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Dwayne Romero is Reckless, Radical, and Dangerous! Jeff Hurd has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JEFF — HE WILL NEVER LET YOU DOWN! https:// swampthevoteusa.com/colorado/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.617295+00:00",
-      "event_id": "8615b0f8129cf4ec5d9e20fa",
-      "action_reaction": {
-        "event_id": "8615b0f8129cf4ec5d9e20fa",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e56217de7414c6781d5ce269": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42900",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117531932013305541",
-      "title": "Congressman Jeff Crank is doing a truly fantastic job representing the Great People of Colorado’s 5th Congressional District! Jeff is a Fierce Advocate for our America First Agenda. In Congress, he is fighting hard to Grow our Economy, Lower Taxes, Cut Regulations, Promote MADE IN THE U.S.A., Unleas",
-      "published": "Fri, 30 Oct 2026 21:15:58 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Jeff Crank is doing a truly fantastic job representing the Great People of Colorado’s 5th Congressional District! Jeff is a Fierce Advocate for our America First Agenda. In Congress, he is fighting hard to Grow our Economy, Lower Taxes, Cut Regulations, Promote MADE IN THE U.S.A., Unleas Congressman Jeff Crank is doing a truly fantastic job representing the Great People of Colorado’s 5th Congressional District! Jeff is a Fierce Advocate for our America First Agenda. In Congress, he is fighting hard to Grow our Economy, Lower Taxes, Cut Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Champion our Incredible Military/Veterans, and Defend our always under siege Second Amendment. Jeff’s opponent, Jessica Killin, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Jessica Killin is Reckless, Radical, and Dangerous! Jeff Crank has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JEFF — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/colorado/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.617170+00:00",
-      "event_id": "e56217de7414c6781d5ce269",
-      "action_reaction": {
-        "event_id": "e56217de7414c6781d5ce269",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e36baac7d2544170a4a17dd2": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42899",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117531933638600993",
-      "title": "Congressman Gabe Evans is an America First Patriot who is doing a fantastic job representing Colorado’s 8th Congressional District! A decorated Army Helicopter Pilot and former Police Officer, Gabe has served our Nation with Great Honor and Distinction. In Congress, he is fighting tirelessly to Grow",
-      "published": "Fri, 30 Oct 2026 21:16:23 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Gabe Evans is an America First Patriot who is doing a fantastic job representing Colorado’s 8th Congressional District! A decorated Army Helicopter Pilot and former Police Officer, Gabe has served our Nation with Great Honor and Distinction. In Congress, he is fighting tirelessly to Grow Congressman Gabe Evans is an America First Patriot who is doing a fantastic job representing Colorado’s 8th Congressional District! A decorated Army Helicopter Pilot and former Police Officer, Gabe has served our Nation with Great Honor and Distinction. In Congress, he is fighting tirelessly to Grow the Economy, Cut Taxes, Keep our Border SECURE, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Support our Brave Military, Veterans, and Law Enforcement, and Defend our always under siege Second Amendment. Gabe’s opponent, Manny Rutinel, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Manny Rutinel is Reckless, Radical, and Dangerous! Gabe Evans has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR GABE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/colorado/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.617039+00:00",
-      "event_id": "e36baac7d2544170a4a17dd2",
-      "action_reaction": {
-        "event_id": "e36baac7d2544170a4a17dd2",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e1b1288e4a19df5f0babc66a": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42901",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117531965901848778",
-      "title": "Congresswoman Lauren Boebert is an America First Patriot, who is doing an incredible job representing Colorado’s 4th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lauren is working hard to Grow our Economy, Cut Taxes and Regulations, Unleash American Energy DO",
-      "published": "Fri, 30 Oct 2026 21:24:35 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congresswoman Lauren Boebert is an America First Patriot, who is doing an incredible job representing Colorado’s 4th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lauren is working hard to Grow our Economy, Cut Taxes and Regulations, Unleash American Energy DO Congresswoman Lauren Boebert is an America First Patriot, who is doing an incredible job representing Colorado’s 4th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lauren is working hard to Grow our Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Support our Military/Veterans, and Defend our always under siege Second Amendment. Lauren’s opponent, Eileen Laubacher, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Eileen Laubacher is Reckless, Radical, and Dangerous! Lauren Boebert has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR LAUREN — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/colorado/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616911+00:00",
-      "event_id": "e1b1288e4a19df5f0babc66a",
-      "action_reaction": {
-        "event_id": "e1b1288e4a19df5f0babc66a",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "652d43fcc84ba0183e982bfb": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42902",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117531976852809081",
-      "title": "RT @realDonaldTrump",
-      "published": "Fri, 30 Oct 2026 21:27:22 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "RT @realDonaldTrump RT @ realDonaldTrump Reposted Donald J. Trump RT: https://truthsocial.com/users/realDonaldTrump/statuses/117531905350627450 View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616807+00:00",
-      "event_id": "652d43fcc84ba0183e982bfb",
-      "action_reaction": {
-        "event_id": "652d43fcc84ba0183e982bfb",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "1af0912c3347160f913a0c05": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42904",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532164192427112",
-      "title": "Congressman Carlos Gimenez is doing a fantastic job representing Florida’s 28th Congressional District! A Highly Respected Firefighter, Civic Leader, and Mayor of Miami-Dade County, prior to becoming a distinguished Congressman, Carlos has dedicated his life to serving his Community. In Congress, he",
-      "published": "Fri, 30 Oct 2026 22:15:01 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Carlos Gimenez is doing a fantastic job representing Florida’s 28th Congressional District! A Highly Respected Firefighter, Civic Leader, and Mayor of Miami-Dade County, prior to becoming a distinguished Congressman, Carlos has dedicated his life to serving his Community. In Congress, he Congressman Carlos Gimenez is doing a fantastic job representing Florida’s 28th Congressional District! A Highly Respected Firefighter, Civic Leader, and Mayor of Miami-Dade County, prior to becoming a distinguished Congressman, Carlos has dedicated his life to serving his Community. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Ensure LAW AND ORDER, and Protect our always under siege Second Amendment. Carlos Gimenez has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR CARLOS — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616735+00:00",
-      "event_id": "1af0912c3347160f913a0c05",
-      "action_reaction": {
-        "event_id": "1af0912c3347160f913a0c05",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "5d1551d3a88d6e6015dd187b": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42906",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532180917618953",
-      "title": "Congresswoman María Elvira Salazar is doing a great job representing the wonderful people of Florida’s 27th Congressional District! In Congress, María is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE",
-      "published": "Fri, 30 Oct 2026 22:19:16 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congresswoman María Elvira Salazar is doing a great job representing the wonderful people of Florida’s 27th Congressional District! In Congress, María is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE Congresswoman María Elvira Salazar is doing a great job representing the wonderful people of Florida’s 27th Congressional District! In Congress, María is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Support our Brave Military/Veterans, and Defend our always under siege Second Amendment. María’s opponent, Eliott Rodriguez, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Eliott Rodriguez is Reckless, Radical, and Dangerous! María Elvira Salazar has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MARIA! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616618+00:00",
-      "event_id": "5d1551d3a88d6e6015dd187b",
-      "action_reaction": {
-        "event_id": "5d1551d3a88d6e6015dd187b",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "47994dcefac0c718eb26e370": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42905",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532182376514600",
-      "title": "Congressman Mario Diaz-Balart is doing an incredible job representing Florida’s 26th Congressional District! A Proven Leader, Mario served his Community as a Highly Respected State Legislator and Civic Leader, prior to becoming a very distinguished Congressman. In Congress, he is fighting tirelessly",
-      "published": "Fri, 30 Oct 2026 22:19:38 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Mario Diaz-Balart is doing an incredible job representing Florida’s 26th Congressional District! A Proven Leader, Mario served his Community as a Highly Respected State Legislator and Civic Leader, prior to becoming a very distinguished Congressman. In Congress, he is fighting tirelessly Congressman Mario Diaz-Balart is doing an incredible job representing Florida’s 26th Congressional District! A Proven Leader, Mario served his Community as a Highly Respected State Legislator and Civic Leader, prior to becoming a very distinguished Congressman. In Congress, he is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Ensure PEACE THROUGH STRENGTH, Champion our Military/Veterans, and Defend our always under siege Second Amendment. Mario Diaz-Balart has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR MARIO — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616502+00:00",
-      "event_id": "47994dcefac0c718eb26e370",
-      "action_reaction": {
-        "event_id": "47994dcefac0c718eb26e370",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "423466811a44662a6070dc77": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42912",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532189467286490",
-      "title": "It is my Great Honor to endorse America First Patriot, Sydney Gruters, the wife of our GREAT Chairman of the Republican National Committee, Joe Gruters, who is running to represent the Wonderful People of Florida's 16th Congressional District! A Highly Successful Civic Leader and Public Servant, Syd",
-      "published": "Fri, 30 Oct 2026 22:21:27 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Sydney Gruters, the wife of our GREAT Chairman of the Republican National Committee, Joe Gruters, who is running to represent the Wonderful People of Florida's 16th Congressional District! A Highly Successful Civic Leader and Public Servant, Syd It is my Great Honor to endorse America First Patriot, Sydney Gruters, the wife of our GREAT Chairman of the Republican National Committee, Joe Gruters, who is running to represent the Wonderful People of Florida's 16th Congressional District! A Highly Successful Civic Leader and Public Servant, Sydney has dedicated her life to serving her Community, and she and her family are fierce advocates for our Movement to, MAKE AMERICA GREAT AGAIN! As your next Congresswoman, Sydney will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Support our Military/Veterans, Safeguard our Elections, Champion School Choice, and Defend our always under siege Second Amendment. Sydney’s opponent, Kelly Kirschner, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Kelly Kirschner is Reckless, Radical, and Dangerous! Sydney Gruters has my Complete and Total Endorsement to be the next Representative from Florida’s 16th Congressional District! GET OUT AND VOTE FOR SYDNEY — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616367+00:00",
-      "event_id": "423466811a44662a6070dc77",
-      "action_reaction": {
-        "event_id": "423466811a44662a6070dc77",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "607075453369465367ae0a58": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42911",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532190174374656",
-      "title": "Congresswoman Laurel Lee is an incredible Representative of Florida’s 15th Congressional District! Laurel served as Florida’s Secretary of State for three years, and delivered strong results for families, and businesses. In Congress, Laurel is fighting tirelessly to Grow our Economy, Cut Taxes and R",
-      "published": "Fri, 30 Oct 2026 22:21:37 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congresswoman Laurel Lee is an incredible Representative of Florida’s 15th Congressional District! Laurel served as Florida’s Secretary of State for three years, and delivered strong results for families, and businesses. In Congress, Laurel is fighting tirelessly to Grow our Economy, Cut Taxes and R Congresswoman Laurel Lee is an incredible Representative of Florida’s 15th Congressional District! Laurel served as Florida’s Secretary of State for three years, and delivered strong results for families, and businesses. In Congress, Laurel is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Champion Innovation, Strengthen our Great Military/Veterans, and Protect our always under siege Second Amendment. Laurel Lee has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR LAUREL — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616223+00:00",
-      "event_id": "607075453369465367ae0a58",
-      "action_reaction": {
-        "event_id": "607075453369465367ae0a58",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "c5c9764174706298e4428eee": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42910",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532198586240709",
-      "title": "Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP",
-      "published": "Fri, 30 Oct 2026 22:23:46 +0000",
-      "domains": [
-        "AI_TECH"
-      ],
-      "text": "Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616125+00:00",
-      "event_id": "c5c9764174706298e4428eee",
-      "action_reaction": {
-        "event_id": "c5c9764174706298e4428eee",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "41a55f8ba69b117e67d73006": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42909",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532200773948083",
-      "title": "It is my Great Honor to endorse America First Patriot, Mike Beltran, who is running to represent the tremendous people of Florida’s 14th Congressional District! A Harvard Law School Graduate, and very successful Lawyer and Businessman, Mike knows the Wisdom and Courage required to uphold our Constit",
-      "published": "Fri, 30 Oct 2026 22:24:19 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Mike Beltran, who is running to represent the tremendous people of Florida’s 14th Congressional District! A Harvard Law School Graduate, and very successful Lawyer and Businessman, Mike knows the Wisdom and Courage required to uphold our Constit It is my Great Honor to endorse America First Patriot, Mike Beltran, who is running to represent the tremendous people of Florida’s 14th Congressional District! A Harvard Law School Graduate, and very successful Lawyer and Businessman, Mike knows the Wisdom and Courage required to uphold our Constitution, and promote LAW AND ORDER. His opponent, Kathy Castor, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things would be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Kathy Castor is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Mike will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Strongly Support our incredible Law Enforcement, Military, and Veterans, and Protect our always under siege Second Amendment. Mike Beltran has my Complete and Total Endorsement to be the next Representative from Florida’s 14th Congressional District. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.616022+00:00",
-      "event_id": "41a55f8ba69b117e67d73006",
-      "action_reaction": {
-        "event_id": "41a55f8ba69b117e67d73006",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "d957027341b8656306c0b62a": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42908",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532201769118172",
-      "title": "Congresswoman Anna Paulina Luna is an America First Patriot and Tremendous Champion for the wonderful people of Florida’s 13th Congressional District! A true MAGA Warrior, Anna is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy D",
-      "published": "Fri, 30 Oct 2026 22:24:34 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congresswoman Anna Paulina Luna is an America First Patriot and Tremendous Champion for the wonderful people of Florida’s 13th Congressional District! A true MAGA Warrior, Anna is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy D Congresswoman Anna Paulina Luna is an America First Patriot and Tremendous Champion for the wonderful people of Florida’s 13th Congressional District! A true MAGA Warrior, Anna is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Support our incredible Military/Veterans, Defend our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Anna’s opponent, Leela Gray, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Leela Gray is Reckless, Radical, and Dangerous! Anna Paulina Luna has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR ANNA — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.615889+00:00",
-      "event_id": "d957027341b8656306c0b62a",
-      "action_reaction": {
-        "event_id": "d957027341b8656306c0b62a",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "87b60bc27a97b5812764db4d": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42907",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532202412822087",
-      "title": "Congressman Gus Bilirakis is a Tremendous Champion for Florida’s 12th Congressional District! As a Senior Member of the POWERFUL House Energy and Commerce Committee, Gus is working tirelessly to Unleash American Energy DOMINANCE, Create GREAT Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S.",
-      "published": "Fri, 30 Oct 2026 22:24:44 +0000",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE"
-      ],
-      "text": "Congressman Gus Bilirakis is a Tremendous Champion for Florida’s 12th Congressional District! As a Senior Member of the POWERFUL House Energy and Commerce Committee, Gus is working tirelessly to Unleash American Energy DOMINANCE, Create GREAT Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S. Congressman Gus Bilirakis is a Tremendous Champion for Florida’s 12th Congressional District! As a Senior Member of the POWERFUL House Energy and Commerce Committee, Gus is working tirelessly to Unleash American Energy DOMINANCE, Create GREAT Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., and Champion our Nation’s Golden Age. In Congress, Gus is also fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Support our Brave Military/Veterans, and Protect our always under siege Second Amendment. Gus Bilirakis has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR GUS — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.615769+00:00",
-      "event_id": "87b60bc27a97b5812764db4d",
-      "action_reaction": {
-        "event_id": "87b60bc27a97b5812764db4d",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "59c7446ed2cc602dd432b133": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42915",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532207315073333",
-      "title": "Congressman John Rutherford is an incredible Representative for the wonderful People of Florida’s 5th Congressional District! As the former Sheriff of Duval County, and now, as a Highly Respected U.S. Congressman, John strongly supports our incredible Law Enforcement, Military, and Veterans, and kno",
-      "published": "Fri, 30 Oct 2026 22:25:59 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman John Rutherford is an incredible Representative for the wonderful People of Florida’s 5th Congressional District! As the former Sheriff of Duval County, and now, as a Highly Respected U.S. Congressman, John strongly supports our incredible Law Enforcement, Military, and Veterans, and kno Congressman John Rutherford is an incredible Representative for the wonderful People of Florida’s 5th Congressional District! As the former Sheriff of Duval County, and now, as a Highly Respected U.S. Congressman, John strongly supports our incredible Law Enforcement, Military, and Veterans, and knows the Wisdom and Courage it takes to Ensure LAW AND ORDER. In Congress, he is fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Safeguard our Elections, and Protect our always under siege Second Amendment. John Rutherford has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR JOHN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.615661+00:00",
-      "event_id": "59c7446ed2cc602dd432b133",
-      "action_reaction": {
-        "event_id": "59c7446ed2cc602dd432b133",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "150f2b6c76cdb5059193180c": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42914",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532208311258325",
-      "title": "Congressman Aaron Bean is a Tremendous Champion for Florida’s 4th Congressional District! As a Member of the POWERFUL Ways & Means Committee, Aaron knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE",
-      "published": "Fri, 30 Oct 2026 22:26:14 +0000",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE"
-      ],
-      "text": "Congressman Aaron Bean is a Tremendous Champion for Florida’s 4th Congressional District! As a Member of the POWERFUL Ways & Means Committee, Aaron knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE Congressman Aaron Bean is a Tremendous Champion for Florida’s 4th Congressional District! As a Member of the POWERFUL Ways & Means Committee, Aaron knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, and Champion our Nation’s Golden Age. He is also fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Strengthen our Brave Military/Veterans, and Defend our always under siege Second Amendment. Aaron Bean has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR AARON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.615549+00:00",
-      "event_id": "150f2b6c76cdb5059193180c",
-      "action_reaction": {
-        "event_id": "150f2b6c76cdb5059193180c",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "26102b515f3cd25d99f619ce": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42913",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532209147863601",
-      "title": "Congresswoman Kat Cammack is doing a fantastic job representing the wonderful people of Florida’s 3rd Congressional District! In Congress, Kat is working tirelessly to Grow our Economy, Cut Taxes, Promote MADE IN THE U.S.A., Support our Amazing Farmers and Ranchers, Unleash American Energy DOMINANCE",
-      "published": "Fri, 30 Oct 2026 22:26:27 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congresswoman Kat Cammack is doing a fantastic job representing the wonderful people of Florida’s 3rd Congressional District! In Congress, Kat is working tirelessly to Grow our Economy, Cut Taxes, Promote MADE IN THE U.S.A., Support our Amazing Farmers and Ranchers, Unleash American Energy DOMINANCE Congresswoman Kat Cammack is doing a fantastic job representing the wonderful people of Florida’s 3rd Congressional District! In Congress, Kat is working tirelessly to Grow our Economy, Cut Taxes, Promote MADE IN THE U.S.A., Support our Amazing Farmers and Ranchers, Unleash American Energy DOMINANCE, Keep our Border SECURE, Champion our Military/Veterans, and Protect our always under siege Second Amendment. Kat Cammack has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR KAT — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.615449+00:00",
-      "event_id": "26102b515f3cd25d99f619ce",
-      "action_reaction": {
-        "event_id": "26102b515f3cd25d99f619ce",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "bdb9a267113f64c171e5fb76": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42922",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532224372467775",
-      "title": "Florida Attorney General James Uthmeier is doing a GREAT job for the Sunshine State, which I won BIG in 2016, 2020, and 2024. James is an America First Warrior, who is a true champion for “MAGA.” He is THE MAN behind ALLIGATOR ALCATRAZ, and argued strongly at the United States Supreme Court in defen",
-      "published": "Fri, 30 Oct 2026 22:30:19 +0000",
-      "domains": [
-        "DEFENSE"
-      ],
-      "text": "Florida Attorney General James Uthmeier is doing a GREAT job for the Sunshine State, which I won BIG in 2016, 2020, and 2024. James is an America First Warrior, who is a true champion for “MAGA.” He is THE MAN behind ALLIGATOR ALCATRAZ, and argued strongly at the United States Supreme Court in defen Florida Attorney General James Uthmeier is doing a GREAT job for the Sunshine State, which I won BIG in 2016, 2020, and 2024. James is an America First Warrior, who is a true champion for “MAGA.” He is THE MAN behind ALLIGATOR ALCATRAZ, and argued strongly at the United States Supreme Court in defense of my Executive Power to fire Deep State bureaucrats. Under James’ fearless leadership, over 1,000 CRIMINAL PEDOPHILES have been arrested, missing children have been SAVED, and our Great Members of Law Enforcement have been empowered to do their jobs and, KEEP FLORIDA SAFE. In his next term, James will continue to work tirelessly to Ensure Law and Order, Uphold our Constitutional Rights, and Protect our always under siege Second Amendment. James Uthmeier is a Strong Conservative Fighter and Prosecutor, and has my Complete and Total Endorsement! GET OUT AND VOTE FOR JAMES — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.615338+00:00",
-      "event_id": "bdb9a267113f64c171e5fb76",
-      "action_reaction": {
-        "event_id": "bdb9a267113f64c171e5fb76",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "984d2eed7ef3a01b2a58521e": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42921",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532225205927400",
-      "title": "It is my Great Honor to endorse America First Congressman, Byron Donalds, who is running for Governor of Florida, a State that I love, and WON BIG, in 2016, 2020, and 2024! I know Byron well, have seen him tested at the highest and most difficult levels, and he is a TOTAL WINNER! Byron has a great w",
-      "published": "Fri, 30 Oct 2026 22:30:32 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse America First Congressman, Byron Donalds, who is running for Governor of Florida, a State that I love, and WON BIG, in 2016, 2020, and 2024! I know Byron well, have seen him tested at the highest and most difficult levels, and he is a TOTAL WINNER! Byron has a great w It is my Great Honor to endorse America First Congressman, Byron Donalds, who is running for Governor of Florida, a State that I love, and WON BIG, in 2016, 2020, and 2024! I know Byron well, have seen him tested at the highest and most difficult levels, and he is a TOTAL WINNER! Byron has a great wife, Erika, and three beautiful sons. They are very proud of him! His opponent, David Jolly, is a Radical Left Democrat who wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. David Jolly is Reckless, Radical, and Dangerous! On the other hand, as your next Governor, Byron will have a BIG Voice, and work closely with me to advance our America First Agenda. He will fight tirelessly to help Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military, Protect our Veterans, Advance American Energy DOMINANCE, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., and Defend our always under siege Second Amendment. Byron Donalds has my Complete and Total Endorsement to be the next Governor of the Great State of Florida. GET OUT AND VOTE FOR BYRON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.615191+00:00",
-      "event_id": "984d2eed7ef3a01b2a58521e",
-      "action_reaction": {
-        "event_id": "984d2eed7ef3a01b2a58521e",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "ff876a4ddbc12a1a202067c7": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42919",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532226145345350",
-      "title": "Senator Ashley Moody is doing a tremendous job representing the incredible people of Florida, a State I love, and WON BIG, in 2016, 2020, and 2024! A fifth generation Floridian, Ashley served as State Attorney General for six years prior to becoming a very distinguished and well respected U.S. Senat",
-      "published": "Fri, 30 Oct 2026 22:30:46 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Senator Ashley Moody is doing a tremendous job representing the incredible people of Florida, a State I love, and WON BIG, in 2016, 2020, and 2024! A fifth generation Floridian, Ashley served as State Attorney General for six years prior to becoming a very distinguished and well respected U.S. Senat Senator Ashley Moody is doing a tremendous job representing the incredible people of Florida, a State I love, and WON BIG, in 2016, 2020, and 2024! A fifth generation Floridian, Ashley served as State Attorney General for six years prior to becoming a very distinguished and well respected U.S. Senator. Ashley is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Strengthen our Great Military/Veterans, and Defend our always under siege Second Amendment. Ashley’s opponent, Angie Nixon, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Angie Nixon is Reckless, Radical, and Dangerous! Ashley Moody has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR ASHLEY — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.615034+00:00",
-      "event_id": "ff876a4ddbc12a1a202067c7",
-      "action_reaction": {
-        "event_id": "ff876a4ddbc12a1a202067c7",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "dd07078adf2f7f8b44410912": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42918",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532227380117183",
-      "title": "🚨 FLORIDA!Early Voting, in-person, is UNDERWAY NOW in the Great State of Florida. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absen",
-      "published": "Fri, 30 Oct 2026 22:31:05 +0000",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "🚨 FLORIDA!Early Voting, in-person, is UNDERWAY NOW in the Great State of Florida. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absen 🚨 FLORIDA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Florida. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.614902+00:00",
-      "event_id": "dd07078adf2f7f8b44410912",
-      "action_reaction": {
-        "event_id": "dd07078adf2f7f8b44410912",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e89f3a968cbc0ccd1de028f0": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42917",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532228469734211",
-      "title": "TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR:– Ashley Moody for U.S. Senate– Byron Donalds for Governor– James Uthmeier for Attorney General– Wilton Simpson for Agriculture Commissioner– Jimmy Patronis for U.S. Congress (FL-01)– Austin Rogers for U.S. Congress (FL-02)– Kat Cammack for U.S. C",
-      "published": "Fri, 30 Oct 2026 22:31:22 +0000",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR:– Ashley Moody for U.S. Senate– Byron Donalds for Governor– James Uthmeier for Attorney General– Wilton Simpson for Agriculture Commissioner– Jimmy Patronis for U.S. Congress (FL-01)– Austin Rogers for U.S. Congress (FL-02)– Kat Cammack for U.S. C RT: https://truthsocial.com/users/realDonaldTrump/statuses/117532227380117183 TO THE GREAT PEOPLE OF FLORIDA, GET OUT AND VOTE FOR: – Ashley Moody for U.S. Senate – Byron Donalds for Governor – James Uthmeier for Attorney General – Wilton Simpson for Agriculture Commissioner – Jimmy Patronis for U.S. Congress (FL-01) – Austin Rogers for U.S. Congress (FL-02) – Kat Cammack for U.S. Congress (FL-03) – Aaron Bean for U.S. Congress (FL-04) – John Rutherford for U.S. Congress (FL-05) – Randy Fine for U.S. Congress (FL-06) – Ryan Elijah for U.S. Congress (FL-07) – Mike Haridopolos for U.S. Congress (FL-08) – Dan Green for U.S. Congress (FL-09) – Joe Strada for U.S. Congress (FL-11) – Gus Bilirakis for U.S. Congress (FL-12) – Anna Paulina Luna for U.S. Congress (FL-13) – Mike Beltran for U.S. Congress (FL-14) – Laurel Lee for U.S. Congress (FL-15) – Sydney Gruters for U.S. Congress (FL-16) – Greg Steube for U.S. Congress (FL-17) – Scott Franklin for U.S. Congress (FL-18) – Jim Schwartzel for U.S. Congress (FL-19) – Brian Mast for U.S. Congress (FL-21) – Casey Askar for U.S. Congress (FL-22) – Scott Singer for U.S. Congress (FL-25) – Mario Diaz-Balart for U.S. Congress (FL-26) – Maria Elvira Salazar for U.S. Congress (FL-27) – Carlos Gimenez for U.S. Congress (FL-28) – Meg Weinberger for State House (FL-HD-94) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/ Quoted Donald J. Trump 🚨 FLORIDA! Early Voting, in-person, is UNDERWAY NOW in the Great State of Florida. If you have a mail-in ballot, return it immediately and, if not, GO VOTE at the Polls RIGHT NOW, and get everyone you know to VOTE FOR THE REPUBLICAN IN EVERY RACE, UP AND DOWN THE BALLOT! Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.614735+00:00",
-      "event_id": "e89f3a968cbc0ccd1de028f0",
-      "action_reaction": {
-        "event_id": "e89f3a968cbc0ccd1de028f0",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "4cd052411cb033d386287d8f": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42916",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532230508305020",
-      "title": "RT @realDonaldTrumpWatching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP",
-      "published": "Fri, 30 Oct 2026 22:31:53 +0000",
-      "domains": [
-        "AI_TECH"
-      ],
-      "text": "RT @realDonaldTrumpWatching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP RT @ realDonaldTrump Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP Reposted Donald J. Trump Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:05.614542+00:00",
-      "event_id": "4cd052411cb033d386287d8f",
-      "action_reaction": {
-        "event_id": "4cd052411cb033d386287d8f",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "023f697e62955a8780ab12ca": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 6:38 PM Original Post Looking forward to being with you in Iowa and Kansas on Sunday! We’re going to get Ashley Hinson elected to the U.S. Senate, Zach Lahn to be the next Governor of Iowa, Roger Marshall Re-Elected to the U.S. Senate, and Ty Masterson elected to be the next Governor of Kansas! President DONALD J. TRUMP Read full post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 5:27 PM Original Post ↻ Previously posted October 27, 2026 Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 6:23 PM Original Post Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP Read full post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 5:09 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 5:09 PM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:01 PM Original Post TO THE GREAT PEOPLE OF TEXAS, GET OUT AND VOTE FOR: – Ken Paxton for U.S. Senate – Greg Abbott for Governor – Dan Patrick for Lieutenant Governor – Mayes Middleton for Attorney General – Don Huffines for Comptroller – Dawn Buckingham for Land Commissioner – Nathaniel Moran for U.S. Congress (TX-01) – Steve Toth for U.S. Congress (TX-02) – Keith Self for U.S. Congress (TX-03) – Pat Fallon for U.S. Congress (TX-04) – Lance Gooden for U.S. Congress (TX-05) – Jake Ellzey for U.S. Congress (TX-06) – Jessica Steinmann for U.S. Congress (TX-08) – Alex Mealer for U.S. Congress (TX-09) – Chris Gober for U.S. Congress (TX-10) – August Pfluger for U.S. Congress (TX-11) – Craig Goldman for U.S. Congress (TX-12) – Ronny Jackson for U.S. Congress (TX-13) – Randy Weber for U.S. Congress (TX-14) – Monica De La Cruz for U.S. Congress (TX-15) – Pete Sessions for U.S. Congress (TX-17) – Tom Sell for U.S. Congress (TX-19) – Mark Teixeira for U.S. Congress (TX-21) – Trever Nehls for U.S. Congress (TX-22) – Brandon Herrera for U.S. Congress (TX-23) – Beth Van Duyne for U.S. Congress (TX-24) – Roger Williams for U.S. Congress (TX-25) – Brandon Gill for U.S. Congress (TX-26) – Michael Cloud for U.S. Congress (TX-27) – Tano Tijerina for U.S. Congress (TX-28) – John Carter for U.S. Congress (TX-31) – Jace Yarbrough for U.S. Congress (TX-32) – Eric Flores for U.S. Congress (TX-34) – Carlos De La Cruz for U.S. Congress (TX-35) – Brian Babin for U.S. Congress (TX-36) – Jon Bonck for U.S. Congress (TX-38) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ Read full post swampthevoteusa.com TEXAS: MAKE A PLAN TO VOTE! Election Day in Texas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 30, 2026, 7:00 PM Original Post It is my Great Honor to endorse the Highly Respected Attorney General of Texas, Ken Paxton, an America First Patriot, and someone who has always been extremely loyal to me and our AMAZING MAGA MOVEMENT, who is running for the United States Senate, to represent a place I love and WON, BIG, three times, with 6.4 Million Votes in 2024 (The Most Votes in the History of the State, BY FAR)! I know Ken well, have seen him tested at the highest and most difficult levels, and he is a WINNER! Ken is a true MAGA Warrior who has ALWAYS delivered for Texas, and will continue to do so in the United States Senate. His opponent, James TalaFREAKO, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. James TalaFREAKO is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Ken will tirelessly fight to continue the Great Growth of our Economy, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Champion Texas Oil & Gas, Advocate for our Amazing Farmers and Ranchers, Promote School Choice, Keep our Border SECURE, Stop Migrant Crime, Support our Incredible Military/Veterans, Safeguard our Elections, and Protect our always under siege Second Amendment. Ken Paxton has my Complete and Total Endorsement to be the next United States Senator from the Great State of Texas. GET OUT AND VOTE FOR KEN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ Read full post swampthevoteusa.com TEXAS: MAKE A PLAN TO VO",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T23:46:04.993124+00:00",
-      "event_id": "023f697e62955a8780ab12ca",
-      "action_reaction": {
-        "event_id": "023f697e62955a8780ab12ca",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "fc3d676a1f2168a046ad0049": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42877",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529171874638931",
-      "title": "Quote post from October 30, 2026",
-      "published": "Fri, 30 Oct 2026 09:34:02 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529171135970725 View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T14:57:59.919408+00:00",
-      "event_id": "fc3d676a1f2168a046ad0049",
-      "action_reaction": {
-        "event_id": "fc3d676a1f2168a046ad0049",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e6c9b354fdf9224fe49f6100": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42879",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529183862932823",
-      "title": "Quote post from October 30, 2026",
-      "published": "Fri, 30 Oct 2026 09:37:05 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529183120003107 View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T14:57:59.919304+00:00",
-      "event_id": "e6c9b354fdf9224fe49f6100",
-      "action_reaction": {
-        "event_id": "e6c9b354fdf9224fe49f6100",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "eb850c7366c7fc15930024da": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42881",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529191919987147",
-      "title": "RT @marklevinshowTHE DEMOCRAT PARTY AND THEIR MEDIA ARE LYING ABOUT OUR ECONOMY AND MUCH MORE! CAPITALISM WORKS, SOCIALISM IS A DISASTER!Have you looked at the price of gasoline today? It is DOWN.Have you looked at the price of food today? It is flat and, in many cases, DOWN.Have you looked at the e",
-      "published": "Fri, 30 Oct 2026 09:39:08 +0000",
-      "domains": [
-        "MEDIA",
-        "RATES_MACRO"
-      ],
-      "text": "RT @marklevinshowTHE DEMOCRAT PARTY AND THEIR MEDIA ARE LYING ABOUT OUR ECONOMY AND MUCH MORE! CAPITALISM WORKS, SOCIALISM IS A DISASTER!Have you looked at the price of gasoline today? It is DOWN.Have you looked at the price of food today? It is flat and, in many cases, DOWN.Have you looked at the e RT @ marklevinshow THE DEMOCRAT PARTY AND THEIR MEDIA ARE LYING ABOUT OUR ECONOMY AND MUCH MORE! CAPITALISM WORKS, SOCIALISM IS A DISASTER! Have you looked at the price of gasoline today? It is DOWN. Have you looked at the price of food today? It is flat and, in many cases, DOWN. Have you looked at the economic growth figure today? It is UP. Have you looked at consumer confidence today? It is UP. Have you looked at take-home pay today? It is UP. Have you looked at inflation today, compared to the Biden-Democrats inflation? It is DOWN. Have you looked at foreign investment in our country today? It is UP and setting all-time records. Have you looked at manufacturing growth today? It is UP and setting records. Have you looked at the trade deficit today? It is DOWN. Have you looked at tax rates for working people and the middle class today? They are DOWN. Have you looked at unemployment today? It is DOWN. Have you looked at illegal immigration today? It is NONEXISTENT. Have you looked at the crime rate today? It is at RECORD LOWS. THE TRUMP/GOP AGENDA IS WORKING AND REVERSED THE DISASTROUS AMERICA-KILLING SOCIALIST POLICIES OF THE BIDEN DEMOCRATS! Reposted Mark Levin THE DEMOCRAT PARTY AND THEIR MEDIA ARE LYING ABOUT OUR ECONOMY AND MUCH MORE! CAPITALISM WORKS, SOCIALISM IS A DISASTER! Have you looked at the price of gasoline today? It is DOWN. Have you looked at the price of food today? It is flat and, in many cases, DOWN. Have you looked at the economic growth figure today? It is UP. Have you looked at consumer confidence today? It is UP. Have you looked at take-home pay today? It is UP. Have you looked at inflation today, compared to the Biden-Democrats inflation? It is DOWN. Have you looked at foreign investment in our country today? It is UP and setting all-time records. Have you looked at manufacturing growth today? It is UP and setting records. Have you looked at the trade deficit today? It is DOWN. Have you looked at tax rates for working people and the middle class today? They are DOWN. Have you looked at unemployment today? It is DOWN. Have you looked at illegal immigration today? It is NONEXISTENT. Have you looked at the crime rate today? It is at RECORD LOWS. THE TRUMP/GOP AGENDA IS WORKING AND REVERSED THE DISASTROUS AMERICA-KILLING SOCIALIST POLICIES OF THE BIDEN DEMOCRATS!",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T14:57:59.919117+00:00",
-      "event_id": "eb850c7366c7fc15930024da",
-      "action_reaction": {
-        "event_id": "eb850c7366c7fc15930024da",
-        "event_type": "TRADE_ESCALATION",
-        "historical_matches": [
-          "china_tariff_escalation_2025_10"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "DOWN",
-          "NASDAQ": "DOWN",
-          "USD": "DOWN",
-          "TREASURY_YIELDS": "DOWN",
-          "OIL": "DOWN"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
-    },
-    "d9e04f123deef066a482c203": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42883",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529394978444089",
-      "title": "INFLATION IS WAY DOWN UNDER “TRUMP.” INCOME FOR PEOPLE & COMPANIES IS WAY UP! The Golden Age of America Is Upon Us.",
-      "published": "Fri, 30 Oct 2026 10:30:46 +0000",
-      "domains": [
-        "METALS",
-        "RATES_MACRO"
-      ],
-      "text": "INFLATION IS WAY DOWN UNDER “TRUMP.” INCOME FOR PEOPLE & COMPANIES IS WAY UP! The Golden Age of America Is Upon Us. INFLATION IS WAY DOWN UNDER “TRUMP.” INCOME FOR PEOPLE & COMPANIES IS WAY UP! The Golden Age of America Is Upon Us.",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T14:57:59.918931+00:00",
-      "event_id": "d9e04f123deef066a482c203",
-      "action_reaction": {
-        "event_id": "d9e04f123deef066a482c203",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "b0bb0783ef5b88c1b41eb10d": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42889",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529611252882085",
-      "title": "Quote post from October 30, 2026",
-      "published": "Fri, 30 Oct 2026 11:25:46 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529610420067199 View image Quoted Donald J. Trump View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T14:57:59.918732+00:00",
-      "event_id": "b0bb0783ef5b88c1b41eb10d",
-      "action_reaction": {
-        "event_id": "b0bb0783ef5b88c1b41eb10d",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "9d41184265a760750052df9b": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42887",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529618350160774",
-      "title": "Quote post from October 30, 2026",
-      "published": "Fri, 30 Oct 2026 11:27:35 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529617188189235 View image View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T14:57:59.918635+00:00",
-      "event_id": "9d41184265a760750052df9b",
-      "action_reaction": {
-        "event_id": "9d41184265a760750052df9b",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "3cc3cb5b85fa6bea1d7c76f0": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42885",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117529620076918108",
-      "title": "Quote post from October 30, 2026",
-      "published": "Fri, 30 Oct 2026 11:28:01 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 30, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117529619259512950 View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T14:57:59.918493+00:00",
-      "event_id": "3cc3cb5b85fa6bea1d7c76f0",
-      "action_reaction": {
-        "event_id": "3cc3cb5b85fa6bea1d7c76f0",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "6c56d5cdbb3a661b2a969e15": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "AGRICULTURE",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 30, 2026, 7:29 AM Original Post https:// conservativebrief.com/senate-r ace-poll-midterm-105503/ Read full post conservativebrief.com Midterm Earthquake — Two States FLIP As New Voting Numbers Show Major Turnaround For Candidates Amid Dramatic Fight For Senate Control Get that popcorn ready! Donald J. Trump @realDonaldTrump · October 30, 2026, 7:28 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:27 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:25 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:25 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:25 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:25 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:24 AM Original Post https://www. newsbreak.com/share/4974811915 102-maria-bartiromo-lands-first-hosting-gig-since-fox-news-exit Read full post www.newsbreak.com Maria Bartiromo Lands First Hosting Gig Since Fox News Exit - NewsBreak The longtime Fox anchor will host December’s America Business Forum in Miami, more than three months after her abrupt departure from the network The post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:15 AM Original Post I will be doing a live radio interview for our GREAT Republican Senator, Roger Marshall of Kansas, with Pete Mundo, KCMO, at 7:30 AM. Roger LOVES KANSAS, as do I. Enjoy!!! President DJT Read full post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-30T14:57:59.371961+00:00",
-      "event_id": "6c56d5cdbb3a661b2a969e15",
-      "action_reaction": {
-        "event_id": "6c56d5cdbb3a661b2a969e15",
-        "event_type": "TRADE_ESCALATION",
-        "historical_matches": [
-          "china_tariff_escalation_2025_10"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "DOWN",
-          "NASDAQ": "DOWN",
-          "USD": "DOWN",
-          "TREASURY_YIELDS": "DOWN",
-          "OIL": "DOWN"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12440,9 +12397,41 @@
     "c1c8af80856aac8d60195d66": "2026-11-04T02:20:22.962248+00:00",
     "a2baf97e677556a1d36726fa": "2026-11-04T02:20:22.962814+00:00",
     "144fb836bf206a3d62fa63b1": "2026-11-04T02:20:22.963380+00:00",
-    "b5204320a7cb95636b9701a2": "2026-11-04T02:20:22.963947+00:00"
+    "b5204320a7cb95636b9701a2": "2026-11-04T02:20:22.963947+00:00",
+    "5ee8e8b16ca7c0f010743c28": "2026-11-04T09:31:38.985614+00:00",
+    "bc7c9873cf16a0462dcf5c21": "2026-11-04T09:31:38.986131+00:00",
+    "7bb50dd166258ad5ac5b930a": "2026-11-04T09:31:38.986532+00:00",
+    "20669c0802192adb9f68dfcc": "2026-11-04T09:31:38.986686+00:00",
+    "48e271c8fd9298286d940040": "2026-11-04T09:31:38.986914+00:00",
+    "81e8f715c5b95b1dcea89e43": "2026-11-04T09:31:38.987227+00:00",
+    "cc191893149342953d173f3f": "2026-11-04T09:31:38.987468+00:00",
+    "a1942c9913ab7bc35db4f22b": "2026-11-04T09:31:38.987636+00:00",
+    "57ca4302b7afb69d6e9331e6": "2026-11-04T09:31:38.988247+00:00",
+    "646d43f961feef3be3b06468": "2026-11-04T09:31:38.988539+00:00",
+    "b4def9c4beed829e8e2284ba": "2026-11-04T09:31:38.988859+00:00",
+    "e20b8c76412f9beea19173ad": "2026-11-04T09:31:38.989159+00:00",
+    "1ef4370a6dfc97a440a84220": "2026-11-04T09:31:38.989477+00:00",
+    "d1fd485e4180fc119d55be1d": "2026-11-04T09:31:38.989766+00:00",
+    "f7cfa194d9e9804a1385c6cc": "2026-11-04T09:31:38.990314+00:00",
+    "bd64643c76c2c2cb8e347748": "2026-11-04T09:31:38.990749+00:00",
+    "f089caddd865a7c2d1c24bbb": "2026-11-04T09:31:38.991049+00:00",
+    "e701d17c51fe25c3029412db": "2026-11-04T09:31:38.991334+00:00",
+    "e06e4b7060c829b54754158a": "2026-11-04T09:31:38.991869+00:00",
+    "80795e72bfde48f6d344bf06": "2026-11-04T09:31:38.992243+00:00",
+    "a2772c6396502801515efe51": "2026-11-04T09:31:38.992532+00:00",
+    "cac17bf74227923d1087014c": "2026-11-04T09:31:38.992844+00:00",
+    "b6f4cdf0010c69339737fabf": "2026-11-04T09:31:38.993119+00:00",
+    "22fa9ad8a569b3dd35ccf283": "2026-11-04T09:31:38.993334+00:00",
+    "b28aa6d93715051e4a61a5b1": "2026-11-04T09:31:38.993648+00:00",
+    "3207f8d2a7386a7670e0e9a6": "2026-11-04T09:31:38.993963+00:00",
+    "f29bb4b7939fb300af3596cb": "2026-11-04T09:31:38.994251+00:00",
+    "5e6a5f588f15c0cf0e6eb212": "2026-11-04T09:31:38.994576+00:00",
+    "70157d05abb086852e703a6b": "2026-11-04T09:31:38.994839+00:00",
+    "26b6bdc55b924c64e32f955d": "2026-11-04T09:31:38.995128+00:00",
+    "f40ac7e64b3d2e32a765bebf": "2026-11-04T09:31:38.995444+00:00",
+    "3c36ab1b17181adc8eeb0ece": "2026-11-04T09:31:38.995699+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-04T02:20:22.965425+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-04T09:31:39.019921+00:00"
   }
 }
