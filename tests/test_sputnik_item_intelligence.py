@@ -449,6 +449,24 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                     ["POLITICAL_CAMPAIGN"],
                 )
 
+    def test_ai_keyword_requires_a_whole_token_not_a_word_fragment(self):
+        unrelated_texts = [
+            "FoxNews was on air.",
+            "The presidential campaign committee released a statement.",
+            "The candidate said the vote mattered.",
+        ]
+        for text in unrelated_texts:
+            with self.subTest(text=text):
+                self.assertNotIn(
+                    "AI_TECH",
+                    trump_tracker._domains_for_public_text(text),
+                )
+
+        self.assertIn(
+            "AI_TECH",
+            trump_tracker._domains_for_public_text("AI-powered policy"),
+        )
+
     def test_endorsement_with_concrete_oil_market_action_keeps_energy_tag(self):
         text = (
             "I endorse the candidate. OPEC announced a crude oil production cut "
