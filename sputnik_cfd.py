@@ -606,6 +606,19 @@ def build_cfd_signal(
             base["setup_alignment"] = "UNVERIFIED"
             base["reason"] += " | D-L-A non verificabile; bias direzionale mantenuto: " + type(exc).__name__
     base["bias_status"] = "DIRECTIONAL_BIAS" if base["direction"] in {"LONG", "SHORT"} else "NO_DIRECTION"
+    opposite = "SHORT" if base["direction"] == "LONG" else "LONG"
+    technical_side = str(base.get("technical_direction") or "").upper()
+    setup_side = str(base.get("setup_direction") or "").upper()
+    opposing_sources = [
+        source for source, side in (("TECNICA_5M", technical_side), ("D-L-A", setup_side))
+        if side == opposite
+    ]
+    base["market_direction_conflict"] = bool(opposing_sources)
+    base["market_direction_warning"] = (
+        "MERCATO CONTRO BIAS: " + ", ".join(opposing_sources) + " rileva " + opposite
+        + " mentre il bias catalizzatore resta " + base["direction"]
+        if opposing_sources else ""
+    )
     if not quote or not _quote_is_fresh(quote):
         directional = base["direction"] in {"LONG", "SHORT"}
         base["status"] = "EARLY_BIAS" if directional else "NO_DIRECTION"
@@ -716,6 +729,7 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"🎯 SETUP: {setup_status}",
         f"🧭 TECNICA: {signal.get('technical_direction', 'N/D')} ({signal.get('technical_alignment', 'NOT_ASSESSED')})",
         f"🧪 D-L-A: {signal.get('setup_direction', 'N/D')} ({signal.get('setup_alignment', 'NOT_ASSESSED')})",
+        *([f"🚨 {signal['market_direction_warning']} — ipotesi news non confermata dal prezzo."] if signal.get("market_direction_conflict") else []),
         f"🧪 TRADE PAPER: {paper_status}",
         f"📊 SCORE: {signal.get('score', 0):.0f}/100",
         f"📌 STATO: {status}",
