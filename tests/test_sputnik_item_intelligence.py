@@ -1,8 +1,10 @@
+import io
 import json
 import os
 import tempfile
 import unittest
 from pathlib import Path
+from contextlib import redirect_stdout
 from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
@@ -25,13 +27,16 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         response = MagicMock()
         response.__enter__.return_value.read.return_value = json.dumps({"ok": True, "result": {"message_id": 731}}).encode("utf-8")
         urlopen.return_value = response
-        with patch.dict(os.environ, {
+        output = io.StringIO()
+        with redirect_stdout(output), patch.dict(os.environ, {
             "TELEGRAM_BOT_TOKEN": "test-token",
             "TELEGRAM_CHAT_ID": "12345",
         }):
             sent = trump_tracker.send_telegram("Sputnik test")
 
         self.assertTrue(sent)
+        self.assertIn("API accepted sendMessage", output.getvalue())
+        self.assertNotIn("delivery confirmed", output.getvalue())
         request = urlopen.call_args.args[0]
         from urllib.parse import parse_qs
         payload = parse_qs(request.data.decode("utf-8"))
