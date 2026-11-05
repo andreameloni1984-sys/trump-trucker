@@ -61,8 +61,16 @@ jobs:
           import sys
           from datetime import datetime
 
-          with open(sys.argv[1], encoding="utf-8") as handle:
-              payload = json.load(handle)
+          try:
+              with open(sys.argv[1], encoding="utf-8") as handle:
+                  payload = json.load(handle)
+          except (OSError, ValueError) as exc:
+              print(f"::warning::SPUTNIK scheduled-run history response unreadable: {type(exc).__name__}")
+              sys.exit(0)
+
+          if not isinstance(payload, dict) or not isinstance(payload.get("workflow_runs"), list):
+              print("::warning::SPUTNIK scheduled-run history response invalid; cadence diagnosis incomplete.")
+              sys.exit(0)
 
           runs = payload.get("workflow_runs") or []
           runs.sort(key=lambda row: str(row.get("created_at") or ""))
