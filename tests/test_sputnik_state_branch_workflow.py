@@ -25,6 +25,23 @@ class SputnikStateBranchWorkflowTests(unittest.TestCase):
         self.assertNotIn("git push origin main", self.workflow)
         self.assertNotIn("git rebase origin/main", self.workflow)
 
+    def test_live_collector_does_not_run_regression_tests(self):
+        self.assertNotIn(
+            "Run SPUTNIK Telegram delivery regression tests",
+            self.workflow,
+        )
+        self.assertNotIn(
+            "python -m unittest tests/test_telegram_delivery.py",
+            self.workflow,
+        )
+        self.assertIn("run: python trump_tracker.py", self.workflow)
+
+    def test_regression_tests_remain_in_dedicated_ci_workflow(self):
+        workflow = Path(".github/workflows/sputnik_tests.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('python -m unittest discover -s tests', workflow)
+
     def test_persistence_requires_successful_state_restore(self):
         self.assertIn(
             "if: always() && steps.restore_state.outcome == 'success'",
