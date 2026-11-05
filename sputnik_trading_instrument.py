@@ -380,37 +380,49 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
             for stamp, price in paired
             if stamp + bar_seconds <= current_time
         ]
-        if len(completed) < 4:
+        if len(completed) < 50:
             return None
         quote_timestamp, last = completed[-1]
         if quote_timestamp < current_time - 900:
             return None
 
+        closes = [price for _, price in completed]
         def ema(values: list[float], period: int) -> float:
             alpha = 2.0 / (period + 1)
-            current = values[0]
-            for value in values[1:]:
+            current = sum(values[:period]) / period
+            for value in values[period:]:
                 current = alpha * value + (1 - alpha) * current
             return current
 
-        recent = [price for _, price in completed[-20:]]
-        ema20 = ema(recent, min(20, len(recent)))
-        momentum_reference = recent[-4]
+        # Direction is the underlying 5m trend, not the last 15m impulse.
+        # Momentum is reported separately so a counter-trend move is labelled
+        # as a pullback instead of being mistaken for a trend reversal.
+        ema20 = ema(closes[-100:], 20)
+        ema50 = ema(closes[-150:], 50)
+        momentum_reference = closes[-4]
         momentum_pct = (last / momentum_reference - 1.0) * 100.0
-        if last > momentum_reference:
-            direction, score = "LONG", 60.0
-            reason = f"Momentum 5m positivo negli ultimi 15 minuti ({momentum_pct:+.3f}%)."
-        elif last < momentum_reference:
-            direction, score = "SHORT", 60.0
-            reason = f"Momentum 5m negativo negli ultimi 15 minuti ({momentum_pct:+.3f}%)."
+        momentum_direction = "LONG" if last > momentum_reference else "SHORT" if last < momentum_reference else "NEUTRAL"
+        if last > ema20 > ema50:
+            direction, score = "LONG", 65.0
+            trend_reason = "Prezzo sopra EMA20 e EMA20 sopra EMA50: struttura 5m rialzista."
+        elif last < ema20 < ema50:
+            direction, score = "SHORT", 65.0
+            trend_reason = "Prezzo sotto EMA20 e EMA20 sotto EMA50: struttura 5m ribassista."
         else:
             direction, score = "NEUTRAL", 45.0
-            reason = "Prezzo invariato negli ultimi 15 minuti."
+            trend_reason = "EMA20/EMA50 non allineate: struttura 5m mista."
+        pullback = direction in {"LONG", "SHORT"} and momentum_direction in {"LONG", "SHORT"} and momentum_direction != direction
+        momentum_reason = f"Momentum ultimi 15 minuti {momentum_direction} ({momentum_pct:+.3f}%)."
+        reason = trend_reason + " " + momentum_reason
+        if pullback:
+            reason += " Possibile PULLBACK contro il trend, non inversione confermata."
         return {
             "bias": direction, "score": score, "reason": reason,
-            "price": last, "ema20": ema20, "ema50": None,
+            "price": last, "ema20": ema20, "ema50": ema50,
+            "momentum_bias": momentum_direction,
             "momentum_15m_pct": round(momentum_pct, 3),
-            "timeframe": "5m", "candles": len(recent),
+            "pullback_against_trend": pullback,
+            "timeframe": "5m", "candles": len(completed),
             "quote_timestamp": quote_timestamp,
         }
     except (OSError, ValueError, KeyError, IndexError, TypeError, urllib.error.URLError):
@@ -444,6 +456,8 @@ def recommend_trading_instrument(
     rec["technical_price"] = technical.get("price")
     rec["technical_ema20"] = technical.get("ema20")
     rec["technical_ema50"] = technical.get("ema50")
+    rec["technical_momentum_bias"] = technical.get("momentum_bias", "UNAVAILABLE")
+    rec["technical_pullback_against_trend"] = bool(technical.get("pullback_against_trend"))
     rec["technical_timeframe"] = technical.get("timeframe", "5m")
     rec["technical_quote_timestamp"] = technical.get("quote_timestamp")
 
@@ -519,6 +533,7 @@ def format_trading_instrument_message(rec: dict[str, Any] | None) -> str:
         f"🎯 STRUMENTO: {rec.get('instrument', 'N/D')}",
         f"{icon} BIAS PRELIMINARE: {bias}",
         f"📊 PRIORITÀ CATALIZZATORE: {float(rec.get('score') or 0):.0f}/100",
+        *([f"↩️ MOMENTUM CONTRO TREND: possibile PULLBACK ({rec.get('technical_momentum_bias')})"] if rec.get("technical_pullback_against_trend") else []),
     ]
     if rec.get("technical_bias"):
         lines.extend([f"📈 DIREZIONE TECNICA: {rec.get('technical_bias')} ({rec.get('technical_timeframe', '5m')})", f"🧠 LETTURA PREZZO: {rec.get('technical_reason', '')}", f"📰 ALLINEAMENTO NOTIZIE: {rec.get('catalyst_alignment', 'N/D')}"])
