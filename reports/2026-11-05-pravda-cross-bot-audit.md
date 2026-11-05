@@ -1,8 +1,9 @@
 # PRAVDA — audit incrociato SPUTNIK / GAGARIN
-**Snapshot:** 2026-11-05 15:58 UTC  
+**Snapshot iniziale:** 2026-11-05 15:58 UTC  
+**Ultimo aggiornamento:** 2026-11-05 17:44 UTC  
 **Scope:** artefatti GitHub pubblici, journal/feedback e GitHub Actions. Nessuna modifica a codice, strategia, filtri, score, rischio, secret o Render; nessun merge/deploy/ordine.
 
-Ledger deduplicato: [pravda-signal-ledger-2026-11-05.csv](pravda-signal-ledger-2026-11-05.csv) — 24 record (21 candidati storici GAGARIN, 1 ticket legacy GAGARIN, 1 WATCH GAGARIN, 1 candidato CFD SPUTNIK). I 981 ID del prediction log GAGARIN sono unici. Nessun outcome verificato.
+Ledger deduplicato: [pravda-signal-ledger-2026-11-05.csv](pravda-signal-ledger-2026-11-05.csv) — 25 record (21 candidati storici GAGARIN, 1 ticket legacy GAGARIN, 2 WATCH GAGARIN, 1 candidato CFD SPUTNIK). I 981 ID del prediction log GAGARIN sono unici. Nessun outcome verificato.
 
 ## Esito complessivo
 - Esiti verificati: **0**. Campione verificabile: **0**. Win rate, average R e altre statistiche: **N/D**.
@@ -110,3 +111,47 @@ Alla verifica delle 16:26 UTC:
 - Prossimo controllo: primo run schedulato effettivo del monitor GAGARIN dopo PR #199; primo nuovo run SPUTNIK; ripristino/diagnosi della cadenza cron senza presumere saturazione runner; per ogni nuovo candidato, conservare provider, quote timestamp, ticker/mercato/expiry e livelli prima di avviare il confronto outcome.
 
 **Perimetro invariato:** audit documentale soltanto; nessun codice, strategia, filtro, score, rischio, secret o Render modificato; nessun merge/deploy/ordine. PAPER ONLY.
+
+
+---
+
+## Addendum PRAVDA — controllo incrementale 2026-11-05 17:44 UTC
+
+**Deduplicazione e risultati:** ledger aggiornato da 24 a **25 record** con un solo nuovo WATCH GAGARIN (firma `PRAVDA-GAGARIN-WATCH-RUN42068931975-20261105T165250Z-WTI-SHORT`). Composizione: 21 candidati storici GAGARIN, 1 ticket legacy WTI, 2 WATCH GAGARIN, 1 candidato CFD SPUTNIK. Esiti TP/SL verificati: **0**. Campione verificabile: **0**. Win rate e R-multiples: **N/D**. I 2 WATCH sono classificati NON_TRADE; i 23 record storici/ticket/CFD restano ESITO NON VERIFICABILE. Nessun risultato di mercato è stato inferito.
+
+### GAGARIN — primo monitor schedulato dopo PR #199
+
+- Run [42068931975](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42068931975), 2026-11-05 16:52:29–16:52:58 UTC, SUCCESS, commit `7ed290b971e780828934d80aa3b936043769eaf6`. È il primo run effettivo `gagarin-monitor.yml` successivo al merge PR [#199](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/199) (15:07:05 UTC). Non è soltanto un test CI.
+- Il codice attuale di `main.py` seleziona `enabled_commodities()`; `engine/session_filter.py` conserva tutti gli strumenti e non applica finestre intraday; `engine/forex_session.py` controlla il giorno feriale, non l'ora. La PR #199 risulta quindi presente nel codice eseguito. Il run ha analizzato tutti e 10 gli strumenti, inclusi EUR/USD e GBP/USD.
+- Limite della prova runtime: il run è partito alle 16:52 UTC (17:52 Europe/Rome), ancora dentro la precedente fascia 14:00–18:00. Non dimostra da solo il comportamento fuori dalle vecchie finestre. Inoltre EUR/USD e GBP/USD sono ancora classificati `CONTESTO FX — NON OPERATIVO`; `operational_commodities()` esclude la categoria Forex. Conclusione: scansione Forex senza gate intraday nel codice, ma Forex non abilitato come sorgente autonoma di entry in questo monitor. Il banner del log continua a parlare di analisi nelle “rispettive finestre”, formulazione fuorviante rispetto al codice aggiornato.
+- Dati del run: Soia, Mais, Grano, Rame, WTI, Argento, Oro e Brent sono tutti STALE su YAHOO, età 601.1–614.8 secondi. EUR/USD e GBP/USD sono etichettati LIVE su BIQUOTE, età rispettivamente 169.4 e 170.1 secondi; il log non espone il timestamp assoluto della quotazione, quindi la freschezza non è verificabile indipendentemente.
+- Nuovo WATCH WTI SHORT: generato alle 16:52:46.404940 UTC; Telegram API confermata alle 16:52:50.681424 UTC, message_id=3698. Probabilità 66, qualità 54.5, confidenza 37.0. Stato PAPER_WATCH, bloccato da `LIVE_DATA_NOT_FRESH`, `TRIGGER_NOT_CONFIRMED`, `TRIGGER_DIRECTION_MISMATCH`, `RR_FAIL` e `FINAL_CONFLUENCE_FAIL`. Entry, SL, TP, ATR e prezzo di riferimento assenti. Provider YAHOO, age 601.1s; ticker provider, quote timestamp, mercato e scadenza non registrati. Firma e record aggiunti al ledger. È un pre-alert accettato dall'API, non un trade.
+- PAPER JOURNAL: 0 entries; FEEDBACK: 0 aggiornamenti, 0 nuovi segnali, 0 nuove forecast; `signals=0/open=0/closed=0`. `DATABASE_URL` è vuoto nel job: nessuna prova di persistenza durevole del journal.
+- L'ambiente del monitor imposta esplicitamente soglie runtime 40/30/35 e RR 2.5. Sono valori osservati nel log, non modificati da PRAVDA.
+
+### GAGARIN — polling Telegram inbound
+
+- Run [42050795561](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42050795561), 15:01:51–15:02:18 UTC, FAILURE. Il log riporta esattamente API error 409: webhook attivo e `getUpdates` incompatibile con webhook mode. Il token e la diagnostica bot risultano presenti; il polling non ha elaborato gli aggiornamenti. È un difetto del canale inbound e non smentisce i messaggi outbound confermati dal monitor.
+
+### SPUTNIK — scansione e stato
+
+- Ultimo run schedulato dello scanner principale ancora [42010313054](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42010313054), 10:23:31–10:23:45 UTC. Nella cronologia schedulata consultata fino alle 17:44 UTC non compare un successivo run `trump_tracker.yml`, benché il cron sia ogni 5 minuti. Nessun nuovo segnale scanner da aggiungere.
+- Il candidato CFD GOLD del run 42010313054 resta EARLY_SETUP / NOT_EXECUTED: bias catalizzatore LONG contro tecnica/D-L-A SHORT; entry 4134.2002, SL 4132.2287, TP1 4136.1717, TP2 4138.1432, ATR 1.3143. Provider/ticker runtime/quote timestamp/expiry esatti assenti; front-month continuo non identifica una scadenza. Nessun confronto outcome sullo stesso contratto è ammissibile.
+- Il polling SPUTNIK [42076754543](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42076754543) è riuscito alle 17:39:27–17:39:38 UTC: stato remoto caricato, 0 aggiornamenti pendenti. Non è una scansione di mercato.
+- Il daily summary [42038806143](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42038806143) è riuscito alle 13:46:53–13:47:03 UTC; Telegram API ha confermato message_id=699. È un riepilogo dello stato, non un nuovo segnale o trade.
+
+### GitHub Actions — frequenze e coda
+
+- GAGARIN monitor: cron ogni 15 minuti; run schedulati recenti 01:43, 08:34 e 16:52 UTC. I gap sono incompatibili con la cadenza dichiarata.
+- SPUTNIK scanner: cron ogni 5 minuti; ultimo run 10:23 UTC. SPUTNIK polling: cron ogni 5 minuti; ultimo run 17:39 UTC, ma nella finestra di 24 ore la cronologia mostra solo pochi run, non una scansione ogni 5 minuti.
+- Nei run ispezionati `created_at` coincide con `run_started_at`; non emerge attesa in coda per questi esempi. Le invocazioni programmate mancanti sono dimostrate dalla cronologia, ma la causa resta non determinata. Non attribuire il fenomeno alla concorrenza tra bot senza log di queue time o altra prova.
+- Il polling GAGARIN è inoltre fallito per 409; il suo run non può essere contato come ciclo inbound riuscito.
+
+### Correzioni già esistenti e difetti da passare ai reparti
+
+- GAGARIN PR [#199](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/199): merge verificato e primo monitor post-merge riuscito; resta da osservare un run fuori dalle vecchie finestre e chiarire la distinzione “Forex analizzato” vs “Forex operativo”.
+- SPUTNIK PR [#125](https://github.com/andreameloni1984-sys/trump-trucker/pull/125): merge verificato; il candidato GOLD continua a mostrare divergenza direzionale tra bias e tecnica/D-L-A.
+- Difetti confermati da questo controllo: (1) commodities GAGARIN con quote stale; (2) WATCH WTI privo di ticker/provider quote timestamp assoluto/mercato/expiry e livelli; (3) journal GAGARIN senza DATABASE_URL e senza persistenza dimostrata; (4) polling inbound GAGARIN incompatibile con webhook; (5) cadenza scanner SPUTNIK e monitor GAGARIN molto inferiore ai cron; (6) diagnostica Forex nel log non allineata al nuovo comportamento.
+- Prossimo controllo: primo monitor GAGARIN fuori dalle vecchie fasce Forex; successivo run SPUTNIK scanner; verifica delle cadenze con timestamp e queue time; acquisizione dei metadati completi di ogni nuovo WATCH/CFD; verifica di storage privato persistente. Nessun outcome TP/SL finché ticker, mercato, expiry e quote timestamp non permettono un confronto sul medesimo strumento/contratto.
+
+**Perimetro invariato:** solo report e ledger documentali aggiornati; nessuna modifica a codice, strategia, filtri, score, rischio, secrets o Render; nessun merge/deploy/ordine reale. PAPER ONLY.
