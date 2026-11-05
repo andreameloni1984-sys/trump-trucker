@@ -25,6 +25,7 @@ on:
     - cron: "2-59/5 * * * *"
 
 permissions:
+  actions: read
   contents: write
 
 concurrency:
@@ -39,6 +40,66 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Report recent scheduled collector runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          response="$RUNNER_TEMP/sputnik-scheduled-runs.json"
+          if ! curl --fail --silent --show-error \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GH_REPOSITORY}/actions/workflows/trump_tracker.yml/runs?event=schedule&per_page=20" \
+            -o "$response"; then
+            echo "::warning::SPUTNIK scheduled-run history unavailable; cadence diagnosis incomplete."
+            exit 0
+          fi
+          python - "$response" <<'PY'
+          import json
+          import sys
+          from datetime import datetime
+
+          try:
+              with open(sys.argv[1], encoding="utf-8") as handle:
+                  payload = json.load(handle)
+          except (OSError, ValueError) as exc:
+              print(f"::warning::SPUTNIK scheduled-run history response unreadable: {type(exc).__name__}")
+              sys.exit(0)
+
+          if not isinstance(payload, dict) or not isinstance(payload.get("workflow_runs"), list):
+              print("::warning::SPUTNIK scheduled-run history response invalid; cadence diagnosis incomplete.")
+              sys.exit(0)
+
+          runs = payload.get("workflow_runs") or []
+          runs.sort(key=lambda row: str(row.get("created_at") or ""))
+          print("SPUTNIK: last scheduled collector runs (UTC)")
+          previous = None
+          for run in runs:
+              created = str(run.get("created_at") or "")
+              started = str(run.get("run_started_at") or "")
+              print(
+                  "SPUTNIK_SCHEDULE_RUN"
+                  f" id={run.get('id')}"
+                  f" number={run.get('run_number')}"
+                  f" created_at={created}"
+                  f" started_at={started or 'NOT_STARTED'}"
+                  f" status={run.get('status')}"
+                  f" conclusion={run.get('conclusion') or 'PENDING'}"
+              )
+              if previous and created and previous:
+                  try:
+                      current_dt = datetime.fromisoformat(created.replace("Z", "+00:00"))
+                      previous_dt = datetime.fromisoformat(previous.replace("Z", "+00:00"))
+                      gap_minutes = (current_dt - previous_dt).total_seconds() / 60
+                      print(f"SPUTNIK_SCHEDULE_GAP minutes={gap_minutes:.1f} expected_interval=5")
+                  except (TypeError, ValueError, OverflowError):
+                      print("SPUTNIK_SCHEDULE_GAP unavailable: timestamp parse error")
+              if created:
+                  previous = created
+          print(f"SPUTNIK_SCHEDULE_RUN_COUNT={len(runs)}")
+          PY
 
       - name: Check Telegram configuration
         env:
