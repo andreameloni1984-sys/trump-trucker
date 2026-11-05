@@ -512,6 +512,7 @@ def build_cfd_signal(
         "score": score,
         "reason": reason,
         "confirmation": confirmation,
+        "bias_source": str(recommendation.get("bias_source") or "CATALYST"),
         "status": "EARLY_BIAS" if directional else "NO_DIRECTION",
         "bias_status": "DIRECTIONAL_BIAS" if directional else "NO_DIRECTION",
         "setup_status": "EARLY_BIAS" if directional else "NO_DIRECTION",
@@ -615,10 +616,20 @@ def build_cfd_signal(
     ]
     base["market_direction_conflict"] = bool(opposing_sources)
     base["market_direction_warning"] = (
-        "MERCATO CONTRO BIAS: " + ", ".join(opposing_sources) + " rileva " + opposite
-        + " mentre il bias catalizzatore resta " + base["direction"]
+        "CONFLITTO DIREZIONALE: " + ", ".join(opposing_sources) + " rileva " + opposite
+        + " mentre il bias preliminare resta " + base["direction"]
         if opposing_sources else ""
     )
+    if opposing_sources:
+        # A directional hypothesis can remain visible, but opposing live
+        # technical evidence must never receive entry/SL/TP levels.
+        base["status"] = "DIRECTION_CONFLICT"
+        base["setup_status"] = "DIRECTION_CONFLICT"
+        base["execution_readiness"] = "DIRECTION_CONFLICT"
+        base["paper_trade_status"] = "NOT_EXECUTED"
+        base["reason"] += " | Livelli operativi omessi: tecnica e D-L-A sono in conflitto con il bias preliminare."
+        return base
+
     if not quote or not _quote_is_fresh(quote):
         directional = base["direction"] in {"LONG", "SHORT"}
         base["status"] = "EARLY_BIAS" if directional else "NO_DIRECTION"
@@ -744,6 +755,8 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
             f"🎯 TP2:   {signal['tp2']} (2R)",
             f"📏 ATR:   {signal.get('atr')}",
         ])
+    elif direction in {"LONG", "SHORT"} and signal.get("market_direction_conflict"):
+        lines.append("\n⛔ LIVELLI OMESSI: direzione tecnica e D-L-A in conflitto con il bias preliminare. Nessun piano operativo.")
     elif direction in {"LONG", "SHORT"}:
         lines.append("\n⏳ BIAS mantenuto; livelli omessi (entry/SL/TP): quotazione futures fresca o ATR valido non disponibile.")
     else:
