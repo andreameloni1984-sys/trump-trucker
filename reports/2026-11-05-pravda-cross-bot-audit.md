@@ -307,3 +307,58 @@ I run CI elencati sono test sui branch delle PR: provano le regressioni coperte 
 4. Valutare SL/TP solo su candele posteriori dello stesso identico contratto; collisione intrabar non risolvibile = ESITO NON VERIFICABILE.
 
 **Perimetro invariato:** audit/documentazione soltanto; nessuna modifica a codice, strategia, filtri, score o rischio; nessun merge/deploy, ordine reale, accesso Trading 212, modifica secret o Render. PAPER ONLY.
+
+
+---
+
+## Addendum PRAVDA — controllo incrementale 2026-11-05 21:45 UTC
+
+### Ledger e outcome
+
+- Riletto il ledger su `main`: **26 record, 26 firme uniche, 0 duplicati**. Composizione: 21 candidati storici GAGARIN, 1 ticket WTI legacy, 2 WATCH GAGARIN, 2 candidati CFD SPUTNIK `NOT_EXECUTED`.
+- I due run live riletti in questa verifica sono già rappresentati nel ledger: nessun nuovo segnale distinto aggiunto.
+- TP verificati: **0**; SL verificati: **0**; campione verificabile: **0**; win rate, average R e total R: **N/D**. Nessuna candela successiva è stata usata perché i candidati SPUTNIK non hanno ticker/expiry/provider di esecuzione verificati e i WATCH GAGARIN non hanno livelli operativi né identità completa del contratto.
+- Il ticket legacy WTI del giorno 8 ottobre resta una nota storica con valori e stato OPEN, non prova di fill. La nota cita una chiusura spot del 6 ottobre, ma non identifica mercato/contratto di esecuzione.
+
+### SPUTNIK — rilettura del log live
+
+Run [42081626022](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42081626022), job `sputnik`, concluso SUCCESS.
+
+- Il passaggio di test unitari viene eseguito prima del collector. I messaggi `delivery NOT confirmed` e le ripetute righe di test `OSError` per WHITE_HOUSE/TRUTH_ARCHIVE/OGE appartengono a quel passaggio di test e **non** vanno attribuiti automaticamente a outage del collector live.
+- Nel collector live sono invece visibili: SEC HTTP 403 con cooldown 21.600 secondi; White House RSS `HTTPError`; scansione intelligence di 990 ms con 3 findings.
+- Messaggio analisi 700: Telegram API accepted, round-trip 426 ms. Messaggio analisi 701: API accepted, round-trip 406 ms. Il messaggio CFD GOLD con i livelli termina con `Connection reset by peer`, round-trip 476 ms, senza message_id confermato. Le conferme 700/701 non provano l'invio del messaggio CFD.
+- Candidato GOLD SHORT generato alle **18:10:17.4844219 UTC**: entry **4111.7998**, SL **4114.8533**, TP1 **4108.7463**, TP2 **4105.6928**, ATR **2.0357**, score 65/100, stato `EARLY_SETUP / NOT_EXECUTED`. Mercato dichiarato: future continuo front-month; provider effettivo, ticker risolto, timestamp/age della quotazione ed expiry esatta non esposti. Il messaggio avverte di non usare i livelli. **Nessun trade; ESITO NON VERIFICABILE.**
+- PR [#138](https://github.com/andreameloni1984-sys/trump-trucker/pull/138) è ancora open e dipende da [#137](https://github.com/andreameloni1984-sys/trump-trucker/pull/137). La descrizione di #138 documenta che alle 20:16 UTC non risultava un run schedulato successivo a #42081626022; causa non accertata. Il suo test CI #42102349219 ha superato 190 test, ma è un test del branch PR, non una nuova esecuzione di produzione.
+- Il workflow main [trump_tracker.yml](https://github.com/andreameloni1984-sys/trump-trucker/blob/main/.github/workflows/trump_tracker.yml) conserva `contents: write` e persiste `sputnik_state.json` su `main`; #137 mira a spostare lo stato su branch dedicato. #136 (provenienza quote/expiry e livelli continuous-futures reference-only) e #132 (soppressione livelli in conflitto direzionale) sono ancora open, non integrate.
+- Limite di aggiornamento: la cronologia Actions completa più recente non è esposta dall'azione GitHub disponibile in questo audit. Posso attestare l'ultimo run e la verifica riportata da #138 alle 20:16, ma **non** posso attestare se siano partiti altri run dopo le 20:16 e fino alle 21:45.
+
+### GAGARIN — rilettura del log live e difetti dimostrati
+
+Run [42068931975](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42068931975), job `Run Gagarin directly on GitHub`, concluso SUCCESS.
+
+- Tutte le 8 commodities risultano `STALE` su Yahoo, età **601,1–614,8 secondi**; il log segnala `ALL_PROVIDER_CANDLES_STALE`. EUR/USD e GBP/USD sono `LIVE` su BiQuote (169,4 e 170,1 secondi), ma sono FX ausiliari e non rendono fresche le commodities.
+- WTI SHORT è solo `PAPER_WATCH`: generazione **16:52:46.404940 UTC**, Telegram API accepted **16:52:50.681424 UTC**, message_id **3698**, ritardo circa **4,28 secondi**. Provider YAHOO, età 601,1 s; ticker runtime, market type, expiry e timestamp assoluto della quotazione non sono esposti. Nessuna entry, SL, TP o ATR; blocchi `LIVE_DATA_NOT_FRESH`, `TRIGGER_NOT_CONFIRMED`, `TRIGGER_DIRECTION_MISMATCH`, `RR_FAIL` e `FINAL_CONFLUENCE_FAIL`. È un pre-alert, non un trade.
+- Il log mostra `DATABASE_URL:` vuoto, `New feedback signals: 0` e `signals=0 open=0 closed=0`. Telegram API ha accettato il messaggio WATCH; non è prova di esecuzione.
+- **Deriva del perimetro:** `commodities/universe.py` contiene 8 commodities più EUR/USD e GBP/USD; `main._select_run_universe()` su main restituisce `enabled_commodities()`, quindi include tutti e 10. `telegram.bot._run_analysis()` usa il filtro Forex con `on_demand=True`, che non esclude i due FX. Il run 420689 conferma 10 righe, comprese le due FX. PR [#196](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/196), draft/open, propone di limitare analisi e desk agli otto strumenti commodity; non è integrata.
+- **Deriva dello score:** `engine/prediction_ranker.py` su main aggiunge `momentum_acceleration_score` fino a +8 e fino a -4. PR [#198](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/198), draft/open, documenta che questa modifica al ranking era stata introdotta senza richiesta esplicita e propone il ripristino del baseline. PRAVDA non modifica né approva punteggi: registra la discrepanza e la correzione proposta.
+- **Outcome non certificabile sul main corrente:** `engine/feedback.py` costruisce il fingerprint con symbol/direzione/timeframe/livelli/bar timestamp e abbina le candele per symbol/timeframe; non include provider, ticker risolto, market type o expiry. Se una candela tocca SL e TP, il codice attuale sceglie STOP per precedenza conservativa, ma OHLC non dimostra l'ordine intrabar. PR [#192](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/192), open, aggiunge identità provider/contratto e classifica la collisione nella stessa candela come `ESITO NON VERIFICABILE`.
+- `paper_trade_journal.py` registra campi di provenienza quote, ma non campi espliciti contract month/expiry e resta basato su CSV locale. Il file pubblico [paper_trade_log.csv](https://github.com/andreameloni1984-sys/commodity-news-scanner/blob/main/paper_trade_log.csv) contiene ancora il solo ticket WTI legacy con provenienza vuota e nota spot; non è prova di fill. `gagarin_feedback.csv` non è presente nel branch pubblico consultato. PR [#202](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/202), draft/open, propone persistenza PostgreSQL; PR [#155](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/155), draft/open, aggiunge regole ignore ma dichiara che `.gitignore` non rimuove file già tracciati.
+- **Daily summary:** [daily-summary.yml](https://github.com/andreameloni1984-sys/commodity-news-scanner/blob/main/.github/workflows/daily-summary.yml) non passa `DATABASE_URL` e non installa il driver psycopg; il runner giornaliero non condivide quindi automaticamente lo store usato dal monitor. Inoltre stampa `Summary sent` su risposta HTTP senza controllare il JSON Telegram `ok` e `message_id`. PR [#200](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/200) tratta il database condiviso; PR [#190](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/190) tratta l'ack Telegram. Entrambe open.
+- Separazione CFD/futures: PR [#204](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/204) e [#206](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/206) sono draft/open e mirano a impedire che i comandi etichettati Trading 212 usino analisi futures senza un feed CFD dello stesso contratto. Non provano accesso a un account Trading 212. PR #175 (polling/webhook 409) e #181 (provenienza quote nel riepilogo) restano open. PR #188 è già merged e riguarda l'etichettatura del contesto stale nei piani LUBJANKA WATCH.
+- Limite di aggiornamento: l'ultimo log di produzione GAGARIN recuperabile in questo audit è #42068931975 delle 16:52 UTC. Non dispongo di una lista Actions aggiornata che consenta di certificare se siano seguiti altri run.
+
+### Fonti consultate in questo controllo
+
+- Log completi dei job Actions #42081626022 (SPUTNIK) e #42068931975 (GAGARIN).
+- Ledger CSV riletto e deduplicato.
+- File main: `trump_tracker.yml`, `gagarin-monitor.yml`, `daily-summary.yml`, `commodities/universe.py`, `main.py`, `telegram/bot.py`, `engine/prediction_ranker.py`, `engine/feedback.py`, `paper_trade_journal.py`.
+- Stato PR aggiornato al 2026-11-05 21:45 UTC: SPUTNIK #132/#136/#137/#138 e GAGARIN #155/#175/#181/#190/#192/#196/#198/#200/#202/#204/#206. Le PR indicate come open non sono attive su `main`; i test CI sui branch non provano runtime, database live o consegna Telegram.
+
+### Prossimo controllo
+
+1. Verificare la cronologia completa delle Actions dopo 20:16 UTC per SPUTNIK e dopo 16:52 UTC per GAGARIN; separare sempre CI PR da run schedulati di produzione.
+2. Al prossimo candidato, acquisire provider, ticker esatto, timestamp/age, market type, contract month e expiry prima di creare livelli o valutarne l'esito.
+3. Verificare persistenza privata e daily summary con una run reale; non leggere né modificare secrets.
+4. Valutare TP/SL soltanto su barre successive dello stesso identico contratto. Collisione SL/TP nella stessa candela senza tick/intrabar = `ESITO NON VERIFICABILE`.
+
+**Perimetro invariato:** questo addendum aggiorna solo la documentazione di audit. Nessuna modifica a codice, strategia, filtri, punteggi o rischio; nessun merge/deploy, ordine reale, accesso Trading 212, modifica secrets o Render. Nessun servizio a pagamento. PAPER ONLY.
