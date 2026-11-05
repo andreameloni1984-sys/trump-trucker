@@ -357,7 +357,7 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
         self.assertIsNone(signal["tp1"])
         self.assertIsNone(signal["tp2"])
         self.assertTrue(signal["market_direction_conflict"])
-        self.assertIn("MERCATO CONTRO BIAS", signal["market_direction_warning"])
+        self.assertIn("CONFLITTO DIREZIONALE", signal["market_direction_warning"])
 
 
     def test_early_dla_direction_is_visible_and_does_not_override_news_bias(self):
@@ -402,6 +402,46 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
         self.assertIn("D-L-A: SHORT (CONTRASTS)", message)
         self.assertIn("CONFLITTO DIREZIONALE", message)
         self.assertIn("nessun piano operativo", message.lower())
+
+    def test_technical_only_preliminary_bias_is_not_given_levels_against_opposite_dla(self):
+        now = datetime.now(timezone.utc).isoformat()
+        quote = {
+            "price": 4134.2, "atr": 1.3143, "timestamp": now,
+            "provider": "Yahoo Finance chart (1m futures)", "symbol": "GC=F",
+            "candles": [{"timestamp": now} for _ in range(60)],
+        }
+        focused_module = ModuleType("sputnik_focused_trader")
+        focused_module.analyze_focused_market = lambda instrument, candles: {
+            "status": "WAIT_CONFIRMATION", "direction": "NEUTRAL",
+            "reason": "focused trigger not confirmed",
+        }
+        setup_module = ModuleType("sputnik_competition_setup")
+        setup_module.evaluate_competition_setup = lambda instrument, candles: {
+            "status": "EARLY_SETUP", "direction": "SHORT",
+            "confirmations": ["Direction SHORT", "Location SHORT"],
+            "missing_conditions": ["TRIGGER_NOT_CONFIRMED"],
+            "reasons": ["short structure"],
+        }
+        with patch.dict("sys.modules", {
+            "sputnik_focused_trader": focused_module,
+            "sputnik_competition_setup": setup_module,
+        }):
+            with patch("sputnik_cfd.attach_silv_crosscheck", side_effect=lambda q, instrument: q):
+                signal = build_cfd_signal(
+                    {"instrument": "GOLD", "bias": "LONG", "bias_source": "TECHNICAL_ONLY",
+                     "score": 60, "reason": "technical-only momentum"},
+                    {"GOLD": quote},
+                )
+        self.assertEqual(signal["bias_source"], "TECHNICAL_ONLY")
+        self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["setup_direction"], "SHORT")
+        self.assertEqual(signal["setup_alignment"], "CONTRASTS")
+        self.assertEqual(signal["status"], "DIRECTION_CONFLICT")
+        self.assertIsNone(signal["entry"])
+        self.assertIsNone(signal["stop"])
+        self.assertIsNone(signal["tp1"])
+        self.assertIsNone(signal["tp2"])
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
 
     def test_early_dla_can_publish_technical_only_bias_when_news_is_neutral(self):
         now = datetime.now(timezone.utc).isoformat()
