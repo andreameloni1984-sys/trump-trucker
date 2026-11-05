@@ -155,3 +155,47 @@ Alla verifica delle 16:26 UTC:
 - Prossimo controllo: primo monitor GAGARIN fuori dalle vecchie fasce Forex; successivo run SPUTNIK scanner; verifica delle cadenze con timestamp e queue time; acquisizione dei metadati completi di ogni nuovo WATCH/CFD; verifica di storage privato persistente. Nessun outcome TP/SL finché ticker, mercato, expiry e quote timestamp non permettono un confronto sul medesimo strumento/contratto.
 
 **Perimetro invariato:** solo report e ledger documentali aggiornati; nessuna modifica a codice, strategia, filtri, score, rischio, secrets o Render; nessun merge/deploy/ordine reale. PAPER ONLY.
+
+---
+
+## Addendum PRAVDA — controllo incrementale 2026-11-05 18:28 UTC
+
+**Deduplicazione e campione:** ledger portato a **26 record** (21 candidati storici GAGARIN, 1 ticket legacy WTI, 2 WATCH GAGARIN, 2 candidati CFD SPUTNIK). Il nuovo record ha firma `PRAVDA-SPUTNIK-CFD-RUN42081626022-20261105T181017Z-GOLD-SHORT-4111.7998-4114.8533-4108.7463-4105.6928`; non è un trade e non è duplicato. Esiti TP/SL verificati: **0**; campione verificabile: **0**; win rate, average R e altre statistiche: **N/D**. I due WATCH GAGARIN sono `NON_TRADE`; i 21 forecast storici, il ticket legacy e i due CFD SPUTNIK restano `ESITO NON VERIFICABILE`. Nessun backtest o risultato di mercato è stato inventato.
+
+### SPUTNIK — nuovo scanner run e candidato GOLD
+
+- Run [42081626022](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42081626022), 2026-11-05 18:10:08–18:10:22 UTC, SUCCESS. Il job ha eseguito 30 test unitari con esito OK e poi `python trump_tracker.py`.
+- Il run registra 3 findings e 2 nuovi eventi pubblici. I due item mostrati sono di area politica/media (post elettorale e item MEDIA), non un catalizzatore direzionale commodity verificato. SEC: HTTP 403/cooldown, 0 filing; White House RSS: HTTPError; TRUTH_ARCHIVE e OGE: OSError. La tesi GOLD è quindi tecnica, con `NO_DIRECTIONAL_NEWS`, non una direzione ricavata da una notizia commodity.
+- Analisi preliminare GOLD SHORT: momentum 5m negativo negli ultimi 15 minuti (-0.078%). Nel messaggio CFD: direzione SHORT, `EARLY_SETUP`, score 65/100, `TRADE PAPER: NOT_EXECUTED`; entry **4111.7998**, SL **4114.8533**, TP1 **4108.7463**, TP2 **4105.6928**, ATR **2.0357**. Lo score è priorità/score del modulo, non probabilità di successo.
+- Il log dichiara `FUTURES_CONTINUOUS_FRONT_MONTH`, ma avverte esplicitamente che scadenza esatta e indipendenza upstream non sono verificate e che i livelli non vanno usati per entry/SL/TP. NARWHAL è `NOT_CONFIGURED`; indipendenza dei componenti SILV non verificata.
+- Mancano ticker effettivo, provider della quotazione, timestamp assoluto e age della quotazione, mercato/contratto esatto e expiry. Il messaggio CFD stampa comunque livelli numerici: incoerenza documentata e segnalata con issue [#135](https://github.com/andreameloni1984-sys/trump-trucker/issues/135). Senza identità del contratto e quote timestamp non è possibile sapere se entry/SL/TP fossero già superati, né interrogare candele successive dello stesso contratto.
+- Il tentativo Telegram del messaggio CFD termina con `network error: [Errno 104] Connection reset by peer`; non c'è message_id confermato per il CFD. I messaggi accessori/analisi con ID 700 e 701 risultano API-accepted, ma non sono il messaggio CFD e non provano consegna sul dispositivo. Per il record CFD il campo invio resta `NOT_CONFIRMED`.
+- Esito del candidato: **NOT_EXECUTED**, non trade; outcome **ESITO NON VERIFICABILE** per mancanza di contratto/quotazione verificabili. Nessun confronto spot o future generico è stato effettuato.
+
+### GAGARIN — nessun nuovo segnale e persistenza assente
+
+- L'ultimo monitor schedulato resta [42068931975](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42068931975), 16:52:29–16:52:58 UTC. Al controllo 18:28 UTC sono trascorsi circa **96 minuti** senza un altro monitor schedulato, a fronte del cron ogni 15 minuti.
+- Il run ha analizzato 8 commodities più EUR/USD e GBP/USD ausiliari. Le 8 commodities sono tutte `STALE` su YAHOO (601.1–614.8 secondi); EUR/USD e GBP/USD sono `LIVE` su BIQUOTE (169.4 e 170.1 secondi), ma senza timestamp assoluto nel log.
+- WATCH WTI SHORT generato alle 16:52:46.404940 UTC; Telegram API accepted alle 16:52:50.681424 UTC, message_id=3698 (ritardo circa 4.28 s). Probabilità 66, qualità 54.5, confidenza 37; stato `PAPER_WATCH`, bloccato da dati stale, trigger non confermato, mismatch direzionale e RR_FAIL. Nessun entry/SL/TP/ATR e nessuna entrata autorizzata: **NON_TRADE**.
+- Journal/feedback del run: 0 entries, 0 open/closed, 0 nuovi feedback, win_rate/avg_R N/D. `DATABASE_URL` è vuoto nell'ambiente; il codice usa `LOCAL_CSV_NO_DATABASE_URL`, quindi il feedback del runner effimero non è dimostrato persistente. Il journal pubblico contiene 11 righe “nessun segnale”; il paper log conserva solo il ticket WTI legacy del 8 ottobre, senza signal_id, provider, timestamp o contratto. `data/paper_open.json` lo mostra ancora OPEN, ma questo conflitto è già registrato nell'issue [#183](https://github.com/andreameloni1984-sys/commodity-news-scanner/issues/183), non è un outcome verificato.
+- `commodities_prediction_log.json`: 981 record storici (10–15 settembre), 21 label `COMPRA ORA`, tutti `PENDING`; 15 con `operational_signal=LONG`, 6 con `NO_OP_SIGNAL`. Mancano provider, quote timestamp e contratto esatto; nessun esito è certificabile.
+
+### Cadenza Actions osservata alle 18:28 UTC
+
+- SPUTNIK scanner: ultimo run 18:10:08 UTC; gap osservato di oltre 18 minuti contro cron `2-59/5 * * * *`. SPUTNIK polling: ultimo run schedulato 17:39:27 UTC. Nessuna causa del gap è provata.
+- GAGARIN monitor: ultimo run 16:52:29 UTC; gap di circa 96 minuti contro cron `*/15 * * * *`. Nessuna causa del gap è provata.
+- Nei run consultati `created_at` coincide con `run_started_at`; non emerge attesa in coda per questi specifici esempi. Non attribuire il problema alla concorrenza senza ulteriori prove.
+
+### PR e correzioni già presenti
+
+- SPUTNIK [PR #132](https://github.com/andreameloni1984-sys/trump-trucker/pull/132) (non merged) sopprime i livelli quando bias e direzione tecnica/D-L-A confliggono; nel run 42081626022 SHORT preliminare, SHORT 5m e SHORT D-L-A risultano allineati, quindi quel caso non attiva il fix.
+- SPUTNIK [PR #134](https://github.com/andreameloni1984-sys/trump-trucker/pull/134) (non merged) separa trend 5m e momentum 15m e parallelizza le fonti; i relativi test PR sono verdi, ma il run live 42081626022 usa ancora il commit main precedente. [PR #133](https://github.com/andreameloni1984-sys/trump-trucker/pull/133) (non merged, basata su #129) aggiunge diagnostica dei gap cron.
+- GAGARIN [PR #199](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/199) è merged e il run 42068931975 è il primo monitor post-merge. Restano aperte [PR #181](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/181) per esporre ticker/provider/timestamp/expiry nei log e [PR #192](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/192) per fingerprint di contratto esatto e outcome ambiguo. Le precedenti PR [#189](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/189) e [#191](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/191) risultano chiuse senza merge; non considerarle implementate.
+- [PR #196](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/196) resta aperta: il monitor main continua a riportare 10 strumenti, inclusi due FX ausiliari, invece del solo paniere commodity di 8 strumenti.
+- `engine/feedback.py` in main conserva un'identità basata su symbol/direction/timeframe/livelli/candela e non salva provider, ticker, market type o expiry; perciò l'outcome non è ancora garantito sullo stesso contratto. Il controllo corrente non modifica il codice.
+
+### Prossimo controllo
+
+Verificare i prossimi run schedulati effettivi di SPUTNIK e GAGARIN; accertare che ogni CFD con livelli abbia ticker/provider/quote timestamp/age/market/expiry espliciti e che il messaggio operativo non contraddica le avvertenze; per GAGARIN verificare il primo monitor dopo PR #199 fuori dalle vecchie fasce e la persistenza effettiva del feedback. Continuare a valutare SL/TP solo su candele posteriori dello stesso identico contratto, altrimenti `ESITO NON VERIFICABILE`.
+
+**Perimetro invariato:** audit e documentazione soltanto; nessuna modifica a codice, strategia, filtri, punteggi, rischio, secrets o Render; nessun merge/deploy, nessun ordine reale. PAPER ONLY.
