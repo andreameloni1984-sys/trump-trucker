@@ -54,6 +54,8 @@ class SputnikStateBranchWorkflowTests(unittest.TestCase):
         self.assertIn("SPUTNIK_SCHEDULE_RUN", self.workflow)
         self.assertIn("SPUTNIK_SCHEDULE_GAP", self.workflow)
         self.assertIn("SPUTNIK scheduled-run history unavailable", self.workflow)
+        self.assertIn("SPUTNIK scheduled-run history response unreadable", self.workflow)
+        self.assertIn("SPUTNIK scheduled-run history response invalid", self.workflow)
         self.assertLess(
             self.workflow.index("Report recent scheduled collector runs"),
             self.workflow.index("Run SPUTNIK (Render-independent)"),
