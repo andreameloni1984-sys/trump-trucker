@@ -19,6 +19,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from html.parser import HTMLParser
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
@@ -495,13 +496,35 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     known_items = state.setdefault("intelligence_items", {})
     findings: list[dict[str, Any]] = []
 
+    # Fetch independent public pages and RSS feeds concurrently. The previous
+    # sequential loop could wait up to 20s per source; parallel I/O cuts the
+    # scan wall time to roughly the slowest source without weakening validation.
+    feed_urls = _configured_rss_feeds()
+    page_payloads: dict[tuple[str, str], str] = {}
+    feed_payloads: dict[str, bytes] = {}
+    jobs = {}
+    with ThreadPoolExecutor(max_workers=max(1, min(8, len(INTELLIGENCE_SOURCES) + len(feed_urls)))) as pool:
+        for source, url in INTELLIGENCE_SOURCES.items():
+            jobs[pool.submit(fetch_public_text, url)] = ("page", source, url)
+        for feed_url in feed_urls:
+            jobs[pool.submit(fetch_public_feed, feed_url)] = ("feed", "", feed_url)
+        for future in as_completed(jobs):
+            kind, source, url = jobs[future]
+            try:
+                payload = future.result()
+                if kind == "page":
+                    page_payloads[(source, url)] = payload
+                else:
+                    feed_payloads[url] = payload
+            except Exception as exc:
+                label = source or url
+                print(f"SPUTNIK: source unavailable {label}: {type(exc).__name__}")
+
     # Keep the legacy homepage scan for broad discovery, but do not treat its
     # generic page-wide keywords as an individual news event.
     for source, url in INTELLIGENCE_SOURCES.items():
-        try:
-            body = fetch_public_text(url)
-        except Exception as exc:
-            print(f"SPUTNIK: source {source} unavailable: {type(exc).__name__}")
+        body = page_payloads.get((source, url))
+        if body is None:
             continue
 
         digest = hashlib.sha256((source + "|" + body[:200000]).encode("utf-8")).hexdigest()[:24]
@@ -534,13 +557,16 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         max_public_item_age_hours = max(1, int(os.getenv("SPUTNIK_PUBLIC_ITEM_MAX_AGE_HOURS", "24")))
     except (TypeError, ValueError):
         max_public_item_age_hours = 24
-    for feed_url in _configured_rss_feeds():
+    for feed_url in feed_urls:
         feed_is_new = feed_url not in initialized_feeds
         source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
+        payload = feed_payloads.get(feed_url)
+        if payload is None:
+            continue
         try:
-            rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
+            rows = parse_public_feed(payload, feed_url)
         except Exception as exc:
-            print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
+            print(f"SPUTNIK: RSS feed parse failed {feed_url}: {type(exc).__name__}")
             continue
 
         for row in rows:
