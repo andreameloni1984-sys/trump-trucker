@@ -432,5 +432,25 @@ class TrendClassificationTests(unittest.TestCase):
         self.assertIsNone(result["ema50"])
 
 
+class CatalystRelevanceTests(unittest.TestCase):
+    def test_ai_and_media_posts_do_not_create_commodity_priority(self):
+        from sputnik_trading_instrument import _recommend_trading_instrument_from_news
+        item = _finding(
+            "Trump comments on Alaska Senate vote totals and media coverage",
+            domains=["AI_TECH", "MEDIA"],
+            event_id="unrelated-political-post",
+        )
+        self.assertIsNone(_recommend_trading_instrument_from_news([item]))
+
+    def test_gold_requires_a_gold_relevant_catalyst_domain(self):
+        from sputnik_trading_instrument import _recommend_trading_instrument_from_news
+        item = _finding(
+            "Routine political endorsement without a metals or macro catalyst",
+            domains=["MEDIA"],
+            event_id="media-only-post",
+        )
+        self.assertIsNone(_recommend_trading_instrument_from_news([item]))
+
+
 if __name__ == "__main__":
     unittest.main()
