@@ -490,3 +490,101 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Scope:** diagnostics only. No retries, backoff, source substitution, feed freshness rule, event classification, commodity mapping, direction, ranking, score, signal, Telegram, PAPER authorization, or execution behavior changed.
 - **Regression:** simulate HTTP 429 with `Retry-After: 120` and assert both values appear in the log while no finding is fabricated.
 - **Safety:** no secrets, paid services, Render, main-branch writes, merge, deployment, Telegram send, broker action, or order.
+
+
+## 2026-11-05 — Audit operativo fonti, catalizzatori, segnali e Actions
+
+### Perimetro e ultimo run
+
+- Audit limitato a questo repository. Nessun collegamento operativo a GAGARIN: il run #41958224831 riporta esplicitamente `GAGARIN handoff disabled` perché `GAGARIN_CLOUD_API_URL/API_KEY` non sono configurati.
+- Ultimo collector osservato: run #41958224831, evento `schedule`, 2026-11-05 02:54:42–02:54:53 UTC, conclusione SUCCESS, commit di checkout `c58649059d75570ededc8869e200c206f41621e5`.
+- Ultimo polling Telegram osservato: run #41953937380, 2026-11-05 02:14:56 UTC, SUCCESS, `Pending updates: 0`. È polling in ingresso, non prova di consegna di un alert.
+- La workflow dichiara un cron del collector ogni 5 minuti e il polling Telegram ogni 5 minuti, ma il registro Actions disponibile mostra intervalli effettivi di ore: collector #41808216335 alle 09:31 UTC, #41877775230 alle 17:27 UTC, #41928442748 alle 22:48 UTC e #41958224831 alle 02:54 UTC. Gli ultimi due sono separati da 4h06; i precedenti da 5h21 e 7h56. La causa della discrepanza non è dimostrata in questo audit: non concludere che il workflow sia disabilitato, ma non dichiarare neppure un monitoraggio effettivo ogni 5 minuti.
+- Il run #41958224831 ha eseguito i test di regressione Telegram/item-intelligence prima del collector: 30 test, SUCCESS. Gli `OSError` per WHITE_HOUSE/TRUTH_ARCHIVE/OGE e i messaggi Telegram di test che compaiono prima di `Run SPUTNIK` provengono dai test offline/mockati; non sono errori di rete del collector in produzione.
+- Il run ha poi scritto `sputnik_state.json` su `main`: commit automatico `cbd9bdaeaa277a1f973f26eb1394ec87c0619304`, push `c586490..cbd9bda main -> main`. È il comportamento preesistente del workflow, non una modifica fatta durante questo audit. PR #129 propone il branch di stato separato e rimuove i test dal collector live.
+
+### Elementi pubblici recuperati
+
+1. **Post individuale da PUBLIC_RSS / archivio Truth**
+   - Feed: `https://www.trumpstruth.org/feed`.
+   - Permalink archivio: `https://www.trumpstruth.org/statuses/43487`.
+   - Link originale incorporato nel record: `https://truthsocial.com/@realDonaldTrump/117560785494219046`.
+   - Pubblicazione: 2026-11-04 23:33:47 UTC. Rilevazione: 2026-11-05 02:54:47.913703 UTC; ritardo circa 201 minuti.
+   - Contenuto: post sul Sunshine Protection Act e sul cambio dell'ora, con riferimento al tramonto anticipato. Classificazione salvata: `AI_TECH`, evidenza `PUBLIC_RSS_ITEM`, stato `POTENTIAL_CORRELATION`, evento `OTHER`, nessun analogo storico.
+   - Materia prima: nessuna. Direzione: nessuna. Mercato/contratto/prezzo: assenti. Non è un catalizzatore commodity.
+
+2. **Pagina generale TRUTH_ARCHIVE**
+   - URL: `https://www.trumpstruth.org/`.
+   - Rilevata nel run #41958224831 alle 02:54:47.719884 UTC; titolo e timestamp di pubblicazione assenti.
+   - Evidenza `PUBLIC_SOURCE_TEXT_PAGE_LEVEL`, non un singolo post. Va distinta dal post RSS individuale sopra e non costituisce una seconda notizia verificata.
+
+3. **WHITE_HOUSE RSS**
+   - URL: `https://www.whitehouse.gov/feed/`.
+   - Nel run #41958224831, alle 02:54:47.945 UTC, il collector registra `RSS feed unavailable ... HTTPError`. Lo stesso errore generico ricorre nei run precedenti esaminati.
+   - Il log non contiene status code, reason o `Retry-After`: non è possibile stabilire se sia 403, 404, 429 o 5xx. L'apertura indipendente del feed non ha restituito contenuto leggibile in questa verifica. Nessun evento individuale White House è stato recuperato in quel run.
+
+4. **SEC EDGAR — CIK 0001849635**
+   - Endpoint richiesto: `https://data.sec.gov/submissions/CIK0001849635.json`; CIK riferito a Trump Media & Technology Group Corp. (DJT/DJTWW).
+   - Nel run #41958224831: HTTP 403 Forbidden, cooldown dichiarato di 21.600 secondi, raccolta SEC 81 ms, filing 0, estrazione transazioni 0, record 0.
+   - La risorsa SEC è risultata accessibile tramite verifica web indipendente, ma il runner GitHub ha ricevuto 403: l'accesso non è quindi uniforme tra client. Non sono stati recuperati filing o operazioni attribuibili.
+   - Lo stesso 403 ricompare in processi separati con `retry_in=21600s`: il cooldown in memoria non sopravvive al riavvio del processo. PR #127 propone la persistenza del termine di cooldown.
+
+5. **OGE**
+   - Nello storico compare una sola osservazione di pagina generale `https://www.oge.gov/`, rilevata il 2026-11-04 alle 17:28:06 UTC, senza titolo o timestamp editoriale e con evidenza `PUBLIC_SOURCE_TEXT_PAGE_LEVEL`.
+   - Non è un disclosure/evento individuale. La verifica web indipendente del sito è andata in timeout; nessun dato di disclosure è stato confermato in questo audit.
+
+### Catalizzatore energia Iran — notizia, non prova di prezzo
+
+- Post originale nell'archivio: `https://www.trumpstruth.org/statuses/43202`; link Truth Social registrato: `https://truthsocial.com/@realDonaldTrump/117548803071800973`.
+- Pubblicato 2026-11-02 20:46:30 UTC; rilevato 2026-11-03 01:53:14.000969 UTC, ritardo circa 307 minuti.
+- Contenuto dichiarato dall'autore: i prezzi del petrolio starebbero scendendo di quasi 10 dollari al barile perché il mercato percepirebbe minore probabilità di guerra con l'Iran; l'Iran vorrebbe un accordo.
+- Repost con contenuto sostanzialmente identico: `https://www.trumpstruth.org/statuses/43275`, link originale registrato `https://truthsocial.com/@realDonaldTrump/117549834242650471`, pubblicato 2026-11-03 01:08:45 UTC e rilevato 08:56:22.613229 UTC (ritardo circa 468 minuti).
+- Materia prima potenzialmente interessata: petrolio greggio; il testo non identifica WTI o Brent, né un contratto. Ipotesi economica condizionale: de-escalation diplomatica può ridurre il premio geopolitico sul greggio (bias potenzialmente ribassista). Il dato “quasi 10 dollari” è una dichiarazione nel post, non una quotazione verificata da SPUTNIK.
+- Anomalia di classificazione: entrambi i record hanno `action_reaction.event_type=GEOPOLITICAL_ESCALATION` e `NO_ANALOGUE`, nonostante il testo espliciti “no war” e una possibile settlement. Il repost non è un permalink duplicato, ma non è una seconda conferma indipendente dello stesso evento. PR #122 propone la classificazione esplicita di tale formulazione come de-escalation; CI superata, PR ancora aperta.
+- Esito operativo osservato nel run #41606956514 (2026-11-03 08:56 UTC): il messaggio di mercato dichiara `ALLINEAMENTO NOTIZIE: NO_DIRECTIONAL_NEWS` e genera GOLD SHORT su base tecnica. Non viene generato un segnale WTI o Brent attribuito a quel post. Non affermare che SPUTNIK abbia anticipato o tradato il movimento del petrolio.
+
+### Segnali/alert effettivamente prodotti
+
+Tutti i seguenti record riportano `TRADE PAPER: NOT_EXECUTED` o nessuna esecuzione; sono analisi/plan snapshot, non trade conclusi. Le quotazioni sono valori mostrati nei log, non prezzi eseguibili verificati.
+
+| Run / timestamp UTC | Strumento e lettura | Stato / prezzo mostrato | Qualità della provenienza |
+|---|---|---|---|
+| #41562609789 — 2026-11-03 01:53 | GOLD SHORT; tecnica N/D, D-L-A SHORT; nessun catalizzatore USA direzionale | EARLY_SETUP, score 75/100; entry 3957.3999, SL 3960.4856, TP1 3954.3142, TP2 3951.2284, ATR 2.0572 | PAPER NOT_EXECUTED; future continuo, scadenza esatta e indipendenza non verificate; NARWHAL non configurato |
+| #41606956514 — 2026-11-03 08:56 | GOLD SHORT; tecnica SHORT e D-L-A SHORT; news `NO_DIRECTIONAL_NEWS` | SETUP `CONFIRMED`, score 100/100; entry 3908.5, SL 3911.575, TP1 3905.425, TP2 3902.35, ATR 2.05 | PAPER NOT_EXECUTED; future continuo, scadenza esatta e indipendenza non verificate; NARWHAL non configurato; cross-check spot/futures non indipendente |
+| #41808216335 — 2026-11-04 09:31 | GOLD LONG; momentum 5m +0,059%; news `NO_DIRECTIONAL_NEWS` | EARLY_SETUP, score 70/100; entry 4056.8999, SL 4052.807, TP1 4060.9928, TP2 4065.0857, ATR 2.7286 | PAPER NOT_EXECUTED; NARWHAL non configurato; continuo senza scadenza esatta |
+| #41877775230 — 2026-11-04 17:28 | GOLD SHORT; news `NO_DIRECTIONAL_NEWS`; motivazione tecnica in conflitto (prezzo sopra EMA50, RSI positivo, swing misto) | EARLY_SETUP, score 70/100; entry 4075.6001, SL 4078.2894, TP1 4072.9107, TP2 4070.2214, ATR 1.7929 | PAPER NOT_EXECUTED; NARWHAL non configurato; continuo senza scadenza esatta |
+| #41928442748 — 2026-11-04 22:48 | GOLD NEUTRAL; direzione tecnica 5m UNAVAILABLE | NO_DIRECTION, score 65/100; nessun entry/SL/TP | PAPER NOT_EXECUTED; quotazione/ATR non sufficienti o non aggiornati |
+| #41958224831 — 2026-11-05 02:54 | GOLD LONG; momentum 5m +0,143% negli ultimi 15 minuti; news `NO_DIRECTIONAL_NEWS` | EARLY_SETUP, score 70/100; entry 4141.1001, SL 4136.5036, TP1 4145.6966, TP2 4150.2931, ATR 3.0643 | PAPER NOT_EXECUTED; NARWHAL non configurato; continuo senza scadenza esatta; cross-check spot/futures non indipendente |
+
+- Nei messaggi CFD esaminati la fonte, il timestamp/età della quotazione, bid/ask e la scadenza esatta non sono esposti. Il percorso tecnico 5m usa la chart API di Yahoo Finance; i messaggi descrivono il prezzo CFD come future front-month continuo. La provenienza puntuale del singolo prezzo CFD non è quindi ricostruibile dal messaggio consegnato.
+- Il messaggio dichiara `NARWHAL REF: NOT_CONFIGURED`; il cross-check spot/futures riporta `SPOT_VS_FUTURES_BASIS_CHECK_INDEPENDENCE_UNVERIFIED` e componenti dichiarate da SILV senza indipendenza verificata.
+- Il numero 100/100 o 70/100 è il punteggio/priority esposto dal bot, non una probabilità calibrata né prova di eseguibilità. Lo stato `CONFIRMED` del run #41606956514 riguarda il setup mostrato; il campo separato `TRADE PAPER: NOT_EXECUTED` conferma che non è stato eseguito.
+- Non è possibile verificare se SL o TP siano stati toccati: mancano timestamp/quote esatti e un journal di snapshot/outcome persistente. Non attribuire un esito vincente o perdente a nessuno di questi alert.
+
+### Duplicati, ritardi, retention e artefatti
+
+- Stato letto da `main`: `updated_at=2026-11-05T02:54:47.963313Z`; `intelligence_history` contiene 500 record: 472 `PUBLIC_RSS_ITEM` e 28 `PUBLIC_SOURCE_TEXT_PAGE_LEVEL`.
+- I 472 item RSS hanno 472 permalink distinti: nessun duplicato URL individuale nel campione conservato. Le 28 osservazioni page-level ripetono solo tre URL: TRUTH_ARCHIVE 21 volte, WHITE_HOUSE 5, OGE 2. Non vanno contate come 28 notizie individuali.
+- La latenza pubblicazione→rilevazione nel campione datato va da circa 43 a 1.197 minuti; mediana circa 232 minuti e 90° percentile circa 792 minuti. Un batch di endorsement politici del 3 novembre è stato rilevato quasi 20 ore dopo la pubblicazione. È entro la finestra configurata di 24 ore, ma non è tempestivo per un segnale intraday.
+- `intelligence_items` contiene 667 ID/chiavi di deduplicazione mentre la cronologia completa conservata è limitata a 500 record. Il contenuto dei record oltre la finestra conservata non è presente nello snapshot corrente.
+- `events` e `transactions` sono vuoti. Non è presente `cfd_signal_history` nello stato attuale di `main`; PR #111 propone di persistere gli snapshot CFD.
+- Il run #41958224831 ha 0 artefatti Actions. La cartella `reports` contiene solo il report statico `2026-11-01-cross-bot-audit.md`; nessun export di candele o journal di outcome è stato prodotto dal run.
+
+### PR e CI rilevanti — nessun merge eseguito
+
+- **#130** — diagnostica HTTP delle RSS: aggiunge status/reason e `Retry-After` ai log, senza cambiare retry o strategia. Test `tests` e `item-intelligence` SUCCESS sul commit `a1ba8c99df949a5a8892a92a4aaf7885fcebc923`; PR aperta, mergeable clean al controllo.
+- **#129** — persistenza stato su branch dedicato e rimozione dei test di regressione dal collector live. Check `tests` SUCCESS; PR aperta, mergeable clean.
+- **#128** — rimozione dei test dal collector live, sovrapposta alla parte workflow di #129. Check SUCCESS; PR aperta. Consolidare la duplicazione prima di un eventuale merge.
+- **#127** — persistenza cooldown SEC 403 tra processi. `tests` e `item-intelligence` SUCCESS; PR aperta, mergeable clean.
+- **#126** — separazione delle letture tecniche con timestamp. Check SUCCESS; PR aperta, mergeable clean.
+- **#122** — classificazione del linguaggio di settlement/no-war Iran come de-escalation. `tests` e `item-intelligence` SUCCESS; PR aperta, mergeable clean.
+- **#111** — persistenza degli snapshot CFD. `tests` e `item-intelligence` SUCCESS; PR aperta, mergeable clean.
+- **#107** — provenienza della quotazione CFD nel messaggio. Test SUCCESS, ma PR `dirty`/non mergeable.
+- **#113** — livelli dei future continui marcati come solo riferimento. Test SUCCESS, ma PR `dirty`/non mergeable.
+- Nessuna PR è stata unita e nessun deploy è stato eseguito.
+
+### Unica correzione nuova in questo run
+
+- PR #130 corregge esclusivamente la perdita di dettaglio diagnostico sugli errori HTTP delle RSS. Il run #41958224831 dimostra il difetto: il fallimento White House è registrato solo come `HTTPError`, senza status code/reason/`Retry-After`.
+- Non sono stati aggiunti filtri, punteggi, soglie, mapping di direzione, provider, retry, modifiche di strategia o autorizzazioni operative. Nessun segreto, Render, servizio a pagamento, ordine reale o file di `main` è stato modificato da questo audit.
+- PAPER ONLY; nessun trade eseguito.
