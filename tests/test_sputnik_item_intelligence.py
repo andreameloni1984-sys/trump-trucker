@@ -63,6 +63,24 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         )
         self.assertIn("TRADE_POLICY", domains)
 
+    def test_rss_http_error_logs_status_and_retry_after(self):
+        url = "https://example.gov/feed.xml"
+        error = trump_tracker.urllib.error.HTTPError(
+            url, 429, "Too Many Requests", {"Retry-After": "120"}, None
+        )
+        with (
+            patch.dict(os.environ, {"SPUTNIK_RSS_FEEDS": url}),
+            patch.object(trump_tracker, "INTELLIGENCE_SOURCES", {}),
+            patch.object(trump_tracker, "fetch_public_feed", side_effect=error),
+            patch("builtins.print") as output,
+        ):
+            findings = trump_tracker.intelligence_snapshot({})
+
+        self.assertEqual(findings, [])
+        messages = "\\n".join(str(call.args[0]) for call in output.call_args_list)
+        self.assertIn("HTTP 429 Too Many Requests", messages)
+        self.assertIn("retry_after=120", messages)
+
     @patch.object(trump_tracker, "fetch_public_text", side_effect=OSError("offline in test"))
     @patch.object(trump_tracker, "fetch_public_feed", return_value=FEED)
     def test_rss_items_are_saved_with_title_date_url_and_deduplicated(
