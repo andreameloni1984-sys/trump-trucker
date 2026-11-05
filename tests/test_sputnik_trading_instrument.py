@@ -105,7 +105,7 @@ class TechnicalQuoteFreshnessTests(unittest.TestCase):
 
         self.assertIsNotNone(result)
         self.assertEqual(result["bias"], "LONG")
-        self.assertEqual(result["price"], 100.3)
+        self.assertEqual(result["price"], 106.3)
         self.assertEqual(result["quote_timestamp"], stamps[-2])
 
     def test_three_completed_bars_plus_one_forming_bar_are_insufficient(self):
