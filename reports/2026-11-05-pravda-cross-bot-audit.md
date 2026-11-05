@@ -426,3 +426,77 @@ Run [#42081626022](https://github.com/andreameloni1984-sys/trump-trucker/actions
 5. Valutare outcome solo su candele successive dello stesso identico contratto; collisione intrabar SL/TP senza dati intrabar = ESITO NON VERIFICABILE.
 
 **Perimetro invariato:** aggiornamento esclusivamente documentale di audit/ledger. Nessuna modifica al codice dei bot, strategia, filtri, punteggi o rischio; nessun merge/deploy, ordine reale, accesso Trading212, modifica secrets o Render. Nessun servizio a pagamento. PAPER ONLY.
+
+
+---
+
+## Addendum PRAVDA — 2026-11-05 23:44 UTC
+
+### 1. SPUTNIK — nuova persistenza di stato, non nuovo segnale operativo
+
+È stato verificato il commit [992745634e8562e4169f31cdd7d623185d7a5e1a](https://github.com/andreameloni1984-sys/trump-trucker/commit/992745634e8562e4169f31cdd7d623185d7a5e1a), creato da SPUTNIK Bot alle **23:38:28 UTC**. Il campo `updated_at` nello stato è `2026-11-05T23:38:26.806660+00:00`. Il commit dimostra una nuova persistenza dello stato; non fornisce da solo l'ID del workflow run né il tipo di trigger.
+
+Nuovo record intelligence persistito:
+- event_id: `73e28085eb0315cd4aaa578d`;
+- source: `TRUTH_ARCHIVE`;
+- URL: pagina generale `https://www.trumpstruth.org/`, non URL di un singolo post;
+- `title` e `published`: vuoti;
+- `detected_at`: `2026-11-05T23:38:26.411062Z`;
+- `evidence`: `PUBLIC_SOURCE_TEXT_PAGE_LEVEL`;
+- `status`: `POTENTIAL_CORRELATION`;
+- domini assegnati: `AI_TECH`, `MEDIA`;
+- `action_reaction.event_type`: `OTHER`; `evidence`: `NO_ANALOGUE`.
+
+Il testo acquisito è l'intera pagina archivio, che contiene anche la frase “There is no other fair solution” e l'espressione “should be immediately given”. Le sottostringhe `ai` in “fair” e `media` in “immediately” spiegano i due tag spurii. Non è un singolo catalizzatore isolato e non contiene una direzione commodity, ticker, quotazione o livelli operativi. Non viene aggiunto al ledger dei segnali.
+
+La PR [#139](https://github.com/andreameloni1984-sys/trump-trucker/pull/139) è **OPEN, non merged** e introduce il matching a parola intera per questi token. Il record persistito su main è una riproduzione concreta del difetto ancora presente prima dell'integrazione. PRAVDA ha segnalato questa evidenza nella conversazione della PR; nessuna modifica al codice è stata eseguita da PRAVDA.
+
+### 2. GAGARIN — ultimo run con log recuperabile e stato dei journal
+
+È stato riletto il job del run [42122929435](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42122929435), job `127579660398`: conclusione GitHub Actions `success`, tutti gli step elencati completati con successo. Il log conferma:
+- `DATABASE_URL` vuoto;
+- soglie runtime osservate: probabilità 40, qualità 30, confidenza 35, R/R 2.5;
+- `Universe: 10 strumenti analizzati`: otto commodities e due Forex ausiliari;
+- EUR/USD e GBP/USD LIVE su BiQuote (109.2s e 109.7s), ma marcati contesto FX non operativo;
+- tutte le otto commodities STALE su Yahoo: Brent 2216.3s, WTI 2209.1s, Argento 2223.8s, Oro 2208.0s, Rame 2221.0s, Grano 11809.4s, Soia 11809.7s, Mais 11810.6s.
+
+Brent LONG, WTI LONG e Argento LONG restano `PAPER_WATCH`: nessuna entry, SL, TP o ATR operativo. Il riepilogo WATCH ha avuto API acknowledgement con message_id 3699; il log non prova la consegna sul dispositivo. Il journal riporta zero nuove entries, zero outcome aggiornati e zero feedback. Nessuno dei tre WATCH è un trade.
+
+Nuovo controllo degli artefatti pubblici:
+- `paper_trade_log.csv`: una sola riga WTI LONG del 2026-10-08, `LEGACY_IMPORT`, campi provider/ticker/quote timestamp/market type vuoti; nota “Chiusura spot 6 ottobre 2026. Nessun esito”.
+- `data/paper_open.json`: P0001 WTI LONG, entry 96.24, SL 89.37, TP1 103.11, TP2 106.55, stato OPEN e P&L null. È coerente con la riga legacy WTI e non va contato come secondo trade.
+- `position.json`: record Heating Oil LONG aperto il 2026-09-15T13:23:44.547184Z, entry 4.8844, SL 4.5418, TP1 5.4473, TP2 5.6284, TP3 5.882. Mancano stato esplicito, ID stabile, ticker/contratto/scadenza, provider, timestamp/età quote e ATR; resta artefatto legacy/orfano, non prova di posizione eseguita.
+- `journal.csv`: undici righe del 2026-10-17, tutte “nessun segnale”.
+- `gagarin_feedback.csv`: non presente su main (404); non è stato possibile leggere un archivio privato.
+- `commodities_prediction_log.json`: 981 record, ultimo timestamp 2026-09-15T15:45:04.462276Z; 21 etichette `COMPRA ORA`, 6 record senza la chiave `operational_signal`, 945 record con stato `PENDING`. Sono predizioni storiche, non fill né trade verificati.
+
+### 3. Perimetro universo GAGARIN — modifica preesistente su main da tenere sotto controllo
+
+Il commit [7ed290b971e780828934d80aa3b936043769eaf6](https://github.com/andreameloni1984-sys/commodity-news-scanner/commit/7ed290b971e780828934d80aa3b936043769eaf6), del 2026-11-05 15:07:05 UTC, ha rimosso i gate intraday da `engine/forex_session.py` e `engine/session_filter.py` e ha cambiato `main._select_run_universe()` in `return enabled_commodities()`. I test aggiornati includono EUR/USD e GBP/USD nel set scansionato. Il run 421229 conferma in produzione dieci strumenti, non otto.
+
+La PR [#196](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/196), che limita il motore alle otto commodities scelte, resta **OPEN e DRAFT**. La modifica di eleggibilità Forex è già presente su main e non è stata introdotta da PRAVDA; la segnalo come difformità rispetto al perimetro operativo commodity documentato. Non ho modificato filtri o codice.
+
+### 4. PR e Actions
+
+Stati ricontrollati:
+- SPUTNIK #136, #137, #138, #139: tutte OPEN, non merged.
+- GAGARIN #192: OPEN non draft; #196, #198, #200, #201, #204, #206: OPEN e DRAFT; #175 e #190: OPEN non merged. La PR #202 è stata aggiornata alle 23:42:11 UTC e la #206 alle 23:43:01 UTC, ma entrambe risultano ancora draft.
+- Il workflow GAGARIN su main dichiara cron ogni 15 minuti; quello SPUTNIK ogni 5 minuti.
+
+Limite di copertura: la consultazione GitHub disponibile ha permesso di recuperare i job/log di run noti, ma non espone la lista completa e paginata dei run più recenti dei due repository. Perciò l'ultimo monitor GAGARIN con log verificato resta #421229 alle 22:36 UTC; non affermo che non esistano run successivi. Per SPUTNIK l'ultima evidenza nuova è la persistenza di stato alle 23:38:28 UTC, ma non è stato possibile ricavare da questa sola commit l'ID Actions o confermare un invio Telegram associato.
+
+### 5. Ledger, outcome e statistiche
+
+Il ledger centrale è stato riletto e conta **29 record, 29 firme uniche, zero duplicati**. Non è stato aggiunto alcun record: il nuovo elemento SPUTNIK è intelligence page-level, non un segnale operativo; i tre WATCH GAGARIN erano già registrati nel run 421229.
+
+TP verificati: 0. SL verificati: 0. Outcome verificabili: 0. Win rate e rendimento medio: N/D. Nessun confronto è stato fatto con spot o con un future continuo privo di scadenza esatta.
+
+### 6. Prossimo controllo
+
+1. Ottenere la cronologia Actions successiva a 22:36 UTC per GAGARIN e associare ogni run a log e job ID.
+2. Verificare se SPUTNIK produce item-level record con URL del post e published timestamp, non pagine archivio aggregate.
+3. Verificare l'integrazione effettiva di #139 e #196 prima di considerare risolti i rispettivi difetti.
+4. Verificare il journal privato solo tramite evidenza runtime lecita; il valore vuoto di `DATABASE_URL` impedisce di dichiarare persistenza PostgreSQL attiva.
+5. Aggiungere segnali al ledger solo con firma distinta e campi di provenienza; outcome solo con barre successive dello stesso identico ticker, mercato e scadenza.
+
+**Perimetro:** nessun codice dei bot, strategia, filtro, punteggio o rischio modificato da PRAVDA; nessun merge/deploy, ordine reale, accesso Trading212, modifica secrets o Render. Nessun servizio a pagamento. PAPER ONLY.
