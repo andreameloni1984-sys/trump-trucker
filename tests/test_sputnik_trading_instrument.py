@@ -61,8 +61,8 @@ class TechnicalQuoteFreshnessTests(unittest.TestCase):
         from sputnik_trading_instrument import _technical_market_bias
 
         now = int(time.time())
-        stamps = [now - (4 - index) * 300 for index in range(5)]
-        closes = [100.0 + index * 0.1 for index in range(5)]
+        stamps = [now - (64 - index) * 300 for index in range(65)]
+        closes = [100.0 + index * 0.1 for index in range(65)]
         payload = {
             "chart": {
                 "result": [{
@@ -81,13 +81,14 @@ class TechnicalQuoteFreshnessTests(unittest.TestCase):
         self.assertEqual(result["bias"], "LONG")
         self.assertEqual(result["quote_timestamp"], stamps[-2])
         self.assertGreater(result["momentum_15m_pct"], 0)
+        self.assertEqual(result["bias"], "LONG")
 
     def test_forming_five_minute_candle_cannot_reverse_completed_bias(self):
         from sputnik_trading_instrument import _technical_market_bias
 
         now = int(time.time())
-        stamps = [now - (4 - index) * 300 for index in range(5)]
-        closes = [100.0, 100.1, 100.2, 100.3, 95.0]
+        stamps = [now - (64 - index) * 300 for index in range(65)]
+        closes = [100.0 + index * 0.1 for index in range(64)] + [95.0]
         payload = {
             "chart": {
                 "result": [{
@@ -405,6 +406,30 @@ class EarlyBrentCatalystTests(unittest.TestCase):
         self.assertIsNotNone(recommendation)
         self.assertEqual(recommendation["bias"], "NEUTRAL")
 
+
+
+class TrendClassificationTests(unittest.TestCase):
+    def test_ema_trend_not_short_momentum_sets_direction(self):
+        from sputnik_trading_instrument import _classify_technical_trend
+        rising = [100.0 + i * 0.2 for i in range(100)]
+        rising[-3:] = [rising[-4] - 0.1, rising[-4] - 0.2, rising[-4] - 0.3]
+        result = _classify_technical_trend(rising)
+        self.assertEqual(result["bias"], "LONG")
+        self.assertLess(rising[-1], rising[-4])
+
+    def test_downtrend_with_short_bounce_keeps_short_trend(self):
+        from sputnik_trading_instrument import _classify_technical_trend
+        falling = [200.0 - i * 0.2 for i in range(100)]
+        falling[-3:] = [falling[-4] + 0.1, falling[-4] + 0.2, falling[-4] + 0.3]
+        result = _classify_technical_trend(falling)
+        self.assertEqual(result["bias"], "SHORT")
+
+    def test_insufficient_history_has_no_ema(self):
+        from sputnik_trading_instrument import _classify_technical_trend
+        result = _classify_technical_trend([100.0 + i for i in range(20)])
+        self.assertEqual(result["bias"], "NEUTRAL")
+        self.assertIsNone(result["ema20"])
+        self.assertIsNone(result["ema50"])
 
 
 if __name__ == "__main__":
