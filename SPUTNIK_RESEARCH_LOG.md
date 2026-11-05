@@ -480,3 +480,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Unchanged:** do not flip the catalyst BIAS, do not add filters or thresholds, do not change entry/SL/TP calculation, risk, score, setup status, PAPER authorization or execution. No new provider calls. PAPER ONLY.
 - **Regression:** extend the opposite-direction CFD test to verify the conflict flag and Telegram warning.
 - **Validation:** pending GitHub Actions on this branch. No live quote replay, Telegram delivery, deployment or trade is claimed.
+
+
+## 2026-11-05 — Expose HTTP status on public RSS source failures
+
+- **Observed run:** SPUTNIK scheduled Actions run #41958224831, 2026-11-05 02:54:47 UTC, logged `RSS feed unavailable https://www.whitehouse.gov/feed/: HTTPError`.
+- **Finding:** the collector identified a failed White House RSS request but discarded the HTTP status, reason, and any `Retry-After` header. This prevented the run log from distinguishing rate limiting, access denial, missing resource, and server failure. The actual status code for that observed failure is not recoverable from the old log.
+- **Correction on branch:** when a public RSS request raises `urllib.error.HTTPError`, log its HTTP status/reason and a bounded `Retry-After` value when present. Generic network/parser errors retain the existing exception-class message.
+- **Scope:** diagnostics only. No retries, backoff, source substitution, feed freshness rule, event classification, commodity mapping, direction, ranking, score, signal, Telegram, PAPER authorization, or execution behavior changed.
+- **Regression:** simulate HTTP 429 with `Retry-After: 120` and assert both values appear in the log while no finding is fabricated.
+- **Safety:** no secrets, paid services, Render, main-branch writes, merge, deployment, Telegram send, broker action, or order.
