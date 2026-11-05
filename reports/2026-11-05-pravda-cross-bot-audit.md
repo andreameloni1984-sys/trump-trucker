@@ -258,3 +258,52 @@ Verificare i prossimi run schedulati effettivi di SPUTNIK e GAGARIN; accertare c
 4. Verificare che il journal privato sia realmente persistente e che la conferma Telegram sia basata su risposta API positiva con message_id.
 
 **Perimetro invariato:** audit e correzione documentale del ledger soltanto; nessuna modifica a codice, strategia, filtri, score, rischio, secrets o Render; nessun merge/deploy/ordine. PAPER ONLY.
+
+
+---
+
+## Addendum PRAVDA — controllo incrementale 2026-11-05 21:40 UTC
+
+### Deduplicazione e outcome
+
+- Ledger verificato sul branch `main`: **26 record, 26 firme uniche, 0 duplicati**. Nessun nuovo record di mercato aggiunto: le evidenze successive consultabili non contengono un nuovo segnale distinto con identità e timestamp sufficienti.
+- Esiti TP/SL verificati: **0**; campione verificabile: **0**; win rate e R-multiples: **N/D**. I record restano 21 candidati storici GAGARIN, 1 ticket WTI legacy, 2 WATCH GAGARIN e 2 CFD SPUTNIK NOT_EXECUTED.
+- Nessuna candela successiva è stata usata per stimare un outcome: per i due CFD SPUTNIK manca il contratto/scadenza esatta e la quotazione sorgente; per i WATCH GAGARIN mancano entry/livelli e ticker/contratto runtime. Non sono stati usati spot o futures generici come sostituti.
+
+### SPUTNIK — runtime, sorgenti e persistenza
+
+- Ultimo run di produzione verificabile nelle evidenze disponibili: [42081626022](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42081626022), 2026-11-05 18:10:08–18:10:22 UTC. La PR [#138](https://github.com/andreameloni1984-sys/trump-trucker/pull/138) riporta che alle 20:16 UTC non risultava un run schedulato successivo. L'API GitHub disponibile in questo audit non espone una lista completa aggiornata dei run schedulati oltre tale evidenza: **non dichiaro provata l'assenza di run successivi fino alle 21:40 UTC**.
+- Il log di #420816 riporta WHITE_HOUSE RSS `HTTPError`, SEC `HTTP 403` con cooldown 21.600 secondi, TRUTH_ARCHIVE e OGE `OSError`. Sono stampati due link Trumpstruth (status 43490 e 43489), ma nel log esaminato non è dimostrato il timestamp di pubblicazione/aggiornamento dei post né il buon esito dei feed principali. La disponibilità di fonti per un catalizzatore fresco resta quindi degradata.
+- Telegram: messaggi di analisi 700 e 701 hanno risposta API positiva; il messaggio CFD con i livelli ha invece `Connection reset by peer` e nessun message_id confermato. Non confondere i message_id emessi dai test automatici prima dell'avvio del collector con un invio live.
+- Il candidato CFD GOLD resta `EARLY_SETUP / NOT_EXECUTED`: entry 4111.7998, SL 4114.8533, TP1 4108.7463, TP2 4105.6928, ATR 2.0357. Lo stesso output dichiara front-month continuo, expiry e indipendenza upstream non verificate e avverte di non usare i livelli. Provider effettivo, ticker risolto e quote timestamp/age non sono esposti. Nessun trade e nessun outcome.
+- Il workflow main [trump_tracker.yml](https://github.com/andreameloni1984-sys/trump-trucker/blob/main/.github/workflows/trump_tracker.yml) continua a concedere `contents: write` e a persistere `sputnik_state.json` su `main`. PR [#137](https://github.com/andreameloni1984-sys/trump-trucker/pull/137) è aperta e mergeable; i suoi 189 test ranking passano (run 42096444631). PR [#138](https://github.com/andreameloni1984-sys/trump-trucker/pull/138), basata su #137, è aperta e mergeable; i 190 test ranking passano (run 42102349219). Finché non integrate, le correzioni di persistenza off-main e diagnostica cron non sono attive sul workflow di produzione.
+- PR [#136](https://github.com/andreameloni1984-sys/trump-trucker/pull/136) è aperta: 185 test ranking e 67 test menu superati; mira a esporre provenienza/expiry e a rendere teorici/non operativi i livelli da future continuo o metadata incompleti. PR [#132](https://github.com/andreameloni1984-sys/trump-trucker/pull/132) è aperta, con entrambi i workflow CI superati; mira a sopprimere i livelli quando le direzioni confliggono. Nessuna delle due è merged.
+
+### GAGARIN — runtime, journal e separazione mercati
+
+- Ultimo monitor di produzione verificabile: [42068931975](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42068931975), 2026-11-05 16:52:29–16:52:58 UTC. Otto commodities su Yahoo sono `STALE`, età 601,1–614,8 secondi. EUR/USD e GBP/USD sono etichettati LIVE su BiQuote (169,4 e 170,1 secondi), ma sono strumenti FX ausiliari, non prove di freschezza per le commodities.
+- WTI SHORT è solo `PAPER_WATCH`, bloccato da stale data, trigger non confermato/mismatch e RR fail; entry, SL, TP e ATR non sono presenti. Generazione 16:52:46.404940 UTC; API Telegram accettata 16:52:50.681424 UTC, message_id 3698 (circa 4,28 secondi). È un pre-alert, non un trade.
+- Il log del monitor mostra `DATABASE_URL` vuoto, zero paper entries e zero feedback aggiornati. Il workflow [gagarin-monitor.yml](https://github.com/andreameloni1984-sys/commodity-news-scanner/blob/main/.github/workflows/gagarin-monitor.yml) usa `contents: read` e non pubblica più CSV privati nel repository: è una misura privacy corretta, ma il journal non è dimostrato durevole senza database configurato e verificato.
+- `paper_trade_journal.py` ha colonne di provenienza quote/execution, ma il ticket legacy WTI dell'8 ottobre ha tali campi vuoti e non identifica mercato/contratto di esecuzione. `engine/feedback.py` su main continua a fingerprintare con symbol/direction/timeframe/livelli/bar timestamp e a cercare le candele per symbol/timeframe, senza provider, ticker, market type o expiry nel matching: il requisito di identico contratto non è ancora certificabile per quel codice.
+- Correzioni già proposte, tutte **aperte e non merged**:
+  - [#192](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/192): identità provider/ticker/mercato/contratto/expiry e stessa candela SL+TP = ESITO NON VERIFICABILE; 6 workflow CI SUCCESS.
+  - [#202](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/202): journal PAPER PostgreSQL durevole e fail-closed se DB assente; 6 workflow CI SUCCESS. Il secret `DATABASE_URL` non è stato letto né modificato; nel run live osservato era vuoto.
+  - [#200](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/200): daily summary sullo stesso store PostgreSQL; 5 workflow CI SUCCESS.
+  - [#201](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/201): fallback al secondo endpoint Yahoo se il primo restituisce barre stale; 5 workflow CI SUCCESS. I due endpoint restano lo stesso provider, non una fonte indipendente.
+  - [#204](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/204): separa i prezzi manuali CFD Trading 212 dai futures Yahoo e non calcola livelli senza candele dello stesso CFD; 6 workflow CI SUCCESS. Non dimostra accesso a un account Trading 212.
+  - [#175](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/175): gestisce il webhook attivo evitando il polling incompatibile; 5 workflow CI SUCCESS, ma non merged.
+  - [#181](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/181): espone ticker/provider/timestamp/expiry nel riepilogo dati; 6 workflow CI SUCCESS, ma non merged.
+- Il polling GAGARIN verificato nel run [42050795561](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42050795561) ha fallito con Telegram API 409 per webhook attivo. La PR #175 non è ancora sul branch di produzione.
+
+### Cosa dimostrano i test e cosa no
+
+I run CI elencati sono test sui branch delle PR: provano le regressioni coperte dai test, **non** l'attivazione delle correzioni su `main`, non la disponibilità del database, non la freschezza di mercato e non l'esecuzione di trade. Nessun merge o deploy è stato effettuato.
+
+### Prossimo controllo
+
+1. Ottenere la cronologia Actions completa e aggiornata per stabilire se i cron SPUTNIK 5m e GAGARIN 15m abbiano ripreso a partire dopo gli ultimi run verificati; non inferire l'assenza di run dalla sola mancanza di commit.
+2. Al prossimo segnale, conservare provider, ticker esatto, timestamp/age, market type, contratto e expiry prima di registrarlo.
+3. Verificare journal privato e feedback con una run reale dopo la configurazione proprietaria del database; fino ad allora outcome e statistiche restano N/D.
+4. Valutare SL/TP solo su candele posteriori dello stesso identico contratto; collisione intrabar non risolvibile = ESITO NON VERIFICABILE.
+
+**Perimetro invariato:** audit/documentazione soltanto; nessuna modifica a codice, strategia, filtri, score o rischio; nessun merge/deploy, ordine reale, accesso Trading 212, modifica secret o Render. PAPER ONLY.
