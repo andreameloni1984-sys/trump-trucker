@@ -48,6 +48,31 @@ class SputnikStateBranchWorkflowTests(unittest.TestCase):
             self.workflow,
         )
 
+    def test_scheduled_run_history_is_logged_without_blocking_collection(self):
+        self.assertIn("actions: read", self.workflow)
+        self.assertIn(
+            "actions/workflows/trump_tracker.yml/runs?event=schedule&per_page=20",
+            self.workflow,
+        )
+        self.assertIn("SPUTNIK_SCHEDULE_RUN", self.workflow)
+        self.assertIn("SPUTNIK_SCHEDULE_GAP", self.workflow)
+        self.assertIn(
+            "SPUTNIK scheduled-run history unavailable",
+            self.workflow,
+        )
+        self.assertIn(
+            "SPUTNIK scheduled-run history response unreadable",
+            self.workflow,
+        )
+        self.assertIn(
+            "SPUTNIK scheduled-run history response invalid",
+            self.workflow,
+        )
+        self.assertLess(
+            self.workflow.index("Report recent scheduled collector runs"),
+            self.workflow.index("Run SPUTNIK (Render-independent)"),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
