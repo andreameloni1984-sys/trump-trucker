@@ -335,6 +335,32 @@ def _recommend_trading_instrument_from_news(
 
 
 
+def _ema(values: list[float], period: int) -> float:
+    """EMA with a simple-average seed; caller supplies at least period values."""
+    alpha = 2.0 / (period + 1)
+    current = sum(values[:period]) / period
+    for value in values[period:]:
+        current = alpha * value + (1 - alpha) * current
+    return current
+
+
+def _classify_technical_trend(closes: list[float]) -> dict[str, Any]:
+    """Separate 5m trend from 15m momentum so counter-trend moves are pullbacks."""
+    if len(closes) < 50:
+        return {"bias": "NEUTRAL", "ema20": None, "ema50": None,
+                "reason": "Servono almeno 50 chiusure 5m per valutare EMA20/EMA50."}
+    ema20 = _ema(closes[-100:], 20)
+    ema50 = _ema(closes[-150:], 50)
+    last = closes[-1]
+    if last > ema20 > ema50:
+        bias, reason = "LONG", "Prezzo sopra EMA20 e EMA20 sopra EMA50: struttura 5m rialzista."
+    elif last < ema20 < ema50:
+        bias, reason = "SHORT", "Prezzo sotto EMA20 e EMA20 sotto EMA50: struttura 5m ribassista."
+    else:
+        bias, reason = "NEUTRAL", "EMA20/EMA50 non allineate: struttura 5m mista."
+    return {"bias": bias, "ema20": ema20, "ema50": ema50, "reason": reason}
+
+
 def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] | None:
     """Infer an independent short-term market direction from Yahoo 5m candles.
 
@@ -387,30 +413,14 @@ def _technical_market_bias(instrument: str, timeout: int = 8) -> dict[str, Any] 
             return None
 
         closes = [price for _, price in completed]
-        def ema(values: list[float], period: int) -> float:
-            alpha = 2.0 / (period + 1)
-            current = sum(values[:period]) / period
-            for value in values[period:]:
-                current = alpha * value + (1 - alpha) * current
-            return current
-
-        # Direction is the underlying 5m trend, not the last 15m impulse.
-        # Momentum is reported separately so a counter-trend move is labelled
-        # as a pullback instead of being mistaken for a trend reversal.
-        ema20 = ema(closes[-100:], 20)
-        ema50 = ema(closes[-150:], 50)
+        trend = _classify_technical_trend(closes)
+        ema20, ema50 = trend["ema20"], trend["ema50"]
+        direction = trend["bias"]
+        score = 65.0 if direction in {"LONG", "SHORT"} else 45.0
         momentum_reference = closes[-4]
         momentum_pct = (last / momentum_reference - 1.0) * 100.0
         momentum_direction = "LONG" if last > momentum_reference else "SHORT" if last < momentum_reference else "NEUTRAL"
-        if last > ema20 > ema50:
-            direction, score = "LONG", 65.0
-            trend_reason = "Prezzo sopra EMA20 e EMA20 sopra EMA50: struttura 5m rialzista."
-        elif last < ema20 < ema50:
-            direction, score = "SHORT", 65.0
-            trend_reason = "Prezzo sotto EMA20 e EMA20 sotto EMA50: struttura 5m ribassista."
-        else:
-            direction, score = "NEUTRAL", 45.0
-            trend_reason = "EMA20/EMA50 non allineate: struttura 5m mista."
+        trend_reason = trend["reason"]
         pullback = direction in {"LONG", "SHORT"} and momentum_direction in {"LONG", "SHORT"} and momentum_direction != direction
         momentum_reason = f"Momentum ultimi 15 minuti {momentum_direction} ({momentum_pct:+.3f}%)."
         reason = trend_reason + " " + momentum_reason
