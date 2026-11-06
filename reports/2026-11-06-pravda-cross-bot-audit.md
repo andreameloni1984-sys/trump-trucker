@@ -797,3 +797,41 @@ Prossimo controllo:
 5. Attribuire outcome solo con candele successive dello stesso identico contratto e rispettando la sequenza SL/TP.
 
 **Perimetro:** aggiornamento esclusivamente documentale. Nessuna modifica a codice, workflow, strategia, filtri, punteggi o rischio; nessun merge/deploy, ordine reale, modifica secrets/Render o servizio a pagamento. PAPER ONLY.
+
+
+---
+
+## PRAVDA addendum — verifica repository e job log 2026-11-06 07:17 UTC
+
+### Limite della cronologia Actions in questo controllo
+Il connettore GitHub disponibile in questa sessione consente di leggere i job e i log quando il run ID è noto, ma non espone un'azione per elencare/paginare tutti i workflow run del repository. Ho quindi riletto i due job noti (#42157892570 SPUTNIK e #42152866979 GAGARIN), ma **non posso certificare che siano gli ultimi run schedulati assoluti** né affermare che dopo di essi non ne siano partiti altri. I gap temporali riportati sotto sono riferiti agli ultimi run direttamente verificabili nei materiali già disponibili, non a una lista Actions aggiornata completa.
+
+### SPUTNIK — workflow main e persistenza
+- Riletto `.github/workflows/trump_tracker.yml` su main (blob `fb6b635b3730afde76d1332b24ce964780349467`): cron `2-59/5 * * * *`; `concurrency.queue: max`; `cancel-in-progress: false`; i test Telegram/regressione sono ancora eseguiti prima di `python trump_tracker.py`; lo step `Persist SPUTNIK state` esegue ancora `git push origin main`.
+- Il commit di produzione `4360e5554b1664c5a8b90e71b79c1d491b87e9ca` (06/11 03:39:54 UTC) è stato riletto: modifica solo `sputnik_state.json`, aggiornato alle 03:39:52 UTC. Conferma che il percorso di persistenza su main è stato effettivamente eseguito dal collector; non è una correzione della cadenza.
+- Job #42157892570: SUCCESS. I messaggi 704/705/706 hanno ricevuto conferma API in circa 470/468/464 ms; il processo Python ha impiegato circa 3,134 s, l'intelligence pubblica 1,088 s e la fase notifiche 1,885 s. I test iniziali sono eseguiti nel collector live.
+- Il log espone SEC HTTP 403, White House RSS HTTPError e `NARWHAL_API_KEY` vuota. Il post 43491 è stato rilevato circa 261 minuti dopo la pubblicazione. La classificazione `AI_TECH` è errata: il testo è politico/mercato azionario e il match deriva dal frammento "ai" in "AGAIN"; la correzione è proposta in PR #139, ancora OPEN.
+- PR #141 e #138 restano OPEN/non integrate; #136 e #139 restano OPEN. PR #138 è diagnostica e non cambia cron/concurrency. Il fatto che il processo noto duri pochi secondi non dimostra la causa dei gap di schedule.
+
+### GAGARIN — workflow, tempi e dati
+- Riletto `.github/workflows/gagarin-monitor.yml` su main (blob `24c4852263c06a522a3db7bfa81f46065cb31fcc`): cron `*/15 * * * *`, timeout 10 minuti, monitor completo provider-heavy. La frequenza di cinque minuti non è attiva su main.
+- Job #42152866979: SUCCESS. Le otto commodities risultano tutte Yahoo STALE, età 608,7–641,0 secondi; EUR/USD e GBP/USD LIVE su BiQuote sono solo contesto FX ausiliario. Le durate per strumento riportate nel log sono circa 62–869 ms di fetch e 65–872 ms di engine; l'analisi dell'universo è 2.972 ms. Il runtime breve non spiega da solo il gap tra run.
+- Il log stampa `DATABASE_URL` vuota in tutte le occorrenze rilevate. Il journal riporta 0 nuove entrate, 0 outcome aggiornati, 0 nuovi feedback e 0 nuove previsioni live. Telegram ha accettato message_id 3700 (round-trip 498 ms); non è prova di consegna sul dispositivo.
+- Il corpo del WATCH board 3700 non è conservato nel log: non è possibile attribuire con certezza i singoli strumenti inviati. Non aggiungo otto record dal solo ranking.
+- Il codice main contiene la chiamata a LUBJANKA M5, ma il log del monitor non stampa i relativi metadati; lo stato dell'interceptor in quel run resta non verificabile. PR #180 OPEN propone solo telemetria.
+- Commit main GAGARIN verificati: `c93906a` (etichetta esplicita del contesto stale LUBJANKA), `409e719` (annotazione dei conflitti direzionali GAGARIN/LUBJANKA) e `7ed290b` (rimozione dei gate intraday FX; non cambia il cron commodity). PR #169 (telemetria analisi) e #170 (round-trip API Telegram) sono MERGED; il round-trip non misura la consegna al dispositivo.
+- PR #196, #180, #202 e #207 restano OPEN (alcune DRAFT); i test sui branch non sono correzioni in produzione.
+
+### Riconciliazione journal e ledger
+- Il ledger è stato riletto: 31 record, 31 firme uniche, zero duplicati. Ripartizione: 21 historical_prediction_candidate, 5 watch_pre_alert, 4 cfd_early_setup_not_executed, 1 legacy_paper_ticket. Questi 31 record **non sono 31 trade**.
+- Il record Heating Oil del prediction log (`Heating Oil|2026-09-15T13:15:00+00:00|LONG|PULLBACK + RIPARTENZA`) ha generazione 13:23:44.529091 UTC e livelli 4.8844/4.5418/5.4473/5.6284/5.882; `position.json` riporta gli stessi livelli e `opened_at` 13:23:44.547184 UTC. Sono artefatti temporalmente e numericamente coincidenti: **non aggiungo una seconda firma**. Il file posizione non prova da solo un fill, né identifica provider/mercato/scadenza.
+- Il ticket WTI legacy di `paper_trade_log.csv` e P0001 in `data/paper_open.json` sono la stessa posizione, non due trade; restano senza prova di fill e senza identità contrattuale sufficiente.
+- Le 21 previsioni storiche del prediction log non riportano sent timestamp, provider, quote timestamp, mercato e scadenza; 6 non hanno `operational_signal`. Non si usano per calcolare win rate.
+
+### Esito statistico e prossima verifica
+- Nuovi segnali distinti dimostrati in questo controllo: 0.
+- Trade con fill verificato: 0; TP verificati: 0; SL verificati: 0; outcome verificabili: 0. Win rate e average R: N/D.
+- Il GOLD SHORT SPUTNIK #706 resta `NOT_EXECUTED` con `ESITO_NON_VERIFICABILE`: future continuo front-month, expiry e timestamp/provider/età della quote non esposti. Lo screenshot XAUUSD spot non è una serie dello stesso contratto.
+- Prossimo controllo: ottenere una lista Actions completa/paginata; verificare il primo run schedulato successivo di ciascun bot; controllare freshness e quote provenance; verificare integrazione reale delle PR; non attribuire outcome senza candele successive dello stesso identico contratto.
+
+**Perimetro:** sola documentazione PRAVDA. Nessun codice/workflow, strategia, filtro, punteggio o rischio modificato; nessun merge/deploy, ordine reale, modifica a secrets/Render o servizio a pagamento. PAPER ONLY.
