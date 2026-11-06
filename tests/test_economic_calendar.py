@@ -3,7 +3,7 @@ import unittest
 from datetime import datetime, timezone
 from unittest.mock import MagicMock
 
-from economic_calendar import fetch_calendar, format_calendar, messages_due
+from economic_calendar import fetch_calendar, format_calendar, messages_due, _release_comparison
 
 
 def response(rows):
@@ -60,6 +60,21 @@ class EconomicCalendarTests(unittest.TestCase):
         self.assertEqual(len(due), 1)
         self.assertEqual(due[0][0], "daily")
 
+    def test_actual_forecast_previous_comparison(self):
+        event = {"actual": "3.9%", "forecast": "3.8%", "previous": "3.7%"}
+        line = _release_comparison(event)
+        self.assertIn("Effettivo: 3.9%", line)
+        self.assertIn("Atteso: 3.8%", line)
+        self.assertIn("Precedente: 3.7%", line)
+        self.assertIn("sopra le attese", line)
+
+    def test_missing_actual_is_never_invented(self):
+        event = {"actual": "", "forecast": "3.8%", "previous": "3.7%"}
+        self.assertIn("Effettivo: non disponibile nel feed", _release_comparison(event))
+
+    def test_suffix_values_are_compared_consistently(self):
+        event = {"actual": "165K", "forecast": "160K", "previous": "150K"}
+        self.assertIn("sopra le attese", _release_comparison(event))
 
 if __name__ == "__main__":
     unittest.main()
