@@ -1087,3 +1087,14 @@ Per evitare che i difetti dimostrati restino soltanto nel rapporto, PRAVDA ha la
 - GAGARIN PR #181 — commento ID `6683630324`: il run #42203497432 non espone ticker risolto, timestamp assoluto, mercato/scadenza e prezzo/ATR; tutte le commodity restano stale.
 - GAGARIN PR #212 — commento ID `6683631159`: il run main continua a includere 2 Forex ausiliari oltre alle 8 commodity; PR non merged.
 Nessun commento duplicato PRAVDA era presente su queste tre PR al momento del controllo. Nessuna modifica al codice, nessuna approvazione o merge.
+
+
+---
+
+### Addendum 12:43 UTC — run SPUTNIK #42210907412
+
+SPUTNIK ha prodotto un solo candidato GOLD LONG nei messaggi Telegram #707/#708 del run [#42210907412](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42210907412). Generazione CFD 11:31:48.567717 UTC, ACK API 11:31:48.569094 UTC; entry 4075.8999, SL 4074.2713, TP1 4077.5285, TP2 4079.1570, ATR 1.0857, score 70, stato EARLY_SETUP/NOT_EXECUTED. Future continuo front-month, scadenza, provider, ticker runtime e timestamp/età quota non verificati; D-L-A neutrale e tecnica CFD non valutata. Esito non verificabile. Il record unico è nel ledger aggiornato a 32 firme, senza duplicati. Evidenza aggiunta alla PR #136 nel commento [6685156512](https://github.com/andreameloni1984-sys/trump-trucker/pull/136#issuecomment-6685156512).
+
+GAGARIN: ultimo monitor [#42203497432](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42203497432), 10:32:52 UTC; tutte le otto commodity stale (601,2–664,5 s), zero segnali/feedback/outcome. Nessun fill, TP o SL verificato. Journal legacy e feedback assente come descritto sopra.
+
+Nessuna modifica ai bot o alla strategia; nessun merge/deploy/ordine reale. PAPER ONLY.
