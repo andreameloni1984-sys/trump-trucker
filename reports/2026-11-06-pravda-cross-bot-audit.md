@@ -1016,3 +1016,66 @@ Prossimo controllo:
 5. Attribuire SL/TP solo su prezzi successivi dello stesso identico strumento/contratto, con ordine temporale della prima barriera.
 
 **Perimetro:** aggiornato solo il documento di audit PRAVDA. Nessun codice o workflow dei bot modificato; nessuna strategia, filtro, punteggio o rischio modificato; nessun merge/deploy, ordine reale, modifica a secrets/Render o accesso Trading212. Nessun servizio a pagamento. PAPER ONLY.
+
+
+## 2026-11-06 11:17:41 UTC — Verifica PRAVDA aggiuntiva (automazione)
+
+### Perimetro e limite di osservabilità
+Sono stati recuperati i job e i log completi dei run noti SPUTNIK #42157892570 e GAGARIN #42203497432; sono stati riletti ledger, journal, posizioni legacy, prediction log, workflow main e stato delle PR. In questa sessione il connettore GitHub espone il recupero dei job/log per un run noto ma non un'azione per elencare tutte le esecuzioni Actions recenti. Di conseguenza i due run sotto sono gli ultimi log che ho potuto verificare direttamente, non una prova che non esistano esecuzioni successive. Non attribuisco quindi nuovi gap di schedulazione senza la cronologia completa.
+
+### SPUTNIK — run #42157892570
+- Job `sputnik` ID `127696303672`, conclusione `success`.
+- Avvio collector: `2026-11-06T03:39:50.816557Z`; output del CFD e API ACK del messaggio 706: `03:39:53.954740Z`.
+- Il post Truth Archive 43491 reca timestamp originale `2026-11-05T23:18:52Z`; il collector lo mostra alle `03:39:53.951Z`: ritardo circa **4 h 21 min**.
+- Il post è un commento sul mercato azionario dopo le elezioni, non un catalizzatore direzionale commodity. Main lo etichetta `AI_TECH`; la PR #139 documenta il falso positivo dovuto a “ai” dentro “again”.
+- Il messaggio di analisi dice `NO_DIRECTIONAL_NEWS`; bias e tecnica GOLD SHORT sono preliminari. CFD output: entry 4059.20, SL 4062.0286, TP1 4056.3713, TP2 4053.5427, ATR 1.8857, score 70, stato `EARLY_SETUP / NOT_EXECUTED`.
+- Il messaggio stesso avverte: future continuo front-month, scadenza esatta e indipendenza upstream non verificate; non usare i livelli come entry/SL/TP. `NARWHAL REF: NOT_CONFIGURED`; il log non espone il provider runtime effettivo né il timestamp/età della quotazione.
+- Messaggi Telegram 704/705/706 hanno ACK API con round-trip 470/468/464 ms. Questo dimostra l'accettazione API, non la consegna al dispositivo.
+- Il job esegue ancora `git push origin main` nella fase di persistenza; il push del run ha prodotto il commit di stato `4360e5554b1664c5a8b90e71b79c1d491b87e9ca`. PR #141, che propone il branch dedicato, resta OPEN e non è attiva su main.
+- Errori osservati nel medesimo run: SEC HTTP 403 e White House RSS `HTTPError`; handoff verso GAGARIN disabilitato perché URL/API key non configurati.
+
+### GAGARIN — run #42203497432
+- Job ID `127844292744`, conclusione `success`; log di analisi timestampato `2026-11-06T10:33:05.380255Z`.
+- Workflow main: cron `*/15 * * * *`; ambiente `MONITOR_INTERVAL_MINUTES=15`.
+- Il log stampa ancora **10 strumenti**: 8 commodity operative più EUR/USD e GBP/USD come Forex ausiliari. Quindi il perimetro “solo otto commodity” non è ancora applicato completamente in main; PR #212/#213 restano aperte.
+- Le otto commodity sono tutte `STALE` su Yahoo, con età tra 601.2 e 664.5 secondi e motivo `ALL_PROVIDER_CANDLES_STALE`. EUR/USD e GBP/USD sono `LIVE` su BiQuote a circa 187 secondi, ma sono contesto FX, non sostituti delle quote commodity.
+- Il log non stampa il ticker risolto, il timestamp assoluto della candela, il mercato/expiry né il prezzo/ATR per i candidati WATCH. Il provider e l'età da soli non permettono di ricostruire il contratto esatto.
+- Grano SHORT è soltanto `PAPER_WATCH` (probabilità 63, qualità 52.5, confidenza 35) e bloccato da `LIVE_DATA_NOT_FRESH`, `TRIGGER_NOT_CONFIRMED`, `TRIGGER_DIRECTION_MISMATCH`, `RR_FAIL`, `FINAL_CONFLUENCE_FAIL`. Non ha livelli operativi autorizzati. Gli altri strumenti sono WATCH senza setup/livelli completi.
+- Nessuna entrata: recorded entries 0; outcome aggiornati 0; nuovi feedback 0; nuove previsioni live 0; `signals=0 open=0 closed=0 win_rate=N/D avg_R=N/D`.
+- Telegram message 3701: API ACK alle `10:33:08.040Z`, circa 2.66 secondi dopo il timestamp di analisi. È un riepilogo WATCH, non un segnale individuale e non prova la consegna al telefono.
+- Nel log Actions `DATABASE_URL` e `NARWHAL_API_KEY` risultano vuoti. La persistenza PostgreSQL e la fonte Narwhal non sono configurate in quel run.
+
+### Deviazione di scoring da segnalare a GAGARIN
+La lettura del file main `engine/prediction_ranker.py` (blob `7ebee56d2b439596c69531b3dc7c6664c9d4905b`) conferma che è presente la funzione `momentum_acceleration_score`: può aggiungere fino a **+8** punti o sottrarre fino a **−4** al punteggio. Il codice la somma al ranking. La PR #198, OPEN/DRAFT, dichiara di ripristinare la baseline precedente perché tale aggiustamento non era stato richiesto. Questa è una deviazione già presente su main rispetto al vincolo dell'utente di non modificare i punteggi; PRAVDA non l'ha introdotta e non l'ha modificata. La correzione non è attiva finché la PR non viene integrata.
+
+### Journal, feedback e ledger riconciliati
+- Ledger PRAVDA: 31 record dati, 31 firme distinte, **zero duplicati**; nessun nuovo segnale individuale da aggiungere.
+- `journal.csv`: 11 righe dati del 17 ottobre, tutte `nessun segnale`.
+- `paper_trade_log.csv`: una riga legacy WTI LONG (entry 96.24, SL 89.37, TP1 103.11, TP2 106.55); campi provider/ticker/quote/market/expiry vuoti.
+- `data/paper_open.json`: P0001 WTI con gli stessi livelli della riga legacy; è la stessa posizione logica, non un secondo trade.
+- `position.json`: vecchia posizione Heating Oil LONG, aperta il 15 settembre; mancano provider, quote timestamp, mercato e scadenza.
+- `commodities_prediction_log.json`: 981 record, ultimo `created_at` 15 settembre 2026 15:45:04 UTC; etichette `COMPRA ORA` e stato PENDING non dimostrano fill.
+- `gagarin_feedback.csv`: non trovato su main (404).
+- Nessun fill o outcome TP/SL verificabile sul medesimo strumento e contratto.
+
+### PR esistenti ricontrollate
+**SPUTNIK:** #141, #122, #139 e #138 restano OPEN/non merged. #141 è aggiornata ma non integrata; #138 è basata su branch non-main. La prova del `git push origin main` nel log conferma che la correzione di persistenza è ancora necessaria.
+
+**GAGARIN:** #198 (ripristino ranking), #212 (otto commodity), #213 (desk aggressivo solo commodity e rimozione confronto CFD/futures non verificato), #214 (disattivazione percorsi legacy che possono sovrascrivere main), #215 (formattazione status), #181 (provenienza quote), #192 (identità contratto e ambiguità SL/TP nella stessa candela) e #201 (fallback Yahoo stale-aware) risultano OPEN; #198 e #212–#215 sono draft/stacked. I test CI sui branch non equivalgono a merge o comportamento in produzione.
+
+### Esiti e statistiche
+- Nuovi fill verificati: **0**.
+- Nuovi TP/SL verificati: **0**.
+- Outcome verificabili con identità esatta di strumento e contratto: **0**.
+- Campione valido per win rate/average R: **0**; win rate e average R restano N/D.
+- GOLD SHORT SPUTNIK resta `NOT_EXECUTED / ESITO_NON_VERIFICABILE`; nessuna candela spot o di un contratto diverso è stata usata per assegnare l'esito.
+- WATCH GAGARIN non viene trasformato in trade né inserito come segnale operativo nel ledger.
+
+### Prossimo controllo
+1. Recuperare la cronologia Actions completa per distinguere collector/monitor da polling e CI; il connettore usato in questa verifica non ha esposto l'elenco dei run.
+2. Verificare il successivo log GAGARIN per quote fresche, ticker risolto e timestamp della candela.
+3. Verificare se #198 entra in main e se il ranking torna alla baseline autorizzata.
+4. Verificare l'integrazione delle PR #141, #181, #192, #201 e #212–#214 prima di considerare risolte persistenza, provenienza e perimetro strumenti.
+5. Valutare outcome solo su candele successive dello stesso identico mercato e contratto, con sequenza temporale SL/TP.
+
+**Perimetro:** aggiornato solo questo documento di audit PRAVDA. Nessun codice o workflow modificato; nessuna strategia, filtro, punteggio o rischio modificato da PRAVDA; nessun merge/deploy, ordine reale, modifica a segreti/Render o accesso Trading212. Nessun servizio a pagamento. PAPER ONLY.
