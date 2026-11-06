@@ -145,7 +145,7 @@ Fonti:
 
 Limiti:
 - I log Actions completi non sono disponibili come artefatto scaricabile in questo audit; sono stati usati run metadata, job/step metadata e artefatti già registrati nel ledger.
-- Nessun feed gratuito consultato ha fornito candele successive con identità di contratto/scadenza sufficiente a classificare gli outcome.
+- Nessun feed prezzi gratuito è stato interrogato in questo controllo; inoltre ticker runtime e scadenza mancano, quindi non è possibile selezionare in modo sicuro candele dello stesso identico contratto.
 - Nessun accesso Trading212 è stato verificato; nessuna consegna Telegram al dispositivo è dichiarata.
 - Nessun servizio a pagamento usato.
 
