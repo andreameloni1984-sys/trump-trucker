@@ -668,13 +668,14 @@ def build_cfd_signal(
         "setup_status": setup_state,
         "paper_trade_status": "NOT_EXECUTED",
         "execution_readiness": setup_state,
-        "quote_time": quote.get("timestamp") or quote.get("updated_at"),
-        "quote_provider": quote.get("provider") or "state/provider",
-        "quote_symbol": quote.get("symbol") or instrument,
+        "quote_time": quote.get("timestamp") or quote.get("updated_at") or quote.get("as_of"),
+        "quote_provider": quote.get("provider") or "N/D",
+        "quote_symbol": quote.get("symbol") or "N/D",
         "quote_currency": quote.get("currency"),
         "quote_unit": quote.get("unit"),
         "quote_market_type": quote.get("market_type"),
         "quote_contract_description": quote.get("contract_description"),
+        "quote_expiry": quote.get("expiry") or quote.get("expiration_date") or quote.get("contract_expiry"),
         "quote_bid": _number(quote.get("bid")),
         "quote_ask": _number(quote.get("ask")),
         "quote_age_seconds": _quote_age_seconds(quote),
@@ -735,15 +736,56 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"📌 STATO: {status}",
     ]
 
-    if signal.get("entry") is not None:
+    quote_provider = str(signal.get("quote_provider") or "").strip()
+    quote_symbol = str(signal.get("quote_symbol") or "").strip()
+    quote_market_type = str(signal.get("quote_market_type") or "").strip().upper()
+    quote_time = signal.get("quote_time")
+    quote_age = signal.get("quote_age_seconds")
+    quote_expiry = signal.get("quote_expiry")
+    quote_contract = signal.get("quote_contract_description")
+    quote_currency = signal.get("quote_currency")
+    quote_unit = signal.get("quote_unit")
+    if any((quote_provider, quote_symbol, quote_market_type, quote_time, quote_age is not None, quote_contract, quote_expiry)):
+        age_text = f"{float(quote_age):.1f}s" if isinstance(quote_age, (int, float)) else "N/D"
+        currency_unit = "/".join(str(value) for value in (quote_currency, quote_unit) if value) or "N/D"
         lines.extend([
             "",
-            f"💰 ENTRY: {signal['entry']}",
-            f"🛑 SL:    {signal['stop']}",
-            f"🎯 TP1:   {signal['tp1']} (1R)",
-            f"🎯 TP2:   {signal['tp2']} (2R)",
-            f"📏 ATR:   {signal.get('atr')}",
+            "📡 PROVENIENZA QUOTAZIONE",
+            f"Fonte: {quote_provider or 'N/D'} | Ticker: {quote_symbol or 'N/D'}",
+            f"Mercato: {quote_market_type or 'N/D'} | Valuta/unità: {currency_unit}",
+            f"Timestamp: {quote_time or 'N/D'} | Età: {age_text}",
+            f"Contratto: {quote_contract or 'N/D'} | Scadenza: {quote_expiry or 'N/D'}",
         ])
+
+    continuous_reference = quote_market_type.endswith("_CONTINUOUS")
+    contract_metadata_missing = (
+        not quote_provider or not quote_symbol or not quote_time or not quote_market_type
+        or (quote_market_type in {"FUTURE", "FUTURES"} and not quote_expiry)
+    )
+    non_operational_levels = continuous_reference or contract_metadata_missing
+
+    if signal.get("entry") is not None:
+        if non_operational_levels:
+            lines.extend([
+                "",
+                "⚠️ LIVELLI TEORICI — NON OPERATIVI",
+                "Il riferimento non identifica una quotazione/contratto eseguibile; non usare questi valori come piano entry/SL/TP.",
+                f"📍 RIFERIMENTO: {signal['entry']}",
+                f"🛑 SL TEORICO: {signal['stop']}",
+                f"🎯 TP1 TEORICO: {signal['tp1']} (1R)",
+                f"🎯 TP2 TEORICO: {signal['tp2']} (2R)",
+                f"📏 ATR DI RIFERIMENTO: {signal.get('atr')}",
+            ])
+        else:
+            lines.extend([
+                "",
+                "📐 LIVELLI CALCOLATI — PAPER NON ESEGUITO",
+                f"💰 ENTRY: {signal['entry']}",
+                f"🛑 SL:    {signal['stop']}",
+                f"🎯 TP1:   {signal['tp1']} (1R)",
+                f"🎯 TP2:   {signal['tp2']} (2R)",
+                f"📏 ATR:   {signal.get('atr')}",
+            ])
     elif direction in {"LONG", "SHORT"}:
         lines.append("\n⏳ BIAS mantenuto; livelli omessi (entry/SL/TP): quotazione futures fresca o ATR valido non disponibile.")
     else:
