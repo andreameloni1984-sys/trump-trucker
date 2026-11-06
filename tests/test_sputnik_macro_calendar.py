@@ -5,6 +5,7 @@ from sputnik_macro_calendar import (
     due_calendar_alerts,
     format_calendar_alert,
     parse_bls_ical,
+    parse_usda_wasde_calendar,
 )
 
 
@@ -60,6 +61,19 @@ END:VCALENDAR
             self.assertEqual(due[0]["stage"], expected)
             sent = {"nfp": [expected]}
             self.assertEqual(due_calendar_alerts([event], sent, now), [])
+
+
+    def test_parses_official_usda_wasde_dates_as_eastern_time(self):
+        raw = """<h3>2026 WASDE Release Dates (12:00pm ET)</h3>
+        <p>In 2026 the WASDE report will be released on Jan. 12, Feb. 10,
+        Mar. 10, Apr. 9, May 12, Jun. 11, Jul. 10, Aug. 12, Sep. 11,
+        Oct. 9, Nov. 10, and Dec. 10.</p>"""
+        events = parse_usda_wasde_calendar(raw)
+        self.assertEqual(len(events), 12)
+        november = next(event for event in events if event["event_id"] == "USDA-WASDE-20261110")
+        self.assertEqual(november["start_utc"], "2026-11-10T17:00:00+00:00")
+        self.assertEqual(november["source"], "USDA_WASDE_OFFICIAL")
+        self.assertIn("usda.gov", november["source_url"])
 
     def test_rejects_naive_current_time(self):
         with self.assertRaises(ValueError):
