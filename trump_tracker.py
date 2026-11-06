@@ -1773,18 +1773,20 @@ def main() -> None:
     print(f"SPUTNIK: public intelligence scan={((time.monotonic() - stage_started) * 1000.0):.0f}ms | findings={len(intelligence)}", flush=True)
     macro_calendar_alerts: list[dict[str, Any]] = []
     try:
-        from sputnik_macro_calendar import fetch_bls_calendar, due_calendar_alerts
-        calendar_events = fetch_bls_calendar()
+        from sputnik_macro_calendar import fetch_macro_calendars, due_calendar_alerts
+        calendar_events, calendar_errors = fetch_macro_calendars()
         macro_calendar_alerts = due_calendar_alerts(
             calendar_events,
             state.setdefault("macro_calendar_sent", {}),
             utc_now(),
         )
         print(
-            f"SPUTNIK: BLS macro calendar | source_events={len(calendar_events)} "
-            f"| due_alerts={len(macro_calendar_alerts)}",
+            f"SPUTNIK: official macro calendars | source_events={len(calendar_events)} "
+            f"| due_alerts={len(macro_calendar_alerts)} | source_errors={len(calendar_errors)}",
             flush=True,
         )
+        for calendar_error in calendar_errors:
+            print(f"SPUTNIK: macro calendar source unavailable | {calendar_error}", flush=True)
     except Exception as exc:
         print(
             f"SPUTNIK: BLS macro calendar unavailable | "
