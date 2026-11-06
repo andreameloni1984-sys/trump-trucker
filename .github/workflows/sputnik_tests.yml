@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "trump_tracker.py"
+      - "sputnik_macro_calendar.py"
+      - "tests/test_sputnik_macro_calendar.py"
       - "sputnik_public_feed_monitor.py"
       - "sputnik_ranking.py"
       - "sputnik_decision.py"
@@ -12,6 +14,8 @@ on:
       - "SPUTNIK_RESEARCH_LOG.md"
       - "sputnik_cfd.py"
       - "sputnik_trading_instrument.py"
+      - "sputnik_macro_calendar.py"
+      - "tests/test_sputnik_macro_calendar.py"
       - "sputnik_catalyst.py"
       - "tests/test_sputnik_trading_instrument.py"
       - "tests/test_sputnik_item_intelligence.py"
