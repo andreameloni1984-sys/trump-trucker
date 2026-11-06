@@ -177,7 +177,7 @@ def parse_usda_wasde_calendar(payload: bytes | str) -> list[dict]:
     visible = re.sub(r"\s+", " ", visible)
     events: list[dict] = []
     for match in re.finditer(
-        r"In\s+(20\d{2})\s+the WASDE report will be released on\s+([^.]*)\.",
+        r"In\s+(20\d{2})\s+the WASDE report will be released on\s+(.+?)(?=\s+20\d{2}\s+WASDE Release Dates|$)",
         visible,
         flags=re.IGNORECASE,
     ):
