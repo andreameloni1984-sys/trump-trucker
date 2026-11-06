@@ -926,3 +926,93 @@ Trade con fill verificato: **0**. TP verificati: **0**. SL verificati: **0**. Ou
 4. Attribuire outcome solo su prezzi/candele successive dello stesso identico strumento e contratto, con prima barriera temporale SL/TP.
 
 **Perimetro:** aggiornamento documentale PRAVDA soltanto. Nessuna modifica a codice dei bot, strategia, filtri, punteggi, rischio, segreti o Render; nessun merge/deploy o ordine reale. Nessun servizio a pagamento. PAPER ONLY.
+
+
+## Addendum PRAVDA — 2026-11-06 10:52 UTC (11:52 Europe/Rome)
+
+### 1. GitHub Actions: run di mercato e cadenza
+
+**SPUTNIK**
+- L'ultimo collector schedulato resta [run #42157892570](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42157892570), avviato 2026-11-06 03:39:45 UTC e concluso 03:39:59 UTC con SUCCESS. Al cut-off 10:52:15 UTC non compare un collector successivo: gap di circa **7h12m30s**.
+- Il run [#42154936378](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42154936378), 03:10:49 UTC, è Telegram Polling e non raccolta intelligence. Gli altri run recenti sono CI/PR, non collector.
+- Il workflow su main mantiene cron `2-59/5 * * * *`, test prima della raccolta e persistenza con `git push origin main`. Il gap è osservato; la causa non è dimostrata e non viene attribuita a GitHub, concorrenza o rete senza ulteriore evidenza.
+- L'ultimo evento e candidato GOLD SHORT restano quelli del run #42157892570 / messaggio 706 già registrati nel ledger. Non è emerso un nuovo messaggio di mercato da aggiungere.
+
+**GAGARIN**
+- È comparso un nuovo monitor schedulato: [run #42203497432](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42203497432), avvio 2026-11-06 10:32:52 UTC, conclusione 10:33:10 UTC, SUCCESS, run #159.
+- Il monitor precedente era [#42152866979](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42152866979), avvio 02:50:37 UTC. L'intervallo tra i due monitor è **7h42m15s**, nonostante cron `*/15 * * * *`.
+- Al cut-off 10:52:15 UTC non risulta ancora il run atteso intorno alle 10:47 UTC; è un ritardo minimo osservato di circa 5 minuti rispetto a quella finestra, soggetto al normale ritardo di scheduling GitHub.
+- Il job del nuovo run è interamente SUCCESS. Il log conferma PAPER ONLY e `DATABASE_URL` vuoto; `NARWHAL_API_KEY` vuota. Le soglie lette dal workflow restano 40/30/35, RR 2.5 e MAX_ENTRY_STOP_ATR 2.5: PRAVDA non le ha modificate.
+
+### 2. GAGARIN — dati del nuovo monitor #42203497432
+
+Timestamp di avvio analisi riportato da `main.py`: **2026-11-06 10:33:05.380255 UTC**. Il run non espone timestamp assoluto della candela/quotazione, solo provider ed età.
+
+| Strumento | Provider | Età quota | Stato |
+|---|---|---:|---|
+| Grano | Yahoo | 622.4 s | STALE |
+| Brent | Yahoo | 604.3 s | STALE |
+| WTI | Yahoo | 601.2 s | STALE |
+| Oro | Yahoo | 614.5 s | STALE |
+| Argento | Yahoo | 606.0 s | STALE |
+| Rame | Yahoo | 607.1 s | STALE |
+| Mais | Yahoo | 622.4 s | STALE |
+| Soia | Yahoo | 664.5 s | STALE |
+| GBP/USD | BiQuote | 187.5 s | LIVE, contesto FX |
+| EUR/USD | BiQuote | 187.0 s | LIVE, contesto FX |
+
+Per tutte le otto commodity il provider check riporta `YAHOO:STALE` e `ALL_PROVIDER_CANDLES_STALE`. I due cambi sono ausiliari, non commodity operative.
+
+La classifica mostra Grano SHORT, probabilità 63, qualità 52.5, confidenza 35, stato `PAPER_WATCH`; i blocchi espliciti sono `LIVE_DATA_NOT_FRESH`, `TRIGGER_NOT_CONFIRMED`, `TRIGGER_DIRECTION_MISMATCH`, `RR_FAIL` e `FINAL_CONFLUENCE_FAIL`. Non sono forniti entry, SL, TP o ATR autorizzati, né contratto/scadenza. Gli altri sette strumenti commodity sono `PAPER_WATCH` senza direzione operativa e con entry/stop/target/ATR/RR mancanti; Brent, WTI, Oro, Argento, Rame, Mais e Soia hanno ulteriori blocchi di setup/conferma. Il log conclude `NESSUNA ENTRATA AUTORIZZATA`.
+
+Il run registra:
+- nuove paper entries: 0;
+- outcome aperti aggiornati: 0;
+- nuovi feedback: 0;
+- nuove previsioni live aggiuntive: 0;
+- `signals=0 open=0 closed=0 win_rate=N/D avg_R=N/D total_R=0.0`.
+
+Telegram: messaggio riepilogativo `message_id=3701`, API round-trip 509 ms. L'analisi è timestampata 10:33:05.380 UTC e il log di ACK è 10:33:08.040 UTC (circa 2.66 secondi dopo). È prova di accettazione API, non prova di consegna sul dispositivo. Il messaggio è un board WATCH, non un trade o un nuovo segnale individuale; non viene aggiunto al ledger.
+
+### 3. Journal/feedback e ledger riconciliati
+
+Riletti da main:
+- `journal.csv`: 11 righe dati, tutte del 2026-10-17 e con `nessun segnale`.
+- `paper_trade_log.csv`: una sola riga WTI LONG del 2026-10-08, `LEGACY_IMPORT`, entry 96.24, SL 89.37, TP1 103.11, TP2 106.55. Provider, ticker di esecuzione, timestamp/età quote, mercato e scadenza non valorizzati; la nota cita una chiusura spot del 6 ottobre. Nessun fill/outcome dimostrato.
+- `data/paper_open.json`: P0001 WTI con gli stessi livelli; è lo stesso artefatto logico della riga legacy, non una seconda operazione. Stato OPEN e P&L null non dimostrano fill.
+- `position.json`: ticket legacy Heating Oil HO/USD LONG, aperto 2026-09-15 13:23:44.547 UTC, entry 4.8844, SL 4.5418, TP1 5.4473, TP2 5.6284, TP3 5.882. Provider, quote timestamp, mercato, scadenza e ATR non presenti.
+- `commodities_prediction_log.json`: 981 record; ultimo `created_at` 2026-09-15 15:45:04 UTC. Le etichette storiche COMPRA ORA non sono fill né segnali eseguiti.
+- `gagarin_feedback.csv`: 404 / assente su main.
+- `DATABASE_URL` vuoto nel run #42203497432: persistenza PostgreSQL non dimostrata.
+
+Il ledger PRAVDA resta a **31 record, 31 firme uniche, zero duplicati**. Nessun record nuovo: il board Grano SHORT è solo WATCH bloccato e non è un segnale individuale operativo con livelli completi.
+
+### 4. PR esistenti e correzioni verificate
+
+**SPUTNIK**
+- [PR #141](https://github.com/andreameloni1984-sys/trump-trucker/pull/141) aggiornata al main corrente: head `62a3b7d17ba893e7a3ab5e50c6178a6f633390a7`, base `fa268d289d66277b0d51fd80e83fe9f39cc0cfbb`, 1 commit avanti e 0 indietro secondo il body della PR. [Run CI #42203363537](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42203363537) SUCCESS, job test SUCCESS. La PR dichiara 190 test superati. Resta OPEN, non merged; il branch remoto `sputnik-state` non esiste ancora. La correzione è testata sul branch ma non è attiva. Il workflow main continua a fare push dello stato su main.
+- [PR #122](https://github.com/andreameloni1984-sys/trump-trucker/pull/122) resta OPEN/non merged; CI sul branch SUCCESS: ranking 186 e item-intelligence 47, totale 233 test. È una correzione classificatoria Iran no-war/settlement, non produce segnali o direzioni commodity.
+- [PR #139](https://github.com/andreameloni1984-sys/trump-trucker/pull/139) e [PR #138](https://github.com/andreameloni1984-sys/trump-trucker/pull/138) restano OPEN: falso token AI/label e diagnostica dei gap non sono ancora correzioni attive su main.
+
+**GAGARIN**
+- [PR #212](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/212), [#213](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/213) e [#214](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/214) restano OPEN/DRAFT e stacked: restringimento a otto commodity, rimozione del desk Forex/confronto manuale CFD-futures, disattivazione dei vecchi percorsi di ripristino che potevano scrivere su main.
+- [PR #215](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/215) è OPEN/DRAFT, correzione di formattazione newline del comando status `/prezzo212`, senza effetti su feed o trading.
+- Le CI recenti sui branch GAGARIN, inclusi i run #42201390420, #42201390405 e #42201390343, sono SUCCESS; i test verdi non dimostrano che le PR siano integrate o che il monitor in produzione sia cambiato. Il main monitor continua a riportare 8 commodity operative + 2 FX ausiliari.
+
+### 5. Esiti, statistiche e prossimo controllo
+
+- Nuovi trade con fill verificato: **0**.
+- Nuovi TP/SL verificati: **0**.
+- Outcome verificabili sullo stesso identico contratto: **0**.
+- Campione valido per win rate/average R: **0**; win rate e average R restano N/D.
+- Il GOLD SHORT SPUTNIK #42157892570 resta `NOT_EXECUTED` e `ESITO_NON_VERIFICABILE`: ticker runtime, scadenza, provider effettivo e timestamp della quotazione non sono esposti. Non si usano prezzi spot o contratti diversi.
+- Il board GAGARIN #42203497432 non produce nuove entrate; non è conteggiato come segnale/trade.
+
+Prossimo controllo:
+1. Verificare il prossimo collector SPUTNIK schedulato e distinguere collector da polling/CI.
+2. Verificare il prossimo monitor GAGARIN e se la cadenza torna a 15 minuti.
+3. Per ogni eventuale segnale individuale acquisire ticker effettivo, mercato/scadenza, provider, timestamp/età quote, timestamp generazione e ACK invio.
+4. Controllare se le PR #141/#122 e #212–#215 vengono integrate, senza attribuire effetti in produzione prima del merge.
+5. Attribuire SL/TP solo su prezzi successivi dello stesso identico strumento/contratto, con ordine temporale della prima barriera.
+
+**Perimetro:** aggiornato solo il documento di audit PRAVDA. Nessun codice o workflow dei bot modificato; nessuna strategia, filtro, punteggio o rischio modificato; nessun merge/deploy, ordine reale, modifica a secrets/Render o accesso Trading212. Nessun servizio a pagamento. PAPER ONLY.
