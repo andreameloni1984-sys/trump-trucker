@@ -7,12 +7,15 @@ explicitly states that its release times are Eastern Time.
 from __future__ import annotations
 
 import hashlib
+import html
+import re
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 BLS_ICAL_URL = "https://www.bls.gov/schedule/news_release/bls.ics"
 BLS_SCHEDULE_URL = "https://www.bls.gov/schedule/2026/"
+USDA_WASDE_URL = "https://usda.azureedge.us/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report"
 BLS_TZ = ZoneInfo("America/New_York")
 ROME_TZ = ZoneInfo("Europe/Rome")
 HTTP_TIMEOUT_SECONDS = 20
@@ -160,8 +163,65 @@ def format_calendar_alert(event: dict) -> str:
         f"📌 EVENTO: {event['summary']}\n"
         f"⏰ {timing}\n"
         f"🕒 ORARIO: {local:%d/%m/%Y %H:%M} Italia\n"
-        "📚 FONTE: U.S. Bureau of Labor Statistics\n"
+        "📚 FONTE: " + ("U.S. Bureau of Labor Statistics" if event.get("source", "").startswith("BLS") else "U.S. Department of Agriculture (WASDE)") + "\n"
         f"🔗 {event.get('source_url') or BLS_SCHEDULE_URL}\n"
         "ℹ️ Promemoria di calendario: non è un segnale LONG/SHORT. "
         "Il dato effettivo e la reazione dei prezzi devono essere verificati separatamente."
     )
+
+
+def parse_usda_wasde_calendar(payload: bytes | str) -> list[dict]:
+    """Parse the official USDA WASDE release dates for every year published."""
+    raw = payload.decode("utf-8-sig", errors="replace") if isinstance(payload, bytes) else str(payload)
+    visible = html.unescape(re.sub(r"<[^>]+>", " ", raw))
+    visible = re.sub(r"\s+", " ", visible)
+    events: list[dict] = []
+    for match in re.finditer(
+        r"In\s+(20\d{2})\s+the WASDE report will be released on\s+([^.]*)\.",
+        visible,
+        flags=re.IGNORECASE,
+    ):
+        year = int(match.group(1))
+        for month, day in re.findall(r"([A-Za-z]{3})\.?\s+(\d{1,2})", match.group(2)):
+            try:
+                local = datetime.strptime(f"{month[:3]} {int(day)} {year}", "%b %d %Y").replace(tzinfo=BLS_TZ)
+            except ValueError:
+                continue
+            events.append({
+                "event_id": f"USDA-WASDE-{local:%Y%m%d}",
+                "summary": "USDA WASDE — stime su cereali e semi oleosi",
+                "start_utc": local.astimezone(timezone.utc).isoformat(),
+                "source": "USDA_WASDE_OFFICIAL",
+                "source_url": USDA_WASDE_URL,
+            })
+    events.sort(key=lambda item: item["start_utc"])
+    return events
+
+
+def fetch_usda_wasde_calendar(opener=urllib.request.urlopen) -> list[dict]:
+    request = urllib.request.Request(
+        USDA_WASDE_URL,
+        headers={"User-Agent": "SPUTNIK/1.0 public macro calendar", "Accept": "text/html,application/xhtml+xml"},
+    )
+    with opener(request, timeout=HTTP_TIMEOUT_SECONDS) as response:
+        status = getattr(response, "status", 200)
+        if status != 200:
+            raise RuntimeError(f"USDA WASDE calendar HTTP {status}")
+        payload = response.read()
+    events = parse_usda_wasde_calendar(payload)
+    if not events:
+        raise ValueError("USDA WASDE calendar returned no release dates")
+    return events
+
+
+def fetch_macro_calendars() -> tuple[list[dict], list[str]]:
+    """Fetch official calendars independently; one outage must not hide another."""
+    events: list[dict] = []
+    errors: list[str] = []
+    for source_name, fetcher in (("BLS", fetch_bls_calendar), ("USDA_WASDE", fetch_usda_wasde_calendar)):
+        try:
+            events.extend(fetcher())
+        except Exception as exc:
+            errors.append(f"{source_name}: {type(exc).__name__}: {exc}")
+    events.sort(key=lambda item: item["start_utc"])
+    return events, errors
