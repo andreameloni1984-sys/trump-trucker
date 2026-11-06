@@ -449,7 +449,7 @@ def _matches_asset_keyword(normalized: str, keyword: str) -> bool:
     # Match the short existing labels as complete words: "ai" in "again"
     # and "media" in "immediately" are not AI or media topics.
     if keyword in {"ai", "media"}:
-        return re.search(rf"\\b{re.escape(keyword)}\\b", normalized) is not None
+        return re.search(rf"\b{re.escape(keyword)}\b", normalized) is not None
     return keyword in normalized
 
 
