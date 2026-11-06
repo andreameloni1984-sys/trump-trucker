@@ -1098,3 +1098,79 @@ SPUTNIK ha prodotto un solo candidato GOLD LONG nei messaggi Telegram #707/#708 
 GAGARIN: ultimo monitor [#42203497432](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42203497432), 10:32:52 UTC; tutte le otto commodity stale (601,2–664,5 s), zero segnali/feedback/outcome. Nessun fill, TP o SL verificato. Journal legacy e feedback assente come descritto sopra.
 
 Nessuna modifica ai bot o alla strategia; nessun merge/deploy/ordine reale. PAPER ONLY.
+
+---
+
+### Addendum 13:47 UTC — controllo Actions, journal e segnali
+
+**Cut-off: 2026-11-06 13:47 UTC (14:47 Europe/Rome).** Controllati gli elenchi Actions (prima pagina fino a 100 run), i job/log dei run pertinenti, i file pubblici del journal, il ledger e lo stato delle PR. Nessun codice dei bot è stato modificato.
+
+#### 1. GitHub Actions e cadenza
+
+**SPUTNIK**
+- Ultimo collector di mercato schedulato: [run #42210907412](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42210907412), avvio 11:31:39 UTC, job `127869016098`, conclusione 11:31:52 UTC, SUCCESS.
+- Alle 13:47 UTC il collector era fermo da circa **2 h 15 min**, nonostante il cron `2-59/5 * * * *`.
+- Il successivo [run Daily Summary #42226158074](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42226158074) è iniziato alle 13:31:21 UTC e terminato alle 13:31:31 UTC. Non è un collector: ha inviato il riepilogo Telegram con API ACK `message_id=709`; il testo completo del riepilogo non è presente nel log, quindi non viene contato come nuovo segnale.
+- I run CI delle 13:44:59 UTC [#42228001812](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42228001812) e [#42228002365](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42228002365) sono test della PR #142, non raccolte di mercato. Entrambi SUCCESS.
+- Il collector #42210907412 registra `findings=0`, `GAGARIN forwarding=0ms`, SEC HTTP 403, White House RSS `HTTPError`, WHITE_HOUSE/TRUTH_ARCHIVE/OGE `OSError`. `NARWHAL_API_KEY`, `GAGARIN_CLOUD_API_URL` e `GAGARIN_CLOUD_API_KEY` risultano vuoti nel job.
+
+**GAGARIN**
+- Ultimo monitor schedulato trovato: [run #42203497432](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42203497432), avvio 10:32:52 UTC, job `127844292744`, conclusione 10:33:10 UTC, SUCCESS.
+- Alle 13:47 UTC il monitor era fermo da circa **3 h 14 min**, contro il cron `*/15 * * * *`. Nella prima pagina di 100 run non è presente un monitor schedulato più recente.
+- Il commit del run e il commit corrente di `main` sono entrambi `7ed290b971e780828934d80aa3b936043769eaf6`: il confronto GitHub restituisce `identical`. Quindi il run esaminato corrisponde ancora al codice corrente di main.
+
+#### 2. Segnale SPUTNIK esaminato — nessuna nuova firma
+
+I messaggi #707 (analisi) e #708 (CFD) del run #42210907412 sono già registrati insieme in un unico record del ledger:
+- Firma: `PRAVDA-SPUTNIK-CFD-RUN42210907412-20261106T113148Z-GOLD-LONG-4075.8999-4074.2713-4077.5285-4079.1570`.
+- Generazione CFD: 11:31:48.567717 UTC; ACK API #708: 11:31:48.569094 UTC. Messaggio #707 ACK: 11:31:48.567503 UTC.
+- GOLD; mapping configurato GC=F, ma ticker runtime non confermato; future continuo front-month; scadenza UNKNOWN.
+- Provider runtime, timestamp ed età della quotazione non esposti; Narwhal non configurato.
+- LONG preliminare; entry 4075.8999; SL 4074.2713; TP1 4077.5285; TP2 4079.1570; ATR 1.0857; score 70; stato `EARLY_SETUP / NOT_EXECUTED`.
+- La tecnica CFD è `NOT_ASSESSED`, D-L-A è `NEUTRAL / NO_DIRECTION`; il testo segnala massimi/minimi decrescenti ed EMA non univoche. I livelli sono esplicitamente dichiarati non utilizzabili sul continuo senza scadenza esatta.
+
+**Esito: ESITO NON VERIFICABILE.** Nessun fill, nessuna candela successiva identificata sul medesimo contratto. I messaggi #707/#708 sono una sola ipotesi, non due trade.
+
+#### 3. GAGARIN — prezzi, candidati e journal
+
+Nel run #42203497432 tutte le otto commodity sono `STALE` su Yahoo:
+- Grano 622,4 s; Brent 604,3 s; WTI 601,2 s; Oro 614,5 s; Argento 606,0 s; Rame 607,1 s; Mais 622,4 s; Soia 664,5 s.
+- EUR/USD e GBP/USD risultano LIVE su BiQuote, ma sono strumenti ausiliari e non sostituiscono le quotazioni commodity.
+
+Grano SHORT è solo `PAPER_WATCH` (probabilità 63, qualità 52,5, confidenza 35), bloccato da `LIVE_DATA_NOT_FRESH`, `TRIGGER_NOT_CONFIRMED`, `TRIGGER_DIRECTION_MISMATCH`, `RR_FAIL` e `FINAL_CONFLUENCE_FAIL`. Gli altri candidati commodity non hanno setup valido e mostrano entry/SL/TP/ATR/RR mancanti. Risultato: `signals=0 open=0 closed=0`, outcome aggiornati 0, feedback nuovi 0. Il riepilogo Telegram #3701 è stato accettato dall'API (509 ms), non è un trade né prova di consegna al dispositivo.
+
+Nel job `DATABASE_URL` e `NARWHAL_API_KEY` sono vuoti. Il workflow main dichiara che i journal PAPER sono dati operativi privati e non vanno committati nel repository; la persistenza è subordinata a storage privato D1 verificato. In questo run non è dimostrata una persistenza DB attiva.
+
+Riconciliazione artefatti:
+- `journal.csv`: 11 righe del 17 ottobre, tutte `nessun segnale`.
+- `paper_trade_log.csv`: un WTI LONG legacy del 8 ottobre, senza provider/contratto/fill/outcome verificabili.
+- `data/paper_open.json`: P0001 WTI LONG con gli stessi livelli del record legacy; è la stessa posizione logica, non un secondo trade.
+- `position.json`: Heating Oil LONG legacy del 15 settembre, senza provenienza sufficiente per un outcome.
+- `commodities_prediction_log.json`: 981 record; ultimo `created_at` 2026-09-15T15:45:04.462276Z; `PENDING`/etichette previsionali non dimostrano esecuzione.
+- `gagarin_feedback.csv`: non presente su main.
+
+#### 4. Ledger, PR e anomalie ancora aperte
+
+Ledger PRAVDA: **32 record, 32 firme uniche, zero duplicati**. L'ultimo record resta il GOLD LONG #707/#708; nessun nuovo segnale individuale completo da aggiungere. Il CSV non è stato modificato.
+
+PR rilevanti ricontrollate:
+- SPUTNIK #141 (persistenza fuori da main), #136 (provenienza quote CFD), #138 (gap schedulazione) restano OPEN; #142 (calendario macro BLS) è OPEN e i due workflow CI risultano SUCCESS. La PR #142 è stata creata alle 13:44:56 UTC, dopo l'orario di rilascio BLS del 6 novembre alle 13:30 UTC; non è su main e non prova che siano stati inviati promemoria per quel rilascio.
+- GAGARIN #181 (provenienza quote), #198 (ripristino ranking baseline), #212 (otto commodity), #202 (journal persistente), #201 (fallback Yahoo) restano OPEN/DRAFT. La nuova #217 per rifiutare identità CFD Trading 212 scadute è OPEN/DRAFT, basata sulla #207 ancora aperta: nessuna integrazione o accesso Trading 212 è dimostrato.
+- Il file main `engine/prediction_ranker.py` conserva `momentum_acceleration_score` fino a +8/−4 (blob SHA `7ebee56d2b439596c69531b3dc7c6664c9d4905b`); la PR #198 di ripristino baseline non è merged.
+
+#### 5. Esiti e statistiche
+
+- Fill verificati: **0**.
+- TP verificati: **0**.
+- SL verificati: **0**.
+- Outcome verificabili sul medesimo strumento/contratto: **0**.
+- Campione valido per win rate/average R: **0**; win rate e average R restano N/D.
+
+#### Prossimo controllo
+1. Distinguere il prossimo collector SPUTNIK dal Daily Summary e dai test CI; misurare il gap effettivo rispetto al cron.
+2. Verificare il prossimo monitor GAGARIN e la freschezza delle otto commodity.
+3. Richiedere ticker runtime, mercato/scadenza, provider e timestamp assoluto della quota prima di attribuire outcome.
+4. Verificare storage privato/journal e integrazione reale delle PR #181/#198/#212.
+5. Valutare SL/TP soltanto su candele successive dello stesso identico contratto, in ordine temporale.
+
+**Perimetro:** aggiornato solo questo documento PRAVDA. Nessun codice/workflow, strategia, filtro, punteggio o rischio modificato; nessun merge/deploy, ordine reale, segreto/Render o servizio a pagamento. Nessuna affermazione di accesso Trading 212 o consegna Telegram al dispositivo. PAPER ONLY.
