@@ -489,3 +489,145 @@ Il workflow GAGARIN su main dichiara ancora cron ogni 15 minuti e mappa `DATABAS
 - Prossimo controllo: verificare la ripresa dei run collector SPUTNIK e monitor GAGARIN, la freschezza delle otto commodities e la presenza runtime di provider/ticker/contratto/scadenza/timestamp quote; controllare eventuali merge delle PR solo dopo che compaiano su main.
 
 **Perimetro:** nessuna modifica al codice, strategia, filtri, punteggi o rischio; nessun merge/deploy, ordine reale, accesso Trading212, modifica a secrets o Render; nessun servizio a pagamento. Solo documentazione di audit. **PAPER ONLY.**
+
+---
+
+# Addendum PRAVDA — 2026-11-06 04:36 UTC (05:36 Europe/Rome)
+
+## Sintesi
+
+- Nuovo candidato SPUTNIK registrato: GOLD SHORT, run **#42157892570**, messaggio CFD **706**.
+- È `EARLY_SETUP / NOT_EXECUTED`, non un trade.
+- Telegram API ha accettato il messaggio 706 con round-trip di 464 ms; il processo SPUTNIK ha impiegato 3,134 s. Il ritardo non è nel rendering/invio del messaggio.
+- Il post associato (event 43491) riporta pubblicazione 23:18:52 UTC del 5 novembre e compare per la prima volta nel collector osservato alle 03:39:53 UTC del 6 novembre: circa **261 minuti** dopo.
+- La cronologia Actions filtrata per `event=schedule` mostra gap di oltre quattro ore nei due collector/monitor, nonostante i cron configurati a 5 e 15 minuti.
+- Ledger aggiornato: **31 record, 31 firme uniche, zero duplicati**. TP/SL verificati: 0; trade con esito verificabile: 0.
+
+## 1. SPUTNIK — run #42157892570
+
+Fonte: [Actions #42157892570](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42157892570), job **127696303672**.
+
+- Evento Actions: `schedule`; avvio 03:39:45 UTC, conclusione 03:39:59 UTC, SUCCESS.
+- Cron su main: `2-59/5 * * * *`.
+- Collector precedente: [#42130911695](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42130911695), 23:38:20–23:38:32 UTC del 5 novembre.
+- Gap tra i due collector: **4h 01m 25s**. Nella cronologia schedule-filtered non compaiono invocazioni collector intermedie.
+- Il run precedente #42130911695 non contiene l'event 43491; il run #42157892570 lo mostra per la prima volta nell'output pubblico.
+
+### Latenza misurata nel run
+
+- Public intelligence scan: 1.088 ms.
+- Notification stage: 1.885 ms.
+- Total Python run: 3.134 ms.
+- Messaggio digest notizie 704: API accepted, round-trip 470 ms.
+- Analisi mercato 705: API accepted, round-trip 468 ms.
+- Analisi CFD 706: API accepted, round-trip 464 ms.
+- La conferma API non prova la consegna sul dispositivo.
+
+Il processo interno è quindi terminato in pochi secondi. La differenza tra pubblicazione della notizia e prima comparsa nel collector è circa 261m02s. Le evidenze non distinguono se la causa sia la mancata invocazione schedulata, la disponibilità tardiva del feed o entrambe. I run osservati hanno `created_at` uguale a `run_started_at`: non c'è prova di attesa in coda. Il passo dei test di regressione è presente nel workflow live, ma il log lo completa rapidamente; non spiega un ritardo di un'ora.
+
+### Nuovo record GOLD SHORT
+
+Firma: `PRAVDA-SPUTNIK-CFD-RUN42157892570-20261106T033953Z-GOLD-SHORT-4059.2-4062.0286-4056.3713-4053.5427`.
+
+| Campo | Valore |
+|---|---|
+| Generazione (log) | 03:39:53.953549 UTC |
+| Conferma API | 03:39:53.954740 UTC |
+| Telegram message_id | 706 |
+| Strumento | GOLD |
+| Ticker | GC=F è la mappatura configurata; chiave effettivamente selezionata non emessa |
+| Mercato | FUTURES_CONTINUOUS_FRONT_MONTH |
+| Scadenza | UNKNOWN |
+| Provider | non esposto nel run; codice prevede fallback Yahoo Finance chart 1m futures, ma il ramo effettivo non è confermato |
+| Timestamp/età quote | non esposti nel messaggio/log |
+| Direzione | SHORT |
+| Entry / SL | 4059.2 / 4062.0286 |
+| TP1 / TP2 | 4056.3713 / 4053.5427 |
+| ATR | 1.8857 |
+| Stato | EARLY_SETUP / NOT_EXECUTED |
+| Score | 70/100, non prova di validità operativa |
+| Outcome | ESITO NON VERIFICABILE |
+
+Il messaggio dichiara tecnica 5m SHORT, D-L-A SHORT (ALIGNS), momentum 15m -0,039% e `NO_DIRECTIONAL_NEWS`. Riporta anche NARWHAL `NOT_CONFIGURED`, indipendenza upstream SILV non verificata e avvertenza esplicita che il future continuo non ha scadenza verificata e che i livelli non devono essere usati.
+
+### Screenshot XAUUSD fornito dall'utente
+
+Lo screenshot mostra XAUUSD spot con bid 4040,60 e ask 4041,45 alle 05:06 locali (04:06 UTC), circa 26 minuti dopo la conferma API del messaggio 706. La candela selezionata reca l'etichetta 03:15 e close 4070,95; il timezone del grafico non è esposto. Questo è un indizio visivo che il movimento ribassista era già in corso, coerente con la segnalazione di ritardo. Tuttavia XAUUSD spot non è lo stesso strumento/contratto del future continuo GOLD e non può essere usato per attribuire TP o SL. Non è un outcome certificato.
+
+### Difetto di auditabilità e PR esistente
+
+Nel codice `sputnik_cfd.py`, `build_cfd_signal` conserva nel dizionario `quote_time`, `quote_provider`, `quote_symbol`, `quote_age_seconds`, `quote_market_type` e descrizione contratto. La funzione `format_cfd_signal` non li stampa. Il messaggio mostra livelli numerici, ma non la provenienza necessaria per verificarli.
+
+La [PR #136](https://github.com/andreameloni1984-sys/trump-trucker/pull/136) propone già di mostrare provider/ticker/timestamp/età/mercato/scadenza e di etichettare i livelli di future continuo come teorici/non operativi. È ancora OPEN e non integrata. PRAVDA ha aggiunto evidenza del run #42157892570 al thread: [commento #6677077815](https://github.com/andreameloni1984-sys/trump-trucker/pull/136#issuecomment-6677077815).
+
+### Classificazione notizia
+
+L'event 43491 è stato etichettato `AI_TECH` su main, ma il testo riguarda elezioni e mercato azionario; il tag deriva dalla sottostringa `ai` in “AGAIN”. La [PR #139](https://github.com/andreameloni1984-sys/trump-trucker/pull/139) corregge il matching dei token brevi. Il branch ha avuto due run finali SUCCESS alle 03:57:43 UTC (#42159626799 e #42159626686), dopo due tentativi precedenti falliti alle 03:57:23; la PR resta OPEN/non merged, quindi la correzione non è ancora attiva su main.
+
+## 2. SPUTNIK — stato del workflow e PR
+
+Il workflow main continua a:
+- eseguire test di regressione prima del collector;
+- usare `concurrency.queue: max` e `cancel-in-progress: false`;
+- persistere `sputnik_state.json` con `git push origin main`.
+
+La [PR #141](https://github.com/andreameloni1984-sys/trump-trucker/pull/141) propone di togliere i test dal ciclo live e spostare lo stato su `sputnik-state`; è OPEN, non merged. La [PR #138](https://github.com/andreameloni1984-sys/trump-trucker/pull/138) aggiunge diagnostica dei gap schedule; è OPEN, non merged. PRAVDA ha pubblicato aggiornamenti probatori nei thread #138 e #136. Nessuna modifica di codice o merge è stata eseguita da PRAVDA.
+
+## 3. GAGARIN — monitor, prezzi e cadenza
+
+Fonte: [Actions #42152866979](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42152866979), job **127680000039**.
+
+- Ultimo monitor schedulato nel feed Actions: 02:50:37–02:50:59 UTC, SUCCESS.
+- Monitor precedente: [#42122929435](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42122929435), 22:36:33–22:36:53 UTC del 5 novembre.
+- Gap tra avvii: **4h 14m 04s**.
+- Cron attuale su main: `*/15 * * * *`; `MONITOR_INTERVAL_MINUTES=15`.
+- Alle 04:36 UTC non risulta un monitor schedulato successivo al run delle 02:50 nella cronologia Actions filtrata per `event=schedule`.
+
+### Chiarimento storico della cadenza
+
+La [PR #145](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/145) fu integrata il 2 novembre alle 18:58:22 UTC con cadenza 5 minuti. Il commit [6038ad1](https://github.com/andreameloni1984-sys/commodity-news-scanner/commit/6038ad1f2f16689067a4c54e5c59492f276f6ac8), del 3 novembre alle 12:47:29 UTC, ripristinò il monitor completo a 15 minuti e rimosse il cron del workflow aggressivo duplicato. Il commit documenta GDELT HTTP 429 e la scelta di non aumentare la pressione sulle fonti. Quindi la cadenza 5m della PR #145 non è quella attualmente attiva su main.
+
+### Freschezza ultimo run
+
+Tutte le otto commodities risultano Yahoo STALE:
+- Brent 638,9 s;
+- Soia 629,1 s;
+- WTI 619,8 s;
+- Oro 608,7 s;
+- Grano 628,9 s;
+- Rame 610,7 s;
+- Argento 609,6 s;
+- Mais 641,0 s.
+
+EUR/USD e GBP/USD sono LIVE su BiQuote (54,7 e 55,6 s), ma sono contesto FX ausiliario, non quotazioni commodity. Il monitor ha prodotto solo ranking `PAPER_WATCH`, con blocchi `LIVE_DATA_NOT_FRESH`, trigger/setup/livelli mancanti. Journal: 0 nuove entrate, 0 outcome aggiornati, 0 feedback. Telegram message_id 3700 è stato accettato dall'API; non è un trade.
+
+Il run stampa `DATABASE_URL` vuoto e `NARWHAL_API_KEY` vuota, benché `NARWHAL_REFERENCE_ENABLED=1`. La persistenza PostgreSQL e il riferimento Narwhal non sono dimostrati.
+
+Il polling Telegram GAGARIN [#42145493753](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42145493753) è FAILURE per errore 409 (webhook attivo); è un workflow separato e non va confuso con il monitor di mercato.
+
+### Segnalazione al reparto GAGARIN
+
+PRAVDA ha aggiunto evidenza dei gap e delle quotazioni stale nel thread della [PR #145](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/145), commento [#6677069785](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/145#issuecomment-6677069785). La raccomandazione documentale è valutare una corsia M5/LUBJANKA leggera e separata dal monitor provider-heavy e dalle fonti news/GDELT; non ripristinare alla cieca la scansione completa ogni 5 minuti. Nessun codice è stato cambiato.
+
+## 4. Outcome e statistiche
+
+- Ledger: **31 record, 31 firme uniche, zero duplicati**.
+- Nuovo record: un candidato SPUTNIK GOLD SHORT, `NOT_EXECUTED`.
+- Trade con esecuzione dimostrata: 0.
+- TP verificati: 0; SL verificati: 0.
+- Outcome verificabili: 0.
+- Win rate / average R: N/D.
+- Nessun backtest e nessun prezzo spot o contratto diverso è stato usato per attribuire un risultato.
+
+## 5. Fonti e prossimo controllo
+
+Fonti consultate: Actions schedule-filtered dei due repository; job log #42157892570, #42130911695 e #42152866979; workflow YAML su main; codice `sputnik_cfd.py` e `main.py`; PR #136, #138, #139, #141, #145, #196, #202, #207; commit GAGARIN #6038ad1; ledger PRAVDA; screenshot XAUUSD fornito dall'utente.
+
+Prossimo controllo:
+1. Verificare la ripresa effettiva delle invocazioni schedule SPUTNIK (5m) e GAGARIN (15m), senza confondere polling con collector/monitor.
+2. Acquisire per ogni segnale provider effettivo, ticker selezionato, timestamp/età quote, mercato e scadenza esatta.
+3. Verificare le PR #136/#138/#139/#141 e l'eventuale corsia leggera GAGARIN solo quando le modifiche risultano su main.
+4. Valutare outcome solo con candele successive dello stesso identico strumento e contratto.
+
+**Perimetro:** aggiornati solo ledger/rapporto documentali e commenti di audit su PR esistenti. Nessun codice, strategia, filtro, punteggio o rischio modificato; nessun merge/deploy, ordine reale, accesso Trading212, modifica secrets o Render. Nessun servizio a pagamento. **PAPER ONLY.**
+
