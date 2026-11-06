@@ -1079,3 +1079,11 @@ La lettura del file main `engine/prediction_ranker.py` (blob `7ebee56d2b439596c6
 5. Valutare outcome solo su candele successive dello stesso identico mercato e contratto, con sequenza temporale SL/TP.
 
 **Perimetro:** aggiornato solo questo documento di audit PRAVDA. Nessun codice o workflow modificato; nessuna strategia, filtro, punteggio o rischio modificato da PRAVDA; nessun merge/deploy, ordine reale, modifica a segreti/Render o accesso Trading212. Nessun servizio a pagamento. PAPER ONLY.
+
+
+### Handoff PRAVDA agli altri reparti — 2026-11-06 11:17 UTC
+Per evitare che i difetti dimostrati restino soltanto nel rapporto, PRAVDA ha lasciato note di verifica (senza modificare file di codice) sulle PR esistenti:
+- GAGARIN PR #198 — commento GitHub ID `6683629559`: scoring momentum acceleration ancora presente su main (+8/−4), PR di ripristino baseline non merged.
+- GAGARIN PR #181 — commento ID `6683630324`: il run #42203497432 non espone ticker risolto, timestamp assoluto, mercato/scadenza e prezzo/ATR; tutte le commodity restano stale.
+- GAGARIN PR #212 — commento ID `6683631159`: il run main continua a includere 2 Forex ausiliari oltre alle 8 commodity; PR non merged.
+Nessun commento duplicato PRAVDA era presente su queste tre PR al momento del controllo. Nessuna modifica al codice, nessuna approvazione o merge.
