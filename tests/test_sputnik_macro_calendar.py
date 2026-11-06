@@ -73,7 +73,7 @@ END:VCALENDAR
         november = next(event for event in events if event["event_id"] == "USDA-WASDE-20261110")
         self.assertEqual(november["start_utc"], "2026-11-10T17:00:00+00:00")
         self.assertEqual(november["source"], "USDA_WASDE_OFFICIAL")
-        self.assertIn("usda.gov", november["source_url"])
+        self.assertIn("usda.azureedge.us", november["source_url"])
 
     def test_rejects_naive_current_time(self):
         with self.assertRaises(ValueError):
