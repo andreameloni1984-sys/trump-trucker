@@ -182,7 +182,26 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
             "candle_high": high, "candle_low": low,
             "candles": candles,
         }
-    except (OSError, ValueError, KeyError, IndexError, TypeError):
+    except urllib.error.HTTPError as exc:
+        print(
+            f"SPUTNIK: quote source failure | provider=Yahoo Finance chart | "
+            f"symbol={symbol} | http_status={exc.code}",
+            flush=True,
+        )
+        return None
+    except urllib.error.URLError as exc:
+        print(
+            f"SPUTNIK: quote source failure | provider=Yahoo Finance chart | "
+            f"symbol={symbol} | network_error={type(exc.reason).__name__}",
+            flush=True,
+        )
+        return None
+    except (OSError, ValueError, KeyError, IndexError, TypeError) as exc:
+        print(
+            f"SPUTNIK: quote source failure | provider=Yahoo Finance chart | "
+            f"symbol={symbol} | response_error={type(exc).__name__}",
+            flush=True,
+        )
         return None
 
 
