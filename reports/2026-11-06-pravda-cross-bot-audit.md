@@ -835,3 +835,47 @@ Il connettore GitHub disponibile in questa sessione consente di leggere i job e 
 - Prossimo controllo: ottenere una lista Actions completa/paginata; verificare il primo run schedulato successivo di ciascun bot; controllare freshness e quote provenance; verificare integrazione reale delle PR; non attribuire outcome senza candele successive dello stesso identico contratto.
 
 **Perimetro:** sola documentazione PRAVDA. Nessun codice/workflow, strategia, filtro, punteggio o rischio modificato; nessun merge/deploy, ordine reale, modifica a secrets/Render o servizio a pagamento. PAPER ONLY.
+
+
+---
+
+## PRAVDA addendum — verifica cross-bot 2026-11-06 08:20 UTC
+
+### 1. Stato Actions e cadenza verificata
+
+**SPUTNIK — main `1000b5a7d9e02e8fd46ed217801f32dde284d576`.**
+- Ultimo collector schedulato individuato: [run #42157892570](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42157892570), avvio 2026-11-06 03:39:45 UTC, SUCCESS. Il collector precedente è [#42130911695](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42130911695), 2026-11-05 23:38:20 UTC.
+- La lettura della cronologia schedulata più recente non mostra un collector successivo alle 03:39 UTC; il run delle 03:10 UTC [#42154936378](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42154936378) è solo Telegram Polling, non raccolta intelligence. Alle 08:20 UTC il collector risulta quindi fermo da circa 4h40m. Il workflow main mantiene il cron ogni 5 minuti, i test di regressione prima del collector e la persistenza su `main`. Il dato dimostra un gap di invocazioni osservate, non ne identifica la causa.
+- [PR #141](https://github.com/andreameloni1984-sys/trump-trucker/pull/141) è ancora OPEN/non merged; il branch è stato aggiornato rispetto a main e il test [#42184231956](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42184231956) è SUCCESS. La correzione di persistenza su branch dedicato e rimozione dei test dal collector non è in produzione.
+- [PR #138](https://github.com/andreameloni1984-sys/trump-trucker/pull/138) resta OPEN: aggiunge diagnostica dei gap, ma non cambia la schedulazione GitHub. [PR #139](https://github.com/andreameloni1984-sys/trump-trucker/pull/139) resta OPEN; il test [#42159626799](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42159626799) è SUCCESS, ma la correzione del falso dominio AI_TECH non è su main.
+
+**GAGARIN — main `7ed290b971e780828934d80aa3b936043769eaf6`.**
+- Ultimo monitor schedulato individuato: [run #42152866979](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42152866979), avvio 2026-11-06 02:50:37 UTC, SUCCESS. Il precedente monitor è [#42122929435](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42122929435), 2026-11-05 22:36:33 UTC: intervallo 4h14m, nonostante il cron main sia ogni 15 minuti. La cronologia schedulata più recente non mostra un monitor successivo. Anche qui il gap è dimostrato; la causa non è determinata.
+- Nel run #42152866979 tutte le otto commodity hanno quote Yahoo classificate STALE, età 608,7–641,0 secondi: Brent 638,9s; WTI 619,8s; oro 608,7s; argento 609,6s; rame 610,7s; grano 628,9s; mais 641,0s; soia 629,1s. Il log non espone timestamp puntuale della candela, prezzo di riferimento o ticker risolto per ciascuna commodity. EUR/USD e GBP/USD risultano LIVE su BiQuote; il file `commodities/universe.py` su main conferma che questi due Forex sono ancora nell'universo attivo insieme alle otto commodity.
+- Il ranking blocca i candidati per `LIVE_DATA_NOT_FRESH` e per ulteriori condizioni mancanti/non confermate. Risultato del journal: `signals=0 open=0 closed=0`; outcome aggiornati 0, nuovi feedback 0, nuove previsioni live 0. `DATABASE_URL` e `NARWHAL_API_KEY` risultano vuoti nel runner.
+- Telegram ha accettato il messaggio WATCH con ID 3700 e round-trip 498 ms. Il corpo del board non è conservato nel log: non è possibile stabilire quali strumenti siano stati inclusi. Non vengono creati record per singolo strumento per deduzione dal ranking; l'API acceptance non dimostra la consegna al dispositivo.
+- [PR #212](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/212) è OPEN/DRAFT; il branch propone di togliere EUR/USD e GBP/USD e limitare l'universo alle otto commodity. I workflow del branch [#42182466372](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42182466372) e gli altri test associati risultano SUCCESS; la PR dichiara 572 test d'integrazione superati. Non è integrata su main. Le PR #211 (cache/lock news), #210 (concorrenza limitata), #209 (rimozione attesa SILV), #207 (identità CFD), #201 (fallback Yahoo stale), #202 (journal persistente) e #180 (telemetria LUBJANKA) restano aperte: nessuna di queste correzioni va conteggiata come attiva in produzione.
+
+### 2. Riconciliazione dei segnali e degli artefatti
+
+- **SPUTNIK GOLD SHORT, run #42157892570 / message 706**: generato 03:39:53.953 UTC e API-accettato 03:39:53.954 UTC; entry 4059.20, SL 4062.0286, TP1 4056.3713, TP2 4053.5427, ATR 1.8857, score 70, direzione tecnica SHORT/D-L-A SHORT. Stato `EARLY_SETUP / NOT_EXECUTED`, non un trade. Il mapping configurato è GC=F, ma il ticker runtime, provider effettivo, timestamp/età della quotazione e scadenza esatta non sono registrati. Il messaggio avverte che il front-month continuo non è utilizzabile come livello operativo. Outcome: **ESITO NON VERIFICABILE**.
+- L'evento collegato 43491 è stato pubblicato il 2026-11-05 23:18:52 UTC e rilevato il 2026-11-06 03:39:53 UTC: ritardo di circa 261 minuti. Il testo sul ribasso del mercato azionario è stato etichettato `AI_TECH`; il commit di stato contiene quel dominio. La correzione per il match di “ai” dentro “again” è proposta in PR #139, ancora non integrata. Non è una notizia direzionale sufficiente per validare lo SHORT.
+- Telegram ha confermato via API i messaggi 704/705/706 (round-trip 470/468/464 ms). Nessuna prova di esecuzione o consegna sul telefono.
+- Il ledger non cambia: **31 record, 31 firme uniche, zero duplicati**. Ripartizione: 21 `historical_prediction_candidate` GAGARIN, 5 `watch_pre_alert` GAGARIN, 4 `cfd_early_setup_not_executed` SPUTNIK, 1 `legacy_paper_ticket`. Outcome registrati: 26 `ESITO_NON_VERIFICABILE`, 5 `NON_TRADE`. Nessun nuovo segnale distinto dimostrato; non aggiungo righe al CSV.
+- GAGARIN `journal.csv`: 11 righe, tutte “nessun segnale”. `paper_trade_log.csv` contiene un WTI LONG legacy del 2026-10-08 (entry 96.24, SL 89.37, TP1 103.11, TP2 106.55); `data/paper_open.json` contiene P0001 con gli stessi livelli: è la stessa posizione, non un secondo trade. Mancano fill, provider, timestamp quote e identità contrattuale.
+- `position.json` contiene separatamente Heating Oil LONG HO/USD, aperto 2026-09-15 13:23:44.547 UTC, entry 4.8844, SL 4.5418, TP1 5.4473, TP2 5.6284, TP3 5.882. Coincide per timestamp e livelli con una previsione del log generata 13:23:44.529 UTC; ciò prova la corrispondenza degli artefatti, non un fill. Provider, ticker runtime, mercato/scadenza ed esito restano assenti.
+- `gagarin_feedback.csv` non esiste su main (404). `commodities_prediction_log.json` contiene 981 record e termina il 2026-09-15 15:45:04 UTC; le etichette storiche `COMPRA ORA` non sono esecuzioni e non hanno i dati di provenienza necessari per attribuire outcome.
+
+### 3. Statistiche e limiti
+
+Trade con fill verificato: **0**. TP verificati: **0**. SL verificati: **0**. Outcome verificabili sullo stesso identico strumento/contratto: **0**. Campione verificabile per win rate e average R: **0**, quindi entrambe le statistiche restano N/D. I 31 record del ledger non sono 31 trade; `NOT_EXECUTED`, `PAPER_WATCH`, `PENDING` e score non vengono trasformati in risultati operativi. Non sono state usate candele spot per valutare futures continui né scadenze non identificate.
+
+### 4. Prossimo controllo
+
+1. Verificare i nuovi run collector/monitor schedulati e separare polling Telegram, CI e run di mercato.
+2. Verificare freschezza e timestamp delle otto quote GAGARIN, con ticker effettivo, provider, mercato e scadenza.
+3. Verificare l'integrazione effettiva delle PR citate; i test verdi sui branch non equivalgono a produzione.
+4. Conservare il corpo/identità per strumento dei WATCH board, così da poterli registrare senza inferenze.
+5. Attribuire SL/TP solo da candele successive dello stesso identico contratto, rispettando la prima barriera raggiunta.
+
+**Perimetro:** solo aggiornamento documentale PRAVDA. Nessuna modifica a codice, workflow, strategia, filtri, punteggi o rischio; nessun merge/deploy, ordine reale, modifica secrets/Render o servizio a pagamento. PAPER ONLY.
