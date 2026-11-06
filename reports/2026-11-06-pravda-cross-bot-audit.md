@@ -389,3 +389,103 @@ Il file main `.github/workflows/trump_tracker.yml` contiene ancora il passo `git
 5. Non attribuire TP/SL finché non esistono prezzi successivi dello stesso identico strumento e contratto.
 
 **Perimetro:** aggiornato soltanto questo rapporto documentale. Nessun CSV modificato perché non sono emersi nuovi segnali; nessun codice, strategia, filtro, punteggio o rischio modificato. Nessun merge/deploy, ordine reale, accesso Trading212, modifica secrets o Render. Nessun servizio a pagamento. **PAPER ONLY.**
+
+
+---
+
+# Addendum PRAVDA — 2026-11-06 03:16 UTC (04:16 Europe/Rome)
+
+## Esito del controllo
+
+- Nessun nuovo segnale operativo distinto emerso nei run di produzione consultati.
+- Ledger invariato: **30 record, 30 firme uniche, 0 duplicati**.
+- TP verificati: **0**; SL verificati: **0**; campione di trade verificabile: **0**.
+- Non è stato aggiunto alcun record WATCH/ranking al ledger, perché non rappresenta un trade né un nuovo segnale operativo autorizzato.
+
+## GAGARIN — monitor #42152866979
+
+Run schedulato [#42152866979](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42152866979):
+- creato/avviato 2026-11-06 02:50:37 UTC;
+- concluso 02:50:59 UTC, `success`;
+- job `Run Gagarin directly on GitHub`, tutti gli step completati con successo.
+
+Il log completo del job [127680000039](https://github.com/andreameloni1984-sys/commodity-news-scanner/actions/runs/42152866979) conferma `PAPER_TRADING_ONLY=1`, `DATABASE_URL` vuoto, `NARWHAL_REFERENCE_ENABLED=1` ma `NARWHAL_API_KEY` vuota.
+
+### Prezzi
+
+Tutte le otto commodities sono `STALE`, con provider Yahoo e motivo di fallback `ALL_PROVIDER_CANDLES_STALE`:
+
+| Strumento | Età osservata | Provider |
+|---|---:|---|
+| Brent | 638,9 s | Yahoo |
+| WTI | 619,8 s | Yahoo |
+| Oro | 608,7 s | Yahoo |
+| Argento | 609,6 s | Yahoo |
+| Rame | 610,7 s | Yahoo |
+| Grano | 628,9 s | Yahoo |
+| Mais | 641,0 s | Yahoo |
+| Soia | 629,1 s | Yahoo |
+
+EUR/USD (54,7 s) e GBP/USD (55,6 s) sono `LIVE` su BiQuote, ma restano contesto FX ausiliario: non sostituiscono le quotazioni delle commodities e non sono stati contati come segnali operativi.
+
+### Ranking e autorizzazione
+
+Il run mostra otto righe commodity `PAPER_WATCH` ma nessun setup valido. I blocchi riportati includono `LIVE_DATA_NOT_FRESH`, `NO_VALID_SETUP`, `TRIGGER_NOT_CONFIRMED`, `ENTRY_MISSING`, `STOP_MISSING`, `TP1/TP2/TP3_MISSING`, `STOP_ATR_MISSING` e `RR_MISSING`; confidenza/confluenza falliscono inoltre sui candidati. Non sono presenti entry, SL, TP o ATR operativi. Le due coppie FX compaiono solo nel controllo provider e non nel ranking delle otto commodities.
+
+Il journal del run dichiara:
+- `Recorded entries: 0`;
+- `Updated open outcomes: 0`;
+- `New feedback signals: 0`;
+- `New additional live forecasts: 0`;
+- `signals=0 open=0 closed=0`.
+
+Telegram ha restituito `message_id=3700` alle 02:50:56.104429 UTC, con round-trip 498 ms. È un acknowledgement API del riepilogo WATCH, non un trade, non un nuovo segnale e non prova di consegna sul dispositivo.
+
+### Journal pubblico riletto
+
+- `paper_trade_log.csv`: una riga WTI LONG del 2026-10-08 16:23 UTC, `LEGACY_IMPORT`, entry 96.24, SL 89.37, TP1 103.11, TP2 106.55. I campi provider, ticker quote, timestamp quote, valuta/unità, mercato e dati di esecuzione sono vuoti; la nota cita una chiusura spot del 6 ottobre. Nessuna prova di fill o outcome.
+- `data/paper_open.json`: P0001 WTI LONG con gli stessi livelli; è lo stesso artefatto logico della riga legacy, non una seconda posizione. `OPEN` e P&L null non dimostrano esecuzione.
+- `position.json`: Heating Oil `HO/USD` LONG del 15 settembre, entry 4.8844, SL 4.5418, TP1 5.4473, TP2 5.6284, TP3 5.882; mancano provider, timestamp quote, mercato, scadenza, ATR e prova di fill.
+- `journal.csv`: 11 righe del 17 ottobre, tutte con esito `nessun segnale`.
+- `gagarin_feedback.csv`: non presente nel branch pubblico (404).
+
+Il monitor schedulato precedente era #42122929435, avviato il 5 novembre alle 22:36:33 UTC. Tra i due monitor verificati intercorrono circa 4 ore e 14 minuti, nonostante il cron `*/15 * * * *`. Alle 03:16 UTC non risulta un monitor successivo a #42152866979 nella prima pagina dei run Actions consultata. Non attribuisco una causa al gap.
+
+## SPUTNIK — collector e polling sono due workflow distinti
+
+Ultimo collector schedulato individuato: [#42130911695](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42130911695), avviato 2026-11-05 23:38:20 UTC e concluso 23:38:32 UTC con `success`. Il job [127606975615](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42130911695) è stato riletto.
+
+Il collector continua a produrre il candidato GOLD LONG già registrato:
+- generazione 23:38:28.215106 UTC;
+- messaggio CFD 703, analisi correlata 702;
+- entry 4102.2002, SL 4096.3502, TP1 4108.0502, TP2 4113.9001, ATR 3.9;
+- `EARLY_SETUP / NOT_EXECUTED`;
+- mercato `FUTURES_CONTINUOUS_FRONT_MONTH`, scadenza UNKNOWN;
+- ticker risolto, provider, timestamp/età della quotazione non esposti;
+- D-L-A `NEUTRAL / NO_DIRECTION`, tecnica CFD focalizzata `NOT_ASSESSED`, notizie `NO_DIRECTIONAL_NEWS`;
+- NARWHAL non configurato; indipendenza upstream non verificata.
+
+I messaggi 702 e 703 risultano API-accepted (479 ms e 365 ms nel log); ciò non prova esecuzione né consegna sul dispositivo. Il messaggio 731 è prodotto dai test di regressione, non dal collector live. Le righe `OSError` per WHITE_HOUSE/TRUTH_ARCHIVE/OGE compaiono nella fase di test; nel collector live sono invece documentati SEC HTTP 403 con cooldown 21.600 s e White House RSS `HTTPError`.
+
+È stato inoltre verificato il run schedulato [SPUTNIK Telegram Polling #42154936378](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42154936378), avviato 03:10:49 UTC e concluso 03:10:57 UTC con `success`. Il job polling è distinto dal collector: il suo successo non dimostra che sia stato eseguito un nuovo ciclo intelligence o prodotto un nuovo segnale. Il log mostra l'avvio di `telegram/polling_runner.py`, ma non fornisce una conferma positiva di nuovi aggiornamenti processati.
+
+Nella cronologia Actions più recente consultata, #42130911695 resta l'ultimo evento `schedule` del workflow `.github/workflows/trump_tracker.yml`. Il cron dichiarato è `2-59/5 * * * *`; il gap supera 3 ore e 38 minuti. La causa resta non dimostrata. Il polling delle 03:10 non va confuso con il collector.
+
+## PR e correzioni già esistenti
+
+Stato GitHub consultato al cut-off:
+- SPUTNIK [#141](https://github.com/andreameloni1984-sys/trump-trucker/pull/141): OPEN, non merged, non draft; CI [#42151438743](https://github.com/andreameloni1984-sys/trump-trucker/actions/runs/42151438743) SUCCESS. Il workflow su main continua tuttavia a contenere la persistenza con `git push origin main`; correzione non attiva in produzione.
+- SPUTNIK [#139](https://github.com/andreameloni1984-sys/trump-trucker/pull/139) e [#136](https://github.com/andreameloni1984-sys/trump-trucker/pull/136): OPEN, non merged.
+- GAGARIN [#207](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/207): OPEN/DRAFT. I cinque workflow associati al suo head risultano SUCCESS (run #42150574967, #42150575034, #42150575016, #42150575073, #42150575058). I test CI non equivalgono a integrazione su main.
+- GAGARIN [#202](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/202) e [#196](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/196): OPEN/DRAFT; [#192](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/192): OPEN, non merged.
+
+Il workflow GAGARIN su main dichiara ancora cron ogni 15 minuti e mappa `DATABASE_URL` da secret, ma il log reale stampa il valore vuoto. PRAVDA non legge né modifica secrets.
+
+## Esiti e prossimo controllo
+
+- Nessun nuovo segnale operativo da aggiungere al ledger.
+- Nessun TP/SL attribuibile: non sono disponibili candele successive dello stesso ticker, mercato e scadenza; i candidati privi di identità esatta del contratto restano `ESITO NON VERIFICABILE`.
+- Nessun backtest, win rate o rendimento è stato inventato.
+- Prossimo controllo: verificare la ripresa dei run collector SPUTNIK e monitor GAGARIN, la freschezza delle otto commodities e la presenza runtime di provider/ticker/contratto/scadenza/timestamp quote; controllare eventuali merge delle PR solo dopo che compaiano su main.
+
+**Perimetro:** nessuna modifica al codice, strategia, filtri, punteggi o rischio; nessun merge/deploy, ordine reale, accesso Trading212, modifica a secrets o Render; nessun servizio a pagamento. Solo documentazione di audit. **PAPER ONLY.**
