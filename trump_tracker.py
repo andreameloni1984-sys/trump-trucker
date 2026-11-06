@@ -29,6 +29,7 @@ from sputnik_action_reaction import build_action_reaction_record
 from sputnik_public_sources import parse_public_feed
 from sputnik_catalyst import directional_news_candidates
 from telegram_delivery import confirmed_message_id
+from economic_calendar import fetch_calendar, messages_due
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -1829,6 +1830,21 @@ def main() -> None:
     print(f"SPUTNIK: {len(intelligence)} nuove correlazioni da fonti pubbliche.")
 
     notifications_started = time.monotonic()
+    # Calendar warnings are informational only and do not alter catalyst
+    # classification, directional hypotheses, or the GAGARIN handoff.
+    try:
+        calendar_now = utc_now()
+        calendar_events = fetch_calendar(now=calendar_now)
+        for calendar_kind, calendar_message in messages_due(calendar_events, now=calendar_now):
+            print(calendar_message)
+            if not send_telegram(
+                calendar_message,
+                chat_id=str(state.get("telegram_chat_id") or "").strip() or None,
+            ):
+                print(f"SPUTNIK: calendar Telegram delivery not confirmed ({calendar_kind}).")
+    except Exception as calendar_exc:
+        print(f"SPUTNIK: economic calendar error: {type(calendar_exc).__name__}: {calendar_exc}")
+
     for event in fresh:
         message = telegram_message(event)
         print(message)
