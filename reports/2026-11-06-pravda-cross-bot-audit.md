@@ -552,7 +552,7 @@ Il messaggio dichiara tecnica 5m SHORT, D-L-A SHORT (ALIGNS), momentum 15m -0,03
 
 ### Screenshot XAUUSD fornito dall'utente
 
-Lo screenshot mostra XAUUSD spot con bid 4040,60 e ask 4041,45 alle 05:06 locali (04:06 UTC), circa 26 minuti dopo la conferma API del messaggio 706. La candela selezionata reca l'etichetta 03:15 e close 4070,95; il timezone del grafico non è esposto. Questo è un indizio visivo che il movimento ribassista era già in corso, coerente con la segnalazione di ritardo. Tuttavia XAUUSD spot non è lo stesso strumento/contratto del future continuo GOLD e non può essere usato per attribuire TP o SL. Non è un outcome certificato.
+Lo screenshot mostra XAUUSD spot con bid 4040,60 e ask 4041,45 alle 05:06 locali (04:06 UTC), circa 26 minuti dopo la conferma API del messaggio 706. Il bid è 18,60 (circa 0,46%) sotto l'entry teorica 4059,20, ma il confronto è solo descrittivo perché il mercato non coincide. La candela selezionata reca l'etichetta 03:15 e close 4070,95; il timezone del grafico non è esposto. Se 03:15 è ora locale della piattaforma, la candela precede l'avviso delle 04:39 locali di circa 84 minuti: è un indizio concreto di movimento già avviato, non una misura certa del ritardo del feed. Tuttavia XAUUSD spot non è lo stesso strumento/contratto del future continuo GOLD e non può essere usato per attribuire TP o SL. Non è un outcome certificato.
 
 ### Difetto di auditabilità e PR esistente
 
