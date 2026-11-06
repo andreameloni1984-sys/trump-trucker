@@ -539,6 +539,16 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
         try:
             rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
+        except urllib.error.HTTPError as exc:
+            retry_after = (exc.headers or {}).get("Retry-After")
+            detail = f"HTTP {exc.code}"
+            reason = str(exc.reason or "").strip()
+            if reason:
+                detail += f" {reason}"
+            if retry_after:
+                detail += f" | retry_after={str(retry_after).strip()[:80]}"
+            print(f"SPUTNIK: RSS feed unavailable {feed_url}: {detail}")
+            continue
         except Exception as exc:
             print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
             continue
