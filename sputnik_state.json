@@ -1,14 +1,110 @@
 {
   "events": {},
-  "updated_at": "2026-11-06T11:31:46.900527+00:00",
+  "updated_at": "2026-11-06T18:22:30.578530+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "f677dc956e82b3142b676884",
-    "OGE": "c0aba0118915c0c4100167f0"
+    "TRUTH_ARCHIVE": "eb52b8ffbd29a5cbb5881905",
+    "OGE": "4ba8b013bbfcc549bd18bb49"
   },
   "intelligence_history": {
+    "45ea947704ba07f6f6831a29": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43495",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117569389226840480",
+      "title": "As President, I am 100% in favor of Super Intelligence (SI), and will work with the many States in the U.S. that want to become RICH by having them. They are GOLD, and only foolish leadership will say “NO” to the riches they bring! President DJT",
+      "published": "Fri, 06 Nov 2026 12:01:50 +0000",
+      "domains": [
+        "METALS"
+      ],
+      "text": "As President, I am 100% in favor of Super Intelligence (SI), and will work with the many States in the U.S. that want to become RICH by having them. They are GOLD, and only foolish leadership will say “NO” to the riches they bring! President DJT As President, I am 100% in favor of Super Intelligence (SI), and will work with the many States in the U.S. that want to become RICH by having them. They are GOLD, and only foolish leadership will say “NO” to the riches they bring! President DJT",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-06T18:22:30.541789+00:00",
+      "event_id": "45ea947704ba07f6f6831a29",
+      "action_reaction": {
+        "event_id": "45ea947704ba07f6f6831a29",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "54703e230490d51d375707d1": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43496",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117570819049322754",
+      "title": "MAGA Warrior Joe Gruters, who has been with us from the very beginning, is running to continue as Chairman of the Republican National Committee. As Chairman, Joe turned the RNC into an efficient, focused, and powerful machine that will continue to empower the America First Agenda for many years to c",
+      "published": "Fri, 06 Nov 2026 18:05:27 +0000",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "MAGA Warrior Joe Gruters, who has been with us from the very beginning, is running to continue as Chairman of the Republican National Committee. As Chairman, Joe turned the RNC into an efficient, focused, and powerful machine that will continue to empower the America First Agenda for many years to c MAGA Warrior Joe Gruters, who has been with us from the very beginning, is running to continue as Chairman of the Republican National Committee. As Chairman, Joe turned the RNC into an efficient, focused, and powerful machine that will continue to empower the America First Agenda for many years to come. As State Senator and Chairman of the Republican Party of Florida, Joe helped us deliver massive and historic Victories across the State, including my three BIG WINS in 2016, 2020, and 2024! Joe was the Chairman of Florida when I won that Great State by the Highest Vote Margin in History, as we then went on to win the 2024 Presidential Election. As Sarasota County Chairman, Joe named me Statesman of the Year in both 2012 and 2015 — The only person to ever win it two times! Joe Gruters should return as Chairman of the RNC to continue to build our Party, and be a trusted partner as we MAKE AMERICA GREAT AGAIN, and ensure Free and Fair Elections. Republicans everywhere should support him as he continues his mission at the RNC. Joe is 100% America First, the Grassroots LOVES him, and I know he will do an incredible job in 2028, and secure Great Success for Republicans all across our Country. Joe has my Complete and Total Endorsement — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-06T18:22:30.541519+00:00",
+      "event_id": "54703e230490d51d375707d1",
+      "action_reaction": {
+        "event_id": "54703e230490d51d375707d1",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "4ba8b013bbfcc549bd18bb49": {
+      "source": "OGE",
+      "url": "https://www.oge.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Skip to Main Content An official website of the United States government Here’s how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. U.S. Office of Government Ethics Menu About Resources for the Public Resources for Ethics Officials Resources for Federal Employees News Site Index Forms Library Contact Us Search Public service is a public trust, requiring employees to place loyalty to the Constitution, the laws and ethical principles above private gain Learn about our mission Popular Tasks Find an Individual's Ethics Document Find an Agency's Ethics Program Document Find the Ethics Rules I want to... Find a financial disclosure report for an individual or Presidential candidate Learn more about the individual disclosures available on OGE’s website Learn more about the ethics documents available on OGE’s website Find contact information to access ethics documents at other agencies Research an ethics topic Find an ethics statute or regulation Find where to report misconduct by a federal employee File a FOIA Request I want to find information about being a PAS Nominee Go OGE Leadership Leadership Notes OGE uses Leadership Notes to communicate with the public. Read More What's New News | 11/06/2026 OGE Seeks Public Input on Forms Related to Financial Disclosure The U.S. Office of Government Ethics (OGE) is hosting a public meeting to obtain input regarding potential improvements to the OGE Form 278e and the OGE Form 450 as part of a form revision planning process that will precede the next requested renewal of these forms under the Paperwork Reduction Act. The next scheduled renewal is in August of 2027. Legal Advisory | 11/02/2026 LA-26-01: Increased Gifts and Travel Reimbursements Reporting Thresholds for Financial Disclosure Reports and Nonsponsor Widely Attended Gatherings Gift Exception Ceiling This Legal Advisory discusses the recent amendments to the gifts and travel reimbursements reporting thresholds at 5 C.F.R. §§ 2634.304 and 2634.907(g) and the widely attended gatherings gift exception ceiling for nonsponsor gifts of free attendance at 5 C.F.R. § 2635.204(g)(3). Oversight | 10/27/2026 OGE Issues a Program Review Report for the Department of Education (ED) OGE reviewed ED's ethics program and issued 14 recommendations. News | 10/27/2026 Today, OGE Met with the Leaders of Executive Branch Ethics Programs Today, OGE leadership and staff met virtually with more than 100 leaders of executive branch ethics programs to discuss current events in the executive branch ethics community. News | 10/06/2026 OGE Holds an Orientation for New Designated Agency Ethics Officials and Alternates Oversight | 09/29/2026 OGE Issues a Program Review Report for the National Security Agency (NSA) OGE reviewed NSA's ethics program and issued 0 recommendations. View All Featured Resources Resources for Nominees to Senate-Confirmed Positions This webpage features resources for prospective nominees to Presidentially appointed, Senate-confirmed (PAS) positions. Guide for Nominees (2024) (PDF) This Guide is for prospective nominees to Senate-confirmed Presidential appointment (PAS) positions and those confirmed to PAS positions. It is organized to take a nominee through the life cycle of a PAS official. It includes sections explaining what to expect during the nominee process, how to have an ethical start to Federal service, how to be a leader in ethics, and what to consider when planning to leave Federal service. Confidential Financial Disclosure Guide OGE maintains a guide to assist filers and reviewers of confidential financial disclosure reports. Public Financial Disclosure Guide This Guide assists filers and reviewers of public financial disclosure reports. Analyzing Potential Conflicts of Interests These guidance documents provide conflicts of interest analyses for various types of employment interests, investment interests, and liabilities. Compilation of Federal Ethics Laws (PDF) The Compilation contains the most pertinent laws under the jurisdiction of the executive branch ethics program as well as related statutes on which ethics officials are often called upon to provide advice to agency employees. Summary of the Standards of Conduct (PDF) This resource provides a summary of the Standards of Conduct for Employees of Ethical Conduct which apply to every executive branch employee. Nominee Financial Disclosure Review During Presidential Transitions (Before and After Inauguration) (PDF) This document provides key information and data about the nominee financial disclosure review process including during and after the period of a Presidential Transition. Quicklinks Agency Ethics Program Contact List Press Contacts Forms Library FAQs – Public Financial Disclosure 2026 Dates and Deadlines (PDF) Form 450 (PDF) Institute for Ethics in Government Return to top Accessibility | Budget and Performance | FOIA | Information Quality | EEO/No Fear Act | Privacy | Rulemaking | Site Index Have a question about government services? Contact USA.gov Regulations.gov Twitter YouTube U.S. Office of Government Ethics contactoge@oge.gov | (202) 482-9300",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-06T18:22:30.456808+00:00",
+      "event_id": "4ba8b013bbfcc549bd18bb49",
+      "action_reaction": {
+        "event_id": "4ba8b013bbfcc549bd18bb49",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "eb52b8ffbd29a5cbb5881905": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 6, 2026, 1:09 PM Original Post Israel and, in fact, the entire Middle East, WOULD NOT EXIST TODAY if I did not stop Iran from having a Nuclear Weapon. Nobody wants to say that, but everybody knows it’s true! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 6, 2026, 1:05 PM Original Post MAGA Warrior Joe Gruters, who has been with us from the very beginning, is running to continue as Chairman of the Republican National Committee. As Chairman, Joe turned the RNC into an efficient, focused, and powerful machine that will continue to empower the America First Agenda for many years to come. As State Senator and Chairman of the Republican Party of Florida, Joe helped us deliver massive and historic Victories across the State, including my three BIG WINS in 2016, 2020, and 2024! Joe was the Chairman of Florida when I won that Great State by the Highest Vote Margin in History, as we then went on to win the 2024 Presidential Election. As Sarasota County Chairman, Joe named me Statesman of the Year in both 2012 and 2015 — The only person to ever win it two times! Joe Gruters should return as Chairman of the RNC to continue to build our Party, and be a trusted partner as we MAKE AMERICA GREAT AGAIN, and ensure Free and Fair Elections. Republicans everywhere should support him as he continues his mission at the RNC. Joe is 100% America First, the Grassroots LOVES him, and I know he will do an incredible job in 2028, and secure Great Success for Republicans all across our Country. Joe has my Complete and Total Endorsement — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 6, 2026, 7:01 AM Original Post As President, I am 100% in favor of Super Intelligence (SI), and will work with the many States in the U.S. that want to become RICH by having them. They are GOLD, and only foolish leadership will say “NO” to the riches they bring! President DJT Donald J. Trump @realDonaldTrump · November 6, 2026, 6:48 AM Original Post NEWSMAX: “Trump is a Winner, and he’s right on Iran!” Donald J. Trump @realDonaldTrump · November 5, 2026, 7:14 PM Original Post I JUST WASN’T ON THE BALLOT. IF I WERE, WE WOULD HAVE WON IN A LANDSLIDE! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 5, 2026, 7:02 PM Original Post The Stock Market crashed today because the Dumocrats had a big Tuesday — So sad to see, you only have yourselves to blame! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 5, 2026, 6:18 PM Original Post The Stock Market suffered one of the Worst Days in History based on the results of the Election. Such a sad thing to watch! It took so much work to get us to a level that no one has ever seen before, and then this. Your 401(k)s have, therefore, dropped. Remember, it wasn’t Republicans, it was Dumocrats. Do not fear, however, we will soon, one way or the other, be BIGGER AND STRONGER THAN EVER BEFORE. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 5, 2026, 8:40 AM Original Post The vote totals for the Fake Dan Sullivan, plus the other “slug” that the Dems put on the Ballot, should be immediately given to the REAL Dan Sullivan, and the Election is over - He easily wins. There is no other fair solution! President DJT Donald J. Trump @realDonaldTrump · November 5, 2026, 8:22 AM Original Post https:// truthsocial.com/@WhiteHouse/11 7550235500967429 truthsocial.com The White House (@WhiteHouse) Decline was a choice. President Donald J. Trump made D.C. beautiful again, restoring greatness in our nation's capital and a country we are proud to call home. 🇺🇸 Donald J. Trump @realDonaldTrump · November 5, 2026, 4:52 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-06T18:22:30.363500+00:00",
+      "event_id": "eb52b8ffbd29a5cbb5881905",
+      "action_reaction": {
+        "event_id": "eb52b8ffbd29a5cbb5881905",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
     "29a7848dcf26419163b5fab4": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11644,103 +11740,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "bc7593f831e028a883b48d21": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42941",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532339941266297",
-      "title": "Congressman Pat Fallon is a fantastic Representative for the wonderful People of Texas’ 4th Congressional District! An Air Force Veteran, successful Businessman, former National Championship Winning Notre Dame football player under the LEGENDARY Coach Lou Holtz, and now, as Congressman, Pat has a Pr",
-      "published": "Fri, 30 Oct 2026 22:59:43 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman Pat Fallon is a fantastic Representative for the wonderful People of Texas’ 4th Congressional District! An Air Force Veteran, successful Businessman, former National Championship Winning Notre Dame football player under the LEGENDARY Coach Lou Holtz, and now, as Congressman, Pat has a Pr Congressman Pat Fallon is a fantastic Representative for the wonderful People of Texas’ 4th Congressional District! An Air Force Veteran, successful Businessman, former National Championship Winning Notre Dame football player under the LEGENDARY Coach Lou Holtz, and now, as Congressman, Pat has a Proven Record of Success — He is a WARRIOR! In Congress, Pat is fighting hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Strengthen our Military/Veterans, Ensure LAW AND ORDER, Advance Election Integrity, and Protect our always under siege Second Amendment. Pat Fallon has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR PAT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T02:47:37.099306+00:00",
-      "event_id": "bc7593f831e028a883b48d21",
-      "action_reaction": {
-        "event_id": "bc7593f831e028a883b48d21",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "5638516c4387326c153cf8a3": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42940",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532340445309512",
-      "title": "Congressman Keith Self is a Tremendous Advocate for the Great People of Texas’ 3rd Congressional District! A West Point Graduate and retired Army Ranger, Keith knows the Wisdom and Courage required to Defend our Country, Support our Incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In",
-      "published": "Fri, 30 Oct 2026 22:59:50 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Keith Self is a Tremendous Advocate for the Great People of Texas’ 3rd Congressional District! A West Point Graduate and retired Army Ranger, Keith knows the Wisdom and Courage required to Defend our Country, Support our Incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congressman Keith Self is a Tremendous Advocate for the Great People of Texas’ 3rd Congressional District! A West Point Graduate and retired Army Ranger, Keith knows the Wisdom and Courage required to Defend our Country, Support our Incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, he is working hard to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Safeguard our Elections, and Defend our always under siege Second Amendment. Keith’s opponent, Evan Hunt, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Evan Hunt is Reckless, Radical, and Dangerous! Keith Self has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR KEITH — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T02:47:37.099144+00:00",
-      "event_id": "5638516c4387326c153cf8a3",
-      "action_reaction": {
-        "event_id": "5638516c4387326c153cf8a3",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "742ae282a02cb7059ce5df75": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42939",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532341064552755",
-      "title": "It is my Great Honor to endorse MAGA Warrior, Steve Toth, who is running to represent the Tremendous People of Texas’ 2nd Congressional District! A Highly Respected State Legislator, and Very Successful Small Business Owner, Steve has been an incredible Voice for MAGA, and has been with me from the",
-      "published": "Fri, 30 Oct 2026 23:00:00 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse MAGA Warrior, Steve Toth, who is running to represent the Tremendous People of Texas’ 2nd Congressional District! A Highly Respected State Legislator, and Very Successful Small Business Owner, Steve has been an incredible Voice for MAGA, and has been with me from the It is my Great Honor to endorse MAGA Warrior, Steve Toth, who is running to represent the Tremendous People of Texas’ 2nd Congressional District! A Highly Respected State Legislator, and Very Successful Small Business Owner, Steve has been an incredible Voice for MAGA, and has been with me from the very beginning! As your next Congressman, he will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Champion School Choice, Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Support our Military/Veterans, Advance Election Integrity, and Protect our always under siege Second Amendment. Steve Toth has my Complete and Total Endorsement to be the next Representative from Texas’ 2nd Congressional District. GET OUT AND VOTE FOR STEVE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T02:47:37.098989+00:00",
-      "event_id": "742ae282a02cb7059ce5df75",
-      "action_reaction": {
-        "event_id": "742ae282a02cb7059ce5df75",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "0eefbe5acba317dcb805c827": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42938",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532341552582089",
-      "title": "Congressman Nathaniel Moran is doing a fantastic job representing the Great People of Texas’ 1st Congressional District! Nathaniel has an incredible Record of Success, and strong support from his Community. In Congress, he is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote",
-      "published": "Fri, 30 Oct 2026 23:00:07 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Nathaniel Moran is doing a fantastic job representing the Great People of Texas’ 1st Congressional District! Nathaniel has an incredible Record of Success, and strong support from his Community. In Congress, he is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote Congressman Nathaniel Moran is doing a fantastic job representing the Great People of Texas’ 1st Congressional District! Nathaniel has an incredible Record of Success, and strong support from his Community. In Congress, he is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Support our Amazing Farmers and Ranchers, Ensure American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Champion our Brave Military/Veterans, and Protect our always under siege Second Amendment. Nathaniel Moran has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR NATHANIEL — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T02:47:37.098850+00:00",
-      "event_id": "0eefbe5acba317dcb805c827",
-      "action_reaction": {
-        "event_id": "0eefbe5acba317dcb805c827",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12415,9 +12414,11 @@
     "0a90905d7248c255005f5a22": "2026-11-05T02:54:47.913683+00:00",
     "3a0ab764290395c4519c9c0d": "2026-11-05T18:10:15.164257+00:00",
     "3e3c365a6e4d713bcf628c56": "2026-11-05T18:10:15.164409+00:00",
-    "29a7848dcf26419163b5fab4": "2026-11-06T03:39:51.998702+00:00"
+    "29a7848dcf26419163b5fab4": "2026-11-06T03:39:51.998702+00:00",
+    "54703e230490d51d375707d1": "2026-11-06T18:22:30.541505+00:00",
+    "45ea947704ba07f6f6831a29": "2026-11-06T18:22:30.541781+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-06T11:31:46.889343+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-06T18:22:30.566070+00:00"
   }
 }
