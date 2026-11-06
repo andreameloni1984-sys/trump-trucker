@@ -677,7 +677,16 @@ class SilvCrosscheckTests(unittest.TestCase):
             signal["crosscheck_independence_status"],
             "PROVIDER_REPORTED_NOT_AUDITED",
         )
-        self.assertIn("indipendenza non verificata", format_cfd_signal(signal).lower())
+        message = format_cfd_signal(signal)
+        self.assertIn("indipendenza non verificata", message.lower())
+        self.assertIn("PROVENIENZA QUOTAZIONE", message)
+        self.assertIn("Yahoo Finance chart (1m futures)", message)
+        self.assertIn("SI=F", message)
+        self.assertIn("FUTURES_CONTINUOUS", message)
+        self.assertIn(timestamp, message)
+        self.assertIn("USD / troy_oz", message)
+        self.assertIn("età:", message)
+        self.assertIn("Bid/ask: N/D / N/D", message)
         self.assertEqual(signal["crosscheck_currency"], "USD")
         self.assertEqual(signal["crosscheck_unit"], "troy_oz")
         self.assertEqual(signal["crosscheck_bid"], 48.9)
