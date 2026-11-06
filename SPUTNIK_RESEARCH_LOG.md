@@ -480,3 +480,13 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Unchanged:** do not flip the catalyst BIAS, do not add filters or thresholds, do not change entry/SL/TP calculation, risk, score, setup status, PAPER authorization or execution. No new provider calls. PAPER ONLY.
 - **Regression:** extend the opposite-direction CFD test to verify the conflict flag and Telegram warning.
 - **Validation:** pending GitHub Actions on this branch. No live quote replay, Telegram delivery, deployment or trade is claimed.
+
+
+## 2026-11-06 — Refresh the White House RSS endpoint correction on current main
+
+- **Live evidence:** SPUTNIK collector run #42270098789 (2026-11-06 18:22:30 UTC) logged `RSS feed unavailable https://www.whitehouse.gov/feed/: HTTPError`. The collector still recovered two dated individual posts from the Trump Truth Archive; the White House source itself did not contribute in that run.
+- **Endpoint check:** the official-domain candidate `https://www.whitehouse.gov/news/feed/` returned RSS content type `application/rss+xml` to the web fetcher (which cannot render RSS), and current independent feed-monitor listings report it as working. This is not yet a runner-side HTTP status verification.
+- **Correction:** update only the default White House News RSS URL; preserve the Trump Truth Archive item feed, parser, feed override, source order, timestamp validation, deduplication, event classification and all market logic.
+- **Regression:** assert that the new URL is configured, the failed old URL is absent, and the Truth Archive feed remains configured.
+- **Validation boundary:** the existing CI tests parser/configuration behavior. A live HTTP response from the scheduled GitHub runner must be confirmed after a future integration; do not claim delivery before that run.
+- **Safety:** no filters, scores, mappings, direction, strategy, quote, risk, Telegram, GAGARIN handoff, PAPER authorization or execution changes. No secrets, Render, paid services, main write, merge or deployment. PAPER ONLY.
