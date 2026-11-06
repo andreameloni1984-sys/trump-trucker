@@ -10,6 +10,24 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertTrue(rows)
         self.assertEqual(rows[0]["candidate"], "ORO (XAU/USD)")
 
+    def test_scenario_catalog_is_data_only_and_active_engine_owns_decisions(self):
+        import sputnik_decision as scenario_catalog
+
+        self.assertEqual(
+            [row["id"] for row in scenario_catalog.SCENARIOS],
+            [
+                "tariff_escalation",
+                "trade_deescalation",
+                "oil_supply_disruption",
+                "defense_escalation",
+            ],
+        )
+        self.assertFalse(hasattr(scenario_catalog, "conditional_plans"))
+        self.assertFalse(hasattr(scenario_catalog, "decision_message"))
+        self.assertTrue(
+            conditional_plans("The President announces new tariffs on imports.")
+        )
+
     def test_generic_mention_is_not_enough(self):
         self.assertEqual(conditional_plans("A speech mentioned tariffs and trade."), [])
 
