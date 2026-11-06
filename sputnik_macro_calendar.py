@@ -184,7 +184,7 @@ def parse_usda_wasde_calendar(payload: bytes | str) -> list[dict]:
         year = int(match.group(1))
         for month, day in re.findall(r"([A-Za-z]{3})\.?\s+(\d{1,2})", match.group(2)):
             try:
-                local = datetime.strptime(f"{month[:3]} {int(day)} {year}", "%b %d %Y").replace(tzinfo=BLS_TZ)
+                local = datetime.strptime(f"{month[:3]} {int(day)} {year}", "%b %d %Y").replace(hour=12, tzinfo=BLS_TZ)
             except ValueError:
                 continue
             events.append({
