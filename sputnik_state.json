@@ -1,14 +1,43 @@
 {
   "events": {},
-  "updated_at": "2026-11-06T18:22:30.578530+00:00",
+  "updated_at": "2026-11-06T23:20:41.952764+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "eb52b8ffbd29a5cbb5881905",
+    "TRUTH_ARCHIVE": "6821205a441452990a80a40c",
     "OGE": "4ba8b013bbfcc549bd18bb49"
   },
   "intelligence_history": {
+    "6821205a441452990a80a40c": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 6, 2026, 1:51 PM Original Post I am pleased to announce that Mr. Stephen Miller, the current Deputy Chief of Staff of the Trump Administration, and one of my most trusted advisors, will become the Chief of Staff starting Monday, November 9, 2026. Susie Wiles, who has done an outstanding job, will be moving over to the Trump Political Operation. I want to thank her for her service as Chief of Staff — She has done a great job! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 6, 2026, 1:09 PM Original Post Israel and, in fact, the entire Middle East, WOULD NOT EXIST TODAY if I did not stop Iran from having a Nuclear Weapon. Nobody wants to say that, but everybody knows it’s true! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 6, 2026, 1:05 PM Original Post MAGA Warrior Joe Gruters, who has been with us from the very beginning, is running to continue as Chairman of the Republican National Committee. As Chairman, Joe turned the RNC into an efficient, focused, and powerful machine that will continue to empower the America First Agenda for many years to come. As State Senator and Chairman of the Republican Party of Florida, Joe helped us deliver massive and historic Victories across the State, including my three BIG WINS in 2016, 2020, and 2024! Joe was the Chairman of Florida when I won that Great State by the Highest Vote Margin in History, as we then went on to win the 2024 Presidential Election. As Sarasota County Chairman, Joe named me Statesman of the Year in both 2012 and 2015 — The only person to ever win it two times! Joe Gruters should return as Chairman of the RNC to continue to build our Party, and be a trusted partner as we MAKE AMERICA GREAT AGAIN, and ensure Free and Fair Elections. Republicans everywhere should support him as he continues his mission at the RNC. Joe is 100% America First, the Grassroots LOVES him, and I know he will do an incredible job in 2028, and secure Great Success for Republicans all across our Country. Joe has my Complete and Total Endorsement — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 6, 2026, 7:01 AM Original Post As President, I am 100% in favor of Super Intelligence (SI), and will work with the many States in the U.S. that want to become RICH by having them. They are GOLD, and only foolish leadership will say “NO” to the riches they bring! President DJT Donald J. Trump @realDonaldTrump · November 6, 2026, 6:48 AM Original Post NEWSMAX: “Trump is a Winner, and he’s right on Iran!” Donald J. Trump @realDonaldTrump · November 5, 2026, 7:14 PM Original Post I JUST WASN’T ON THE BALLOT. IF I WERE, WE WOULD HAVE WON IN A LANDSLIDE! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 5, 2026, 7:02 PM Original Post The Stock Market crashed today because the Dumocrats had a big Tuesday — So sad to see, you only have yourselves to blame! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 5, 2026, 6:18 PM Original Post The Stock Market suffered one of the Worst Days in History based on the results of the Election. Such a sad thing to watch! It took so much work to get us to a level that no one has ever seen before, and then this. Your 401(k)s have, therefore, dropped. Remember, it wasn’t Republicans, it was Dumocrats. Do not fear, however, we will soon, one way or the other, be BIGGER AND STRONGER THAN EVER BEFORE. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 5, 2026, 8:40 AM Original Post The vote totals for the Fake Dan Sullivan, plus the other “slug” that the Dems put on the Ballot, should be immediately given to the REAL Dan Sullivan, and the Election is over - He easily wins. There is no other fair solution! President DJT Donald J. Trump @realDonaldTrump · November 5, 2026, 8:22 AM Original Post https:// truthsocial.com/@WhiteHouse/11 7550235500967429 truthsocial.com The White House (@WhiteHouse) Decline was a choice. President Donald J. Trump made D.C. beautiful again, restoring greatness in our nation's capital and a country we are proud to call home. 🇺🇸 Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-06T23:20:41.409462+00:00",
+      "event_id": "6821205a441452990a80a40c",
+      "action_reaction": {
+        "event_id": "6821205a441452990a80a40c",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
     "45ea947704ba07f6f6831a29": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11715,31 +11744,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "6b2a0a09962bb84972e89ffb": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42923",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532332033373064",
-      "title": "It is my Honor to endorse MAGA Warrior TREVER NEHLS, who is running to represent the incredible people of Texas’ 22nd Congressional District. Trever's brother is the GREAT Congressman from Texas, Troy Nehls. He and his family are fierce advocates for our Movement to, MAKE AMERICA GREAT AGAIN. As a f",
-      "published": "Fri, 30 Oct 2026 22:57:42 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Honor to endorse MAGA Warrior TREVER NEHLS, who is running to represent the incredible people of Texas’ 22nd Congressional District. Trever's brother is the GREAT Congressman from Texas, Troy Nehls. He and his family are fierce advocates for our Movement to, MAKE AMERICA GREAT AGAIN. As a f It is my Honor to endorse MAGA Warrior TREVER NEHLS, who is running to represent the incredible people of Texas’ 22nd Congressional District. Trever's brother is the GREAT Congressman from Texas, Troy Nehls. He and his family are fierce advocates for our Movement to, MAKE AMERICA GREAT AGAIN. As a former Fort Bend County Constable, and retired U.S. Army Colonel, Trever strongly supports our incredible Law Enforcement, Military, and Veterans, and knows the Wisdom and Courage it takes to Ensure LAW AND ORDER. In Congress, Trever will work hard to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Champion Election Integrity, and Defend our always under siege Second Amendment. Trever Nehls has my Complete and Total Endorsement. GET OUT AND VOTE FOR TREVER — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T02:47:37.099446+00:00",
-      "event_id": "6b2a0a09962bb84972e89ffb",
-      "action_reaction": {
-        "event_id": "6b2a0a09962bb84972e89ffb",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12419,6 +12423,6 @@
     "45ea947704ba07f6f6831a29": "2026-11-06T18:22:30.541781+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-06T18:22:30.566070+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-06T23:20:41.942368+00:00"
   }
 }
