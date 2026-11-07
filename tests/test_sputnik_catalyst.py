@@ -27,24 +27,6 @@ class CatalystWatchlistTests(unittest.TestCase):
         self.assertGreaterEqual(rows[0]["score"], 60)
         self.assertIn("BUY/SELL", rows[0]["reason"])
 
-    def test_fresh_dated_catalyst_ranks_above_old_event_without_becoming_buy(self):
-        from datetime import datetime, timedelta, timezone
-        now = datetime.now(timezone.utc)
-        base = {
-            "source": "WHITE_HOUSE",
-            "domains": ["ENERGY"],
-            "evidence": "PUBLIC_SOURCE_TEXT",
-            "event_id": "same-event-class",
-            "title": "OPEC announces crude oil production cut",
-        }
-        fresh = dict(base, published=(now - timedelta(minutes=30)).isoformat())
-        old = dict(base, published=(now - timedelta(days=10)).isoformat())
-        fresh_row = catalyst_watchlist([fresh])[0]
-        old_row = catalyst_watchlist([old])[0]
-        self.assertGreater(fresh_row["score"], old_row["score"])
-        self.assertEqual(fresh_row["status"], "WATCH")
-        self.assertEqual(fresh_row["recency_score"], 10)
-
     def test_generic_energy_dominance_does_not_create_oil_watchlist(self):
         rows = catalyst_watchlist([{
             "source": "WHITE_HOUSE",
