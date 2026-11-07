@@ -11,6 +11,8 @@ on:
       - "tests/test_sputnik_public_sources.py"
       - "tests/test_sputnik_action_reaction.py"
       - "tests/test_sputnik_catalyst.py"
+      - "economic_calendar.py"
+      - "tests/test_economic_calendar.py"
       - ".github/workflows/sputnik-item-intelligence-tests.yml"
 
 permissions:
@@ -26,3 +28,5 @@ jobs:
           python-version: "3.12"
       - name: Run item intelligence tests
         run: python -m unittest tests/test_sputnik_item_intelligence.py tests/test_sputnik_public_sources.py tests/test_sputnik_action_reaction.py tests/test_sputnik_catalyst.py -v
+      - name: Run economic calendar regression tests
+        run: python -m unittest tests/test_economic_calendar.py -v
