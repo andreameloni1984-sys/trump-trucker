@@ -43,9 +43,12 @@ BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 BOT_LOCK = threading.Lock()
 STOP_EVENT = threading.Event()
 LOCAL_STATE_FILE = Path(os.getenv("SPUTNIK_TELEGRAM_LOCAL_STATE", "telegram_listener_state.json"))
-REMOTE_STATE_URL = os.getenv(
-    "SPUTNIK_STATE_URL",
-    "https://raw.githubusercontent.com/andreameloni1984-sys/trump-trucker/main/sputnik_state.json",
+STATE_URL_OVERRIDE = os.getenv("SPUTNIK_STATE_URL", "").strip()
+REMOTE_STATE_URL = STATE_URL_OVERRIDE or (
+    "https://raw.githubusercontent.com/andreameloni1984-sys/trump-trucker/sputnik-state/sputnik_state.json"
+)
+REMOTE_STATE_FALLBACK_URL = None if STATE_URL_OVERRIDE else (
+    "https://raw.githubusercontent.com/andreameloni1984-sys/trump-trucker/main/sputnik_state.json"
 )
 PORT = int(os.getenv("PORT", "10000"))
 POLL_TIMEOUT = 25
@@ -371,17 +374,27 @@ def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
 
 
 def remote_state() -> dict[str, Any]:
-    try:
-        req = urllib.request.Request(
-            REMOTE_STATE_URL,
-            headers={"User-Agent": "SPUTNIK Telegram listener/1.0"},
+    urls = [REMOTE_STATE_URL]
+    if REMOTE_STATE_FALLBACK_URL:
+        urls.append(REMOTE_STATE_FALLBACK_URL)
+
+    for index, state_url in enumerate(urls):
+        source_name = "configured" if STATE_URL_OVERRIDE else (
+            "sputnik-state" if index == 0 else "main fallback"
         )
-        with urllib.request.urlopen(req, timeout=15) as response:
-            data = json.loads(response.read().decode("utf-8"))
+        try:
+            req = urllib.request.Request(
+                state_url,
+                headers={"User-Agent": "SPUTNIK Telegram listener/1.0"},
+            )
+            with urllib.request.urlopen(req, timeout=15) as response:
+                data = json.loads(response.read().decode("utf-8"))
             if isinstance(data, dict):
+                print(f"SPUTNIK remote state loaded from {source_name}.")
                 return data
-    except Exception as exc:
-        print(f"SPUTNIK remote state unavailable: {type(exc).__name__}")
+            raise ValueError("state root is not an object")
+        except Exception as exc:
+            print(f"SPUTNIK remote state unavailable ({source_name}): {type(exc).__name__}")
     return {}
 
 

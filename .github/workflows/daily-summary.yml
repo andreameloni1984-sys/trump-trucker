@@ -37,17 +37,28 @@ jobs:
           if not token or not chat:
               raise SystemExit("Missing Telegram secrets; summary was not sent.")
 
-          # Carica stato remoto
-          try:
-              req = urllib.request.Request(
-                  "https://raw.githubusercontent.com/andreameloni1984-sys/trump-trucker/main/sputnik_state.json",
-                  headers={"User-Agent": "SPUTNIK Daily Summary"},
-              )
-              with urllib.request.urlopen(req, timeout=15) as r:
-                  state = json.loads(r.read().decode())
-          except Exception as e:
-              print(f"State load failed: {e}")
-              state = {}
+          # Preferisci lo stato dedicato; usa main solo durante la migrazione
+          # iniziale o se il branch dedicato non è ancora disponibile.
+          state = {}
+          state_sources = (
+              ("sputnik-state", "https://raw.githubusercontent.com/andreameloni1984-sys/trump-trucker/sputnik-state/sputnik_state.json"),
+              ("main fallback", "https://raw.githubusercontent.com/andreameloni1984-sys/trump-trucker/main/sputnik_state.json"),
+          )
+          for source_name, state_url in state_sources:
+              try:
+                  req = urllib.request.Request(
+                      state_url,
+                      headers={"User-Agent": "SPUTNIK Daily Summary"},
+                  )
+                  with urllib.request.urlopen(req, timeout=15) as r:
+                      candidate = json.loads(r.read().decode("utf-8"))
+                  if not isinstance(candidate, dict):
+                      raise ValueError("state root is not an object")
+                  state = candidate
+                  print(f"SPUTNIK state loaded from {source_name}.")
+                  break
+              except Exception as exc:
+                  print(f"SPUTNIK state load failed from {source_name}: {type(exc).__name__}")
 
           watch = build_watch_message(state, min_score=55)
           text = "🛰️ **SPUTNIK — RIEPILOGO GIORNALIERO**\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n"
