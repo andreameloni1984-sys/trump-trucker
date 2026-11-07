@@ -1,14 +1,83 @@
 {
   "events": {},
-  "updated_at": "2026-11-07T15:57:58.079989+00:00",
+  "updated_at": "2026-11-07T20:07:18.980851+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "df6c3173377e2a283c05395c",
+    "TRUTH_ARCHIVE": "ecd1dce1bc8c996f35efe329",
     "OGE": "4ba8b013bbfcc549bd18bb49"
   },
   "intelligence_history": {
+    "b5bcbe95005519e7f53462af": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43503",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117575646102878399",
+      "title": "Quote post from November 7, 2026",
+      "published": "Sat, 07 Nov 2026 14:33:02 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 7, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117575635652523564 View image Quoted Donald J. Trump View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T20:07:18.941373+00:00",
+      "event_id": "b5bcbe95005519e7f53462af",
+      "action_reaction": {
+        "event_id": "b5bcbe95005519e7f53462af",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "70079fc92de56f04887479dd": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43507",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117576401180733840",
+      "title": "The Democrats are going around threatening a lot of people, including the Attorney General of the United States, and others, with Impeachment and many other forms of punishment, even though they admit they have no reason to do so, and there have been no impeachable acts committed, or even thought of",
+      "published": "Sat, 07 Nov 2026 17:45:04 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "The Democrats are going around threatening a lot of people, including the Attorney General of the United States, and others, with Impeachment and many other forms of punishment, even though they admit they have no reason to do so, and there have been no impeachable acts committed, or even thought of The Democrats are going around threatening a lot of people, including the Attorney General of the United States, and others, with Impeachment and many other forms of punishment, even though they admit they have no reason to do so, and there have been no impeachable acts committed, or even thought of, by the victims of this illegal process. This is extortion at the highest level, and they should be held accountable for this. Also, they’re threatening our Donors, some of the most respected people anywhere in the World, with imprisonment, and many other levels of punishment, just because they happen to be Republicans, or Republican supporters. This is Weaponization and Lawfare at another level. The Senator from Michigan, Elissa Slotkin, is saying that she is going to go after all young people that believe in Republican Values, and that give even the slightest inclination to be a Republican. The imprisonment should be against these EXTORTIONISTS, and Republicans should get smart, fast! Threatening letters have been sent to many people, all innocent, from Democrat Political Leaders. By copy of this statement, I am ordering the Department of Justice to look into this criminal act, immediately! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T20:07:18.940997+00:00",
+      "event_id": "70079fc92de56f04887479dd",
+      "action_reaction": {
+        "event_id": "70079fc92de56f04887479dd",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ecd1dce1bc8c996f35efe329": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 7, 2026, 2:55 PM Original Post Daniel Sullivan is leading substantially in the Alaska Senatorial Race. When you add Daniel (3,600, 1.68%) into Dan, and Gerald Heikes (4,846, 2.27%), Senator Dan Sullivan is up by thousands of Votes. Remember, Heikes was also fraudulently put into the Race. I don’t know what takes so long to announce his win. This should be immediate! Anyone voting for Daniel J. Sullivan, Jr., a man who tried to change his middle initial, but was unable to get it done in time, and who was otherwise nonpolitical – Never even voted – is a vote for Senator Dan Sullivan. The Alaska Race is OVER. Dan Sullivan WON, BY A LOT! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 7, 2026, 2:50 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 2:50 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 2:50 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 1:51 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 1:45 PM Original Post The threats being made by the Democrat Party against innocent Republican Donors and Party Members are absolutely unprecedented, and totally illegal. Please report them to the Department of Justice, IMMEDIATELY! If you would like, send them directly to me, your President. These SLEAZEBAGS should go to jail for what they are doing. The Senate must act, and stop being pushed around to the point of the Republican Party losing Elections, and worse! Likewise, the DOJ and House of Representatives. Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 7, 2026, 1:40 PM Original Post I am pleased to announce that the Great Dana White, a violent Fighter and Warrior, has been offered the job of Press Secretary of the United States. I have requested that he bring with him assistants, even though some are not from our Country, of Islam Makhachev, Khabib Nurmagomedov, Justin Gaethje, Daniel Cormier, Amanda Nunes, and Kayla Harris. We need these people to defend us against the Lunatic Left. Dana will be a Press Secretary like none other. Dana, please take the job! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 7, 2026, 12:45 PM Original Post The Democrats are going around threatening a lot of people, including the Attorney General of the United States, and others, with Impeachment and many other forms of punishment, even though they admit they have no reason to do so, and there have been no impeachable acts committed, or even thought of, by the victims of this illegal process. This is extortion at the highest level, and they should be held accountable for this. Also, they’re threatening our Donors, some of the most respected people anywhere in the World, with imprisonment, and many other levels of punishment, just because they happen to be Republicans, or Republican supporters. This is Weaponization and Lawfare at another level. The Senator from Michigan, Elissa Slotkin, is saying that she is going to go after all young people that believe in Republican Values, and that give even the slightest inclination to be a Republican. The imprisonment should be against these EXTORTIONISTS, and Republicans should get smart, fast! Threatening letters have been sent to many people, all innocent, from Democrat Political Leaders. By copy of this statement, I am ordering the Department of Justice to look into this criminal act, immediately! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 7, 2026, 12:03 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 12:03 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 9:42 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T20:07:18.735401+00:00",
+      "event_id": "ecd1dce1bc8c996f35efe329",
+      "action_reaction": {
+        "event_id": "ecd1dce1bc8c996f35efe329",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "df6c3173377e2a283c05395c": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -11679,78 +11748,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "23e938852ae28e2e44081544": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42942",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532339428251827",
-      "title": "Congressman Lance Gooden is an America First Patriot, who is doing a fantastic job representing Texas’ 5th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lance is working hard to Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Pr",
-      "published": "Fri, 30 Oct 2026 22:59:35 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Lance Gooden is an America First Patriot, who is doing a fantastic job representing Texas’ 5th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lance is working hard to Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Pr Congressman Lance Gooden is an America First Patriot, who is doing a fantastic job representing Texas’ 5th Congressional District! A MAGA Warrior, who has been with us from the very beginning, Lance is working hard to Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our now very Secure Border, SECURE, Support our Military/Veterans, and Protect our always under siege Second Amendment. Lance Gooden has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR LANCE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.674686+00:00",
-      "event_id": "23e938852ae28e2e44081544",
-      "action_reaction": {
-        "event_id": "23e938852ae28e2e44081544",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "cdc88d26da2739fcb4165ee3": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42979",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117533668812747961",
-      "title": "Quote post from October 31, 2026",
-      "published": "Sat, 31 Oct 2026 04:37:40 +0000",
-      "domains": [
-        "MEDIA"
-      ],
-      "text": "Quote post from October 31, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117533667818828835 View image Quoted Donald J. Trump View video",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.673383+00:00",
-      "event_id": "cdc88d26da2739fcb4165ee3",
-      "action_reaction": {
-        "event_id": "cdc88d26da2739fcb4165ee3",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "fbb636e9d2b2782c7c0165c4": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE",
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 31, 2026, 12:37 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 31, 2026, 12:37 AM Original Post Donald J. Trump @realDonaldTrump · October 31, 2026, 12:37 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 11:51 PM Original Post ↻ Previously posted October 27, 2026 Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 6:38 PM Original Post Looking forward to being with you in Iowa and Kansas on Sunday! We’re going to get Ashley Hinson elected to the U.S. Senate, Zach Lahn to be the next Governor of Iowa, Roger Marshall Re-Elected to the U.S. Senate, and Ty Masterson elected to be the next Governor of Kansas! President DONALD J. TRUMP Read full post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 5:27 PM Original Post ↻ Previously posted October 27, 2026 Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 6:23 PM Original Post Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP Read full post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 5:09 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 5:09 PM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 7:01 PM Original Post TO THE GREAT PEOPLE OF TEXAS, GET OUT AND VOTE FOR: – Ken Paxton for U.S. Senate – Greg Abbott for Governor – Dan Patrick for Lieutenant Governor – Mayes Middleton for Attorney General – Don Huffines for Comptroller – Dawn Buckingham for Land Commissioner – Nathaniel Moran for U.S. Congress (TX-01) – Steve Toth for U.S. Congress (TX-02) – Keith Self for U.S. Congress (TX-03) – Pat Fallon for U.S. Congress (TX-04) – Lance Gooden for U.S. Congress (TX-05) – Jake Ellzey for U.S. Congress (TX-06) – Jessica Steinmann for U.S. Congress (TX-08) – Alex Mealer for U.S. Congress (TX-09) – Chris Gober for U.S. Congress (TX-10) – August Pfluger for U.S. Congress (TX-11) – Craig Goldman for U.S. Congress (TX-12) – Ronny Jackson for U.S. Congress (TX-13) – Randy Weber for U.S. Congress (TX-14) – Monica De La Cruz for U.S. Congress (TX-15) – Pete Sessions for U.S. Congress (TX-17) – Tom Sell for U.S. Congress (TX-19) – Mark Teixeira for U.S. Congress (TX-21) – Trever Nehls for U.S. Congress (TX-22) – Brandon Herrera for U.S. Congress (TX-23) – Beth Van Duyne for U.S. Congress (TX-24) – Roger Williams for U.S. Congress (TX-25) – Brandon Gill for U.S. Congress (TX-26) – Michael Cloud for U.S. Congress (TX-27) – Tano Tijerina for U.S. Congress (TX-28) – John Carter for U.S. Congress (TX-31) – Jace Yarbrough for U.S. Congress (TX-32) – Eric Flores for U.S. Congress (TX-34) – Carlos De La Cruz for U.S. Congress (TX-35) – Brian Babin for U.S. Congress (TX-36) – Jon Bonck for U.S. Congress (TX-38) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/ Read full post swampthevoteusa.com TEXAS: MAKE A PLAN TO VOTE! Election Day in Texas is almost here, and it’s time to make your voice heard. Make a plan to vote! Donald J. Trump @realDonaldTrump · October 30, 2026, 7:00 PM Original Post It is my Great Honor to endorse the Highly Respected Attorney General of Texas, Ken Paxton, an America First Patriot, and someone who has always been extremely loyal to me and our AMAZING MAGA MOVEMENT, who is running for the United States Senate, to represent a place I love and WON, BIG, three times, with 6.4 Million Votes in 2024 (The Most Votes in the History of the State, BY FAR)! I know Ken well, have seen him tested at the highest and most difficult levels, and he is a WINNER! Ken is a true MAGA Warrior who has ALWAYS delivered for Texas, and will continue to do so in the United States Senate. His opponent, James TalaFREAKO, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. James TalaFREAKO is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Ken will tirelessly fight to continue the Great Growth of our Economy, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Champion Texas Oil & Gas, Advocate for our Amazing Farmers and Ranchers, Promote School Choice, Keep our Border SECURE, Stop Migrant Crime, Support our Incredible Military/Veterans, Safeguard our E",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.120051+00:00",
-      "event_id": "fbb636e9d2b2782c7c0165c4",
-      "action_reaction": {
-        "event_id": "fbb636e9d2b2782c7c0165c4",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12428,9 +12425,11 @@
     "29a7848dcf26419163b5fab4": "2026-11-06T03:39:51.998702+00:00",
     "54703e230490d51d375707d1": "2026-11-06T18:22:30.541505+00:00",
     "45ea947704ba07f6f6831a29": "2026-11-06T18:22:30.541781+00:00",
-    "55dc05ab6915f760a77f4714": "2026-11-07T09:51:01.443713+00:00"
+    "55dc05ab6915f760a77f4714": "2026-11-07T09:51:01.443713+00:00",
+    "70079fc92de56f04887479dd": "2026-11-07T20:07:18.940984+00:00",
+    "b5bcbe95005519e7f53462af": "2026-11-07T20:07:18.941365+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-07T15:57:58.045479+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-07T20:07:18.962195+00:00"
   }
 }
