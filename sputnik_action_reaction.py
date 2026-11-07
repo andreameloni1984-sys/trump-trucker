@@ -57,8 +57,36 @@ HISTORICAL_PATTERNS = [
     },
 ]
 
+
 def _normalise(text: str) -> str:
     return " ".join(str(text or "").lower().split())
+
+
+def _is_iran_deescalation_statement(body: str) -> bool:
+    """Recognise the specific paired no-war + settlement wording seen in Truth item 43202.
+
+    This is a descriptive event label only. It does not assert that a settlement
+    exists and does not create an oil direction or trading signal.
+    """
+    no_war_claim = any(
+        phrase in body
+        for phrase in (
+            "there will not be a war with iran",
+            "will not be a war with iran",
+            "no war with iran",
+        )
+    )
+    settlement_claim = any(
+        phrase in body
+        for phrase in (
+            "iran wants a settlement",
+            "iran wants to reach a settlement",
+            "iran wants an agreement",
+            "iran wants a deal",
+        )
+    )
+    return no_war_claim and settlement_claim
+
 
 def _has_article_specific_source(pattern: dict[str, Any]) -> bool:
     """Require an HTTPS article-like URL; this is provenance hygiene, not truth verification."""
@@ -78,11 +106,14 @@ def classify_event(text: str) -> str:
         if any(k in body for k in ("pause", "help china", "not hurt", "soften", "deal")):
             return "TRADE_DE_ESCALATION"
         return "TRADE_ESCALATION"
+    if _is_iran_deescalation_statement(body):
+        return "GEOPOLITICAL_DE_ESCALATION"
     if any(k in body for k in ("iran", "hormuz", "missile", "military strike", "war")):
         return "GEOPOLITICAL_ESCALATION"
     if any(k in body for k in ("oil", "crude", "brent", "wti")):
         return "ENERGY"
     return "OTHER"
+
 
 def match_historical_reactions(text: str, limit: int = 3) -> list[dict[str, Any]]:
     body = _normalise(text)
@@ -106,6 +137,7 @@ def match_historical_reactions(text: str, limit: int = 3) -> list[dict[str, Any]
     matches.sort(key=lambda x: (x["type_match"], x["keyword_hits"]), reverse=True)
     return matches[:max(0, limit)]
 
+
 def infer_direction(matches: list[dict[str, Any]]) -> dict[str, str]:
     """Aggregate only observed historical directions; no probability is invented."""
     votes: dict[str, dict[str, int]] = {}
@@ -118,6 +150,7 @@ def infer_direction(matches: list[dict[str, Any]]) -> dict[str, str]:
         ordered = sorted(counts.items(), key=lambda item: item[1], reverse=True)
         result[asset] = ordered[0][0]
     return result
+
 
 def action_reaction_message(text: str, title: str = "SPUTNIK — AZIONE → REAZIONE") -> str:
     matches = match_historical_reactions(text)
@@ -141,6 +174,7 @@ def action_reaction_message(text: str, title: str = "SPUTNIK — AZIONE → REAZ
         "ℹ️ È una sintesi di reazioni osservate in eventi comparabili; non è una garanzia sul prossimo movimento.",
     ]
     return "\n".join(lines)
+
 
 def build_action_reaction_record(finding: dict[str, Any], source_text: str = "") -> dict[str, Any]:
     text = source_text or " ".join(str(x) for x in finding.get("domains", []))

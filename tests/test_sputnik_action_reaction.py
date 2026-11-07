@@ -1,6 +1,12 @@
 import unittest
 
-from sputnik_action_reaction import classify_event, match_historical_reactions, infer_direction, action_reaction_message
+from sputnik_action_reaction import (
+    action_reaction_message,
+    build_action_reaction_record,
+    classify_event,
+    infer_direction,
+    match_historical_reactions,
+)
 
 
 class ActionReactionTests(unittest.TestCase):
@@ -16,6 +22,27 @@ class ActionReactionTests(unittest.TestCase):
         self.assertEqual(classify_event(text), "TRADE_DE_ESCALATION")
         directions = infer_direction(match_historical_reactions(text))
         self.assertEqual(directions.get("GOLD"), "UP")
+
+    def test_iran_no_war_and_settlement_statement_is_deescalation_not_escalation(self):
+        text = (
+            "Oil Prices are DROPPING LIKE A ROCK because people feel that there "
+            "will not be a War with Iran. Iran wants a settlement, as soon as possible."
+        )
+        self.assertEqual(classify_event(text), "GEOPOLITICAL_DE_ESCALATION")
+        self.assertEqual(match_historical_reactions(text), [])
+
+        record = build_action_reaction_record({"event_id": "truth-43202"}, text)
+        self.assertEqual(record["event_type"], "GEOPOLITICAL_DE_ESCALATION")
+        self.assertEqual(record["historical_matches"], [])
+        self.assertEqual(record["evidence"], "NO_ANALOGUE")
+
+        message = action_reaction_message(text)
+        self.assertIn("GEOPOLITICAL_DE_ESCALATION", message)
+        self.assertIn("Nessun analogo storico", message)
+
+    def test_explicit_iran_missile_attack_remains_escalation(self):
+        text = "Iran launches missiles and threatens to close the Strait of Hormuz"
+        self.assertEqual(classify_event(text), "GEOPOLITICAL_ESCALATION")
 
     def test_homepage_only_analogue_is_excluded(self):
         matches = match_historical_reactions("Trump announces a tariff pause for 90 days")
