@@ -433,6 +433,26 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             self.assertEqual(list(state_path.parent.glob(".sputnik_state.json.*.tmp")), [])
 
 
+    def test_short_domain_keywords_match_complete_words(self):
+        election_post = (
+            "The Stock Market suffered one of the Worst Days in History based on the "
+            "results of the Election. Such a sad thing to watch! Your 401(k)s have "
+            "dropped. MAKE AMERICA GREAT AGAIN! The vote totals should be immediately "
+            "given to the REAL candidate. There is no other fair solution."
+        )
+        domains = trump_tracker._domains_for_public_text(election_post)
+        self.assertNotIn("AI_TECH", domains)
+        self.assertNotIn("MEDIA", domains)
+
+        self.assertIn(
+            "AI_TECH",
+            trump_tracker._domains_for_public_text("AI-powered policy"),
+        )
+        self.assertIn(
+            "MEDIA",
+            trump_tracker._domains_for_public_text("Media coverage of the vote"),
+        )
+
     def test_political_candidate_endorsements_do_not_receive_market_domain_tags(self):
         samples = [
             "Congressman John Rutherford is an incredible Representative for Florida; "
