@@ -71,8 +71,8 @@ jobs:
                       "Telegram API did not confirm sendMessage: "
                       "expected ok=true and result.message_id."
                   )
-              print(f"Telegram delivery confirmed: message_id={message_id}")
+              print(f"Telegram API accepted sendMessage: message_id={message_id}")
           except Exception as e:
-              print(f"Telegram delivery failed or unconfirmed: {e}")
+              print(f"Telegram sendMessage failed or API acknowledgement missing: {e}")
               raise
           PY
