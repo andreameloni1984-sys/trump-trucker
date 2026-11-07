@@ -18,17 +18,20 @@ on:
       - "telegram_listener.py"
       - "telegram_delivery.py"
       - "tests/test_telegram_delivery.py"
+      - "tests/test_sputnik_collector_workflow.py"
       - ".github/workflows/daily-summary.yml"
       - ".github/workflows/telegram-polling.yml"
       - "tests/test_sputnik_decision_engine.py"
       - "tests/test_sputnik_decision.py"
       - "tests/test_sputnik_ranking.py"
+      - "tests/test_sputnik_collector_workflow.py"
       - "tests/test_sputnik_action_reaction.py"
       - "sputnik_action_reaction.py"
       - "tests/test_trump_tracker_form4.py"
       - "tests/test_sputnik_action_reaction.py"
       - "sputnik_action_reaction.py"
       - ".github/workflows/sputnik_tests.yml"
+      - ".github/workflows/trump_tracker.yml"
   push:
     branches:
       - main
@@ -36,6 +39,7 @@ on:
       - "sputnik_trading_instrument.py"
       - "sputnik_catalyst.py"
       - ".github/workflows/sputnik_tests.yml"
+      - ".github/workflows/trump_tracker.yml"
       - "sputnik_decision.py"
       - "sputnik_decision_engine.py"
       - "sputnik_decision_strict.py"
