@@ -48,6 +48,24 @@ def _quote_is_fresh(quote: dict[str, Any], max_age_minutes: int = QUOTE_MAX_AGE_
     return age is not None and -60 <= age <= max_age_minutes * 60
 
 
+def _display_source_timestamp(value: Any) -> str:
+    """Render a source candle timestamp without changing its underlying value."""
+    if value is None or value == "":
+        return "N/D"
+    try:
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            return datetime.fromtimestamp(float(value), timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+        raw = str(value).strip()
+        if raw.isdigit():
+            return datetime.fromtimestamp(float(raw), timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    except (TypeError, ValueError, OverflowError, OSError):
+        return str(value)
+
+
 def _find_quote(instrument: str, quotes: dict[str, Any]) -> dict[str, Any] | None:
     """Map common commodity names to possible quote keys."""
     instrument = (instrument or "").upper()
@@ -494,6 +512,14 @@ def build_cfd_signal(
         "risk_pct": risk_pct,
         "timestamp": now,
         "paper_only": True,
+        "momentum_5m_direction": "UNAVAILABLE",
+        "momentum_5m_reason": "Lettura momentum 5m non disponibile.",
+        "momentum_5m_timestamp": None,
+        "technical_direction": "UNAVAILABLE",
+        "technical_timestamp": None,
+        "focused_direction": "UNAVAILABLE",
+        "focused_timestamp": None,
+        "setup_timestamp": None,
     }
     if not recommendation:
         return base
@@ -517,6 +543,11 @@ def build_cfd_signal(
         "setup_status": "EARLY_BIAS" if directional else "NO_DIRECTION",
         "paper_trade_status": "NOT_EXECUTED",
         "execution_readiness": "EARLY_BIAS" if directional else "NO_DIRECTIONAL_EDGE",
+        "momentum_5m_direction": str(recommendation.get("technical_bias") or "UNAVAILABLE").upper(),
+        "momentum_5m_reason": str(recommendation.get("technical_reason") or "Lettura momentum 5m non disponibile."),
+        "momentum_5m_timestamp": recommendation.get("technical_quote_timestamp"),
+        "momentum_5m_price": recommendation.get("technical_price"),
+        "momentum_5m_timeframe": recommendation.get("technical_timeframe") or "5m",
     })
 
     quotes = quotes or {}
@@ -534,6 +565,12 @@ def build_cfd_signal(
             from sputnik_focused_trader import analyze_focused_market
             focused = analyze_focused_market(instrument, quote["candles"])
             base["focused_analysis"] = focused
+            base["focused_direction"] = str(focused.get("direction") or "NEUTRAL").upper()
+            base["focused_timestamp"] = (
+                focused.get("quote_timestamp") or focused.get("timestamp")
+                or (quote.get("candles")[-1].get("timestamp") if quote.get("candles") else None)
+                or quote.get("timestamp") or quote.get("updated_at")
+            )
             if focused.get("status") == "DIRECTIONAL":
                 technical_direction = str(focused.get("direction") or "NEUTRAL").upper()
                 base["technical_direction"] = technical_direction
@@ -558,6 +595,11 @@ def build_cfd_signal(
             from sputnik_competition_setup import evaluate_competition_setup
             setup = evaluate_competition_setup(instrument, quote["candles"])
             base["competition_setup"] = setup
+            base["setup_timestamp"] = (
+                setup.get("quote_timestamp") or setup.get("timestamp")
+                or (quote.get("candles")[-1].get("timestamp") if quote.get("candles") else None)
+                or quote.get("timestamp") or quote.get("updated_at")
+            )
             setup_status = str(setup.get("status") or "NO_DIRECTION").upper()
             setup_direction = str(setup.get("direction") or "NEUTRAL").upper()
             if setup_status == "SETUP_CONFIRMED":
@@ -727,8 +769,9 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"📈 STRUMENTO: {signal.get('instrument')}",
         f"🧭 BIAS: {direction}",
         f"🎯 SETUP: {setup_status}",
-        f"🧭 TECNICA: {signal.get('technical_direction', 'N/D')} ({signal.get('technical_alignment', 'NOT_ASSESSED')})",
-        f"🧪 D-L-A: {signal.get('setup_direction', 'N/D')} ({signal.get('setup_alignment', 'NOT_ASSESSED')})",
+        f"📉 MOMENTUM 5M: {signal.get('momentum_5m_direction', 'UNAVAILABLE')} | {signal.get('momentum_5m_reason', 'N/D')} | candela {_display_source_timestamp(signal.get('momentum_5m_timestamp'))}",
+        f"🧭 TECNICA FOCUSED: {signal.get('focused_direction', signal.get('technical_direction', 'N/D'))} ({signal.get('technical_alignment', 'NOT_ASSESSED')}) | candela {_display_source_timestamp(signal.get('focused_timestamp'))}",
+        f"🧪 D-L-A: {signal.get('setup_direction', 'N/D')} ({signal.get('setup_alignment', 'NOT_ASSESSED')}) | candela {_display_source_timestamp(signal.get('setup_timestamp'))}",
         *([f"🚨 {signal['market_direction_warning']} — ipotesi news non confermata dal prezzo."] if signal.get("market_direction_conflict") else []),
         f"🧪 TRADE PAPER: {paper_status}",
         f"📊 SCORE: {signal.get('score', 0):.0f}/100",
@@ -770,7 +813,7 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
 
     lines.extend([
         "",
-        f"📌 MOTIVO: {signal.get('reason', '')[:280]}",
+        f"📌 MOTIVO BIAS/CATALIZZATORE: {signal.get('reason', '')[:280]}",
         f"ℹ️ D-L-A: {signal.get('confirmation', '')}",
         f"⚠️ RISK: {signal.get('risk_pct', 1.0):.1f}% max",
         "",
