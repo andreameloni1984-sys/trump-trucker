@@ -1252,6 +1252,7 @@ def telegram_message(event: FilingEvent) -> str:
 
 
 def send_telegram(message: str, chat_id: str | None = None) -> bool:
+    """Send a message; True means Telegram API accepted it, not device delivery."""
     token = os.getenv("TELEGRAM_BOT_TOKEN")
     chat_id = str(chat_id or os.getenv("TELEGRAM_CHAT_ID") or "").strip()
     if not token or not chat_id:
@@ -1278,13 +1279,13 @@ def send_telegram(message: str, chat_id: str | None = None) -> bool:
         send_elapsed_ms = (time.monotonic() - send_started) * 1000.0
         message_id = confirmed_message_id(payload)
         if message_id is not None:
-            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | delivery confirmed | message_id={message_id}.")
+            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | API accepted sendMessage | message_id={message_id}.")
             return True
         if isinstance(payload, dict) and payload.get("ok") is False:
-            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | delivery rejected.")
+            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | API rejected sendMessage.")
             print(f"SPUTNIK: Telegram API error: {payload.get('description', 'unknown error')}")
         else:
-            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | delivery NOT confirmed.")
+            print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | API acknowledgement missing/invalid; delivery status unknown.")
     except urllib.error.HTTPError as exc:
         send_elapsed_ms = (time.monotonic() - send_started) * 1000.0
         print(f"SPUTNIK: Telegram API round-trip={send_elapsed_ms:.0f}ms | HTTP error {exc.code}.")

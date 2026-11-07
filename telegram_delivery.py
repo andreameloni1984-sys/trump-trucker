@@ -1,4 +1,4 @@
-"""Strict confirmation helpers for Telegram Bot API message delivery."""
+"""Strict acknowledgement helpers for Telegram Bot API sendMessage responses."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ from typing import Any
 
 
 def confirmed_message_id(response: Any) -> int | None:
-    """Return message_id only when Telegram explicitly confirms sendMessage."""
+    """Return message_id when Telegram API accepts sendMessage; not a device receipt."""
     if not isinstance(response, dict) or response.get("ok") is not True:
         return None
     result = response.get("result")
