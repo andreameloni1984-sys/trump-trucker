@@ -476,8 +476,9 @@ def recommend_trading_instrument(
 
     if technical_bias in {"LONG", "SHORT"}:
         # Technical-only direction is allowed only when the catalyst layer has
-        # no sustainable side.
+        # no sustainable side. Preserve its provenance for the CFD layer.
         rec["bias"] = technical_bias
+        rec["bias_source"] = "TECHNICAL_ONLY"
         rec["status"] = "EARLY_BIAS"
         rec["catalyst_alignment"] = "NO_DIRECTIONAL_NEWS"
         rec["reason"] = (
