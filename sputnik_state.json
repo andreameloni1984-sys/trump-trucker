@@ -1,14 +1,197 @@
 {
   "events": {},
-  "updated_at": "2026-11-07T20:07:18.980851+00:00",
+  "updated_at": "2026-11-07T23:37:25.019015+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "ecd1dce1bc8c996f35efe329",
+    "TRUTH_ARCHIVE": "7cc65876877d52fca4dd552e",
     "OGE": "4ba8b013bbfcc549bd18bb49"
   },
   "intelligence_history": {
+    "400702d6cc01b700c4442a7f": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43508",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117576618491350292",
+      "title": "I am pleased to announce that the Great Dana White, a violent Fighter and Warrior, has been offered the job of Press Secretary of the United States. I have requested that he bring with him assistants, even though some are not from our Country, of Islam Makhachev, Khabib Nurmagomedov, Justin Gaethje,",
+      "published": "Sat, 07 Nov 2026 18:40:20 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "I am pleased to announce that the Great Dana White, a violent Fighter and Warrior, has been offered the job of Press Secretary of the United States. I have requested that he bring with him assistants, even though some are not from our Country, of Islam Makhachev, Khabib Nurmagomedov, Justin Gaethje, I am pleased to announce that the Great Dana White, a violent Fighter and Warrior, has been offered the job of Press Secretary of the United States. I have requested that he bring with him assistants, even though some are not from our Country, of Islam Makhachev, Khabib Nurmagomedov, Justin Gaethje, Daniel Cormier, Amanda Nunes, and Kayla Harris. We need these people to defend us against the Lunatic Left. Dana will be a Press Secretary like none other. Dana, please take the job! President DONALD J. TRUMP View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T23:37:24.997632+00:00",
+      "event_id": "400702d6cc01b700c4442a7f",
+      "action_reaction": {
+        "event_id": "400702d6cc01b700c4442a7f",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "3e4190e62a81433d271dc5e8": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43509",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117576637813209602",
+      "title": "The threats being made by the Democrat Party against innocent Republican Donors and Party Members are absolutely unprecedented, and totally illegal. Please report them to the Department of Justice, IMMEDIATELY! If you would like, send them directly to me, your President. These SLEAZEBAGS should go t",
+      "published": "Sat, 07 Nov 2026 18:45:15 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "The threats being made by the Democrat Party against innocent Republican Donors and Party Members are absolutely unprecedented, and totally illegal. Please report them to the Department of Justice, IMMEDIATELY! If you would like, send them directly to me, your President. These SLEAZEBAGS should go t The threats being made by the Democrat Party against innocent Republican Donors and Party Members are absolutely unprecedented, and totally illegal. Please report them to the Department of Justice, IMMEDIATELY! If you would like, send them directly to me, your President. These SLEAZEBAGS should go to jail for what they are doing. The Senate must act, and stop being pushed around to the point of the Republican Party losing Elections, and worse! Likewise, the DOJ and House of Representatives. Thank you for your attention to this matter. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T23:37:24.997505+00:00",
+      "event_id": "3e4190e62a81433d271dc5e8",
+      "action_reaction": {
+        "event_id": "3e4190e62a81433d271dc5e8",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "6974af1e615bae7fe540141c": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43511",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117576894858031741",
+      "title": "Quote post from November 7, 2026",
+      "published": "Sat, 07 Nov 2026 19:50:37 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 7, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117576893933424183 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T23:37:24.997361+00:00",
+      "event_id": "6974af1e615bae7fe540141c",
+      "action_reaction": {
+        "event_id": "6974af1e615bae7fe540141c",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "6cd8fe75d47cbf3a2f4087f8": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43513",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117576912671985823",
+      "title": "Daniel Sullivan is leading substantially in the Alaska Senatorial Race. When you add Daniel (3,600, 1.68%) into Dan, and Gerald Heikes (4,846, 2.27%), Senator Dan Sullivan is up by thousands of Votes. Remember, Heikes was also fraudulently put into the Race. I don’t know what takes so long to announ",
+      "published": "Sat, 07 Nov 2026 19:55:09 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Daniel Sullivan is leading substantially in the Alaska Senatorial Race. When you add Daniel (3,600, 1.68%) into Dan, and Gerald Heikes (4,846, 2.27%), Senator Dan Sullivan is up by thousands of Votes. Remember, Heikes was also fraudulently put into the Race. I don’t know what takes so long to announ Daniel Sullivan is leading substantially in the Alaska Senatorial Race. When you add Daniel (3,600, 1.68%) into Dan, and Gerald Heikes (4,846, 2.27%), Senator Dan Sullivan is up by thousands of Votes. Remember, Heikes was also fraudulently put into the Race. I don’t know what takes so long to announce his win. This should be immediate! Anyone voting for Daniel J. Sullivan, Jr., a man who tried to change his middle initial, but was unable to get it done in time, and who was otherwise nonpolitical – Never even voted – is a vote for Senator Dan Sullivan. The Alaska Race is OVER. Dan Sullivan WON, BY A LOT! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T23:37:24.997253+00:00",
+      "event_id": "6cd8fe75d47cbf3a2f4087f8",
+      "action_reaction": {
+        "event_id": "6cd8fe75d47cbf3a2f4087f8",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c11f21fda47e951be02989fa": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43514",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117576964275275822",
+      "title": "Quote post from November 7, 2026",
+      "published": "Sat, 07 Nov 2026 20:08:16 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 7, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117576963589452045 View image Quoted Donald J. Trump View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T23:37:24.997093+00:00",
+      "event_id": "c11f21fda47e951be02989fa",
+      "action_reaction": {
+        "event_id": "c11f21fda47e951be02989fa",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "7594c8fc168b8676e48f8537": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43522",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117577355679832817",
+      "title": "Quote post from November 7, 2026",
+      "published": "Sat, 07 Nov 2026 21:47:48 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 7, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117577346685295339 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T23:37:24.996968+00:00",
+      "event_id": "7594c8fc168b8676e48f8537",
+      "action_reaction": {
+        "event_id": "7594c8fc168b8676e48f8537",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "91dc6fd3521f8bab53099fb2": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43520",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117577357040264617",
+      "title": "Quote post from November 7, 2026",
+      "published": "Sat, 07 Nov 2026 21:48:09 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 7, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117577356194134392 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T23:37:24.996836+00:00",
+      "event_id": "91dc6fd3521f8bab53099fb2",
+      "action_reaction": {
+        "event_id": "91dc6fd3521f8bab53099fb2",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "7cc65876877d52fca4dd552e": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 7, 2026, 4:54 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:48 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:47 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:47 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:47 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:45 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:46 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:45 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:44 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 3:08 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 3:08 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 3:08 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 3:07 PM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T23:37:24.357893+00:00",
+      "event_id": "7cc65876877d52fca4dd552e",
+      "action_reaction": {
+        "event_id": "7cc65876877d52fca4dd552e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "b5bcbe95005519e7f53462af": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11553,201 +11736,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "82dc9b8807e977d76d09cafc": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42950",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532335053304201",
-      "title": "Congressman Randy Weber is doing a fantastic job representing the wonderful people of Texas’ 14th Congressional District! A successful Businessman, Randy knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Ensure American Energy DOMINANCE. He is fighting tireless",
-      "published": "Fri, 30 Oct 2026 22:58:28 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Randy Weber is doing a fantastic job representing the wonderful people of Texas’ 14th Congressional District! A successful Businessman, Randy knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Ensure American Energy DOMINANCE. He is fighting tireless Congressman Randy Weber is doing a fantastic job representing the wonderful people of Texas’ 14th Congressional District! A successful Businessman, Randy knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Ensure American Energy DOMINANCE. He is fighting tirelessly to Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Keep our now very Secure Border, SECURE, Stop Migrant Crime, Champion our Farmers and American Agriculture, Support our Brave Military/Veterans, and Protect our always under siege Second Amendment. Randy Weber has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR RANDY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.676028+00:00",
-      "event_id": "82dc9b8807e977d76d09cafc",
-      "action_reaction": {
-        "event_id": "82dc9b8807e977d76d09cafc",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "8e5d92852ea65a248da0aa30": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42949",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532335589938007",
-      "title": "Congressman “Doc” Ronny Jackson is doing a wonderful job representing Texas’ 13th Congressional District! He is a good friend, 100% MAGA, and one of the most talented Medical Doctors and Politicians in our Country. A respected Admiral, Congressman, and Doctor, “Doc” Ronny Jackson knows the Wisdom an",
-      "published": "Fri, 30 Oct 2026 22:58:36 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman “Doc” Ronny Jackson is doing a wonderful job representing Texas’ 13th Congressional District! He is a good friend, 100% MAGA, and one of the most talented Medical Doctors and Politicians in our Country. A respected Admiral, Congressman, and Doctor, “Doc” Ronny Jackson knows the Wisdom an Congressman “Doc” Ronny Jackson is doing a wonderful job representing Texas’ 13th Congressional District! He is a good friend, 100% MAGA, and one of the most talented Medical Doctors and Politicians in our Country. A respected Admiral, Congressman, and Doctor, “Doc” Ronny Jackson knows the Wisdom and Courage that is necessary to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. During my First Term, “Doc” Ronny served as one of my Senior Advisors and, as my personal Physician, prior to becoming a distinguished Congressman. In Congress, he is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Advance Election Integrity, and Protect our always under siege Second Amendment. Ronny Jackson is a fighter and WINNER, and has my Complete and Total Endorsement for Re-Election. HE IS ONE OF MY ALL TIME FAVORITES! GET OUT AND VOTE FOR RONNY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.675858+00:00",
-      "event_id": "8e5d92852ea65a248da0aa30",
-      "action_reaction": {
-        "event_id": "8e5d92852ea65a248da0aa30",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "f4e6d7b0a175852638703898": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42948",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532336220391714",
-      "title": "Congressman Craig Goldman is an incredible Representative of Texas’ 12th Congressional District! A Fifth Generation Texan, Craig served as a State Representative for 12 years prior to becoming a distinguished and Highly Respected Congressman. In Congress, he is fighting tirelessly to Champion our Gr",
-      "published": "Fri, 30 Oct 2026 22:58:46 +0000",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman Craig Goldman is an incredible Representative of Texas’ 12th Congressional District! A Fifth Generation Texan, Craig served as a State Representative for 12 years prior to becoming a distinguished and Highly Respected Congressman. In Congress, he is fighting tirelessly to Champion our Gr Congressman Craig Goldman is an incredible Representative of Texas’ 12th Congressional District! A Fifth Generation Texan, Craig served as a State Representative for 12 years prior to becoming a distinguished and Highly Respected Congressman. In Congress, he is fighting tirelessly to Champion our Great Farmers and American Agriculture, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our now very Secure Border, SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Craig Goldman has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR CRAIG — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.675696+00:00",
-      "event_id": "f4e6d7b0a175852638703898",
-      "action_reaction": {
-        "event_id": "f4e6d7b0a175852638703898",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "ddac2b625c752d731a9f30a6": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42947",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532336752703536",
-      "title": "Congressman August Pfluger is a Tremendous Champion for Texas’ 11th Congressional District! As the Chairman of the Republican Study Committee, August is doing an incredible job advancing our America First Agenda. He is working hard to Grow our Economy, Cut Taxes and Regulations, Champion our Great F",
-      "published": "Fri, 30 Oct 2026 22:58:54 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman August Pfluger is a Tremendous Champion for Texas’ 11th Congressional District! As the Chairman of the Republican Study Committee, August is doing an incredible job advancing our America First Agenda. He is working hard to Grow our Economy, Cut Taxes and Regulations, Champion our Great F Congressman August Pfluger is a Tremendous Champion for Texas’ 11th Congressional District! As the Chairman of the Republican Study Committee, August is doing an incredible job advancing our America First Agenda. He is working hard to Grow our Economy, Cut Taxes and Regulations, Champion our Great Farmers and American Agriculture, Promote MADE IN THE U.S.A., Ensure American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Strengthen our Incredible Military/Veterans, and Defend our always under siege Second Amendment. August Pfluger has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR AUGUST — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.675543+00:00",
-      "event_id": "ddac2b625c752d731a9f30a6",
-      "action_reaction": {
-        "event_id": "ddac2b625c752d731a9f30a6",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e54c1dc4fad7f8d27378cb94": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42946",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532337299603622",
-      "title": "It is my Great Honor to endorse MAGA Warrior, Chris Gober, who is running to represent the wonderful people of Texas’ 10th Congressional District. A Harvard Law School Graduate, and very successful Lawyer, Chris knows the Wisdom and Courage required to uphold our Constitution, and promote LAW AND OR",
-      "published": "Fri, 30 Oct 2026 22:59:02 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse MAGA Warrior, Chris Gober, who is running to represent the wonderful people of Texas’ 10th Congressional District. A Harvard Law School Graduate, and very successful Lawyer, Chris knows the Wisdom and Courage required to uphold our Constitution, and promote LAW AND OR It is my Great Honor to endorse MAGA Warrior, Chris Gober, who is running to represent the wonderful people of Texas’ 10th Congressional District. A Harvard Law School Graduate, and very successful Lawyer, Chris knows the Wisdom and Courage required to uphold our Constitution, and promote LAW AND ORDER. In Congress, Chris will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Strongly Support our incredible Law Enforcement, Military, and Veterans, and Protect our always under siege Second Amendment. Chris Gober has my Complete and Total Endorsement. GET OUT AND VOTE FOR CHRIS — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.675407+00:00",
-      "event_id": "e54c1dc4fad7f8d27378cb94",
-      "action_reaction": {
-        "event_id": "e54c1dc4fad7f8d27378cb94",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "0064bfe4eea7919746e16c60": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42945",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532337921448926",
-      "title": "It is my Great Honor to endorse America First Patriot Alex Mealer, who is running to represent the incredible people of Texas’ 9th Congressional District. A West Point Graduate, and Combat Decorated Army Bomb Squad Officer, Alex knows the Wisdom and Courage required to Defend our Country, Support ou",
-      "published": "Fri, 30 Oct 2026 22:59:12 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot Alex Mealer, who is running to represent the incredible people of Texas’ 9th Congressional District. A West Point Graduate, and Combat Decorated Army Bomb Squad Officer, Alex knows the Wisdom and Courage required to Defend our Country, Support ou It is my Great Honor to endorse America First Patriot Alex Mealer, who is running to represent the incredible people of Texas’ 9th Congressional District. A West Point Graduate, and Combat Decorated Army Bomb Squad Officer, Alex knows the Wisdom and Courage required to Defend our Country, Support our Military/Veterans, and Ensure PEACE THROUGH STRENGTH. A Graduate of Harvard Business School and Harvard Law School, Alex is also a successful Business Executive who knows the America First Policies necessary to Create GREAT Jobs, Cut Taxes and Regulations, Unleash Innovation, Promote MADE IN THE U.S.A., and Ensure American Energy DOMINANCE. In Congress, she will work hard to Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Safeguard our Elections, and Defend our always under siege Second Amendment. Alex’s opponent, Leticia Gutierrez, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Leticia Gutierrez is Reckless, Radical, and Dangerous! Alex Mealer has my Complete and Total Endorsement to be the next Representative from Texas’ 9th Congressional District. GET OUT AND VOTE FOR ALEX MEALER — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.675211+00:00",
-      "event_id": "0064bfe4eea7919746e16c60",
-      "action_reaction": {
-        "event_id": "0064bfe4eea7919746e16c60",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "5a41e43ac3f7795abf94feac": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42944",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532338413251022",
-      "title": "It is my Great Honor to endorse Jessica Steinmann, who is running to represent the amazing people of Texas’ 8th Congressional District. Jessica is strongly supported by many of the greatest America First Patriots in Texas, including Governor Greg Abbott, Lieutenant Governor Dan Patrick, Senator Ted",
-      "published": "Fri, 30 Oct 2026 22:59:19 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse Jessica Steinmann, who is running to represent the amazing people of Texas’ 8th Congressional District. Jessica is strongly supported by many of the greatest America First Patriots in Texas, including Governor Greg Abbott, Lieutenant Governor Dan Patrick, Senator Ted It is my Great Honor to endorse Jessica Steinmann, who is running to represent the amazing people of Texas’ 8th Congressional District. Jessica is strongly supported by many of the greatest America First Patriots in Texas, including Governor Greg Abbott, Lieutenant Governor Dan Patrick, Senator Ted Cruz, and Congressman Morgan Luttrell, among others! As a former appointee in my First Term, and now, as a Highly Respected Attorney, Jessica continues to prove that she has the Wisdom and Courage necessary to uphold our Constitution, and ensure LAW AND ORDER. In Congress, Jessica will fight tirelessly to Strengthen our Military, Care for our Brave Veterans, Stand with our Law Enforcement, Keep our Border SECURE, Stop Migrant Crime, Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, and Defend our always under siege Second Amendment. Jessica Steinmann has my Complete and Total Endorsement to be the next Representative from Texas’ 8th Congressional District. GET OUT AND VOTE FOR JESSICA STEINMANN — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.675003+00:00",
-      "event_id": "5a41e43ac3f7795abf94feac",
-      "action_reaction": {
-        "event_id": "5a41e43ac3f7795abf94feac",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "7935c359594cb32045ad8796": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42943",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532338919815953",
-      "title": "Congressman Jake Ellzey is an America First Patriot who is doing an incredible job representing Texas’ 6th Congressional District! A former Navy fighter pilot and Combat Veteran, Jake knows the Wisdom and Courage required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE T",
-      "published": "Fri, 30 Oct 2026 22:59:27 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Jake Ellzey is an America First Patriot who is doing an incredible job representing Texas’ 6th Congressional District! A former Navy fighter pilot and Combat Veteran, Jake knows the Wisdom and Courage required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE T Congressman Jake Ellzey is an America First Patriot who is doing an incredible job representing Texas’ 6th Congressional District! A former Navy fighter pilot and Combat Veteran, Jake knows the Wisdom and Courage required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, he is working hard to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Grow our Economy, and Protect our always under siege Second Amendment. Jake Ellzey has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JAKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.674836+00:00",
-      "event_id": "7935c359594cb32045ad8796",
-      "action_reaction": {
-        "event_id": "7935c359594cb32045ad8796",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12427,9 +12415,16 @@
     "45ea947704ba07f6f6831a29": "2026-11-06T18:22:30.541781+00:00",
     "55dc05ab6915f760a77f4714": "2026-11-07T09:51:01.443713+00:00",
     "70079fc92de56f04887479dd": "2026-11-07T20:07:18.940984+00:00",
-    "b5bcbe95005519e7f53462af": "2026-11-07T20:07:18.941365+00:00"
+    "b5bcbe95005519e7f53462af": "2026-11-07T20:07:18.941365+00:00",
+    "91dc6fd3521f8bab53099fb2": "2026-11-07T23:37:24.996820+00:00",
+    "7594c8fc168b8676e48f8537": "2026-11-07T23:37:24.996963+00:00",
+    "c11f21fda47e951be02989fa": "2026-11-07T23:37:24.997090+00:00",
+    "6cd8fe75d47cbf3a2f4087f8": "2026-11-07T23:37:24.997250+00:00",
+    "6974af1e615bae7fe540141c": "2026-11-07T23:37:24.997358+00:00",
+    "3e4190e62a81433d271dc5e8": "2026-11-07T23:37:24.997502+00:00",
+    "400702d6cc01b700c4442a7f": "2026-11-07T23:37:24.997629+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-07T20:07:18.962195+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-07T23:37:25.008156+00:00"
   }
 }
