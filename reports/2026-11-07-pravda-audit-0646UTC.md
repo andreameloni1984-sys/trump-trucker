@@ -10,7 +10,7 @@
 - GAGARIN ha prodotto tre WATCH direzionali nel monitor di sabato: WTI SHORT, Mais LONG, Argento LONG. Tutte le commodity erano `MARKET_CLOSED`; nessuna entry/SL/TP/ATR e nessuna autorizzazione di ingresso.
 - Ledger del 7 novembre: **45 record, 45 firme uniche, zero duplicati**. Nessun nuovo record: i messaggi #715/#716 e il board #3711 erano già registrati.
 - **0 fill verificati, 0 SL/TP verificati, win rate e average R N/D.** Non è disponibile un campione di trade con outcome verificabile.
-- Nuovo rilievo di sicurezza operativa: PR draft #231 ha un commento Cloudflare che segnala un build del servizio `telegram-github-bridge/production` in stato *In progress*. PRAVDA non ha avviato né approvato quel build; l'esito finale non è verificato.
+- Nuovo rilievo di sicurezza operativa: PR draft #231 ha un commento Cloudflare che segnala un build del servizio `telegram-github-bridge/production` **fallito** sul commit `047abbc8` (stato aggiornato alle 06:50 UTC). PRAVDA non ha avviato né approvato quel build.
 
 ## 1. GitHub Actions e cron
 
@@ -123,7 +123,7 @@ Su main, [engine/feedback.py](https://github.com/andreameloni1984-sys/commodity-
 | GAGARIN #181 / #184 | OPEN, non integrate | Provenienza quote nel riepilogo e distinzione API acceptance/device delivery. |
 
 ### Rilievo Cloudflare
-Le timeline di PR #204, #223 e #225 riportano build Cloudflare per `telegram-github-bridge/production` falliti. La timeline di PR #231 riporta il build per lo stesso servizio/target in stato *In progress* sul commit `047abbc8` alle 06:47:57 UTC. PRAVDA non ha avviato questi build, non ha fatto merge/deploy e non ha accesso al pannello Cloudflare; l'esito finale del build #231 non è verificato. La presenza di build production su branch draft richiede verifica delle regole Git integration prima di ulteriori push.
+Le timeline di PR #204, #223 e #225 riportano build Cloudflare per `telegram-github-bridge/production` falliti. La timeline di PR #231 riporta il build per lo stesso servizio/target come *In progress* alle 06:47:57 UTC e poi **Deployment failed** alle 06:50 UTC sul commit `047abbc8` ([commento Cloudflare](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/231#issuecomment-6703548421)). PRAVDA non ha avviato questi build, non ha fatto merge/deploy e non ha accesso al pannello Cloudflare. I build production su branch draft richiedono verifica delle regole Git integration prima di ulteriori push.
 
 ### Perimetro Silver
 La richiesta precedente di escludere Silver dalla scansione non risulta applicata al monitor completo: main ha ancora Argento nella classifica; PR #223 lo esclude soltanto dal nuovo M5 osservativo ma dichiara che resta nel wider universe; PR #231 include Silver nell'universo completo di otto strumenti. PRAVDA ha segnalato il mismatch nel commento [PR #231 #6703560974](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/231#issuecomment-6703560974). Nessuna modifica a strategia o codice è stata eseguita.
