@@ -1,14 +1,66 @@
 {
   "events": {},
-  "updated_at": "2026-11-07T02:57:31.194056+00:00",
+  "updated_at": "2026-11-07T09:51:01.503631+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "6821205a441452990a80a40c",
+    "TRUTH_ARCHIVE": "ce679ecd83664e21e503141d",
     "OGE": "4ba8b013bbfcc549bd18bb49"
   },
   "intelligence_history": {
+    "55dc05ab6915f760a77f4714": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43499",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117572971236611756",
+      "title": "Quote post from November 7, 2026",
+      "published": "Sat, 07 Nov 2026 03:12:47 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 7, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117572970506667519 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T09:51:01.443735+00:00",
+      "event_id": "55dc05ab6915f760a77f4714",
+      "action_reaction": {
+        "event_id": "55dc05ab6915f760a77f4714",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ce679ecd83664e21e503141d": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "POLITICAL_CAMPAIGN"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 6, 2026, 10:12 PM Original Post Donald J. Trump @realDonaldTrump · November 6, 2026, 10:12 PM Original Post Donald J. Trump @realDonaldTrump · November 6, 2026, 10:12 PM Original Post Donald J. Trump @realDonaldTrump · November 6, 2026, 10:11 PM Original Post Donald J. Trump @realDonaldTrump · November 6, 2026, 1:51 PM Original Post I am pleased to announce that Mr. Stephen Miller, the current Deputy Chief of Staff of the Trump Administration, and one of my most trusted advisors, will become the Chief of Staff starting Monday, November 9, 2026. Susie Wiles, who has done an outstanding job, will be moving over to the Trump Political Operation. I want to thank her for her service as Chief of Staff — She has done a great job! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 6, 2026, 1:09 PM Original Post Israel and, in fact, the entire Middle East, WOULD NOT EXIST TODAY if I did not stop Iran from having a Nuclear Weapon. Nobody wants to say that, but everybody knows it’s true! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 6, 2026, 1:05 PM Original Post MAGA Warrior Joe Gruters, who has been with us from the very beginning, is running to continue as Chairman of the Republican National Committee. As Chairman, Joe turned the RNC into an efficient, focused, and powerful machine that will continue to empower the America First Agenda for many years to come. As State Senator and Chairman of the Republican Party of Florida, Joe helped us deliver massive and historic Victories across the State, including my three BIG WINS in 2016, 2020, and 2024! Joe was the Chairman of Florida when I won that Great State by the Highest Vote Margin in History, as we then went on to win the 2024 Presidential Election. As Sarasota County Chairman, Joe named me Statesman of the Year in both 2012 and 2015 — The only person to ever win it two times! Joe Gruters should return as Chairman of the RNC to continue to build our Party, and be a trusted partner as we MAKE AMERICA GREAT AGAIN, and ensure Free and Fair Elections. Republicans everywhere should support him as he continues his mission at the RNC. Joe is 100% America First, the Grassroots LOVES him, and I know he will do an incredible job in 2028, and secure Great Success for Republicans all across our Country. Joe has my Complete and Total Endorsement — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 6, 2026, 7:01 AM Original Post As President, I am 100% in favor of Super Intelligence (SI), and will work with the many States in the U.S. that want to become RICH by having them. They are GOLD, and only foolish leadership will say “NO” to the riches they bring! President DJT Donald J. Trump @realDonaldTrump · November 6, 2026, 6:48 AM Original Post NEWSMAX: “Trump is a Winner, and he’s right on Iran!” Donald J. Trump @realDonaldTrump · November 5, 2026, 7:14 PM Original Post I JUST WASN’T ON THE BALLOT. IF I WERE, WE WOULD HAVE WON IN A LANDSLIDE! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 5, 2026, 7:02 PM Original Post The Stock Market crashed today because the Dumocrats had a big Tuesday — So sad to see, you only have yourselves to blame! President DONALD J. TRUMP Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-07T09:51:00.917058+00:00",
+      "event_id": "ce679ecd83664e21e503141d",
+      "action_reaction": {
+        "event_id": "ce679ecd83664e21e503141d",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
     "6821205a441452990a80a40c": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -11695,55 +11747,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "e1de0342e0d40ddefcbcff72": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42925",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532330926758881",
-      "title": "Congresswoman Beth Van Duyne is a fantastic Champion for the Great People of Texas’ 24th Congressional District! A former appointee in my First Administration, where she worked hard to advance our America First Agenda, Beth is now a very distinguished and highly respected Congresswoman. In Congress,",
-      "published": "Fri, 30 Oct 2026 22:57:25 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congresswoman Beth Van Duyne is a fantastic Champion for the Great People of Texas’ 24th Congressional District! A former appointee in my First Administration, where she worked hard to advance our America First Agenda, Beth is now a very distinguished and highly respected Congresswoman. In Congress, Congresswoman Beth Van Duyne is a fantastic Champion for the Great People of Texas’ 24th Congressional District! A former appointee in my First Administration, where she worked hard to advance our America First Agenda, Beth is now a very distinguished and highly respected Congresswoman. In Congress, she is fighting tirelessly to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Ensure LAW AND ORDER, Strengthen our Great Military/Veterans, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Beth Van Duyne has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR BETH — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T02:47:37.099794+00:00",
-      "event_id": "e1de0342e0d40ddefcbcff72",
-      "action_reaction": {
-        "event_id": "e1de0342e0d40ddefcbcff72",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "d4d2e1a46376a85d74cb1665": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42924",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532331415908971",
-      "title": "It is my Great Honor to endorse America First Patriot, Brandon Herrera, who is running to represent the wonderful people of Texas’ 23rd Congressional District! Brandon is strongly supported by many Highly Respected MAGA Warriors in Texas, and Republicans in the U.S. House. His opponent, Katy Padilla",
-      "published": "Fri, 30 Oct 2026 22:57:33 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Brandon Herrera, who is running to represent the wonderful people of Texas’ 23rd Congressional District! Brandon is strongly supported by many Highly Respected MAGA Warriors in Texas, and Republicans in the U.S. House. His opponent, Katy Padilla It is my Great Honor to endorse America First Patriot, Brandon Herrera, who is running to represent the wonderful people of Texas’ 23rd Congressional District! Brandon is strongly supported by many Highly Respected MAGA Warriors in Texas, and Republicans in the U.S. House. His opponent, Katy Padilla Stout, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Katy Padilla Stout is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Brandon will work tirelessly to advance our MAKE AMERICA GREAT AGAIN Agenda. He will fight hard to Grow the Economy, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Safeguard our Elections, Champion School Choice, Keep our Border SECURE, Stop Migrant Crime, Support our Brave Military, Veterans, and Law Enforcement, and Protect our always under siege Second Amendment. Brandon Herrera has my Complete and Total Endorsement to be the next Representative from Texas’ 23rd Congressional District. GET OUT AND VOTE FOR BRANDON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T02:47:37.099626+00:00",
-      "event_id": "d4d2e1a46376a85d74cb1665",
-      "action_reaction": {
-        "event_id": "d4d2e1a46376a85d74cb1665",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12420,9 +12423,10 @@
     "3e3c365a6e4d713bcf628c56": "2026-11-05T18:10:15.164409+00:00",
     "29a7848dcf26419163b5fab4": "2026-11-06T03:39:51.998702+00:00",
     "54703e230490d51d375707d1": "2026-11-06T18:22:30.541505+00:00",
-    "45ea947704ba07f6f6831a29": "2026-11-06T18:22:30.541781+00:00"
+    "45ea947704ba07f6f6831a29": "2026-11-06T18:22:30.541781+00:00",
+    "55dc05ab6915f760a77f4714": "2026-11-07T09:51:01.443713+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-07T02:57:31.174270+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-07T09:51:01.463395+00:00"
   }
 }
