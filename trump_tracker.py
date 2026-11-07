@@ -448,8 +448,14 @@ _CONCRETE_COMMODITY_EVENT = re.compile(
 def _domains_for_public_text(text: str) -> list[str]:
     normalized = str(text or "").lower()
     domains = [
-        domain for domain, keywords in ASSET_KEYWORDS.items()
-        if any(keyword in normalized for keyword in keywords)
+        domain
+        for domain, keywords in ASSET_KEYWORDS.items()
+        if any(
+            re.search(r"\b" + re.escape(keyword) + r"\b", normalized)
+            if keyword in {"ai", "media"}
+            else keyword in normalized
+            for keyword in keywords
+        )
     ]
     # Candidate endorsements and routine praise are political campaign events,
     # not commodity/defense catalysts. Preserve a market tag only when the
