@@ -114,7 +114,7 @@ CI visibile sul branch #192: sei suite funzionali SUCCESS del 5 novembre; il che
 - [SPUTNIK #145](https://github.com/andreameloni1984-sys/trump-trucker/pull/145): OPEN; quote provenance e diagnostica Yahoo proposte, non su main. Due check sul head risultano SUCCESS il 6 novembre.
 - [SPUTNIK #148](https://github.com/andreameloni1984-sys/trump-trucker/pull/148): OPEN; due check SUCCESS il 7 novembre 04:24 UTC; il run produttivo #42331705890 dimostra il caso ripetizione senza nuovo item.
 - [GAGARIN #175](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/175): OPEN; head `7bb944f...`; sette check funzionali SUCCESS, Workers Build `telegram-github-bridge` FAILURE. Main continua a fallire con Telegram API 409: `getUpdates` incompatibile con webhook attivo. La PR propone di saltare il polling senza cancellare webhook e senza acknowledge; non è integrata.
-- [GAGARIN #225](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/225): OPEN, draft; cinque check funzionali SUCCESS alle 04:13 UTC, Workers Build FAILURE. Main conserva `*/15`; nessuna prova runtime del cron offset proposto.
+- [GAGARIN #225](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/225): OPEN, draft; sette check funzionali SUCCESS alle 04:13 UTC, Workers Build FAILURE. Main conserva `*/15`; nessuna prova runtime del cron offset proposto.
 - [GAGARIN #221](https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/221): OPEN, draft; rimozione delle rotte FX residue non integrata. I log correnti mostrano EUR/USD e GBP/USD solo come contesto ausiliario MARKET_CLOSED, non come ingressi commodity.
 
 ## 7. Ledger PRAVDA e statistiche
