@@ -480,3 +480,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Unchanged:** do not flip the catalyst BIAS, do not add filters or thresholds, do not change entry/SL/TP calculation, risk, score, setup status, PAPER authorization or execution. No new provider calls. PAPER ONLY.
 - **Regression:** extend the opposite-direction CFD test to verify the conflict flag and Telegram warning.
 - **Validation:** pending GitHub Actions on this branch. No live quote replay, Telegram delivery, deployment or trade is claimed.
+
+
+## 2026-11-04 — Persist SEC 403 cooldown across collector runs
+
+- **Finding:** live SPUTNIK runs #271 (17:28:04 UTC) and #272 (18:00:49 UTC) both received SEC HTTP 403 and logged a six-hour cooldown, yet the next process requested the endpoint again. The cooldown was held only in process memory and did not survive GitHub Actions process restarts.
+- **Correction on branch:** persist a UTC cooldown deadline in the existing SPUTNIK state, restore it on the next collector process, honor numeric or HTTP-date `Retry-After` (bounded to 24 hours), and preserve a newer cooldown when the main collector saves a state snapshot loaded before the 403.
+- **Scope:** source-request backoff only. No new trading filter, score, ranking, strategy, provider, or execution behavior. Other public feeds and the commodities analysis continue independently. PAPER ONLY.
+- **Regression coverage:** suppression within one process, HTTP-date `Retry-After`, malformed header fallback, persistence across process restart, preservation across a stale state save, and isolation from non-SEC sources.
+- **Validation:** CI must pass on this branch before the change is treated as validated. No merge, deploy, live trade, or Telegram delivery is claimed.
