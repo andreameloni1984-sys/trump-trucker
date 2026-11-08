@@ -1,14 +1,37 @@
 {
   "events": {},
-  "updated_at": "2026-11-08T20:35:57.271795+00:00",
+  "updated_at": "2026-11-08T23:59:52.920038+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "8ce9f1d46713f88570285a73",
+    "TRUTH_ARCHIVE": "14206ad67f74de2585209e6c",
     "OGE": "4ba8b013bbfcc549bd18bb49"
   },
   "intelligence_history": {
+    "14206ad67f74de2585209e6c": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "SPACE",
+        "MEDIA",
+        "RATES_MACRO"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 8, 2026, 6:43 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:41 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:40 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:40 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 3:46 PM Original Post Task Force Iron Gate is in full force and effect in the Islamic Republic of Iran. Coupled with history’s greatest Naval Blockade, very little gets into, or out of, Iran! President DJT Donald J. Trump @realDonaldTrump · November 8, 2026, 11:01 AM Original Post I will be interviewed tonight on “60 Minutes.” Hopefully, they will show all the good things we’ve done over the past 2 years, not even including the First Term, which was incredible. If we get help from the Republican Senate, we can still do things that are unbelievable! President DJT Donald J. Trump @realDonaldTrump · November 8, 2026, 10:14 AM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 8:49 AM Original Post America took a giant step back in History with the results of the last Election — Even the Stock Market, which has been a “ROCKETSHIP” under “TRUMP,” took a one day, 3 Trillion Dollar loss. But have no fear, we will be back, BIGGER AND STRONGER THAN EVER BEFORE! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 7, 2026, 10:53 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:54 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:54 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:48 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:47 PM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-08T23:59:52.394955+00:00",
+      "event_id": "14206ad67f74de2585209e6c",
+      "action_reaction": {
+        "event_id": "14206ad67f74de2585209e6c",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "1502eca09bd530d4145496b7": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11705,34 +11728,10 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "799a18e3f61695205ae0b3c2": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42955",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532329911373783",
-      "title": "Congressman Brandon Gill is a “MAGA” Warrior for the wonderful people of Texas’ 26th Congressional District! I have known Brandon’s family for many years. He has an incredible wife, Danielle, two beautiful children, and a truly great father-in-law, Dinesh D’Souza. As the Freshman Class President in",
-      "published": "Fri, 30 Oct 2026 22:57:10 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Brandon Gill is a “MAGA” Warrior for the wonderful people of Texas’ 26th Congressional District! I have known Brandon’s family for many years. He has an incredible wife, Danielle, two beautiful children, and a truly great father-in-law, Dinesh D’Souza. As the Freshman Class President in Congressman Brandon Gill is a “MAGA” Warrior for the wonderful people of Texas’ 26th Congressional District! I have known Brandon’s family for many years. He has an incredible wife, Danielle, two beautiful children, and a truly great father-in-law, Dinesh D’Souza. As the Freshman Class President in Congress, Brandon is doing a tremendous job advancing our AMERICA FIRST Agenda. He is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Strengthen our Incredible Military/Veterans, Champion American Energy DOMINANCE, and Protect our always under siege Second Amendment. Brandon’s opponent, Steven Shook, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Steven Shook is Reckless, Radical, and Dangerous! Brandon Gill has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR BRANDON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.677190+00:00",
-      "event_id": "799a18e3f61695205ae0b3c2",
-      "action_reaction": {
-        "event_id": "799a18e3f61695205ae0b3c2",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
-  "morning_brief_date": "2026-11-08",
+  "morning_brief_date": "2026-11-09",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
@@ -12420,6 +12419,6 @@
     "1502eca09bd530d4145496b7": "2026-11-08T16:15:42.637167+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-08T20:35:57.204650+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-08T23:59:52.901521+00:00"
   }
 }
