@@ -89,7 +89,7 @@ Le run sono SUCCESS, ma la cadenza osservata non corrisponde ai cron dichiarati.
 
 ### SPUTNIK
 
-- [PR #131 — aggiornamento endpoint White House RSS](https://github.com/andreameloni1984-sys/trump-trucker/pull/131): OPEN, non merged. Cambia `/feed/` in `/news/feed/`. Sul suo head `793ae3b5` risultano SUCCESS sia SPUTNIK ranking tests #639 sia item intelligence tests #252. La run di produzione #288 ha ancora usato il vecchio endpoint e ha registrato HTTPError: il fix non è su main. Il confronto aggiornato con main (`75985955`, dopo il commit documentale PRAVDA) mostra il branch divergente: **1 commit ahead / 2 behind**; i test verdi non dimostrano quindi l'integrazione o la verifica sul main corrente.
+- [PR #131 — aggiornamento endpoint White House RSS](https://github.com/andreameloni1984-sys/trump-trucker/pull/131): OPEN, non merged. Cambia `/feed/` in `/news/feed/`. Sul suo head `793ae3b5` risultano SUCCESS sia SPUTNIK ranking tests #639 sia item intelligence tests #252. La run di produzione #288 ha ancora usato il vecchio endpoint e ha registrato HTTPError: il fix non è su main. La PR conserva come base SHA `63327ccb`, mentre la run di produzione #288 ha eseguito main SHA `1ec9e968`; il branch è quindi basato su una revisione precedente al run produttivo. I test verdi attestano il solo head PR `793ae3b5`, non l'integrazione né la verifica sul main corrente.
 
 ### GAGARIN
 
