@@ -284,6 +284,35 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("e altri 55 eventi", message)
         self.assertEqual(message.count("https://example.gov/news/"), 5)
 
+    def test_recommendation_items_require_new_dated_individual_public_catalyst(self):
+        valid_item = {
+            "event_id": "new-oil-item",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "url": "https://example.gov/oil",
+            "published": "2026-11-07T03:00:00Z",
+        }
+        page_level = {
+            "event_id": "homepage",
+            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            "url": "https://example.gov/",
+            "published": "2026-11-07T03:00:00Z",
+        }
+        missing_permalink = {
+            "event_id": "missing-url",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "published": "2026-11-07T03:00:00Z",
+        }
+
+        self.assertEqual(trump_tracker.item_level_public_catalysts([]), [])
+        self.assertEqual(
+            trump_tracker.item_level_public_catalysts([page_level, missing_permalink]),
+            [],
+        )
+        self.assertEqual(
+            trump_tracker.item_level_public_catalysts([page_level, valid_item]),
+            [valid_item],
+        )
+
     def test_intelligence_digest_suppresses_page_level_and_missing_metadata(self):
         items = [
             {
