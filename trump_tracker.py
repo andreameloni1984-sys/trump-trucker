@@ -1781,9 +1781,10 @@ def main() -> None:
         }
     from zoneinfo import ZoneInfo
     local_now = utc_now().astimezone(ZoneInfo("Europe/Rome"))
-    morning_hour = int(os.getenv("SPUTNIK_MORNING_HOUR", "5"))
     morning_key = local_now.date().isoformat()
-    morning_due = local_now.hour == morning_hour and state.get("morning_brief_date") != morning_key
+    # Daily brief is sent on the first successful scan of the day, not at a fixed hour.
+    # Event/filing alerts above are always dispatched as soon as each run detects them.
+    morning_due = state.get("morning_brief_date") != morning_key
     if morning_due:
         state["morning_brief_date"] = morning_key
     save_state(state)
