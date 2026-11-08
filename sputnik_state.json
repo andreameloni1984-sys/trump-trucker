@@ -1,6 +1,6 @@
 {
   "events": {},
-  "updated_at": "2026-11-08T16:15:42.666484+00:00",
+  "updated_at": "2026-11-08T20:25:32.442464+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -11732,7 +11732,7 @@
     }
   },
   "transactions": {},
-  "morning_brief_date": "2026-10-29",
+  "morning_brief_date": "2026-11-08",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
@@ -12420,6 +12420,6 @@
     "1502eca09bd530d4145496b7": "2026-11-08T16:15:42.637167+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-08T16:15:42.649784+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-08T20:25:32.418850+00:00"
   }
 }
