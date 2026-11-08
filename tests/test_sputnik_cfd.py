@@ -1,5 +1,8 @@
+import contextlib
+import io
 import json
 import unittest
+import urllib.error
 from datetime import datetime, timedelta, timezone
 from types import ModuleType
 from unittest.mock import patch
@@ -156,6 +159,35 @@ class YahooQuoteFallbackTests(unittest.TestCase):
             return_value=self.FakeResponse(self.payload(candle_count=14)),
         ):
             self.assertIsNone(fetch_yahoo_quote("WTI"))
+
+    def test_yahoo_http_error_is_logged_with_provider_symbol_and_status(self):
+        output = io.StringIO()
+        error = urllib.error.HTTPError(
+            "https://query1.finance.yahoo.com/v8/finance/chart/CL=F",
+            403,
+            "Forbidden",
+            hdrs=None,
+            fp=None,
+        )
+        with patch("sputnik_cfd.urllib.request.urlopen", side_effect=error):
+            with contextlib.redirect_stdout(output):
+                quote = fetch_yahoo_quote("WTI")
+        self.assertIsNone(quote)
+        self.assertIn("provider=Yahoo Finance chart", output.getvalue())
+        self.assertIn("symbol=CL=F", output.getvalue())
+        self.assertIn("http_status=403", output.getvalue())
+
+    def test_yahoo_network_error_is_logged_without_exposing_url(self):
+        output = io.StringIO()
+        with patch(
+            "sputnik_cfd.urllib.request.urlopen",
+            side_effect=urllib.error.URLError("connection refused"),
+        ):
+            with contextlib.redirect_stdout(output):
+                quote = fetch_yahoo_quote("WTI")
+        self.assertIsNone(quote)
+        self.assertIn("network_error=str", output.getvalue())
+        self.assertNotIn("https://", output.getvalue())
 
     def test_yahoo_fallback_fails_closed_on_malformed_response(self):
         with patch(
@@ -645,7 +677,16 @@ class SilvCrosscheckTests(unittest.TestCase):
             signal["crosscheck_independence_status"],
             "PROVIDER_REPORTED_NOT_AUDITED",
         )
-        self.assertIn("indipendenza non verificata", format_cfd_signal(signal).lower())
+        message = format_cfd_signal(signal)
+        self.assertIn("indipendenza non verificata", message.lower())
+        self.assertIn("PROVENIENZA QUOTAZIONE", message)
+        self.assertIn("Yahoo Finance chart (1m futures)", message)
+        self.assertIn("SI=F", message)
+        self.assertIn("FUTURES_CONTINUOUS", message)
+        self.assertIn(timestamp, message)
+        self.assertIn("USD / troy_oz", message)
+        self.assertIn("età:", message)
+        self.assertIn("Bid/ask: N/D / N/D", message)
         self.assertEqual(signal["crosscheck_currency"], "USD")
         self.assertEqual(signal["crosscheck_unit"], "troy_oz")
         self.assertEqual(signal["crosscheck_bid"], 48.9)

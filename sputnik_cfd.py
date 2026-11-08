@@ -182,7 +182,26 @@ def fetch_yahoo_quote(instrument: str, timeout: int = 8) -> dict[str, Any] | Non
             "candle_high": high, "candle_low": low,
             "candles": candles,
         }
-    except (OSError, ValueError, KeyError, IndexError, TypeError):
+    except urllib.error.HTTPError as exc:
+        print(
+            f"SPUTNIK: quote source failure | provider=Yahoo Finance chart | "
+            f"symbol={symbol} | http_status={exc.code}",
+            flush=True,
+        )
+        return None
+    except urllib.error.URLError as exc:
+        print(
+            f"SPUTNIK: quote source failure | provider=Yahoo Finance chart | "
+            f"symbol={symbol} | network_error={type(exc.reason).__name__}",
+            flush=True,
+        )
+        return None
+    except (OSError, ValueError, KeyError, IndexError, TypeError) as exc:
+        print(
+            f"SPUTNIK: quote source failure | provider=Yahoo Finance chart | "
+            f"symbol={symbol} | response_error={type(exc).__name__}",
+            flush=True,
+        )
         return None
 
 
@@ -749,6 +768,25 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
     else:
         lines.append("\n🟡 NO_DIRECTION: nessuna tesi LONG/SHORT sostenibile.")
 
+    # Expose the actual quote provenance already retained by build_cfd_signal.
+    # This is audit metadata only; it does not change bias, levels, or execution.
+    quote_fields = (
+        signal.get("quote_provider"), signal.get("quote_symbol"),
+        signal.get("quote_time"), signal.get("quote_market_type"),
+        signal.get("quote_age_seconds"),
+    )
+    if any(value is not None for value in quote_fields):
+        bid = signal.get("quote_bid")
+        ask = signal.get("quote_ask")
+        lines.extend([
+            "",
+            "📡 PROVENIENZA QUOTAZIONE:",
+            f"Fonte: {signal.get('quote_provider') or 'N/D'} | simbolo: {signal.get('quote_symbol') or 'N/D'}",
+            f"Mercato: {signal.get('quote_market_type') or 'N/D'} | contratto: {signal.get('quote_contract_description') or 'scadenza non esposta'}",
+            f"Prezzo di riferimento: {signal.get('entry') if signal.get('entry') is not None else 'N/D'} {signal.get('quote_currency') or ''} / {signal.get('quote_unit') or ''}",
+            f"Timestamp: {signal.get('quote_time') or 'N/D'} | età: {signal.get('quote_age_seconds') if signal.get('quote_age_seconds') is not None else 'N/D'}s | stato: {signal.get('quote_status') or 'N/D'}",
+            f"Bid/ask: {bid if bid is not None else 'N/D'} / {ask if ask is not None else 'N/D'}",
+        ])
     narwhal = signal.get("narwhal_reference") or {}
     if narwhal:
         n_status = narwhal.get("status", "UNKNOWN")
