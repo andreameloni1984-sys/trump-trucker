@@ -42,6 +42,17 @@ SCENARIOS = [
         "source_quality": "Tema energia rilevato; serve verificare che la notizia riguardi davvero l'offerta fisica.",
     },
     {
+        "id": "geopolitical_deescalation",
+        "trigger": ("iran peace deal", "iran agreement", "ceasefire", "sanctions lifted", "diplomatic agreement", "accordo diplomatico"),
+        "event": "De-escalation geopolitica / riduzione del rischio energetico",
+        "candidate": "BRENT e WTI (petrolio); ORO come scenario secondario",
+        "bias": "SHORT condizionale sul petrolio; ORO da rivalutare",
+        "if_then": "Se un accordo verificato riduce concretamente il rischio sui flussi energetici o rimuove sanzioni, valutare SHORT su Brent/WTI solo dopo conferma del prezzo; l'oro può perdere domanda di bene rifugio ma richiede conferma separata.",
+        "confirmation": "Annuncio primario verificato, dettagli su sanzioni/produzione/rotte e reazione coerente di Brent/WTI; verificare USD e rendimenti prima di valutare l'oro.",
+        "invalidation": "Accordo non firmato, smentito, privo di effetti sui flussi fisici o prezzo del petrolio che rompe al rialzo.",
+        "source_quality": "Catalizzatore politico indiretto: non equivale automaticamente a variazione dell'offerta; richiede verifica dei dettagli e del prezzo.",
+    },
+    {
         "id": "defense_escalation",
         "trigger": ("missile", "military strike", "defense spending", "defence spending", "military operation", "defense contract"),
         "event": "Escalation militare o spesa/commessa difesa",
