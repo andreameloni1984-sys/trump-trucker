@@ -13,6 +13,13 @@ class StrictDecisionTests(unittest.TestCase):
     def test_generic_mention_is_not_enough(self):
         self.assertEqual(conditional_plans("A speech mentioned tariffs and trade."), [])
 
+    def test_geopolitical_deescalation_maps_indirectly_to_oil_short(self):
+        rows = conditional_plans("The US and Iran reached a nuclear peace deal and sanctions were lifted.")
+        self.assertTrue(any(row["id"] == "geopolitical_deescalation" for row in rows))
+        plan = next(row for row in rows if row["id"] == "geopolitical_deescalation")
+        self.assertIn("SHORT", plan["bias"])
+        self.assertIn("physical", plan["if_then"])
+
     def test_oil_flow_risk(self):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
         self.assertTrue(any(row["candidate"] == "BRENT (petrolio)" for row in rows))
