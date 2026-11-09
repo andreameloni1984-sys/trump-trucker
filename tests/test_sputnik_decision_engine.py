@@ -18,7 +18,7 @@ class StrictDecisionTests(unittest.TestCase):
         self.assertTrue(any(row["id"] == "geopolitical_deescalation" for row in rows))
         plan = next(row for row in rows if row["id"] == "geopolitical_deescalation")
         self.assertIn("SHORT", plan["bias"])
-        self.assertIn("physical", plan["if_then"])
+        self.assertIn("flussi energetici", plan["if_then"])
 
     def test_oil_flow_risk(self):
         rows = conditional_plans("Iran threatens shipping near Hormuz and oil exports.")
