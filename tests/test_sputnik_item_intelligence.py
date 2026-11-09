@@ -460,6 +460,32 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
 
 
 
+    def test_recent_intelligence_items_selects_newest_records_by_detection_time(self):
+        state = {
+            "intelligence_history": {
+                "newest": {
+                    "event_id": "newest",
+                    "detected_at": "2026-11-09T16:02:16+00:00",
+                },
+                "middle": {
+                    "event_id": "middle",
+                    "detected_at": "2026-11-08T06:01:46+00:00",
+                },
+                "oldest": {
+                    "event_id": "oldest",
+                    "detected_at": "2026-10-31T08:58:05+00:00",
+                },
+            }
+        }
+
+        recent = trump_tracker.recent_intelligence_items(state, limit=2)
+
+        self.assertEqual(
+            [item["event_id"] for item in recent],
+            ["newest", "middle"],
+        )
+
+
     def test_scheduled_workflow_does_not_cancel_inflight_monitor_run(self):
         workflow_path = (
             Path(__file__).resolve().parents[1]

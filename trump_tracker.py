@@ -725,6 +725,21 @@ def gagarin_confirmation_message(result: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def recent_intelligence_items(state: dict[str, Any], limit: int = 30) -> list[dict[str, Any]]:
+    """Return the newest persisted intelligence records by their detection timestamp.
+
+    The capped history is persisted newest-first. Taking values()[-limit:]
+    therefore selects the oldest records once the 500-item cap is reached.
+    Sort explicitly so collector and Telegram commands use the same recent window.
+    """
+    items = list((state.get("intelligence_history") or {}).values())
+    items.sort(
+        key=lambda item: str(item.get("detected_at") or ""),
+        reverse=True,
+    )
+    return items[:max(0, limit)]
+
+
 def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> str | None:
     """Build one compact Telegram digest from dated, item-level public catalysts.
 
@@ -1624,7 +1639,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
         elif command in {"/strumento", "/strumento_da_tradare"}:
             try:
                 from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
-                recent = list((state.get("intelligence_history") or {}).values())[-30:]
+                recent = recent_intelligence_items(state, limit=30)
                 rec = recommend_trading_instrument(recent)
                 msg = format_trading_instrument_message(rec)
                 send_telegram(msg, chat_id=chat_id)
@@ -1640,7 +1655,7 @@ def poll_telegram_commands(state: dict[str, Any]) -> bool:
             try:
                 from sputnik_trading_instrument import recommend_trading_instrument
                 from sputnik_cfd import build_cfd_signal, format_cfd_signal
-                recent = list((state.get("intelligence_history") or {}).values())[-30:]
+                recent = recent_intelligence_items(state, limit=30)
                 rec = recommend_trading_instrument(recent)
                 quotes = state.get("market_quotes") or state.get("quotes") or {}
                 signal = build_cfd_signal(rec, quotes)
@@ -1815,7 +1830,7 @@ def main() -> None:
     # Trading instrument recommendation after catalyst analysis
     try:
         from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
-        recent = list((state.get("intelligence_history") or {}).values())[-30:]
+        recent = recent_intelligence_items(state, limit=30)
         all_findings = recent + (intelligence or [])
         rec = recommend_trading_instrument(all_findings)
         if rec:
