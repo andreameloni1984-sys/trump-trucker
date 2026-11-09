@@ -55,8 +55,8 @@ Ultimi run schedule restituiti dall'endpoint GitHub Actions:
 
 Al cut-off 20:07 UTC:
 - gap collector dal run schedule #295: 4 h 05 min 07 s;
-- gap polling dal run #54: 4 h 23 min 35 s;
-- gap daily summary dal run #12: 5 h 18 min 25 s.
+- gap polling dal run #54: 4 h 23 min 47 s;
+- gap daily summary dal run #12: 5 h 18 min 37 s.
 
 Le CI della PR #156 alle 18:38 UTC non sono run produttivi. Non compare una nuova scansione schedule successiva a #295 nell'elenco `event=schedule` consultato.
 
