@@ -725,19 +725,24 @@ def gagarin_confirmation_message(result: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> str | None:
-    """Build one compact Telegram digest from dated, item-level public catalysts.
-
-    Generic page-level scans are stored for diagnostics but never trigger alerts.
-    A digest is intelligence only, not a market signal.
-    """
-    eligible = [
+def item_level_public_catalysts(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Return new public RSS items carrying the metadata already required by the digest."""
+    return [
         item for item in items
         if item.get("evidence") == "PUBLIC_RSS_ITEM"
         and item.get("event_id")
         and item.get("url")
         and item.get("published")
     ]
+
+
+def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> str | None:
+    """Build one compact Telegram digest from dated, item-level public catalysts.
+
+    Generic page-level scans are stored for diagnostics but never trigger alerts.
+    A digest is intelligence only, not a market signal.
+    """
+    eligible = item_level_public_catalysts(items)
     if not eligible:
         return None
     eligible.sort(key=lambda item: str(item.get("published") or ""), reverse=True)
@@ -1812,24 +1817,27 @@ def main() -> None:
         print(digest)
         send_telegram(digest, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
-    # Trading instrument recommendation after catalyst analysis
-    try:
-        from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
-        recent = list((state.get("intelligence_history") or {}).values())[-30:]
-        all_findings = recent + (intelligence or [])
-        rec = recommend_trading_instrument(all_findings)
-        if rec:
-            instr_msg = format_trading_instrument_message(rec)
-            print(instr_msg)
-            target_chat = str(state.get("telegram_chat_id") or "").strip() or None
-            send_telegram(instr_msg, chat_id=target_chat)
-            from sputnik_cfd import build_cfd_signal, format_cfd_signal
-            quotes = state.get("market_quotes") or state.get("quotes") or {}
-            cfd_message = format_cfd_signal(build_cfd_signal(rec, quotes))
-            print(cfd_message)
-            send_telegram(cfd_message, chat_id=target_chat)
-    except Exception as exc:
-        print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
+    # Do not repeat a recommendation/CFD pair from persisted history on every scan.
+    # Reuse the exact item-level metadata eligibility already used by the news digest.
+    new_public_items = item_level_public_catalysts(intelligence)
+    if new_public_items:
+        try:
+            from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
+            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            all_findings = recent + new_public_items
+            rec = recommend_trading_instrument(all_findings)
+            if rec:
+                instr_msg = format_trading_instrument_message(rec)
+                print(instr_msg)
+                target_chat = str(state.get("telegram_chat_id") or "").strip() or None
+                send_telegram(instr_msg, chat_id=target_chat)
+                from sputnik_cfd import build_cfd_signal, format_cfd_signal
+                quotes = state.get("market_quotes") or state.get("quotes") or {}
+                cfd_message = format_cfd_signal(build_cfd_signal(rec, quotes))
+                print(cfd_message)
+                send_telegram(cfd_message, chat_id=target_chat)
+        except Exception as exc:
+            print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
 
     if gagarin_confirmation:
         message = gagarin_confirmation_message(gagarin_confirmation)

@@ -492,5 +492,33 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("tests/test_sputnik_item_intelligence.py", workflow)
 
 
+    def test_recommendation_items_reuse_digest_item_level_eligibility(self):
+        valid_item = {
+            "event_id": "new-public-item",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "url": "https://example.gov/news/item",
+            "published": "2026-11-08T12:00:00Z",
+        }
+        page_level = {
+            "event_id": "homepage",
+            "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+            "url": "https://example.gov/",
+            "published": "2026-11-08T12:00:00Z",
+        }
+        missing_permalink = {
+            "event_id": "missing-url",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "published": "2026-11-08T12:00:00Z",
+        }
+        self.assertEqual(
+            trump_tracker.item_level_public_catalysts([page_level, missing_permalink]),
+            [],
+        )
+        self.assertEqual(
+            trump_tracker.item_level_public_catalysts([page_level, valid_item]),
+            [valid_item],
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
