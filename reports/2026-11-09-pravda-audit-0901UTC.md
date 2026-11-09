@@ -203,3 +203,12 @@ Lacune decisive:
 7. Valutare gli esiti soltanto con prezzi successivi dello stesso identico strumento e contratto, rispettando la sequenza SL/TP o ESITO NON VERIFICABILE.
 
 **PAPER ONLY.** Nessuna modifica a codice applicativo, strategia, filtri, punteggi o rischio; nessun merge/deploy, ordine reale, intervento su secret/Render, servizio a pagamento, accesso Trading212 o prova di consegna Telegram al dispositivo.
+
+## 7. Segnalazioni PRAVDA registrate
+
+Senza modificare codice o cron, sono stati aggiunti commenti audit a PR già esistenti:
+- SPUTNIK PR #138: commento #6736303210 con i gap misurati del collector (6 h 01 min 55 s) e del polling (5 h 58 min 53 s), oltre al ritardo di rilevamento del post S.5653 (circa 5 h 55 min 58 s). https://github.com/andreameloni1984-sys/trump-trucker/pull/138#issuecomment-6736303210
+- GAGARIN PR #225: commento #6736304007 con il gap tra monitor #171 e #172 (6 h 29 min 27 s). https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/225#issuecomment-6736304007
+- GAGARIN PR #241: rettifica di perimetro XAG nel commento #6736254808. https://github.com/andreameloni1984-sys/commodity-news-scanner/pull/241#issuecomment-6736254808
+
+I tre commenti sono rilievi documentali; non modificano i branch applicativi, lo stato DRAFT delle PR, i workflow o il rischio.
