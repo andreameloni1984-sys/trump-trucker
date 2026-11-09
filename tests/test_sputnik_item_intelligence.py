@@ -22,7 +22,7 @@ FEED = b"""<rss><channel><item>
 class SputnikItemIntelligenceTests(unittest.TestCase):
     def test_daily_brief_header_does_not_claim_a_fixed_hour(self):
         message = trump_tracker.telegram_morning_message({})
-        self.assertTrue(message.startswith("🛰️ SPUTNIK — BRIEF GIORNALIERO\\n"))
+        self.assertEqual(message.splitlines()[0], "🛰️ SPUTNIK — BRIEF GIORNALIERO")
         self.assertNotIn("05:00", message.splitlines()[0])
 
 
