@@ -135,11 +135,12 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 self.assertEqual(findings, [])
                 self.assertEqual(state.get("intelligence_items"), {})
 
-    def test_default_feeds_include_item_level_trump_archive_rss(self):
+    def test_default_feeds_include_current_white_house_and_trump_archive_item_rss(self):
         with patch.dict(os.environ, {}, clear=True):
             feeds = trump_tracker._configured_rss_feeds()
 
-        self.assertIn("https://www.whitehouse.gov/feed/", feeds)
+        self.assertIn("https://www.whitehouse.gov/news/feed/", feeds)
+        self.assertNotIn("https://www.whitehouse.gov/feed/", feeds)
         self.assertIn("https://www.trumpstruth.org/feed", feeds)
 
     def test_page_level_archive_message_warns_not_an_individual_catalyst(self):
