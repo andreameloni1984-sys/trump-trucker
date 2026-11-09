@@ -13,6 +13,10 @@ RULES = {
         "actions": ("signed", "signs", "reached", "reach", "agreed", "agrees", "announced", "announce", "finalized", "firmato", "raggiunto", "concordato", "suspended", "suspends", "paused", "pause", "sospende", "sospesi", "proroga", "estende"),
         "topics": ("trade deal", "trade agreement", "accordo commerciale", "intesa commerciale", "tariff pause", "pausa sui dazi", "dazi", "tariff"),
     },
+    "geopolitical_deescalation": {
+        "actions": ("agreed", "agrees", "signed", "signs", "reached", "reaches", "announced", "announces", "lifted", "eased", "suspended", "suspends", "reopened", "reopens", "resume", "resumes", "concordato", "firmato", "raggiunto", "revocate", "allentate", "riaperto"),
+        "topics": ("iran", "tehran", "nuclear deal", "peace deal", "ceasefire", "sanctions", "hormuz", "strait", "accordo", "cessate il fuoco", "sanzioni"),
+    },
     "oil_supply_disruption": {
         "actions": ("blocks", "blocked", "closes", "closed", "disrupts", "disrupted", "interrupts", "interrupted", "attacks", "attacked", "attack", "attacking", "hitting", "hit", "hits", "strike", "strikes", "struck", "escalates", "escalated", "threatens", "threatened", "halts", "halted", "suspends", "suspended", "interrompe", "interrotto", "blocca", "bloccato", "chiude", "chiusura", "attacca", "attaccato", "minaccia", "minacciato"),
         "topics": ("tanker", "shipping", "exports", "export", "supply", "hormuz", "strait", "petrolio", "flussi", "esportazioni", "petroliere", "offerta", "oil prices", "oil price", "saudi arabia", "houthi", "houthis", "diesel", "energy flows"),
