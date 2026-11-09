@@ -1,14 +1,102 @@
 {
   "events": {},
-  "updated_at": "2026-11-08T23:59:52.920038+00:00",
+  "updated_at": "2026-11-09T06:01:46.594274+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "14206ad67f74de2585209e6c",
+    "TRUTH_ARCHIVE": "55b04d8ae8313e6966726f7d",
     "OGE": "4ba8b013bbfcc549bd18bb49"
   },
   "intelligence_history": {
+    "116693b482d48598121636ce": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43530",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117583463398468108",
+      "title": "Quote post from November 8, 2026",
+      "published": "Sun, 08 Nov 2026 23:41:05 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 8, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117583459253586462 View image Quoted Donald J. Trump View image View video View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-09T06:01:46.562982+00:00",
+      "event_id": "116693b482d48598121636ce",
+      "action_reaction": {
+        "event_id": "116693b482d48598121636ce",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "fb899eaac1b9401e612b04bf": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43532",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117583560661477967",
+      "title": "I am urging all Senators to vote for The American Affordability and Jobs Act (S. 5653)! This Bill is a BIG WIN for U.S. ENERGY INDEPENDENCE and DOMINANCE.This Landmark Permitting Reform Legislation will codify our America First Energy Agenda, and ensure that we can build Pipelines, Mines, and Power",
+      "published": "Mon, 09 Nov 2026 00:05:49 +0000",
+      "domains": [
+        "ENERGY",
+        "AI_TECH"
+      ],
+      "text": "I am urging all Senators to vote for The American Affordability and Jobs Act (S. 5653)! This Bill is a BIG WIN for U.S. ENERGY INDEPENDENCE and DOMINANCE.This Landmark Permitting Reform Legislation will codify our America First Energy Agenda, and ensure that we can build Pipelines, Mines, and Power I am urging all Senators to vote for The American Affordability and Jobs Act (S. 5653)! This Bill is a BIG WIN for U.S. ENERGY INDEPENDENCE and DOMINANCE. This Landmark Permitting Reform Legislation will codify our America First Energy Agenda, and ensure that we can build Pipelines, Mines, and Power Plants faster than ever before, lowering Energy Costs for American Families, and creating High Paying American Jobs. This Legislation also codifies my RATEPAYER PROTECTION PLEDGE, ensuring Data Centers build and pay for their own Electricity, and help invest in their local communities. Remember, China will take any Data Center that we don’t want, and pay lots of money for it. We’re Number One — Let’s keep it that way! Call your Senator TODAY, and tell them to vote YES. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-09T06:01:46.562743+00:00",
+      "event_id": "fb899eaac1b9401e612b04bf",
+      "action_reaction": {
+        "event_id": "fb899eaac1b9401e612b04bf",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "55b04d8ae8313e6966726f7d": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "SPACE",
+        "MEDIA",
+        "RATES_MACRO"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 8, 2026, 7:05 PM Original Post I am urging all Senators to vote for The American Affordability and Jobs Act (S. 5653)! This Bill is a BIG WIN for U.S. ENERGY INDEPENDENCE and DOMINANCE. This Landmark Permitting Reform Legislation will codify our America First Energy Agenda, and ensure that we can build Pipelines, Mines, and Power Plants faster than ever before, lowering Energy Costs for American Families, and creating High Paying American Jobs. This Legislation also codifies my RATEPAYER PROTECTION PLEDGE, ensuring Data Centers build and pay for their own Electricity, and help invest in their local communities. Remember, China will take any Data Center that we don’t want, and pay lots of money for it. We’re Number One — Let’s keep it that way! Call your Senator TODAY, and tell them to vote YES. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 8, 2026, 6:43 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:41 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:40 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:40 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 3:46 PM Original Post Task Force Iron Gate is in full force and effect in the Islamic Republic of Iran. Coupled with history’s greatest Naval Blockade, very little gets into, or out of, Iran! President DJT Donald J. Trump @realDonaldTrump · November 8, 2026, 11:01 AM Original Post I will be interviewed tonight on “60 Minutes.” Hopefully, they will show all the good things we’ve done over the past 2 years, not even including the First Term, which was incredible. If we get help from the Republican Senate, we can still do things that are unbelievable! President DJT Donald J. Trump @realDonaldTrump · November 8, 2026, 10:14 AM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 8:49 AM Original Post America took a giant step back in History with the results of the last Election — Even the Stock Market, which has been a “ROCKETSHIP” under “TRUMP,” took a one day, 3 Trillion Dollar loss. But have no fear, we will be back, BIGGER AND STRONGER THAN EVER BEFORE! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 7, 2026, 10:53 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:54 PM Original Post Donald J. Trump @realDonaldTrump · November 7, 2026, 4:54 PM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-09T06:01:46.427012+00:00",
+      "event_id": "55b04d8ae8313e6966726f7d",
+      "action_reaction": {
+        "event_id": "55b04d8ae8313e6966726f7d",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
     "14206ad67f74de2585209e6c": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -11654,80 +11742,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "ec2b5b4872d4eb8677ed1ef6": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42958",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532328347752802",
-      "title": "Congressman John “Judge” Carter is a Fantastic Representative for the Great People of Texas’ 31st Congressional District! “Judge” served over 20 years as a District Court Judge in Williamson County prior to becoming a very distinguished and respected U.S. Congressman. He is working tirelessly to Gro",
-      "published": "Fri, 30 Oct 2026 22:56:46 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman John “Judge” Carter is a Fantastic Representative for the Great People of Texas’ 31st Congressional District! “Judge” served over 20 years as a District Court Judge in Williamson County prior to becoming a very distinguished and respected U.S. Congressman. He is working tirelessly to Gro Congressman John “Judge” Carter is a Fantastic Representative for the Great People of Texas’ 31st Congressional District! “Judge” served over 20 years as a District Court Judge in Williamson County prior to becoming a very distinguished and respected U.S. Congressman. He is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment. Judge Carter has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JUDGE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.677751+00:00",
-      "event_id": "ec2b5b4872d4eb8677ed1ef6",
-      "action_reaction": {
-        "event_id": "ec2b5b4872d4eb8677ed1ef6",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "9d305203b62120bb183c4075": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42957",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532328901843473",
-      "title": "It is my Great Honor to endorse America First Patriot, Tano Tijerina, who is running to represent the wonderful people of Texas’ 28th Congressional District. A Great and Highly Respected Hispanic Judge, very successful Businessman, and Rancher, Tano Tijerina has dedicated his life to serving his Com",
-      "published": "Fri, 30 Oct 2026 22:56:54 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Tano Tijerina, who is running to represent the wonderful people of Texas’ 28th Congressional District. A Great and Highly Respected Hispanic Judge, very successful Businessman, and Rancher, Tano Tijerina has dedicated his life to serving his Com It is my Great Honor to endorse America First Patriot, Tano Tijerina, who is running to represent the wonderful people of Texas’ 28th Congressional District. A Great and Highly Respected Hispanic Judge, very successful Businessman, and Rancher, Tano Tijerina has dedicated his life to serving his Community. In Congress, he will fight tirelessly to Grow our Economy, Promote our Amazing Farmers and Ranchers, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. His opponent, Henry Cuellar, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Henry Cuellar is Reckless, Radical, and Dangerous! Tano Tijerina has my Complete and Total Endorsement to be the next Representative from Texas’ 28th Congressional District. GET OUT AND VOTE FOR TANO — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.677550+00:00",
-      "event_id": "9d305203b62120bb183c4075",
-      "action_reaction": {
-        "event_id": "9d305203b62120bb183c4075",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "9a1e4e4a3e52e2aa5661c842": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42956",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532329400046252",
-      "title": "Congressman Michael Cloud is a Tremendous Advocate for the Great People of Texas’ 27th Congressional District! As a Member of the POWERFUL House Appropriations Committee, Michael is fighting hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMI",
-      "published": "Fri, 30 Oct 2026 22:57:02 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman Michael Cloud is a Tremendous Advocate for the Great People of Texas’ 27th Congressional District! As a Member of the POWERFUL House Appropriations Committee, Michael is fighting hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMI Congressman Michael Cloud is a Tremendous Advocate for the Great People of Texas’ 27th Congressional District! As a Member of the POWERFUL House Appropriations Committee, Michael is fighting hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, Support our Brave Military/Veterans, and Defend our always under siege Second Amendment. Michael’s opponent, Tanya Lloyd, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Tanya Lloyd is Reckless, Radical, and Dangerous! Michael Cloud has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MICHAEL — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.677371+00:00",
-      "event_id": "9a1e4e4a3e52e2aa5661c842",
-      "action_reaction": {
-        "event_id": "9a1e4e4a3e52e2aa5661c842",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12416,9 +12430,11 @@
     "3e4190e62a81433d271dc5e8": "2026-11-07T23:37:24.997502+00:00",
     "400702d6cc01b700c4442a7f": "2026-11-07T23:37:24.997629+00:00",
     "f3dd016d2288efc8d1a89d79": "2026-11-08T09:31:37.313474+00:00",
-    "1502eca09bd530d4145496b7": "2026-11-08T16:15:42.637167+00:00"
+    "1502eca09bd530d4145496b7": "2026-11-08T16:15:42.637167+00:00",
+    "fb899eaac1b9401e612b04bf": "2026-11-09T06:01:46.562730+00:00",
+    "116693b482d48598121636ce": "2026-11-09T06:01:46.562974+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-08T23:59:52.901521+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-09T06:01:46.575497+00:00"
   }
 }
