@@ -1,14 +1,35 @@
 {
   "events": {},
-  "updated_at": "2026-11-09T15:33:11.348086+00:00",
+  "updated_at": "2026-11-09T16:02:16.818516+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
     "TRUTH_ARCHIVE": "e33e6b73692f905040ceb12c",
-    "OGE": "4ba8b013bbfcc549bd18bb49"
+    "OGE": "d6b0ef156154af76e574dd50"
   },
   "intelligence_history": {
+    "d6b0ef156154af76e574dd50": {
+      "source": "OGE",
+      "url": "https://www.oge.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Skip to Main Content An official website of the United States government Here’s how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. U.S. Office of Government Ethics Menu About Resources for the Public Resources for Ethics Officials Resources for Federal Employees News Site Index Forms Library Contact Us Search Public service is a public trust, requiring employees to place loyalty to the Constitution, the laws and ethical principles above private gain Learn about our mission Popular Tasks Find an Individual's Ethics Document Find an Agency's Ethics Program Document Find the Ethics Rules I want to... Find a financial disclosure report for an individual or Presidential candidate Learn more about the individual disclosures available on OGE’s website Learn more about the ethics documents available on OGE’s website Find contact information to access ethics documents at other agencies Research an ethics topic Find an ethics statute or regulation Find where to report misconduct by a federal employee File a FOIA Request I want to find information about being a PAS Nominee Go OGE Leadership Leadership Notes OGE uses Leadership Notes to communicate with the public. Read More What's New News | 11/09/2026 OGE Issues Updates to the Public Financial Disclosure Guide News | 11/06/2026 OGE Seeks Public Input on Forms Related to Financial Disclosure The U.S. Office of Government Ethics (OGE) is hosting a public meeting to obtain input regarding potential improvements to the OGE Form 278e and the OGE Form 450 as part of a form revision planning process that will precede the next requested renewal of these forms under the Paperwork Reduction Act. The next scheduled renewal is in August of 2027. Legal Advisory | 11/02/2026 LA-26-01: Increased Gifts and Travel Reimbursements Reporting Thresholds for Financial Disclosure Reports and Nonsponsor Widely Attended Gatherings Gift Exception Ceiling This Legal Advisory discusses the recent amendments to the gifts and travel reimbursements reporting thresholds at 5 C.F.R. §§ 2634.304 and 2634.907(g) and the widely attended gatherings gift exception ceiling for nonsponsor gifts of free attendance at 5 C.F.R. § 2635.204(g)(3). Oversight | 10/27/2026 OGE Issues a Program Review Report for the Department of Education (ED) OGE reviewed ED's ethics program and issued 14 recommendations. News | 10/27/2026 Today, OGE Met with the Leaders of Executive Branch Ethics Programs Today, OGE leadership and staff met virtually with more than 100 leaders of executive branch ethics programs to discuss current events in the executive branch ethics community. News | 10/06/2026 OGE Holds an Orientation for New Designated Agency Ethics Officials and Alternates View All Featured Resources Resources for Nominees to Senate-Confirmed Positions This webpage features resources for prospective nominees to Presidentially appointed, Senate-confirmed (PAS) positions. Guide for Nominees (2024) (PDF) This Guide is for prospective nominees to Senate-confirmed Presidential appointment (PAS) positions and those confirmed to PAS positions. It is organized to take a nominee through the life cycle of a PAS official. It includes sections explaining what to expect during the nominee process, how to have an ethical start to Federal service, how to be a leader in ethics, and what to consider when planning to leave Federal service. Confidential Financial Disclosure Guide OGE maintains a guide to assist filers and reviewers of confidential financial disclosure reports. Public Financial Disclosure Guide This Guide assists filers and reviewers of public financial disclosure reports. Analyzing Potential Conflicts of Interests These guidance documents provide conflicts of interest analyses for various types of employment interests, investment interests, and liabilities. Compilation of Federal Ethics Laws (PDF) The Compilation contains the most pertinent laws under the jurisdiction of the executive branch ethics program as well as related statutes on which ethics officials are often called upon to provide advice to agency employees. Summary of the Standards of Conduct (PDF) This resource provides a summary of the Standards of Conduct for Employees of Ethical Conduct which apply to every executive branch employee. Nominee Financial Disclosure Review During Presidential Transitions (Before and After Inauguration) (PDF) This document provides key information and data about the nominee financial disclosure review process including during and after the period of a Presidential Transition. Quicklinks Agency Ethics Program Contact List Press Contacts Forms Library FAQs – Public Financial Disclosure 2026 Dates and Deadlines (PDF) Form 450 (PDF) Institute for Ethics in Government Return to top Accessibility | Budget and Performance | FOIA | Information Quality | EEO/No Fear Act | Privacy | Rulemaking | Site Index Have a question about government services? Contact USA.gov Regulations.gov Twitter YouTube U.S. Office of Government Ethics contactoge@oge.gov | (202) 482-9300",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-09T16:02:16.531408+00:00",
+      "event_id": "d6b0ef156154af76e574dd50",
+      "action_reaction": {
+        "event_id": "d6b0ef156154af76e574dd50",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "e33e6b73692f905040ceb12c": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -11724,31 +11745,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "29fc26fdb00f87456219d49e": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42960",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532327304228179",
-      "title": "It is my Great Honor to endorse America First Patriot, Eric Flores, who is running to represent the wonderful people of Texas’ 34th Congressional District. A Brave U.S. Army Veteran, and former Criminal Prosecutor, Eric knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support",
-      "published": "Fri, 30 Oct 2026 22:56:30 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Eric Flores, who is running to represent the wonderful people of Texas’ 34th Congressional District. A Brave U.S. Army Veteran, and former Criminal Prosecutor, Eric knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support It is my Great Honor to endorse America First Patriot, Eric Flores, who is running to represent the wonderful people of Texas’ 34th Congressional District. A Brave U.S. Army Veteran, and former Criminal Prosecutor, Eric knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support our Great Heroes in Law Enforcement, and Champion our Military and Veterans. In Congress, Eric will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our now very Secure Border, SECURE, Stop Migrant Crime, and Protect our always under siege Second Amendment. His opponent, Vicente Gonzalez, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Vicente Gonzalez is Reckless, Radical, and Dangerous! Eric Flores has my Complete and Total Endorsement to be the next Congressman from Texas’ 34th Congressional District. GET OUT AND VOTE FOR ERIC — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.678139+00:00",
-      "event_id": "29fc26fdb00f87456219d49e",
-      "action_reaction": {
-        "event_id": "29fc26fdb00f87456219d49e",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12442,6 +12438,6 @@
     "116693b482d48598121636ce": "2026-11-09T06:01:46.562974+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-09T15:33:11.338504+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-09T16:02:16.805339+00:00"
   }
 }
