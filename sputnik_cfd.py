@@ -512,6 +512,21 @@ def build_cfd_signal(
         "score": score,
         "reason": reason,
         "confirmation": confirmation,
+        # Preserve the analyst's existing 5m assessment in the CFD companion.
+        # This is display metadata only; it does not change bias or execution.
+        "technical_direction": (
+            str(recommendation.get("technical_bias") or "").upper()
+            if str(recommendation.get("technical_bias") or "").upper() in {"LONG", "SHORT"}
+            else None
+        ),
+        "technical_timeframe": recommendation.get("technical_timeframe") or "5m",
+        "technical_reason": recommendation.get("technical_reason") or "",
+        "technical_alignment": (
+            "ALIGNS" if str(recommendation.get("technical_bias") or "").upper() == direction
+            else "CONTRASTS" if str(recommendation.get("technical_bias") or "").upper() in {"LONG", "SHORT"} and directional
+            else "NOT_ASSESSED"
+        ),
+        "catalyst_alignment": recommendation.get("catalyst_alignment") or "N/D",
         "status": "EARLY_BIAS" if directional else "NO_DIRECTION",
         "bias_status": "DIRECTIONAL_BIAS" if directional else "NO_DIRECTION",
         "setup_status": "EARLY_BIAS" if directional else "NO_DIRECTION",
@@ -727,7 +742,7 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"📈 STRUMENTO: {signal.get('instrument')}",
         f"🧭 BIAS: {direction}",
         f"🎯 SETUP: {setup_status}",
-        f"🧭 TECNICA: {signal.get('technical_direction', 'N/D')} ({signal.get('technical_alignment', 'NOT_ASSESSED')})",
+        f"🧭 TECNICA: {signal.get('technical_direction', 'N/D')} ({signal.get('technical_timeframe', 'N/D')} | {signal.get('technical_alignment', 'NOT_ASSESSED')})",
         f"🧪 D-L-A: {signal.get('setup_direction', 'N/D')} ({signal.get('setup_alignment', 'NOT_ASSESSED')})",
         *([f"🚨 {signal['market_direction_warning']} — ipotesi news non confermata dal prezzo."] if signal.get("market_direction_conflict") else []),
         f"🧪 TRADE PAPER: {paper_status}",
