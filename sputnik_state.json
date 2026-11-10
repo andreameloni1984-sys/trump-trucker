@@ -1,14 +1,177 @@
 {
   "events": {},
-  "updated_at": "2026-11-10T07:20:49.239338+00:00",
+  "updated_at": "2026-11-10T21:41:47.040903+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "b5e9554fc7ac281fd54836c9",
-    "TRUTH_ARCHIVE": "7aacfeaf7110bcf4a721aad6",
-    "OGE": "d6b0ef156154af76e574dd50"
+    "WHITE_HOUSE": "41fb30910cfc1072f28c1452",
+    "TRUTH_ARCHIVE": "00d94884efff915b61a58dad",
+    "OGE": "84ea0ffc7ee2e8ef9cd4cb3a"
   },
   "intelligence_history": {
+    "2f631b178fd78655c446f5a5": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43540",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117592174307441518",
+      "title": "Dan Sullivan PLUS Dan Sullivan wins the Alaska Election by thousands of votes. All votes going to the Fake Dan Sullivan, which was done solely for the purpose of fraud and confusion, should immediately be given to the Real Dan Sullivan (Senator!) - Likewise the votes of the second fraudulent candida",
+      "published": "Tue, 10 Nov 2026 12:36:23 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Dan Sullivan PLUS Dan Sullivan wins the Alaska Election by thousands of votes. All votes going to the Fake Dan Sullivan, which was done solely for the purpose of fraud and confusion, should immediately be given to the Real Dan Sullivan (Senator!) - Likewise the votes of the second fraudulent candida Dan Sullivan PLUS Dan Sullivan wins the Alaska Election by thousands of votes. All votes going to the Fake Dan Sullivan, which was done solely for the purpose of fraud and confusion, should immediately be given to the Real Dan Sullivan (Senator!) - Likewise the votes of the second fraudulent candidate, also put up by the Dems. There should be no question concerning this Rigged Election. Time is of the essence!!! President DJT",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T21:41:47.014578+00:00",
+      "event_id": "2f631b178fd78655c446f5a5",
+      "action_reaction": {
+        "event_id": "2f631b178fd78655c446f5a5",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "49a2bd2f1cdd51539629642a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43541",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117592400791406646",
+      "title": "Pete Hegseth gets an “A” PLUS, PLUS, PLUS for his defense against a disgruntled, angry, defeated, former Congressman, Thomas Massie, a TOTAL LOSER!President DJT",
+      "published": "Tue, 10 Nov 2026 13:33:59 +0000",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "Pete Hegseth gets an “A” PLUS, PLUS, PLUS for his defense against a disgruntled, angry, defeated, former Congressman, Thomas Massie, a TOTAL LOSER!President DJT Pete Hegseth gets an “A” PLUS, PLUS, PLUS for his defense against a disgruntled, angry, defeated, former Congressman, Thomas Massie, a TOTAL LOSER! President DJT",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T21:41:47.014418+00:00",
+      "event_id": "49a2bd2f1cdd51539629642a",
+      "action_reaction": {
+        "event_id": "49a2bd2f1cdd51539629642a",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c158ed4c6075e52638a1a8af": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43545",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117593181041469747",
+      "title": "I am pleased to nominate Elliot Gaiser to serve as Judge on the United States District Court for the Northern District of Texas. Elliot is currently Assistant Attorney General for the U.S. Department of Justice Office of Legal Counsel and, previously, was Solicitor General of Ohio. A proud graduate",
+      "published": "Tue, 10 Nov 2026 16:52:24 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "I am pleased to nominate Elliot Gaiser to serve as Judge on the United States District Court for the Northern District of Texas. Elliot is currently Assistant Attorney General for the U.S. Department of Justice Office of Legal Counsel and, previously, was Solicitor General of Ohio. A proud graduate I am pleased to nominate Elliot Gaiser to serve as Judge on the United States District Court for the Northern District of Texas. Elliot is currently Assistant Attorney General for the U.S. Department of Justice Office of Legal Counsel and, previously, was Solicitor General of Ohio. A proud graduate of the University of Chicago Law School and Hillsdale College, Elliot clerked for some amazing Judges, including Justice Samuel Alito, Judge Neomi Rao of the D.C. Circuit, and Judge Edith Jones of the Fifth Circuit. Texas will appreciate having such a talented and intelligent Judge on their Federal Bench. Congratulations Elliot! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T21:41:47.014078+00:00",
+      "event_id": "c158ed4c6075e52638a1a8af",
+      "action_reaction": {
+        "event_id": "c158ed4c6075e52638a1a8af",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "ae0020e70830872d2d050afa": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43544",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117593189461758553",
+      "title": "I am pleased to nominate James Sullivan to serve as Judge on the United States District Court for the Western District of Texas. James is a Justice on the Supreme Court of Texas and, previously, was General Counsel to Governor Greg Abbott, and Assistant Solicitor General of Texas. Additionally, Sena",
+      "published": "Tue, 10 Nov 2026 16:54:33 +0000",
+      "domains": [
+        "AGRICULTURE"
+      ],
+      "text": "I am pleased to nominate James Sullivan to serve as Judge on the United States District Court for the Western District of Texas. James is a Justice on the Supreme Court of Texas and, previously, was General Counsel to Governor Greg Abbott, and Assistant Solicitor General of Texas. Additionally, Sena I am pleased to nominate James Sullivan to serve as Judge on the United States District Court for the Western District of Texas. James is a Justice on the Supreme Court of Texas and, previously, was General Counsel to Governor Greg Abbott, and Assistant Solicitor General of Texas. Additionally, Senators Ted Cruz and John Cornyn highly recommend him! After graduating from Harvard Law School and Rice University, James clerked for Judge Thomas Griffith of the U.S. Court of Appeals for the D.C. Circuit. James is an incredible jurist and lawyer, and will make an outstanding Federal District Court Judge. Congratulations James! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T21:41:47.013858+00:00",
+      "event_id": "ae0020e70830872d2d050afa",
+      "action_reaction": {
+        "event_id": "ae0020e70830872d2d050afa",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "84ea0ffc7ee2e8ef9cd4cb3a": {
+      "source": "OGE",
+      "url": "https://www.oge.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Skip to Main Content An official website of the United States government Here’s how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. U.S. Office of Government Ethics Menu About Resources for the Public Resources for Ethics Officials Resources for Federal Employees News Site Index Forms Library Contact Us Search Public service is a public trust, requiring employees to place loyalty to the Constitution, the laws and ethical principles above private gain Learn about our mission Popular Tasks Find an Individual's Ethics Document Find an Agency's Ethics Program Document Find the Ethics Rules I want to... Find a financial disclosure report for an individual or Presidential candidate Learn more about the individual disclosures available on OGE’s website Learn more about the ethics documents available on OGE’s website Find contact information to access ethics documents at other agencies Research an ethics topic Find an ethics statute or regulation Find where to report misconduct by a federal employee File a FOIA Request I want to find information about being a PAS Nominee Go OGE Leadership Leadership Notes OGE uses Leadership Notes to communicate with the public. Read More What's New News | 11/09/2026 OGE Issues Updates to the Public Financial Disclosure Guide Oversight | 11/09/2026 OGE Issues a Program Review Report for the Council of the Inspectors General on Integrity and Efficiency (CIGIE) OGE reviewed CIGIE's ethics program and issued 5 recommendations. News | 11/06/2026 OGE Seeks Public Input on Forms Related to Financial Disclosure The U.S. Office of Government Ethics (OGE) is hosting a public meeting to obtain input regarding potential improvements to the OGE Form 278e and the OGE Form 450 as part of a form revision planning process that will precede the next requested renewal of these forms under the Paperwork Reduction Act. The next scheduled renewal is in August of 2027. Oversight | 11/04/2026 OGE Issues a Program Review Report for the Office of Management and Budget (OMB) OGE reviewed OMB's ethics program and issued 2 recommendations. Legal Advisory | 11/02/2026 LA-26-01: Increased Gifts and Travel Reimbursements Reporting Thresholds for Financial Disclosure Reports and Nonsponsor Widely Attended Gatherings Gift Exception Ceiling This Legal Advisory discusses the recent amendments to the gifts and travel reimbursements reporting thresholds at 5 C.F.R. §§ 2634.304 and 2634.907(g) and the widely attended gatherings gift exception ceiling for nonsponsor gifts of free attendance at 5 C.F.R. § 2635.204(g)(3). Oversight | 10/27/2026 OGE Issues a Program Review Report for the Department of Education (ED) OGE reviewed ED's ethics program and issued 14 recommendations. View All Featured Resources Resources for Nominees to Senate-Confirmed Positions This webpage features resources for prospective nominees to Presidentially appointed, Senate-confirmed (PAS) positions. Guide for Nominees (2024) (PDF) This Guide is for prospective nominees to Senate-confirmed Presidential appointment (PAS) positions and those confirmed to PAS positions. It is organized to take a nominee through the life cycle of a PAS official. It includes sections explaining what to expect during the nominee process, how to have an ethical start to Federal service, how to be a leader in ethics, and what to consider when planning to leave Federal service. Confidential Financial Disclosure Guide OGE maintains a guide to assist filers and reviewers of confidential financial disclosure reports. Public Financial Disclosure Guide This Guide assists filers and reviewers of public financial disclosure reports. Analyzing Potential Conflicts of Interests These guidance documents provide conflicts of interest analyses for various types of employment interests, investment interests, and liabilities. Compilation of Federal Ethics Laws (PDF) The Compilation contains the most pertinent laws under the jurisdiction of the executive branch ethics program as well as related statutes on which ethics officials are often called upon to provide advice to agency employees. Summary of the Standards of Conduct (PDF) This resource provides a summary of the Standards of Conduct for Employees of Ethical Conduct which apply to every executive branch employee. Nominee Financial Disclosure Review During Presidential Transitions (Before and After Inauguration) (PDF) This document provides key information and data about the nominee financial disclosure review process including during and after the period of a Presidential Transition. Quicklinks Agency Ethics Program Contact List Press Contacts Forms Library FAQs – Public Financial Disclosure 2026 Dates and Deadlines (PDF) Form 450 (PDF) Institute for Ethics in Government Return to top Accessibility | Budget and Performance | FOIA | Information Quality | EEO/No Fear Act | Privacy | Rulemaking | Site Index Have a question about government services? Contact USA.gov Regulations.gov Twitter YouTube U.S. Office of Government Ethics contactoge@oge.gov | (202) 482-9300",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T21:41:46.938510+00:00",
+      "event_id": "84ea0ffc7ee2e8ef9cd4cb3a",
+      "action_reaction": {
+        "event_id": "84ea0ffc7ee2e8ef9cd4cb3a",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "00d94884efff915b61a58dad": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AGRICULTURE",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 10, 2026, 11:54 AM Original Post I am pleased to nominate James Sullivan to serve as Judge on the United States District Court for the Western District of Texas. James is a Justice on the Supreme Court of Texas and, previously, was General Counsel to Governor Greg Abbott, and Assistant Solicitor General of Texas. Additionally, Senators Ted Cruz and John Cornyn highly recommend him! After graduating from Harvard Law School and Rice University, James clerked for Judge Thomas Griffith of the U.S. Court of Appeals for the D.C. Circuit. James is an incredible jurist and lawyer, and will make an outstanding Federal District Court Judge. Congratulations James! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 10, 2026, 11:52 AM Original Post I am pleased to nominate Elliot Gaiser to serve as Judge on the United States District Court for the Northern District of Texas. Elliot is currently Assistant Attorney General for the U.S. Department of Justice Office of Legal Counsel and, previously, was Solicitor General of Ohio. A proud graduate of the University of Chicago Law School and Hillsdale College, Elliot clerked for some amazing Judges, including Justice Samuel Alito, Judge Neomi Rao of the D.C. Circuit, and Judge Edith Jones of the Fifth Circuit. Texas will appreciate having such a talented and intelligent Judge on their Federal Bench. Congratulations Elliot! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 10, 2026, 11:51 AM Original Post I am pleased to nominate Grayson Lambert to serve as Judge on the United States District Court for the District of South Carolina. Grayson is currently Chief Legal Counsel to Governor Henry McMaster and, previously, was a partner at a respected law firm, and clerked for Judge Dennis Shedd of the U.S. Court of Appeals for the Fourth Circuit. A proud graduate of the University of Virginia and Duke University School of Law, Grayson will be an excellent addition to the Federal Bench in South Carolina. Congratulations Grayson! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 10, 2026, 9:43 AM Original Post Great job by Pete Hegseth — A MUST SEE! President DONALD J. TRUMP 'A FARCE': Hegseth BLASTS impeachment effort, takes questions: https://www. youtube.com/watch?v=N48dH1heFE U www.youtube.com 'A FARCE': Hegseth BLASTS impeachment effort, takes questions Sec of War Pete Hegseth is expected to address impeachment efforts and ongoing U.S. military operations in the Middle East during a press conference at the P... Donald J. Trump @realDonaldTrump · November 10, 2026, 8:33 AM Original Post Pete Hegseth gets an “A” PLUS, PLUS, PLUS for his defense against a disgruntled, angry, defeated, former Congressman, Thomas Massie, a TOTAL LOSER! President DJT Donald J. Trump @realDonaldTrump · November 10, 2026, 7:36 AM Original Post Dan Sullivan PLUS Dan Sullivan wins the Alaska Election by thousands of votes. All votes going to the Fake Dan Sullivan, which was done solely for the purpose of fraud and confusion, should immediately be given to the Real Dan Sullivan (Senator!) - Likewise the votes of the second fraudulent candidate, also put up by the Dems. There should be no question concerning this Rigged Election. Time is of the essence!!! President DJT Donald J. Trump @realDonaldTrump · November 9, 2026, 8:36 PM Original Post Defeated Republican Congressman Thomas Massie, a total loser, is trying to Impeach perhaps the most popular and successful military official in the Country, Secretary of War, Pete Hegseth. With recruitment at an ALL-TIME HIGH, from an all-time low under Sleepy Joe Biden, and TWO VICTORIES, Venezuela and Iran, Pete Hegseth should be praised, not Impeached. Congress, stand up for Pete!!! President DJT Donald J. Trump @realDonaldTrump · November 9, 2026, 6:04 PM Original Post Very important for the U.S. Senate to confirm all of our pending 161 Nominations, including 25 Federal Judges. Thank you for your attention to this matter! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 4:29 PM Original Post I had an excellent conversation with Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, the Prime Minister of Qatar, wherein much was discussed with respect to the Islamic Republic of Iran. Most importantly, Qatar, Saudi Arabia, UAE, Bahrain, Kuwait, and others, would prefer the status quo, in other words, a continuation of the Greatest Naval Blockade in History, and the new Operation Iron Gate — Therefore, Land and Sea. All have agreed that Iran cannot have a Nuclear Weapon — That is non-negotiable! Should there be any change with respect to developments in the Middle East, the United States of America is “locked and loaded” and ready to go. At this point, however, that seems to be quite unlikely. Israel, and the entire Middle East, are protected from Iranian danger and threats. We are seeing positive momentum toward an end to this Conflict, and will ensure that America’s interests are at all times protected. At the conclusion of this Military Engagement, the American People, and the World, will be far safer and more secure. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 3:58 PM Original Post I am proud to announce that David MacNeil, the GREAT American entrepreneur and founder of WeatherTech, will be the Special Envoy for Manufacturing! David has built an incredible Ameri",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T21:41:46.846858+00:00",
+      "event_id": "00d94884efff915b61a58dad",
+      "action_reaction": {
+        "event_id": "00d94884efff915b61a58dad",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "41fb30910cfc1072f28c1452": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "CRYPTO",
+        "MEDIA"
+      ],
+      "text": "Skip to content Menu Search Search for: Scroll Left News Gallery Livestream Transparency SAVE America Trump Accounts Trump TV Contact News Contact Transparency SAVE America Trump Accounts Gallery Trump TV Livestream Investments Scroll Right Close News Featured Releases Aliens Lab Leak: The True Origins of Covid-19 January 6: A Date Which Will Live in Infamy Arrested: Worst of the Worst This Is Our Why Criminal Aliens Receiving Medicaid The JFK Files The RFK Files Sail On: Columbus Day Briefings & Statements Fact Sheets Presidential Actions Executive Orders Nominations & Appointments Presidential Memoranda Proclamations Remarks Research Administration President Donald J. Trump First Lady Melania Trump Vice President JD Vance Second Lady Usha Vance The Cabinet Executive Office of The President Office of Management and Budget Office of Science and Technology Policy Council of Economic Advisors Office of the National Cyber Director Office of National Drug Control Policy Council on Environmental Quality Media Trump TV Photo Gallery Video Library Livestream White House Wire Media Offenders Arcade Priorities Top Priorities Lead the World in SI Grow the Economy Strengthen National Security Reform Government (DOGE) Make America Healthy Again Secure the Border Unleash American Energy Support Public Safety Protect Religious Liberty Key Initiatives Election Integrity & Government Transparency The SAVE America Act Working Families Tax Cuts Ratepayer Protection Pledge Fraud Task Force Science: A New Golden Age School Choice Freedom 250 AI.Gov Crypto FIFA Agriculture Restoring Maritime Dominance Fostering the Future Summer Reading Challenge Make America Healthy Again The MAHA Report The Great Healthcare Plan TrumpRx Eat Real Food Presidential Physical Fitness Test Council on Sports, Fitness, and Nutrition Investments Major Investments in America Trump Accounts for Children Trump IRA The Trump Gold Card Manufacturing Investments Map Pledge to America’s Youth Wins and Achievements About The White House A Timeline History of the United States The Presidents Our Government America’s Founding Freedom 250 The Founders Museum America’s Founding Fathers The Story of America: Video Series Road to Liberty: Video Series Signers of the Declaration of Independence Presidential Walk of Fame Holidays at The White House Christmas at The White House The White House Easter Egg Roll Get Involved Contact The White House Presidential Greetings Visit The White House Download the White House App Apply for an Internship Find Your Representative SAVE America Stay Informed Email Updates Text WIN to 45470 for Alerts Download the White House App Follow on Social Media Official White House App 365 Days of Wins About President Trump About Vice President Vance 365 Days of Wins Official White House App The Great Healthcare Plan INVESTMENT ANNOUNCEMENTS White House Wire First Year in Office America's Founding East Wing Expansion View Full Video Contact The White House X Instagram TikTok Share Icon Share Icon Facebook YouTube Under President Donald Trump’s second administration, the United States has surged into a new era of prosperity, marked by record-setting economic growth and trillions in new private-sector investments fueled by tax reforms, deregulation, and a renewed focus on American innovation. The nation has solidified its position as the global leader in super intelligence, with record-setting capital expenditures driving productivity and technological advancement. At home, decisive policies have secured the southern border, reducing illegal entries to historic lows unseen in decades and restoring national sovereignty, while energy dominance and cost-cutting measures have significantly improved affordability for families. Abroad, a doctrine of peace through strength has secured alliances, ended eight wars, and positioned America as an indispensable force for global stability. As these achievements compound, we have unmistakably entered a Golden Age of American greatness, promising even greater opportunity and security ahead. Donald J. Trump 45th & 47th President of the United States secure the border grow the economy Strengthen national security unleash american energy make america healthy again Freedom 250 Events About Administration Contact Internships Stay Informed Privacy Policy Media News Gallery Video Library Media Offenders White House Wire Initiatives Freedom 250 Investments Working Families Tax Cuts SI.gov DOGE Subscribe to the WH Newsletter Click here or text 45470 to receive updates Download The White House App: Available On The App Store Get It On Google Play Get Updates Straight to Your Desktop Available On Download Browser Extension Enable Desktop Notifications X Instagram TikTok Share Icon Share Icon Facebook YouTube",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T21:41:46.716208+00:00",
+      "event_id": "41fb30910cfc1072f28c1452",
+      "action_reaction": {
+        "event_id": "41fb30910cfc1072f28c1452",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "7495f1b86202bcb8334c262d": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11590,176 +11753,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "28aeb3ee89ddd4b1b4345fbe": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42972",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532203350631813",
-      "title": "It is my Great Honor to endorse MAGA Warrior, Joe Strada, who is running to represent the incredible people of Florida’s 11th Congressional District! As a very successful Businessman and Entrepreneur, Joe understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations",
-      "published": "Fri, 30 Oct 2026 22:24:58 +0000",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse MAGA Warrior, Joe Strada, who is running to represent the incredible people of Florida’s 11th Congressional District! As a very successful Businessman and Entrepreneur, Joe understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations It is my Great Honor to endorse MAGA Warrior, Joe Strada, who is running to represent the incredible people of Florida’s 11th Congressional District! As a very successful Businessman and Entrepreneur, Joe understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., and Champion our Nation’s Golden Age. As your next Congressman, he will work tirelessly to Grow the Economy, Safeguard our Elections, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment. Joe Strada has my Complete and Total Endorsement to be the next Representative from Florida’s 11th Congressional District. GET OUT AND VOTE FOR JOE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.680967+00:00",
-      "event_id": "28aeb3ee89ddd4b1b4345fbe",
-      "action_reaction": {
-        "event_id": "28aeb3ee89ddd4b1b4345fbe",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "26bfc5cffa6a4455a5e0c78f": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42971",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532204114696650",
-      "title": "It is my Great Honor to endorse America First Patriot, Dan Green, who is running to represent the fantastic people of Florida’s 9th Congressional District! A Brave U.S. Navy Veteran, and a former Presidential Appointee in my First Administration, Dan knows the Wisdom and Courage it takes to Ensure L",
-      "published": "Fri, 30 Oct 2026 22:25:10 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Dan Green, who is running to represent the fantastic people of Florida’s 9th Congressional District! A Brave U.S. Navy Veteran, and a former Presidential Appointee in my First Administration, Dan knows the Wisdom and Courage it takes to Ensure L It is my Great Honor to endorse America First Patriot, Dan Green, who is running to represent the fantastic people of Florida’s 9th Congressional District! A Brave U.S. Navy Veteran, and a former Presidential Appointee in my First Administration, Dan knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support our Great Heroes in Law Enforcement, and Champion our Military and Veterans. His opponent, Darren Soto, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Darren Soto is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Dan will work hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Great Military/Veterans, and Defend our always under siege Second Amendment. Dan Green has my Complete and Total Endorsement to be the next Representative from Florida’s 9th Congressional District. GET OUT AND VOTE FOR DAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.680789+00:00",
-      "event_id": "26bfc5cffa6a4455a5e0c78f",
-      "action_reaction": {
-        "event_id": "26bfc5cffa6a4455a5e0c78f",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "ba51d99ffea371a4dc663ba6": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42970",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532204781662350",
-      "title": "Congressman Mike Haridopolos is an America First Patriot who is doing a fantastic job representing Florida’s 8th Congressional District! A former Teacher, successful Businessman, and now, as U.S. Congressman, Mike has strongly served his Community with a career “loaded up” with accolades and wins. I",
-      "published": "Fri, 30 Oct 2026 22:25:20 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Mike Haridopolos is an America First Patriot who is doing a fantastic job representing Florida’s 8th Congressional District! A former Teacher, successful Businessman, and now, as U.S. Congressman, Mike has strongly served his Community with a career “loaded up” with accolades and wins. I Congressman Mike Haridopolos is an America First Patriot who is doing a fantastic job representing Florida’s 8th Congressional District! A former Teacher, successful Businessman, and now, as U.S. Congressman, Mike has strongly served his Community with a career “loaded up” with accolades and wins. In Congress, he is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment. Mike Haridopolos has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.680613+00:00",
-      "event_id": "ba51d99ffea371a4dc663ba6",
-      "action_reaction": {
-        "event_id": "ba51d99ffea371a4dc663ba6",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "86539661c798f62096b8d2ee": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42969",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532205871571466",
-      "title": "It is my Great Honor to endorse America First Patriot, Ryan Elijah, who is running to represent the wonderful people of Florida’s 7th Congressional District! A Highly Respected Former News Anchor, Ryan knows the Wisdom and Courage required to confront the Corrupt Fake News, which seeks to divide and",
-      "published": "Fri, 30 Oct 2026 22:25:37 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Ryan Elijah, who is running to represent the wonderful people of Florida’s 7th Congressional District! A Highly Respected Former News Anchor, Ryan knows the Wisdom and Courage required to confront the Corrupt Fake News, which seeks to divide and It is my Great Honor to endorse America First Patriot, Ryan Elijah, who is running to represent the wonderful people of Florida’s 7th Congressional District! A Highly Respected Former News Anchor, Ryan knows the Wisdom and Courage required to confront the Corrupt Fake News, which seeks to divide and destroy our Great Country. His opponent, Bale Dalton, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Bale Dalton is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Ryan will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Strengthen our Brave Military/Veterans, Keep our Border SECURE, Safeguard our Elections, and Protect our always under siege Second Amendment. Ryan Elijah has my Complete and Total Endorsement to be the next Representative from Florida’s 7th Congressional District. GET OUT AND VOTE FOR RYAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.680437+00:00",
-      "event_id": "86539661c798f62096b8d2ee",
-      "action_reaction": {
-        "event_id": "86539661c798f62096b8d2ee",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "2baba35ac7d3f60cdc471c8e": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42968",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532206582783076",
-      "title": "Congressman Randy Fine is a MAGA Warrior who is doing a fantastic job representing Florida’s 6th Congressional District! A Harvard Educated and Successful Businessman, Randy was a Highly Respected State Legislator, prior to becoming a distinguished U.S. Congressman. He loves the Great People of the",
-      "published": "Fri, 30 Oct 2026 22:25:48 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Randy Fine is a MAGA Warrior who is doing a fantastic job representing Florida’s 6th Congressional District! A Harvard Educated and Successful Businessman, Randy was a Highly Respected State Legislator, prior to becoming a distinguished U.S. Congressman. He loves the Great People of the Congressman Randy Fine is a MAGA Warrior who is doing a fantastic job representing Florida’s 6th Congressional District! A Harvard Educated and Successful Businessman, Randy was a Highly Respected State Legislator, prior to becoming a distinguished U.S. Congressman. He loves the Great People of the Sunshine State, which I won THREE TIMES in 2016, 2020, and 2024! In Congress, Randy is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Champion our Military/Veterans, Defend our always under siege Second Amendment, and, very importantly, Pass THE SAVE AMERICA ACT. Randy’s opponent, Eric Yonce, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Eric Yonce is Reckless, Radical, and Dangerous! Randy Fine has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR RANDY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.680244+00:00",
-      "event_id": "2baba35ac7d3f60cdc471c8e",
-      "action_reaction": {
-        "event_id": "2baba35ac7d3f60cdc471c8e",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "900f45e938b4359ae6d1eef2": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42967",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532219736952055",
-      "title": "It is my Great Honor to endorse MAGA Warrior, Austin Rogers, who is running to represent the tremendous people of Florida’s 2nd Congressional District! A lifelong Panama City native, very successful Attorney, Civic Leader, and former General Counsel to GREAT U.S. Senator Rick Scott, Austin has dedic",
-      "published": "Fri, 30 Oct 2026 22:29:09 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse MAGA Warrior, Austin Rogers, who is running to represent the tremendous people of Florida’s 2nd Congressional District! A lifelong Panama City native, very successful Attorney, Civic Leader, and former General Counsel to GREAT U.S. Senator Rick Scott, Austin has dedic It is my Great Honor to endorse MAGA Warrior, Austin Rogers, who is running to represent the tremendous people of Florida’s 2nd Congressional District! A lifelong Panama City native, very successful Attorney, Civic Leader, and former General Counsel to GREAT U.S. Senator Rick Scott, Austin has dedicated his life to serving his Community. Austin has an incredible wife, Hala, and three beautiful children. In Congress, Austin will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Advance Election Integrity, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Austin Rogers has my Complete and Total Endorsement to be the next Representative from Florida’s 2nd Congressional District. GET OUT AND VOTE FOR AUSTIN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.679869+00:00",
-      "event_id": "900f45e938b4359ae6d1eef2",
-      "action_reaction": {
-        "event_id": "900f45e938b4359ae6d1eef2",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "846a5283457878e573e56592": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42966",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532220565005347",
-      "title": "Congressman Jimmy Patronis is a MAGA Warrior who is doing a fantastic job representing Florida’s 1st Congressional District! A Fourth Generation Floridian from the beautiful Panhandle, and owner of an iconic seafood restaurant, Jimmy served as the Chief Financial Officer for the Great State of Flori",
-      "published": "Fri, 30 Oct 2026 22:29:21 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Jimmy Patronis is a MAGA Warrior who is doing a fantastic job representing Florida’s 1st Congressional District! A Fourth Generation Floridian from the beautiful Panhandle, and owner of an iconic seafood restaurant, Jimmy served as the Chief Financial Officer for the Great State of Flori Congressman Jimmy Patronis is a MAGA Warrior who is doing a fantastic job representing Florida’s 1st Congressional District! A Fourth Generation Floridian from the beautiful Panhandle, and owner of an iconic seafood restaurant, Jimmy served as the Chief Financial Officer for the Great State of Florida for seven years, prior to becoming a very distinguished Congressman. In the U.S. House of Representatives, Jimmy is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Incredible Military/Veterans, and Defend our always under siege Second Amendment. Jimmy Patronis has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR JIMMY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.679708+00:00",
-      "event_id": "846a5283457878e573e56592",
-      "action_reaction": {
-        "event_id": "846a5283457878e573e56592",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12452,9 +12445,13 @@
     "fb899eaac1b9401e612b04bf": "2026-11-09T06:01:46.562730+00:00",
     "116693b482d48598121636ce": "2026-11-09T06:01:46.562974+00:00",
     "310a80b03d1b502f493dbaad": "2026-11-10T00:11:01.522410+00:00",
-    "7495f1b86202bcb8334c262d": "2026-11-10T07:20:49.213468+00:00"
+    "7495f1b86202bcb8334c262d": "2026-11-10T07:20:49.213468+00:00",
+    "ae0020e70830872d2d050afa": "2026-11-10T21:41:47.013843+00:00",
+    "c158ed4c6075e52638a1a8af": "2026-11-10T21:41:47.014071+00:00",
+    "49a2bd2f1cdd51539629642a": "2026-11-10T21:41:47.014392+00:00",
+    "2f631b178fd78655c446f5a5": "2026-11-10T21:41:47.014573+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-10T07:20:49.220551+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-10T21:41:47.024419+00:00"
   }
 }
