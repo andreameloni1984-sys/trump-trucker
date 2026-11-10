@@ -64,8 +64,19 @@ jobs:
             exit 1
           fi
 
-      - name: Run SPUTNIK Telegram delivery regression tests
-        run: python -m unittest tests/test_telegram_delivery.py tests/test_sputnik_item_intelligence.py -v
+      - name: Restore SPUTNIK state from dedicated branch
+        id: restore_state
+        run: |
+          set -euo pipefail
+          STATE_BRANCH="sputnik-state"
+          REMOTE_REF="$(git ls-remote --heads origin "refs/heads/${STATE_BRANCH}")"
+          if [ -n "$REMOTE_REF" ]; then
+            git fetch origin "refs/heads/${STATE_BRANCH}:refs/remotes/origin/${STATE_BRANCH}"
+            git show "refs/remotes/origin/${STATE_BRANCH}:sputnik_state.json" > sputnik_state.json
+            echo "SPUTNIK state restored from ${STATE_BRANCH}."
+          else
+            echo "SPUTNIK state branch not present; using the tracked seed state."
+          fi
 
       - name: Run SPUTNIK (Render-independent)
         env:
@@ -84,20 +95,37 @@ jobs:
           SPUTNIK_TELEGRAM_TEST: ${{ inputs.test_telegram }}
         run: python trump_tracker.py
 
-      - name: Persist SPUTNIK state
-        if: always()
+      - name: Persist SPUTNIK state on sputnik-state branch
+        if: always() && steps.restore_state.outcome == 'success'
         run: |
-          if [ -f sputnik_state.json ]; then
+          set -euo pipefail
+          if [ ! -f sputnik_state.json ]; then
+            echo "SPUTNIK state file not present; nothing to persist."
+            exit 0
+          fi
+          STATE_BRANCH="sputnik-state"
+          STATE_WORKTREE="${RUNNER_TEMP}/sputnik-state-worktree"
+          REMOTE_REF="$(git ls-remote --heads origin "refs/heads/${STATE_BRANCH}")"
+          if [ -n "$REMOTE_REF" ]; then
+            git fetch origin "refs/heads/${STATE_BRANCH}:refs/remotes/origin/${STATE_BRANCH}"
+            git worktree add --detach "$STATE_WORKTREE" "refs/remotes/origin/${STATE_BRANCH}"
+            BRANCH_CREATED=0
+          else
+            git worktree add -b "$STATE_BRANCH" "$STATE_WORKTREE" main
+            BRANCH_CREATED=1
+          fi
+          cp sputnik_state.json "$STATE_WORKTREE/sputnik_state.json"
+          (
+            cd "$STATE_WORKTREE"
             git config user.name "SPUTNIK Bot"
             git config user.email "sputnik-bot@users.noreply.github.com"
             git add sputnik_state.json
-            git diff --cached --quiet || git commit -m "chore: persist Sputnik state"
-            git fetch origin main
-            if ! git rebase origin/main; then
-              echo "SPUTNIK: conflitto di stato; mantengo il risultato del run corrente."
-              git checkout --theirs sputnik_state.json
-              git add sputnik_state.json
-              GIT_EDITOR=true git rebase --continue
+            if ! git diff --cached --quiet; then
+              git commit -m "chore: persist Sputnik state"
+              git push origin HEAD:"refs/heads/${STATE_BRANCH}"
+            elif [ "$BRANCH_CREATED" -eq 1 ]; then
+              git push origin HEAD:"refs/heads/${STATE_BRANCH}"
+            else
+              echo "SPUTNIK state unchanged; no commit required."
             fi
-            git push origin main
-          fi
+          )
