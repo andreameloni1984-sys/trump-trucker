@@ -1,14 +1,70 @@
 {
   "events": {},
-  "updated_at": "2026-11-10T00:11:01.541124+00:00",
+  "updated_at": "2026-11-10T07:20:49.239338+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "b5e9554fc7ac281fd54836c9",
-    "TRUTH_ARCHIVE": "885934204772fa0da7a20581",
+    "TRUTH_ARCHIVE": "7aacfeaf7110bcf4a721aad6",
     "OGE": "d6b0ef156154af76e574dd50"
   },
   "intelligence_history": {
+    "7495f1b86202bcb8334c262d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43539",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117589581287691662",
+      "title": "Defeated Republican Congressman Thomas Massie, a total loser, is trying to Impeach perhaps the most popular and successful military official in the Country, Secretary of War, Pete Hegseth. With recruitment at an ALL-TIME HIGH, from an all-time low under Sleepy Joe Biden, and TWO VICTORIES, Venezuela",
+      "published": "Tue, 10 Nov 2026 01:36:56 +0000",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "Defeated Republican Congressman Thomas Massie, a total loser, is trying to Impeach perhaps the most popular and successful military official in the Country, Secretary of War, Pete Hegseth. With recruitment at an ALL-TIME HIGH, from an all-time low under Sleepy Joe Biden, and TWO VICTORIES, Venezuela Defeated Republican Congressman Thomas Massie, a total loser, is trying to Impeach perhaps the most popular and successful military official in the Country, Secretary of War, Pete Hegseth. With recruitment at an ALL-TIME HIGH, from an all-time low under Sleepy Joe Biden, and TWO VICTORIES, Venezuela and Iran, Pete Hegseth should be praised, not Impeached. Congress, stand up for Pete!!! President DJT",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T07:20:49.213483+00:00",
+      "event_id": "7495f1b86202bcb8334c262d",
+      "action_reaction": {
+        "event_id": "7495f1b86202bcb8334c262d",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "7aacfeaf7110bcf4a721aad6": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 9, 2026, 8:36 PM Original Post Defeated Republican Congressman Thomas Massie, a total loser, is trying to Impeach perhaps the most popular and successful military official in the Country, Secretary of War, Pete Hegseth. With recruitment at an ALL-TIME HIGH, from an all-time low under Sleepy Joe Biden, and TWO VICTORIES, Venezuela and Iran, Pete Hegseth should be praised, not Impeached. Congress, stand up for Pete!!! President DJT Donald J. Trump @realDonaldTrump · November 9, 2026, 6:04 PM Original Post Very important for the U.S. Senate to confirm all of our pending 161 Nominations, including 25 Federal Judges. Thank you for your attention to this matter! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 4:29 PM Original Post I had an excellent conversation with Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, the Prime Minister of Qatar, wherein much was discussed with respect to the Islamic Republic of Iran. Most importantly, Qatar, Saudi Arabia, UAE, Bahrain, Kuwait, and others, would prefer the status quo, in other words, a continuation of the Greatest Naval Blockade in History, and the new Operation Iron Gate — Therefore, Land and Sea. All have agreed that Iran cannot have a Nuclear Weapon — That is non-negotiable! Should there be any change with respect to developments in the Middle East, the United States of America is “locked and loaded” and ready to go. At this point, however, that seems to be quite unlikely. Israel, and the entire Middle East, are protected from Iranian danger and threats. We are seeing positive momentum toward an end to this Conflict, and will ensure that America’s interests are at all times protected. At the conclusion of this Military Engagement, the American People, and the World, will be far safer and more secure. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 3:58 PM Original Post I am proud to announce that David MacNeil, the GREAT American entrepreneur and founder of WeatherTech, will be the Special Envoy for Manufacturing! David has built an incredible American company that makes outstanding products, RIGHT HERE IN THE U.S.A. He knows how to create jobs, bring Manufacturing back home, and put America First. Together, we will bring back American jobs, strengthen our factories, and make sure that future products are MADE IN AMERICA. Congratulations David — Your unparalleled expertise is vitally needed! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 2:23 PM Original Post Donald J. Trump @realDonaldTrump · November 9, 2026, 2:00 PM Original Post Donald J. Trump @realDonaldTrump · November 9, 2026, 10:07 AM Original Post Does anybody really believe that this “Election” was honest. How could the Polls be so wrong??? Some early voting “dumps” were so large that it was impossible to win, no matter how many people went to vote. It’s all about the machines, which are far more important than the voter! President DJT Donald J. Trump @realDonaldTrump · November 8, 2026, 7:05 PM Original Post I am urging all Senators to vote for The American Affordability and Jobs Act (S. 5653)! This Bill is a BIG WIN for U.S. ENERGY INDEPENDENCE and DOMINANCE. This Landmark Permitting Reform Legislation will codify our America First Energy Agenda, and ensure that we can build Pipelines, Mines, and Power Plants faster than ever before, lowering Energy Costs for American Families, and creating High Paying American Jobs. This Legislation also codifies my RATEPAYER PROTECTION PLEDGE, ensuring Data Centers build and pay for their own Electricity, and help invest in their local communities. Remember, China will take any Data Center that we don’t want, and pay lots of money for it. We’re Number One — Let’s keep it that way! Call your Senator TODAY, and tell them to vote YES. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 8, 2026, 6:43 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:41 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:40 PM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T07:20:48.699913+00:00",
+      "event_id": "7aacfeaf7110bcf4a721aad6",
+      "action_reaction": {
+        "event_id": "7aacfeaf7110bcf4a721aad6",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
     "310a80b03d1b502f493dbaad": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11704,53 +11760,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "c8f8196e53c7a1fb9ba6a9b0": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42965",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532221823813086",
-      "title": "State Representative “MAGA” Meg Weinberger is an America First Patriot who is doing an incredible job representing Florida’s 94th State House District! Meg is MAGA all the way, and has been with us from the very beginning, helping advance our AMERICA FIRST Agenda. In the State House, she is working",
-      "published": "Fri, 30 Oct 2026 22:29:40 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "State Representative “MAGA” Meg Weinberger is an America First Patriot who is doing an incredible job representing Florida’s 94th State House District! Meg is MAGA all the way, and has been with us from the very beginning, helping advance our AMERICA FIRST Agenda. In the State House, she is working State Representative “MAGA” Meg Weinberger is an America First Patriot who is doing an incredible job representing Florida’s 94th State House District! Meg is MAGA all the way, and has been with us from the very beginning, helping advance our AMERICA FIRST Agenda. In the State House, she is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Safeguard our Elections, and Defend our always under siege Second Amendment. “MAGA” Meg Weinberger has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR “MAGA” MEG — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.679541+00:00",
-      "event_id": "c8f8196e53c7a1fb9ba6a9b0",
-      "action_reaction": {
-        "event_id": "c8f8196e53c7a1fb9ba6a9b0",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "952c270bd71d8800af44facd": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42964",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532223566112053",
-      "title": "Wilton Simpson is the strong and highly popular Agriculture Commissioner for Florida, my “Home” State, which I love and won SIX times, including with 6.1 Million Votes in 2024, the most in History (BY FAR)! Wilton is a Fifth Generation Floridian, lifelong Egg Farmer, successful Businessman, former P",
-      "published": "Fri, 30 Oct 2026 22:30:07 +0000",
-      "domains": [
-        "ENERGY"
-      ],
-      "text": "Wilton Simpson is the strong and highly popular Agriculture Commissioner for Florida, my “Home” State, which I love and won SIX times, including with 6.1 Million Votes in 2024, the most in History (BY FAR)! Wilton is a Fifth Generation Floridian, lifelong Egg Farmer, successful Businessman, former P Wilton Simpson is the strong and highly popular Agriculture Commissioner for Florida, my “Home” State, which I love and won SIX times, including with 6.1 Million Votes in 2024, the most in History (BY FAR)! Wilton is a Fifth Generation Floridian, lifelong Egg Farmer, successful Businessman, former President of the State Senate, and now, as Agriculture Commissioner, has served the Sunshine State during a career “loaded up” with accolades and wins. A true America First Patriot, who has been with us from the very beginning, Wilton is an incredibly effective Voice for Florida Agriculture, and our amazing Farmers and Ranchers. He is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, and Protect our always under siege Second Amendment. Wilton Simpson has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR WILTON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.679368+00:00",
-      "event_id": "952c270bd71d8800af44facd",
-      "action_reaction": {
-        "event_id": "952c270bd71d8800af44facd",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12442,9 +12451,10 @@
     "1502eca09bd530d4145496b7": "2026-11-08T16:15:42.637167+00:00",
     "fb899eaac1b9401e612b04bf": "2026-11-09T06:01:46.562730+00:00",
     "116693b482d48598121636ce": "2026-11-09T06:01:46.562974+00:00",
-    "310a80b03d1b502f493dbaad": "2026-11-10T00:11:01.522410+00:00"
+    "310a80b03d1b502f493dbaad": "2026-11-10T00:11:01.522410+00:00",
+    "7495f1b86202bcb8334c262d": "2026-11-10T07:20:49.213468+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-10T00:11:01.530983+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-10T07:20:49.220551+00:00"
   }
 }
