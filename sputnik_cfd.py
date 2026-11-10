@@ -742,7 +742,7 @@ def format_cfd_signal(signal: dict[str, Any]) -> str:
         f"📈 STRUMENTO: {signal.get('instrument')}",
         f"🧭 BIAS: {direction}",
         f"🎯 SETUP: {setup_status}",
-        f"🧭 TECNICA: {signal.get('technical_direction', 'N/D')} ({signal.get('technical_alignment', 'NOT_ASSESSED')})",
+        f"🧭 TECNICA: {signal.get('technical_direction', 'N/D')} ({signal.get('technical_timeframe', 'N/D')} | {signal.get('technical_alignment', 'NOT_ASSESSED')})",
         f"🧪 D-L-A: {signal.get('setup_direction', 'N/D')} ({signal.get('setup_alignment', 'NOT_ASSESSED')})",
         *([f"🚨 {signal['market_direction_warning']} — ipotesi news non confermata dal prezzo."] if signal.get("market_direction_conflict") else []),
         f"🧪 TRADE PAPER: {paper_status}",

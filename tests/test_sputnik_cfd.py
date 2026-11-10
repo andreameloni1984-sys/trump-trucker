@@ -223,7 +223,7 @@ class YahooQuoteFallbackTests(unittest.TestCase):
         self.assertEqual(signal["technical_alignment"], "ALIGNS")
         self.assertEqual(signal["catalyst_alignment"], "NO_DIRECTIONAL_NEWS")
         self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
-        self.assertIn("TECNICA: LONG (ALIGNS)", format_cfd_signal(signal))
+        self.assertIn("TECNICA: LONG (5m | ALIGNS)", format_cfd_signal(signal))
 
     def test_build_cfd_signal_rejects_stale_yahoo_fallback_without_levels(self):
         stale_timestamp = (datetime.now(timezone.utc) - timedelta(hours=2)).isoformat()
