@@ -315,6 +315,44 @@ class DirectionStateAndTelegramTests(unittest.TestCase):
         self.assertIn("NO_DIRECTION", message)
         self.assertNotIn("WAIT", message)
 
+    def test_continuous_future_levels_are_reference_only_and_include_quote_provenance(self):
+        now = datetime.now(timezone.utc).isoformat()
+        quote = {
+            "price": 4111.7998,
+            "atr": 2.0357,
+            "timestamp": now,
+            "provider": "Yahoo Finance chart (1m futures)",
+            "symbol": "GC=F",
+            "currency": "USD",
+            "unit": "troy_oz",
+            "market_type": "FUTURES_CONTINUOUS",
+            "contract_description": "COMEX gold continuous futures; exact expiry not exposed",
+        }
+        with patch("sputnik_cfd.fetch_yahoo_quote", return_value=quote):
+            with patch("sputnik_cfd.fetch_narwhal_reference", return_value=None):
+                with patch("sputnik_cfd.attach_silv_crosscheck", side_effect=lambda q, instrument: q):
+                    signal = build_cfd_signal(
+                        {"instrument": "GOLD", "bias": "SHORT", "score": 65, "reason": "technical-only"},
+                        {},
+                    )
+
+        message = format_cfd_signal(signal)
+        self.assertEqual(signal["entry"], 4111.7998)
+        self.assertEqual(signal["quote_provider"], "Yahoo Finance chart (1m futures)")
+        self.assertEqual(signal["quote_symbol"], "GC=F")
+        self.assertEqual(signal["quote_time"], now)
+        self.assertIsNone(signal["quote_expiry"])
+        self.assertIn("PROVENIENZA QUOTAZIONE", message)
+        self.assertIn("Fonte: Yahoo Finance chart (1m futures)", message)
+        self.assertIn("Ticker: GC=F", message)
+        self.assertIn("Mercato: FUTURES_CONTINUOUS", message)
+        self.assertIn(f"Timestamp: {now}", message)
+        self.assertIn("Scadenza: N/D", message)
+        self.assertIn("LIVELLI TEORICI — NON OPERATIVI", message)
+        self.assertIn("RIFERIMENTO: 4111.7998", message)
+        self.assertNotIn("ENTRY: 4111.7998", message)
+
+
 
     def test_opposite_confirmed_dla_does_not_flip_news_bias(self):
         now = datetime.now(timezone.utc).isoformat()
