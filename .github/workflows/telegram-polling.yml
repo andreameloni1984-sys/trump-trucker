@@ -1,8 +1,6 @@
 name: SPUTNIK Telegram Polling
 
-on:
-  workflow_dispatch:
-
+on: {}
 permissions:
   contents: read
 
