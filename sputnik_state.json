@@ -1,14 +1,95 @@
 {
   "events": {},
-  "updated_at": "2026-11-09T16:02:16.818516+00:00",
+  "updated_at": "2026-11-10T00:11:01.541124+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
-    "WHITE_HOUSE": "58887b871c7e0ddfd810956e",
-    "TRUTH_ARCHIVE": "e33e6b73692f905040ceb12c",
+    "WHITE_HOUSE": "b5e9554fc7ac281fd54836c9",
+    "TRUTH_ARCHIVE": "885934204772fa0da7a20581",
     "OGE": "d6b0ef156154af76e574dd50"
   },
   "intelligence_history": {
+    "310a80b03d1b502f493dbaad": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43537",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117588608183719347",
+      "title": "I had an excellent conversation with Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, the Prime Minister of Qatar, wherein much was discussed with respect to the Islamic Republic of Iran. Most importantly, Qatar, Saudi Arabia, UAE, Bahrain, Kuwait, and others, would prefer the status quo, in oth",
+      "published": "Mon, 09 Nov 2026 21:29:28 +0000",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "I had an excellent conversation with Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, the Prime Minister of Qatar, wherein much was discussed with respect to the Islamic Republic of Iran. Most importantly, Qatar, Saudi Arabia, UAE, Bahrain, Kuwait, and others, would prefer the status quo, in oth I had an excellent conversation with Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, the Prime Minister of Qatar, wherein much was discussed with respect to the Islamic Republic of Iran. Most importantly, Qatar, Saudi Arabia, UAE, Bahrain, Kuwait, and others, would prefer the status quo, in other words, a continuation of the Greatest Naval Blockade in History, and the new Operation Iron Gate — Therefore, Land and Sea. All have agreed that Iran cannot have a Nuclear Weapon — That is non-negotiable! Should there be any change with respect to developments in the Middle East, the United States of America is “locked and loaded” and ready to go. At this point, however, that seems to be quite unlikely. Israel, and the entire Middle East, are protected from Iranian danger and threats. We are seeing positive momentum toward an end to this Conflict, and will ensure that America’s interests are at all times protected. At the conclusion of this Military Engagement, the American People, and the World, will be far safer and more secure. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T00:11:01.522424+00:00",
+      "event_id": "310a80b03d1b502f493dbaad",
+      "action_reaction": {
+        "event_id": "310a80b03d1b502f493dbaad",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "885934204772fa0da7a20581": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 9, 2026, 6:04 PM Original Post Very important for the U.S. Senate to confirm all of our pending 161 Nominations, including 25 Federal Judges. Thank you for your attention to this matter! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 4:29 PM Original Post I had an excellent conversation with Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, the Prime Minister of Qatar, wherein much was discussed with respect to the Islamic Republic of Iran. Most importantly, Qatar, Saudi Arabia, UAE, Bahrain, Kuwait, and others, would prefer the status quo, in other words, a continuation of the Greatest Naval Blockade in History, and the new Operation Iron Gate — Therefore, Land and Sea. All have agreed that Iran cannot have a Nuclear Weapon — That is non-negotiable! Should there be any change with respect to developments in the Middle East, the United States of America is “locked and loaded” and ready to go. At this point, however, that seems to be quite unlikely. Israel, and the entire Middle East, are protected from Iranian danger and threats. We are seeing positive momentum toward an end to this Conflict, and will ensure that America’s interests are at all times protected. At the conclusion of this Military Engagement, the American People, and the World, will be far safer and more secure. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 3:58 PM Original Post I am proud to announce that David MacNeil, the GREAT American entrepreneur and founder of WeatherTech, will be the Special Envoy for Manufacturing! David has built an incredible American company that makes outstanding products, RIGHT HERE IN THE U.S.A. He knows how to create jobs, bring Manufacturing back home, and put America First. Together, we will bring back American jobs, strengthen our factories, and make sure that future products are MADE IN AMERICA. Congratulations David — Your unparalleled expertise is vitally needed! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 2:23 PM Original Post Donald J. Trump @realDonaldTrump · November 9, 2026, 2:00 PM Original Post Donald J. Trump @realDonaldTrump · November 9, 2026, 10:07 AM Original Post Does anybody really believe that this “Election” was honest. How could the Polls be so wrong??? Some early voting “dumps” were so large that it was impossible to win, no matter how many people went to vote. It’s all about the machines, which are far more important than the voter! President DJT Donald J. Trump @realDonaldTrump · November 8, 2026, 7:05 PM Original Post I am urging all Senators to vote for The American Affordability and Jobs Act (S. 5653)! This Bill is a BIG WIN for U.S. ENERGY INDEPENDENCE and DOMINANCE. This Landmark Permitting Reform Legislation will codify our America First Energy Agenda, and ensure that we can build Pipelines, Mines, and Power Plants faster than ever before, lowering Energy Costs for American Families, and creating High Paying American Jobs. This Legislation also codifies my RATEPAYER PROTECTION PLEDGE, ensuring Data Centers build and pay for their own Electricity, and help invest in their local communities. Remember, China will take any Data Center that we don’t want, and pay lots of money for it. We’re Number One — Let’s keep it that way! Call your Senator TODAY, and tell them to vote YES. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 8, 2026, 6:43 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:41 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:40 PM Original Post Donald J. Trump @realDonaldTrump · November 8, 2026, 6:40 PM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T00:11:00.953623+00:00",
+      "event_id": "885934204772fa0da7a20581",
+      "action_reaction": {
+        "event_id": "885934204772fa0da7a20581",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
+    "b5e9554fc7ac281fd54836c9": {
+      "source": "WHITE_HOUSE",
+      "url": "https://www.whitehouse.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "METALS",
+        "AI_TECH",
+        "CRYPTO",
+        "MEDIA"
+      ],
+      "text": "Skip to content Menu Search Search for: Scroll Left News Gallery Livestream Transparency SAVE America Trump Accounts Trump TV Contact News Contact Transparency SAVE America Trump Accounts Gallery Trump TV Livestream Investments Scroll Right Close News Featured Releases Aliens Lab Leak: The True Origins of Covid-19 January 6: A Date Which Will Live in Infamy Arrested: Worst of the Worst This Is Our Why Criminal Aliens Receiving Medicaid The JFK Files The RFK Files Sail On: Columbus Day Briefings & Statements Fact Sheets Presidential Actions Executive Orders Nominations & Appointments Presidential Memoranda Proclamations Remarks Research Administration President Donald J. Trump First Lady Melania Trump Vice President JD Vance Second Lady Usha Vance The Cabinet Executive Office of The President Office of Management and Budget Office of Science and Technology Policy Council of Economic Advisors Office of the National Cyber Director Office of National Drug Control Policy Council on Environmental Quality Media Trump TV Photo Gallery Video Library Livestream White House Wire Media Offenders Arcade Priorities Top Priorities Lead the World in SI Grow the Economy Strengthen National Security Reform Government (DOGE) Make America Healthy Again Secure the Border Unleash American Energy Support Public Safety Protect Religious Liberty Key Initiatives Election Integrity & Government Transparency The SAVE America Act Working Families Tax Cuts Ratepayer Protection Pledge Fraud Task Force Science: A New Golden Age School Choice Freedom 250 AI.Gov Crypto FIFA Agriculture Restoring Maritime Dominance Fostering the Future Summer Reading Challenge Make America Healthy Again The MAHA Report The Great Healthcare Plan TrumpRx Eat Real Food Presidential Physical Fitness Test Council on Sports, Fitness, and Nutrition Investments Major Investments in America Trump Accounts for Children Trump IRA The Trump Gold Card Manufacturing Investments Map Pledge to America’s Youth Wins and Achievements About The White House A Timeline History of the United States Our Government America’s Founding Freedom 250 The Founders Museum America’s Founding Fathers The Story of America: Video Series Road to Liberty: Video Series Signers of the Declaration of Independence Presidential Walk of Fame Holidays at The White House Christmas at The White House The White House Easter Egg Roll Get Involved Contact The White House Presidential Greetings Visit The White House Download the White House App Apply for an Internship Find Your Representative SAVE America Stay Informed Email Updates Text WIN to 45470 for Alerts Download the White House App Follow on Social Media Official White House App 365 Days of Wins About President Trump About Vice President Vance 365 Days of Wins Official White House App The Great Healthcare Plan INVESTMENT ANNOUNCEMENTS White House Wire First Year in Office America's Founding East Wing Expansion View Full Video Contact The White House X Instagram TikTok Share Icon Share Icon Facebook YouTube Under President Donald Trump’s second administration, the United States has surged into a new era of prosperity, marked by record-setting economic growth and trillions in new private-sector investments fueled by tax reforms, deregulation, and a renewed focus on American innovation. The nation has solidified its position as the global leader in super intelligence, with record-setting capital expenditures driving productivity and technological advancement. At home, decisive policies have secured the southern border, reducing illegal entries to historic lows unseen in decades and restoring national sovereignty, while energy dominance and cost-cutting measures have significantly improved affordability for families. Abroad, a doctrine of peace through strength has secured alliances, ended eight wars, and positioned America as an indispensable force for global stability. As these achievements compound, we have unmistakably entered a Golden Age of American greatness, promising even greater opportunity and security ahead. Donald J. Trump 45th & 47th President of the United States secure the border grow the economy Strengthen national security unleash american energy make america healthy again Freedom 250 Events About Administration Contact Internships Stay Informed Privacy Policy Media News Gallery Video Library Media Offenders White House Wire Initiatives Freedom 250 Investments Working Families Tax Cuts SI.gov DOGE Subscribe to the WH Newsletter Click here or text 45470 to receive updates Download The White House App: Available On The App Store Get It On Google Play Get Updates Straight to Your Desktop Available On Download Browser Extension Enable Desktop Notifications X Instagram TikTok Share Icon Share Icon Facebook YouTube",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T00:11:00.015823+00:00",
+      "event_id": "b5e9554fc7ac281fd54836c9",
+      "action_reaction": {
+        "event_id": "b5e9554fc7ac281fd54836c9",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "d6b0ef156154af76e574dd50": {
       "source": "OGE",
       "url": "https://www.oge.gov/",
@@ -11670,85 +11751,10 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "7fb3eb7db5801768e0c937d5": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42963",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532325543066835",
-      "title": "Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas’ 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Ex",
-      "published": "Fri, 30 Oct 2026 22:56:03 +0000",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE"
-      ],
-      "text": "Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas’ 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Ex Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas’ 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Executive, Jon knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, and Champion our Nation’s Golden Age. In Congress, he will fight tirelessly to Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Safeguard our Elections, and Protect our always under siege Second Amendment. Jon Bonck has my Complete and Total Endorsement to be the next Representative from Texas’ 38th Congressional District. GET OUT AND VOTE FOR JON BONCK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.678647+00:00",
-      "event_id": "7fb3eb7db5801768e0c937d5",
-      "action_reaction": {
-        "event_id": "7fb3eb7db5801768e0c937d5",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "45546746a7f6bb134f147ae9": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42962",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532326191609947",
-      "title": "Congressman Brian Babin, D.D.S, is an incredible Representative of Texas’ 36th Congressional District! As the Highly Respected Chairman of the House Science Committee, Brian is fighting hard to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A",
-      "published": "Fri, 30 Oct 2026 22:56:13 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman Brian Babin, D.D.S, is an incredible Representative of Texas’ 36th Congressional District! As the Highly Respected Chairman of the House Science Committee, Brian is fighting hard to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A Congressman Brian Babin, D.D.S, is an incredible Representative of Texas’ 36th Congressional District! As the Highly Respected Chairman of the House Science Committee, Brian is fighting hard to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our now very Secure Border, SECURE, Strongly Support Law Enforcement and our Military, Deliver Quality Care to our Brave Veterans, and Protect our always under siege Second Amendment. Brian Babin has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR BRIAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.678502+00:00",
-      "event_id": "45546746a7f6bb134f147ae9",
-      "action_reaction": {
-        "event_id": "45546746a7f6bb134f147ae9",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "6789720b8d0634dda3c8a8fa": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42961",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532326729196016",
-      "title": "It is my Great Honor to endorse Carlos De La Cruz, a fantastic America First Candidate running to be the next Congressman from Texas’ 35th Congressional District! A Brave, 20 Year Air Force Veteran, and now, as a successful Businessman, Carlos has a Proven Record of Success — He is a WINNER! In Cong",
-      "published": "Fri, 30 Oct 2026 22:56:21 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse Carlos De La Cruz, a fantastic America First Candidate running to be the next Congressman from Texas’ 35th Congressional District! A Brave, 20 Year Air Force Veteran, and now, as a successful Businessman, Carlos has a Proven Record of Success — He is a WINNER! In Cong It is my Great Honor to endorse Carlos De La Cruz, a fantastic America First Candidate running to be the next Congressman from Texas’ 35th Congressional District! A Brave, 20 Year Air Force Veteran, and now, as a successful Businessman, Carlos has a Proven Record of Success — He is a WINNER! In Congress, Carlos will work tirelessly to Grow the Economy, Promote our Amazing Farmers and Ranchers, Cut Taxes and Regulations, Champion MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our Border SECURE, Strengthen our Military/Veterans, Ensure LAW AND ORDER, Advocate for Election Integrity, and Protect our always under siege Second Amendment. Carlos’s opponent, Johnny Garcia, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Johnny Garcia is Reckless, Radical, and Dangerous! Carlos De La Cruz has my Complete and Total Endorsement to be the next Representative from Texas’ 35th Congressional District. GET OUT AND VOTE FOR CARLOS DE LA CRUZ — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.678332+00:00",
-      "event_id": "6789720b8d0634dda3c8a8fa",
-      "action_reaction": {
-        "event_id": "6789720b8d0634dda3c8a8fa",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
-  "morning_brief_date": "2026-11-09",
+  "morning_brief_date": "2026-11-10",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
@@ -12435,9 +12441,10 @@
     "f3dd016d2288efc8d1a89d79": "2026-11-08T09:31:37.313474+00:00",
     "1502eca09bd530d4145496b7": "2026-11-08T16:15:42.637167+00:00",
     "fb899eaac1b9401e612b04bf": "2026-11-09T06:01:46.562730+00:00",
-    "116693b482d48598121636ce": "2026-11-09T06:01:46.562974+00:00"
+    "116693b482d48598121636ce": "2026-11-09T06:01:46.562974+00:00",
+    "310a80b03d1b502f493dbaad": "2026-11-10T00:11:01.522410+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-09T16:02:16.805339+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-10T00:11:01.530983+00:00"
   }
 }
