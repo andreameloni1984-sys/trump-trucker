@@ -1,11 +1,8 @@
-"""Conditional decision engine: translate public policy catalysts into testable market plans.
+"""Data-only scenario catalog consumed by the strict SPUTNIK decision engine.
 
-Signals are conditional watch plans, not guaranteed predictions or automatic orders.
-A plan is activated only after the stated catalyst and market confirmation are observed.
+Decision matching and Telegram formatting live in sputnik_decision_engine.py.
 """
 from __future__ import annotations
-
-from typing import Any
 
 SCENARIOS = [
     {
@@ -64,42 +61,3 @@ SCENARIOS = [
         "source_quality": "Tema geopolitico rilevato; non equivale a un ordine di acquisto.",
     },
 ]
-
-def conditional_plans(text: str, limit: int = 3) -> list[dict[str, Any]]:
-    body = " ".join(str(text or "").lower().split())
-    if not body:
-        return []
-    matches = []
-    for scenario in SCENARIOS:
-        hits = [word for word in scenario["trigger"] if word in body]
-        if hits:
-            matches.append({**scenario, "matched_terms": hits, "match_count": len(hits)})
-    matches.sort(key=lambda row: (row["match_count"], row["id"]), reverse=True)
-    return matches[:max(0, limit)]
-
-def decision_message(text: str, source: str = "Fonte pubblica") -> str:
-    plans = conditional_plans(text)
-    lines = ["🛰️ SPUTNIK — RISULTATO OPERATIVO", "━━━━━━━━━━━━━━━━━━", f"📰 Fonte analizzata: {source}", ""]
-    if not plans:
-        lines.extend([
-            "🟡 NESSUN TRADE CONDIZIONALE ATTIVATO",
-            "Il testo non contiene un catalizzatore riconosciuto con regole esplicite.",
-            "Non trasformo una semplice menzione in un acquisto.",
-        ])
-        return "\n".join(lines)
-    for i, plan in enumerate(plans, 1):
-        lines.extend([
-            f"{i}. 🎯 {plan['event']}",
-            f"➡️ Strumento da preparare: {plan['candidate']}",
-            f"📈 Scenario: {plan['bias']}",
-            f"🧭 REGOLA: {plan['if_then']}",
-            f"✅ Conferma richiesta: {plan['confirmation']}",
-            f"🛑 Annulla lo scenario se: {plan['invalidation']}",
-            f"📎 Affidabilità: {plan['source_quality']}",
-            "",
-        ])
-    lines.extend([
-        "⚠️ È un piano condizionale, non un ordine immediato.",
-        "Entry, stop-loss, target e size vanno calcolati solo con quotazioni aggiornate e verificabili.",
-    ])
-    return "\n".join(lines)
