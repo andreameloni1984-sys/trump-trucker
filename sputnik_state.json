@@ -1,14 +1,38 @@
 {
   "events": {},
-  "updated_at": "2026-11-10T21:57:31.631122+00:00",
+  "updated_at": "2026-11-10T22:12:21.943342+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "41fb30910cfc1072f28c1452",
-    "TRUTH_ARCHIVE": "00d94884efff915b61a58dad",
+    "TRUTH_ARCHIVE": "ace85fd4c87692c47733b853",
     "OGE": "84ea0ffc7ee2e8ef9cd4cb3a"
   },
   "intelligence_history": {
+    "ace85fd4c87692c47733b853": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AGRICULTURE",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 10, 2026, 5:08 PM Original Post Donald J. Trump @realDonaldTrump · November 10, 2026, 11:54 AM Original Post I am pleased to nominate James Sullivan to serve as Judge on the United States District Court for the Western District of Texas. James is a Justice on the Supreme Court of Texas and, previously, was General Counsel to Governor Greg Abbott, and Assistant Solicitor General of Texas. Additionally, Senators Ted Cruz and John Cornyn highly recommend him! After graduating from Harvard Law School and Rice University, James clerked for Judge Thomas Griffith of the U.S. Court of Appeals for the D.C. Circuit. James is an incredible jurist and lawyer, and will make an outstanding Federal District Court Judge. Congratulations James! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 10, 2026, 11:52 AM Original Post I am pleased to nominate Elliot Gaiser to serve as Judge on the United States District Court for the Northern District of Texas. Elliot is currently Assistant Attorney General for the U.S. Department of Justice Office of Legal Counsel and, previously, was Solicitor General of Ohio. A proud graduate of the University of Chicago Law School and Hillsdale College, Elliot clerked for some amazing Judges, including Justice Samuel Alito, Judge Neomi Rao of the D.C. Circuit, and Judge Edith Jones of the Fifth Circuit. Texas will appreciate having such a talented and intelligent Judge on their Federal Bench. Congratulations Elliot! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 10, 2026, 11:51 AM Original Post I am pleased to nominate Grayson Lambert to serve as Judge on the United States District Court for the District of South Carolina. Grayson is currently Chief Legal Counsel to Governor Henry McMaster and, previously, was a partner at a respected law firm, and clerked for Judge Dennis Shedd of the U.S. Court of Appeals for the Fourth Circuit. A proud graduate of the University of Virginia and Duke University School of Law, Grayson will be an excellent addition to the Federal Bench in South Carolina. Congratulations Grayson! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 10, 2026, 9:43 AM Original Post Great job by Pete Hegseth — A MUST SEE! President DONALD J. TRUMP 'A FARCE': Hegseth BLASTS impeachment effort, takes questions: https://www. youtube.com/watch?v=N48dH1heFE U www.youtube.com 'A FARCE': Hegseth BLASTS impeachment effort, takes questions Sec of War Pete Hegseth is expected to address impeachment efforts and ongoing U.S. military operations in the Middle East during a press conference at the P... Donald J. Trump @realDonaldTrump · November 10, 2026, 8:33 AM Original Post Pete Hegseth gets an “A” PLUS, PLUS, PLUS for his defense against a disgruntled, angry, defeated, former Congressman, Thomas Massie, a TOTAL LOSER! President DJT Donald J. Trump @realDonaldTrump · November 10, 2026, 7:36 AM Original Post Dan Sullivan PLUS Dan Sullivan wins the Alaska Election by thousands of votes. All votes going to the Fake Dan Sullivan, which was done solely for the purpose of fraud and confusion, should immediately be given to the Real Dan Sullivan (Senator!) - Likewise the votes of the second fraudulent candidate, also put up by the Dems. There should be no question concerning this Rigged Election. Time is of the essence!!! President DJT Donald J. Trump @realDonaldTrump · November 9, 2026, 8:36 PM Original Post Defeated Republican Congressman Thomas Massie, a total loser, is trying to Impeach perhaps the most popular and successful military official in the Country, Secretary of War, Pete Hegseth. With recruitment at an ALL-TIME HIGH, from an all-time low under Sleepy Joe Biden, and TWO VICTORIES, Venezuela and Iran, Pete Hegseth should be praised, not Impeached. Congress, stand up for Pete!!! President DJT Donald J. Trump @realDonaldTrump · November 9, 2026, 6:04 PM Original Post Very important for the U.S. Senate to confirm all of our pending 161 Nominations, including 25 Federal Judges. Thank you for your attention to this matter! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 9, 2026, 4:29 PM Original Post I had an excellent conversation with Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, the Prime Minister of Qatar, wherein much was discussed with respect to the Islamic Republic of Iran. Most importantly, Qatar, Saudi Arabia, UAE, Bahrain, Kuwait, and others, would prefer the status quo, in other words, a continuation of the Greatest Naval Blockade in History, and the new Operation Iron Gate — Therefore, Land and Sea. All have agreed that Iran cannot have a Nuclear Weapon — That is non-negotiable! Should there be any change with respect to developments in the Middle East, the United States of America is “locked and loaded” and ready to go. At this point, however, that seems to be quite unlikely. Israel, and the entire Middle East, are protected from Iranian danger and threats. We are seeing positive momentum toward an end to this Conflict, and will ensure that America’s interests are at all times protected. At the conclusion of this Military Engagement, the American People, and the World, will be far safer and more secure. President DONALD J. TRUMP Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Togeth",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-10T22:12:21.645230+00:00",
+      "event_id": "ace85fd4c87692c47733b853",
+      "action_reaction": {
+        "event_id": "ace85fd4c87692c47733b853",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "2f631b178fd78655c446f5a5": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11728,31 +11752,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "966716a01c7e18abbcad38f4": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42973",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532188644183689",
-      "title": "Greg Steube is a tremendous Representative for the Great People of Florida’s 17th Congressional District! A Former Captain of the U.S. Army JAG Corps, Greg knows the Wisdom and Courage that is required to Defend our Country, Support our Incredible Military/Veterans, and Champion PEACE THROUGH STRENG",
-      "published": "Fri, 30 Oct 2026 22:21:14 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Greg Steube is a tremendous Representative for the Great People of Florida’s 17th Congressional District! A Former Captain of the U.S. Army JAG Corps, Greg knows the Wisdom and Courage that is required to Defend our Country, Support our Incredible Military/Veterans, and Champion PEACE THROUGH STRENG Greg Steube is a tremendous Representative for the Great People of Florida’s 17th Congressional District! A Former Captain of the U.S. Army JAG Corps, Greg knows the Wisdom and Courage that is required to Defend our Country, Support our Incredible Military/Veterans, and Champion PEACE THROUGH STRENGTH. In Congress, Greg is working hard to Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion Small Business, Unleash American Energy DOMINANCE, and Defend our always under siege Second Amendment. Greg Steube has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR GREG — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.681537+00:00",
-      "event_id": "966716a01c7e18abbcad38f4",
-      "action_reaction": {
-        "event_id": "966716a01c7e18abbcad38f4",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12452,6 +12451,6 @@
     "2f631b178fd78655c446f5a5": "2026-11-10T21:41:47.014573+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-10T21:57:31.611972+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-10T22:12:21.928561+00:00"
   }
 }
