@@ -611,120 +611,6 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
     return findings
 
 
-def forward_findings_to_gagarin(findings: list[dict[str, Any]]) -> dict[str, Any] | None:
-    """Optionally send item-level public catalysts to GAGARIN for price confirmation."""
-    items = [
-        item for item in findings
-        if item.get("evidence") == "PUBLIC_RSS_ITEM" and item.get("event_id")
-    ]
-    if not items:
-        return None
-    base_url = os.getenv("GAGARIN_CLOUD_API_URL", "").strip().rstrip("/")
-    api_key = os.getenv("GAGARIN_CLOUD_API_KEY", "").strip()
-    if not base_url or not api_key:
-        print("SPUTNIK: GAGARIN handoff disabled; GAGARIN_CLOUD_API_URL/API_KEY not configured.")
-        return None
-
-    payload = {
-        "events": [
-            {
-                "event_id": str(item.get("event_id") or ""),
-                "title": str(item.get("title") or "")[:300],
-                "url": str(item.get("url") or "")[:1000],
-                "published": str(item.get("published") or "")[:100],
-                "domains": list(item.get("domains") or []),
-                "text": str(item.get("text") or "")[:1500],
-            }
-            for item in items[:20]
-        ]
-    }
-    request = urllib.request.Request(
-        base_url + "/api/sputnik/confirm",
-        data=json.dumps(payload).encode("utf-8"),
-        headers={
-            "Content-Type": "application/json",
-            "X-API-Key": api_key,
-            "User-Agent": "SPUTNIK/4.1 GAGARIN-catalyst-handoff",
-        },
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(request, timeout=45) as response:
-            result = json.loads(response.read().decode("utf-8"))
-        print(
-            "SPUTNIK: GAGARIN confirmation received for "
-            f"{len(result.get('events') or [])} catalyst event(s); no order requested."
-        )
-        return result if isinstance(result, dict) else None
-    except Exception as exc:
-        # News collection must continue even if the optional GAGARIN endpoint is down.
-        print(f"SPUTNIK: GAGARIN handoff failed: {type(exc).__name__}")
-        return None
-
-
-def gagarin_confirmation_message(result: dict[str, Any]) -> str:
-    lines = [
-        "🛰️ SPUTNIK → GAGARIN",
-        "━━━━━━━━━━━━━━━━━━",
-        "📊 Controllo prezzo/setup completato; nessun ordine inviato.",
-    ]
-    for event in (result.get("events") or [])[:5]:
-        lines.append("")
-        lines.append(f"📰 {event.get('title') or event.get('event_id') or 'Evento pubblico'}")
-        lines.append(f"🎯 Esito: {event.get('status', 'N/D')}")
-        matched = event.get("matched_instruments") or []
-        if not matched:
-            lines.append("⚪ Nessuno strumento corrispondente nell'universo Gagarin.")
-        for row in matched[:3]:
-            if not isinstance(row, dict):
-                continue
-            candidates = (
-                row.get("bias"),
-                row.get("direction"),
-                row.get("opportunity_direction"),
-                row.get("pre_move_direction"),
-            )
-            bias = next(
-                (str(value).strip().upper() for value in candidates
-                 if str(value or "").strip().upper() in {"LONG", "SHORT"}),
-                None,
-            )
-            action = str(row.get("action") or "").strip().upper()
-            setup = str(row.get("setup") or "").strip().upper()
-            trade_paper = str(row.get("trade_paper") or "").strip().upper()
-            if bias is None:
-                bias_label = "NEUTRAL / NO_DIRECTION"
-                setup = "NEUTRAL"
-            else:
-                bias_label = bias
-                if setup not in {"EARLY_BIAS", "EARLY_SETUP", "CONFIRMED"}:
-                    # A legacy action label is not proof of D-L-A confirmation.
-                    # Only an explicit validated GAGARIN PAPER authorization can
-                    # imply CONFIRMED when the setup field itself is absent.
-                    authorized_paper_entry = (
-                        action == "PAPER_ENTRY"
-                        and trade_paper == "ENTRY_AUTHORIZED_PAPER_ONLY"
-                    )
-                    setup = "CONFIRMED" if authorized_paper_entry else "EARLY_BIAS"
-
-            if not trade_paper:
-                if action in {"PAPER_ENTRY", "PAPER_SIGNAL"}:
-                    trade_paper = "PAPER_CANDIDATE"
-                elif action in {"BLOCKED", "BLOCKED_NOT_EXECUTED"}:
-                    trade_paper = "BLOCKED_NOT_EXECUTED"
-                else:
-                    trade_paper = "NOT_EXECUTED"
-
-            lines.append(
-                f"• {row.get('commodity') or row.get('symbol')}: "
-                f"BIAS {bias_label} | SETUP {setup} | TRADE PAPER {trade_paper} | "
-                f"prezzo {row.get('price', 'N/D')} | "
-                f"prob. {row.get('probability', 'N/D')}"
-            )
-    lines.append("ℹ️ L'evento è un contesto; Gagarin mantiene il proprio filtro tecnico.")
-    return "\n".join(lines)
-
-
 def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> str | None:
     """Build one compact Telegram digest from dated, item-level public catalysts.
 
@@ -1771,14 +1657,6 @@ def main() -> None:
     stage_started = time.monotonic()
     intelligence = intelligence_snapshot(state)
     print(f"SPUTNIK: public intelligence scan={((time.monotonic() - stage_started) * 1000.0):.0f}ms | findings={len(intelligence)}", flush=True)
-    stage_started = time.monotonic()
-    gagarin_confirmation = forward_findings_to_gagarin(intelligence)
-    print(f"SPUTNIK: GAGARIN forwarding={((time.monotonic() - stage_started) * 1000.0):.0f}ms", flush=True)
-    if gagarin_confirmation:
-        state["gagarin_confirmations"] = {
-            str(item.get("event_id") or index): item
-            for index, item in enumerate(gagarin_confirmation.get("events") or [])
-        }
     from zoneinfo import ZoneInfo
     local_now = utc_now().astimezone(ZoneInfo("Europe/Rome"))
     morning_key = local_now.date().isoformat()
@@ -1830,11 +1708,6 @@ def main() -> None:
             send_telegram(cfd_message, chat_id=target_chat)
     except Exception as exc:
         print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
-
-    if gagarin_confirmation:
-        message = gagarin_confirmation_message(gagarin_confirmation)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
     if morning_due:
         message = telegram_morning_message(state)
