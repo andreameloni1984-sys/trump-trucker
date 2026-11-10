@@ -1088,12 +1088,12 @@ def new_events(events: list[FilingEvent], state: dict[str, Any]) -> list[FilingE
 
 
 def telegram_morning_message(state: dict[str, Any]) -> str:
-    """Concrete morning briefing: documented activity + historical reaction."""
+    """Daily briefing: documented activity + historical reaction."""
     transactions = [x for x in (state.get("transactions") or {}).values() if x.get("source_kind") == "FORM4_TRANSACTION"]
     transactions.sort(key=lambda x: str(x.get("transaction_date") or ""), reverse=True)
     findings = list((state.get("intelligence_history") or {}).values())
     findings.sort(key=lambda x: str(x.get("detected_at") or ""), reverse=True)
-    lines = ["🛰️ SPUTNIK — BRIEF ORE 05:00", "━━━━━━━━━━━━━━━━━━", "🎯 RISULTATO"]
+    lines = ["🛰️ SPUTNIK — BRIEF GIORNALIERO", "━━━━━━━━━━━━━━━━━━", "🎯 RISULTATO"]
     if transactions:
         lines.append("🟢 OPERAZIONI FORM 4 DOCUMENTATE")
         for tx in transactions[:5]:

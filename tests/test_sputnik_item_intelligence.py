@@ -20,6 +20,12 @@ FEED = b"""<rss><channel><item>
 
 
 class SputnikItemIntelligenceTests(unittest.TestCase):
+    def test_daily_brief_header_does_not_claim_a_fixed_hour(self):
+        message = trump_tracker.telegram_morning_message({})
+        self.assertEqual(message.splitlines()[0], "🛰️ SPUTNIK — BRIEF GIORNALIERO")
+        self.assertNotIn("05:00", message.splitlines()[0])
+
+
     @patch("trump_tracker.urllib.request.urlopen")
     def test_send_telegram_removes_persistent_reply_keyboard(self, urlopen):
         response = MagicMock()
