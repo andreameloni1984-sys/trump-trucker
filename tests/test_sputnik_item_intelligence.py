@@ -486,6 +486,13 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         )
 
 
+    def test_telegram_listener_recommendation_callbacks_use_newest_history_helper(self):
+        listener_path = Path(__file__).resolve().parents[1] / "telegram_listener.py"
+        listener = listener_path.read_text(encoding="utf-8")
+        self.assertIn("recent_intelligence_items,", listener)
+        self.assertEqual(listener.count("recent_intelligence_items(state, limit=30)"), 2)
+        self.assertNotIn("values())[-30:]", listener)
+
     def test_scheduled_workflow_does_not_cancel_inflight_monitor_run(self):
         workflow_path = (
             Path(__file__).resolve().parents[1]
