@@ -1,9 +1,6 @@
 name: SPUTNIK Telegram Polling
 
 on:
-  schedule:
-    # Ogni 5 minuti
-    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
