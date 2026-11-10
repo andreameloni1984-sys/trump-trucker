@@ -545,6 +545,13 @@ def build_cfd_signal(
                     base["technical_alignment"] = "ALIGNS" if technical_direction == base["direction"] else "CONTRASTS"
                 base["reason"] += " | Analisi tecnica focused " + base["technical_alignment"] + ": " + str(focused.get("reason") or "")
             elif focused.get("status") == "WAIT_CONFIRMATION":
+                # The focused analyzer has made a neutral technical assessment;
+                # expose that known result instead of formatting it as N/D.
+                # WAIT_CONFIRMATION is a diagnostic label, not an entry filter.
+                focused_direction = str(focused.get("direction") or "").upper()
+                if focused_direction in {"LONG", "SHORT", "NEUTRAL"}:
+                    base["technical_direction"] = focused_direction
+                base["technical_alignment"] = "WAIT_CONFIRMATION"
                 # Keep the directional news thesis; missing trigger confirmation
                 # lowers readiness but does not erase the market hypothesis.
                 base["reason"] += " | Bias news non ancora confermato dal trigger tecnico: " + str(focused.get("reason") or "")
