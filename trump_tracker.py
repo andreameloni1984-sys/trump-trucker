@@ -451,7 +451,7 @@ def _domains_for_public_text(text: str) -> list[str]:
         domain
         for domain, keywords in ASSET_KEYWORDS.items()
         if any(
-            re.search(r"\\b" + re.escape(keyword) + r"\\b", normalized)
+            re.search(r"\b" + re.escape(keyword) + r"\b", normalized)
             if keyword in {"ai", "media"}
             else keyword in normalized
             for keyword in keywords
