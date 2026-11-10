@@ -147,7 +147,7 @@ La classifica ha mostrato solo `PAPER_WATCH`; EUR/USD era SHORT ma con trigger n
 
 ### Soglie runtime osservate
 
-Il workflow main ha passato al run: probabilità 40, qualità 30, confidence 35, RR minimo 2,5, stop massimo 2,5 ATR, buffer struttura 0,15 ATR e stop minimo 0,80 ATR. Sono valori osservati nei log/configurazione; PRAVDA non li ha modificati.
+Il workflow main ha passato al run: probabilità 40, qualità 30, confidence 35, RR minimo 2,5, stop massimo 2,5 ATR, buffer struttura 0,15 ATR e stop minimo 0,80 ATR. I valori 40/30/35 differiscono dal profilo Aggressive 55/45/50 discusso in precedenza: il log dimostra ciò che è stato effettivamente applicato da Actions, ma non stabilisce quale configurazione debba prevalere. PRAVDA registra la discrepanza per verifica del reparto strategia e non modifica soglie, filtri o rischio.
 
 ### Forecast WATCH e Telegram #3756
 
