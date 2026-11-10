@@ -37,7 +37,7 @@ Riletto il CSV cumulativo con parser CSV che gestisce correttamente i campi quot
 | SL verificati | 0 |
 | TP verificati | 0 |
 
-SHA-256/blob SHA del ledger GitHub: `7ee27891e651aa4b581d2a0b70f6f1ce219a936a`.
+Blob SHA del ledger GitHub: `7ee27891e651aa4b581d2a0b70f6f1ce219a936a`.
 
 Non aggiungo righe: #756 e #3756 sono già presenti. #757 è un brief storico/informativo senza livelli e non viene contato come segnale di mercato.
 
