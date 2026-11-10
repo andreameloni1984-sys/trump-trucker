@@ -67,6 +67,9 @@ jobs:
       - name: Run SPUTNIK Telegram delivery regression tests
         run: python -m unittest tests/test_telegram_delivery.py tests/test_sputnik_item_intelligence.py -v
 
+      - name: Run economic calendar regression tests
+        run: python -m unittest tests/test_economic_calendar.py -v
+
       - name: Run SPUTNIK (Render-independent)
         env:
           SEC_USER_AGENT: "SPUTNIK/4.0 contact-configured-in-github"

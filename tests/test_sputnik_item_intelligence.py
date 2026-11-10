@@ -284,6 +284,34 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("e altri 55 eventi", message)
         self.assertEqual(message.count("https://example.gov/news/"), 5)
 
+    def test_individual_alert_emits_one_message_per_new_item_with_direction_hypothesis(self):
+        item = {
+            "event_id": "oil-1",
+            "evidence": "PUBLIC_RSS_ITEM",
+            "source": "PUBLIC_RSS",
+            "title": "OPEC announces a crude production cut",
+            "published": "2026-11-06T18:00:00Z",
+            "url": "https://example.gov/opec-cut",
+            "domains": ["ENERGY"],
+            "text": "OPEC announces a crude production cut.",
+        }
+        message = trump_tracker.intelligence_item_alert_message(item)
+        self.assertIn("NUOVO CATALIZZATORE", message)
+        self.assertIn("OPEC announces a crude production cut", message)
+        self.assertIn("IPOTESI DA VERIFICARE", message)
+        self.assertIn("non un segnale confermato", message)
+        self.assertIn(item["url"], message)
+
+    def test_individual_alert_suppresses_page_level_or_incomplete_items(self):
+        invalid_items = [
+            {"event_id": "page", "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL", "url": "https://example.gov/", "published": "2026-11-06"},
+            {"event_id": "missing-url", "evidence": "PUBLIC_RSS_ITEM", "published": "2026-11-06"},
+            {"event_id": "missing-date", "evidence": "PUBLIC_RSS_ITEM", "url": "https://example.gov/post"},
+        ]
+        for item in invalid_items:
+            with self.subTest(item=item):
+                self.assertEqual(trump_tracker.intelligence_item_alert_message(item), "")
+
     def test_intelligence_digest_suppresses_page_level_and_missing_metadata(self):
         items = [
             {

@@ -29,6 +29,7 @@ from sputnik_action_reaction import build_action_reaction_record
 from sputnik_public_sources import parse_public_feed
 from sputnik_catalyst import directional_news_candidates
 from telegram_delivery import confirmed_message_id
+from economic_calendar import fetch_calendar, messages_due
 
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{cik}.json"
 STATE_FILE = Path(os.getenv("SPUTNIK_STATE_FILE", "sputnik_state.json"))
@@ -777,6 +778,42 @@ def intelligence_digest_message(items: list[dict[str, Any]], limit: int = 5) -> 
         "📊 LONG/SHORT preliminare solo se evento e mapping sostengono una direzione; prezzo/volume/ATR graduano SETUP e livelli, non cancellano il BIAS. Se i dati mancano: niente entry/SL/TP.",
     ])
     return "\n".join(lines)
+
+
+def intelligence_item_alert_message(item: dict[str, Any]) -> str:
+    """Build one Telegram alert for one dated, independently verifiable public item."""
+    if (
+        not isinstance(item, dict)
+        or item.get("evidence") != "PUBLIC_RSS_ITEM"
+        or not item.get("event_id")
+        or not item.get("url")
+        or not item.get("published")
+    ):
+        return ""
+    lines = [
+        "🛰️ SPUTNIK — NUOVO CATALIZZATORE",
+        "━━━━━━━━━━━━━━━━━━",
+        f"📡 Fonte: {item.get('source', 'N/D')}",
+        f"📰 Evento: {str(item.get('title') or 'Titolo non disponibile').strip()[:220]}",
+        f"🕒 Pubblicazione: {item.get('published')}",
+        f"🧩 Aree: {', '.join(item.get('domains') or []) or 'N/D'}",
+    ]
+    candidates = directional_news_candidates([item], limit=1)
+    if candidates:
+        candidate = candidates[0]
+        lines.extend([
+            "",
+            f"🎯 IPOTESI DA VERIFICARE: {candidate['instrument']} — {candidate['bias']}",
+            f"Motivo: {candidate['reason']}",
+            "⚠️ È un'ipotesi da notizia, non un segnale confermato.",
+        ])
+    else:
+        lines.extend(["", "⚪ Nessuna direzione commodity sufficientemente documentata."])
+    lines.extend([
+        f"🔗 {item.get('url')}",
+        "⛔ Nessun ingresso autorizzato senza quotazione, volume e struttura verificabili.",
+    ])
+    return "\\n".join(lines)
 
 
 def intelligence_message(item: dict[str, Any]) -> str:
@@ -1794,6 +1831,21 @@ def main() -> None:
     print(f"SPUTNIK: {len(intelligence)} nuove correlazioni da fonti pubbliche.")
 
     notifications_started = time.monotonic()
+    # Calendar warnings are informational only and do not alter catalyst
+    # classification, directional hypotheses, or the GAGARIN handoff.
+    try:
+        calendar_now = utc_now()
+        calendar_events = fetch_calendar(now=calendar_now)
+        for calendar_kind, calendar_message in messages_due(calendar_events, now=calendar_now):
+            print(calendar_message)
+            if not send_telegram(
+                calendar_message,
+                chat_id=str(state.get("telegram_chat_id") or "").strip() or None,
+            ):
+                print(f"SPUTNIK: calendar Telegram delivery not confirmed ({calendar_kind}).")
+    except Exception as calendar_exc:
+        print(f"SPUTNIK: economic calendar error: {type(calendar_exc).__name__}: {calendar_exc}")
+
     for event in fresh:
         message = telegram_message(event)
         print(message)
@@ -1804,32 +1856,41 @@ def main() -> None:
         print(message)
         send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
 
-    # Avoid one Telegram push per feed row. Keep page-level findings in the
-    # local research history, but alert only on dated individual RSS items and
-    # combine them into one digest per run.
-    digest = intelligence_digest_message(intelligence)
-    if digest:
-        print(digest)
-        send_telegram(digest, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+    # Send one compact alert per new dated public item (up to five per run).
+    # Generic homepage scans stay in the local log and never trigger Telegram.
+    alert_items = [
+        item for item in intelligence
+        if item.get("evidence") == "PUBLIC_RSS_ITEM"
+        and item.get("event_id") and item.get("url") and item.get("published")
+    ]
+    target_chat = str(state.get("telegram_chat_id") or "").strip() or None
+    for item in alert_items[:5]:
+        item_message = intelligence_item_alert_message(item)
+        if item_message:
+            print(item_message)
+            send_telegram(item_message, chat_id=target_chat)
+    if len(alert_items) > 5:
+        print(f"SPUTNIK: {len(alert_items) - 5} additional dated items retained locally; Telegram cap=5 per run.")
 
-    # Trading instrument recommendation after catalyst analysis
-    try:
-        from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
-        recent = list((state.get("intelligence_history") or {}).values())[-30:]
-        all_findings = recent + (intelligence or [])
-        rec = recommend_trading_instrument(all_findings)
-        if rec:
-            instr_msg = format_trading_instrument_message(rec)
-            print(instr_msg)
-            target_chat = str(state.get("telegram_chat_id") or "").strip() or None
-            send_telegram(instr_msg, chat_id=target_chat)
-            from sputnik_cfd import build_cfd_signal, format_cfd_signal
-            quotes = state.get("market_quotes") or state.get("quotes") or {}
-            cfd_message = format_cfd_signal(build_cfd_signal(rec, quotes))
-            print(cfd_message)
-            send_telegram(cfd_message, chat_id=target_chat)
-    except Exception as exc:
-        print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
+    # Recompute and send the instrument/CFD pair only when a genuinely new
+    # item-level catalyst arrived; do not repeat stale recommendations every 5 minutes.
+    if alert_items:
+        try:
+            from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
+            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            all_findings = recent + alert_items
+            rec = recommend_trading_instrument(all_findings)
+            if rec:
+                instr_msg = format_trading_instrument_message(rec)
+                print(instr_msg)
+                send_telegram(instr_msg, chat_id=target_chat)
+                from sputnik_cfd import build_cfd_signal, format_cfd_signal
+                quotes = state.get("market_quotes") or state.get("quotes") or {}
+                cfd_message = format_cfd_signal(build_cfd_signal(rec, quotes))
+                print(cfd_message)
+                send_telegram(cfd_message, chat_id=target_chat)
+        except Exception as exc:
+            print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
 
     if gagarin_confirmation:
         message = gagarin_confirmation_message(gagarin_confirmation)
