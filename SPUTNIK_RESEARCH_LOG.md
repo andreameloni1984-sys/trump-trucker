@@ -480,3 +480,12 @@ Studied the CME Trading Challenge framework and published futures-trader materia
 - **Unchanged:** do not flip the catalyst BIAS, do not add filters or thresholds, do not change entry/SL/TP calculation, risk, score, setup status, PAPER authorization or execution. No new provider calls. PAPER ONLY.
 - **Regression:** extend the opposite-direction CFD test to verify the conflict flag and Telegram warning.
 - **Validation:** pending GitHub Actions on this branch. No live quote replay, Telegram delivery, deployment or trade is claimed.
+
+
+## 2026-11-04 — Distinguish SPUTNIK technical evidence sources in CFD alerts
+
+- **Observed issue:** the market brief's 5m momentum direction, CFD focused-trader direction, and D-L-A direction were calculated independently but the CFD Telegram message displayed only the latter two as named technical readings. The generic reason text could therefore appear to contradict the displayed technical fields without identifying its source.
+- **Implemented:** CFD alerts now show three explicitly named readings: MOMENTUM 5M, TECNICA FOCUSED, and D-L-A. Each carries its own candle timestamp where available. The catalyst/bias rationale is labelled separately and no longer looks like a unified technical conclusion.
+- **Behavior preserved:** no direction is silently flipped, no new filter or threshold is added, no signal is suppressed, and no entry/SL/TP, score, risk, PAPER status, or execution logic is changed. Opposing readings remain visible as a conflict.
+- **Regression test:** added a SHORT momentum / LONG focused / LONG D-L-A fixture and checks that all three readings, timestamps, conflict warning, and PAPER NOT_EXECUTED state remain explicit.
+- **Limits:** timestamps are the source candle timestamps supplied by each module; they do not prove the providers are independent or that the data is real-time. No live alert delivery or deployment is claimed.
