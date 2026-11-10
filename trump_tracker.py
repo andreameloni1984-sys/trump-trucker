@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from email.utils import parsedate_to_datetime
 import os
 import re
@@ -990,6 +991,117 @@ def save_state(state: dict[str, Any]) -> None:
                 pass
 
 
+def record_automatic_cfd_signal(state: dict[str, Any], signal: dict[str, Any]) -> bool:
+    """Persist one automatic CFD analysis snapshot in the existing state file.
+
+    This is an audit record, not an order or an executed-trade ledger.
+    Identical snapshots are deduplicated by their point-in-time signal/quote
+    identity. Missing quote provenance or continuous-contract expiry remains
+    explicitly non-verifiable; no outcome is inferred.
+    """
+    if not isinstance(signal, dict):
+        return False
+
+    def audit_value(value: Any) -> Any:
+        if isinstance(value, float) and not math.isfinite(value):
+            return None
+        if value is None or isinstance(value, (str, int, float, bool)):
+            return value
+        return str(value)[:500]
+
+    record = {
+        "record_type": "SPUTNIK_AUTOMATIC_CFD_SIGNAL",
+        "recorded_at": utc_now().isoformat(),
+        "signal_timestamp": audit_value(signal.get("timestamp")),
+        "instrument": audit_value(signal.get("instrument")),
+        "direction": audit_value(signal.get("direction")),
+        "status": audit_value(signal.get("status")),
+        "setup_status": audit_value(signal.get("setup_status")),
+        "execution_readiness": audit_value(signal.get("execution_readiness")),
+        "score": audit_value(signal.get("score")),
+        "score_interpretation": "INTELLIGENCE_PRIORITY_NOT_PROBABILITY_OR_EXECUTION_VALIDITY",
+        "execution_status": audit_value(signal.get("paper_trade_status") or "NOT_EXECUTED"),
+        "quote_provider": audit_value(signal.get("quote_provider")),
+        "quote_symbol": audit_value(signal.get("quote_symbol")),
+        "quote_timestamp": audit_value(signal.get("quote_time")),
+        "quote_age_seconds": audit_value(signal.get("quote_age_seconds")),
+        "quote_status": audit_value(signal.get("quote_status")),
+        "market_type": audit_value(signal.get("quote_market_type")),
+        "currency": audit_value(signal.get("quote_currency")),
+        "unit": audit_value(signal.get("quote_unit")),
+        "contract_description": audit_value(signal.get("quote_contract_description")),
+        "contract_expiry": audit_value(signal.get("quote_contract_expiry")),
+        "bid": audit_value(signal.get("quote_bid")),
+        "ask": audit_value(signal.get("quote_ask")),
+        "entry": audit_value(signal.get("entry")),
+        "stop_loss": audit_value(signal.get("stop")),
+        "take_profit_1": audit_value(signal.get("tp1")),
+        "take_profit_2": audit_value(signal.get("tp2")),
+        "atr": audit_value(signal.get("atr")),
+        "crosscheck_status": audit_value(signal.get("crosscheck_status")),
+        "crosscheck_market_type": audit_value(signal.get("crosscheck_market_type")),
+        "crosscheck_independence_status": audit_value(signal.get("crosscheck_independence_status")),
+        "reason": audit_value(signal.get("reason")),
+        "signal_outcome_status": None,
+        "signal_outcome": None,
+        "signal_outcome_checked_at": None,
+    }
+
+    required_levels = ("entry", "stop_loss", "take_profit_1", "take_profit_2", "atr")
+    if any(record.get(key) is None for key in required_levels):
+        record["signal_outcome_status"] = "NOT_SCORABLE_MISSING_LEVELS"
+    else:
+        provider = str(record.get("quote_provider") or "").strip().lower()
+        symbol = str(record.get("quote_symbol") or "").strip().upper()
+        market_type = str(record.get("market_type") or "").strip().upper()
+        provenance_present = all((
+            provider and provider != "state/provider",
+            symbol and symbol != str(record.get("instrument") or "").strip().upper(),
+            record.get("quote_timestamp"),
+            record.get("quote_age_seconds") is not None,
+            record.get("quote_status") == "FRESH",
+            market_type,
+            record.get("currency"),
+            record.get("unit"),
+        ))
+        if not provenance_present:
+            record["signal_outcome_status"] = "NON_VERIFIABLE_MISSING_QUOTE_PROVENANCE"
+        elif market_type == "FUTURES_CONTINUOUS" and not record.get("contract_expiry"):
+            record["signal_outcome_status"] = "NON_VERIFIABLE_CONTRACT_EXPIRY_UNKNOWN"
+        else:
+            record["signal_outcome_status"] = "NOT_EVALUATED"
+
+    identity_fields = (
+        "signal_timestamp", "instrument", "direction", "status",
+        "quote_symbol", "quote_timestamp", "entry", "stop_loss",
+        "take_profit_1", "take_profit_2", "atr",
+    )
+    identity = {key: record.get(key) for key in identity_fields}
+    identity_json = json.dumps(
+        identity, sort_keys=True, ensure_ascii=False,
+        separators=(",", ":"), allow_nan=False,
+    )
+    record_id = hashlib.sha256(identity_json.encode("utf-8")).hexdigest()[:24]
+    record["record_id"] = record_id
+
+    history = state.setdefault("cfd_signal_history", {})
+    if not isinstance(history, dict):
+        history = {}
+        state["cfd_signal_history"] = history
+    if record_id in history:
+        return False
+
+    history[record_id] = record
+    if len(history) > MAX_STATE_EVENTS:
+        retained = sorted(
+            history.items(),
+            key=lambda item: str(item[1].get("recorded_at") or ""),
+            reverse=True,
+        )[:MAX_STATE_EVENTS]
+        state["cfd_signal_history"] = dict(retained)
+    return True
+
+
 def event_id(cik: str, accession: str, form: str, document: str) -> str:
     raw = "|".join((cik, accession, form, document))
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
@@ -1825,7 +1937,20 @@ def main() -> None:
             send_telegram(instr_msg, chat_id=target_chat)
             from sputnik_cfd import build_cfd_signal, format_cfd_signal
             quotes = state.get("market_quotes") or state.get("quotes") or {}
-            cfd_message = format_cfd_signal(build_cfd_signal(rec, quotes))
+            cfd_signal = build_cfd_signal(rec, quotes)
+            try:
+                if record_automatic_cfd_signal(state, cfd_signal):
+                    # Save after signal construction: the earlier collector
+                    # save_state() call runs before this automatic CFD path.
+                    save_state(state)
+                    print("SPUTNIK: automatic CFD signal persisted in state.")
+            except Exception as journal_exc:
+                # Audit persistence must never suppress the existing alert.
+                print(
+                    "SPUTNIK: automatic CFD signal journal unavailable: "
+                    f"{type(journal_exc).__name__}: {journal_exc}"
+                )
+            cfd_message = format_cfd_signal(cfd_signal)
             print(cfd_message)
             send_telegram(cfd_message, chat_id=target_chat)
     except Exception as exc:
