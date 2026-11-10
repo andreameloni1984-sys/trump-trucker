@@ -29,6 +29,8 @@ on:
       - "tests/test_sputnik_action_reaction.py"
       - "sputnik_action_reaction.py"
       - ".github/workflows/sputnik_tests.yml"
+      - ".github/workflows/trump_tracker.yml"
+      - "tests/test_sputnik_collector_workflow.py"
   push:
     branches:
       - main
@@ -52,6 +54,8 @@ on:
       - "trump_tracker.py"
       - "sputnik_ranking.py"
       - "tests/test_sputnik_ranking.py"
+      - ".github/workflows/trump_tracker.yml"
+      - "tests/test_sputnik_collector_workflow.py"
 
 permissions:
   contents: read
