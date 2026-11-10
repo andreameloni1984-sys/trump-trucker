@@ -900,6 +900,9 @@ def _state_for_persistence(state: dict[str, Any]) -> dict[str, Any]:
     """Remove private routing identifiers before writing public runtime state."""
     persisted = dict(state)
     persisted.pop("telegram_chat_id", None)
+    # GAGARIN confirmation payloads may contain private analysis and quote context.
+    # Keep them in memory for this run, but never commit them to the public state file.
+    persisted.pop("gagarin_confirmations", None)
     return persisted
 
 
