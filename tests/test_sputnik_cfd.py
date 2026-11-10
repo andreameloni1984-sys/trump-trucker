@@ -194,6 +194,37 @@ class YahooQuoteFallbackTests(unittest.TestCase):
         self.assertEqual(signal["quote_provider"], "Yahoo Finance chart (1m futures)")
         self.assertEqual(signal["quote_symbol"], "CL=F")
 
+    def test_build_cfd_signal_preserves_analyst_5m_direction_in_cfd_card(self):
+        quote = {
+            "price": 80.0,
+            "atr": 2.0,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "provider": "Yahoo Finance chart (1m futures)",
+            "symbol": "CL=F",
+        }
+        recommendation = {
+            "instrument": "WTI",
+            "bias": "LONG",
+            "score": 100,
+            "reason": "Nessun catalizzatore direzionale verificato.",
+            "technical_bias": "LONG",
+            "technical_timeframe": "5m",
+            "technical_reason": "EMA50 sopra EMA200; momentum positivo.",
+            "catalyst_alignment": "NO_DIRECTIONAL_NEWS",
+        }
+        with patch("sputnik_cfd.fetch_yahoo_quote", return_value=quote), patch(
+            "sputnik_cfd.attach_silv_crosscheck", side_effect=lambda value, instrument: value
+        ):
+            signal = build_cfd_signal(recommendation, {})
+        self.assertEqual(signal["direction"], "LONG")
+        self.assertEqual(signal["technical_direction"], "LONG")
+        self.assertEqual(signal["technical_timeframe"], "5m")
+        self.assertEqual(signal["technical_reason"], "EMA50 sopra EMA200; momentum positivo.")
+        self.assertEqual(signal["technical_alignment"], "ALIGNS")
+        self.assertEqual(signal["catalyst_alignment"], "NO_DIRECTIONAL_NEWS")
+        self.assertEqual(signal["paper_trade_status"], "NOT_EXECUTED")
+        self.assertIn("TECNICA: LONG (ALIGNS)", format_cfd_signal(signal))
+
     def test_build_cfd_signal_rejects_stale_yahoo_fallback_without_levels(self):
         stale_timestamp = (datetime.now(timezone.utc) - timedelta(hours=2)).isoformat()
         quote = {"price": 80.0, "atr": 2.0, "timestamp": stale_timestamp}
