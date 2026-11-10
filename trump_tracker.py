@@ -1771,6 +1771,28 @@ def main() -> None:
     stage_started = time.monotonic()
     intelligence = intelligence_snapshot(state)
     print(f"SPUTNIK: public intelligence scan={((time.monotonic() - stage_started) * 1000.0):.0f}ms | findings={len(intelligence)}", flush=True)
+    macro_calendar_alerts: list[dict[str, Any]] = []
+    try:
+        from sputnik_macro_calendar import fetch_macro_calendars, due_calendar_alerts
+        calendar_events, calendar_errors = fetch_macro_calendars()
+        macro_calendar_alerts = due_calendar_alerts(
+            calendar_events,
+            state.setdefault("macro_calendar_sent", {}),
+            utc_now(),
+        )
+        print(
+            f"SPUTNIK: official macro calendars | source_events={len(calendar_events)} "
+            f"| due_alerts={len(macro_calendar_alerts)} | source_errors={len(calendar_errors)}",
+            flush=True,
+        )
+        for calendar_error in calendar_errors:
+            print(f"SPUTNIK: macro calendar source unavailable | {calendar_error}", flush=True)
+    except Exception as exc:
+        print(
+            f"SPUTNIK: BLS macro calendar unavailable | "
+            f"{type(exc).__name__}: {exc}",
+            flush=True,
+        )
     stage_started = time.monotonic()
     gagarin_confirmation = forward_findings_to_gagarin(intelligence)
     print(f"SPUTNIK: GAGARIN forwarding={((time.monotonic() - stage_started) * 1000.0):.0f}ms", flush=True)
@@ -1794,6 +1816,20 @@ def main() -> None:
     print(f"SPUTNIK: {len(intelligence)} nuove correlazioni da fonti pubbliche.")
 
     notifications_started = time.monotonic()
+    for calendar_event in macro_calendar_alerts:
+        from sputnik_macro_calendar import format_calendar_alert
+        calendar_message = format_calendar_alert(calendar_event)
+        print(calendar_message, flush=True)
+        if send_telegram(
+            calendar_message,
+            chat_id=str(state.get("telegram_chat_id") or "").strip() or None,
+        ):
+            event_id = str(calendar_event["event_id"])
+            sent_stages = state.setdefault("macro_calendar_sent", {}).setdefault(event_id, [])
+            stage = str(calendar_event["stage"])
+            if stage not in sent_stages:
+                sent_stages.append(stage)
+                save_state(state)
     for event in fresh:
         message = telegram_message(event)
         print(message)
