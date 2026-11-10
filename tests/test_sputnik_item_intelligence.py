@@ -57,6 +57,20 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
                 with self.subTest(payload=payload):
                     self.assertFalse(trump_tracker.send_telegram("Sputnik test"))
 
+    def test_short_domain_keywords_match_complete_words_only(self):
+        self.assertNotIn("AI_TECH", trump_tracker._domains_for_public_text(
+            "The election results were discussed AGAIN."
+        ))
+        self.assertNotIn("MEDIA", trump_tracker._domains_for_public_text(
+            "The proposal should be implemented immediately."
+        ))
+        self.assertIn("AI_TECH", trump_tracker._domains_for_public_text(
+            "AI-powered semiconductor investment."
+        ))
+        self.assertIn("MEDIA", trump_tracker._domains_for_public_text(
+            "Media coverage of the announcement."
+        ))
+
     def test_tariff_headline_is_classified_as_a_market_catalyst(self):
         domains = trump_tracker._domains_for_public_text(
             "President announces new tariffs on China"
