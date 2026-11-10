@@ -492,5 +492,37 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("tests/test_sputnik_item_intelligence.py", workflow)
 
 
+    def test_scheduled_run_history_is_logged_without_blocking_collection(self):
+        workflow_path = (
+            Path(__file__).resolve().parents[1]
+            / ".github"
+            / "workflows"
+            / "trump_tracker.yml"
+        )
+        workflow = workflow_path.read_text(encoding="utf-8")
+        self.assertIn("actions: read", workflow)
+        self.assertIn(
+            "actions/workflows/trump_tracker.yml/runs?event=schedule&per_page=20",
+            workflow,
+        )
+        self.assertIn("SPUTNIK_SCHEDULE_RUN", workflow)
+        self.assertIn("SPUTNIK_SCHEDULE_GAP", workflow)
+        self.assertIn(
+            "SPUTNIK scheduled-run history unavailable",
+            workflow,
+        )
+        self.assertIn(
+            "SPUTNIK scheduled-run history response unreadable",
+            workflow,
+        )
+        self.assertIn(
+            "SPUTNIK scheduled-run history response invalid",
+            workflow,
+        )
+        self.assertLess(
+            workflow.index("Report recent scheduled collector runs"),
+            workflow.index("Run SPUTNIK (Render-independent)"),
+        )
+
 if __name__ == "__main__":
     unittest.main()
