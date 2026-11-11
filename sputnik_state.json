@@ -1,6 +1,6 @@
 {
   "events": {},
-  "updated_at": "2026-11-11T00:01:00.410678+00:00",
+  "updated_at": "2026-11-11T00:34:26.728036+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -9,6 +9,54 @@
     "OGE": "84ea0ffc7ee2e8ef9cd4cb3a"
   },
   "intelligence_history": {
+    "ff77b04eaed1f783a56b8d2b": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43547",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117594721408592840",
+      "title": "The Democrats’ attempt to impeach Secretary of War Pete Hegseth has miserably FAILED! Every single Republican, except Thomas Massie, a major LOSER, voted in favor of Pete. Again, Victories in Venezuela and Iran, the Best Recruitment Numbers in the History of the Military (Long waiting lists to get i",
+      "published": "Tue, 10 Nov 2026 23:24:08 +0000",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "The Democrats’ attempt to impeach Secretary of War Pete Hegseth has miserably FAILED! Every single Republican, except Thomas Massie, a major LOSER, voted in favor of Pete. Again, Victories in Venezuela and Iran, the Best Recruitment Numbers in the History of the Military (Long waiting lists to get i The Democrats’ attempt to impeach Secretary of War Pete Hegseth has miserably FAILED! Every single Republican, except Thomas Massie, a major LOSER, voted in favor of Pete. Again, Victories in Venezuela and Iran, the Best Recruitment Numbers in the History of the Military (Long waiting lists to get in!), and Spirit like rarely seen before, led to the EXONERATION of a Great American Patriot. The Democrats continue to weaponize and abuse the United States of America. They must be stopped! MAKE AMERICA GREAT AGAIN. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-11T00:34:26.709827+00:00",
+      "event_id": "ff77b04eaed1f783a56b8d2b",
+      "action_reaction": {
+        "event_id": "ff77b04eaed1f783a56b8d2b",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "1ad5db67d96464261f7aae05": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43548",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117594826848361683",
+      "title": "A Huge Victory against Fake News BBC, a terrible abuser of the truth, just handed down by highly respected District Court Judge, Jeffrey T. Kuntz, of the Southern District of Florida. In his powerful ruling, Judge Kuntz wrote, “Here, the news entity created the story. BBC admitted as much by confirm",
+      "published": "Tue, 10 Nov 2026 23:50:57 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "A Huge Victory against Fake News BBC, a terrible abuser of the truth, just handed down by highly respected District Court Judge, Jeffrey T. Kuntz, of the Southern District of Florida. In his powerful ruling, Judge Kuntz wrote, “Here, the news entity created the story. BBC admitted as much by confirm A Huge Victory against Fake News BBC, a terrible abuser of the truth, just handed down by highly respected District Court Judge, Jeffrey T. Kuntz, of the Southern District of Florida. In his powerful ruling, Judge Kuntz wrote, “Here, the news entity created the story. BBC admitted as much by confirming it had edited a video to make it appear as though President Trump made a statement he never made.” We will continue fighting against, and defeating, all of those who try to deceive the American People! Thank you for your attention to this matter. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-11T00:34:26.709631+00:00",
+      "event_id": "1ad5db67d96464261f7aae05",
+      "action_reaction": {
+        "event_id": "1ad5db67d96464261f7aae05",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "fe232ef403cff36b9017fa9d": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -11703,55 +11751,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "45744815fb540bbb2fd10b0b": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42977",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532184385204057",
-      "title": "It is my Great Honor to endorse America First Patriot, Casey Askar, who is running to represent the tremendous people of Florida’s 22nd Congressional District! A Brave U.S. Marine Corps Veteran, and now, as a successful Businessman, Casey has a Proven Record of Success — He is a WINNER! His opponent",
-      "published": "Fri, 30 Oct 2026 22:20:09 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Casey Askar, who is running to represent the tremendous people of Florida’s 22nd Congressional District! A Brave U.S. Marine Corps Veteran, and now, as a successful Businessman, Casey has a Proven Record of Success — He is a WINNER! His opponent It is my Great Honor to endorse America First Patriot, Casey Askar, who is running to represent the tremendous people of Florida’s 22nd Congressional District! A Brave U.S. Marine Corps Veteran, and now, as a successful Businessman, Casey has a Proven Record of Success — He is a WINNER! His opponent, Pia Dandiya, is a Radical Left Democrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender Mutilization of your Children. Pia Dandiya is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Casey will work tirelessly to Grow our Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., Strengthen our Incredible Military/Veterans, Keep our Border SECURE, Advance Election Integrity, and Defend our always under siege Second Amendment. Casey Askar has my Complete and Total Endorsement to be the next Representative from Florida’s 22nd Congressional District. GET OUT AND VOTE FOR CASEY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.682169+00:00",
-      "event_id": "45744815fb540bbb2fd10b0b",
-      "action_reaction": {
-        "event_id": "45744815fb540bbb2fd10b0b",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "e01a282d9ff2ff7fbb5927c2": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42976",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532185224695462",
-      "title": "Congressman Brian Mast is a MAGA Warrior and Fantastic Advocate for Florida’s 21st Congressional District! As the Chairman of my WINNING 2024 Campaign’s Veterans for Trump Coalition, Brian is a true American Hero and Patriot. He knows the Wisdom and Courage required to Defend our Country, Support ou",
-      "published": "Fri, 30 Oct 2026 22:20:22 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman Brian Mast is a MAGA Warrior and Fantastic Advocate for Florida’s 21st Congressional District! As the Chairman of my WINNING 2024 Campaign’s Veterans for Trump Coalition, Brian is a true American Hero and Patriot. He knows the Wisdom and Courage required to Defend our Country, Support ou Congressman Brian Mast is a MAGA Warrior and Fantastic Advocate for Florida’s 21st Congressional District! As the Chairman of my WINNING 2024 Campaign’s Veterans for Trump Coalition, Brian is a true American Hero and Patriot. He knows the Wisdom and Courage required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, he is fighting hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Ensure PEACE THROUGH STRENGTH, and Protect our always under siege Second Amendment. Brian Mast has my Complete and Total Endorsement for Re-Election! GET OUT AND VOTE FOR BRIAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.682007+00:00",
-      "event_id": "e01a282d9ff2ff7fbb5927c2",
-      "action_reaction": {
-        "event_id": "e01a282d9ff2ff7fbb5927c2",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12448,9 +12447,11 @@
     "ae0020e70830872d2d050afa": "2026-11-10T21:41:47.013843+00:00",
     "c158ed4c6075e52638a1a8af": "2026-11-10T21:41:47.014071+00:00",
     "49a2bd2f1cdd51539629642a": "2026-11-10T21:41:47.014392+00:00",
-    "2f631b178fd78655c446f5a5": "2026-11-10T21:41:47.014573+00:00"
+    "2f631b178fd78655c446f5a5": "2026-11-10T21:41:47.014573+00:00",
+    "1ad5db67d96464261f7aae05": "2026-11-11T00:34:26.709616+00:00",
+    "ff77b04eaed1f783a56b8d2b": "2026-11-11T00:34:26.709822+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-11T00:01:00.398592+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-11T00:34:26.717056+00:00"
   }
 }
