@@ -8,6 +8,12 @@ informational Telegram alerts. It does not place trades or infer private activit
 
 from __future__ import annotations
 
+# Invest is the CLI entry point. Legacy helpers below remain importable for
+# historical regression tests; they are not run by this executable.
+if __name__ == "__main__":
+    from invest_scanner.runner import main as run_invest
+    raise SystemExit(run_invest("sputnik"))
+
 import hashlib
 import json
 from email.utils import parsedate_to_datetime
