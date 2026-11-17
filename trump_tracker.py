@@ -1823,11 +1823,10 @@ def main() -> None:
             print(instr_msg)
             target_chat = str(state.get("telegram_chat_id") or "").strip() or None
             send_telegram(instr_msg, chat_id=target_chat)
-            from sputnik_cfd import build_cfd_signal, format_cfd_signal
-            quotes = state.get("market_quotes") or state.get("quotes") or {}
-            cfd_message = format_cfd_signal(build_cfd_signal(rec, quotes))
-            print(cfd_message)
-            send_telegram(cfd_message, chat_id=target_chat)
+            # INVEST Demo migration: never emit legacy CFD trade instructions.
+            # The recommendation above remains research-only until an equity
+            # symbol and a timestamped quote pass invest_demo_guard validation.
+            print("SPUTNIK: legacy CFD signal suppressed (INVEST Demo migration)")
     except Exception as exc:
         print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
 
