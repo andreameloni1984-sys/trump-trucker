@@ -468,11 +468,11 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             / "trump_tracker.yml"
         )
         workflow = workflow_path.read_text(encoding="utf-8")
-        self.assertIn("group: sputnik-main", workflow)
-        self.assertIn("queue: max", workflow)
+        self.assertIn("group: sputnik-invest-research", workflow)
         self.assertIn("cancel-in-progress: false", workflow)
         self.assertNotIn("cancel-in-progress: true", workflow)
-        self.assertIn('    - cron: "2-59/5 * * * *"', workflow)
+        self.assertNotIn("cron:", workflow)
+        self.assertIn("workflow_dispatch:", workflow)
 
     def test_scheduled_workflow_fails_closed_without_telegram_chat_id(self):
         workflow_path = (
@@ -482,14 +482,11 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             / "trump_tracker.yml"
         )
         workflow = workflow_path.read_text(encoding="utf-8")
-        self.assertIn('SPUTNIK_TELEGRAM_POLLING: "0"', workflow)
-        self.assertIn(
-            "TELEGRAM_CHAT_ID is required: the scheduled collector sets "
-            "SPUTNIK_TELEGRAM_POLLING=0 and cannot auto-discover a destination.",
-            workflow,
-        )
+        self.assertIn("if: inputs.notify", workflow)
+        self.assertIn('test -n "$TELEGRAM_CHAT_ID"', workflow)
+        self.assertIn("TELEGRAM_CHAT_ID required", workflow)
         self.assertNotIn("AUTO-DISCOVERY ATTIVO", workflow)
-        self.assertIn("tests/test_sputnik_item_intelligence.py", workflow)
+        self.assertIn("tests/test_invest_scanner.py", workflow)
 
 
 if __name__ == "__main__":
