@@ -1,14 +1,107 @@
 {
   "events": {},
-  "updated_at": "2026-11-11T05:55:03.736928+00:00",
+  "updated_at": "2026-11-18T14:35:07.197183+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "41fb30910cfc1072f28c1452",
-    "TRUTH_ARCHIVE": "fe232ef403cff36b9017fa9d",
-    "OGE": "84ea0ffc7ee2e8ef9cd4cb3a"
+    "TRUTH_ARCHIVE": "49b801fba5d8d11657d273a3",
+    "OGE": "efbb2d844b90cd1e60c4d75f"
   },
   "intelligence_history": {
+    "106b04b2069b682b443d8d9f": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43613",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117634065135557984",
+      "title": "Biggest drop in gasoline in 18 years. Notice that they waited until after the “Election?” President DJT",
+      "published": "Tue, 17 Nov 2026 22:09:46 +0000",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Biggest drop in gasoline in 18 years. Notice that they waited until after the “Election?” President DJT RT: https://truthsocial.com/users/Schoenlaw/statuses/117632129147481602 Biggest drop in gasoline in 18 years. Notice that they waited until after the “Election?” President DJT Quoted Schoenlaw https:// tradersunion.com/news/market-v oices/show/4212469-us-gasoline-prices-drop/. Last week saw the biggest drop in retail gas prices at the pump in 18 years! The blockade is working. Where is the media???Credit President Trump!!! @ realDonaldTrump",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-18T14:35:07.173242+00:00",
+      "event_id": "106b04b2069b682b443d8d9f",
+      "action_reaction": {
+        "event_id": "106b04b2069b682b443d8d9f",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "d2aee3b10365cb46cada1cf5": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43616",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117636323928351024",
+      "title": "I am now heading to China, from the Philippines, where we had a wonderful meeting on Trade, National Security, and other subjects. I am pleased to announce that we made a new and completely different Trade Deal with the Philippines, one that will be a true landmark and, in particular, a Deal that wi",
+      "published": "Wed, 18 Nov 2026 07:44:12 +0000",
+      "domains": [
+        "ENERGY",
+        "TRADE_POLICY"
+      ],
+      "text": "I am now heading to China, from the Philippines, where we had a wonderful meeting on Trade, National Security, and other subjects. I am pleased to announce that we made a new and completely different Trade Deal with the Philippines, one that will be a true landmark and, in particular, a Deal that wi I am now heading to China, from the Philippines, where we had a wonderful meeting on Trade, National Security, and other subjects. I am pleased to announce that we made a new and completely different Trade Deal with the Philippines, one that will be a true landmark and, in particular, a Deal that will be great for our Farmers and those in the business of “Energy.” President Marcos is a powerful leader, and a man of high integrity and substance. It was an Honor to be with him, and his beautiful wife and son. See you in China! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-18T14:35:07.172988+00:00",
+      "event_id": "d2aee3b10365cb46cada1cf5",
+      "action_reaction": {
+        "event_id": "d2aee3b10365cb46cada1cf5",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "efbb2d844b90cd1e60c4d75f": {
+      "source": "OGE",
+      "url": "https://www.oge.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Skip to Main Content An official website of the United States government Here’s how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. U.S. Office of Government Ethics Menu About Resources for the Public Resources for Ethics Officials Resources for Federal Employees News Site Index Forms Library Contact Us Search Public service is a public trust, requiring employees to place loyalty to the Constitution, the laws and ethical principles above private gain Learn about our mission Popular Tasks Find an Individual's Ethics Document Find an Agency's Ethics Program Document Find the Ethics Rules I want to... Find a financial disclosure report for an individual or Presidential candidate Learn more about the individual disclosures available on OGE’s website Learn more about the ethics documents available on OGE’s website Find contact information to access ethics documents at other agencies Research an ethics topic Find an ethics statute or regulation Find where to report misconduct by a federal employee File a FOIA Request I want to find information about being a PAS Nominee Go OGE Leadership Leadership Notes OGE uses Leadership Notes to communicate with the public. Read More What's New News | 11/16/2026 On November 19th, the U.S. Senate Committee on Homeland Security & Governmental Affairs will hold a hearing on the nominee to be Director of the Office of Government Ethics. News | 11/09/2026 OGE Issues Updates to the Public Financial Disclosure Guide Oversight | 11/09/2026 OGE Issues a Program Review Report for the Council of the Inspectors General on Integrity and Efficiency (CIGIE) OGE reviewed CIGIE's ethics program and issued 5 recommendations. News | 11/06/2026 OGE Seeks Public Input on Forms Related to Financial Disclosure The U.S. Office of Government Ethics (OGE) is hosting a public meeting to obtain input regarding potential improvements to the OGE Form 278e and the OGE Form 450 as part of a form revision planning process that will precede the next requested renewal of these forms under the Paperwork Reduction Act. The next scheduled renewal is in August of 2027. Oversight | 11/04/2026 OGE Issues a Program Review Report for the Office of Management and Budget (OMB) OGE reviewed OMB's ethics program and issued 2 recommendations. Legal Advisory | 11/02/2026 LA-26-01: Increased Gifts and Travel Reimbursements Reporting Thresholds for Financial Disclosure Reports and Nonsponsor Widely Attended Gatherings Gift Exception Ceiling This Legal Advisory discusses the recent amendments to the gifts and travel reimbursements reporting thresholds at 5 C.F.R. §§ 2634.304 and 2634.907(g) and the widely attended gatherings gift exception ceiling for nonsponsor gifts of free attendance at 5 C.F.R. § 2635.204(g)(3). View All Featured Resources Resources for Nominees to Senate-Confirmed Positions This webpage features resources for prospective nominees to Presidentially appointed, Senate-confirmed (PAS) positions. Guide for Nominees (2024) (PDF) This Guide is for prospective nominees to Senate-confirmed Presidential appointment (PAS) positions and those confirmed to PAS positions. It is organized to take a nominee through the life cycle of a PAS official. It includes sections explaining what to expect during the nominee process, how to have an ethical start to Federal service, how to be a leader in ethics, and what to consider when planning to leave Federal service. Confidential Financial Disclosure Guide OGE maintains a guide to assist filers and reviewers of confidential financial disclosure reports. Public Financial Disclosure Guide This Guide assists filers and reviewers of public financial disclosure reports. Analyzing Potential Conflicts of Interests These guidance documents provide conflicts of interest analyses for various types of employment interests, investment interests, and liabilities. Compilation of Federal Ethics Laws (PDF) The Compilation contains the most pertinent laws under the jurisdiction of the executive branch ethics program as well as related statutes on which ethics officials are often called upon to provide advice to agency employees. Summary of the Standards of Conduct (PDF) This resource provides a summary of the Standards of Conduct for Employees of Ethical Conduct which apply to every executive branch employee. Nominee Financial Disclosure Review During Presidential Transitions (Before and After Inauguration) (PDF) This document provides key information and data about the nominee financial disclosure review process including during and after the period of a Presidential Transition. Quicklinks Agency Ethics Program Contact List Press Contacts Forms Library FAQs – Public Financial Disclosure 2026 Dates and Deadlines (PDF) Form 450 (PDF) Institute for Ethics in Government Return to top Accessibility | Budget and Performance | FOIA | Information Quality | EEO/No Fear Act | Privacy | Rulemaking | Site Index Have a question about government services? Contact USA.gov Regulations.gov Twitter YouTube U.S. Office of Government Ethics contactoge@oge.gov | (202) 482-9300",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-18T14:35:06.574199+00:00",
+      "event_id": "efbb2d844b90cd1e60c4d75f",
+      "action_reaction": {
+        "event_id": "efbb2d844b90cd1e60c4d75f",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "49b801fba5d8d11657d273a3": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "MEDIA",
+        "TRADE_POLICY"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 18, 2026, 2:44 AM Original Post I am now heading to China, from the Philippines, where we had a wonderful meeting on Trade, National Security, and other subjects. I am pleased to announce that we made a new and completely different Trade Deal with the Philippines, one that will be a true landmark and, in particular, a Deal that will be great for our Farmers and those in the business of “Energy.” President Marcos is a powerful leader, and a man of high integrity and substance. It was an Honor to be with him, and his beautiful wife and son. See you in China! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 17, 2026, 8:01 PM Original Post Thank you, BIG John. You are great!!! President DJT https://www. youtube.com/shorts/CTlVRPAtdXA www.youtube.com John Daly Opens Up About Playing Golf With President Trump John Daly shares his experience playing golf with President Donald Trump and discusses his views on Trump's character, family, and political opponents.Full e... Donald J. Trump @realDonaldTrump · November 17, 2026, 5:09 PM Original Post Biggest drop in gasoline in 18 years. Notice that they waited until after the “Election?” President DJT Schoenlaw @Schoenlaw · November 17, 2026, 8:57 AM Original Post https:// tradersunion.com/news/market-v oices/show/4212469-us-gasoline-prices-drop/ . Last week saw the biggest drop in retail gas prices at the pump in 18 years! The blockade is working. Where is the media???Credit President Trump!!! @ realDonaldTrump Donald J. Trump @realDonaldTrump · November 16, 2026, 10:07 PM Original Post Donald J. Trump @realDonaldTrump · November 16, 2026, 9:31 PM Original Post Donald J. Trump @realDonaldTrump · November 16, 2026, 9:31 PM Original Post Donald J. Trump @realDonaldTrump · November 16, 2026, 9:31 PM Original Post Donald J. Trump @realDonaldTrump · November 16, 2026, 7:44 PM Original Post Despite the United States having the MOST ABUNDANT Supply, and LOWEST COST Natural Gas in the World, Citizens in Blue States like New York have been paying 3X-7X more for Natural Gas due to the costly Anti-Energy Policies pushed by Blue State Governors and Political leaders. We must protect our American Families from these Radical Climate Extremists, they are exploding Energy costs. The Democrat Party wants to ban all Pipelines, all Refineries, and all Fossil Fuels. The great news is that I am working to END the Left's War on Energy Affordability and Energy Security, and I will UNLEASH American Energy Dominance for ALL Americans! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 16, 2026, 7:42 PM Original Post Under my leadership, our Economy is booming! New Businesses created in America have reached ALL-TIME HIGHS — Over 500,000 new Businesses formed every month this year. Unlike the Communists that want to tax our Small Business Owners to “death,” my Administration and Republicans in Congress rewarded them with the Largest Tax Cuts in American History, which EVERY Democrat voted against. I WILL ALWAYS FIGHT FOR THE AMERICAN PEOPLE! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 16, 2026, 7:05 PM Original Post Donald J. Trump @realDonaldTrump · November 16, 2026, 7:04 PM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-18T14:35:06.432678+00:00",
+      "event_id": "49b801fba5d8d11657d273a3",
+      "action_reaction": {
+        "event_id": "49b801fba5d8d11657d273a3",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "ff77b04eaed1f783a56b8d2b": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11650,111 +11743,10 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "262aeee477f763e119935502": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "Trump’s Truth {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://www.trumpstruth.org/#website\",\"url\":\"https://www.trumpstruth.org/\",\"name\":\"Trump’s Truth\",\"description\":\"Trump’s Truth is a searchable archive of Donald Trump’s posts on TRUTH Social.\",\"publisher\":{\"@id\":\"https://www.trumpstruth.org/#publisher\"}},{\"@type\":\"Organization\",\"@id\":\"https://www.trumpstruth.org/#publisher\",\"name\":\"Defending Democracy Together\",\"url\":\"https://www.defendingdemocracytogether.org/\"}]} window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-473B4XHD1X'); Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · October 31, 2026, 10:33 AM Original Post Donald J. Trump @realDonaldTrump · October 31, 2026, 10:33 AM Original Post Reuters (One of the Worst!) Reporter. Read full post Donald J. Trump @realDonaldTrump · October 31, 2026, 10:15 AM Original Post Donald J. Trump @realDonaldTrump · October 31, 2026, 12:37 AM Original Post Read full post Donald J. Trump @realDonaldTrump · October 31, 2026, 12:37 AM Original Post Donald J. Trump @realDonaldTrump · October 31, 2026, 12:37 AM Original Post Donald J. Trump @realDonaldTrump · October 30, 2026, 11:51 PM Original Post ↻ Previously posted October 27, 2026 Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 6:38 PM Original Post Looking forward to being with you in Iowa and Kansas on Sunday! We’re going to get Ashley Hinson elected to the U.S. Senate, Zach Lahn to be the next Governor of Iowa, Roger Marshall Re-Elected to the U.S. Senate, and Ty Masterson elected to be the next Governor of Kansas! President DONALD J. TRUMP Read full post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 5:27 PM Original Post ↻ Previously posted October 27, 2026 Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 6:23 PM Original Post Watching Right Side Broadcasting Network (RSBN) on Air Force One as we head into Daytona. Rally is PACKED! Great speakers, and incredible Florida Patriots. Will be landing soon. See you in a little while! President DONALD J. TRUMP Read full post Donald J. Trump ReTruthed Donald J. Trump @realDonaldTrump · October 30, 2026, 5:09 PM Original Post Read full post Donald J. Trump @realDonaldTrump · October 30, 2026, 5:09 PM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T15:15:04.927667+00:00",
-      "event_id": "262aeee477f763e119935502",
-      "action_reaction": {
-        "event_id": "262aeee477f763e119935502",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "67bb6e6613a6614c1cbcaba2": {
-      "source": "WHITE_HOUSE",
-      "url": "https://www.whitehouse.gov/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AI_TECH",
-        "SPACE",
-        "CRYPTO",
-        "MEDIA",
-        "REAL_ESTATE"
-      ],
-      "text": "{\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"isPartOf\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\"},\"about\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"primaryImageOfPage\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\"},\"thumbnailUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"datePublished\":\"2026-01-22T14:00:00+00:00\",\"dateModified\":\"2026-10-28T17:42:41+00:00\",\"description\":\"President Donald J. Trump and Vice President JD Vance are committed to lowering costs for all Americans, securing our borders, unleashing American energy dominance, restoring peace through strength, and making all Americans safe and secure once again.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/www.whitehouse.gov\\/\"]}]},{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#primaryimage\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2026\\/01\\/POTUS-Signature-V2-Transparent-11.gif\",\"width\":800,\"height\":450},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#website\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"name\":\"The White House\",\"description\":\"\",\"publisher\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\"},\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\\/\\/www.whitehouse.gov\\/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"},{\"@type\":\"GovernmentOrganization\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#organization\",\"name\":\"The White House\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\",\"url\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"contentUrl\":\"https:\\/\\/www.whitehouse.gov\\/wp-content\\/uploads\\/2025\\/01\\/favicon.png\",\"width\":918,\"height\":918,\"caption\":\"The White House\"},\"image\":{\"@id\":\"https:\\/\\/www.whitehouse.gov\\/#\\/schema\\/logo\\/image\\/\"},\"sameAs\":[\"https:\\/\\/www.facebook.com\\/WhiteHouse\\/\",\"https:\\/\\/x.com\\/whitehouse\",\"https:\\/\\/www.instagram.com\\/whitehouse\\/\",\"https:\\/\\/www.youtube.com\\/@whitehouse\"]}]} The White House img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px} /*# sourceURL=wp-img-auto-sizes-contain-inline-css */ .wp-block-social-link{background:none!important;color:inherit!important}.wp-block-social-link-anchor{padding:0!important}.wp-block-social-link:focus,.wp-block-social-link:hover{transform:none!important} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-social-link.css */ .is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*=\"writing-mode:vertical-lr\"],p.has-text-align-right[style*=\"writing-mode:vertical-rl\"]{rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/paragraph/style.min.css */ .wp-block-spacer{clear:both} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/spacer/style.min.css */ .wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative} /*# sourceURL=https://www.whitehouse.gov/wp-includes/blocks/group/style.min.css */ .wp-block-group.has-hyperlink{position:relative}.wp-block-group.has-hyperlink:not(.block-editor-block-list__block)>:nth-child(2){margin-block-start:0}.wp-block-group.has-hyperlink a.wp-block-group__action{height:100%;left:0;position:absolute;top:0;width:100%;z-index:3}.wp-block-group.has-hyperlink .wp-block-button,.wp-block-group.has-hyperlink a{position:relative;z-index:4} /*# sourceURL=https://www.whitehouse.gov/wp-content/themes/whitehouse/assets/css/blocks/core-group.css */ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg} /*# sourceURL=https://www.whitehouse.gov/wp-inclu",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T15:15:04.651373+00:00",
-      "event_id": "67bb6e6613a6614c1cbcaba2",
-      "action_reaction": {
-        "event_id": "67bb6e6613a6614c1cbcaba2",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "a4e4aa73f18993e438c86b4c": {
-      "source": "WHITE_HOUSE",
-      "url": "https://www.whitehouse.gov/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "AI_TECH",
-        "SPACE",
-        "CRYPTO",
-        "MEDIA",
-        "REAL_ESTATE"
-      ],
-      "text": "(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:[\"bam.nr-data.net\"]},feature_flags:[\"rum_v2\"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:\"NRJS-478cab472aef3db5069\",applicationID:\"1352821653\",browserID:\"1386236136\"};;/*! For license information please see nr-loader-rum-1.324.1.min.js.LICENSE.txt */ (()=>{var e={8122(e,t,r){\"use strict\";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||\"object\"!=typeof e)return(0,n.R)(3);if(!t||\"object\"!=typeof t)return(0,n.R)(4);const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),a=0===Object.keys(r).length?e:r;for(let s in a)if(void 0!==e[s])try{if(null===e[s]){r[s]=null;continue}Array.isArray(e[s])&&Array.isArray(t[s])?r[s]=Array.from(new Set([...e[s],...t[s]])):e[s]instanceof Map||e[s]instanceof Set||e[s]instanceof Date||e[s]instanceof RegExp?r[s]=e[s]:\"object\"==typeof e[s]&&null!==t[s]&&\"object\"==typeof t[s]?r[s]=i(e[s],t[s]):r[s]=e[s]}catch(e){r[s]||(0,n.R)(1,e)}return r}catch(e){(0,n.R)(2,e)}}},2555(e,t,r){\"use strict\";r.d(t,{f:()=>s});var n=r(384),i=r(8122);const a={beacon:n.NT.beacon,errorBeacon:n.NT.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0};function s(e){try{return!!e.licenseKey&&!!e.errorBeacon&&!!e.applicationID}catch(e){return!1}}r.d(t,[\"D\",0,e=>(0,i.a)(e,a)])},7699(e,t,r){\"use strict\";var n=r(860);const i=1e6,a={[n.K7.logging]:!0,[n.K7.genericEvents]:!0,[n.K7.jserrors]:!0,[n.K7.ajax]:!0};r.d(t,[\"It\",0,i,\"KC\",0,a,\"qh\",0,\"SESSION_ERROR\",\"zd\",0,5e5])},9324(e,t,r){\"use strict\";r.d(t,[\"xv\",0,\"1.324.1\"])},981(e,t,r){\"use strict\";r.d(t,[\"R\",0,{AJAX:\"AjaxRequest\",PA:\"PageAction\",UA:\"UserAction\",BP:\"BrowserPerformance\",WS:\"WebSocket\",SPV:\"SecurityPolicyViolation\",JSE:\"JavaScriptError\",LOG:\"Log\",PVE:\"PageView\",PVT:\"PageViewTiming\",SR:\"SessionReplay\",ST:\"SessionTrace\",BI:\"BrowserInteraction\"}])},6154(e,t,r){\"use strict\";var n=r(1863);const i=\"undefined\"!=typeof window&&!!window.document,a=\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),s=i?window:\"undefined\"!=typeof WorkerGlobalScope&&(\"undefined\"!=typeof self&&self instanceof WorkerGlobalScope&&self||\"undefined\"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),o=Boolean(\"hidden\"===s?.document?.visibilityState),c=\"\"+s?.location,u=/iPad|iPhone|iPod/.test(s.navigator?.userAgent),d=u&&\"undefined\"==typeof SharedWorker,l=((()=>{const e=s.navigator?.userAgent?.match(/Firefox[/\\s](\\d+\\.\\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Date.now()-(0,n.t)());r.d(t,[\"OF\",0,u,\"RI\",0,i,\"WN\",0,l,\"bv\",0,a,\"gm\",0,s,\"m\",0,c,\"mw\",0,o,\"sb\",0,d,\"zk\",0,()=>{const e=s?.performance?.getEntriesByType?.(\"navigation\")?.[0];if(e&&e.responseStart>0&&e.responseStart<s.performance.now())return e}])},3241(e,t,r){\"use strict\";r.d(t,{W:()=>i});var n=r(6154);function i(e={}){try{n.gm.dispatchEvent(new CustomEvent(\"newrelic\",{detail:e}))}catch(e){}}},1687(e,t,r){\"use strict\";r.d(t,{Ak:()=>o,Ze:()=>u,x3:()=>c});var n=r(3241),i=r(3606),a=r(860),s=r(2646);function o(e,t){if(!e)return;const r={staged:!1,priority:a.P3[t]||0};e.runtime.drainRegistry.get(t)||e.runtime.drainRegistry.set(t,r)}function c(e,t){if(!e)return;const r=e.runtime.drainRegistry;r&&(r.get(t)&&r.delete(t),l(e,t,!1),r.size&&d(e))}function u(e,t=\"feature\",r=!1){if(e){if(!e.runtime.drainRegistry.get(t)||r)return l(e,t);e.runtime.drainRegistry.get(t).staged=!0,d(e)}}function d(e){if(!e)return;const t=Array.from(e.runtime.drainRegistry);t.every(([e,t])=>t.staged)&&(t.sort((e,t)=>e[1].priority-t[1].priority),t.forEach(([t])=>{e.runtime.drainRegistry.delete(t),l(e,t)}))}function l(e,t,r=!0){if(!e)return;const a=e.ee,o=i.i.handlers;if(a&&!a.aborted&&a.backlog&&o){if((0,n.W)({type:\"lifecycle\",name:\"drain\",feature:t}),r){const e=a.backlog[t],r=o[t];if(r){for(let t=0;e&&t<e.length;++t)f(e[t],r);Object.entries(r).forEach(([e,t])=>{Object.values(t||{}).forEach(t=>{t[0]?.on&&t[0].context()instanceof s.y&&!t[0].listeners(e).includes(t[1])&&t[0].on(e,t[1])})})}}a.isolatedBacklog||delete o[t],a.backlog[t]=null,a.emit(\"drain-\"+t,[])}}function f(e,t){var r=e[1];Object.values(t[r]||{}).forEach(t=>{var r=e[0];if(t[0]===r){var n=t[1],i=e[3],a=e[2];n.apply(i,a)}})}},7836(e,t,r){\"use strict\";var n=r(384),i=r(8990),a=r(2646),s=r(5607);const o=\"nr@context:\".concat(s.W),c=function e(t,r){var n={},s={},d={},l=!1;try{l=16===r.length&&u.initializedAgents?.[r]?.runtime.isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,a){!1!==a&&(a=!0);if(c.aborted&&!i)return;t&&a&&t.emit(e,r,n);var o=g(n);m(e).forEach(e=>{e.apply(o,r)});var u=v()[s[e]];u&&u.push([f,e,r,o]);return o},get:h,listeners:m,context:g,buffer:function(e,t){const r=v();if(t=t||\"feature\",f.aborted)return;Object.entries(e||{}).forEach(([e,n])=>{s[n]=t,t in r||(r[t]=[])})},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach(e=>{delete f.backlog[e]})},isBuffering:function(e){return!!v()[s[e]]},debugId:r,backlog:l?{}:t&&\"object\"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,\"aborted\",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof a.y?e:e?(0,i.I)(e,o,()=>new a.y(o)):new a.y(o)}function p(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function h(t){return d[t]=d[t]||e(f,t)}function v(){return f.backlog}}(void 0,\"globalEE\"),u=(0,n.Zm)();u.ee||(u.ee=c),r.d(t,[\"P\",0,o,\"ee\",0,c])},2646(e,t,r){\"use strict\";r.d(t,{y:()=>n});class n{constructor(e){this.contextId=e}}},9908(e,t,r){\"use ",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T09:55:25.318759+00:00",
-      "event_id": "a4e4aa73f18993e438c86b4c",
-      "action_reaction": {
-        "event_id": "a4e4aa73f18993e438c86b4c",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "5eacd70379a06cee32503c31": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42978",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117532183522804450",
-      "title": "It is my Great Honor to endorse America First Patriot, Scott Singer, who is running to represent the incredible people of Florida’s 25th Congressional District! A Proven Leader, Scott has served his Community as the Highly Respected Mayor of Boca Raton, and as a very successful Businessman, prior to",
-      "published": "Fri, 30 Oct 2026 22:19:56 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Scott Singer, who is running to represent the incredible people of Florida’s 25th Congressional District! A Proven Leader, Scott has served his Community as the Highly Respected Mayor of Boca Raton, and as a very successful Businessman, prior to It is my Great Honor to endorse America First Patriot, Scott Singer, who is running to represent the incredible people of Florida’s 25th Congressional District! A Proven Leader, Scott has served his Community as the Highly Respected Mayor of Boca Raton, and as a very successful Businessman, prior to running for Congress. His opponent, Jared Moskowitz, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Jared Moskowitz is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Scott will work hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Brave Military/Veterans, and Protect our always under siege Second Amendment. Scott Singer has my Complete and Total Endorsement to be the next Representative from Florida’s 25th Congressional District. GET OUT AND VOTE FOR SCOTT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/florida/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T08:58:05.682358+00:00",
-      "event_id": "5eacd70379a06cee32503c31",
-      "action_reaction": {
-        "event_id": "5eacd70379a06cee32503c31",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
-  "morning_brief_date": "2026-11-11",
+  "morning_brief_date": "2026-11-18",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
@@ -12449,9 +12441,44 @@
     "49a2bd2f1cdd51539629642a": "2026-11-10T21:41:47.014392+00:00",
     "2f631b178fd78655c446f5a5": "2026-11-10T21:41:47.014573+00:00",
     "1ad5db67d96464261f7aae05": "2026-11-11T00:34:26.709616+00:00",
-    "ff77b04eaed1f783a56b8d2b": "2026-11-11T00:34:26.709822+00:00"
+    "ff77b04eaed1f783a56b8d2b": "2026-11-11T00:34:26.709822+00:00",
+    "d2aee3b10365cb46cada1cf5": "2026-11-18T14:35:07.172975+00:00",
+    "106b04b2069b682b443d8d9f": "2026-11-18T14:35:07.173235+00:00",
+    "68a33eb0176ce22a8cf470b1": "2026-11-18T14:35:07.173551+00:00",
+    "a3c5c68d54f9c9719f9dc7f1": "2026-11-18T14:35:07.173672+00:00",
+    "44813011c7ebee5d4f34b0eb": "2026-11-18T14:35:07.173731+00:00",
+    "d736a462c095ff6cc4510228": "2026-11-18T14:35:07.173938+00:00",
+    "41b9f85b662687aa967b319b": "2026-11-18T14:35:07.173990+00:00",
+    "36ea1a6362c4d704d3bdd66b": "2026-11-18T14:35:07.174068+00:00",
+    "96c84c510b1b56affe2e709a": "2026-11-18T14:35:07.174177+00:00",
+    "2f8b7b67984a7ae046746861": "2026-11-18T14:35:07.174220+00:00",
+    "81d7d5b329387a9391f1217e": "2026-11-18T14:35:07.174307+00:00",
+    "00359fa9458d4a562238d680": "2026-11-18T14:35:07.174586+00:00",
+    "4e01dbaec7fe9584544fb0c4": "2026-11-18T14:35:07.174757+00:00",
+    "83a386b81348d902decb27be": "2026-11-18T14:35:07.174851+00:00",
+    "5d2225bdb8de26b1df2f5d5d": "2026-11-18T14:35:07.174928+00:00",
+    "d76f3802abbc6736ba5182e3": "2026-11-18T14:35:07.175071+00:00",
+    "fe652a9a569bb2685193384c": "2026-11-18T14:35:07.175352+00:00",
+    "cb74fd4535c1c993f20fd5b1": "2026-11-18T14:35:07.175407+00:00",
+    "aa9c50f660560b19ade57fdf": "2026-11-18T14:35:07.175462+00:00",
+    "3c789c2b4dbb6fe4f60995b4": "2026-11-18T14:35:07.175513+00:00",
+    "f0c5bd809db948b575fac638": "2026-11-18T14:35:07.175564+00:00",
+    "2ff428d8008b87890dac8e08": "2026-11-18T14:35:07.175624+00:00",
+    "0a80f8ded1cbc1708ba2d7fc": "2026-11-18T14:35:07.175736+00:00",
+    "c61f96b57d27932c225ea540": "2026-11-18T14:35:07.175832+00:00",
+    "a9b5adc715662302d11e9009": "2026-11-18T14:35:07.176030+00:00",
+    "bcfe24438131f86c771765ad": "2026-11-18T14:35:07.176137+00:00",
+    "00b8da585107bfa6d86945f6": "2026-11-18T14:35:07.176414+00:00",
+    "e1218fd30c19bc1039c55c43": "2026-11-18T14:35:07.176549+00:00",
+    "05a5ac991aca71dee72dd92c": "2026-11-18T14:35:07.176721+00:00",
+    "d5ef1d47292d2285ac49f793": "2026-11-18T14:35:07.176843+00:00",
+    "f3564e08a997cf0e185b1652": "2026-11-18T14:35:07.177143+00:00",
+    "e66265868f6f9457139fa2f7": "2026-11-18T14:35:07.177358+00:00",
+    "51e4c94dd129b1699f98278b": "2026-11-18T14:35:07.177481+00:00",
+    "c3db4c338c72aad151fc42e1": "2026-11-18T14:35:07.177628+00:00",
+    "e4c64134e65aa36e6f7c2d62": "2026-11-18T14:35:07.177805+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-11T05:55:03.713716+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-18T14:35:07.180023+00:00"
   }
 }
