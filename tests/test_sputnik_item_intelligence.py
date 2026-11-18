@@ -472,7 +472,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("queue: max", workflow)
         self.assertIn("cancel-in-progress: false", workflow)
         self.assertNotIn("cancel-in-progress: true", workflow)
-        self.assertIn('    - cron: "2-59/5 * * * *"', workflow)
+        self.assertIn("    - cron: '2-59/15 * * * *'", workflow)
 
     def test_scheduled_workflow_fails_closed_without_telegram_chat_id(self):
         workflow_path = (
