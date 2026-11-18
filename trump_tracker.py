@@ -1819,14 +1819,11 @@ def main() -> None:
         all_findings = recent + (intelligence or [])
         rec = recommend_trading_instrument(all_findings)
         if rec:
-            instr_msg = format_trading_instrument_message(rec)
-            print(instr_msg)
-            target_chat = str(state.get("telegram_chat_id") or "").strip() or None
-            send_telegram(instr_msg, chat_id=target_chat)
-            # INVEST Demo migration: never emit legacy CFD trade instructions.
-            # The recommendation above remains research-only until an equity
-            # symbol and a timestamped quote pass invest_demo_guard validation.
-            print("SPUTNIK: legacy CFD signal suppressed (INVEST Demo migration)")
+            # This legacy recommender still selects commodities and preliminary
+            # hypotheses without a validated equity quote or ENTRY/SL/TP.
+            # Keep its output in logs; never publish it as an actionable signal.
+            print(format_trading_instrument_message(rec))
+            print("SPUTNIK: preliminary/legacy recommendation suppressed; no validated equity signal with fresh quote and ENTRY/SL/TP")
     except Exception as exc:
         print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
 
