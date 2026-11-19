@@ -1,14 +1,61 @@
 {
   "events": {},
-  "updated_at": "2026-11-19T22:07:36.345062+00:00",
+  "updated_at": "2026-11-19T22:18:44.494433+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "19f193137eb85ec6f9388910",
+    "TRUTH_ARCHIVE": "b673a1e40243cc3cab361ecf",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "341795248148b85e0ef00c8a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43635",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117645420344120290",
+      "title": "Quote post from November 19, 2026",
+      "published": "Thu, 19 Nov 2026 22:17:33 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 19, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117645411680534943 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T22:18:44.470559+00:00",
+      "event_id": "341795248148b85e0ef00c8a",
+      "action_reaction": {
+        "event_id": "341795248148b85e0ef00c8a",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "b673a1e40243cc3cab361ecf": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "METALS",
+        "AI_TECH",
+        "MEDIA",
+        "TRADE_POLICY"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 19, 2026, 5:17 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:15 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:15 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 4:11 PM Original Post I have just given a Complete and Total Pardon to the Late, Great Pete Rose, a true Baseball SUPERSTAR & LEGEND, whose record of 4,256 Hits in a Season will never be broken. In addition, Pete played 3,562 career games (Highest Ever!), had 1,314 Runs batted in, 160 Home Runs, a .303 Batting Average, was a 17x All-Star, 3x World Series Champion, NL MVP, World Series MVP, NL Rookie of the Year, 2x Recipient of the Gold Glove Award, Silver Slugger Award, Roberto Clemente Award, 3x NL batting champion and, just like the Great Roger Clemens, who won 354 games, was treated terribly by Major League Baseball in not allowing him to go into the Baseball Hall of Fame. Politics, I guess! Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 2:35 PM Original Post Previously posted November 7, 2026 Donald J. Trump @realDonaldTrump · November 19, 2026, 2:20 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 12:01 PM Original Post Heading back to Washington, D.C., from China. It was a Great and Highly Consequential Trip. I will be giving a News Conference tomorrow at 12 P.M., the White House. Also, will be discussing the Trade Deals with Thailand, the Philippines, and others. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 11:58 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 11:57 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 11:57 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:46 AM Original Post Congratulations to Anderson University Women’s Volleyball Team on winning the South Atlantic Conference. Congratulations also to Ellie Nieporte, the daughter of John Nieporte, one of our Country’s absolutely best Senior Pro Golfers, who was awarded Tournament MVP. Genetics in the Nieporte family are GREAT! John’s father, Tom, was a Great Tour Pro. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 8:40 AM Original Post There has been no greater President that stands with American Farmers and Ranchers than President Donald J. Trump! As l've stated before, I was the last President to get a Farm Bill done in 2018. IT IS TIME TO DO IT AGAIN, and FAST. Our Great Farmers and Ranchers NEED and DESERVE certainty ahead of the 2027 planting season because FOOD SECURITY IS NATIONAL SECURITY! Congressional Republican Majorities, YOU MUST PASS A NEW FARM BILL DURING THE REMAINING DAYS OF CONGRESS. FARMERS AND RANCHERS ARE NOT INTERESTED IN FURTHER DELAYS. Thank you for your attention to this matter. President DONALD J. TRUMP Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T22:18:44.211724+00:00",
+      "event_id": "b673a1e40243cc3cab361ecf",
+      "action_reaction": {
+        "event_id": "b673a1e40243cc3cab361ecf",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "22c321e5376a517f76977860": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11658,56 +11705,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "47eb4d373b20569bf1866832": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42993",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536883409549082",
-      "title": "Congressman Glenn “GT” Thompson is a Tremendous Champion for Pennsylvania's 15th Congressional District! As Chairman of the House Agriculture Committee, GT is a strong and effective voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, he is fighting tirelessly to Grow o",
-      "published": "Sat, 31 Oct 2026 18:15:11 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "Congressman Glenn “GT” Thompson is a Tremendous Champion for Pennsylvania's 15th Congressional District! As Chairman of the House Agriculture Committee, GT is a strong and effective voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, he is fighting tirelessly to Grow o Congressman Glenn “GT” Thompson is a Tremendous Champion for Pennsylvania's 15th Congressional District! As Chairman of the House Agriculture Committee, GT is a strong and effective voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, he is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment. GT's opponent, Ray Bilger, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Ray Bilger is Reckless, Radical, and Dangerous! GT Thompson has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR “GT” — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.190130+00:00",
-      "event_id": "47eb4d373b20569bf1866832",
-      "action_reaction": {
-        "event_id": "47eb4d373b20569bf1866832",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "ff72068007a3fa89eebb84ff": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42992",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536884257691019",
-      "title": "Congressman Mike Kelly, who has been with us from the very beginning, is a Tremendous Champion of Pennsylvania's 16th Congressional District! As a Senior Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regu",
-      "published": "Sat, 31 Oct 2026 18:15:23 +0000",
-      "domains": [
-        "ENERGY",
-        "METALS",
-        "DEFENSE"
-      ],
-      "text": "Congressman Mike Kelly, who has been with us from the very beginning, is a Tremendous Champion of Pennsylvania's 16th Congressional District! As a Senior Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regu Congressman Mike Kelly, who has been with us from the very beginning, is a Tremendous Champion of Pennsylvania's 16th Congressional District! As a Senior Member of the POWERFUL House Ways & Means Committee, Mike understands the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., and Champion our Nation's Golden Age. He is fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Defend our always under siege Second Amendment, and Advocate for the Working Men and Women of Pennsylvania. Mike's opponent, Justin Wagner, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Justin Wagner is Reckless, Radical, and Dangerous! Mike Kelly has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.189892+00:00",
-      "event_id": "ff72068007a3fa89eebb84ff",
-      "action_reaction": {
-        "event_id": "ff72068007a3fa89eebb84ff",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12447,9 +12444,10 @@
     "af3be06878e22ce0758af02b": "2026-11-19T13:48:37.823630+00:00",
     "ae92361dd7d06df9cc976269": "2026-11-19T17:07:12.078404+00:00",
     "524054ead07315d899e86991": "2026-11-19T17:07:12.078532+00:00",
-    "22c321e5376a517f76977860": "2026-11-19T21:18:44.216368+00:00"
+    "22c321e5376a517f76977860": "2026-11-19T21:18:44.216368+00:00",
+    "341795248148b85e0ef00c8a": "2026-11-19T22:18:44.470543+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-19T22:07:36.333016+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-19T22:18:44.476770+00:00"
   }
 }
