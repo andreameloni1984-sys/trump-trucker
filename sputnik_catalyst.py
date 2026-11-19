@@ -6,6 +6,7 @@ these remain hypotheses and never certify an entry or place an order.
 """
 from __future__ import annotations
 import re
+from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from typing import Any
 
@@ -288,7 +289,15 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
             or not str(finding.get("event_id") or "").strip()
             or not finding.get("url")
             or not finding.get("published")
+            or not str(finding.get("title") or "").strip()
         ):
+            continue
+        try:
+            source_url = urlsplit(str(finding["url"]))
+            if (source_url.scheme != "https" or not source_url.hostname
+                    or source_url.username or source_url.password):
+                continue
+        except ValueError:
             continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
