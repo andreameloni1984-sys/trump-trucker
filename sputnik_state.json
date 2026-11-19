@@ -1,14 +1,38 @@
 {
   "events": {},
-  "updated_at": "2026-11-19T22:48:37.188332+00:00",
+  "updated_at": "2026-11-19T23:06:34.103391+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "0ac46d087c30e443330d28ae",
+    "TRUTH_ARCHIVE": "1e1f226e0d40ea80f8794b02",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "1e1f226e0d40ea80f8794b02": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "METALS",
+        "AI_TECH",
+        "MEDIA",
+        "TRADE_POLICY"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 19, 2026, 5:48 PM Original Post Image Previously posted November 9, 2026 Donald J. Trump @realDonaldTrump · November 19, 2026, 5:26 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:17 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:15 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:15 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 4:11 PM Original Post I have just given a Complete and Total Pardon to the Late, Great Pete Rose, a true Baseball SUPERSTAR & LEGEND, whose record of 4,256 Hits in a Season will never be broken. In addition, Pete played 3,562 career games (Highest Ever!), had 1,314 Runs batted in, 160 Home Runs, a .303 Batting Average, was a 17x All-Star, 3x World Series Champion, NL MVP, World Series MVP, NL Rookie of the Year, 2x Recipient of the Gold Glove Award, Silver Slugger Award, Roberto Clemente Award, 3x NL batting champion and, just like the Great Roger Clemens, who won 354 games, was treated terribly by Major League Baseball in not allowing him to go into the Baseball Hall of Fame. Politics, I guess! Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 2:35 PM Original Post Previously posted November 7, 2026 Donald J. Trump @realDonaldTrump · November 19, 2026, 2:20 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 12:01 PM Original Post Heading back to Washington, D.C., from China. It was a Great and Highly Consequential Trip. I will be giving a News Conference tomorrow at 12 P.M., the White House. Also, will be discussing the Trade Deals with Thailand, the Philippines, and others. President DONALD J. TRUMP Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T23:06:33.493213+00:00",
+      "event_id": "1e1f226e0d40ea80f8794b02",
+      "action_reaction": {
+        "event_id": "1e1f226e0d40ea80f8794b02",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "3702822785d971e281f74b31": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11680,34 +11704,10 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "bd4a9bb6acc0a6df38a6057e": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42997",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536880264668820",
-      "title": "Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania's 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirel",
-      "published": "Sat, 31 Oct 2026 18:14:23 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania's 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirel Congressman Lloyd Smucker is a terrific Representative for the wonderful people of Pennsylvania's 11th Congressional District! A Proven Leader, Lloyd served as a Highly Respected State Senator and Businessman, prior to becoming a very distinguished U.S. Congressman. In Congress, he is fighting tirelessly to Champion our Amazing Farmers and Ranchers, Grow our Economy, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Advocate for our Great Military/Veterans, and Defend our always under siege Second Amendment. Lloyd's opponent, Nancy Mannion, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Nancy Mannion is Reckless, Radical, and Dangerous! Lloyd Smucker has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR LLOYD — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.190788+00:00",
-      "event_id": "bd4a9bb6acc0a6df38a6057e",
-      "action_reaction": {
-        "event_id": "bd4a9bb6acc0a6df38a6057e",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
-  "morning_brief_date": "2026-11-19",
+  "morning_brief_date": "2026-11-20",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
@@ -12448,6 +12448,6 @@
     "3702822785d971e281f74b31": "2026-11-19T22:34:37.780749+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-19T22:48:37.163599+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-19T23:06:34.082765+00:00"
   }
 }
