@@ -1,14 +1,83 @@
 {
   "events": {},
-  "updated_at": "2026-11-19T13:19:09.031825+00:00",
+  "updated_at": "2026-11-19T13:34:58.233494+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "49b801fba5d8d11657d273a3",
+    "TRUTH_ARCHIVE": "e639158fc133a4568d86d213",
     "OGE": "f51ef747fe055bc9f1fbcc8b"
   },
   "intelligence_history": {
+    "3ee8c9e656f36b53e5ec5b60": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43617",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117643321603149165",
+      "title": "Quote post from November 19, 2026",
+      "published": "Thu, 19 Nov 2026 13:23:48 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 19, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117643309018807985 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T13:34:58.213550+00:00",
+      "event_id": "3ee8c9e656f36b53e5ec5b60",
+      "action_reaction": {
+        "event_id": "3ee8c9e656f36b53e5ec5b60",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "e9a3e61748cfc5f3d84a1960": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43621",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117643329378079202",
+      "title": "RT @SebGorkaPresident @realDonaldTrump was and is right. This is the fate of incumbents and his results are better than most Presidents, especially Obama and Clinton. Being a Chicken Little may get you clicks, but I prefer the Truth. Here’s data from the American Presidency Project on net Congressio",
+      "published": "Thu, 19 Nov 2026 13:25:47 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "RT @SebGorkaPresident @realDonaldTrump was and is right. This is the fate of incumbents and his results are better than most Presidents, especially Obama and Clinton. Being a Chicken Little may get you clicks, but I prefer the Truth. Here’s data from the American Presidency Project on net Congressio RT @ SebGorka President @ realDonaldTrump was and is right. This is the fate of incumbents and his results are better than most Presidents, especially Obama and Clinton. Being a Chicken Little may get you clicks, but I prefer the Truth. Here’s data from the American Presidency Project on net Congressional changes for an incumbent President’s party: • 1938 (Truman D): −79 • 1946 (Truman D): −68 • 1958 (Eisenhower R): −61 • 1966 (Johnson D): −51 • 1974 (Ford R): −53 • 1978 (Carter D): −15 • 1982 (Reagan R): −25 • 1994 (Clinton D): −63 • 2006 (G.W. Bush R): −30 • 2010 (Obama D): −69 If anyone you follow is calling Tuesday’s results “historic” or “unprecedented,” they’re ignorant or liars and you shouldn’t waste your time with them. @ WhiteHouse Reposted Sebastian Gorka President @ realDonaldTrump was and is right. This is the fate of incumbents and his results are better than most Presidents, especially Obama and Clinton. Being a Chicken Little may get you clicks, but I prefer the Truth. Here’s data from the American Presidency Project on net Congressional changes for an incumbent President’s party: • 1938 (Truman D): −79 • 1946 (Truman D): −68 • 1958 (Eisenhower R): −61 • 1966 (Johnson D): −51 • 1974 (Ford R): −53 • 1978 (Carter D): −15 • 1982 (Reagan R): −25 • 1994 (Clinton D): −63 • 2006 (G.W. Bush R): −30 • 2010 (Obama D): −69 If anyone you follow is calling Tuesday’s results “historic” or “unprecedented,” they’re ignorant or liars and you shouldn’t waste your time with them. @ WhiteHouse View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T13:34:58.213259+00:00",
+      "event_id": "e9a3e61748cfc5f3d84a1960",
+      "action_reaction": {
+        "event_id": "e9a3e61748cfc5f3d84a1960",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "e639158fc133a4568d86d213": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "MEDIA",
+        "TRADE_POLICY"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 19, 2026, 8:31 AM Original Post Man driving wrong way during fatal North Haven crash was in country illegally: DHS: https://www. wtnh.com/news/connecticut/new- haven/man-driving-wrong-way-during-fatal-north-haven-crash-was-in-country-illegally-dhs/ www.wtnh.com Man driving wrong way during fatal North Haven crash was in country illegally: DHS NEW HAVEN, Conn. (WTNH) — The man who was driving the wrong way on I-91 South in North Haven earlier this month, resulting in a crash that killed a University of New Haven student, was in the count… Donald J. Trump @realDonaldTrump · November 19, 2026, 8:30 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:26 AM Original Post Donald J. Trump ReTruthed Sebastian Gorka @SebGorka · November 9, 2026, 11:38 AM Original Post President @ realDonaldTrump was and is right. This is the fate of incumbents and his results are better than most Presidents, especially Obama and Clinton. Being a Chicken Little may get you clicks, but I prefer the Truth. Here’s data from the American Presidency Project on net Congressional changes for an incumbent President’s party: • 1938 (Truman D): −79 • 1946 (Truman D): −68 • 1958 (Eisenhower R): −61 • 1966 (Johnson D): −51 • 1974 (Ford R): −53 • 1978 (Carter D): −15 • 1982 (Reagan R): −25 • 1994 (Clinton D): −63 • 2006 (G.W. Bush R): −30 • 2010 (Obama D): −69 If anyone you follow is calling Tuesday’s results “historic” or “unprecedented,” they’re ignorant or liars and you shouldn’t waste your time with them. @ WhiteHouse Donald J. Trump @realDonaldTrump · November 19, 2026, 8:25 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:24 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:23 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:20 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:20 AM Original Post Donald J. Trump @realDonaldTrump · November 18, 2026, 2:44 AM Original Post I am now heading to China, from the Philippines, where we had a wonderful meeting on Trade, National Security, and other subjects. I am pleased to announce that we made a new and completely different Trade Deal with the Philippines, one that will be a true landmark and, in particular, a Deal that will be great for our Farmers and those in the business of “Energy.” President Marcos is a powerful leader, and a man of high integrity and substance. It was an Honor to be with him, and his beautiful wife and son. See you in China! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 17, 2026, 8:01 PM Original Post Thank you, BIG John. You are great!!! President DJT https://www. youtube.com/shorts/CTlVRPAtdXA www.youtube.com John Daly Opens Up About Playing Golf With President Trump John Daly shares his experience playing golf with President Donald Trump and discusses his views on Trump's character, family, and political opponents.Full e... Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T13:34:58.058014+00:00",
+      "event_id": "e639158fc133a4568d86d213",
+      "action_reaction": {
+        "event_id": "e639158fc133a4568d86d213",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "6c4adb0397a3be27a41bb454": {
       "source": "WHITE_HOUSE",
       "url": "https://www.whitehouse.gov/",
@@ -11660,76 +11729,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "698810320293fbe51eb2664c": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43010",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536931163560869",
-      "title": "Jon Husted is doing an incredible job as Senator for the Great State of Ohio! He served as your Lieutenant Governor for seven years prior to becoming a very distinguished and well respected Senator. Jon is a wonderful man, has ALWAYS delivered for Ohio, and will continue doing so in the U.S. Senate.",
-      "published": "Sat, 31 Oct 2026 18:27:19 +0000",
-      "domains": [
-        "DEFENSE"
-      ],
-      "text": "Jon Husted is doing an incredible job as Senator for the Great State of Ohio! He served as your Lieutenant Governor for seven years prior to becoming a very distinguished and well respected Senator. Jon is a wonderful man, has ALWAYS delivered for Ohio, and will continue doing so in the U.S. Senate. Jon Husted is doing an incredible job as Senator for the Great State of Ohio! He served as your Lieutenant Governor for seven years prior to becoming a very distinguished and well respected Senator. Jon is a wonderful man, has ALWAYS delivered for Ohio, and will continue doing so in the U.S. Senate. He is working hard to Create Jobs, Lower Costs, Promote Products and Services MADE IN AMERICA by our incredible Ohio Workers, Support our Great Farmers, Champion Innovation, Keep our Border SECURE, Stop Criminals, Strengthen our Military/Veterans, and Strongly Protect our always under siege Second Amendment. Jon's opponent, Sherrod Brown, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Sherrod Brown is Reckless, Radical, and Dangerous! Jon Husted has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JON — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.186705+00:00",
-      "event_id": "698810320293fbe51eb2664c",
-      "action_reaction": {
-        "event_id": "698810320293fbe51eb2664c",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "04ee655418ca27933ec4b89c": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43009",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536932223796834",
-      "title": "🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE",
-      "published": "Sat, 31 Oct 2026 18:27:35 +0000",
-      "domains": [
-        "AI_TECH"
-      ],
-      "text": "🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE 🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/ohio/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.186501+00:00",
-      "event_id": "04ee655418ca27933ec4b89c",
-      "action_reaction": {
-        "event_id": "04ee655418ca27933ec4b89c",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "a1917ecd6ea8b4a4f7bc3278": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43008",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536936573653701",
-      "title": "TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR:– Jon Husted for U.S. Senate– Vivek Ramaswamy for Governor– Keith Faber for Attorney General– Eric Conroy for U.S. Congress (OH-01)– David Taylor for U.S. Congress (OH-02)– Jim Jordan for U.S. Congress (OH-04)– Bob Latta for U.S. Congress (OH-05)– Mi",
-      "published": "Sat, 31 Oct 2026 18:28:42 +0000",
-      "domains": [
-        "AI_TECH",
-        "MEDIA"
-      ],
-      "text": "TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR:– Jon Husted for U.S. Senate– Vivek Ramaswamy for Governor– Keith Faber for Attorney General– Eric Conroy for U.S. Congress (OH-01)– David Taylor for U.S. Congress (OH-02)– Jim Jordan for U.S. Congress (OH-04)– Bob Latta for U.S. Congress (OH-05)– Mi RT: https://truthsocial.com/users/realDonaldTrump/statuses/117536932223796834 TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR: – Jon Husted for U.S. Senate – Vivek Ramaswamy for Governor – Keith Faber for Attorney General – Eric Conroy for U.S. Congress (OH-01) – David Taylor for U.S. Congress (OH-02) – Jim Jordan for U.S. Congress (OH-04) – Bob Latta for U.S. Congress (OH-05) – Michael Rulli for U.S. Congress (OH-06) – Max Miller for U.S. Congress (OH-07) – Warren Davidson for U.S. Congress (OH-08) – Derek Merrin for U.S. Congress (OH-09) – Michael Turner for U.S. Congress (OH-10) – Troy Balderson for U.S. Congress (OH-12) – David Joyce for U.S. Congress (OH-14) – Mike Carey for U.S. Congress (OH-15) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/ View image Quoted Donald J. Trump 🚨 OHIO! Early Voting, in-person, is UNDERWAY NOW in the Great State of Ohio. Whether you VOTE early, absentee, by mail, or in-person, Republicans must SWAMP the Radical Left Dumocrats with massive turnout! In Ohio, you can cast your early Vote, in-person, through November 1st. SO IMPORTANT — PLEASE GET OUT AND VOTE. MAGA! President DONALD J. TRUMP Find your Voting Location here: https:// swampthevoteusa.com/ohio/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.186248+00:00",
-      "event_id": "a1917ecd6ea8b4a4f7bc3278",
-      "action_reaction": {
-        "event_id": "a1917ecd6ea8b4a4f7bc3278",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12463,9 +12462,11 @@
     "e66265868f6f9457139fa2f7": "2026-11-18T14:35:07.177358+00:00",
     "51e4c94dd129b1699f98278b": "2026-11-18T14:35:07.177481+00:00",
     "c3db4c338c72aad151fc42e1": "2026-11-18T14:35:07.177628+00:00",
-    "e4c64134e65aa36e6f7c2d62": "2026-11-18T14:35:07.177805+00:00"
+    "e4c64134e65aa36e6f7c2d62": "2026-11-18T14:35:07.177805+00:00",
+    "e9a3e61748cfc5f3d84a1960": "2026-11-19T13:34:58.213247+00:00",
+    "3ee8c9e656f36b53e5ec5b60": "2026-11-19T13:34:58.213543+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-19T13:19:09.012617+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-19T13:34:58.220190+00:00"
   }
 }
