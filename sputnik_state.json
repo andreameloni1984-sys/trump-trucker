@@ -1,14 +1,36 @@
 {
   "events": {},
-  "updated_at": "2026-11-19T13:48:37.846779+00:00",
+  "updated_at": "2026-11-19T14:08:43.736111+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "e118753e6b93fe42aa6fb9fa",
+    "TRUTH_ARCHIVE": "da2ab8bebcec6c7d2c1bc84d",
     "OGE": "f51ef747fe055bc9f1fbcc8b"
   },
   "intelligence_history": {
+    "da2ab8bebcec6c7d2c1bc84d": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 19, 2026, 8:46 AM Original Post Congratulations to Anderson University Women’s Volleyball Team on winning the South Atlantic Conference. Congratulations also to Ellie Nieporte, the daughter of John Nieporte, one of our Country’s absolutely best Senior Pro Golfers, who was awarded Tournament MVP. Genetics in the Nieporte family are GREAT! John’s father, Tom, was a Great Tour Pro. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 8:40 AM Original Post There has been no greater President that stands with American Farmers and Ranchers than President Donald J. Trump! As l've stated before, I was the last President to get a Farm Bill done in 2018. IT IS TIME TO DO IT AGAIN, and FAST. Our Great Farmers and Ranchers NEED and DESERVE certainty ahead of the 2027 planting season because FOOD SECURITY IS NATIONAL SECURITY! Congressional Republican Majorities, YOU MUST PASS A NEW FARM BILL DURING THE REMAINING DAYS OF CONGRESS. FARMERS AND RANCHERS ARE NOT INTERESTED IN FURTHER DELAYS. Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 8:31 AM Original Post Man driving wrong way during fatal North Haven crash was in country illegally: DHS: https://www. wtnh.com/news/connecticut/new- haven/man-driving-wrong-way-during-fatal-north-haven-crash-was-in-country-illegally-dhs/ www.wtnh.com Man driving wrong way during fatal North Haven crash was in country illegally: DHS NEW HAVEN, Conn. (WTNH) — The man who was driving the wrong way on I-91 South in North Haven earlier this month, resulting in a crash that killed a University of New Haven student, was in the count… Donald J. Trump @realDonaldTrump · November 19, 2026, 8:30 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:26 AM Original Post Donald J. Trump ReTruthed Sebastian Gorka @SebGorka · November 9, 2026, 11:38 AM Original Post President @ realDonaldTrump was and is right. This is the fate of incumbents and his results are better than most Presidents, especially Obama and Clinton. Being a Chicken Little may get you clicks, but I prefer the Truth. Here’s data from the American Presidency Project on net Congressional changes for an incumbent President’s party: • 1938 (Truman D): −79 • 1946 (Truman D): −68 • 1958 (Eisenhower R): −61 • 1966 (Johnson D): −51 • 1974 (Ford R): −53 • 1978 (Carter D): −15 • 1982 (Reagan R): −25 • 1994 (Clinton D): −63 • 2006 (G.W. Bush R): −30 • 2010 (Obama D): −69 If anyone you follow is calling Tuesday’s results “historic” or “unprecedented,” they’re ignorant or liars and you shouldn’t waste your time with them. @ WhiteHouse Donald J. Trump @realDonaldTrump · November 19, 2026, 8:25 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:24 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:23 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:20 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:20 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T14:08:43.172807+00:00",
+      "event_id": "da2ab8bebcec6c7d2c1bc84d",
+      "action_reaction": {
+        "event_id": "da2ab8bebcec6c7d2c1bc84d",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "af3be06878e22ce0758af02b": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11703,31 +11725,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "f24149c0a3f0cd5838987815": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43013",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536928870631494",
-      "title": "It is my Great Honor to endorse America First Patriot, Eric Conroy, who is running to represent the wonderful people of Ohio's 1st Congressional District! A Brave U.S. Air Force Veteran, and former Central Intelligence Agency (CIA) Officer, Eric knows the Wisdom and Courage it takes to Ensure LAW AN",
-      "published": "Sat, 31 Oct 2026 18:26:44 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "AI_TECH"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Eric Conroy, who is running to represent the wonderful people of Ohio's 1st Congressional District! A Brave U.S. Air Force Veteran, and former Central Intelligence Agency (CIA) Officer, Eric knows the Wisdom and Courage it takes to Ensure LAW AN It is my Great Honor to endorse America First Patriot, Eric Conroy, who is running to represent the wonderful people of Ohio's 1st Congressional District! A Brave U.S. Air Force Veteran, and former Central Intelligence Agency (CIA) Officer, Eric knows the Wisdom and Courage it takes to Ensure LAW AND ORDER, Strongly Support our Great Heroes in Law Enforcement, and Champion our Military and Veterans. His opponent, Greg Landsman, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender for Everybody. Greg Landsman is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Eric will work hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, and Defend our always under siege Second Amendment. Eric Conroy has my Complete and Total Endorsement to be the next Representative from Ohio's 1st Congressional District. GET OUT AND VOTE FOR ERIC — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.187519+00:00",
-      "event_id": "f24149c0a3f0cd5838987815",
-      "action_reaction": {
-        "event_id": "f24149c0a3f0cd5838987815",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12467,6 +12464,6 @@
     "af3be06878e22ce0758af02b": "2026-11-19T13:48:37.823630+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-19T13:48:37.828840+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-19T14:08:43.724058+00:00"
   }
 }
