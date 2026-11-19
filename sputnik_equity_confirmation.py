@@ -98,7 +98,7 @@ def format_confirmed_equity_telegram(plan: dict | None) -> str | None:
     if not isinstance(ticker, str) or not _TICKER.fullmatch(ticker) or side not in ("LONG", "SHORT"):
         return None
     try:
-        entry, stop, target = (float(plan[k]) for k in ("entry", "stop", "target"))
+        raw_levels = [plan[k] for k in ("entry", "stop", "target")]\n        if any(isinstance(x, bool) or not isinstance(x, (int, float)) for x in raw_levels):\n            return None\n        entry, stop, target = (float(x) for x in raw_levels)
         if not all(isfinite(x) and x > 0 for x in (entry, stop, target)):
             return None
         if not ((stop < entry < target) if side == "LONG" else (target < entry < stop)):
