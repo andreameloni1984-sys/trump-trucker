@@ -46,7 +46,7 @@ jobs:
 
       - name: Run SPUTNIK (Render-independent)
         env:
-          SEC_USER_AGENT: "SPUTNIK/4.0 contact-configured-in-github"
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           SPUTNIK_CIKS: "1849635"
           SPUTNIK_SEC_FORMS: "3,4,5,8-K,13D,13G,13F-HR,13F-HR/A,144"
           SPUTNIK_SOCIAL_ENABLED: "1"
