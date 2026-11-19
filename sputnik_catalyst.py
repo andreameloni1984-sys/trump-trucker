@@ -281,6 +281,8 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
         return []
     candidates: dict[tuple[str, str], dict[str, Any]] = {}
     for finding in findings:
+        if not isinstance(finding, dict):
+            continue
         if (
             finding.get("evidence") != "PUBLIC_RSS_ITEM"
             or not str(finding.get("event_id") or "").strip()
