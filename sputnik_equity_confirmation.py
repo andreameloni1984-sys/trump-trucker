@@ -114,8 +114,8 @@ def format_confirmed_equity_telegram(plan: dict | None) -> str | None:
             return None
     except (KeyError, ValueError, TypeError, AttributeError):
         return None
-    return (f"🛰️ SPUTNIK — {ticker} {side} (SOLO SEGNALAZIONE)\\n"
-            f"Entry: {entry:.4f} | Stop: {stop:.4f} | Target: {target:.4f}\\n"
-            f"Quotazione: {stamp.isoformat()}\\n"
-            f"Evento: {event}\\nFonte: {plan['source_url']}\\n"
+    return (f"🛰️ SPUTNIK — {ticker} {side} (SOLO SEGNALAZIONE)\n"
+            f"Entry: {entry:.4f} | Stop: {stop:.4f} | Target: {target:.4f}\n"
+            f"Quotazione: {stamp.isoformat()}\n"
+            f"Evento: {event}\nFonte: {plan['source_url']}\n"
             "NESSUN ORDINE AUTOMATICO")
