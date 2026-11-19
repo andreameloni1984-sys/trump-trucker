@@ -88,3 +88,34 @@ def confirmed_equity_plan(*, ticker: str, direction: str, source_url: str,
                 "status": "CONFIRMED_RESEARCH_ONLY"}
     except (OSError, ValueError, TypeError, KeyError, IndexError, OverflowError, AttributeError):
         return None
+
+
+def format_confirmed_equity_telegram(plan: dict | None) -> str | None:
+    """Format only an independently confirmed plan; never send a message."""
+    if not isinstance(plan, dict) or plan.get("status") != "CONFIRMED_RESEARCH_ONLY":
+        return None
+    ticker, side = plan.get("ticker"), plan.get("direction")
+    if not isinstance(ticker, str) or not _TICKER.fullmatch(ticker) or side not in ("LONG", "SHORT"):
+        return None
+    try:
+        entry, stop, target = (float(plan[k]) for k in ("entry", "stop", "target"))
+        if not all(isfinite(x) and x > 0 for x in (entry, stop, target)):
+            return None
+        if not ((stop < entry < target) if side == "LONG" else (target < entry < stop)):
+            return None
+        url = urlsplit(plan["source_url"])
+        if url.scheme != "https" or not url.hostname or url.username or url.password or url.port not in (None, 443):
+            return None
+        stamp = datetime.fromisoformat(plan["quote_timestamp"])
+        if stamp.tzinfo is None:
+            return None
+        event = plan["event_id"]
+        if not isinstance(event, str) or not event.strip():
+            return None
+    except (KeyError, ValueError, TypeError, AttributeError):
+        return None
+    return (f"🛰️ SPUTNIK — {ticker} {side} (SOLO SEGNALAZIONE)\\n"
+            f"Entry: {entry:.4f} | Stop: {stop:.4f} | Target: {target:.4f}\\n"
+            f"Quotazione: {stamp.isoformat()}\\n"
+            f"Evento: {event}\\nFonte: {plan['source_url']}\\n"
+            "NESSUN ORDINE AUTOMATICO")
