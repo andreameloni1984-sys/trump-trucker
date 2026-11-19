@@ -62,7 +62,7 @@ jobs:
         run: python trump_tracker.py
 
       - name: Persist SPUTNIK state
-        if: always()
+        if: success()
         run: |
           if [ -f sputnik_state.json ]; then
             git config user.name "SPUTNIK Bot"
