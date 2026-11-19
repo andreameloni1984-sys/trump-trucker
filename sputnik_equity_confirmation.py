@@ -56,7 +56,11 @@ def confirmed_equity_plan(*, ticker: str, direction: str, source_url: str,
             return None
         if not 0 <= (now - tail[-1][0]).total_seconds() <= 60:
             return None
-        if tail[-1][0] < published_at:
+        if tail[-1][0] < published_at or tail[-1][0] > now:
+            return None
+        # Avoid claiming a news reaction from a breakout that happened before
+        # the news. The breakout candle itself must begin after publication.
+        if tail[-1][0].timestamp() - 60 < published_at.timestamp():
             return None
         prev = tail[:-1]
         last = tail[-1]
