@@ -106,14 +106,14 @@ def format_confirmed_equity_telegram(plan: dict | None) -> str | None:
         url = urlsplit(plan["source_url"])
         if (url.scheme != "https" or not url.hostname or url.username or url.password
                 or url.port not in (None, 443) or len(plan["source_url"]) > 1500
-                or any(ch in plan["source_url"] for ch in "\\r\\n\\x00")):
+                or any(ch in plan["source_url"] for ch in "\r\n\x00")):
             return None
         stamp = datetime.fromisoformat(plan["quote_timestamp"])
         if stamp.tzinfo is None:
             return None
         event = plan["event_id"]
         if (not isinstance(event, str) or not event.strip() or len(event) > 200
-                or any(ch in event for ch in "\\r\\n\\x00")):
+                or any(ch in event for ch in "\r\n\x00")):
             return None
     except (KeyError, ValueError, TypeError, AttributeError):
         return None
