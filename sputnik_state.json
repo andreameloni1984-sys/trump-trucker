@@ -1,14 +1,37 @@
 {
   "events": {},
-  "updated_at": "2026-11-19T19:35:02.246833+00:00",
+  "updated_at": "2026-11-19T19:48:58.077797+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "3b78589ff141eb764bb5378f",
+    "TRUTH_ARCHIVE": "d5ec239e3633a4be20980be1",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "d5ec239e3633a4be20980be1": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA",
+        "TRADE_POLICY"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 19, 2026, 2:35 PM Original Post Previously posted November 7, 2026 Donald J. Trump @realDonaldTrump · November 19, 2026, 2:20 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 12:01 PM Original Post Heading back to Washington, D.C., from China. It was a Great and Highly Consequential Trip. I will be giving a News Conference tomorrow at 12 P.M., the White House. Also, will be discussing the Trade Deals with Thailand, the Philippines, and others. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 11:58 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 11:57 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 11:57 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:46 AM Original Post Congratulations to Anderson University Women’s Volleyball Team on winning the South Atlantic Conference. Congratulations also to Ellie Nieporte, the daughter of John Nieporte, one of our Country’s absolutely best Senior Pro Golfers, who was awarded Tournament MVP. Genetics in the Nieporte family are GREAT! John’s father, Tom, was a Great Tour Pro. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 8:40 AM Original Post There has been no greater President that stands with American Farmers and Ranchers than President Donald J. Trump! As l've stated before, I was the last President to get a Farm Bill done in 2018. IT IS TIME TO DO IT AGAIN, and FAST. Our Great Farmers and Ranchers NEED and DESERVE certainty ahead of the 2027 planting season because FOOD SECURITY IS NATIONAL SECURITY! Congressional Republican Majorities, YOU MUST PASS A NEW FARM BILL DURING THE REMAINING DAYS OF CONGRESS. FARMERS AND RANCHERS ARE NOT INTERESTED IN FURTHER DELAYS. Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 8:31 AM Original Post Man driving wrong way during fatal North Haven crash was in country illegally: DHS: https://www. wtnh.com/news/connecticut/new- haven/man-driving-wrong-way-during-fatal-north-haven-crash-was-in-country-illegally-dhs/ www.wtnh.com Man driving wrong way during fatal North Haven crash was in country illegally: DHS NEW HAVEN, Conn. (WTNH) — The man who was driving the wrong way on I-91 South in North Haven earlier this month, resulting in a crash that killed a University of New Haven student, was in the count… Donald J. Trump @realDonaldTrump · November 19, 2026, 8:30 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 8:26 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T19:48:57.669130+00:00",
+      "event_id": "d5ec239e3633a4be20980be1",
+      "action_reaction": {
+        "event_id": "d5ec239e3633a4be20980be1",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "3b78589ff141eb764bb5378f": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -11687,30 +11710,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "966855211a1bcd8caee1159a": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43015",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536924988499960",
-      "title": "Warren Davidson is a fantastic Representative for the Great People of Ohio's 8th Congressional District! A West Point Graduate and U.S. Army Ranger, Warren knows the Wisdom and Courage that is required to Defend our Country, Support our incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH",
-      "published": "Sat, 31 Oct 2026 18:25:45 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Warren Davidson is a fantastic Representative for the Great People of Ohio's 8th Congressional District! A West Point Graduate and U.S. Army Ranger, Warren knows the Wisdom and Courage that is required to Defend our Country, Support our incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH Warren Davidson is a fantastic Representative for the Great People of Ohio's 8th Congressional District! A West Point Graduate and U.S. Army Ranger, Warren knows the Wisdom and Courage that is required to Defend our Country, Support our incredible Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, Warren is fighting tirelessly to Keep our now very Secure Border, SECURE, Stop Migrant Crime, Promote LAW AND ORDER, Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, and Defend our always under siege Second Amendment. Warren's opponent, Vanessa Enoch, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Vanessa Enoch is Reckless, Radical, and Dangerous! Warren Davidson has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR WARREN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.188995+00:00",
-      "event_id": "966855211a1bcd8caee1159a",
-      "action_reaction": {
-        "event_id": "966855211a1bcd8caee1159a",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12452,6 +12451,6 @@
     "524054ead07315d899e86991": "2026-11-19T17:07:12.078532+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-19T19:35:02.236182+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-19T19:48:58.057186+00:00"
   }
 }
