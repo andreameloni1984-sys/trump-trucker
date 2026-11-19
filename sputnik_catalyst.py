@@ -299,6 +299,20 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
                 continue
         except ValueError:
             continue
+        # Old or future-dated posts must not become fresh directional alerts.
+        # Unknown timestamps fail closed; historical research uses other paths.
+        try:
+            published_at = datetime.fromisoformat(
+                str(finding["published"]).replace("Z", "+00:00")
+            )
+            if published_at.tzinfo is None:
+                continue
+            age_seconds = (datetime.now(timezone.utc) -
+                           published_at.astimezone(timezone.utc)).total_seconds()
+            if not 0 <= age_seconds <= 86400:
+                continue
+        except (ValueError, TypeError, OverflowError):
+            continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
         raw_domains = finding.get("domains")
