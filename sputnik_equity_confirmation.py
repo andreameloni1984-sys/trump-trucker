@@ -67,6 +67,11 @@ def confirmed_equity_plan(*, ticker: str, direction: str, source_url: str,
         last = tail[-1]
         if last[4] < 1.5 * sum(b[4] for b in prev) / 20:
             return None
+        # Avoid an intrabar reversal being labelled a confirmed news breakout.
+        if direction == "LONG" and last[1] <= prev[-1][1]:
+            return None
+        if direction == "SHORT" and last[1] >= prev[-1][1]:
+            return None
         if direction == "LONG" and last[1] <= max(b[2] for b in prev):
             return None
         if direction == "SHORT" and last[1] >= min(b[3] for b in prev):
