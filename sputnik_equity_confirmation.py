@@ -28,7 +28,8 @@ def confirmed_equity_plan(*, ticker: str, direction: str, source_url: str,
         return None
     try:
         url = urlsplit(source_url)
-        if url.scheme != "https" or not url.hostname or url.username or url.password:
+        if (url.scheme != "https" or not url.hostname or url.username or url.password
+                or url.port not in (None, 443)):
             return None
         endpoint = ("https://query1.finance.yahoo.com/v8/finance/chart/"
                     + ticker + "?interval=1m&range=1d")
