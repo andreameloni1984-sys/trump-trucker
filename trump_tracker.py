@@ -1042,6 +1042,9 @@ def fetch_sec_events(cik: str, user_agent: str, forms: set[str]) -> list[FilingE
 
 
 def collect() -> list[FilingEvent]:
+    if not os.getenv("SEC_USER_AGENT", "").strip():
+        print("SPUTNIK: SEC collection skipped; SEC_USER_AGENT secret missing (no invalid SEC requests).", flush=True)
+        return []
     raw_ciks = os.getenv("SPUTNIK_CIKS", "").strip()
     if not raw_ciks:
         print("SPUTNIK: nessun CIK configurato. Impostare SPUTNIK_CIKS.")
