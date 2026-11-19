@@ -74,10 +74,9 @@ jobs:
             git commit -m "chore: persist Sputnik state"
             git fetch origin main
             if ! git rebase origin/main; then
-              echo "SPUTNIK: conflitto di stato; mantengo il risultato del run corrente."
-              git checkout --theirs sputnik_state.json
-              git add sputnik_state.json
-              GIT_EDITOR=true git rebase --continue
+              echo "::error::SPUTNIK state conflict; aborting instead of silently discarding deduplication state."
+              git rebase --abort
+              exit 1
             fi
             git push origin main
           fi
