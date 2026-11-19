@@ -1,14 +1,61 @@
 {
   "events": {},
-  "updated_at": "2026-11-19T22:18:44.494433+00:00",
+  "updated_at": "2026-11-19T22:34:37.801424+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "b673a1e40243cc3cab361ecf",
+    "TRUTH_ARCHIVE": "0ac46d087c30e443330d28ae",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "3702822785d971e281f74b31": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43636",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117645424343773351",
+      "title": "Quote post from November 19, 2026",
+      "published": "Thu, 19 Nov 2026 22:18:34 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 19, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117645423615781506 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T22:34:37.780762+00:00",
+      "event_id": "3702822785d971e281f74b31",
+      "action_reaction": {
+        "event_id": "3702822785d971e281f74b31",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "0ac46d087c30e443330d28ae": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "METALS",
+        "AI_TECH",
+        "MEDIA",
+        "TRADE_POLICY"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 19, 2026, 5:26 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:17 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:15 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:15 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 4:11 PM Original Post I have just given a Complete and Total Pardon to the Late, Great Pete Rose, a true Baseball SUPERSTAR & LEGEND, whose record of 4,256 Hits in a Season will never be broken. In addition, Pete played 3,562 career games (Highest Ever!), had 1,314 Runs batted in, 160 Home Runs, a .303 Batting Average, was a 17x All-Star, 3x World Series Champion, NL MVP, World Series MVP, NL Rookie of the Year, 2x Recipient of the Gold Glove Award, Silver Slugger Award, Roberto Clemente Award, 3x NL batting champion and, just like the Great Roger Clemens, who won 354 games, was treated terribly by Major League Baseball in not allowing him to go into the Baseball Hall of Fame. Politics, I guess! Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 2:35 PM Original Post Previously posted November 7, 2026 Donald J. Trump @realDonaldTrump · November 19, 2026, 2:20 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 12:01 PM Original Post Heading back to Washington, D.C., from China. It was a Great and Highly Consequential Trip. I will be giving a News Conference tomorrow at 12 P.M., the White House. Also, will be discussing the Trade Deals with Thailand, the Philippines, and others. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 19, 2026, 11:58 AM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 11:57 AM Original Post Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T22:34:37.013826+00:00",
+      "event_id": "0ac46d087c30e443330d28ae",
+      "action_reaction": {
+        "event_id": "0ac46d087c30e443330d28ae",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "341795248148b85e0ef00c8a": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -11657,54 +11704,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "269b1ec8b49c5a5d7ab1ba53": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42995",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536881089239372",
-      "title": "Congressman John Joyce is a fantastic Champion for Pennsylvania's 13th Congressional District! John is fighting hard in Congress to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Unleash American Energy DOMINANCE, Support our Military/Veterans, Defend our always under siege Second Ame",
-      "published": "Sat, 31 Oct 2026 18:14:35 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman John Joyce is a fantastic Champion for Pennsylvania's 13th Congressional District! John is fighting hard in Congress to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Unleash American Energy DOMINANCE, Support our Military/Veterans, Defend our always under siege Second Ame Congressman John Joyce is a fantastic Champion for Pennsylvania's 13th Congressional District! John is fighting hard in Congress to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Unleash American Energy DOMINANCE, Support our Military/Veterans, Defend our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. John's opponent, Beth Farnham, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Beth Farnham is Reckless, Radical, and Dangerous! John Joyce has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JOHN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.190569+00:00",
-      "event_id": "269b1ec8b49c5a5d7ab1ba53",
-      "action_reaction": {
-        "event_id": "269b1ec8b49c5a5d7ab1ba53",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "164c90869375b4e8618d2755": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42994",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536882773810242",
-      "title": "Congressman Guy Reschenthaler is doing an incredible job representing Pennsylvania's 14th Congressional District! As the Chief Deputy Whip, Guy is working closely with me to Advance our America First Agenda. He is fighting hard to Keep our Border SECURE, Stop Migrant Crime, Grow the Economy, Cut Tax",
-      "published": "Sat, 31 Oct 2026 18:15:01 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Guy Reschenthaler is doing an incredible job representing Pennsylvania's 14th Congressional District! As the Chief Deputy Whip, Guy is working closely with me to Advance our America First Agenda. He is fighting hard to Keep our Border SECURE, Stop Migrant Crime, Grow the Economy, Cut Tax Congressman Guy Reschenthaler is doing an incredible job representing Pennsylvania's 14th Congressional District! As the Chief Deputy Whip, Guy is working closely with me to Advance our America First Agenda. He is fighting hard to Keep our Border SECURE, Stop Migrant Crime, Grow the Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Support our Military/Veterans, Promote MADE IN THE U.S.A., and Defend our always under siege Second Amendment. Guy's opponent, Alan Bradstock, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Alan Bradstock is Reckless, Radical, and Dangerous! Guy Reschenthaler has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR GUY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.190357+00:00",
-      "event_id": "164c90869375b4e8618d2755",
-      "action_reaction": {
-        "event_id": "164c90869375b4e8618d2755",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12445,9 +12444,10 @@
     "ae92361dd7d06df9cc976269": "2026-11-19T17:07:12.078404+00:00",
     "524054ead07315d899e86991": "2026-11-19T17:07:12.078532+00:00",
     "22c321e5376a517f76977860": "2026-11-19T21:18:44.216368+00:00",
-    "341795248148b85e0ef00c8a": "2026-11-19T22:18:44.470543+00:00"
+    "341795248148b85e0ef00c8a": "2026-11-19T22:18:44.470543+00:00",
+    "3702822785d971e281f74b31": "2026-11-19T22:34:37.780749+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-19T22:18:44.476770+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-19T22:34:37.787463+00:00"
   }
 }
