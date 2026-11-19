@@ -1,14 +1,35 @@
 {
   "events": {},
-  "updated_at": "2026-11-19T16:20:31.661221+00:00",
+  "updated_at": "2026-11-19T16:34:40.514330+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
     "TRUTH_ARCHIVE": "da2ab8bebcec6c7d2c1bc84d",
-    "OGE": "f51ef747fe055bc9f1fbcc8b"
+    "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "2f116fd2ea65816c3b0adaba": {
+      "source": "OGE",
+      "url": "https://www.oge.gov/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Skip to Main Content An official website of the United States government Here’s how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. U.S. Office of Government Ethics Menu About Resources for the Public Resources for Ethics Officials Resources for Federal Employees News Site Index Forms Library Contact Us Search Public service is a public trust, requiring employees to place loyalty to the Constitution, the laws and ethical principles above private gain Learn about our mission Popular Tasks Find an Individual's Ethics Document Find an Agency's Ethics Program Document Find the Ethics Rules I want to... Find a financial disclosure report for an individual or Presidential candidate Learn more about the individual disclosures available on OGE’s website Learn more about the ethics documents available on OGE’s website Find contact information to access ethics documents at other agencies Research an ethics topic Find an ethics statute or regulation Find where to report misconduct by a federal employee File a FOIA Request I want to find information about being a PAS Nominee Go OGE Leadership Leadership Notes OGE uses Leadership Notes to communicate with the public. Read More What's New Legal Advisory | 11/18/2026 PA-26-04: Updates to the Certification of Ethics Agreement Compliance and the Officials’ Individual Search Collection, and New Additional Certification Form The Program Advisory explains the updates to the Certification of Ethics Agreement Compliance and the updated document types in the Officials’ Individual Disclosures Search Collection related to ethics agreement compliance. The Advisory also announces a new Additional Certification form for those Presidential appointees subject to Senate confirmation (PAS officials) who have more than one ethics agreement compliance date. News | 11/16/2026 On November 19th, the U.S. Senate Committee on Homeland Security & Governmental Affairs will hold a hearing on the nominee to be Director of the Office of Government Ethics. News | 11/09/2026 OGE Issues Updates to the Public Financial Disclosure Guide Oversight | 11/09/2026 OGE Issues a Program Review Report for the Council of the Inspectors General on Integrity and Efficiency (CIGIE) OGE reviewed CIGIE's ethics program and issued 5 recommendations. News | 11/06/2026 OGE Seeks Public Input on Forms Related to Financial Disclosure The U.S. Office of Government Ethics (OGE) is hosting a public meeting to obtain input regarding potential improvements to the OGE Form 278e and the OGE Form 450 as part of a form revision planning process that will precede the next requested renewal of these forms under the Paperwork Reduction Act. The next scheduled renewal is in August of 2027. Oversight | 11/04/2026 OGE Issues a Program Review Report for the Office of Management and Budget (OMB) OGE reviewed OMB's ethics program and issued 2 recommendations. View All Featured Resources Resources for Nominees to Senate-Confirmed Positions This webpage features resources for prospective nominees to Presidentially appointed, Senate-confirmed (PAS) positions. Financial Disclosure Resources for Presidential and Vice Presidential Candidates This webpage contains resources to assist Presidential and Vice Presidential candidates to file required public financial disclosure reports. Analyzing Potential Conflicts of Interests This advice and counsel resource provide conflicts of interest analyses for various types of employment interests, investment interests, and liabilities. Confidential Financial Disclosure Guide This Guide assists filers and reviewers of confidential financial disclosure reports. Public Financial Disclosure Guide This Guide assists filers and reviewers of public financial disclosure reports. Compilation of Federal Ethics Laws (PDF) The Compilation contains the most pertinent laws under the jurisdiction of the executive branch ethics program as well as related statutes on which ethics officials are often called upon to provide advice to agency employees. Summary of the Standards of Conduct (PDF) This resource provides a summary of the Standards of Conduct for Employees of Ethical Conduct which apply to every executive branch employee. Quicklinks Agency Ethics Program Contact List Press Contacts Forms Library FAQs – Public Financial Disclosure 2026 Dates and Deadlines (PDF) Form 450 (PDF) Institute for Ethics in Government Return to top Accessibility | Budget and Performance | FOIA | Information Quality | EEO/No Fear Act | Privacy | Rulemaking | Site Index Have a question about government services? Contact USA.gov Regulations.gov Twitter YouTube U.S. Office of Government Ethics contactoge@oge.gov | (202) 482-9300",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-19T16:34:39.734397+00:00",
+      "event_id": "2f116fd2ea65816c3b0adaba",
+      "action_reaction": {
+        "event_id": "2f116fd2ea65816c3b0adaba",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "da2ab8bebcec6c7d2c1bc84d": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -11701,30 +11722,6 @@
         },
         "evidence": "HISTORICAL_ANALOGUE"
       }
-    },
-    "1b5d40349dd1be78985232bc": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43003",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536928276306293",
-      "title": "Congressman Dave Taylor is doing an incredible job representing the wonderful people of Ohio's 2nd Congressional District! A very successful Small Businessman, Dave knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Restore American Energy DOMINANCE. He is fight",
-      "published": "Sat, 31 Oct 2026 18:26:35 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE"
-      ],
-      "text": "Congressman Dave Taylor is doing an incredible job representing the wonderful people of Ohio's 2nd Congressional District! A very successful Small Businessman, Dave knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Restore American Energy DOMINANCE. He is fight Congressman Dave Taylor is doing an incredible job representing the wonderful people of Ohio's 2nd Congressional District! A very successful Small Businessman, Dave knows the America First Policies necessary to Create GREAT Jobs, Unleash Innovation, and Restore American Energy DOMINANCE. He is fighting tirelessly to Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Keep our Border SECURE, Champion our Farmers and American Agriculture, Support our Brave Military/Veterans, and Defend our always under siege Second Amendment. Dave's opponent, Jen Mazzuckelli, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Jen Mazzuckelli is Reckless, Radical, and Dangerous! Dave Taylor has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR DAVE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/ohio/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.187759+00:00",
-      "event_id": "1b5d40349dd1be78985232bc",
-      "action_reaction": {
-        "event_id": "1b5d40349dd1be78985232bc",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12464,6 +12461,6 @@
     "af3be06878e22ce0758af02b": "2026-11-19T13:48:37.823630+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-19T16:20:31.645568+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-19T16:34:40.500601+00:00"
   }
 }
