@@ -292,7 +292,10 @@ def directional_news_candidates(findings: list[dict[str, Any]], limit: int = 8) 
             continue
         text = " ".join(str(finding.get(k) or "") for k in ("title", "text"))
         text = " ".join(text.lower().split())
-        domains = {str(x).upper() for x in finding.get("domains") or []}
+        raw_domains = finding.get("domains")
+        if not isinstance(raw_domains, (list, tuple, set)):
+            continue
+        domains = {str(x).upper() for x in raw_domains}
         matched_rules = []
         for rule in _DIRECTION_RULES:
             if not domains.intersection(rule["domains"]):
