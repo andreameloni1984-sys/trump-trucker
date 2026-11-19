@@ -49,7 +49,7 @@ def confirmed_equity_plan(*, ticker: str, direction: str, source_url: str,
                 continue
             bars.append((closed, *values))
         tail = bars[-21:]
-        if len(tail) < 21 or any(a[0] >= b[0] for a, b in zip(tail, tail[1:])):
+        if len(tail) < 21 or any(\n                a[0] >= b[0] or (b[0] - a[0]).total_seconds() > 120\n                for a, b in zip(tail, tail[1:])\n        ):
             return None
         if not 0 <= (now - tail[-1][0]).total_seconds() <= 60:
             return None
