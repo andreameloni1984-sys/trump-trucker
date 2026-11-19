@@ -67,7 +67,11 @@ jobs:
             git config user.name "SPUTNIK Bot"
             git config user.email "sputnik-bot@users.noreply.github.com"
             git add sputnik_state.json
-            git diff --cached --quiet || git commit -m "chore: persist Sputnik state"
+            if git diff --cached --quiet; then
+              echo "SPUTNIK: stato invariato; nessun commit o push necessario."
+              exit 0
+            fi
+            git commit -m "chore: persist Sputnik state"
             git fetch origin main
             if ! git rebase origin/main; then
               echo "SPUTNIK: conflitto di stato; mantengo il risultato del run corrente."
