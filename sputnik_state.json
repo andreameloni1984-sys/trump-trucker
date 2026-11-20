@@ -1,14 +1,37 @@
 {
   "events": {},
-  "updated_at": "2026-11-20T00:18:38.445635+00:00",
+  "updated_at": "2026-11-20T00:45:52.040091+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "1e1f226e0d40ea80f8794b02",
+    "TRUTH_ARCHIVE": "8fb95574757f8e34d029f934",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "8fb95574757f8e34d029f934": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "METALS",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 19, 2026, 7:37 PM Original Post The Factories Are Coming Home, ISM Just Confirmed It: https://www. realclearmarkets.com/articles/ 2026/11/02/the_factories_are_coming_home_ism_just_confirmed_it_1214700.html www.realclearmarkets.com The Factories Are Coming Home, ISM Just Confirmed It Today, the White House Office of Trade and Manufacturing Policy, which I direct, released a comprehensive new report and companion video documenting an emerging American manufacturing renaissance.&nbs Donald J. Trump @realDonaldTrump · November 19, 2026, 7:32 PM Original Post President of the United States Donald J. Trump and The John F. Kennedy Center for the Performing Arts Announce the 49th Class of Honorees: https://www. kennedy-center.org/news-room/p ress-release-landing-page/49th-kc-honorees/ Donald J. Trump @realDonaldTrump · November 19, 2026, 7:30 PM Original Post ABC News Puts 2 on Leave Over Flawed Trump Jr. Story: https://www. newsmax.com/us/abc-news-donald -trump-jr-anduril-industries/2026/11/18/id/1276821/ www.newsmax.com ABC News Puts 2 on Leave Over Flawed Trump Jr. Story Two ABC News journalists reportedly have been placed on paid leave and could face termination following an internal investigation into a report about Donald Trump Jr.'s business dealings that the network withdrew and later republished with significant corrections. Donald J. Trump @realDonaldTrump · November 19, 2026, 5:48 PM Original Post Image Previously posted November 9, 2026 Donald J. Trump @realDonaldTrump · November 19, 2026, 5:26 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:18 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:17 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:15 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 5:15 PM Original Post Donald J. Trump @realDonaldTrump · November 19, 2026, 4:11 PM Original Post I have just given a Complete and Total Pardon to the Late, Great Pete Rose, a true Baseball SUPERSTAR & LEGEND, whose record of 4,256 Hits in a Season will never be broken. In addition, Pete played 3,562 career games (Highest Ever!), had 1,314 Runs batted in, 160 Home Runs, a .303 Batting Average, was a 17x All-Star, 3x World Series Champion, NL MVP, World Series MVP, NL Rookie of the Year, 2x Recipient of the Gold Glove Award, Silver Slugger Award, Roberto Clemente Award, 3x NL batting champion and, just like the Great Roger Clemens, who won 354 games, was treated terribly by Major League Baseball in not allowing him to go into the Baseball Hall of Fame. Politics, I guess! Thank you for your attention to this matter. President DONALD J. TRUMP Results per page 10 25 50 100 Prev. Page Next Page Trump’s Truth is an archive of TRUTH Social posts from President Donald Trump. This site is a project of Defending Democracy Together .",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-20T00:45:51.844724+00:00",
+      "event_id": "8fb95574757f8e34d029f934",
+      "action_reaction": {
+        "event_id": "8fb95574757f8e34d029f934",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "1e1f226e0d40ea80f8794b02": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -11681,29 +11704,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "8f41f3b094a0d9005b9f240d": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/42998",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117536879575938742",
-      "title": "Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania's 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON T",
-      "published": "Sat, 31 Oct 2026 18:14:12 +0000",
-      "domains": [
-        "DEFENSE"
-      ],
-      "text": "Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania's 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON T Congressman Scott Perry is a tremendous Representative for the Great People of Pennsylvania's 10th Congressional District! A retired Army Brigadier General, Scott is a MAGA Warrior, who always puts AMERICA FIRST. His opponent, Janelle Stelson, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Janelle Stelson is Reckless, Radical, and Dangerous! On the other hand, in Congress, Scott is working tirelessly with me to Grow the Economy, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military and Veterans, Uphold the Rule of Law, Protect our always under siege Second Amendment, and Ensure PEACE THROUGH STRENGTH. Scott Perry has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR SCOTT — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/pennsylvan ia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-10-31T19:21:45.191043+00:00",
-      "event_id": "8f41f3b094a0d9005b9f240d",
-      "action_reaction": {
-        "event_id": "8f41f3b094a0d9005b9f240d",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {},
@@ -12448,6 +12448,6 @@
     "3702822785d971e281f74b31": "2026-11-19T22:34:37.780749+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-20T00:18:38.433857+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-20T00:45:52.026646+00:00"
   }
 }
