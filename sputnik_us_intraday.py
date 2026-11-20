@@ -19,11 +19,14 @@ def utc_now():
 
 def format_signal(item, bias, levels):
     local = datetime.fromisoformat(item["published"]).astimezone(ZoneInfo("Europe/Rome"))
+    summary = item["title"]
+    if bias["fact"] not in summary.lower():
+        summary = f"{summary} — {bias['fact']}"
     return (
         "🛰️ SPUTNIK — SEGNALE USA\n\n"
         f"Ticker: {bias['ticker']}\n"
         f"Direzione: {bias['direction']}\n\n"
-        f"Notizia: {item['title']}\n"
+        f"Notizia: {summary}\n"
         f"Motivazione: {bias['reason']}\n\n"
         f"ENTRY: {levels['entry']:.2f}\n"
         f"SL: {levels['stop']:.2f}\n"

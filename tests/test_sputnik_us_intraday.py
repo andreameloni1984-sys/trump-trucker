@@ -56,6 +56,7 @@ class SputnikUSTests(unittest.TestCase):
         text = send.call_args.args[0]
         for expected in ("Ticker: QQQ", "Direzione: LONG", "ENTRY: 100.30", "SL: 99.90",
                          "TP1: 100.90", "TP2: 101.30", FED_RELEASE,
+                         "committee decided to lower the target range",
                          "18/09/2024 20:00 CEST", "Stato: CONFERMATO", "PAPER ONLY"):
             self.assertIn(expected, text)
         self.assertEqual(scan([fed, news], state, NOW, check=confirm, clock=lambda: NOW), [])
