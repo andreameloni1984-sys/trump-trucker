@@ -1,7 +1,8 @@
 """Verified public news and conservative US equity catalyst rules."""
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
+from time import monotonic
 from functools import lru_cache
 from http.client import HTTPException
 import json
@@ -9,7 +10,7 @@ import os
 import re
 from urllib.parse import urlsplit, urlunsplit
 
-from sputnik_public_sources import parse_public_feed
+from sputnik_public_sources import clean_public_text, parse_public_feed
 from trump_tracker import _parse_public_item_timestamp, fetch_public_feed
 
 
@@ -76,20 +77,23 @@ def original_url(feed, row):
 
 
 def read_feed(feed):
+    started = monotonic()
     try:
         rows = parse_public_feed(fetch_public_feed(feed.url, timeout=10), feed.url)
     except (OSError, HTTPException, ValueError) as exc:
-        print(f"SPUTNIK USA: {feed.name} indisponibile ({type(exc).__name__}).")
+        print(f"SPUTNIK USA: {feed.name} indisponibile ({type(exc).__name__}, {monotonic() - started:.2f}s).")
         return []
+    acquired = datetime.now(timezone.utc)
     items = []
     for row in rows:
         url = original_url(feed, row)
         stamp = _parse_public_item_timestamp(row["publication_time"])
         if url and stamp and row["title"]:
             items.append({"source": feed.name, "kind": feed.kind, "url": url,
-                          "published": stamp.isoformat(), "title": row["title"],
+                          "published": stamp.isoformat(), "acquired": acquired.isoformat(),
+                          "acquisition_seconds": (acquired - stamp).total_seconds(), "title": row["title"],
                           "text": row["text"], "issuer": feed.ticker})
-    print(f"SPUTNIK USA: {feed.name}, {len(items)} elementi con URL e pubblicazione.")
+    print(f"SPUTNIK USA: {feed.name}, {len(items)} elementi con URL e pubblicazione in {monotonic() - started:.2f}s.")
     return items
 
 
@@ -115,8 +119,11 @@ def configured_feeds():
 def collect_news(feeds=None):
     if feeds is None:
         feeds = configured_feeds()
+    started = monotonic()
     with ThreadPoolExecutor(max_workers=8) as pool:
-        return [item for batch in pool.map(read_feed, feeds) for item in batch]
+        items = [item for batch in pool.map(read_feed, feeds) for item in batch]
+    print(f"SPUTNIK INVEST: raccolta completata in {monotonic() - started:.2f}s.")
+    return items
 
 
 # Match completed actions with an explicit scope. Direction is a hypothesis
@@ -145,6 +152,35 @@ RULES = (
     ({"fda"}, "fda-approval", "LLY", "LONG",
      r"\bfda approves\b.{0,120}\b(?:zepbound|mounjaro|kisunla)\b",
      "L’approvazione FDA amplia le possibilità commerciali negli USA per un farmaco di Eli Lilly."),
+)
+
+# V2 uses the same confirmed-fact rules with issuer resolution and catalog checks.
+CORPORATE = {"issuer", "wire"}
+EXTRA_RULES = (
+    (CORPORATE, "earnings-beat", "", "LONG",
+     r"\b(?:reports? |posts? )?(?:quarterly )?(?:earnings|eps|revenue) (?:beats?|exceeds?) (?:estimates|expectations|consensus)\b",
+     "Risultati superiori alle attese possono alzare le stime di mercato."),
+    (CORPORATE, "earnings-miss", "", "SHORT",
+     r"\b(?:reports? |posts? )?(?:quarterly )?(?:earnings|eps|revenue) (?:misses|falls short of) (?:estimates|expectations|consensus)\b",
+     "Risultati inferiori alle attese possono ridurre le stime di mercato."),
+    (CORPORATE, "contract-award", "", "LONG",
+     r"\b(?:wins?|awarded|secures?) (?:a )?\$[\d,.]+ (?:million|billion)\b.{0,35}\bcontract\b",
+     "Una commessa quantificata aggiunge ricavi potenziali."),
+    (CORPORATE, "takeover-target", "", "LONG",
+     r"\b(?:agrees to be acquired|enters (?:a )?definitive agreement to be acquired)\b.{0,150}\b(?:at a premium|premium of)\b",
+     "L’accordo definitivo valorizza la società target a premio."),
+    (CORPORATE, "fda-issuer-approval", "", "LONG",
+     r"\b(?:announces? |receives? )fda approval\b",
+     "L’approvazione amplia la possibilità di commercializzare il prodotto."),
+    (CORPORATE, "fda-rejection", "", "SHORT",
+     r"\b(?:receives? |announces? )(?:an? )?(?:fda complete response letter|fda rejection)\b",
+     "La decisione FDA ritarda o impedisce la commercializzazione."),
+    (CORPORATE, "sec-enforcement", "", "SHORT",
+     r"\b(?:agrees? to pay|pays?)\b.{0,65}\b(?:sec penalty|to settle sec charges)\b",
+     "La sanzione confermata genera un costo e può aumentare il rischio regolamentare."),
+    (CORPORATE, "export-restriction", "", "SHORT",
+     r"\b(?:discloses? |confirms? |announces? )?(?:new )?export restrictions\b.{0,100}\b(?:revenue loss|revenue impact|sales loss)\b",
+     "Le restrizioni confermate limitano i ricavi esposti alle esportazioni."),
 )
 
 # Named issuers in the initial universe. Other issuers require an exchange-qualified symbol.
@@ -179,16 +215,76 @@ def _sec_issuers():
         return {}
 
 
-def catalyst(item):
+def verify_truth(item):
+    """Read the original status and use its text and timestamp for decisions."""
+    status_id = item["url"].rsplit("/", 1)[-1]
+    if not status_id.isdecimal():
+        return None
+    try:
+        status = json.loads(fetch_public_feed(
+            f"https://truthsocial.com/api/v1/statuses/{status_id}", timeout=5
+        ))
+        if (status["id"] != status_id or status["account"]["acct"].lower() != "realdonaldtrump"
+                or status["url"].rstrip("/") != item["url"] or status.get("reblog")):
+            return None
+        stamp = _parse_public_item_timestamp(status["created_at"])
+        text = clean_public_text(status["content"])
+        if stamp and text:
+            return {**item, "text": text, "title": text[:300],
+                    "published": stamp.isoformat(), "primary_verified": True,
+                    "acquisition_seconds": (datetime.now(timezone.utc) - stamp).total_seconds()}
+    except (OSError, HTTPException, ValueError, KeyError, TypeError, AttributeError) as exc:
+        print(f"SPUTNIK INVEST: post originale Truth Social indisponibile ({type(exc).__name__}).")
+    return None
+
+
+NEWS_TYPES = (
+    ("management", r"\b(?:ceo|cfo|chief executive|chief financial officer)\b"),
+    ("layoffs", r"\b(?:layoffs?|job cuts|workforce reduction)\b"),
+    ("industrial-tech", r"\b(?:plant|factory|chip|product launch|production capacity)\b"),
+    ("earnings", r"\b(?:earnings|quarterly results|financial results|guidance)\b"),
+    ("contract", r"\b(?:contract|order|procurement)\b"),
+    ("m-and-a", r"\b(?:merger|acquisition|takeover|acquire[ds]?)\b"),
+    ("exports", r"\bexport (?:controls?|restrictions?|ban)\b"),
+    ("tariffs", TARIFF),
+    ("fda", r"\bfda\b"),
+    ("sec", r"\bsec\b"),
+)
+
+
+def describe_news(item, bias):
+    title = item["title"].lower()
+    category = next((category for category, pattern in NEWS_TYPES if re.search(pattern, title)),
+                    {"truth": "presidential", "policy": "presidential", "fed": "fed",
+                     "agency": "sec", "fda": "fda"}.get(item["kind"], "other"))
+    status = "confermato" if bias else "direzione o conferma insufficiente"
+    if not bias:
+        qualifiers = (
+            ("indiscrezione", r"\b(?:rumou?r\w*|reportedly|sources say|unconfirmed)\b"),
+            ("già noto", r"\b(?:previously announced|reiterates|already announced)\b"),
+            ("annuncio futuro", r"\b(?:plans? to|expected to|proposes?|will|scheduled to)\b"),
+        )
+        status = next((label for label, pattern in qualifiers if re.search(pattern, title)), status)
+    return category, status
+
+
+def catalyst(item, *, invest=False):
     title = item["title"].lower()
     # FOMC titles are often simply “Federal Reserve issues FOMC statement”.
+    if invest and item["kind"] == "truth" and not item.get("primary_verified"):
+        return None
     use_body = item["kind"] in {"fed", "truth"}
     text = " ".join((item["text"] if use_body and item["text"] else title).lower().split())
-    if UNCERTAIN.search(title):
+    if UNCERTAIN.search(title) or (invest and re.search(
+        r"\b(?:previously announced|reiterates|already announced|shares (?:rose|fell|jumped))\b", title
+    )):
         return None
     matches = []
     guidance_directions = set()
-    for kinds, rule, ticker, direction, pattern, reason in RULES:
+    rules = (*RULES, *EXTRA_RULES) if invest else RULES
+    for kinds, rule, ticker, direction, pattern, reason in rules:
+        if invest and item["kind"] == "press":
+            continue  # A press report can duplicate or corroborate a primary announcement.
         if item["kind"] not in kinds:
             continue
         match = re.search(pattern, text)
@@ -197,6 +293,22 @@ def catalyst(item):
         if rule.startswith("guidance-"):
             guidance_directions.add(direction)
         symbol = ticker or item["issuer"]
+        if invest and match.start() < len(title) and not use_body and not symbol:
+            subject = item["title"][:match.start()].strip(" ,:–—")
+            listing = LISTED_SYMBOL.search(subject)
+            if listing and listing.end() == len(subject):
+                subject = subject[:listing.start()].strip()
+            if subject:
+                issuer_symbols = _sec_issuers().get(_issuer_name(subject), ())
+                if listing:
+                    explicit = listing.group(1).upper().replace(".", "-")
+                    if explicit not in {symbol.replace(".", "-") for symbol in issuer_symbols}:
+                        continue
+                    symbol = explicit
+                elif len(issuer_symbols) == 1:
+                    symbol = next(iter(issuer_symbols))
+        if not symbol and invest:
+            continue
         if not symbol:
             named = [symbol for symbol, name in ISSUERS.items()
                      if re.match(name + r"(?: inc\.?| corp\.?)?\s*$", title[:match.start()].strip())]
