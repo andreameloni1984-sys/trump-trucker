@@ -299,11 +299,19 @@ def main():
         if not send_enabled:
             parser.error("Telegram Sputnik USA richiede abilitazione esplicita")
         outbox = json.loads(args.outbox.read_text(encoding="utf-8"))
+        total = len(outbox)
+        delivered_count = 0
+        # Checkpoint each acknowledged send to avoid replaying already delivered messages.
+        while outbox:
+            message = outbox[0]
+            if deliver([message]) != 1:
+                print(f"SPUTNIK INVEST: consegna interrotta dopo {delivered_count}/{total}; outbox residua conservata.")
+                raise SystemExit(1)
+            outbox.pop(0)
+            write_json(args.outbox, outbox)
+            delivered_count += 1
         args.outbox.unlink()
-        count = deliver(outbox)
-        print(f"SPUTNIK USA: Telegram ha confermato {count}/{len(outbox)} messaggi.")
-        if count != len(outbox):
-            raise SystemExit(1)
+        print(f"SPUTNIK INVEST: Telegram ha confermato {delivered_count}/{total} messaggi.")
         return
 
     state = json.loads(args.state.read_text(encoding="utf-8")) if args.state.exists() else {}
