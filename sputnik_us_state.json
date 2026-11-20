@@ -496,6 +496,22 @@
       "title": "Image post from November 20, 2026",
       "url": "https://truthsocial.com/@realDonaldTrump/117646261644090852"
     },
+    "https://truthsocial.com/@realDonaldTrump/117648902586194402": {
+      "acquired": "2026-11-20T13:48:57.207997+00:00",
+      "acquisition_seconds": 2750.207997,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-20T13:03:07+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "RT @SchoenlawBy engaging in an unprecedented tripartite summit with the leaders of China and Russia, countries with which we have profound differences, President Trump not only continues his well-founded policy of always seeking to keep dialogue open, but that policy is consistent with the great sta",
+      "url": "https://truthsocial.com/@realDonaldTrump/117648902586194402"
+    },
     "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261119a.htm": {
       "acquired": "2026-11-20T12:37:30.311422+00:00",
       "acquisition_seconds": 74250.311422,
@@ -1695,6 +1711,22 @@
       "status": "SCARTARE",
       "title": "SEC: Eight Entities Used Fake Crypto Asset Trading Platforms to Steal More Than $37 Million From U.S. Investors",
       "url": "https://www.sec.gov/newsroom/press-releases/2026-115-sec-eight-entities-used-fake-crypto-asset-trading-platforms-steal-more-37-million-us-investors"
+    },
+    "https://www.whitehouse.gov/briefings-statements/2026/11/presidential-message-on-national-rural-health-day": {
+      "acquired": "2026-11-20T13:48:57.181818+00:00",
+      "acquisition_seconds": 56937.181818,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "policy",
+      "penalized": [],
+      "published": "2026-11-19T22:00:00+00:00",
+      "source": "Casa Bianca – comunicati",
+      "status": "SCARTARE",
+      "title": "Presidential Message on National Rural Health Day",
+      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/presidential-message-on-national-rural-health-day"
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace": {
       "acquired": "2026-11-20T12:37:30.268341+00:00",
