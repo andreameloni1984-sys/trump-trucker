@@ -1797,23 +1797,14 @@ def main() -> None:
     print(f"SPUTNIK: {len(intelligence)} nuove correlazioni da fonti pubbliche.")
 
     notifications_started = time.monotonic()
-    for event in fresh:
-        message = telegram_message(event)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
-
-    for tx in new_transactions:
-        message = telegram_transaction_message(tx)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
-
-    # Avoid one Telegram push per feed row. Keep page-level findings in the
-    # local research history, but alert only on dated individual RSS items and
-    # combine them into one digest per run.
-    digest = intelligence_digest_message(intelligence)
-    if digest:
-        print(digest)
-        send_telegram(digest, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+    # Research/filing summaries are not validated equity LONG/SHORT signals.
+    # Retain collection and deduplication, but do not push them to Telegram.
+    # Only a separately validated equity signal may use the delivery channel.
+    print(
+        "SPUTNIK: legacy filing/transaction/news Telegram pushes suppressed; "
+        "awaiting validated equity LONG/SHORT with ENTRY/SL/TP",
+        flush=True,
+    )
 
     # Trading instrument recommendation after catalyst analysis
     try:
@@ -1830,15 +1821,8 @@ def main() -> None:
     except Exception as exc:
         print(f"SPUTNIK: trading instrument recommender failed: {type(exc).__name__}: {exc}")
 
-    if gagarin_confirmation:
-        message = gagarin_confirmation_message(gagarin_confirmation)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
-
-    if morning_due:
-        message = telegram_morning_message(state)
-        print(message)
-        send_telegram(message, chat_id=str(state.get("telegram_chat_id") or "").strip() or None)
+    # Gagarin handoff summaries and daily briefs are informational, not signals.
+    # Keep them in the persisted research state without unsolicited Telegram pushes.
 
     print(f"SPUTNIK: notification stage={((time.monotonic() - notifications_started) * 1000.0):.0f}ms", flush=True)
     print(f"SPUTNIK: total run={((time.monotonic() - run_started) * 1000.0):.0f}ms", flush=True)
