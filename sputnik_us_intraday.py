@@ -79,7 +79,8 @@ def scan(items, state, now, *, check=evaluate, clock=utc_now):
         batch = []
         for item in candidates:
             bias = item["bias"]
-            key = f"{bias['rule']}:{bias['ticker']}:{item['url']}"
+            bucket = int(datetime.fromisoformat(item["published"]).timestamp()) // 300
+            key = f"{bias['rule']}:{bias['ticker']}:{bucket}"
             if key in reservations:
                 item["status"] = "duplicato"
                 continue
