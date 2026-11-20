@@ -15,6 +15,18 @@ import re
 _TICKER = re.compile(r"[A-Z][A-Z0-9.-]{0,9}")
 
 
+def fetch_intraday_series(ticker: str) -> dict:
+    """Read public one-minute data from Yahoo Finance."""
+    if not _TICKER.fullmatch(ticker):
+        raise ValueError("Invalid ticker")
+    endpoint = ("https://query1.finance.yahoo.com/v8/finance/chart/"
+                + ticker + "?interval=1m&range=1d")
+    with urlopen(Request(endpoint, headers={"User-Agent": "Mozilla/5.0"}),
+                 timeout=10) as response:
+        data = json.load(response)
+    return data["chart"]["result"][0]
+
+
 def confirmed_equity_plan(*, ticker: str, direction: str, source_url: str,
                           event_id: str, published_at: datetime,
                           verified: bool, now: datetime) -> dict | None:
@@ -31,12 +43,7 @@ def confirmed_equity_plan(*, ticker: str, direction: str, source_url: str,
         if (url.scheme != "https" or not url.hostname or url.username or url.password
                 or url.port not in (None, 443)):
             return None
-        endpoint = ("https://query1.finance.yahoo.com/v8/finance/chart/"
-                    + ticker + "?interval=1m&range=1d")
-        with urlopen(Request(endpoint, headers={"User-Agent": "Mozilla/5.0"}),
-                     timeout=10) as response:
-            data = json.load(response)
-        series = data["chart"]["result"][0]
+        series = fetch_intraday_series(ticker)
         stamps = series["timestamp"]
         quotes = series["indicators"]["quote"][0]
         bars = []
@@ -98,7 +105,10 @@ def format_confirmed_equity_telegram(plan: dict | None) -> str | None:
     if not isinstance(ticker, str) or not _TICKER.fullmatch(ticker) or side not in ("LONG", "SHORT"):
         return None
     try:
-        raw_levels = [plan[k] for k in ("entry", "stop", "target")]\n        if any(isinstance(x, bool) or not isinstance(x, (int, float)) for x in raw_levels):\n            return None\n        entry, stop, target = (float(x) for x in raw_levels)
+        raw_levels = [plan[k] for k in ("entry", "stop", "target")]
+        if any(isinstance(x, bool) or not isinstance(x, (int, float)) for x in raw_levels):
+            return None
+        entry, stop, target = (float(x) for x in raw_levels)
         if not all(isfinite(x) and x > 0 for x in (entry, stop, target)):
             return None
         if not ((stop < entry < target) if side == "LONG" else (target < entry < stop)):

@@ -3,6 +3,11 @@ name: SPUTNIK ranking tests
 on:
   pull_request:
     paths:
+      - "sputnik_us_*.py"
+      - "sputnik_equity_confirmation.py"
+      - "sputnik_public_sources.py"
+      - "tests/test_sputnik_us_intraday.py"
+      - ".github/workflows/trump_tracker.yml"
       - "trump_tracker.py"
       - "sputnik_public_feed_monitor.py"
       - "sputnik_ranking.py"
@@ -49,6 +54,11 @@ on:
       - ".github/workflows/daily-summary.yml"
       - "tests/test_sputnik_decision_engine.py"
       - "tests/test_sputnik_decision.py"
+      - "sputnik_us_*.py"
+      - "sputnik_equity_confirmation.py"
+      - "sputnik_public_sources.py"
+      - "tests/test_sputnik_us_intraday.py"
+      - ".github/workflows/trump_tracker.yml"
       - "trump_tracker.py"
       - "sputnik_ranking.py"
       - "tests/test_sputnik_ranking.py"
