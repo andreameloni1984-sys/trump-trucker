@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   sputnik:
-    if: vars.SPUTNIK_US_INTRADAY_ENABLED != 'true'
+    if: vars.SPUTNIK_US_INTRADAY_ENABLED != 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -97,6 +97,8 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ vars.SPUTNIK_US_TELEGRAM_ENABLED == 'true' && secrets.TELEGRAM_BOT_TOKEN || '' }}
           TELEGRAM_CHAT_ID: ${{ vars.SPUTNIK_US_TELEGRAM_ENABLED == 'true' && secrets.TELEGRAM_CHAT_ID || '' }}
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          SPUTNIK_INVEST_DEMO_API_KEY: ${{ secrets.SPUTNIK_INVEST_DEMO_API_KEY }}
+          SPUTNIK_INVEST_DEMO_API_SECRET: ${{ secrets.SPUTNIK_INVEST_DEMO_API_SECRET }}
           SPUTNIK_REUTERS_FEED_URL: ${{ vars.SPUTNIK_REUTERS_FEED_URL }}
         run: python sputnik_us_intraday.py collect --outbox "$RUNNER_TEMP/sputnik-usa.json"
 
