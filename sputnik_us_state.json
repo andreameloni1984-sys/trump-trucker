@@ -1216,6 +1216,22 @@
       "title": "Apple seems to be building its own AI agent. This could be bad news for Meta’s Muse.",
       "url": "https://www.marketwatch.com/story/apple-seems-to-be-building-its-own-ai-agent-this-could-be-bad-news-for-metas-muse-8d9be2a7"
     },
+    "https://www.marketwatch.com/story/bank-of-america-strategist-warns-doom-loop-could-hit-stocks-with-wall-street-underpricing-hard-landing-risks-c3181e57": {
+      "acquired": "2026-11-20T12:49:01.670296+00:00",
+      "acquisition_seconds": 361.670296,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T12:43:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Bank of America strategist warns doom loop could hit stocks with Wall Street underpricing hard-landing risks",
+      "url": "https://www.marketwatch.com/story/bank-of-america-strategist-warns-doom-loop-could-hit-stocks-with-wall-street-underpricing-hard-landing-risks-c3181e57"
+    },
     "https://www.marketwatch.com/story/citi-warns-a-key-stock-market-signal-is-close-to-flashing-red-5cbee1c3": {
       "acquired": "2026-11-20T12:37:30.328881+00:00",
       "acquisition_seconds": 3150.328881,
@@ -1311,6 +1327,22 @@
       "status": "SCARTARE",
       "title": "‘Nvidia’s turmoil has me spooked’: Should I sell my stocks and buy real estate — or ride out the storm?",
       "url": "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6"
+    },
+    "https://www.marketwatch.com/story/these-5-defense-stocks-are-drawing-millions-in-insider-bets-ahead-of-military-spending-boom-in-2027-8b3b556b": {
+      "acquired": "2026-11-20T12:49:01.670296+00:00",
+      "acquisition_seconds": 241.670296,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T12:45:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "These 5 defense stocks are drawing millions in insider bets ahead of military-spending boom in 2027",
+      "url": "https://www.marketwatch.com/story/these-5-defense-stocks-are-drawing-millions-in-insider-bets-ahead-of-military-spending-boom-in-2027-8b3b556b"
     },
     "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240": {
       "acquired": "2026-11-20T12:37:30.328881+00:00",
