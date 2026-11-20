@@ -960,6 +960,38 @@
       "title": "Fabricated Evidence in Custody and Domestic Violence Proceedings: The Exhibit Nobody Can Verify",
       "url": "https://www.globenewswire.com/news-release/2026/11/20/3407727/0/en/fabricated-evidence-in-custody-and-domestic-violence-proceedings-the-exhibit-nobody-can-verify.html"
     },
+    "https://www.globenewswire.com/news-release/2026/11/20/3407827/0/en/1847-holdings-signs-term-sheet-for-sale-of-cmd-to-employee-stock-ownership-plan-in-transaction-expected-to-significantly-strengthen-its-balance-sheet.html": {
+      "acquired": "2026-11-20T22:48:44.369672+00:00",
+      "acquisition_seconds": 5864.369672,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "annuncio futuro",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-20T21:11:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "1847 Holdings Signs Term Sheet for Sale of CMD to Employee Stock Ownership Plan in Transaction Expected to Significantly Strengthen Its Balance Sheet",
+      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407827/0/en/1847-holdings-signs-term-sheet-for-sale-of-cmd-to-employee-stock-ownership-plan-in-transaction-expected-to-significantly-strengthen-its-balance-sheet.html"
+    },
+    "https://www.globenewswire.com/news-release/2026/11/20/3407850/21447/en/silver-law-group-investigating-claims-on-behalf-of-investors-in-alleged-600-million-backward-hat-capital-ponzi-scheme.html": {
+      "acquired": "2026-11-20T22:48:44.369672+00:00",
+      "acquisition_seconds": 2924.369672,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-20T22:00:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Silver Law Group Investigating Claims On Behalf Of Investors In Alleged $600 Million Backward Hat Capital Ponzi Scheme",
+      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407850/21447/en/silver-law-group-investigating-claims-on-behalf-of-investors-in-alleged-600-million-backward-hat-capital-ponzi-scheme.html"
+    },
     "https://www.govinfo.gov/app/details/BILLS-119hr10136rfs": {
       "acquired": "2026-11-20T12:37:30.348687+00:00",
       "acquisition_seconds": 16530.348687,
@@ -2160,6 +2192,22 @@
       "title": "‘Buyers are out for blood’: With home sales at a record low, buyers are calling the shots",
       "url": "https://www.marketwatch.com/story/buyers-are-out-for-blood-as-housing-market-finally-hits-rock-bottom-fa5093a6"
     },
+    "https://www.marketwatch.com/story/chip-stocks-see-2-3-trillion-weekly-wipeout-as-panic-grips-the-ai-trade-371f2f03": {
+      "acquired": "2026-11-20T22:48:44.049914+00:00",
+      "acquisition_seconds": 284.049914,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "industrial-tech",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T22:44:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Chip stocks see $2.3 trillion weekly wipeout as panic grips the AI trade",
+      "url": "https://www.marketwatch.com/story/chip-stocks-see-2-3-trillion-weekly-wipeout-as-panic-grips-the-ai-trade-371f2f03"
+    },
     "https://www.marketwatch.com/story/citi-warns-a-key-stock-market-signal-is-close-to-flashing-red-5cbee1c3": {
       "acquired": "2026-11-20T12:37:30.328881+00:00",
       "acquisition_seconds": 3150.328881,
@@ -2559,6 +2607,22 @@
       "status": "SCARTARE",
       "title": "These little-known investments could be among the best bargains in a crash",
       "url": "https://www.marketwatch.com/story/these-little-known-investments-could-be-among-the-best-bargains-in-a-crash-78a379b4"
+    },
+    "https://www.marketwatch.com/story/these-stocks-were-crushed-the-most-this-week-as-the-tech-wreck-accelerated-8d6f7323": {
+      "acquired": "2026-11-20T22:48:44.049914+00:00",
+      "acquisition_seconds": 284.049914,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T22:44:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "These stocks were crushed the most this week as the tech wreck accelerated",
+      "url": "https://www.marketwatch.com/story/these-stocks-were-crushed-the-most-this-week-as-the-tech-wreck-accelerated-8d6f7323"
     },
     "https://www.marketwatch.com/story/this-closely-watched-guru-just-sold-everything-474b4389": {
       "acquired": "2026-11-20T15:34:52.837303+00:00",
