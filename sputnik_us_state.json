@@ -2032,6 +2032,22 @@
       "title": "Public Law 119 - 87 - An act to amend the FISA Amendments Act of 2008 to extend the authorities of title VII of the Foreign Intelligence Surveillance Act of 1978, and for other purposes.",
       "url": "https://www.govinfo.gov/app/details/PLAW-119publ87"
     },
+    "https://www.marketwatch.com/story/alphabet-just-overtook-nvidia-in-market-value-for-the-first-time-in-over-2-years-23e296ee": {
+      "acquired": "2026-11-20T19:34:25.693197+00:00",
+      "acquisition_seconds": 685.693197,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T19:23:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Alphabet just overtook Nvidia in market value for the first time in over 2 years",
+      "url": "https://www.marketwatch.com/story/alphabet-just-overtook-nvidia-in-market-value-for-the-first-time-in-over-2-years-23e296ee"
+    },
     "https://www.marketwatch.com/story/anthropic-soared-in-its-debut-as-stocks-tanked-only-one-other-ipo-has-done-that-since-1990-77b75258": {
       "acquired": "2026-11-20T12:37:30.328881+00:00",
       "acquisition_seconds": 1110.328881,
@@ -2336,6 +2352,22 @@
       "title": "SpaceX’s stock falls back below its IPO price — and Anthropic’s could be next",
       "url": "https://www.marketwatch.com/story/spacexs-stock-falls-back-below-its-ipo-price-and-anthropics-could-be-next-079d2a4a"
     },
+    "https://www.marketwatch.com/story/the-fed-is-too-busy-fighting-inflation-to-rescue-the-stock-market-11dda598": {
+      "acquired": "2026-11-20T19:34:25.693197+00:00",
+      "acquisition_seconds": 745.693197,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T19:22:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The Fed is too busy fighting inflation to rescue the stock market",
+      "url": "https://www.marketwatch.com/story/the-fed-is-too-busy-fighting-inflation-to-rescue-the-stock-market-11dda598"
+    },
     "https://www.marketwatch.com/story/the-thought-of-living-to-100-terrifies-me-is-social-security-a-giant-ponzi-scheme-84a64e7e": {
       "acquired": "2026-11-20T13:08:13.364250+00:00",
       "acquisition_seconds": 493.36425,
@@ -2495,6 +2527,22 @@
       "status": "SCARTARE",
       "title": "SEC Charges Indianapolis-Based Backward Hat Capital and Its Co-Founders With $560 Million Dollar Offering Fraud and Obtains Emergency Relief",
       "url": "https://www.sec.gov/newsroom/press-releases/2026-116-sec-charges-indianapolis-based-backward-hat-capital-its-co-founders-560-million-dollar-offering"
+    },
+    "https://www.sec.gov/newsroom/press-releases/2026-117-sec-issues-proposal-restructure-consolidated-audit-trail": {
+      "acquired": "2026-11-20T19:34:25.572709+00:00",
+      "acquisition_seconds": 5461.572709,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "sec",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "agency",
+      "penalized": [],
+      "published": "2026-11-20T18:03:24+00:00",
+      "source": "SEC",
+      "status": "SCARTARE",
+      "title": "SEC Issues Proposal to Restructure the Consolidated Audit Trail",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-117-sec-issues-proposal-restructure-consolidated-audit-trail"
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/presidential-message-on-national-rural-health-day": {
       "acquired": "2026-11-20T13:48:57.181818+00:00",
