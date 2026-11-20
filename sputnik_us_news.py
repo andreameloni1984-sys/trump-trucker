@@ -329,6 +329,9 @@ def catalyst(item, *, invest=False):
         bias = {"rule": rule, "ticker": symbol, "direction": direction,
                 "reason": reason, "fact": match.group(),
                 "uncertainty": "alta" if rule.startswith(("fed-", "tariffs-")) else "media"}
+        if invest and rule.startswith(("fed-", "tariffs-")):
+            bias["benchmark"] = "nasdaq-100" if rule.startswith("fed-") else "s&p-500"
+            bias["ticker"] = ""
         if rule.startswith("fed-"):
             bias["rate_change"] = _rate_change(text[match.end():match.end() + 70])
         matches.append(bias)

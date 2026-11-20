@@ -8,7 +8,7 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from time import monotonic
 
-from sputnik_us_catalog import load_catalog
+from sputnik_us_catalog import load_catalog, resolve_benchmark
 from sputnik_us_market import MAX_CATALYST_AGE, MAX_QUOTE_AGE, evaluate, evaluate_bars, read_bars
 from sputnik_us_pravda import record_observations, summarize
 from sputnik_us_news import catalyst, collect_news, describe_news, eligible_news, same_event, verify_truth
@@ -152,21 +152,32 @@ def scan_invest(items, state, now, catalog, *, read=read_bars, clock=utc_now, re
             bias["ticker"] = bias["ticker"].replace(".", "-")
         events[item["url"]] = {**{key: value for key, value in item.items() if key != "text"},
                                "bias": bias, "category": category, "evidence": evidence,
-                               "beneficiaries": [bias["ticker"]] if bias and bias["direction"] == "LONG" else [],
-                               "penalized": [bias["ticker"]] if bias and bias["direction"] == "SHORT" else [],
+                               "beneficiaries": [],
+                               "penalized": [],
                                "status": "SCARTARE" if not bias else "in attesa"}
 
+    benchmarks = {}
     eligible = []
-    for event in sorted(events.values(), key=lambda item: (item["kind"] == "wire", item["published"])):
+    impact_order = {"fed": 0, "policy": 0, "fda": 0, "agency": 0, "issuer": 1, "wire": 1}
+    for event in sorted(events.values(), key=lambda item: (impact_order.get(item["kind"], 2),
+                                                           item["published"])):
         if not event["bias"] or event["status"] in {"SCARTARE", "duplicato", "ENTRARE"}:
             continue
         if now - datetime.fromisoformat(event["published"]) > MAX_CATALYST_AGE:
             event.update(status="SCARTARE", detail="catalizzatore fuori finestra")
             continue
-        ticker = event["bias"]["ticker"]
+        bias = event["bias"]
+        benchmark = bias.get("benchmark")
+        if benchmark and not event.get("stages") and catalog is not None:
+            if benchmark not in benchmarks:
+                benchmarks[benchmark] = resolve_benchmark(catalog, benchmark)
+            bias["ticker"] = benchmarks[benchmark] or ""
+        ticker = bias["ticker"]
         if catalog is None or ticker not in catalog:
             event["detail"] = "catalogo indisponibile" if catalog is None else "simbolo INVEST non verificato"
             continue
+        event["beneficiaries"] = [ticker] if bias["direction"] == "LONG" else []
+        event["penalized"] = [ticker] if bias["direction"] == "SHORT" else []
         if any(same_event(event, other) for other in eligible) or any(
             other["url"] != event["url"] and other.get("stages") and same_event(event, other)
             for other in events.values() if other["bias"]

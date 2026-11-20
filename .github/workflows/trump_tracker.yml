@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   sputnik:
-    if: vars.SPUTNIK_US_INTRADAY_ENABLED != 'true'
+    if: vars.SPUTNIK_US_INTRADAY_ENABLED != 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:

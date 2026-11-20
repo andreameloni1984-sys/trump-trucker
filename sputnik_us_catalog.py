@@ -16,7 +16,8 @@ def load_catalog():
         return None
     token = base64.b64encode(f"{key}:{secret}".encode()).decode()
     try:
-        request = Request(URL, headers={"Authorization": f"Basic {token}"})
+        request = Request(URL, method="GET")
+        request.add_unredirected_header("Authorization", f"Basic {token}")
         with urlopen(request, timeout=10) as response:
             rows = json.load(response)
         if not isinstance(rows, list) or not rows:
@@ -35,3 +36,25 @@ def load_catalog():
     verified = {symbol: records[0] for symbol, records in catalog.items() if len(records) == 1}
     print(f"INVEST Demo: {len(rows)} record, {len(verified)} simboli USA univoci.")
     return verified
+
+
+BENCHMARK_NAMES = {
+    "nasdaq-100": re.compile(r"\bnasdaq[- ]100\b", re.IGNORECASE),
+    "s&p-500": re.compile(r"\bs\s*&\s*p\s*500\b", re.IGNORECASE),
+}
+NON_STANDARD_FUND = re.compile(
+    r"\b(?:leveraged|inverse|short|bear|bull|equal weight|covered call|buffer|"
+    r"sector|exclusions?|exclud(?:e|ing)|hedged|daily|2x|3x|ultra|growth|value|dividend|esg)\b",
+    re.IGNORECASE,
+)
+
+
+def resolve_benchmark(catalog, benchmark):
+    """Select a plain benchmark ETF from the catalog, if one can be identified."""
+    pattern = BENCHMARK_NAMES[benchmark]
+    matches = []
+    for ticker, record in catalog.items():
+        name = record.get("name") or ""
+        if record["type"] == "ETF" and pattern.search(name) and not NON_STANDARD_FUND.search(name):
+            matches.append((len(name), name.casefold(), ticker))
+    return min(matches)[2] if matches else None
