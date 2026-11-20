@@ -141,11 +141,13 @@ def main():
         if not send_enabled:
             parser.error("Telegram Sputnik USA richiede abilitazione esplicita")
         outbox = json.loads(args.outbox.read_text(encoding="utf-8"))
-        args.outbox.unlink()
         count = deliver(outbox)
         print(f"SPUTNIK USA: Telegram ha confermato {count}/{len(outbox)} messaggi.")
         if count != len(outbox):
+            # Preserve the original outbox for investigation or controlled retry.
+            # A retry can duplicate already delivered messages; do not auto-retry.
             raise SystemExit(1)
+        args.outbox.unlink()
         return
 
     state = json.loads(args.state.read_text(encoding="utf-8")) if args.state.exists() else {}
