@@ -2160,6 +2160,22 @@
       "title": "Citi warns a key stock-market signal is close to flashing red",
       "url": "https://www.marketwatch.com/story/citi-warns-a-key-stock-market-signal-is-close-to-flashing-red-5cbee1c3"
     },
+    "https://www.marketwatch.com/story/everyones-making-money-off-gta-6-this-week-except-investors-in-take-twos-stock-489ee01b": {
+      "acquired": "2026-11-20T20:08:06.858445+00:00",
+      "acquisition_seconds": 306.858445,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T20:03:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Everyone’s making money off ‘GTA 6’ this week — except investors in Take-Two’s stock",
+      "url": "https://www.marketwatch.com/story/everyones-making-money-off-gta-6-this-week-except-investors-in-take-twos-stock-489ee01b"
+    },
     "https://www.marketwatch.com/story/gamestop-has-transformed-from-a-meme-stock-into-a-real-company-analysts-say-7ae5c7ed": {
       "acquired": "2026-11-20T12:37:30.328881+00:00",
       "acquisition_seconds": 810.328881,
@@ -2367,6 +2383,22 @@
       "status": "SCARTARE",
       "title": "The Fed is too busy fighting inflation to rescue the stock market",
       "url": "https://www.marketwatch.com/story/the-fed-is-too-busy-fighting-inflation-to-rescue-the-stock-market-11dda598"
+    },
+    "https://www.marketwatch.com/story/the-tech-wreck-is-one-stock-trade-trump-cant-taco-away-516b3883": {
+      "acquired": "2026-11-20T20:08:06.858445+00:00",
+      "acquisition_seconds": 66.858445,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T20:07:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The tech wreck is one stock trade Trump can’t ‘TACO’ away",
+      "url": "https://www.marketwatch.com/story/the-tech-wreck-is-one-stock-trade-trump-cant-taco-away-516b3883"
     },
     "https://www.marketwatch.com/story/the-thought-of-living-to-100-terrifies-me-is-social-security-a-giant-ponzi-scheme-84a64e7e": {
       "acquired": "2026-11-20T13:08:13.364250+00:00",
