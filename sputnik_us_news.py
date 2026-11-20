@@ -2,6 +2,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import timedelta
+from http.client import HTTPException
 import os
 import re
 from urllib.parse import urlsplit, urlunsplit
@@ -67,7 +68,7 @@ def original_url(feed, row):
 def read_feed(feed):
     try:
         rows = parse_public_feed(fetch_public_feed(feed.url, timeout=10), feed.url)
-    except (OSError, ValueError) as exc:
+    except (OSError, HTTPException, ValueError) as exc:
         print(f"SPUTNIK USA: {feed.name} indisponibile ({type(exc).__name__}).")
         return []
     items = []

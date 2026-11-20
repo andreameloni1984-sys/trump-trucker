@@ -1,5 +1,6 @@
 """Historical catalysts with deterministic one-minute bars and simulated Telegram."""
 from datetime import datetime, timedelta, timezone
+from http.client import IncompleteRead
 import unittest
 from unittest.mock import Mock, patch
 
@@ -125,15 +126,17 @@ class SputnikUSTests(unittest.TestCase):
             <link>{FED_RELEASE}</link>
             <pubDate>Wed, 18 Sep 2024 18:00:00 GMT</pubDate></item></channel></rss>""".encode()
 
-        def fetch(feed_url, *, timeout):
-            if feed_url == url:
-                raise OSError("Reuters unavailable")
-            return xml
-
         with patch.dict("os.environ", {"SPUTNIK_REUTERS_FEED_URL": url}):
             reuters = configured_feeds()[-1]
-        with patch("sputnik_us_news.fetch_public_feed", side_effect=fetch):
-            self.assertEqual([item["url"] for item in collect_news((reuters, fed))], [FED_RELEASE])
+        for error in (OSError("Reuters unavailable"), IncompleteRead(b"")):
+            with self.subTest(error=error):
+                def fetch(feed_url, *, timeout):
+                    if feed_url == url:
+                        raise error
+                    return xml
+
+                with patch("sputnik_us_news.fetch_public_feed", side_effect=fetch):
+                    self.assertEqual([item["url"] for item in collect_news((reuters, fed))], [FED_RELEASE])
 
     def test_ticker_bias_requires_a_concrete_action_with_unambiguous_direction(self):
         item = {**fed_notice(), "kind": "press"}
