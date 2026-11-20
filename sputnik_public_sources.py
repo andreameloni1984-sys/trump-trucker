@@ -78,6 +78,7 @@ def parse_public_feed(raw, base_url):
             continue
         raw_link = _link(entry)
         published = _text(entry, {"pubdate", "published", "updated", "date"})
+        publication_time = _text(entry, {"pubdate", "published", "date"})
         original = _descendant(entry, {"originalurl", "original_url", "truthoriginalurl"})
         if original:
             original = urljoin(base_url, original)
@@ -95,7 +96,8 @@ def parse_public_feed(raw, base_url):
         ).hexdigest()
         result.append({
             "id": identity[:500], "title": title[:300], "text": body[:6000],
-            "published": published[:100], "url": link[:1000],
+            "published": published[:100], "publication_time": publication_time[:100],
+            "url": link[:1000],
             "primary_url": original[:1000], "feed_url": base_url[:1000],
             "item_index": str(index),
         })

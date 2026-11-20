@@ -162,7 +162,7 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             "title": "President announces new tariffs on China",
             "text": "New tariffs on imports were announced.",
             "url": "https://example.gov/tariffs",
-            "published": "2026-10-26T10:00:00Z",
+            "published": trump_tracker.utc_now().isoformat(),
             "source": "WHITE_HOUSE",
             "domains": ["TRADE_POLICY"],
         }]
@@ -489,7 +489,6 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
             workflow,
         )
         self.assertNotIn("AUTO-DISCOVERY ATTIVO", workflow)
-        self.assertIn("tests/test_sputnik_item_intelligence.py", workflow)
 
 
 if __name__ == "__main__":

@@ -461,7 +461,7 @@ def _domains_for_public_text(text: str) -> list[str]:
     return list(dict.fromkeys(domains))
 
 
-def fetch_public_feed(url: str) -> bytes:
+def fetch_public_feed(url: str, *, timeout: int = 20) -> bytes:
     """Fetch a public RSS/Atom feed without requiring third-party packages."""
     request = urllib.request.Request(
         url,
@@ -470,7 +470,7 @@ def fetch_public_feed(url: str) -> bytes:
             "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,*/*",
         },
     )
-    with urllib.request.urlopen(request, timeout=20) as response:
+    with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read()
 
 
