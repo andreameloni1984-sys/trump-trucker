@@ -62,7 +62,7 @@ def scan(items, state, now, *, check=evaluate, clock=utc_now, reserve=True):
         else:
             candidates.append(event)
     # Prefer the primary source when a news outlet reports the same event.
-    candidates.sort(key=lambda event: (event["kind"] in {"press", "wire"}, event["published"]))
+    candidates.sort(key=lambda event: (event["kind"] not in {"press", "wire"}, event["published"]))
 
     def check_candidate(item):
         bias = item["bias"]
