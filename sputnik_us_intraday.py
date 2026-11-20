@@ -6,10 +6,9 @@ import json
 import os
 from pathlib import Path
 from tempfile import NamedTemporaryFile
-from zoneinfo import ZoneInfo
 
 from sputnik_us_market import MAX_CATALYST_AGE, MAX_QUOTE_AGE, evaluate
-from sputnik_us_news import catalyst, collect_news, eligible_news
+from sputnik_us_news import catalyst, collect_news, eligible_news, same_event
 from trump_tracker import send_telegram
 
 
@@ -18,29 +17,26 @@ def utc_now():
 
 
 def format_signal(item, bias, levels):
-    local = datetime.fromisoformat(item["published"]).astimezone(ZoneInfo("Europe/Rome"))
     summary = item["title"]
     if bias["fact"] not in summary.lower():
         summary = f"{summary} — {bias['fact']}"
     return (
-        "🛰️ SPUTNIK — SEGNALE USA\n\n"
-        f"Ticker: {bias['ticker']}\n"
-        f"Direzione: {bias['direction']}\n\n"
-        f"Notizia: {summary}\n"
-        f"Motivazione: {bias['reason']}\n\n"
+        "🛰️ SPUTNIK USA\n\n"
+        f"AZIONE: {bias['ticker']}\n"
+        f"DIREZIONE: {bias['direction']}\n\n"
+        f"NOTIZIA: {summary}\n"
+        f"MOTIVO: {bias['reason']}\n\n"
         f"ENTRY: {levels['entry']:.2f}\n"
-        f"SL: {levels['stop']:.2f}\n"
+        f"STOP LOSS: {levels['stop']:.2f}\n"
         f"TP1: {levels['tp1']:.2f}\n"
-        f"TP2: {levels['tp2']:.2f}\n"
-        f"Rischio/rendimento: 1:{levels['rr1']:.2f} / 1:{levels['rr2']:.2f}\n\n"
-        f"Fonte: {item['url']}\n"
-        f"Ora: {local:%d/%m/%Y %H:%M %Z} (Europe/Rome)\n"
-        "Stato: CONFERMATO\n\n"
+        f"TP2: {levels['tp2']:.2f}\n\n"
+        f"FONTE: {item['url']}\n"
+        "STATO: CONFERMATO\n\n"
         "PAPER ONLY"
     )
 
 
-def scan(items, state, now, *, check=evaluate, clock=utc_now):
+def scan(items, state, now, *, check=evaluate, clock=utc_now, reserve=True):
     events = state.setdefault("events", {})
     reservations = state.setdefault("reservations", {})
     for key, event in list(events.items()):
@@ -66,7 +62,7 @@ def scan(items, state, now, *, check=evaluate, clock=utc_now):
         else:
             candidates.append(event)
     # Prefer the primary source when a news outlet reports the same event.
-    candidates.sort(key=lambda event: (event["kind"] == "press", event["published"]))
+    candidates.sort(key=lambda event: (event["kind"] in {"press", "wire"}, event["published"]))
 
     def check_candidate(item):
         bias = item["bias"]
@@ -74,31 +70,32 @@ def scan(items, state, now, *, check=evaluate, clock=utc_now):
         return check(bias["ticker"], bias["direction"], published, clock())
 
     outbox = []
-    checked_keys = set()
+    reserved_events = [event for event in events.values()
+                       if event["bias"] and event["status"] == "riservato"]
+    batch = []
+    for item in candidates:
+        if any(same_event(item, reserved) for reserved in reserved_events):
+            item["status"] = "duplicato"
+            continue
+        if any(same_event(item, queued) for queued in batch):
+            # Retry with the alternate source if the preferred record ages out.
+            item["status"] = "in attesa della fonte primaria"
+            continue
+        batch.append(item)
+
     with ThreadPoolExecutor(max_workers=4) as pool:
-        batch = []
-        for item in candidates:
-            bias = item["bias"]
-            bucket = int(datetime.fromisoformat(item["published"]).timestamp()) // 300
-            key = f"{bias['rule']}:{bias['ticker']}:{bucket}"
-            if key in reservations:
-                item["status"] = "duplicato"
-                continue
-            if key in checked_keys:
-                item["status"] = "duplicato"
-                continue
-            checked_keys.add(key)
-            batch.append((key, item))
-        for (key, item), (status, levels) in zip(batch, pool.map(check_candidate, [i for _, i in batch])):
+        for item, (status, levels) in zip(batch, pool.map(check_candidate, batch)):
             item["status"] = status
-            if levels is None:
+            item.pop("levels", None)
+            if status != "CONFERMATO" or levels is None:
                 continue
             if not timedelta(0) <= clock() - datetime.fromisoformat(levels["quote_timestamp"]) <= MAX_QUOTE_AGE:
                 item["status"] = "quotazione obsoleta prima dell’invio"
                 continue
-            item["status"] = "riservato"
             item["levels"] = levels
-            reservations[key] = now.isoformat()
+            if reserve:
+                item["status"] = "riservato"
+                reservations[item["url"]] = now.isoformat()
             outbox.append({"text": format_signal(item, item["bias"], levels),
                            "quote_timestamp": levels["quote_timestamp"]})
     return outbox
@@ -135,7 +132,14 @@ def main():
         parser.error("--outbox è richiesto per collect e deliver")
     if args.outbox is not None and args.state.resolve() == args.outbox.resolve():
         parser.error("stato e outbox devono essere file distinti")
+    send_enabled = os.getenv("SPUTNIK_US_TELEGRAM_ENABLED") == "true"
+    if send_enabled and args.mode != "preview" and not all(
+        os.getenv(key) for key in ("TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID")
+    ):
+        parser.error("Telegram Sputnik USA richiede credenziali")
     if args.mode == "deliver":
+        if not send_enabled:
+            parser.error("Telegram Sputnik USA richiede abilitazione esplicita")
         outbox = json.loads(args.outbox.read_text(encoding="utf-8"))
         args.outbox.unlink()
         count = deliver(outbox)
@@ -146,7 +150,7 @@ def main():
 
     state = json.loads(args.state.read_text(encoding="utf-8")) if args.state.exists() else {}
     news = collect_news()
-    outbox = scan(news, state, utc_now())
+    outbox = scan(news, state, utc_now(), reserve=args.mode == "collect" and send_enabled)
     print(f"SPUTNIK USA: {len(news)} elementi verificabili, {len(outbox)} setup eseguibili.")
     if args.mode == "collect":
         write_json(args.state, state)

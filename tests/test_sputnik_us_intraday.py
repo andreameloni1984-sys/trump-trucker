@@ -42,9 +42,14 @@ def quotes(direction="LONG"):
 
 
 class SputnikUSTests(unittest.TestCase):
+    def setUp(self):
+        issuer_lookup = patch("sputnik_us_news._sec_issuers", return_value={})
+        issuer_lookup.start()
+        self.addCleanup(issuer_lookup.stop)
+
     def test_historical_fomc_to_telegram_deduplicated_across_feeds_and_runs(self):
         fed = fed_notice()
-        news = {**fed, "kind": "press", "title": "Fed cuts interest rates by half a point",
+        news = {**fed, "published": (PUBLISHED + timedelta(minutes=6)).isoformat(), "kind": "press", "title": "Fed cuts interest rates by half a point",
                 "url": "https://www.marketwatch.com/story/fed-cuts-rates"}
         state = {}
         send = Mock(return_value=True)
@@ -52,15 +57,17 @@ class SputnikUSTests(unittest.TestCase):
         def confirm(ticker, direction, published, now):
             return evaluate(ticker, direction, published, now, lambda _: quotes())
 
-        outbox = scan([news, fed, fed], state, NOW, check=confirm, clock=lambda: NOW)
+        outbox = scan([fed, fed], state, NOW, check=confirm, clock=lambda: NOW)
         self.assertEqual(deliver(outbox, send=send, clock=lambda: NOW), 1)
         text = send.call_args.args[0]
-        for expected in ("Ticker: QQQ", "Direzione: LONG", "ENTRY: 100.30", "SL: 99.90",
+        for expected in ("AZIONE: QQQ", "DIREZIONE: LONG", "ENTRY: 100.30", "STOP LOSS: 99.90",
                          "TP1: 100.90", "TP2: 101.30", FED_RELEASE,
                          "committee decided to lower the target range",
-                         "18/09/2024 20:00 CEST", "Stato: CONFERMATO", "PAPER ONLY"):
+                         "STATO: CONFERMATO", "PAPER ONLY"):
             self.assertIn(expected, text)
-        self.assertEqual(scan([fed, news], state, NOW, check=confirm, clock=lambda: NOW), [])
+        later = PUBLISHED + timedelta(minutes=7)
+        self.assertEqual(scan([fed, news], state, later, check=confirm, clock=lambda: later), [])
+        self.assertEqual(state["events"][news["url"]]["status"], "duplicato")
 
     def test_ambiguous_historical_executive_order_and_speculation_do_not_create_bias(self):
         item = {**fed_notice(), "kind": "policy", "source": "Casa Bianca",
@@ -157,7 +164,7 @@ class SputnikUSTests(unittest.TestCase):
     def test_distinct_events_for_same_ticker_can_be_reserved_in_one_scan(self):
         first = fed_notice()
         second = {**first, "url": FED_RELEASE + "-follow-up",
-                  "published": (PUBLISHED + timedelta(minutes=10)).isoformat()}
+                  "published": (PUBLISHED + timedelta(minutes=1)).isoformat()}
         now = PUBLISHED + timedelta(minutes=12)
         levels = {"entry": 100.0, "stop": 99.0, "tp1": 101.5, "tp2": 102.5,
                   "rr1": 1.5, "rr2": 2.5, "quote_timestamp": now.isoformat()}
@@ -167,6 +174,49 @@ class SputnikUSTests(unittest.TestCase):
         self.assertEqual(len(outbox), 2)
         self.assertEqual(len(state["reservations"]), 2)
         self.assertEqual(scan([first, second], state, now, check=check, clock=lambda: now), [])
+
+    def test_news_selects_new_us_issuer_without_scanning_other_symbols(self):
+        item = {**fed_notice(), "kind": "wire",
+                "title": "Advanced Micro Devices (NASDAQ: AMD) raises revenue guidance"}
+        series = quotes()
+        series["meta"].update(symbol="AMD", instrumentType="EQUITY")
+        fetch = Mock(return_value=series)
+
+        def confirm(ticker, direction, published, now):
+            return evaluate(ticker, direction, published, now, fetch)
+
+        state = {}
+        result = scan([item], state, NOW, check=confirm, clock=lambda: NOW, reserve=False)
+        self.assertEqual(len(result), 1)
+        fetch.assert_called_once_with("AMD")
+        self.assertFalse(state["reservations"])
+        self.assertEqual(state["events"][item["url"]]["bias"]["uncertainty"], "media")
+        with patch("sputnik_us_news._sec_issuers", return_value={"advanced micro devices": {"AMD"}}):
+            bias = catalyst({**item, "title": "Advanced Micro Devices raises revenue guidance"})
+        self.assertEqual(bias["ticker"], "AMD")
+
+    def test_post_news_reversal_reclaims_support(self):
+        series = quotes()
+        bars = series["indicators"]["quote"][0]
+        bars["low"][-2] = 99.8
+        bars["close"][-2] = 99.95
+        bars["close"][-1] = 100.05
+        bars["high"][-1] = 100.10
+        bars["low"][-1] = 99.95
+        status, plan = evaluate("QQQ", "LONG", PUBLISHED, NOW, lambda _: series)
+        self.assertEqual(status, "CONFERMATO")
+        self.assertEqual(plan["setup"], "inversione")
+        self.assertLess(plan["stop"], 99.8)
+
+    def test_five_minute_contradiction_blocks_recent_one_minute_breakout(self):
+        series = quotes()
+        series["timestamp"] = [stamp + 480 for stamp in series["timestamp"]]
+        bars = series["indicators"]["quote"][0]
+        bars["close"][-6] = 99.98
+        bars["close"][-11] = 100.01
+        status, levels = evaluate("QQQ", "LONG", PUBLISHED, NOW + timedelta(minutes=8), lambda _: series)
+        self.assertEqual(status, "barra a cinque minuti contraria al bias")
+        self.assertIsNone(levels)
 
     def test_truth_uses_only_the_original_post_and_rejects_other_accounts(self):
         feed = next(feed for feed in FEEDS if feed.kind == "truth")

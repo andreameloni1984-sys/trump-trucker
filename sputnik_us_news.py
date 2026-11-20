@@ -2,7 +2,9 @@
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import timedelta
+from functools import lru_cache
 from http.client import HTTPException
+import json
 import os
 import re
 from urllib.parse import urlsplit, urlunsplit
@@ -38,6 +40,14 @@ FEEDS = (
     Feed("SEC", "https://www.sec.gov/news/pressreleases.rss", "www.sec.gov", "agency"),
     Feed("MarketWatch / Dow Jones", "https://feeds.content.dowjones.io/public/rss/mw_topstories",
          "www.marketwatch.com", "press"),
+    Feed("GlobeNewswire / comunicati societari",
+         "https://www.globenewswire.com/RssFeed/subjectcode/01-01/feedTitle/"
+         "GlobeNewswire%20-%20Earnings%20Releases%20and%20Operating%20Results",
+         "www.globenewswire.com", "wire"),
+    Feed("PR Newswire / comunicati societari",
+         "https://www.prnewswire.com/rss/financial-services-latest-news/"
+         "financial-services-latest-news-list.rss",
+         "www.prnewswire.com", "wire"),
     Feed("Microsoft Source", "https://news.microsoft.com/source/feed/",
          "news.microsoft.com", "issuer", "MSFT"),
     Feed("NVIDIA Blog", "https://blogs.nvidia.com/feed/",
@@ -126,10 +136,10 @@ RULES = (
     ({"policy", "truth", "press"}, "tariffs-down", "SPY", "LONG",
      rf"(?:suspends?|suspended|suspending|removes?|removed|removing|reduces?|reduced|reducing)\b.{{0,70}}\b{TARIFF}\b.{{0,70}}\b{TARIFF_SCOPE}\b",
      "Dazi più bassi sulle importazioni possono ridurre costi e pressione sui margini."),
-    ({"issuer", "press"}, "guidance-up", "", "LONG",
+    ({"issuer", "press", "wire"}, "guidance-up", "", "LONG",
      r"\b(?:raises|raised|increases|increased)\b.{0,55}?\b(?:revenue|earnings|eps|sales)\s+(?:guidance|outlook|forecast)\b",
      "La società ha alzato le previsioni finanziarie, aumentando le aspettative sui risultati."),
-    ({"issuer", "press"}, "guidance-down", "", "SHORT",
+    ({"issuer", "press", "wire"}, "guidance-down", "", "SHORT",
      r"\b(?:cuts|cut|lowers|lowered|reduces|reduced)\b.{0,55}?\b(?:revenue|earnings|eps|sales)\s+(?:guidance|outlook|forecast)\b",
      "La società ha abbassato le previsioni finanziarie, riducendo le aspettative sui risultati."),
     ({"fda"}, "fda-approval", "LLY", "LONG",
@@ -137,14 +147,36 @@ RULES = (
      "L’approvazione FDA amplia le possibilità commerciali negli USA per un farmaco di Eli Lilly."),
 )
 
-# Only these explicitly identified US issuers can be mapped from press headlines.
+# Named issuers in the initial universe. Other issuers require an exchange-qualified symbol.
 ISSUERS = {"AAPL": r"\bapple\b", "MSFT": r"\bmicrosoft\b",
            "NVDA": r"\bnvidia\b", "LLY": r"\beli lilly\b"}
+LISTED_SYMBOL = re.compile(
+    r"\((?:NASDAQ|NYSE(?: American| Arca)?|CBOE)\s*:\s*([A-Z][A-Z0-9.-]{0,9})\)",
+    re.IGNORECASE,
+)
 UNCERTAIN = re.compile(
     r"\b(?:could|might|would|may|consider\w*|propos\w*|threaten\w*|rumou?r\w*|"
     r"expected to|plans? to|will|unlikely|den(?:ies|ied)|not|never|previously|reportedly|"
     r"already priced in)\b|n['’]t\b|\?"
 )
+
+
+def _issuer_name(value):
+    return re.sub(r"(?: (?:inc|corp|corporation|company|co|ltd|limited|plc))+$", "", _normalized(value))
+
+
+@lru_cache(maxsize=1)
+def _sec_issuers():
+    """Resolve names only after a guidance headline needs a ticker."""
+    try:
+        rows = json.loads(fetch_public_feed("https://www.sec.gov/files/company_tickers.json", timeout=10))
+        names = {}
+        for row in rows.values():
+            names.setdefault(_issuer_name(row["title"]), set()).add(row["ticker"].upper())
+        return names
+    except (OSError, HTTPException, ValueError, KeyError, TypeError, AttributeError):
+        print("SPUTNIK USA: anagrafica emittenti SEC indisponibile.")
+        return {}
 
 
 def catalyst(item):
@@ -168,11 +200,26 @@ def catalyst(item):
         if not symbol:
             named = [symbol for symbol, name in ISSUERS.items()
                      if re.match(name + r"(?: inc\.?| corp\.?)?\s*$", title[:match.start()].strip())]
-            if len(named) != 1:
-                continue
-            symbol = named[0]
-        matches.append({"rule": rule, "ticker": symbol, "direction": direction,
-                        "reason": reason, "fact": match.group()})
+            subject = item["title"][:match.start()].strip()
+            listing = LISTED_SYMBOL.search(subject)
+            if listing and listing.end() == len(subject) and subject[:listing.start()].strip():
+                explicit_symbol = listing.group(1).upper()
+                if named and named != [explicit_symbol]:
+                    continue
+                symbol = explicit_symbol
+            elif len(named) == 1:
+                symbol = named[0]
+            else:
+                named_symbols = _sec_issuers().get(_issuer_name(subject), ())
+                if len(named_symbols) != 1:
+                    continue
+                symbol = next(iter(named_symbols))
+        bias = {"rule": rule, "ticker": symbol, "direction": direction,
+                "reason": reason, "fact": match.group(),
+                "uncertainty": "alta" if rule.startswith(("fed-", "tariffs-")) else "media"}
+        if rule.startswith("fed-"):
+            bias["rate_change"] = _rate_change(text[match.end():match.end() + 70])
+        matches.append(bias)
     return matches[0] if len(matches) == 1 and len(guidance_directions) <= 1 else None
 
 
@@ -181,3 +228,47 @@ def eligible_news(items, now):
         age = now - _parse_public_item_timestamp(item["published"])
         if timedelta(0) <= age <= timedelta(hours=24):
             yield item
+
+
+def _normalized(text):
+    return " ".join(re.findall(r"\w+(?:[./]\d+)?", text.casefold()))
+
+
+def _rate_change(text):
+    points = re.search(r"\b(\d+)\s*(?:basis points?|bps)\b", text, re.IGNORECASE)
+    if points:
+        return int(points.group(1))
+    percentage = re.search(
+        r"\b(\d+(?:\.\d+|/\d+)?)\s+percentage points?\b", text, re.IGNORECASE
+    )
+    if percentage:
+        value = percentage.group(1).split("/")
+        if len(value) == 2 and int(value[1]) == 0:
+            return None
+        return round(float(value[0]) * 100 / (int(value[1]) if len(value) == 2 else 1))
+    if re.search(r"\b(?:half|a half) (?:a |of a )?(?:percentage )?point\b", text, re.IGNORECASE):
+        return 50
+    if re.search(r"\b(?:quarter|a quarter) (?:of a )?(?:percentage )?point\b", text, re.IGNORECASE):
+        return 25
+    return None
+
+
+def same_event(first, second):
+    """Compare evidence of a shared event, without treating time alone as identity."""
+    a, b = first["bias"], second["bias"]
+    if (a["rule"], a["ticker"]) != (b["rule"], b["ticker"]):
+        return False
+    if first["url"] == second["url"]:
+        return True
+    # Two original publications can describe distinct actions with the same headline.
+    if not {"press", "wire"}.intersection((first["kind"], second["kind"])):
+        return False
+    elapsed = abs(_parse_public_item_timestamp(first["published"])
+                  - _parse_public_item_timestamp(second["published"]))
+    if elapsed > timedelta(hours=2):
+        return False
+    if a["rule"].startswith("fed-"):
+        magnitude = a.get("rate_change")
+        if magnitude is not None and b.get("rate_change") is not None:
+            return magnitude == b["rate_change"]
+    return _normalized(first["title"]) == _normalized(second["title"])
