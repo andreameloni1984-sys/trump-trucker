@@ -528,6 +528,22 @@
       "title": "Federal Reserve Board issues enforcement action with former employee of First Security Bancorp",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261119a.htm"
     },
+    "https://www.federalreserve.gov/newsevents/pressreleases/other20261120a.htm": {
+      "acquired": "2026-11-20T15:08:04.538774+00:00",
+      "acquisition_seconds": 484.538774,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "fed",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "fed",
+      "penalized": [],
+      "published": "2026-11-20T15:00:00+00:00",
+      "source": "Federal Reserve",
+      "status": "SCARTARE",
+      "title": "Federal Reserve Board releases results from survey of senior financial officers at banks about their strategies and practices for managing reserve balances",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120a.htm"
+    },
     "https://www.globenewswire.com/news-release/2026/11/19/3406556/0/en/micware-announces-equity-research-update-from-alphaterra-advisory.html": {
       "acquired": "2026-11-20T13:19:23.896725+00:00",
       "acquisition_seconds": 86363.896725,
