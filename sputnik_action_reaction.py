@@ -74,8 +74,13 @@ def _has_article_specific_source(pattern: dict[str, Any]) -> bool:
 
 def classify_event(text: str) -> str:
     body = _normalise(text)
-    if any(k in body for k in ("tariff", "tariffs", "trade war", "china", "xi")):
-        if any(k in body for k in ("pause", "help china", "not hurt", "soften", "deal")):
+    # A generic mention of China or Xi is not, by itself, a trade escalation.
+    # Keep established conciliatory wording, but require explicit tariff or
+    # trade-war wording before assigning a trade event class or tariff analogue.
+    if any(k in body for k in ("help china", "not hurt", "support china")):
+        return "TRADE_DE_ESCALATION"
+    if any(k in body for k in ("tariff", "tariffs", "trade war")):
+        if any(k in body for k in ("pause", "soften", "softening", "deal")):
             return "TRADE_DE_ESCALATION"
         return "TRADE_ESCALATION"
     if any(k in body for k in ("iran", "hormuz", "missile", "military strike", "war")):

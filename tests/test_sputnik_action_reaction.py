@@ -27,6 +27,26 @@ class ActionReactionTests(unittest.TestCase):
         self.assertNotIn("trade_softening_2025_10", matched_ids)
         self.assertNotIn("tariff_pause_2025_04", matched_ids)
 
+    def test_energy_permitting_bill_china_mention_does_not_match_tariff_analogue(self):
+        text = (
+            "I am urging all Senators to vote for The American Affordability and Jobs Act (S. 5653). "
+            "This permitting reform will allow pipelines, mines and power plants to be built faster. "
+            "Data centers should build and pay for their own electricity. China will take any data center "
+            "that we do not want."
+        )
+        self.assertEqual(classify_event(text), "OTHER")
+        self.assertEqual(match_historical_reactions(text), [])
+
+    def test_truth_archive_snapshot_with_energy_bill_and_iran_does_not_match_tariff_analogue(self):
+        text = (
+            "I am urging all Senators to vote for The American Affordability and Jobs Act (S. 5653). "
+            "This permitting reform will allow pipelines, mines and power plants to be built faster. "
+            "China will take any data center that we do not want. "
+            "I had an excellent conversation with the Prime Minister of Qatar about Iran and the naval blockade."
+        )
+        self.assertEqual(classify_event(text), "GEOPOLITICAL_ESCALATION")
+        self.assertEqual(match_historical_reactions(text), [])
+
     def test_unknown_event_does_not_invent_direction(self):
         matches = match_historical_reactions("Trump discusses a topic with no documented analogue")
         self.assertEqual(matches, [])
