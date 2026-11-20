@@ -6,7 +6,7 @@ from unittest.mock import Mock, patch
 from sputnik_public_sources import parse_public_feed
 from sputnik_us_intraday import deliver, scan
 from sputnik_us_market import evaluate
-from sputnik_us_news import FEEDS, catalyst, original_url, read_feed
+from sputnik_us_news import FEEDS, catalyst, collect_news, configured_feeds, original_url, read_feed
 
 FED_RELEASE = "https://www.federalreserve.gov/newsevents/pressreleases/monetary20240918a.htm"
 PUBLISHED = datetime(2024, 9, 18, 18, tzinfo=timezone.utc)
@@ -112,6 +112,58 @@ class SputnikUSTests(unittest.TestCase):
         message = {"quote_timestamp": NOW.isoformat(), "text": "PAPER ONLY"}
         self.assertEqual(deliver([message], send=send, clock=lambda: NOW + timedelta(minutes=2)), 0)
         send.assert_not_called()
+
+    def test_reuters_is_optional_and_feed_failure_is_isolated(self):
+        url = "https://feeds.reuters.com/reuters/businessNews"
+        with patch.dict("os.environ", {"SPUTNIK_REUTERS_FEED_URL": ""}):
+            self.assertEqual(configured_feeds(), FEEDS)
+        with patch.dict("os.environ", {"SPUTNIK_REUTERS_FEED_URL": "https://reuters.com.example.org/rss"}):
+            self.assertEqual(configured_feeds(), FEEDS)
+
+        fed = next(feed for feed in FEEDS if feed.kind == "fed")
+        xml = f"""<rss><channel><item><title>Federal Reserve issues FOMC statement</title>
+            <link>{FED_RELEASE}</link>
+            <pubDate>Wed, 18 Sep 2024 18:00:00 GMT</pubDate></item></channel></rss>""".encode()
+
+        def fetch(feed_url, *, timeout):
+            if feed_url == url:
+                raise OSError("Reuters unavailable")
+            return xml
+
+        with patch.dict("os.environ", {"SPUTNIK_REUTERS_FEED_URL": url}):
+            reuters = configured_feeds()[-1]
+        with patch("sputnik_us_news.fetch_public_feed", side_effect=fetch):
+            self.assertEqual([item["url"] for item in collect_news((reuters, fed))], [FED_RELEASE])
+
+    def test_ticker_bias_requires_a_concrete_action_with_unambiguous_direction(self):
+        item = {**fed_notice(), "kind": "press"}
+        for title in ("FDA approves a new Apple product", "Microsoft will cut revenue guidance",
+                      "Will the Fed cut interest rates in December?",
+                      "Microsoft didn’t cut revenue guidance",
+                      "Microsoft raises revenue guidance but cuts earnings guidance"):
+            with self.subTest(title=title):
+                self.assertIsNone(catalyst({**item, "title": title}))
+        for title, ticker, direction in (
+            ("Microsoft cuts revenue guidance", "MSFT", "SHORT"),
+            ("Nvidia raises revenue guidance", "NVDA", "LONG"),
+            ("US imposes new tariffs on China", "SPY", "SHORT"),
+        ):
+            bias = catalyst({**item, "title": title})
+            self.assertEqual((bias["ticker"], bias["direction"]), (ticker, direction))
+
+    def test_distinct_events_for_same_ticker_can_be_reserved_in_one_scan(self):
+        first = fed_notice()
+        second = {**first, "url": FED_RELEASE + "-follow-up",
+                  "published": (PUBLISHED + timedelta(minutes=10)).isoformat()}
+        now = PUBLISHED + timedelta(minutes=12)
+        levels = {"entry": 100.0, "stop": 99.0, "tp1": 101.5, "tp2": 102.5,
+                  "rr1": 1.5, "rr2": 2.5, "quote_timestamp": now.isoformat()}
+        state = {}
+        check = Mock(return_value=("CONFERMATO", levels))
+        outbox = scan([first, second], state, now, check=check, clock=lambda: now)
+        self.assertEqual(len(outbox), 2)
+        self.assertEqual(len(state["reservations"]), 2)
+        self.assertEqual(scan([first, second], state, now, check=check, clock=lambda: now), [])
 
     def test_truth_uses_only_the_original_post_and_rejects_other_accounts(self):
         feed = next(feed for feed in FEEDS if feed.kind == "truth")

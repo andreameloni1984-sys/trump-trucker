@@ -91,9 +91,20 @@ jobs:
         with:
           ref: main
 
+      - name: Check Sputnik USA Telegram configuration
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "::error::Sputnik USA richiede TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID."
+            exit 1
+          fi
+
       - name: Collect and confirm Sputnik USA opportunities
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          SPUTNIK_REUTERS_FEED_URL: ${{ vars.SPUTNIK_REUTERS_FEED_URL }}
         run: python sputnik_us_intraday.py collect --outbox "$RUNNER_TEMP/sputnik-usa.json"
 
       - name: Persist Sputnik USA events and notification reservations

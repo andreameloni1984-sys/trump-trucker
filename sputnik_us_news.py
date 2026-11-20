@@ -2,6 +2,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import timedelta
+import os
 import re
 from urllib.parse import urlsplit, urlunsplit
 
@@ -81,7 +82,28 @@ def read_feed(feed):
     return items
 
 
-def collect_news(feeds=FEEDS):
+def configured_feeds():
+    url = os.getenv("SPUTNIK_REUTERS_FEED_URL", "").strip()
+    if not url:
+        return FEEDS
+    try:
+        parts = urlsplit(url)
+        valid = (parts.scheme == "https"
+                 and parts.hostname in {"reuters.com", "www.reuters.com", "feeds.reuters.com"}
+                 and parts.path.strip("/") and not parts.username and not parts.password
+                 and parts.port in (None, 443) and not parts.fragment
+                 and not any(ord(char) < 33 for char in url))
+    except ValueError:
+        valid = False
+    if not valid:
+        print("SPUTNIK USA: URL del feed Reuters non valido.")
+        return FEEDS
+    return (*FEEDS, Feed("Reuters", url, "www.reuters.com", "press"))
+
+
+def collect_news(feeds=None):
+    if feeds is None:
+        feeds = configured_feeds()
     with ThreadPoolExecutor(max_workers=8) as pool:
         return [item for batch in pool.map(read_feed, feeds) for item in batch]
 
@@ -104,10 +126,10 @@ RULES = (
      rf"(?:suspends?|suspended|suspending|removes?|removed|removing|reduces?|reduced|reducing)\b.{{0,70}}\b{TARIFF}\b.{{0,70}}\b{TARIFF_SCOPE}\b",
      "Dazi più bassi sulle importazioni possono ridurre costi e pressione sui margini."),
     ({"issuer", "press"}, "guidance-up", "", "LONG",
-     r"\b(?:raises|raised|increases|increased)\b.{0,55}\b(?:revenue|earnings|eps|sales)\s+(?:guidance|outlook|forecast)\b",
+     r"\b(?:raises|raised|increases|increased)\b.{0,55}?\b(?:revenue|earnings|eps|sales)\s+(?:guidance|outlook|forecast)\b",
      "La società ha alzato le previsioni finanziarie, aumentando le aspettative sui risultati."),
     ({"issuer", "press"}, "guidance-down", "", "SHORT",
-     r"\b(?:cuts|cut|lowers|lowered|reduces|reduced)\b.{0,55}\b(?:revenue|earnings|eps|sales)\s+(?:guidance|outlook|forecast)\b",
+     r"\b(?:cuts|cut|lowers|lowered|reduces|reduced)\b.{0,55}?\b(?:revenue|earnings|eps|sales)\s+(?:guidance|outlook|forecast)\b",
      "La società ha abbassato le previsioni finanziarie, riducendo le aspettative sui risultati."),
     ({"fda"}, "fda-approval", "LLY", "LONG",
      r"\bfda approves\b.{0,120}\b(?:zepbound|mounjaro|kisunla)\b",
@@ -119,7 +141,8 @@ ISSUERS = {"AAPL": r"\bapple\b", "MSFT": r"\bmicrosoft\b",
            "NVDA": r"\bnvidia\b", "LLY": r"\beli lilly\b"}
 UNCERTAIN = re.compile(
     r"\b(?:could|might|would|may|consider\w*|propos\w*|threaten\w*|rumou?r\w*|"
-    r"expected to|plans? to|unlikely|denies|not|never|previously|reportedly|already priced in)\b|\?"
+    r"expected to|plans? to|will|unlikely|den(?:ies|ied)|not|never|previously|reportedly|"
+    r"already priced in)\b|n['’]t\b|\?"
 )
 
 
@@ -131,12 +154,15 @@ def catalyst(item):
     if UNCERTAIN.search(title):
         return None
     matches = []
+    guidance_directions = set()
     for kinds, rule, ticker, direction, pattern, reason in RULES:
         if item["kind"] not in kinds:
             continue
         match = re.search(pattern, text)
         if not match or UNCERTAIN.search(text[max(0, match.start() - 90):match.end()]):
             continue
+        if rule.startswith("guidance-"):
+            guidance_directions.add(direction)
         symbol = ticker or item["issuer"]
         if not symbol:
             named = [symbol for symbol, name in ISSUERS.items()
@@ -146,7 +172,7 @@ def catalyst(item):
             symbol = named[0]
         matches.append({"rule": rule, "ticker": symbol, "direction": direction,
                         "reason": reason, "fact": match.group()})
-    return matches[0] if len(matches) == 1 else None
+    return matches[0] if len(matches) == 1 and len(guidance_directions) <= 1 else None
 
 
 def eligible_news(items, now):
