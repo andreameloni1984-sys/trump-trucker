@@ -36,6 +36,7 @@ from trump_tracker import (
     telegram_sales_message,
     telegram_test_message,
     telegram_transactions_message,
+    recent_intelligence_items,
     telegram_trump_order_message,
 )
 
@@ -306,7 +307,7 @@ def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
     if callback in {"strumento", "strumento_da_tradare"}:
         try:
             from sputnik_trading_instrument import recommend_trading_instrument, format_trading_instrument_message
-            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            recent = recent_intelligence_items(state, limit=30)
             rec = recommend_trading_instrument(recent)
             return format_trading_instrument_message(rec)
         except Exception as exc:
@@ -315,7 +316,7 @@ def answer_for_callback(callback: str, state: dict[str, Any]) -> str:
         try:
             from sputnik_trading_instrument import recommend_trading_instrument
             from sputnik_cfd import build_cfd_signal, format_cfd_signal
-            recent = list((state.get("intelligence_history") or {}).values())[-30:]
+            recent = recent_intelligence_items(state, limit=30)
             rec = recommend_trading_instrument(recent)
             quotes = state.get("market_quotes") or state.get("quotes") or {}
             signal = build_cfd_signal(rec, quotes)
