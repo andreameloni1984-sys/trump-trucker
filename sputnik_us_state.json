@@ -1648,6 +1648,22 @@
       "title": "Intuit’s downbeat outlook deepens Wall Street’s anxiety about software companies",
       "url": "https://www.marketwatch.com/story/intuits-downbeat-outlook-deepens-wall-streets-anxiety-about-software-companies-15b878e5"
     },
+    "https://www.marketwatch.com/story/investors-fled-to-healthcare-stocks-for-safety-now-insurance-and-hospital-shares-are-plunging-9cb6a96c": {
+      "acquired": "2026-11-20T16:08:23.659839+00:00",
+      "acquisition_seconds": 923.659839,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-20T15:53:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Investors fled to healthcare stocks for safety. Now insurance and hospital shares are plunging.",
+      "url": "https://www.marketwatch.com/story/investors-fled-to-healthcare-stocks-for-safety-now-insurance-and-hospital-shares-are-plunging-9cb6a96c"
+    },
     "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a": {
       "acquired": "2026-11-20T12:37:30.328881+00:00",
       "acquisition_seconds": 450.328881,
@@ -1807,6 +1823,22 @@
       "status": "SCARTARE",
       "title": "SEC: Eight Entities Used Fake Crypto Asset Trading Platforms to Steal More Than $37 Million From U.S. Investors",
       "url": "https://www.sec.gov/newsroom/press-releases/2026-115-sec-eight-entities-used-fake-crypto-asset-trading-platforms-steal-more-37-million-us-investors"
+    },
+    "https://www.sec.gov/newsroom/press-releases/2026-116-sec-charges-indianapolis-based-backward-hat-capital-its-co-founders-560-million-dollar-offering": {
+      "acquired": "2026-11-20T16:08:23.687051+00:00",
+      "acquisition_seconds": 5995.687051,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "sec",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "agency",
+      "penalized": [],
+      "published": "2026-11-20T14:28:28+00:00",
+      "source": "SEC",
+      "status": "SCARTARE",
+      "title": "SEC Charges Indianapolis-Based Backward Hat Capital and Its Co-Founders With $560 Million Dollar Offering Fraud and Obtains Emergency Relief",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-116-sec-charges-indianapolis-based-backward-hat-capital-its-co-founders-560-million-dollar-offering"
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/presidential-message-on-national-rural-health-day": {
       "acquired": "2026-11-20T13:48:57.181818+00:00",
