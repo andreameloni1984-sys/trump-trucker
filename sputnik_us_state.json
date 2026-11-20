@@ -544,6 +544,22 @@
       "title": "Federal Reserve Board releases results from survey of senior financial officers at banks about their strategies and practices for managing reserve balances",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120a.htm"
     },
+    "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm": {
+      "acquired": "2026-11-20T21:18:46.376041+00:00",
+      "acquisition_seconds": 226.376041,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "fed",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "fed",
+      "penalized": [],
+      "published": "2026-11-20T21:15:00+00:00",
+      "source": "Federal Reserve",
+      "status": "SCARTARE",
+      "title": "Federal Reserve announces College Fed Challenge winners",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
+    },
     "https://www.globenewswire.com/news-release/2026/11/19/3406556/0/en/micware-announces-equity-research-update-from-alphaterra-advisory.html": {
       "acquired": "2026-11-20T13:19:23.896725+00:00",
       "acquisition_seconds": 86363.896725,
