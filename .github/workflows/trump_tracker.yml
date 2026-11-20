@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   sputnik:
-    if: vars.SPUTNIK_US_INTRADAY_ENABLED != 'true' && github.ref == 'refs/heads/main'
+    if: vars.SPUTNIK_US_INTRADAY_ENABLED == 'false' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -84,7 +84,7 @@ jobs:
 
 
   sputnik-usa:
-    if: vars.SPUTNIK_US_INTRADAY_ENABLED == 'true' && github.ref == 'refs/heads/main'
+    if: vars.SPUTNIK_US_INTRADAY_ENABLED != 'false' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
