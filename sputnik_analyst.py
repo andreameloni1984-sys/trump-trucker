@@ -508,6 +508,11 @@ def deliver(state: dict[str, Any], trump_findings: list[dict], alert_events: lis
         for event in alert_events:
             if str(event.form).startswith(("SC 13", "SCHEDULE 13", "8-K")) and event.source_url not in trade_events:
                 messages.append(disclosure_message(event))
+        counts = state.setdefault("analyst_counts", {})
+        for text in messages:
+            kind = ("Trump" if text.startswith("🇺🇸") else "operazioni miliardari" if text.startswith("💰")
+                    else "portafogli 13F" if text.startswith("📊") else "quote/comunicati" if text.startswith("📄") else "altro")
+            counts[kind] = counts.get(kind, 0) + 1
         if len(messages) > MAX_ALERTS_PER_RUN:
             extra = len(messages) - (MAX_ALERTS_PER_RUN - 1)
             messages = messages[:MAX_ALERTS_PER_RUN - 1] + [
@@ -524,6 +529,9 @@ def deliver(state: dict[str, Any], trump_findings: list[dict], alert_events: lis
             and state.get("analyst_started_at") and _parse_time(state["analyst_started_at"]) < now - timedelta(hours=1):
         outbox.append(brief_message(state, now))
         state["analyst_brief_date"] = local.date().isoformat()
+
+    if state.get("analyst_started_at") and report_due(state, now):
+        outbox.append(report_message(state, now))
 
     delivered, pending = 0, []
     for text in outbox:
@@ -596,3 +604,121 @@ def write_context(state: dict[str, Any], path: str = CONTEXT_FILE, now: datetime
     data["updated_at"] = now.isoformat()
     target.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     return True
+
+
+# ----------------------------------------------------------------------------- pagellino (verifica dal vivo)
+
+PRICE_SYMBOLS = {"GOLD": "GC=F", "WTI": "CL=F", "BRENT": "BZ=F", "NASDAQ100": "NQ=F", "USD": "DX-Y.NYB"}
+INSTRUMENT_NAMES = {"GOLD": "Oro", "WTI": "Petrolio WTI", "BRENT": "Brent", "NASDAQ100": "Nasdaq 100", "USD": "Dollaro"}
+CHECK_AFTER = timedelta(hours=24)
+REPORT_WEEKDAY, REPORT_HOUR = 5, 9   # sabato alle 9 (Roma)
+
+
+def _default_price(symbol: str) -> float | None:
+    try:
+        from sputnik_demo.data import fetch
+        return fetch(symbol, range_="5d", interval="1h").last_price
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def track_predictions(state: dict[str, Any], now: datetime | None = None,
+                      price: Callable[[str], float | None] = _default_price) -> int:
+    """Registra le ipotesi nate dalle notizie di Trump e le verifica dopo 24 ore.
+
+    Il prezzo di partenza è quello del momento in cui Sputnik vede la notizia: misura
+    cosa sarebbe successo seguendo l'avviso, non il movimento già avvenuto prima.
+    """
+    now = now or _now()
+    preds = state.setdefault("analyst_predictions", {})
+    cache: dict[str, float | None] = {}
+
+    def px(instrument: str) -> float | None:
+        symbol = PRICE_SYMBOLS.get(instrument)
+        if not symbol:
+            return None
+        if symbol not in cache:
+            cache[symbol] = price(symbol)
+        return cache[symbol]
+
+    for item in export_context(state, now)["trump"]:
+        for b in item.get("bias") or []:
+            inst = str(b.get("instrument", "")).upper()
+            key = f"{item.get('url')}|{inst}"
+            if key in preds or inst not in PRICE_SYMBOLS:
+                continue
+            entry = px(inst)
+            if entry:
+                preds[key] = {"instrument": inst, "bias": b.get("bias", ""), "title": item.get("title", "")[:140],
+                              "first_seen": now.isoformat(), "entry": entry}
+    checked = 0
+    for p in preds.values():
+        if "move" in p or now - datetime.fromisoformat(p["first_seen"]) < CHECK_AFTER:
+            continue
+        last = px(p["instrument"])
+        if not last:
+            continue
+        move = last / p["entry"] - 1
+        sign = 1 if "LONG" in str(p["bias"]).upper() else -1
+        p.update({"exit": last, "move": round(move, 5), "correct": move * sign > 0, "checked_at": now.isoformat()})
+        checked += 1
+    if len(preds) > 1000:
+        state["analyst_predictions"] = dict(sorted(preds.items(), key=lambda kv: kv[1]["first_seen"])[-1000:])
+    return checked
+
+
+def _demo_section() -> list[str]:
+    import json
+    from pathlib import Path
+    path = Path(os.getenv("SPUTNIK_DEMO_STATE_FILE", "sputnik_demo_state.json"))
+    try:
+        demo = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return ["🤖 Trader demo: nessuna operazione ancora registrata"]
+    closed = demo.get("closed") or []
+    total = sum(c.get("pnl_eur", 0) for c in closed)
+    wins = sum(1 for c in closed if c.get("pnl_eur", 0) > 0)
+    lines = [f"🤖 Trader demo: {len(closed)} operazioni chiuse · vincenti {wins} · risultato {total:+.2f} € "
+             f"· posizioni aperte {len(demo.get('positions') or {})}"]
+    if demo.get("halted"):
+        lines.append("   ⚠️ nuovi acquisti sospesi (conto sotto l'85%)")
+    return lines
+
+
+def report_message(state: dict[str, Any], now: datetime | None = None) -> str:
+    now = now or _now()
+    preds = [p for p in (state.get("analyst_predictions") or {}).values() if "move" in p]
+    week = [p for p in preds if now - datetime.fromisoformat(p["checked_at"]) <= timedelta(days=7)]
+
+    def line(rows: list[dict]) -> str:
+        if not rows:
+            return "nessuna ipotesi verificata"
+        ok = sum(1 for p in rows if p["correct"])
+        avg = sum((1 if "LONG" in str(p["bias"]).upper() else -1) * p["move"] for p in rows) / len(rows)
+        return f"{ok}/{len(rows)} giuste ({ok / len(rows):.0%}) · movimento medio nella direzione indicata {avg:+.2%}"
+
+    counts = state.get("analyst_counts") or {}
+    lines = ["📊 PAGELLINO SPUTNIK — risultati dal vivo", "",
+             "🇺🇸 Ipotesi dalle notizie di Trump, verificate dopo 24 ore:",
+             f"• Ultimi 7 giorni: {line(week)}",
+             f"• Da quando è attivo: {line(preds)}"]
+    by_inst: dict[str, list[dict]] = {}
+    for p in preds:
+        by_inst.setdefault(p["instrument"], []).append(p)
+    for inst, rows in sorted(by_inst.items()):
+        lines.append(f"   {INSTRUMENT_NAMES.get(inst, inst)}: {line(rows)}")
+    lines += ["", "📨 Avvisi inviati finora: " + (", ".join(f"{k} {v}" for k, v in sorted(counts.items())) or "nessuno"), ""]
+    lines += _demo_section()
+    lines += ["", "Una moneta lanciata indovinerebbe ~50%: servono almeno 30 ipotesi verificate per un giudizio.",
+              FOOTER]
+    return "\n".join(lines)
+
+
+def report_due(state: dict[str, Any], now: datetime) -> bool:
+    from zoneinfo import ZoneInfo
+    local = now.astimezone(ZoneInfo("Europe/Rome"))
+    week_id = f"{local.isocalendar().year}-W{local.isocalendar().week:02d}"
+    if local.weekday() == REPORT_WEEKDAY and local.hour >= REPORT_HOUR and state.get("analyst_report_week") != week_id:
+        state["analyst_report_week"] = week_id
+        return True
+    return False

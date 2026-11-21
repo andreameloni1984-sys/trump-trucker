@@ -1886,6 +1886,12 @@ def main() -> None:
     # Analista Trump & miliardari: messaggi informativi (non segnali operativi),
     # attivabili dal workflow con SPUTNIK_ANALYST_TELEGRAM=1.
     try:
+        verified = sputnik_analyst.track_predictions(state)
+        if verified:
+            print(f"SPUTNIK ANALISTA: {verified} ipotesi Trump verificate dopo 24 ore.", flush=True)
+    except Exception as exc:
+        print(f"SPUTNIK ANALISTA: verifica ipotesi non riuscita: {type(exc).__name__}", flush=True)
+    try:
         if sputnik_analyst.write_context(state):
             print("SPUTNIK ANALISTA: contesto per il bot CFD aggiornato (sputnik_context.json).", flush=True)
     except Exception as exc:
