@@ -1,21 +1,5 @@
 {
   "invest_events": {
-    "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents": {
-      "acquired": "2026-11-20T12:37:30.417944+00:00",
-      "acquisition_seconds": 70615.417944,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "NVDA",
-      "kind": "issuer",
-      "penalized": [],
-      "published": "2026-11-19T17:00:35+00:00",
-      "source": "NVIDIA Blog",
-      "status": "SCARTARE",
-      "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
-      "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents"
-    },
     "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs": {
       "acquired": "2026-11-20T12:37:30.417944+00:00",
       "acquisition_seconds": 59835.417944,
@@ -31,54 +15,6 @@
       "status": "SCARTARE",
       "title": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
       "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117644162493926914": {
-      "acquired": "2026-11-20T12:37:30.341419+00:00",
-      "acquisition_seconds": 70791.341419,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-19T16:57:39+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Video post from November 19, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117644162493926914"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117644166883657566": {
-      "acquired": "2026-11-20T12:37:30.341419+00:00",
-      "acquisition_seconds": 70724.341419,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-19T16:58:46+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Quote post from November 19, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117644166883657566"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117644175826027343": {
-      "acquired": "2026-11-20T12:37:30.341419+00:00",
-      "acquisition_seconds": 70587.341419,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-19T17:01:03+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Heading back to Washington, D.C., from China. It was a Great and Highly Consequential Trip. I will be giving a News Conference tomorrow at 12 P.M., the White House. Also, will be discussing the Trade Deals with Thailand, the Philippines, and others. President DONALD J. TRUMP",
-      "url": "https://truthsocial.com/@realDonaldTrump/117644175826027343"
     },
     "https://truthsocial.com/@realDonaldTrump/117644724699997043": {
       "acquired": "2026-11-20T12:37:30.341419+00:00",
@@ -367,22 +303,6 @@
       "status": "SCARTARE",
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/19/3406991/0/en/generative-ai-in-family-law-california-puts-a-lawyer-s-ai-duties-in-statute-what-senate-bill-574-requires-of-family-law-practice-and-what-it-leaves-open.html": {
-      "acquired": "2026-11-20T13:19:23.896725+00:00",
-      "acquisition_seconds": 73163.896725,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-19T17:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Generative AI in Family Law: California Puts a Lawyer's AI Duties in Statute - What Senate Bill 574 Requires of Family Law Practice, and What It Leaves Open",
-      "url": "https://www.globenewswire.com/news-release/2026/11/19/3406991/0/en/generative-ai-in-family-law-california-puts-a-lawyer-s-ai-duties-in-statute-what-senate-bill-574-requires-of-family-law-practice-and-what-it-leaves-open.html"
     },
     "https://www.globenewswire.com/news-release/2026/11/19/3407007/0/en/texting-apps-for-business-registration-is-the-step-new-companies-do-not-know-they-have-missed.html": {
       "acquired": "2026-11-20T13:19:23.896725+00:00",
