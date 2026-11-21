@@ -1,5 +1,12 @@
 # SPUTNIK — Research and implementation log
 
+## 2026-11-21 — Sputnik DEMO trader (Trading 212 Invest demo)
+
+- **Richiesta:** far comprare e vendere Sputnik in automatico, ma solo sul conto demo.
+- **Implementato:** `sputnik_demo/` riusa la strategia del bot CFD di Gagarin (stessi dati e regole) e la esegue con ETF UCITS (Xetra-Gold, Vanguard S&P 500, iShares Nasdaq 100, WisdomTree WTI), trovati per ISIN nel catalogo del conto. Solo LONG (il conto Invest non consente short). Stop inserito su Trading 212 dopo l'acquisto; take profit, scadenza a 5 giorni e segnale opposto gestiti ogni 15 minuti.
+- **Limiti:** solo URL demo (verificato nel client), max 40 € per operazione, max 3 posizioni, nuovi acquisti sospesi sotto l'85% del valore iniziale, nessun riacquisto di titoli già in portafoglio, stato salvato anche se il giro si interrompe. Spegnimento: variabile `SPUTNIK_DEMO_TRADING=0`.
+- **Verifica:** test con conto simulato (acquisto, stop, take profit, stop scattato, kill switch, limite posizioni, ISIN). Collegamento al conto demo verificato in sola lettura (200 € disponibili).
+
 ## 2026-11-21 — Analista Trump & miliardari (messaggi informativi su Telegram)
 
 - **Richiesta:** Sputnik come analista delle notizie di Trump e delle operazioni pubbliche dei miliardari, con collegamento tra le due cose.
