@@ -21,7 +21,8 @@ concurrency:
 
 jobs:
   trade:
-    if: github.ref == 'refs/heads/main' && vars.SPUTNIK_DEMO_TRADING != '0'
+    # Se la variabile non esiste il trader è acceso; SPUTNIK_DEMO_TRADING=0 lo spegne.
+    if: github.ref == 'refs/heads/main' && (vars.SPUTNIK_DEMO_TRADING || '1') != '0'
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
