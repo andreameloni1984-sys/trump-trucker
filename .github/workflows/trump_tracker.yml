@@ -71,6 +71,7 @@ jobs:
             git config user.name "SPUTNIK Bot"
             git config user.email "sputnik-bot@users.noreply.github.com"
             git add sputnik_state.json
+            if [ -f sputnik_context.json ]; then git add sputnik_context.json; fi
             if git diff --cached --quiet; then
               echo "SPUTNIK: stato invariato; nessun commit o push necessario."
               exit 0

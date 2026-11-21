@@ -193,3 +193,23 @@ class AttributionTests(unittest.TestCase):
     def test_short_security(self):
         self.assertEqual(an.short_security("Common Stock, $0.01 par value per share"), "Common Stock")
         self.assertEqual(an.short_security("Class A Common Stock"), "Class A Common Stock")
+
+
+class ContextExportTests(unittest.TestCase):
+    def test_export_has_trump_bias_and_money(self):
+        state = {"intelligence_history": {"t": trump_item("Trump announces new tariffs on China", hours_ago=2)}}
+        e = ev(cik="0000921669", company="ICAHN CARL C")
+        an.remember_moves(state, [trade(e, issuer="Nucor Corp", ticker="NUE")], NOW)
+        with patch.object(an, "_now", return_value=NOW):
+            ctx = an.export_context(state, NOW)
+        self.assertEqual(len(ctx["trump"]), 1)
+        self.assertIn("published", ctx["trump"][0])
+        self.assertEqual(ctx["money"][0]["who"], "Carl Icahn")
+
+    def test_write_context_only_on_change(self):
+        import tempfile
+        state = {"intelligence_history": {}}
+        with tempfile.TemporaryDirectory() as d:
+            path = os.path.join(d, "ctx.json")
+            self.assertTrue(an.write_context(state, path, NOW))
+            self.assertFalse(an.write_context(state, path, NOW + timedelta(minutes=15)))

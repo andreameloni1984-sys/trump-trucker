@@ -1838,6 +1838,11 @@ def main() -> None:
     notifications_started = time.monotonic()
     # Analista Trump & miliardari: messaggi informativi (non segnali operativi),
     # attivabili dal workflow con SPUTNIK_ANALYST_TELEGRAM=1.
+    try:
+        if sputnik_analyst.write_context(state):
+            print("SPUTNIK ANALISTA: contesto per il bot CFD aggiornato (sputnik_context.json).", flush=True)
+    except Exception as exc:
+        print(f"SPUTNIK ANALISTA: contesto CFD non aggiornato: {type(exc).__name__}", flush=True)
     if os.getenv("SPUTNIK_ANALYST_TELEGRAM", "").strip().lower() in {"1", "true", "yes"}:
         delivered = sputnik_analyst.deliver(state, intelligence, analyst_alert_events, alert_moves, send_telegram)
         save_state(state)
