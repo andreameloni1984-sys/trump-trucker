@@ -475,15 +475,26 @@ def _domains_for_public_text(text: str) -> list[str]:
 
 def fetch_public_feed(url: str, *, timeout: int = 20) -> bytes:
     """Fetch a public RSS/Atom feed without requiring third-party packages."""
+    # Feed pubblici: firma generica da browser. La firma SEC (con l'e-mail di contatto)
+    # serve solo alla SEC e non va inviata ad altri siti; alcuni siti bloccano le firme da robot.
     request = urllib.request.Request(
         url,
         headers={
-            "User-Agent": os.getenv("SEC_USER_AGENT", "SPUTNIK/4.1 public-feed-monitor"),
+            "User-Agent": os.getenv(
+                "SPUTNIK_FEED_USER_AGENT",
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/130.0 Safari/537.36 SPUTNIK-feed-reader",
+            ),
             "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,*/*",
+            "Accept-Language": "en-US,en;q=0.8",
         },
     )
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        return response.read()
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            return response.read()
+    except urllib.error.HTTPError as exc:
+        print(f"SPUTNIK: feed {url} → HTTP {exc.code}", flush=True)
+        raise
 
 
 def _configured_rss_feeds() -> list[str]:
