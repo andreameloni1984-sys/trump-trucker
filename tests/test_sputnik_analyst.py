@@ -213,3 +213,30 @@ class ContextExportTests(unittest.TestCase):
             path = os.path.join(d, "ctx.json")
             self.assertTrue(an.write_context(state, path, NOW))
             self.assertFalse(an.write_context(state, path, NOW + timedelta(minutes=15)))
+
+
+class ReportCardTests(unittest.TestCase):
+    def test_predictions_recorded_and_checked_after_24h(self):
+        item = trump_item("Trump announces new tariffs on China", hours_ago=1)
+        state = {"intelligence_history": {"t": item}}
+        fake_ctx = {"trump": [{"title": item["title"], "url": item["url"],
+                               "bias": [{"instrument": "GOLD", "bias": "LONG_BIAS", "reason": "rifugio"}]}], "money": []}
+        prices = {"GC=F": 100.0}
+        with patch.object(an, "export_context", return_value=fake_ctx):
+            an.track_predictions(state, NOW, price=lambda s: prices.get(s))
+            self.assertEqual(len(state["analyst_predictions"]), 1)
+            prices["GC=F"] = 102.0
+            self.assertEqual(an.track_predictions(state, NOW + timedelta(hours=12), price=lambda s: prices.get(s)), 0)
+            self.assertEqual(an.track_predictions(state, NOW + timedelta(hours=25), price=lambda s: prices.get(s)), 1)
+        p = next(iter(state["analyst_predictions"].values()))
+        self.assertTrue(p["correct"])
+        text = an.report_message(state, NOW + timedelta(hours=26))
+        self.assertIn("1/1 giuste", text)
+        self.assertIn("Oro", text)
+
+    def test_report_due_saturday_once(self):
+        sat = datetime(2026, 11, 28, 9, 30, tzinfo=timezone.utc)
+        state = {}
+        self.assertTrue(an.report_due(state, sat))
+        self.assertFalse(an.report_due(state, sat + timedelta(hours=1)))
+        self.assertFalse(an.report_due({}, sat - timedelta(days=1)))
