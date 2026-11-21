@@ -502,6 +502,37 @@ def fetch_public_feed(url: str, *, timeout: int = 20) -> bytes:
         raise
 
 
+# Indirizzi alternativi da provare se un feed risponde 404 (la Casa Bianca ha cambiato
+# l'indirizzo del feed: /feed/ non esiste più). Il primo che risponde viene usato.
+FEED_FALLBACKS = {
+    "https://www.whitehouse.gov/feed/": [
+        "https://www.whitehouse.gov/news/feed/",
+        "https://www.whitehouse.gov/presidential-actions/feed/",
+        "https://www.whitehouse.gov/briefings-statements/feed/",
+        "https://www.whitehouse.gov/fact-sheets/feed/",
+        "https://www.whitehouse.gov/articles/feed/",
+    ],
+}
+
+
+def fetch_feed_with_fallback(url: str) -> bytes:
+    """Scarica il feed; su HTTP 404 prova gli indirizzi alternativi noti."""
+    try:
+        return fetch_public_feed(url)
+    except urllib.error.HTTPError as exc:
+        if exc.code != 404 or url not in FEED_FALLBACKS:
+            raise
+        last: Exception = exc
+        for alt in FEED_FALLBACKS[url]:
+            try:
+                body = fetch_public_feed(alt)
+                print(f"SPUTNIK: feed {url} spostato, uso {alt}", flush=True)
+                return body
+            except urllib.error.HTTPError as alt_exc:
+                last = alt_exc
+        raise last
+
+
 def _configured_rss_feeds() -> list[str]:
     raw = os.getenv("SPUTNIK_RSS_FEEDS", "").strip()
     if raw:
@@ -566,7 +597,7 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         feed_is_new = feed_url not in initialized_feeds
         source = "WHITE_HOUSE_RSS" if "whitehouse.gov" in feed_url.lower() else "PUBLIC_RSS"
         try:
-            rows = parse_public_feed(fetch_public_feed(feed_url), feed_url)
+            rows = parse_public_feed(fetch_feed_with_fallback(feed_url), feed_url)
         except Exception as exc:
             print(f"SPUTNIK: RSS feed unavailable {feed_url}: {type(exc).__name__}")
             continue
