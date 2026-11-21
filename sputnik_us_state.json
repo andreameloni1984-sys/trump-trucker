@@ -384,22 +384,6 @@
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/19/3406801/0/en/the-silk-road-gets-a-spidey-genetic-upgrade.html": {
-      "acquired": "2026-11-20T13:19:23.896725+00:00",
-      "acquisition_seconds": 80003.896725,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-19T15:06:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "The Silk Road Gets a Spidey Genetic Upgrade",
-      "url": "https://www.globenewswire.com/news-release/2026/11/19/3406801/0/en/the-silk-road-gets-a-spidey-genetic-upgrade.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/19/3406862/0/en/dresner-partners-advised-bella-plastic-surgery-and-harbor-surgery-center-on-its-sale-to-vy-aesthetic-partners.html": {
       "acquired": "2026-11-20T13:19:23.896725+00:00",
       "acquisition_seconds": 78503.896725,
@@ -2895,6 +2879,22 @@
       "status": "SCARTARE",
       "title": "My husband spent $80,000 on a boat, yet says my plans for a $100,000 pottery studio are irresponsible. Who’s right?",
       "url": "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a"
+    },
+    "https://www.marketwatch.com/story/never-too-late-to-start-practical-investing-advice-from-some-of-the-top-women-in-finance-e01f0755": {
+      "acquired": "2026-11-21T15:07:14.781222+00:00",
+      "acquisition_seconds": 434.781222,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-21T15:00:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "‘Never too late to start’: Practical investing advice from some of the top women in finance",
+      "url": "https://www.marketwatch.com/story/never-too-late-to-start-practical-investing-advice-from-some-of-the-top-women-in-finance-e01f0755"
     },
     "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6": {
       "acquired": "2026-11-20T12:37:30.328881+00:00",
