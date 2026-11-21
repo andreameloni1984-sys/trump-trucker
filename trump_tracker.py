@@ -885,10 +885,26 @@ def http_get_json(url: str, user_agent: str) -> dict[str, Any]:
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
             raw = response.read()
+            encoding = str(response.headers.get("Content-Encoding") or "").lower()
     except urllib.error.HTTPError as exc:
         _record_sec_http_error(url, exc)
         raise
-    return json.loads(raw.decode("utf-8"))
+    return json.loads(_decode_http_body(raw, encoding).decode("utf-8"))
+
+
+def _decode_http_body(raw: bytes, encoding: str = "") -> bytes:
+    """Decompress gzip/deflate bodies (the SEC honours Accept-Encoding: gzip)."""
+    import gzip
+    import zlib
+
+    if "gzip" in encoding or raw[:2] == b"\x1f\x8b":
+        return gzip.decompress(raw)
+    if "deflate" in encoding:
+        try:
+            return zlib.decompress(raw)
+        except zlib.error:
+            return zlib.decompress(raw, -zlib.MAX_WBITS)
+    return raw
 
 
 def normalize_cik(value: str) -> str:
