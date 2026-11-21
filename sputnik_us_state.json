@@ -1,21 +1,5 @@
 {
   "invest_events": {
-    "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs": {
-      "acquired": "2026-11-20T12:37:30.417944+00:00",
-      "acquisition_seconds": 59835.417944,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "NVDA",
-      "kind": "issuer",
-      "penalized": [],
-      "published": "2026-11-19T20:00:15+00:00",
-      "source": "NVIDIA Blog",
-      "status": "SCARTARE",
-      "title": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
-      "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs"
-    },
     "https://truthsocial.com/@realDonaldTrump/117645160100928884": {
       "acquired": "2026-11-20T12:37:30.341419+00:00",
       "acquisition_seconds": 55568.341419,
