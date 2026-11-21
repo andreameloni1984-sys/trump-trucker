@@ -14,7 +14,8 @@ concurrency:
 
 jobs:
   sputnik:
-    if: vars.SPUTNIK_US_INTRADAY_ENABLED == 'false' && github.ref == 'refs/heads/main'
+    # Analista Trump & miliardari: gira sempre sul main, insieme a Sputnik USA.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -48,8 +49,10 @@ jobs:
       - name: Run SPUTNIK (Render-independent)
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
-          SPUTNIK_CIKS: "1849635"
-          SPUTNIK_SEC_FORMS: "3,4,5,8-K,13D,13G,13F-HR,13F-HR/A,144"
+          # Lista miliardari in sputnik_analyst.WATCHLIST; qui eventuali CIK aggiuntivi.
+          SPUTNIK_CIKS: ${{ vars.SPUTNIK_EXTRA_CIKS }}
+          SPUTNIK_ANALYST_TELEGRAM: ${{ vars.SPUTNIK_ANALYST_TELEGRAM || '1' }}
+          SPUTNIK_BRIEF_HOUR_ROME: "7"
           SPUTNIK_SOCIAL_ENABLED: "1"
           GAGARIN_CLOUD_API_URL: ${{ secrets.GAGARIN_CLOUD_API_URL }}
           GAGARIN_CLOUD_API_KEY: ${{ secrets.GAGARIN_CLOUD_API_KEY }}
@@ -84,7 +87,9 @@ jobs:
 
 
   sputnik-usa:
-    if: vars.SPUTNIK_US_INTRADAY_ENABLED != 'false' && github.ref == 'refs/heads/main'
+    # Dopo l'analista, così i due job non salvano lo stato su main nello stesso momento.
+    needs: sputnik
+    if: always() && vars.SPUTNIK_US_INTRADAY_ENABLED != 'false' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
