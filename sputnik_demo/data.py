@@ -5,7 +5,10 @@ import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
-import requests
+import json
+import urllib.error
+import urllib.parse
+import urllib.request
 
 _URL = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
 _HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; cfd-signals-bot/1.0)"}
@@ -62,15 +65,16 @@ def parse_chart(symbol: str, payload: dict) -> Bars:
 
 
 def fetch(symbol: str, range_: str = "2y", interval: str = "1d", session=None) -> Bars:
-    http = session or requests
+    """Scarica le barre da Yahoo (solo libreria standard: il repo di Sputnik non usa requests)."""
+    query = urllib.parse.urlencode({"range": range_, "interval": interval})
+    url = _URL.format(symbol=urllib.parse.quote(symbol, safe="=^")) + "?" + query
     last: Exception | None = None
     for attempt in range(3):
         try:
-            r = http.get(_URL.format(symbol=symbol), params={"range": range_, "interval": interval},
-                         headers=_HEADERS, timeout=20)
-            r.raise_for_status()
-            return parse_chart(symbol, r.json())
-        except (requests.RequestException, ValueError, DataError) as exc:
+            req = urllib.request.Request(url, headers=_HEADERS)
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                return parse_chart(symbol, json.loads(resp.read().decode("utf-8")))
+        except (urllib.error.URLError, OSError, ValueError, DataError) as exc:
             last = exc
             time.sleep(2 * (attempt + 1))
     raise DataError(f"download fallito per {symbol}: {last}")
