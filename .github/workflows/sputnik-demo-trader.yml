@@ -1,0 +1,64 @@
+name: SPUTNIK DEMO trader (Trading 212 Invest demo)
+
+on:
+  schedule:
+    # ogni 15 minuti, lun-ven, 07:00-16:59 UTC (copre gli orari di Xetra e Londra)
+    - cron: "7,22,37,52 7-16 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Solo prova: mostra cosa farebbe senza inserire ordini"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sputnik-main
+  queue: max
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    if: github.ref == 'refs/heads/main' && vars.SPUTNIK_DEMO_TRADING != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      SPUTNIK_INVEST_DEMO_API_KEY: ${{ secrets.SPUTNIK_INVEST_DEMO_API_KEY }}
+      SPUTNIK_INVEST_DEMO_API_SECRET: ${{ secrets.SPUTNIK_INVEST_DEMO_API_SECRET }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install requests
+      - name: Esegui i segnali sul conto demo
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m sputnik_demo.trader --dry-run
+          else
+            python -m sputnik_demo.trader
+          fi
+      - name: Salva lo stato delle operazioni demo
+        if: always() && inputs.dry_run != true
+        run: |
+          if [ -f sputnik_demo_state.json ]; then
+            git config user.name "SPUTNIK Bot"
+            git config user.email "sputnik-bot@users.noreply.github.com"
+            git add sputnik_demo_state.json
+            if git diff --cached --quiet; then
+              echo "SPUTNIK DEMO: stato invariato."
+              exit 0
+            fi
+            git commit -m "chore: persist Sputnik demo trader state"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "::error::Conflitto sullo stato demo: interrotto per non perdere le posizioni registrate."
+              git rebase --abort
+              exit 1
+            fi
+            git push origin main
+          fi
