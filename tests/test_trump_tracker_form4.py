@@ -46,6 +46,7 @@ class Form4ParsingTests(unittest.TestCase):
         self.assertEqual(rows[0].action, "ACQUISTATO")
         self.assertEqual(rows[0].transaction_code, "P")
         self.assertEqual(rows[0].security, "Common Stock")
+        self.assertEqual(rows[0].issuer, "Trump Media & Technology Group Corp.")
 
     @patch("trump_tracker.filing_index_documents", return_value=[])
     @patch("trump_tracker.fetch_public_document")

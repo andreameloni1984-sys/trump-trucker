@@ -1,5 +1,14 @@
 # SPUTNIK — Research and implementation log
 
+## 2026-11-21 — Analista Trump & miliardari (messaggi informativi su Telegram)
+
+- **Richiesta:** Sputnik come analista delle notizie di Trump e delle operazioni pubbliche dei miliardari, con collegamento tra le due cose.
+- **Stato trovato:** il job Trump/SEC era spento da quando era attivo Sputnik USA (i due job si escludevano); le notifiche Telegram del job erano soppresse; la SEC seguiva un solo CIK (Trump Media) con 0 documenti salvati (probabile `SEC_USER_AGENT` mancante); i Form 4 non registravano la società emittente.
+- **Implementato:** `sputnik_analyst.py` con watchlist (Trump Media, Musk, Berkshire, Pershing Square, Icahn, Duquesne, Paulson, Trian, Scion, Appaloosa, Soros) e verifica del nome SEC a ogni esecuzione (CIK scartato se l'intestatario non corrisponde); archiviazione silenziosa dello storico al primo avvio; estrazione dettagli solo per documenti nuovi e recenti (max 25 per giro); avvisi per post di Trump recenti (≤6 h), acquisti/vendite Form 4, quote 13D/13G, portafogli 13F; collegamento per settore Trump ↔ miliardari; riepilogo alle 7 (Roma); massimo 6 messaggi per giro e reinvio dei messaggi non consegnati. Form 4: aggiunti `issuer` e `ticker`.
+- **Workflow:** il job Trump/SEC gira sempre su main, seguito da Sputnik USA (`needs`), così non salvano lo stato in contemporanea. `SPUTNIK_ANALYST_TELEGRAM` (default 1) attiva i messaggi.
+- **Confine:** i messaggi sono analisi informative, non segnali LONG/SHORT; i dati SEC sono pubblici ma in ritardo (Form 4 ≤2 giorni, 13F ≤45 giorni).
+- **Verifica:** 216 test superati; ciclo locale completo senza errori. CIK non verificabili da questa sessione (SEC non raggiungibile): la verifica avviene in produzione e richiede il secret `SEC_USER_AGENT`.
+
 ## 2026-10-26 — Include individual Trump archive posts in the default feed scan
 
 - **Observed issue:** the page-level `TRUTH_ARCHIVE` scan correctly rejects generic archive metadata, but the default item-level RSS scan only included the White House feed. As a result, individual Trump posts could be missed unless `SPUTNIK_RSS_FEEDS` was explicitly configured.

@@ -107,6 +107,8 @@ class TransactionRecord:
     transaction_code: str = ""
     filing_date: str = ""
     source_kind: str = "FORM4_TRANSACTION"
+    issuer: str = ""
+    ticker: str = ""
 
 
 def local_name(tag: str) -> str:
@@ -207,6 +209,14 @@ def extract_form4_transactions(event: FilingEvent, user_agent: str) -> list[Tran
             if value:
                 owners.append(value)
     owner = owners[0] if owners else ""
+    issuer_name = ""
+    issuer_ticker = ""
+    for node in root.iter():
+        tag = local_name(str(node.tag))
+        if tag == "issuerName" and not issuer_name:
+            issuer_name = (node.text or "").strip()
+        elif tag == "issuerTradingSymbol" and not issuer_ticker:
+            issuer_ticker = (node.text or "").strip().upper()
 
     records: list[TransactionRecord] = []
     transaction_nodes = [
@@ -238,6 +248,8 @@ def extract_form4_transactions(event: FilingEvent, user_agent: str) -> list[Tran
                 transaction_code=code,
                 filing_date=event.filed_at,
                 source_kind="FORM4_TRANSACTION",
+                issuer=issuer_name,
+                ticker=issuer_ticker,
             )
         )
     return records
@@ -1045,10 +1057,7 @@ def collect() -> list[FilingEvent]:
     if not os.getenv("SEC_USER_AGENT", "").strip():
         print("SPUTNIK: SEC collection skipped; SEC_USER_AGENT secret missing (no invalid SEC requests).", flush=True)
         return []
-    raw_ciks = os.getenv("SPUTNIK_CIKS", "").strip()
-    if not raw_ciks:
-        print("SPUTNIK: nessun CIK configurato. Impostare SPUTNIK_CIKS.")
-        return []
+    import sputnik_analyst
 
     user_agent = os.getenv(
         "SEC_USER_AGENT",
@@ -1056,24 +1065,31 @@ def collect() -> list[FilingEvent]:
     )
     forms = {
         item.strip()
-        for item in os.getenv(
-            "SPUTNIK_SEC_FORMS",
-            "3,4,5,8-K,13D,13G,13F-HR,13F-HR/A,144",
-        ).split(",")
+        for item in os.getenv("SPUTNIK_SEC_FORMS", sputnik_analyst.SEC_FORMS).split(",")
         if item.strip()
     }
 
+    # Watchlist dell'analista (Trump Media + miliardari) più eventuali CIK da SPUTNIK_CIKS.
+    # Il nome restituito dalla SEC deve corrispondere a quello atteso, altrimenti il CIK
+    # viene scartato: un codice sbagliato non deve produrre avvisi attribuiti alla persona sbagliata.
     events: list[FilingEvent] = []
-    for raw in raw_ciks.split(","):
-        cik = normalize_cik(raw)
+    for watched in sputnik_analyst.watchlist():
+        cik = normalize_cik(watched.cik)
         try:
-            events.extend(fetch_sec_events(cik, user_agent, forms))
+            found = fetch_sec_events(cik, user_agent, forms)
             time.sleep(0.2)
         except SECSourceCooldown as exc:
             print(f"SPUTNIK: SEC collection paused; remaining CIKs skipped: {exc}")
             break
         except Exception as exc:
-            print(f"SPUTNIK: SEC source error CIK {cik}: {exc}")
+            print(f"SPUTNIK: SEC source error CIK {cik} ({watched.label}): {exc}")
+            continue
+        sec_name = found[0].company if found else ""
+        if found and not sputnik_analyst.name_matches(cik, sec_name):
+            print(f"SPUTNIK: CIK {cik} scartato: la SEC lo intesta a {sec_name!r}, atteso {watched.expected!r} ({watched.label})")
+            continue
+        print(f"SPUTNIK: {watched.label}: {len(found)} documenti SEC (intestatario: {sec_name or 'n/d'})")
+        events.extend(found)
 
     return events
 
@@ -1760,7 +1776,10 @@ def main() -> None:
     events = collect()
     print(f"SPUTNIK: SEC collection={((time.monotonic() - stage_started) * 1000.0):.0f}ms | filings={len(events)}", flush=True)
     fresh = new_events(events, state)
-    all_transaction_events = events
+    import sputnik_analyst
+    # Leggi i dettagli solo dei documenti nuovi e recenti (non tutto lo storico a ogni giro).
+    analyst_alert_events, analyst_archive_events = sputnik_analyst.select_filings(events, state)
+    all_transaction_events = sputnik_analyst.to_extract(analyst_alert_events, analyst_archive_events)
     stage_started = time.monotonic()
     transactions = extract_transactions(all_transaction_events)
     print(f"SPUTNIK: transaction extraction={((time.monotonic() - stage_started) * 1000.0):.0f}ms | records={len(transactions)}", flush=True)
@@ -1771,6 +1790,10 @@ def main() -> None:
         if key not in stored_transactions:
             stored_transactions[key] = asdict(tx)
             new_transactions.append(tx)
+    alert_event_ids = {event.event_id for event in analyst_alert_events}
+    alert_urls = {tx.source_url for tx in transactions if tx.event_id in alert_event_ids}
+    remembered_moves = sputnik_analyst.remember_moves(state, transactions)
+    alert_moves = [move for move in remembered_moves if move.get("url") in alert_urls]
     stage_started = time.monotonic()
     intelligence = intelligence_snapshot(state)
     print(f"SPUTNIK: public intelligence scan={((time.monotonic() - stage_started) * 1000.0):.0f}ms | findings={len(intelligence)}", flush=True)
@@ -1797,6 +1820,16 @@ def main() -> None:
     print(f"SPUTNIK: {len(intelligence)} nuove correlazioni da fonti pubbliche.")
 
     notifications_started = time.monotonic()
+    # Analista Trump & miliardari: messaggi informativi (non segnali operativi),
+    # attivabili dal workflow con SPUTNIK_ANALYST_TELEGRAM=1.
+    if os.getenv("SPUTNIK_ANALYST_TELEGRAM", "").strip().lower() in {"1", "true", "yes"}:
+        delivered = sputnik_analyst.deliver(state, intelligence, analyst_alert_events, alert_moves, send_telegram)
+        save_state(state)
+        print(
+            f"SPUTNIK ANALISTA: {delivered} messaggi consegnati, "
+            f"{len(state.get('analyst_outbox') or [])} in attesa di nuovo invio.",
+            flush=True,
+        )
     # Research/filing summaries are not validated equity LONG/SHORT signals.
     # Retain collection and deduplication, but do not push them to Telegram.
     # Only a separately validated equity signal may use the delivery channel.
