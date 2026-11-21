@@ -170,6 +170,35 @@ def label_for(cik: str, fallback: str = "") -> str:
     return watched.label if watched else (fallback or f"CIK {cik}")
 
 
+TRUMP_MEDIA_CIK = "0001849635"
+
+
+def short_security(name: str) -> str:
+    """'Common Stock, $0.01 par value per share' -> 'Common Stock'."""
+    text = re.split(r",?\s*\$?[\d.]+\s*par value", str(name or ""), flags=re.IGNORECASE)[0]
+    return text.strip(" ,") or str(name or "")
+
+
+def attribute_trade(cik: str, owner: str, issuer: str) -> tuple[str, bool] | None:
+    """Chi ha fatto l'operazione.
+
+    Restituisce (nome da mostrare, è_insider) oppure None se l'operazione va ignorata.
+    Il Form 4 compare tra i documenti sia del dichiarante sia della società emittente:
+    un'operazione si attribuisce al miliardario solo se il dichiarante è davvero lui/il suo fondo.
+    Gli insider di altre società si ignorano, tranne quelli di Trump Media.
+    """
+    cik = normalize_cik(cik)
+    watched = by_cik().get(cik)
+    if watched is None:
+        return None
+    if not watched.expected or watched.expected in str(owner or "").upper():
+        return watched.label, False
+    if cik == TRUMP_MEDIA_CIK:
+        name = " ".join(w.capitalize() for w in str(owner or "insider").split())
+        return f"{name} (insider di Trump Media)", True
+    return None
+
+
 def themes_for_security(name: str) -> list[str]:
     text = f" {str(name or '').lower()} "
     return [theme for theme, words in SECURITY_THEMES.items() if any(w in text for w in words)]
@@ -240,10 +269,15 @@ def remember_moves(state: dict[str, Any], records: list[Any], now: datetime | No
         key = "|".join((r.event_id, r.security, r.shares, r.price, r.transaction_date, r.transaction_code))
         if key in moves:
             continue
+        issuer_name = getattr(r, "issuer", "") or r.company
+        attribution = attribute_trade(r.cik, r.reporting_owner, issuer_name)
+        if attribution is None:
+            continue
+        who, insider = attribution
         shares, price = _num(r.shares), _num(r.price)
         move = {
-            "kind": "TRADE", "cik": normalize_cik(r.cik), "who": label_for(r.cik, r.reporting_owner),
-            "owner": r.reporting_owner, "action": r.action, "security": r.security,
+            "kind": "TRADE", "cik": normalize_cik(r.cik), "who": who, "insider": insider,
+            "owner": r.reporting_owner, "action": r.action, "security": short_security(r.security),
             "issuer": (getattr(r, "issuer", "") or r.company)
                       + (f" ({r.ticker})" if getattr(r, "ticker", "") else ""),
             "shares": shares, "price": price,
@@ -281,7 +315,9 @@ def recent_moves(state: dict[str, Any], days: int, now: datetime | None = None) 
     now = now or _now()
     cutoff = now.date() - timedelta(days=days)
     out = [m for m in state.get("analyst_moves", {}).values()
-           if (_parse_day(m.get("filed") or m.get("date")) or date.min) >= cutoff]
+           if (_parse_day(m.get("filed") or m.get("date")) or date.min) >= cutoff
+           and (m.get("kind") != "TRADE" or "insider" in m
+                or attribute_trade(m.get("cik", ""), m.get("owner", ""), m.get("issuer", "")))]
     return sorted(out, key=lambda m: m.get("filed") or "", reverse=True)
 
 
@@ -347,7 +383,7 @@ def _move_line(m: dict) -> str:
         return f"{m['who']}: portafoglio trimestrale ({m.get('count', 0)} titoli; primi: {top}) · {m.get('filed', '')}"
     value = f" · {_money(m['value'])}" if m.get("value") else ""
     verb = "ha comprato" if m.get("action") == "ACQUISTATO" else "ha venduto"
-    return f"{m['who']} {verb} {m.get('security', '')} ({m.get('issuer', '')}){value} · {m.get('date', '')}"
+    return f"{m['who']} {verb} {short_security(m.get('security', ''))} ({m.get('issuer', '')}){value} · {m.get('date', '')}"
 
 
 def move_message(m: dict, state: dict[str, Any], now: datetime | None = None) -> str:
@@ -363,7 +399,7 @@ def move_message(m: dict, state: dict[str, Any], now: datetime | None = None) ->
         lines.append("Nota: il 13F mostra le posizioni a fine trimestre, con fino a 45 giorni di ritardo.")
     else:
         icon, verb = ("🟢", "HA COMPRATO") if m.get("action") == "ACQUISTATO" else ("🔴", "HA VENDUTO")
-        lines = [f"💰 SPUTNIK — MILIARDARI · {m['who']}", f"{icon} {verb} {m.get('security', '')} · {m.get('issuer', '')}"]
+        lines = [f"💰 SPUTNIK — MILIARDARI · {m['who']}", f"{icon} {verb} {short_security(m.get('security', ''))} · {m.get('issuer', '')}"]
         detail = []
         if m.get("shares"):
             detail.append(f"{m['shares']:,.0f} azioni".replace(",", "."))

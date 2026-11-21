@@ -16,7 +16,7 @@ def ev(cik="0001494730", acc="a1", form="4", filed="2026-11-22", company="MUSK E
 
 def trade(event, action="ACQUISTATO", code="P", issuer="Tesla, Inc.", ticker="TSLA"):
     return TransactionRecord(event.event_id, event.cik, event.company, event.form, action, "Common Stock",
-                             "1000", "250", "2026-11-20", "Musk Elon", event.source_url, transaction_code=code,
+                             "1000", "250", "2026-11-20", event.company, event.source_url, transaction_code=code,
                              filing_date=event.filed_at, issuer=issuer, ticker=ticker)
 
 
@@ -158,3 +158,38 @@ class DeliveryTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AttributionTests(unittest.TestCase):
+    def test_issuer_insider_not_attributed_to_billionaire(self):
+        state = {}
+        e = ev(cik="0001067983", acc="b", company="BERKSHIRE HATHAWAY INC")
+        rec = trade(e, issuer="BERKSHIRE HATHAWAY INC", ticker="BRK.B")
+        rec.reporting_owner = "Some Director"
+        self.assertEqual(an.remember_moves(state, [rec], NOW), [])
+
+    def test_billionaire_as_owner_is_attributed(self):
+        state = {}
+        e = ev(cik="0001067983", acc="c", company="BERKSHIRE HATHAWAY INC")
+        rec = trade(e, issuer="Occidental Petroleum Corp", ticker="OXY")
+        rec.reporting_owner = "BERKSHIRE HATHAWAY INC"
+        m = an.remember_moves(state, [rec], NOW)[0]
+        self.assertTrue(m["who"].startswith("Warren Buffett"))
+        self.assertFalse(m["insider"])
+
+    def test_trump_media_insiders_kept_and_labelled(self):
+        state = {}
+        e = ev(cik="0001849635", acc="d", company="Trump Media & Technology Group Corp.")
+        rec = trade(e, action="VENDUTO", code="S", issuer="Trump Media & Technology Group Corp.", ticker="DJT")
+        rec.reporting_owner = "NUNES DEVIN"
+        m = an.remember_moves(state, [rec], NOW)[0]
+        self.assertEqual(m["who"], "Nunes Devin (insider di Trump Media)")
+
+    def test_old_misattributed_moves_hidden(self):
+        state = {"analyst_moves": {"x": {"kind": "TRADE", "cik": "0001067983", "owner": "Some Director",
+                                         "issuer": "BERKSHIRE", "filed": NOW.date().isoformat(), "who": "Warren Buffett"}}}
+        self.assertEqual(an.recent_moves(state, 7, NOW), [])
+
+    def test_short_security(self):
+        self.assertEqual(an.short_security("Common Stock, $0.01 par value per share"), "Common Stock")
+        self.assertEqual(an.short_security("Class A Common Stock"), "Class A Common Stock")
