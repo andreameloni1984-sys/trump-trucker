@@ -16,22 +16,6 @@
       "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
       "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents"
     },
-    "https://blogs.nvidia.com/blog/geforce-now-thursday-black-friday-2026": {
-      "acquired": "2026-11-20T12:37:30.417944+00:00",
-      "acquisition_seconds": 81438.417944,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "NVDA",
-      "kind": "issuer",
-      "penalized": [],
-      "published": "2026-11-19T14:00:12+00:00",
-      "source": "NVIDIA Blog",
-      "status": "SCARTARE",
-      "title": "Season’s Streamings and Savings: Black Friday Deals Come to GeForce NOW",
-      "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-black-friday-2026"
-    },
     "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs": {
       "acquired": "2026-11-20T12:37:30.417944+00:00",
       "acquisition_seconds": 59835.417944,
@@ -399,22 +383,6 @@
       "status": "SCARTARE",
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/19/3406625/0/en/concierge-medicine-in-manhattan-private-physician-funded-platform-and-hospital-program-options-evaluated.html": {
-      "acquired": "2026-11-20T13:19:23.896725+00:00",
-      "acquisition_seconds": 83963.896725,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-19T14:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Concierge Medicine in Manhattan: Private Physician, Funded Platform and Hospital Program Options Evaluated",
-      "url": "https://www.globenewswire.com/news-release/2026/11/19/3406625/0/en/concierge-medicine-in-manhattan-private-physician-funded-platform-and-hospital-program-options-evaluated.html"
     },
     "https://www.globenewswire.com/news-release/2026/11/19/3406684/0/en/choosing-a-digital-marketing-agency-in-new-york-city-when-growth-depends-on-being-found.html": {
       "acquired": "2026-11-20T13:19:23.896725+00:00",
@@ -2736,6 +2704,22 @@
       "title": "GameStop has transformed from a meme stock into a ‘real company,’ analysts say",
       "url": "https://www.marketwatch.com/story/gamestop-has-transformed-from-a-meme-stock-into-a-real-company-analysts-say-7ae5c7ed"
     },
+    "https://www.marketwatch.com/story/grocery-stores-have-staggering-deals-for-thanksgiving-but-dont-get-used-to-these-lower-prices-just-yet-7adfc7f5": {
+      "acquired": "2026-11-21T14:07:20.315697+00:00",
+      "acquisition_seconds": 440.315697,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-21T14:00:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Grocery stores have ‘staggering deals’ for Thanksgiving — but don’t get used to these lower prices just yet",
+      "url": "https://www.marketwatch.com/story/grocery-stores-have-staggering-deals-for-thanksgiving-but-dont-get-used-to-these-lower-prices-just-yet-7adfc7f5"
+    },
     "https://www.marketwatch.com/story/gta-6-has-taken-over-is-it-too-late-to-buy-the-developers-stock-69a5cbc5": {
       "acquired": "2026-11-20T20:34:19.879735+00:00",
       "acquisition_seconds": 139.879735,
@@ -3327,22 +3311,6 @@
       "status": "SCARTARE",
       "title": "Presidential Message on National Rural Health Day",
       "url": "https://www.whitehouse.gov/briefings-statements/2026/11/presidential-message-on-national-rural-health-day"
-    },
-    "https://www.whitehouse.gov/briefings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace": {
-      "acquired": "2026-11-20T12:37:30.268341+00:00",
-      "acquisition_seconds": 81866.268341,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "policy",
-      "penalized": [],
-      "published": "2026-11-19T13:53:04+00:00",
-      "source": "Casa Bianca – comunicati",
-      "status": "SCARTARE",
-      "title": "U.S.-Russia-China Heads of State Declaration toward Peace",
-      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace"
     },
     "https://www.whitehouse.gov/presidential-actions/2026/11/national-adoption-month-2026": {
       "acquired": "2026-11-21T02:34:32.210691+00:00",
