@@ -2752,6 +2752,22 @@
       "title": "SEC Issues Proposal to Restructure the Consolidated Audit Trail",
       "url": "https://www.sec.gov/newsroom/press-releases/2026-117-sec-issues-proposal-restructure-consolidated-audit-trail"
     },
+    "https://www.whitehouse.gov/briefings-statements/2026/11/congressional-bills-h-r-5284-h-r-8352-and-h-r-10159-signed-into-law": {
+      "acquired": "2026-11-21T02:34:32.200371+00:00",
+      "acquisition_seconds": 42.200371,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "policy",
+      "penalized": [],
+      "published": "2026-11-21T02:33:50+00:00",
+      "source": "Casa Bianca – comunicati",
+      "status": "SCARTARE",
+      "title": "Congressional Bills H.R. 5284, H.R. 8352, and H.R. 10159 Signed into Law",
+      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/congressional-bills-h-r-5284-h-r-8352-and-h-r-10159-signed-into-law"
+    },
     "https://www.whitehouse.gov/briefings-statements/2026/11/h-r-10167-common-cents-act": {
       "acquired": "2026-11-20T19:48:39.997373+00:00",
       "acquisition_seconds": 421.997373,
@@ -2799,6 +2815,38 @@
       "status": "SCARTARE",
       "title": "U.S.-Russia-China Heads of State Declaration toward Peace",
       "url": "https://www.whitehouse.gov/briefings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace"
+    },
+    "https://www.whitehouse.gov/presidential-actions/2026/11/national-adoption-month-2026": {
+      "acquired": "2026-11-21T02:34:32.210691+00:00",
+      "acquisition_seconds": 174.210691,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "policy",
+      "penalized": [],
+      "published": "2026-11-21T02:31:38+00:00",
+      "source": "Casa Bianca – azioni",
+      "status": "SCARTARE",
+      "title": "NATIONAL ADOPTION MONTH, 2026",
+      "url": "https://www.whitehouse.gov/presidential-actions/2026/11/national-adoption-month-2026"
+    },
+    "https://www.whitehouse.gov/presidential-actions/2026/11/protecting-the-executives-privileges-and-enhancing-efficiencies-in-federal-contracting": {
+      "acquired": "2026-11-21T02:34:32.210691+00:00",
+      "acquisition_seconds": 207.210691,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "policy",
+      "penalized": [],
+      "published": "2026-11-21T02:31:05+00:00",
+      "source": "Casa Bianca – azioni",
+      "status": "SCARTARE",
+      "title": "PROTECTING THE EXECUTIVE’S PRIVILEGES AND ENHANCING EFFICIENCIES IN FEDERAL CONTRACTING",
+      "url": "https://www.whitehouse.gov/presidential-actions/2026/11/protecting-the-executives-privileges-and-enhancing-efficiencies-in-federal-contracting"
     }
   },
   "pravda": [],
