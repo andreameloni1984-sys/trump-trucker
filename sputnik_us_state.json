@@ -16,22 +16,6 @@
       "title": "NVIDIA and Microsoft Expand Accelerated Computing From Azure to Windows PCs",
       "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs"
     },
-    "https://truthsocial.com/@realDonaldTrump/117644724699997043": {
-      "acquired": "2026-11-20T12:37:30.341419+00:00",
-      "acquisition_seconds": 62212.341419,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-19T19:20:38+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Video post from November 19, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117644724699997043"
-    },
     "https://truthsocial.com/@realDonaldTrump/117644783615139589": {
       "acquired": "2026-11-20T12:37:30.341419+00:00",
       "acquisition_seconds": 61313.341419,
@@ -2735,6 +2719,22 @@
       "status": "SCARTARE",
       "title": "Micron and Sandisk stocks might look like bargains, but analysts say that’s actually a red flag",
       "url": "https://www.marketwatch.com/story/micron-and-sandisk-stocks-might-look-like-bargains-but-analysts-say-thats-actually-a-red-flag-da1f1f5d"
+    },
+    "https://www.marketwatch.com/story/my-husband-is-happily-retired-at-64-and-thinks-i-should-keep-working-is-he-being-fair-325c5f38": {
+      "acquired": "2026-11-21T19:34:40.784456+00:00",
+      "acquisition_seconds": 700.784456,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-21T19:23:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "My husband is happily retired at 64 and thinks I should keep working. Is he being fair?",
+      "url": "https://www.marketwatch.com/story/my-husband-is-happily-retired-at-64-and-thinks-i-should-keep-working-is-he-being-fair-325c5f38"
     },
     "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a": {
       "acquired": "2026-11-20T12:37:30.328881+00:00",
