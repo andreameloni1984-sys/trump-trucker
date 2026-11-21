@@ -423,7 +423,12 @@ def fetch_public_text(url: str) -> str:
     request = urllib.request.Request(
         url,
         headers={
-            "User-Agent": os.getenv("SEC_USER_AGENT", "SPUTNIK/4.0 public-source-monitor"),
+            # Solo la SEC riceve la firma con l'e-mail di contatto.
+            "User-Agent": os.getenv(
+                "SPUTNIK_FEED_USER_AGENT",
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/130.0 Safari/537.36 SPUTNIK-feed-reader",
+            ),
             "Accept": "text/html,application/xhtml+xml,text/plain",
         },
     )
