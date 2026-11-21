@@ -533,3 +533,66 @@ def deliver(state: dict[str, Any], trump_findings: list[dict], alert_events: lis
             pending.append(text)
     state["analyst_outbox"] = pending[-20:]
     return delivered
+
+
+# ----------------------------------------------------------------------------- contesto per il bot CFD
+
+CONTEXT_FILE = os.getenv("SPUTNIK_CONTEXT_FILE", "sputnik_context.json")
+CONTEXT_MONEY_DAYS = 45   # i 13F arrivano fino a 45 giorni dopo il trimestre
+
+
+def export_context(state: dict[str, Any], now: datetime | None = None) -> dict[str, Any]:
+    """Riassunto pubblico per il bot CFD di Gagarin: notizie Trump (24h) con direzioni e mosse dei miliardari."""
+    now = now or _now()
+    try:
+        from sputnik_catalyst import directional_news_candidates
+    except Exception:
+        directional_news_candidates = None
+    trump = []
+    for item in recent_trump(state, 24, now)[:15]:
+        published = _parse_time(item.get("published")) or _parse_time(item.get("detected_at"))
+        normalized = {**item, "published": published.isoformat() if published else ""}
+        hyps = []
+        if directional_news_candidates:
+            try:
+                hyps = directional_news_candidates([normalized], limit=6)
+            except Exception:
+                hyps = []
+        trump.append({
+            "title": str(item.get("title") or "")[:200],
+            "published": normalized["published"],
+            "url": item.get("url", ""),
+            "source": _source_name(item),
+            "domains": list(item.get("domains") or []),
+            "bias": [{"instrument": h["instrument"], "bias": h["bias"], "reason": h["reason"]} for h in hyps],
+        })
+    money = []
+    for m in recent_moves(state, CONTEXT_MONEY_DAYS, now)[:40]:
+        row = {"kind": m["kind"], "who": m["who"], "filed": m.get("filed", ""), "themes": m.get("themes", [])}
+        if m["kind"] == "TRADE":
+            row.update({"action": m.get("action"), "security": short_security(m.get("security", "")),
+                        "issuer": m.get("issuer", ""), "value": m.get("value")})
+        else:
+            row["top"] = [p["security"] for p in m.get("top", [])[:5]]
+        money.append(row)
+    return {"version": 1, "trump": trump, "money": money}
+
+
+def write_context(state: dict[str, Any], path: str = CONTEXT_FILE, now: datetime | None = None) -> bool:
+    """Scrive il file solo se il contenuto è cambiato (evita commit inutili ogni 15 minuti)."""
+    import json
+    from pathlib import Path
+    now = now or _now()
+    data = export_context(state, now)
+    target = Path(path)
+    try:
+        current = json.loads(target.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        current = {}
+    comparable = dict(current)
+    comparable.pop("updated_at", None)
+    if comparable == data:
+        return False
+    data["updated_at"] = now.isoformat()
+    target.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return True
