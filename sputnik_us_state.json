@@ -336,22 +336,6 @@
       "title": "RT @SchoenlawBy engaging in an unprecedented tripartite summit with the leaders of China and Russia, countries with which we have profound differences, President Trump not only continues his well-founded policy of always seeking to keep dialogue open, but that policy is consistent with the great sta",
       "url": "https://truthsocial.com/@realDonaldTrump/117648902586194402"
     },
-    "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261119a.htm": {
-      "acquired": "2026-11-20T12:37:30.311422+00:00",
-      "acquisition_seconds": 74250.311422,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "fed",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "fed",
-      "penalized": [],
-      "published": "2026-11-19T16:00:00+00:00",
-      "source": "Federal Reserve",
-      "status": "SCARTARE",
-      "title": "Federal Reserve Board issues enforcement action with former employee of First Security Bancorp",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261119a.htm"
-    },
     "https://www.federalreserve.gov/newsevents/pressreleases/other20261120a.htm": {
       "acquired": "2026-11-20T15:08:04.538774+00:00",
       "acquisition_seconds": 484.538774,
@@ -383,22 +367,6 @@
       "status": "SCARTARE",
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/19/3406914/0/en/national-advertising-division-finds-renewal-by-andersen-s-more-5-star-reviews-claim-supported.html": {
-      "acquired": "2026-11-20T13:19:23.896725+00:00",
-      "acquisition_seconds": 76763.896725,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-19T16:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "National Advertising Division Finds Renewal by Andersen’s “More 5-Star Reviews” Claim Supported",
-      "url": "https://www.globenewswire.com/news-release/2026/11/19/3406914/0/en/national-advertising-division-finds-renewal-by-andersen-s-more-5-star-reviews-claim-supported.html"
     },
     "https://www.globenewswire.com/news-release/2026/11/19/3406991/0/en/generative-ai-in-family-law-california-puts-a-lawyer-s-ai-duties-in-statute-what-senate-bill-574-requires-of-family-law-practice-and-what-it-leaves-open.html": {
       "acquired": "2026-11-20T13:19:23.896725+00:00",
@@ -687,6 +655,22 @@
       "status": "SCARTARE",
       "title": "Silver Law Group Investigating Claims On Behalf Of Investors In Alleged $600 Million Backward Hat Capital Ponzi Scheme",
       "url": "https://www.globenewswire.com/news-release/2026/11/20/3407850/21447/en/silver-law-group-investigating-claims-on-behalf-of-investors-in-alleged-600-million-backward-hat-capital-ponzi-scheme.html"
+    },
+    "https://www.govinfo.gov/app/details/BILLS-114hr5132ih": {
+      "acquired": "2026-11-21T16:08:07.148770+00:00",
+      "acquisition_seconds": 607.14877,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-21T15:58:00+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "H.R. 5132 (IH) - Crooked River Ranch Fire Protection Act",
+      "url": "https://www.govinfo.gov/app/details/BILLS-114hr5132ih"
     },
     "https://www.govinfo.gov/app/details/BILLS-119hr10136rfs": {
       "acquired": "2026-11-20T12:37:30.348687+00:00",
