@@ -65661,7 +65661,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-21T19:09:32.988002+00:00",
+  "updated_at": "2026-11-21T19:19:19.427498+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -82436,8 +82436,8 @@
     "9e6641c749ac81abf426a684": "2026-11-21T19:09:32.832392+00:00"
   },
   "intelligence_feed_initialized": {
-    "https://www.trumpstruth.org/feed": "2026-11-21T19:09:32.946507+00:00",
-    "https://www.whitehouse.gov/feed/": "2026-11-21T19:09:32.832471+00:00"
+    "https://www.trumpstruth.org/feed": "2026-11-21T19:19:18.767467+00:00",
+    "https://www.whitehouse.gov/feed/": "2026-11-21T19:19:18.688795+00:00"
   },
   "analyst_seen_filings": {
     "0acc347284b75f9c3256837f": "2026-11-21T16:52:14.330835+00:00",
@@ -87494,5 +87494,8 @@
   },
   "analyst_started_at": "2026-11-21T16:33:10.411603+00:00",
   "analyst_outbox": [],
-  "analyst_brief_date": "2026-11-21"
+  "analyst_brief_date": "2026-11-21",
+  "analyst_predictions": {},
+  "analyst_counts": {},
+  "analyst_report_week": "2026-W47"
 }
