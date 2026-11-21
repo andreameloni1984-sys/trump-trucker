@@ -1,0 +1,118 @@
+{
+ "version": 1,
+ "trump": [],
+ "money": [
+  {
+   "kind": "TRADE",
+   "who": "Carl Icahn",
+   "filed": "2026-11-17",
+   "themes": [],
+   "action": "VENDUTO",
+   "security": "Common Stock",
+   "issuer": "Centuri Holdings, Inc. (CTRI)",
+   "value": 3565620.2399999998
+  },
+  {
+   "kind": "13F",
+   "who": "Warren Buffett · Berkshire Hathaway",
+   "filed": "2026-11-16",
+   "themes": [
+    "AI_TECH",
+    "ENERGY",
+    "FINANCE"
+   ],
+   "top": [
+    "AMERICAN EXPRESS CO COM",
+    "APPLE INC COM",
+    "COCA COLA CO COM",
+    "ALPHABET INC CAP STK CL A",
+    "APPLE INC COM"
+   ]
+  },
+  {
+   "kind": "13F",
+   "who": "Stanley Druckenmiller · Duquesne",
+   "filed": "2026-11-16",
+   "themes": [
+    "AI_TECH",
+    "MEDIA",
+    "METALS",
+    "PHARMA"
+   ],
+   "top": [
+    "Natera Inc COM",
+    "Seagate Technology Hldngs Pl ORD SHS",
+    "Amazon Com Inc COM",
+    "Fox Corp CL A COM",
+    "Ypf Sociedad Anonima SPONSORED ADS"
+   ]
+  },
+  {
+   "kind": "13F",
+   "who": "John Paulson · Paulson & Co",
+   "filed": "2026-11-16",
+   "themes": [
+    "MEDIA",
+    "METALS",
+    "PHARMA"
+   ],
+   "top": [
+    "MADRIGAL PHARMACEUTICALS INC COM",
+    "PERPETUA RESOURCES CORP COM",
+    "ACADIAN ASSET MANAGEMENT INC COM",
+    "BAUSCH HEALTH COS INC COM",
+    "INTERNATIONAL TOWER HILL MIN COM"
+   ]
+  },
+  {
+   "kind": "13F",
+   "who": "Nelson Peltz · Trian",
+   "filed": "2026-11-16",
+   "themes": [
+    "DEFENSE",
+    "SPACE"
+   ],
+   "top": [
+    "GE Aerospace COM NEW",
+    "Solventum Corporation COM SHS",
+    "GE HealthCare Technologies Inc. COM",
+    "Ferguson Enterprises Inc. COMMON STOCK\nNEW",
+    "Wendys Co. COM"
+   ]
+  },
+  {
+   "kind": "13F",
+   "who": "David Tepper · Appaloosa",
+   "filed": "2026-11-16",
+   "themes": [
+    "AI_TECH",
+    "DEFENSE",
+    "ENERGY",
+    "SPACE"
+   ],
+   "top": [
+    "MICRON TECHNOLOGY INC COM",
+    "AMAZON COM INC COM",
+    "TAIWAN SEMICONDUCTOR MANUFAC SPONSORED ADS",
+    "SPACE EXPLORATION TECHN CORP CLASS A COM STK",
+    "UBER TECHNOLOGIES INC COM"
+   ]
+  },
+  {
+   "kind": "13F",
+   "who": "Carl Icahn",
+   "filed": "2026-11-13",
+   "themes": [
+    "ENERGY"
+   ],
+   "top": [
+    "CVR Energy Inc COM",
+    "Icahn Enterprises LP DEPOSITARY UNIT",
+    "Icahn Enterprises LP DEPOSITARY UNIT",
+    "Icahn Enterprises LP DEPOSITARY UNIT",
+    "Icahn Enterprises LP DEPOSITARY UNIT"
+   ]
+  }
+ ],
+ "updated_at": "2026-11-21T18:12:28.690637+00:00"
+}
