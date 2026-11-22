@@ -1880,22 +1880,6 @@
       "title": "Nvidia’s nonstop drama is keeping buyers away from a historically cheap stock",
       "url": "https://www.marketwatch.com/story/nvidias-nonstop-drama-is-keeping-buyers-away-from-a-historically-cheap-stock-604022da"
     },
-    "https://www.marketwatch.com/story/one-thing-thanksgiving-travelers-can-be-thankful-for-gas-prices-are-down-75-cents-from-this-years-peak-efac1809": {
-      "acquired": "2026-11-20T21:49:03.130257+00:00",
-      "acquisition_seconds": 903.130257,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T21:34:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "One thing Thanksgiving travelers can be thankful for: Gas prices are down 75 cents from this year’s peak",
-      "url": "https://www.marketwatch.com/story/one-thing-thanksgiving-travelers-can-be-thankful-for-gas-prices-are-down-75-cents-from-this-years-peak-efac1809"
-    },
     "https://www.marketwatch.com/story/private-equity-has-been-buying-up-hospice-centers-with-striking-consequences-63642545": {
       "acquired": "2026-11-22T17:34:45.059172+00:00",
       "acquisition_seconds": 765.059172,
@@ -1911,6 +1895,22 @@
       "status": "SCARTARE",
       "title": "Private equity has been buying up hospice centers — with striking consequences",
       "url": "https://www.marketwatch.com/story/private-equity-has-been-buying-up-hospice-centers-with-striking-consequences-63642545"
+    },
+    "https://www.marketwatch.com/story/ron-johnsons-social-security-gaffe-buried-important-news-b96e0ce8": {
+      "acquired": "2026-11-22T21:34:37.864784+00:00",
+      "acquisition_seconds": 397.864784,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-22T21:28:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Ron Johnson’s Social Security gaffe buried important news",
+      "url": "https://www.marketwatch.com/story/ron-johnsons-social-security-gaffe-buried-important-news-b96e0ce8"
     },
     "https://www.marketwatch.com/story/so-sad-and-so-true-has-your-family-talked-about-snls-sister-sketch-yet-19bf9d67": {
       "acquired": "2026-11-22T16:34:51.423457+00:00",
@@ -2215,38 +2215,6 @@
       "status": "SCARTARE",
       "title": "SHAREHOLDER ALERT: Bronstein Gewirtz & Grossman, LLC Announces Class Action Against EyePoint, Inc. (NASDAQ: EYPT) -- Investors Who Suffered Losses Are Encouraged to Contact the Firm.",
       "url": "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-eyepoint-inc-nasdaq-eypt--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946397.html"
-    },
-    "https://www.prnewswire.com/news-releases/sp-global-to-present-at-goldman-sachs-financial-services-conference-on-december-8-2026-302947341.html": {
-      "acquired": "2026-11-21T16:50:30.240861+00:00",
-      "acquisition_seconds": 69630.240861,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T21:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "S&P Global to Present at Goldman Sachs Financial Services Conference on December 8, 2026",
-      "url": "https://www.prnewswire.com/news-releases/sp-global-to-present-at-goldman-sachs-financial-services-conference-on-december-8-2026-302947341.html"
-    },
-    "https://www.prnewswire.com/news-releases/sp-global-to-present-at-ubs-global-technology-and-ai-conference-on-december-2-2026-302947340.html": {
-      "acquired": "2026-11-21T16:50:30.240861+00:00",
-      "acquisition_seconds": 69630.240861,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T21:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "S&P Global to Present at UBS Global Technology and AI Conference on December 2, 2026",
-      "url": "https://www.prnewswire.com/news-releases/sp-global-to-present-at-ubs-global-technology-and-ai-conference-on-december-2-2026-302947340.html"
     },
     "https://www.prnewswire.com/news-releases/spolonos-huawei-predstavuje-na-festivale-fintech-v-singapure-2026-monosti-kalovania-finannej-umelej-inteligencie-302947473.html": {
       "acquired": "2026-11-21T16:50:30.240861+00:00",
