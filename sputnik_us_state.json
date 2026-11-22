@@ -920,6 +920,22 @@
       "title": "Image post from November 22, 2026",
       "url": "https://truthsocial.com/@realDonaldTrump/117662086130550876"
     },
+    "https://truthsocial.com/@realDonaldTrump/117662138213122537": {
+      "acquired": "2026-11-22T22:07:52.495391+00:00",
+      "acquisition_seconds": 3525.495391,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-22T21:09:07+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Video post from November 22, 2026",
+      "url": "https://truthsocial.com/@realDonaldTrump/117662138213122537"
+    },
     "https://truthsocial.com/@realDonaldTrump/117662290160182921": {
       "acquired": "2026-11-22T21:49:11.121680+00:00",
       "acquisition_seconds": 86.1664,
@@ -937,21 +953,39 @@
       "title": "As everyone remembers, I predicted two things concerning the November 3rd Midterm Elections. One, that if the Democrats win, the Stock Markets would go down, substantially, which they have, and two, that the Islamic Republic of Iran, which has killed 81,000 protestors as of today, will grow more agg",
       "url": "https://truthsocial.com/@realDonaldTrump/117662290160182921"
     },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407850/21447/en/silver-law-group-investigating-claims-on-behalf-of-investors-in-alleged-600-million-backward-hat-capital-ponzi-scheme.html": {
-      "acquired": "2026-11-20T22:48:44.369672+00:00",
-      "acquisition_seconds": 2924.369672,
+    "https://truthsocial.com/@realDonaldTrump/117662295722625733": {
+      "acquired": "2026-11-22T22:07:52.495391+00:00",
+      "acquisition_seconds": 1122.182422,
       "beneficiaries": [],
       "bias": null,
-      "category": "other",
+      "category": "presidential",
       "evidence": "direzione o conferma insufficiente",
       "issuer": "",
-      "kind": "wire",
+      "kind": "truth",
       "penalized": [],
-      "published": "2026-11-20T22:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
+      "primary_verified": true,
+      "published": "2026-11-22T21:49:11.040000+00:00",
+      "source": "Donald Trump / Truth Social",
       "status": "SCARTARE",
-      "title": "Silver Law Group Investigating Claims On Behalf Of Investors In Alleged $600 Million Backward Hat Capital Ponzi Scheme",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407850/21447/en/silver-law-group-investigating-claims-on-behalf-of-investors-in-alleged-600-million-backward-hat-capital-ponzi-scheme.html"
+      "title": "Isn’t it interesting that Oil prices have dropped precipitously after the Midterm Elections? I said that was going to happen. The whole thing is a Giant Hoax! President DONALD J. TRUMP",
+      "url": "https://truthsocial.com/@realDonaldTrump/117662295722625733"
+    },
+    "https://truthsocial.com/@realDonaldTrump/117662311303966632": {
+      "acquired": "2026-11-22T22:07:52.495391+00:00",
+      "acquisition_seconds": 884.544008,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-22T21:53:08.792000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "It’s incredible that Somalians have been able to completely take over the once great State of Minnesota. They own it, “lock, stock, and barrel” and, almost 95% are on some form of welfare. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP",
+      "url": "https://truthsocial.com/@realDonaldTrump/117662311303966632"
     },
     "https://www.govinfo.gov/app/details/BILLS-114hr5132ih": {
       "acquired": "2026-11-21T16:08:07.148770+00:00",
@@ -2168,22 +2202,6 @@
       "status": "SCARTARE",
       "title": "Mendez & Sanchez Finds Three Counties Accounted for Nearly Two-Thirds of California Rideshare Trips",
       "url": "https://www.prnewswire.com/news-releases/mendez--sanchez-finds-three-counties-accounted-for-nearly-two-thirds-of-california-rideshare-trips-302947433.html"
-    },
-    "https://www.prnewswire.com/news-releases/payoneer-receives-occ-conditional-approval-to-form-stablecoin-national-trust-bank-302947358.html": {
-      "acquired": "2026-11-21T16:50:30.240861+00:00",
-      "acquisition_seconds": 67710.240861,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T22:02:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Payoneer Receives OCC Conditional Approval to Form Stablecoin National Trust Bank",
-      "url": "https://www.prnewswire.com/news-releases/payoneer-receives-occ-conditional-approval-to-form-stablecoin-national-trust-bank-302947358.html"
     },
     "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-build-a-bear-workshop-inc-nyse-bbw--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946384.html": {
       "acquired": "2026-11-22T17:06:33.628817+00:00",
