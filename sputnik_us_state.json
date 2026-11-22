@@ -855,38 +855,6 @@
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407726/0/en/federal-and-provincial-governments-announce-250-million-to-build-new-port-of-sault-ste-marie.html": {
-      "acquired": "2026-11-20T17:48:46.873293+00:00",
-      "acquisition_seconds": 2266.873293,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T17:11:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Federal and Provincial governments announce $250 million to build new Port of Sault Ste. Marie",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407726/0/en/federal-and-provincial-governments-announce-250-million-to-build-new-port-of-sault-ste-marie.html"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407727/0/en/fabricated-evidence-in-custody-and-domestic-violence-proceedings-the-exhibit-nobody-can-verify.html": {
-      "acquired": "2026-11-20T17:48:46.873293+00:00",
-      "acquisition_seconds": 2146.873293,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T17:13:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Fabricated Evidence in Custody and Domestic Violence Proceedings: The Exhibit Nobody Can Verify",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407727/0/en/fabricated-evidence-in-custody-and-domestic-violence-proceedings-the-exhibit-nobody-can-verify.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/20/3407827/0/en/1847-holdings-signs-term-sheet-for-sale-of-cmd-to-employee-stock-ownership-plan-in-transaction-expected-to-significantly-strengthen-its-balance-sheet.html": {
       "acquired": "2026-11-20T22:48:44.369672+00:00",
       "acquisition_seconds": 5864.369672,
@@ -1830,22 +1798,6 @@
       "status": "SCARTARE",
       "title": "Larry McDonald survived Lehman’s collapse. Now he warns the credit market is signaling a growth shock for stocks.",
       "url": "https://www.marketwatch.com/story/larry-mcdonald-survived-lehmans-collapse-now-he-warns-the-credit-market-is-signaling-a-growth-shock-for-stocks-5c3a62ef"
-    },
-    "https://www.marketwatch.com/story/medicare-beneficiaries-could-skip-the-nursing-home-for-cheaper-care-at-home-under-new-bill-e289c8d0": {
-      "acquired": "2026-11-20T17:19:00.488535+00:00",
-      "acquisition_seconds": 240.488535,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T17:15:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Medicare beneficiaries could skip the nursing home for cheaper care at home under new bill",
-      "url": "https://www.marketwatch.com/story/medicare-beneficiaries-could-skip-the-nursing-home-for-cheaper-care-at-home-under-new-bill-e289c8d0"
     },
     "https://www.marketwatch.com/story/micron-and-sandisk-stocks-might-look-like-bargains-but-analysts-say-thats-actually-a-red-flag-da1f1f5d": {
       "acquired": "2026-11-20T21:49:03.130257+00:00",
