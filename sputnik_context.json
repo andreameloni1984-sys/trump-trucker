@@ -1,6 +1,17 @@
 {
  "version": 1,
- "trump": [],
+ "trump": [
+  {
+   "title": "It is going to be very hard for me to work with Chuck Schumer should he become Senate Majority Leader. He failed badly as “Leader” once before, one of the worst history, and I have little doubt that h",
+   "published": "2026-11-22T13:41:41+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43689",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "AI_TECH"
+   ],
+   "bias": []
+  }
+ ],
  "money": [
   {
    "kind": "TRADE",
@@ -114,5 +125,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-21T18:12:28.690637+00:00"
+ "updated_at": "2026-11-22T13:49:23.892724+00:00"
 }
