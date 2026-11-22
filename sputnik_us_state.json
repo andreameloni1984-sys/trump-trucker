@@ -888,6 +888,22 @@
       "title": "Video post from November 22, 2026",
       "url": "https://truthsocial.com/@realDonaldTrump/117661248657891612"
     },
+    "https://truthsocial.com/@realDonaldTrump/117661447235607485": {
+      "acquired": "2026-11-22T19:06:18.418984+00:00",
+      "acquisition_seconds": 3174.418984,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-22T18:13:24+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Image post from November 22, 2026",
+      "url": "https://truthsocial.com/@realDonaldTrump/117661447235607485"
+    },
     "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm": {
       "acquired": "2026-11-20T21:18:46.376041+00:00",
       "acquisition_seconds": 226.376041,
@@ -2120,22 +2136,6 @@
       "title": "These stocks were crushed the most this week as the tech wreck accelerated",
       "url": "https://www.marketwatch.com/story/these-stocks-were-crushed-the-most-this-week-as-the-tech-wreck-accelerated-8d6f7323"
     },
-    "https://www.marketwatch.com/story/trump-is-trying-to-stop-big-techs-push-to-build-data-centers-outside-the-u-s-86f32f7f": {
-      "acquired": "2026-11-20T19:06:47.868269+00:00",
-      "acquisition_seconds": 587.868269,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T18:57:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Trump is trying to stop Big Tech’s push to build data centers outside the U.S.",
-      "url": "https://www.marketwatch.com/story/trump-is-trying-to-stop-big-techs-push-to-build-data-centers-outside-the-u-s-86f32f7f"
-    },
     "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240": {
       "acquired": "2026-11-22T16:34:51.423457+00:00",
       "acquisition_seconds": 171.423457,
@@ -2200,22 +2200,6 @@
       "title": "abrdn Income Credit Strategies Fund (ACP) Announces Upcoming 1-for-4 Reverse Stock Split",
       "url": "https://www.prnewswire.com/news-releases/abrdn-income-credit-strategies-fund-acp-announces-upcoming-1-for-4-reverse-stock-split-302946182.html"
     },
-    "https://www.prnewswire.com/news-releases/branch-ranked-number-146-fastest-growing-company-in-north-america-on-the-2026-deloitte-technology-fast-500-302947150.html": {
-      "acquired": "2026-11-21T16:50:30.240861+00:00",
-      "acquisition_seconds": 78630.240861,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T19:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Branch Ranked Number 146 Fastest-Growing Company in North America on the 2026 Deloitte Technology Fast 500™",
-      "url": "https://www.prnewswire.com/news-releases/branch-ranked-number-146-fastest-growing-company-in-north-america-on-the-2026-deloitte-technology-fast-500-302947150.html"
-    },
     "https://www.prnewswire.com/news-releases/highmark-health-reports-revenue-of-26-5-billion-741-million-in-operating-income-for-nine-months-ended-sept-30--2026--302947418.html": {
       "acquired": "2026-11-21T16:50:30.240861+00:00",
       "acquisition_seconds": 62070.240861,
@@ -2247,6 +2231,22 @@
       "status": "SCARTARE",
       "title": "How to Go 2x Long Anthropic (ANT): Leverage Shares by Themes Explains ANUU, the 2x Leveraged Anthropic ETF Launching Monday",
       "url": "https://www.prnewswire.com/news-releases/how-to-go-2x-long-anthropic-ant-leverage-shares-by-themes-explains-anuu-the-2x-leveraged-anthropic-etf-launching-monday-302947477.html"
+    },
+    "https://www.prnewswire.com/news-releases/how-to-short-anthropic-ant-leverage-shares-by-themes-explains-andd-and-anss-inverse-anthropic-etfs-short-selling-and-put-options-302947480.html": {
+      "acquired": "2026-11-22T19:06:18.564496+00:00",
+      "acquisition_seconds": 378.564496,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-22T19:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "How to Short Anthropic (ANT): Leverage Shares by Themes Explains ANDD and ANSS Inverse Anthropic ETFs, Short Selling and Put Options",
+      "url": "https://www.prnewswire.com/news-releases/how-to-short-anthropic-ant-leverage-shares-by-themes-explains-andd-and-anss-inverse-anthropic-etfs-short-selling-and-put-options-302947480.html"
     },
     "https://www.prnewswire.com/news-releases/huawei---singapore-fintech-festival-2026---------302947472.html": {
       "acquired": "2026-11-21T16:50:30.240861+00:00",
