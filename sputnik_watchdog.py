@@ -37,6 +37,7 @@ class Check:
 CHECKS = (
     Check("Gagarin · bot CFD", "commodity-news-scanner", "cfd-bot.yml", timedelta(hours=3)),
     Check("Sputnik · Trump e miliardari", "trump-trucker", "trump_tracker.yml", timedelta(hours=1)),
+    Check("Sputnik · corsia veloce Trump", "trump-trucker", "sputnik-fast.yml", timedelta(minutes=40)),
     Check("Sputnik · trader demo", "trump-trucker", "sputnik-demo-trader.yml", timedelta(minutes=90),
           weekdays_only=True, start=time(8, 0), end=time(16, 59)),
     Check("Stella Rossa · calendario USA", "agri-intelligence-bot", "oracle.yml", timedelta(hours=3),

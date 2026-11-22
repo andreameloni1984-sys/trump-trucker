@@ -1,0 +1,52 @@
+name: SPUTNIK veloce (post di Trump ogni 5 minuti)
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Stesso gruppo del giro completo e del trader demo: un solo job alla volta salva lo stato.
+concurrency:
+  group: sputnik-main
+  queue: max
+  cancel-in-progress: false
+
+jobs:
+  fast:
+    if: github.ref == 'refs/heads/main' && (vars.SPUTNIK_FAST_LANE || '1') != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Post di Trump e Casa Bianca
+        env:
+          SPUTNIK_ANALYST_TELEGRAM: ${{ vars.SPUTNIK_ANALYST_TELEGRAM || '1' }}
+          SPUTNIK_SOCIAL_ENABLED: "1"
+          SPUTNIK_TELEGRAM_POLLING: "0"
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python trump_tracker.py --fast
+      - name: Salva lo stato
+        if: success()
+        run: |
+          git config user.name "SPUTNIK Bot"
+          git config user.email "sputnik-bot@users.noreply.github.com"
+          git add sputnik_state.json
+          if [ -f sputnik_context.json ]; then git add sputnik_context.json; fi
+          if git diff --cached --quiet; then
+            echo "SPUTNIK VELOCE: stato invariato; nessun commit."
+            exit 0
+          fi
+          git commit -m "chore: persist Sputnik state (fast lane)"
+          git fetch origin main
+          if ! git rebase origin/main; then
+            echo "::error::Conflitto sullo stato: interrotto per non perdere la deduplicazione."
+            git rebase --abort
+            exit 1
+          fi
+          git push origin main

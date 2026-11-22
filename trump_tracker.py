@@ -546,7 +546,7 @@ def _configured_rss_feeds() -> list[str]:
     ]
 
 
-def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
+def intelligence_snapshot(state: dict[str, Any], feeds_only: bool = False) -> list[dict[str, Any]]:
     if os.getenv("SPUTNIK_SOCIAL_ENABLED", "1").strip().lower() not in {"1", "true", "yes"}:
         return []
 
@@ -556,7 +556,9 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
 
     # Keep the legacy homepage scan for broad discovery, but do not treat its
     # generic page-wide keywords as an individual news event.
-    for source, url in INTELLIGENCE_SOURCES.items():
+    # La corsia veloce (ogni 5 minuti) legge solo i feed con i singoli post: la scansione
+    # delle home page resta al giro completo, così lo stato non cambia a ogni giro.
+    for source, url in ({} if feeds_only else INTELLIGENCE_SOURCES).items():
         try:
             body = fetch_public_text(url)
         except Exception as exc:
@@ -654,7 +656,9 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
             }
             finding["action_reaction"] = build_action_reaction_record(finding, body)
             findings.append(finding)
-        initialized_feeds[feed_url] = utc_now().isoformat()
+        # Registra solo la prima inizializzazione: aggiornarla a ogni giro cambierebbe
+        # lo stato (e creerebbe un commit) anche senza notizie nuove.
+        initialized_feeds.setdefault(feed_url, utc_now().isoformat())
 
     # Bound per-item deduplication state and history to prevent unbounded growth.
     if len(known_items) > 2000:
@@ -1946,5 +1950,38 @@ def main() -> None:
     print(f"SPUTNIK: total run={((time.monotonic() - run_started) * 1000.0):.0f}ms", flush=True)
 
 
+def fast_main() -> None:
+    """Corsia veloce (ogni 5 minuti): solo i post di Trump e della Casa Bianca.
+
+    Niente SEC né home page: legge i feed, manda gli avvisi Trump, aggiorna il
+    contesto per il bot CFD e la verifica delle ipotesi. Il giro completo ogni
+    15 minuti continua a occuparsi di SEC, riepilogo e pagellino.
+    """
+    import sputnik_analyst
+
+    run_started = time.monotonic()
+    state = load_state()
+    if not bool(state.get("telegram_active", True)):
+        print("SPUTNIK VELOCE: monitoraggio fermo.")
+        return
+    findings = intelligence_snapshot(state, feeds_only=True)
+    print(f"SPUTNIK VELOCE: {len(findings)} nuovi post rilevanti.", flush=True)
+    try:
+        sputnik_analyst.track_predictions(state)
+        sputnik_analyst.write_context(state)
+    except Exception as exc:
+        print(f"SPUTNIK VELOCE: contesto/ipotesi non aggiornati: {type(exc).__name__}", flush=True)
+    if findings and os.getenv("SPUTNIK_ANALYST_TELEGRAM", "").strip().lower() in {"1", "true", "yes"}:
+        delivered = sputnik_analyst.deliver(state, findings, [], [], send_telegram)
+        print(f"SPUTNIK VELOCE: {delivered} messaggi consegnati.", flush=True)
+    save_state(state)
+    print(f"SPUTNIK VELOCE: giro completato in {(time.monotonic() - run_started) * 1000:.0f}ms", flush=True)
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+
+    if "--fast" in sys.argv[1:]:
+        fast_main()
+    else:
+        main()
