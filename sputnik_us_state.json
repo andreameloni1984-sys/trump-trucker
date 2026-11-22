@@ -855,22 +855,6 @@
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407721/0/en/business-phone-systems-is-it-possible-to-get-crystal-clear-voip-unified-messaging-and-enterprise-grade-reliability-all-in-one-platform.html": {
-      "acquired": "2026-11-20T17:48:46.873293+00:00",
-      "acquisition_seconds": 2926.873293,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T17:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Business Phone Systems: Is it possible to get crystal-clear VoIP, unified messaging, and enterprise-grade reliability, all in one platform?",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407721/0/en/business-phone-systems-is-it-possible-to-get-crystal-clear-voip-unified-messaging-and-enterprise-grade-reliability-all-in-one-platform.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/20/3407726/0/en/federal-and-provincial-governments-announce-250-million-to-build-new-port-of-sault-ste-marie.html": {
       "acquired": "2026-11-20T17:48:46.873293+00:00",
       "acquisition_seconds": 2266.873293,
@@ -1943,6 +1927,22 @@
       "title": "‘Never too late to start’: Practical investing advice from some of the top women in finance",
       "url": "https://www.marketwatch.com/story/never-too-late-to-start-practical-investing-advice-from-some-of-the-top-women-in-finance-e01f0755"
     },
+    "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6": {
+      "acquired": "2026-11-22T17:06:33.553440+00:00",
+      "acquisition_seconds": 393.55344,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-22T17:00:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "‘Nvidia’s turmoil has me spooked’: Is it time to sell my stocks and buy real estate?",
+      "url": "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6"
+    },
     "https://www.marketwatch.com/story/nvidias-nonstop-drama-is-keeping-buyers-away-from-a-historically-cheap-stock-604022da": {
       "acquired": "2026-11-21T13:34:23.345846+00:00",
       "acquisition_seconds": 263.345846,
@@ -2422,6 +2422,38 @@
       "status": "SCARTARE",
       "title": "SEIA Showcases Next-Generation Advisor Development Strategy at Schwab IMPACT, with Advisors Under 40 Managing an Average of $166 Million in Assets",
       "url": "https://www.prnewswire.com/news-releases/seia-showcases-next-generation-advisor-development-strategy-at-schwab-impact-with-advisors-under-40-managing-an-average-of-166-million-in-assets-302947315.html"
+    },
+    "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-build-a-bear-workshop-inc-nyse-bbw--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946384.html": {
+      "acquired": "2026-11-22T17:06:33.628817+00:00",
+      "acquisition_seconds": 393.628817,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-22T17:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "SHAREHOLDER ALERT: Bronstein Gewirtz & Grossman, LLC Announces Class Action Against Build-A-Bear Workshop, Inc. (NYSE: BBW) -- Investors Who Suffered Losses Are Encouraged to Contact the Firm",
+      "url": "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-build-a-bear-workshop-inc-nyse-bbw--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946384.html"
+    },
+    "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-eyepoint-inc-nasdaq-eypt--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946397.html": {
+      "acquired": "2026-11-22T17:06:33.628817+00:00",
+      "acquisition_seconds": 393.628817,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-22T17:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "SHAREHOLDER ALERT: Bronstein Gewirtz & Grossman, LLC Announces Class Action Against EyePoint, Inc. (NASDAQ: EYPT) -- Investors Who Suffered Losses Are Encouraged to Contact the Firm.",
+      "url": "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-eyepoint-inc-nasdaq-eypt--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946397.html"
     },
     "https://www.prnewswire.com/news-releases/sp-global-to-present-at-goldman-sachs-financial-services-conference-on-december-8-2026-302947341.html": {
       "acquired": "2026-11-21T16:50:30.240861+00:00",
