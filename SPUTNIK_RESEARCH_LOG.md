@@ -1,5 +1,12 @@
 # SPUTNIK — Research and implementation log
 
+## 2026-11-22 — Corsia veloce per i post di Trump (ogni 5 minuti)
+
+- **Motivo:** il giro completo ogni 15 minuti (spesso avviato in ritardo da GitHub) lasciava 15–30 minuti tra un post di Trump e l'avviso.
+- **Implementato:** `python trump_tracker.py --fast` + `.github/workflows/sputnik-fast.yml` (cron ogni 5 minuti, stesso gruppo di concorrenza del giro completo). Legge solo i feed con i singoli post (Truth Social, Casa Bianca), manda gli avvisi Trump, aggiorna `sputnik_context.json` e la verifica delle ipotesi. SEC, home page, riepilogo e pagellino restano al giro completo.
+- **Stato stabile:** la data di inizializzazione dei feed viene scritta solo la prima volta, così un giro senza novità non crea commit.
+- **Controllo:** aggiunta al cane da guardia (avviso se non gira da 40 minuti). Spegnimento: variabile `SPUTNIK_FAST_LANE=0`.
+
 ## 2026-11-21 — Sputnik DEMO trader (Trading 212 Invest demo)
 
 - **Richiesta:** far comprare e vendere Sputnik in automatico, ma solo sul conto demo.
