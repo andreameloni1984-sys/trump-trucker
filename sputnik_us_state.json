@@ -839,6 +839,23 @@
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660771450282590",
       "url": "https://truthsocial.com/@realDonaldTrump/117660772187019609"
     },
+    "https://truthsocial.com/@realDonaldTrump/117661238591305263": {
+      "acquired": "2026-11-22T17:34:45.012788+00:00",
+      "acquisition_seconds": 865.188198,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-22T17:20:20.497000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "The Market is down more than 6 Trillion Dollars since the Democrats’ rather strange “win” on November 3rd. NASDAQ, by itself, is down 20%. This is 100% due to the fact that the Democrats are “BAD” due to their Anti Growth, and Retribution Only, Policies, and worse. If they don't change, FAST, it wil",
+      "url": "https://truthsocial.com/@realDonaldTrump/117661238591305263"
+    },
     "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm": {
       "acquired": "2026-11-20T21:18:46.376041+00:00",
       "acquisition_seconds": 226.376041,
@@ -1926,6 +1943,22 @@
       "status": "SCARTARE",
       "title": "One thing Thanksgiving travelers can be thankful for: Gas prices are down 75 cents from this year’s peak",
       "url": "https://www.marketwatch.com/story/one-thing-thanksgiving-travelers-can-be-thankful-for-gas-prices-are-down-75-cents-from-this-years-peak-efac1809"
+    },
+    "https://www.marketwatch.com/story/private-equity-has-been-buying-up-hospice-centers-with-striking-consequences-63642545": {
+      "acquired": "2026-11-22T17:34:45.059172+00:00",
+      "acquisition_seconds": 765.059172,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-22T17:22:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Private equity has been buying up hospice centers — with striking consequences",
+      "url": "https://www.marketwatch.com/story/private-equity-has-been-buying-up-hospice-centers-with-striking-consequences-63642545"
     },
     "https://www.marketwatch.com/story/so-sad-and-so-true-has-your-family-talked-about-snls-sister-sketch-yet-19bf9d67": {
       "acquired": "2026-11-22T16:34:51.423457+00:00",
