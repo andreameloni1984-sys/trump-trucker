@@ -688,22 +688,6 @@
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407361/0/en/heartsciences-shareholders-approve-proposed-business-combination-with-fortitude-mining.html": {
-      "acquired": "2026-11-20T13:19:23.896725+00:00",
-      "acquisition_seconds": 2963.896725,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T12:30:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "HeartSciences Shareholders Approve Proposed Business Combination with Fortitude Mining",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407361/0/en/heartsciences-shareholders-approve-proposed-business-combination-with-fortitude-mining.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/20/3407404/0/en/pet-supplements-market-to-reach-us-19-74-billion-by-2034-at-5-9-cagr-as-preventive-pet-healthcare-gains-consumer-attention-exclusive-report-by-the-insight-partners.html": {
       "acquired": "2026-11-20T13:19:23.896725+00:00",
       "acquisition_seconds": 83.896725,
@@ -2080,6 +2064,22 @@
       "title": "‘Buyers are out for blood’: With home sales at a record low, buyers are calling the shots",
       "url": "https://www.marketwatch.com/story/buyers-are-out-for-blood-as-housing-market-finally-hits-rock-bottom-fa5093a6"
     },
+    "https://www.marketwatch.com/story/can-stocks-bounce-back-after-a-brutal-week-this-timing-model-says-history-is-on-the-markets-side-beff1753": {
+      "acquired": "2026-11-22T12:34:45.737562+00:00",
+      "acquisition_seconds": 285.737562,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-22T12:30:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Can stocks bounce back after a brutal week? This timing model says history is on the market’s side.",
+      "url": "https://www.marketwatch.com/story/can-stocks-bounce-back-after-a-brutal-week-this-timing-model-says-history-is-on-the-markets-side-beff1753"
+    },
     "https://www.marketwatch.com/story/chip-stocks-see-2-3-trillion-weekly-wipeout-as-panic-grips-the-ai-trade-371f2f03": {
       "acquired": "2026-11-20T22:48:44.049914+00:00",
       "acquisition_seconds": 284.049914,
@@ -2127,22 +2127,6 @@
       "status": "SCARTARE",
       "title": "Everyone’s making money off ‘GTA 6’ this week — except investors in Take-Two’s stock",
       "url": "https://www.marketwatch.com/story/everyones-making-money-off-gta-6-this-week-except-investors-in-take-twos-stock-489ee01b"
-    },
-    "https://www.marketwatch.com/story/gamestop-has-transformed-from-a-meme-stock-into-a-real-company-analysts-say-7ae5c7ed": {
-      "acquired": "2026-11-20T12:37:30.328881+00:00",
-      "acquisition_seconds": 810.328881,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T12:24:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "GameStop has transformed from a meme stock into a ‘real company,’ analysts say",
-      "url": "https://www.marketwatch.com/story/gamestop-has-transformed-from-a-meme-stock-into-a-real-company-analysts-say-7ae5c7ed"
     },
     "https://www.marketwatch.com/story/grocery-stores-have-staggering-deals-for-thanksgiving-but-dont-get-used-to-these-lower-prices-just-yet-7adfc7f5": {
       "acquired": "2026-11-21T14:07:20.315697+00:00",
@@ -2367,22 +2351,6 @@
       "status": "SCARTARE",
       "title": "My husband is happily retired at 64 and thinks I should keep working. Is he being fair?",
       "url": "https://www.marketwatch.com/story/my-husband-is-happily-retired-at-64-and-thinks-i-should-keep-working-is-he-being-fair-325c5f38"
-    },
-    "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a": {
-      "acquired": "2026-11-20T12:37:30.328881+00:00",
-      "acquisition_seconds": 450.328881,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T12:30:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "My husband spent $80,000 on a boat, yet says my plans for a $100,000 pottery studio are irresponsible. Who’s right?",
-      "url": "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a"
     },
     "https://www.marketwatch.com/story/my-wife-pays-thousands-of-dollars-for-her-family-to-visit-from-argentina-how-can-i-convince-her-to-stop-9381351c": {
       "acquired": "2026-11-22T00:21:42.280945+00:00",
