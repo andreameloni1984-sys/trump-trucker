@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-22T21:49:01.699266+00:00",
+  "updated_at": "2026-11-22T21:51:53.554220+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1102,6 +1102,30 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "e6d097d93d8738d434a5743d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43707",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117662295722625733",
+      "title": "Isn’t it interesting that Oil prices have dropped precipitously after the Midterm Elections? I said that was going to happen. The whole thing is a Giant Hoax! President DONALD J. TRUMP",
+      "published": "Sun, 22 Nov 2026 21:49:11 +0000",
+      "domains": [
+        "ENERGY",
+        "AI_TECH"
+      ],
+      "text": "Isn’t it interesting that Oil prices have dropped precipitously after the Midterm Elections? I said that was going to happen. The whole thing is a Giant Hoax! President DONALD J. TRUMP Isn’t it interesting that Oil prices have dropped precipitously after the Midterm Elections? I said that was going to happen. The whole thing is a Giant Hoax! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T21:51:52.992972+00:00",
+      "event_id": "e6d097d93d8738d434a5743d",
+      "action_reaction": {
+        "event_id": "e6d097d93d8738d434a5743d",
+        "event_type": "ENERGY",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "c465dfe433a2d7a1d89ad14a": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8069,29 +8093,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "cdbcca3d7f03929a48c9b76a": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43263",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548977115767183",
-      "title": "Congressman Rich McCormick is an incredibly Strong Advocate for the Great People of Georgia's 7th Congressional District! A distinguished Emergency Room Doctor and Marine Helicopter Pilot, Rich knows the America First Policies required to Defend our Country, Support our Brave Military/Veterans, and",
-      "published": "Mon, 02 Nov 2026 21:30:46 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Rich McCormick is an incredibly Strong Advocate for the Great People of Georgia's 7th Congressional District! A distinguished Emergency Room Doctor and Marine Helicopter Pilot, Rich knows the America First Policies required to Defend our Country, Support our Brave Military/Veterans, and Congressman Rich McCormick is an incredibly Strong Advocate for the Great People of Georgia's 7th Congressional District! A distinguished Emergency Room Doctor and Marine Helicopter Pilot, Rich knows the America First Policies required to Defend our Country, Support our Brave Military/Veterans, and Ensure PEACE THROUGH STRENGTH. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Advance Election Integrity, and Protect our always under siege Second Amendment. Rich's opponent, Tony Kozycki, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Tony Kozycki is Reckless, Radical, and Dangerous! Rich McCormick has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR RICH — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/georgia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.998748+00:00",
-      "event_id": "cdbcca3d7f03929a48c9b76a",
-      "action_reaction": {
-        "event_id": "cdbcca3d7f03929a48c9b76a",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13174,7 +13175,8 @@
     "4389bb33aefe8a886b22dfe0": "2026-11-22T15:19:21.049387+00:00",
     "8f2feb3f9d61a07a22adee5c": "2026-11-22T15:26:10.014648+00:00",
     "4b4bb37a65be7cfed382b163": "2026-11-22T17:25:32.476531+00:00",
-    "c465dfe433a2d7a1d89ad14a": "2026-11-22T21:49:01.126444+00:00"
+    "c465dfe433a2d7a1d89ad14a": "2026-11-22T21:49:01.126444+00:00",
+    "e6d097d93d8738d434a5743d": "2026-11-22T21:51:52.992955+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18238,7 +18240,7 @@
   "analyst_brief_date": "2026-11-22",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 8
+    "Trump": 9
   },
   "analyst_report_week": "2026-W47"
 }
