@@ -3,6 +3,36 @@
  "trump": [
   {
    "title": "Quote post from November 22, 2026",
+   "published": "2026-11-22T15:09:51+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43692",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "MEDIA"
+   ],
+   "bias": []
+  },
+  {
+   "title": "Quote post from November 22, 2026",
+   "published": "2026-11-22T15:09:17+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43694",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "MEDIA"
+   ],
+   "bias": []
+  },
+  {
+   "title": "Quote post from November 22, 2026",
+   "published": "2026-11-22T15:07:34+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43696",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "MEDIA"
+   ],
+   "bias": []
+  },
+  {
+   "title": "Quote post from November 22, 2026",
    "published": "2026-11-22T15:01:29+00:00",
    "url": "https://www.trumpstruth.org/statuses/43690",
    "source": "Truth Social (Trump)",
@@ -135,5 +165,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-22T15:07:09.945836+00:00"
+ "updated_at": "2026-11-22T15:19:21.095382+00:00"
 }

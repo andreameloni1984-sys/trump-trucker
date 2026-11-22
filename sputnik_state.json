@@ -1093,15 +1093,106 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-22T15:07:10.240450+00:00",
+  "updated_at": "2026-11-22T15:19:22.481149+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "44b9919e30d7f75240622bb4",
+    "TRUTH_ARCHIVE": "f8ffac822e9e9b1bef96fc51",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "4389bb33aefe8a886b22dfe0": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43696",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117660716526739941",
+      "title": "Quote post from November 22, 2026",
+      "published": "Sun, 22 Nov 2026 15:07:34 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 22, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660715234270781 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T15:19:21.049391+00:00",
+      "event_id": "4389bb33aefe8a886b22dfe0",
+      "action_reaction": {
+        "event_id": "4389bb33aefe8a886b22dfe0",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "c7ce282738a1eea429c21cc7": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43694",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117660723274437760",
+      "title": "Quote post from November 22, 2026",
+      "published": "Sun, 22 Nov 2026 15:09:17 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 22, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660722020393630 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T15:19:21.049273+00:00",
+      "event_id": "c7ce282738a1eea429c21cc7",
+      "action_reaction": {
+        "event_id": "c7ce282738a1eea429c21cc7",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "82cce27ae4b2687822bcc2bb": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43692",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117660725477492021",
+      "title": "Quote post from November 22, 2026",
+      "published": "Sun, 22 Nov 2026 15:09:51 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 22, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660724070925141 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T15:19:21.049114+00:00",
+      "event_id": "82cce27ae4b2687822bcc2bb",
+      "action_reaction": {
+        "event_id": "82cce27ae4b2687822bcc2bb",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "f8ffac822e9e9b1bef96fc51": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 22, 2026, 10:09 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:09 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:09 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:09 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:08 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:08 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:07 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:07 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:07 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:01 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:01 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:01 AM Original Post Donald J. Trump @realDonaldTrump · November 2",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T15:19:00.636030+00:00",
+      "event_id": "f8ffac822e9e9b1bef96fc51",
+      "action_reaction": {
+        "event_id": "f8ffac822e9e9b1bef96fc51",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "8e95ff1095606d785ab17db6": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -7999,98 +8090,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "273748372ea4042b447838ba": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43260",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549206661969221",
-      "title": "It is my Great Honor to endorse Bernadette Wilson, who is running to be the next Governor of the Great State of Alaska! Bernadette Wilson is outstanding. She will make a GREAT Governor, and is a FANTASTIC choice to replace my friend, Governor Mike Dunleavy. Now is the time for all Republicans to uni",
-      "published": "Mon, 02 Nov 2026 22:29:08 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse Bernadette Wilson, who is running to be the next Governor of the Great State of Alaska! Bernadette Wilson is outstanding. She will make a GREAT Governor, and is a FANTASTIC choice to replace my friend, Governor Mike Dunleavy. Now is the time for all Republicans to uni It is my Great Honor to endorse Bernadette Wilson, who is running to be the next Governor of the Great State of Alaska! Bernadette Wilson is outstanding. She will make a GREAT Governor, and is a FANTASTIC choice to replace my friend, Governor Mike Dunleavy. Now is the time for all Republicans to unite behind Bernadette to ensure she has a tremendous Victory in November! Her opponent, Jonathan Kreiss-Tomkins, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Jonathan Kreiss-Tomkins is Reckless, Radical, and Dangerous! On the other hand, as your next Governor, Bernadette will work tirelessly to Grow the Economy, Unleash American Energy DOMINANCE, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Support our Brave Military, Veterans, and Law Enforcement, Safeguard our Elections, and Protect our always under siege Second Amendment. Bernadette Wilson has",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.992145+00:00",
-      "event_id": "273748372ea4042b447838ba",
-      "action_reaction": {
-        "event_id": "273748372ea4042b447838ba",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "6dc3cfea69c034df4ce58809": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43219",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549208401128300",
-      "title": "TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR DAN S. SULLIVAN! Senator Dan S. Sullivan is doing a fantastic job representing the Great State of Alaska! Prior to becoming a very distinguished and Highly Respected Senator, Dan served as State Attorney General and the Commissioner of the Alaska D",
-      "published": "Mon, 02 Nov 2026 22:29:35 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR DAN S. SULLIVAN! Senator Dan S. Sullivan is doing a fantastic job representing the Great State of Alaska! Prior to becoming a very distinguished and Highly Respected Senator, Dan served as State Attorney General and the Commissioner of the Alaska D TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR DAN S. SULLIVAN! Senator Dan S. Sullivan is doing a fantastic job representing the Great State of Alaska! Prior to becoming a very distinguished and Highly Respected Senator, Dan served as State Attorney General and the Commissioner of the Alaska Department of Natural Resources. Dan is a GREAT man, has ALWAYS delivered for Alaska (which I won three times by BIG margins in 2016, 2020, and 2024!), and will continue doing so in the U.S. Senate. No one has done more for Alaska than “TRUMP,” including securing 11 new Arctic Security Cutter Icebreakers, the first such ships bought in more than 40 years, massive Job and Income Producing Pipelines and Economic Development Projects of all shapes and sizes, and Dan Sullivan has been with us all the way. He is fighting hard to Grow our Economy, Lower Taxes, Cut Regulations, Keep our Border SECURE, Champion our Incredible Military/Veterans, Unleash American Energy DOMINANCE, and Defend our always under siege Second Amendment. The Dumocrats are trying to steal this Race by putting a FAKE Daniel J. Sullivan, Jr. on the Ballot. People will not be able to figure it out, and many Votes will be lo",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.991443+00:00",
-      "event_id": "6dc3cfea69c034df4ce58809",
-      "action_reaction": {
-        "event_id": "6dc3cfea69c034df4ce58809",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "9994e795126defdefe4947cf": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43218",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549212308229021",
-      "title": "TO THE GREAT PEOPLE OF ALASKA, MAKE A PLAN TO GET OUT AND VOTE FOR:– Dan S. Sullivan for U.S. Senate– Bernadette Wilson for Governor– Nick Begich for U.S. Congress (AK-AL) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP",
-      "published": "Mon, 02 Nov 2026 22:30:35 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF ALASKA, MAKE A PLAN TO GET OUT AND VOTE FOR:– Dan S. Sullivan for U.S. Senate– Bernadette Wilson for Governor– Nick Begich for U.S. Congress (AK-AL) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP TO THE GREAT PEOPLE OF ALASKA, MAKE A PLAN TO GET OUT AND VOTE FOR: – Dan S. Sullivan for U.S. Senate – Bernadette Wilson for Governor – Nick Begich for U.S. Congress (AK-AL) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP https:// swampthevoteusa.com/alaska/ View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.990820+00:00",
-      "event_id": "9994e795126defdefe4947cf",
-      "action_reaction": {
-        "event_id": "9994e795126defdefe4947cf",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "2800ea2fa66543e08ff20160": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43224",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549311501698046",
-      "title": "TO THE GREAT PEOPLE OF TEXAS, I will be doing two TeleRallies, LIVE, at 6:15pm ET, and again at 7:00pm ET — Answer your phones, and ENJOY! President DONALD J. TRUMP",
-      "published": "Mon, 02 Nov 2026 22:55:48 +0000",
-      "domains": [
-        "AI_TECH"
-      ],
-      "text": "TO THE GREAT PEOPLE OF TEXAS, I will be doing two TeleRallies, LIVE, at 6:15pm ET, and again at 7:00pm ET — Answer your phones, and ENJOY! President DONALD J. TRUMP TO THE GREAT PEOPLE OF TEXAS, I will be doing two TeleRallies, LIVE, at 6:15pm ET, and again at 7:00pm ET — Answer your phones, and ENJOY! President DONALD J. TRUMP https:// swampthevoteusa.com/states/tex as/ View image View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.990259+00:00",
-      "event_id": "2800ea2fa66543e08ff20160",
-      "action_reaction": {
-        "event_id": "2800ea2fa66543e08ff20160",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13167,7 +13166,10 @@
     "c3b620ce9c40f25d332ce988": "2026-11-21T19:09:32.831892+00:00",
     "9e6641c749ac81abf426a684": "2026-11-21T19:09:32.832392+00:00",
     "194887911d52fd278e3c828c": "2026-11-22T13:49:23.841981+00:00",
-    "8e95ff1095606d785ab17db6": "2026-11-22T15:07:09.912351+00:00"
+    "8e95ff1095606d785ab17db6": "2026-11-22T15:07:09.912351+00:00",
+    "82cce27ae4b2687822bcc2bb": "2026-11-22T15:19:21.049097+00:00",
+    "c7ce282738a1eea429c21cc7": "2026-11-22T15:19:21.049265+00:00",
+    "4389bb33aefe8a886b22dfe0": "2026-11-22T15:19:21.049387+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18231,7 +18233,7 @@
   "analyst_brief_date": "2026-11-22",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 2
+    "Trump": 5
   },
   "analyst_report_week": "2026-W47"
 }
