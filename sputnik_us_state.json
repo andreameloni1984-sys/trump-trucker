@@ -904,38 +904,6 @@
       "title": "Image post from November 22, 2026",
       "url": "https://truthsocial.com/@realDonaldTrump/117661447235607485"
     },
-    "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm": {
-      "acquired": "2026-11-20T21:18:46.376041+00:00",
-      "acquisition_seconds": 226.376041,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "fed",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "fed",
-      "penalized": [],
-      "published": "2026-11-20T21:15:00+00:00",
-      "source": "Federal Reserve",
-      "status": "SCARTARE",
-      "title": "Federal Reserve announces College Fed Challenge winners",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407827/0/en/1847-holdings-signs-term-sheet-for-sale-of-cmd-to-employee-stock-ownership-plan-in-transaction-expected-to-significantly-strengthen-its-balance-sheet.html": {
-      "acquired": "2026-11-20T22:48:44.369672+00:00",
-      "acquisition_seconds": 5864.369672,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T21:11:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "1847 Holdings Signs Term Sheet for Sale of CMD to Employee Stock Ownership Plan in Transaction Expected to Significantly Strengthen Its Balance Sheet",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407827/0/en/1847-holdings-signs-term-sheet-for-sale-of-cmd-to-employee-stock-ownership-plan-in-transaction-expected-to-significantly-strengthen-its-balance-sheet.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/20/3407850/21447/en/silver-law-group-investigating-claims-on-behalf-of-investors-in-alleged-600-million-backward-hat-capital-ponzi-scheme.html": {
       "acquired": "2026-11-20T22:48:44.369672+00:00",
       "acquisition_seconds": 2924.369672,
@@ -2087,22 +2055,6 @@
       "status": "SCARTARE",
       "title": "Tech outages are rattling Americans so much that they’re stockpiling cash and supplies",
       "url": "https://www.marketwatch.com/story/why-are-these-tech-outages-rattling-americans-so-much-that-theyre-stockpiling-cash-and-supplies-07516bdd"
-    },
-    "https://www.prnewswire.com/news-releases/abrdn-income-credit-strategies-fund-acp-announces-upcoming-1-for-4-reverse-stock-split-302946182.html": {
-      "acquired": "2026-11-21T16:50:30.240861+00:00",
-      "acquisition_seconds": 70410.240861,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T21:17:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "abrdn Income Credit Strategies Fund (ACP) Announces Upcoming 1-for-4 Reverse Stock Split",
-      "url": "https://www.prnewswire.com/news-releases/abrdn-income-credit-strategies-fund-acp-announces-upcoming-1-for-4-reverse-stock-split-302946182.html"
     },
     "https://www.prnewswire.com/news-releases/highmark-health-reports-revenue-of-26-5-billion-741-million-in-operating-income-for-nine-months-ended-sept-30--2026--302947418.html": {
       "acquired": "2026-11-21T16:50:30.240861+00:00",
