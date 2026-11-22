@@ -706,38 +706,6 @@
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407435/0/en/hair-loss-treatment-a-normal-blood-count-does-not-rule-out-iron-deficiency-hair-loss-and-most-treatment-never-orders-the-ferritin-test.html": {
-      "acquired": "2026-11-20T17:48:46.873293+00:00",
-      "acquisition_seconds": 13726.873293,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T14:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Hair Loss Treatment: A Normal Blood Count Does Not Rule Out Iron Deficiency Hair Loss, and Most Treatment Never Orders the Ferritin Test",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407435/0/en/hair-loss-treatment-a-normal-blood-count-does-not-rule-out-iron-deficiency-hair-loss-and-most-treatment-never-orders-the-ferritin-test.html"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407452/0/en/greenland-mines-applauds-danish-parliament-s-unanimous-approval-of-landmark-u-s-denmark-greenland-security-agreement.html": {
-      "acquired": "2026-11-20T17:48:46.873293+00:00",
-      "acquisition_seconds": 13726.873293,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T14:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Greenland Mines Applauds Danish Parliament’s Unanimous Approval of Landmark U.S.-Denmark-Greenland Security Agreement",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407452/0/en/greenland-mines-applauds-danish-parliament-s-unanimous-approval-of-landmark-u-s-denmark-greenland-security-agreement.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/20/3407478/0/en/shopify-conversion-rate-optimization-why-most-stores-leave-revenue-on-the-table.html": {
       "acquired": "2026-11-20T17:48:46.873293+00:00",
       "acquisition_seconds": 12946.873293,
@@ -2386,6 +2354,22 @@
       "title": "SpaceX’s stock falls back below its IPO price — and Anthropic’s could be next",
       "url": "https://www.marketwatch.com/story/spacexs-stock-falls-back-below-its-ipo-price-and-anthropics-could-be-next-079d2a4a"
     },
+    "https://www.marketwatch.com/story/stocks-are-in-a-correction-heading-into-the-thanksgiving-holiday-what-to-brace-for-next-a1e82491": {
+      "acquired": "2026-11-22T14:07:42.078420+00:00",
+      "acquisition_seconds": 462.07842,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-22T14:00:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Stocks are in a correction heading into the Thanksgiving holiday. What to brace for next.",
+      "url": "https://www.marketwatch.com/story/stocks-are-in-a-correction-heading-into-the-thanksgiving-holiday-what-to-brace-for-next-a1e82491"
+    },
     "https://www.marketwatch.com/story/the-fed-is-too-busy-fighting-inflation-to-rescue-the-stock-market-11dda598": {
       "acquired": "2026-11-20T19:34:25.693197+00:00",
       "acquisition_seconds": 745.693197,
@@ -2449,22 +2433,6 @@
       "status": "SCARTARE",
       "title": "Is Social Security a Ponzi scheme? No. Don’t get carried away with 1930s-era prophecies of doom.",
       "url": "https://www.marketwatch.com/story/the-thought-of-living-to-100-terrifies-me-is-social-security-a-giant-ponzi-scheme-84a64e7e"
-    },
-    "https://www.marketwatch.com/story/these-little-known-investments-could-be-among-the-best-bargains-in-a-crash-78a379b4": {
-      "acquired": "2026-11-20T14:08:25.062166+00:00",
-      "acquisition_seconds": 505.062166,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T14:00:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "These little-known investments could be among the best bargains in a crash",
-      "url": "https://www.marketwatch.com/story/these-little-known-investments-could-be-among-the-best-bargains-in-a-crash-78a379b4"
     },
     "https://www.marketwatch.com/story/these-stocks-were-crushed-the-most-this-week-as-the-tech-wreck-accelerated-8d6f7323": {
       "acquired": "2026-11-20T22:48:44.049914+00:00",
