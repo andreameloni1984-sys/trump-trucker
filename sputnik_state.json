@@ -1093,15 +1093,60 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-22T13:49:24.361358+00:00",
+  "updated_at": "2026-11-22T15:07:10.240450+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "14ab0d9afe77d3470d771e22",
+    "TRUTH_ARCHIVE": "44b9919e30d7f75240622bb4",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "8e95ff1095606d785ab17db6": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43690",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117660692611602783",
+      "title": "Quote post from November 22, 2026",
+      "published": "Sun, 22 Nov 2026 15:01:29 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 22, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660691191971810 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T15:07:09.912366+00:00",
+      "event_id": "8e95ff1095606d785ab17db6",
+      "action_reaction": {
+        "event_id": "8e95ff1095606d785ab17db6",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "44b9919e30d7f75240622bb4": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 22, 2026, 10:01 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:01 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 10:01 AM Original Post Donald J. Trump @realDonaldTrump · November 22, 2026, 8:41 AM Original Post It is going to be very hard for me to work with Chuck Schumer should he become Senate Majority Leader. He failed badly as “Leader” once before, one of the worst history, and I have little doubt that he will fail again. All he did was perpetuate the Russia, Russia, Russia Hoax, and many other Hoaxes and Scams, making my victory in 2024 an easy and glorious one. Here we go again! President DJT Donald J. Trump @realDonaldTrump · November 22, 2026, 8:08 AM Original Post OPEN BORDERS DESTROY NATIONS! The USA was very close to being one of them until I came along! Donald J. Trump @realDonaldTrump · November 21, 2026, 4:14 PM Original Post Donald J. Trump @real",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T15:07:09.731201+00:00",
+      "event_id": "44b9919e30d7f75240622bb4",
+      "action_reaction": {
+        "event_id": "44b9919e30d7f75240622bb4",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "194887911d52fd278e3c828c": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8046,52 +8091,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "9a25e10f2bc1199c9eb03157": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43259",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549315168208210",
-      "title": "Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas' 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Ex",
-      "published": "Mon, 02 Nov 2026 22:56:44 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas' 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Ex Jon Bonck is an incredible Candidate running to represent the fantastic people of Texas' 38th Congressional District. He is supported by many MAGA Patriots, including Senator Ted Cruz, Congressmen “Doc” Ronny Jackson, Brandon Gill, Jim Jordan, and Tim Burchett, among others. A successful Business Executive, Jon knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, and Champion our Nation's Golden Age. In Congress, he will fight tirelessly to Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Safeguard our Elections, and Protect our always under siege Second Amendment. Jon Bonck has my Complete and Total Endorsement to be the next Representative from Texas' 38th Congressional District. GET OUT AND VOTE FOR JON BONCK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.990071+00:00",
-      "event_id": "9a25e10f2bc1199c9eb03157",
-      "action_reaction": {
-        "event_id": "9a25e10f2bc1199c9eb03157",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "c82efbfdfbe3cc2ed2fd1e60": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43258",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549316066937649",
-      "title": "Congressman Brian Babin, D.D.S, is an incredible Representative of Texas' 36th Congressional District! As the Highly Respected Chairman of the House Science Committee, Brian is fighting hard to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A",
-      "published": "Mon, 02 Nov 2026 22:56:58 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Brian Babin, D.D.S, is an incredible Representative of Texas' 36th Congressional District! As the Highly Respected Chairman of the House Science Committee, Brian is fighting hard to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A Congressman Brian Babin, D.D.S, is an incredible Representative of Texas' 36th Congressional District! As the Highly Respected Chairman of the House Science Committee, Brian is fighting hard to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our now very Secure Border, SECURE, Strongly Support Law Enforcement and our Military, Deliver Quality Care to our Brave Veterans, and Protect our always under siege Second Amendment. Brian Babin has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR BRIAN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/texas/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.989581+00:00",
-      "event_id": "c82efbfdfbe3cc2ed2fd1e60",
-      "action_reaction": {
-        "event_id": "c82efbfdfbe3cc2ed2fd1e60",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13167,7 +13166,8 @@
     "f7efaea16ec8296dedb613c8": "2026-11-21T19:09:32.831800+00:00",
     "c3b620ce9c40f25d332ce988": "2026-11-21T19:09:32.831892+00:00",
     "9e6641c749ac81abf426a684": "2026-11-21T19:09:32.832392+00:00",
-    "194887911d52fd278e3c828c": "2026-11-22T13:49:23.841981+00:00"
+    "194887911d52fd278e3c828c": "2026-11-22T13:49:23.841981+00:00",
+    "8e95ff1095606d785ab17db6": "2026-11-22T15:07:09.912351+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18231,7 +18231,7 @@
   "analyst_brief_date": "2026-11-22",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 1
+    "Trump": 2
   },
   "analyst_report_week": "2026-W47"
 }
