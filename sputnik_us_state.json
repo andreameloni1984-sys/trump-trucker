@@ -784,22 +784,6 @@
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407215/0/en/guardforce-ai-announces-1-for-40-reverse-share-split-and-adoption-of-dual-class-share-structure.html": {
-      "acquired": "2026-11-20T13:19:23.896725+00:00",
-      "acquisition_seconds": 47063.896725,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T00:15:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Guardforce AI Announces 1-for-40 Reverse Share Split and Adoption of Dual-Class Share Structure",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407215/0/en/guardforce-ai-announces-1-for-40-reverse-share-split-and-adoption-of-dual-class-share-structure.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/20/3407361/0/en/heartsciences-shareholders-approve-proposed-business-combination-with-fortitude-mining.html": {
       "acquired": "2026-11-20T13:19:23.896725+00:00",
       "acquisition_seconds": 2963.896725,
@@ -3247,6 +3231,22 @@
       "status": "SCARTARE",
       "title": "My husband spent $80,000 on a boat, yet says my plans for a $100,000 pottery studio are irresponsible. Who’s right?",
       "url": "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a"
+    },
+    "https://www.marketwatch.com/story/my-wife-pays-thousands-of-dollars-for-her-family-to-visit-from-argentina-how-can-i-convince-her-to-stop-9381351c": {
+      "acquired": "2026-11-22T00:21:42.280945+00:00",
+      "acquisition_seconds": 1122.280945,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-22T00:03:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "My wife is bankrolling her family’s trips to New York and it’s draining our savings. Should I ask her to stop?",
+      "url": "https://www.marketwatch.com/story/my-wife-pays-thousands-of-dollars-for-her-family-to-visit-from-argentina-how-can-i-convince-her-to-stop-9381351c"
     },
     "https://www.marketwatch.com/story/never-too-late-to-start-practical-investing-advice-from-some-of-the-top-women-in-finance-e01f0755": {
       "acquired": "2026-11-21T15:07:14.781222+00:00",
