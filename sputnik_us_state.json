@@ -1624,22 +1624,6 @@
       "title": "S. Res. 966 (ATS) - Designating November 19, 2026, as \"National Rural Health Day\".",
       "url": "https://www.govinfo.gov/app/details/BILLS-119sres966ats"
     },
-    "https://www.marketwatch.com/story/alphabet-just-overtook-nvidia-in-market-value-for-the-first-time-in-over-2-years-23e296ee": {
-      "acquired": "2026-11-20T19:34:25.693197+00:00",
-      "acquisition_seconds": 685.693197,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T19:23:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Alphabet just overtook Nvidia in market value for the first time in over 2 years",
-      "url": "https://www.marketwatch.com/story/alphabet-just-overtook-nvidia-in-market-value-for-the-first-time-in-over-2-years-23e296ee"
-    },
     "https://www.marketwatch.com/story/america-is-definitely-rich-enough-to-fix-social-security-and-medicare-heres-how-30678aa5": {
       "acquired": "2026-11-21T13:06:53.102992+00:00",
       "acquisition_seconds": 413.102992,
@@ -1848,6 +1832,22 @@
       "title": "Larry McDonald survived Lehman’s collapse. Now he warns the credit market is signaling a growth shock for stocks.",
       "url": "https://www.marketwatch.com/story/larry-mcdonald-survived-lehmans-collapse-now-he-warns-the-credit-market-is-signaling-a-growth-shock-for-stocks-5c3a62ef"
     },
+    "https://www.marketwatch.com/story/medicare-beneficiaries-could-skip-the-nursing-home-for-cheaper-care-at-home-under-new-bill-e289c8d0": {
+      "acquired": "2026-11-22T19:34:33.056127+00:00",
+      "acquisition_seconds": 633.056127,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-22T19:24:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Medicare beneficiaries could skip the nursing home for cheaper care at home under new bill",
+      "url": "https://www.marketwatch.com/story/medicare-beneficiaries-could-skip-the-nursing-home-for-cheaper-care-at-home-under-new-bill-e289c8d0"
+    },
     "https://www.marketwatch.com/story/micron-and-sandisk-stocks-might-look-like-bargains-but-analysts-say-thats-actually-a-red-flag-da1f1f5d": {
       "acquired": "2026-11-20T21:49:03.130257+00:00",
       "acquisition_seconds": 783.130257,
@@ -2023,22 +2023,6 @@
       "status": "SCARTARE",
       "title": "Stocks are in a correction heading into the Thanksgiving holiday. What to brace for next.",
       "url": "https://www.marketwatch.com/story/stocks-are-in-a-correction-heading-into-the-thanksgiving-holiday-what-to-brace-for-next-a1e82491"
-    },
-    "https://www.marketwatch.com/story/the-fed-is-too-busy-fighting-inflation-to-rescue-the-stock-market-11dda598": {
-      "acquired": "2026-11-20T19:34:25.693197+00:00",
-      "acquisition_seconds": 745.693197,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T19:22:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "The Fed is too busy fighting inflation to rescue the stock market",
-      "url": "https://www.marketwatch.com/story/the-fed-is-too-busy-fighting-inflation-to-rescue-the-stock-market-11dda598"
     },
     "https://www.marketwatch.com/story/the-hidden-catch-in-anthropics-ipo-billions-of-locked-up-shares-are-waiting-in-the-wings-279d33ce": {
       "acquired": "2026-11-20T21:49:03.130257+00:00",
