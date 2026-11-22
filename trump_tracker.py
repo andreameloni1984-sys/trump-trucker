@@ -663,9 +663,10 @@ def intelligence_snapshot(state: dict[str, Any]) -> list[dict[str, Any]]:
         )
     history = state.setdefault("intelligence_history", {})
     for item in findings:
-        history[item["event_id"]] = item
-    if len(history) > 500:
-        keep = sorted(history.items(), key=lambda item: item[1].get("detected_at", ""), reverse=True)[:500]
+        # Nello storico basta un estratto: il testo completo serve solo durante l'analisi.
+        history[item["event_id"]] = {**item, "text": str(item.get("text") or "")[:1500]}
+    if len(history) > 300:
+        keep = sorted(history.items(), key=lambda item: item[1].get("detected_at", ""), reverse=True)[:300]
         state["intelligence_history"] = dict(keep)
     return findings
 
@@ -993,6 +994,12 @@ def save_state(state: dict[str, Any]) -> None:
         copy.pop("updated_at", None)
         return copy
 
+    cutoff = (utc_now() - timedelta(days=EVENT_KEEP_DAYS)).date().isoformat()
+    state["events"] = {k: v for k, v in state.get("events", {}).items() if str(v.get("filed_at", "")) >= cutoff}
+    history = state.get("intelligence_history") or {}
+    if history:
+        trimmed = sorted(history.items(), key=lambda item: item[1].get("detected_at", ""), reverse=True)[:300]
+        state["intelligence_history"] = {k: {**v, "text": str(v.get("text") or "")[:1500]} for k, v in trimmed}
     events = state.get("events", {})
     transactions = state.get("transactions", {})
     if len(transactions) > MAX_STATE_EVENTS:
@@ -1157,11 +1164,15 @@ def collect() -> list[FilingEvent]:
     return events
 
 
+EVENT_KEEP_DAYS = 120   # i documenti più vecchi restano nella deduplicazione dell'analista, non nello stato
+
+
 def new_events(events: list[FilingEvent], state: dict[str, Any]) -> list[FilingEvent]:
     known = state.setdefault("events", {})
+    cutoff = (utc_now() - timedelta(days=EVENT_KEEP_DAYS)).date().isoformat()
     fresh = []
     for event in events:
-        if event.event_id in known:
+        if event.event_id in known or str(event.filed_at) < cutoff:
             continue
         known[event.event_id] = asdict(event)
         fresh.append(event)

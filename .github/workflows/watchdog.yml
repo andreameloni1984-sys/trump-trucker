@@ -1,0 +1,39 @@
+name: Cane da guardia dei bot
+on:
+  schedule:
+    - cron: "41 * * * *"   # ogni ora
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+concurrency:
+  group: bots-watchdog
+  cancel-in-progress: false
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      WATCHDOG_STATE_FILE: data/watchdog_state.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ripristina gli avvisi già inviati
+        uses: actions/cache/restore@v4
+        with:
+          path: data/watchdog_state.json
+          key: watchdog-v1-${{ github.run_id }}
+          restore-keys: watchdog-v1-
+      - name: Controlla i bot
+        run: python sputnik_watchdog.py
+      - name: Salva gli avvisi
+        if: always() && hashFiles('data/watchdog_state.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: data/watchdog_state.json
+          key: watchdog-v1-${{ github.run_id }}
