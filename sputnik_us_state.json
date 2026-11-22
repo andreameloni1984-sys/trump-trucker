@@ -742,6 +742,23 @@
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660724070925141",
       "url": "https://truthsocial.com/@realDonaldTrump/117660725477492021"
     },
+    "https://truthsocial.com/@realDonaldTrump/117660772187019609": {
+      "acquired": "2026-11-22T15:34:45.143820+00:00",
+      "acquisition_seconds": 785.560691,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-22T15:21:43.731000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660771450282590",
+      "url": "https://truthsocial.com/@realDonaldTrump/117660772187019609"
+    },
     "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm": {
       "acquired": "2026-11-20T21:18:46.376041+00:00",
       "acquisition_seconds": 226.376041,
@@ -2485,38 +2502,6 @@
       "status": "SCARTARE",
       "title": "These stocks were crushed the most this week as the tech wreck accelerated",
       "url": "https://www.marketwatch.com/story/these-stocks-were-crushed-the-most-this-week-as-the-tech-wreck-accelerated-8d6f7323"
-    },
-    "https://www.marketwatch.com/story/this-closely-watched-guru-just-sold-everything-474b4389": {
-      "acquired": "2026-11-20T15:34:52.837303+00:00",
-      "acquisition_seconds": 712.837303,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T15:23:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "This closely watched investing guru just sold all of his stocks",
-      "url": "https://www.marketwatch.com/story/this-closely-watched-guru-just-sold-everything-474b4389"
-    },
-    "https://www.marketwatch.com/story/this-proposed-social-security-fix-could-add-trillions-to-the-national-debt-17197e91": {
-      "acquired": "2026-11-20T15:34:52.837303+00:00",
-      "acquisition_seconds": 412.837303,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T15:28:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "This proposed Social Security fix could add trillions to the national debt",
-      "url": "https://www.marketwatch.com/story/this-proposed-social-security-fix-could-add-trillions-to-the-national-debt-17197e91"
     },
     "https://www.marketwatch.com/story/trump-is-trying-to-stop-big-techs-push-to-build-data-centers-outside-the-u-s-86f32f7f": {
       "acquired": "2026-11-20T19:06:47.868269+00:00",
