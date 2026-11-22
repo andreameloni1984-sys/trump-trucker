@@ -1093,15 +1093,64 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-22T21:18:43.429648+00:00",
+  "updated_at": "2026-11-22T21:49:01.699266+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "a67a7236c1dc273acb1da05a",
+    "TRUTH_ARCHIVE": "95453e67d9e254ef795108a7",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "c465dfe433a2d7a1d89ad14a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43706",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117662290160182921",
+      "title": "As everyone remembers, I predicted two things concerning the November 3rd Midterm Elections. One, that if the Democrats win, the Stock Markets would go down, substantially, which they have, and two, that the Islamic Republic of Iran, which has killed 81,000 protestors as of today, will grow more agg",
+      "published": "Sun, 22 Nov 2026 21:47:46 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "As everyone remembers, I predicted two things concerning the November 3rd Midterm Elections. One, that if the Democrats win, the Stock Markets would go down, substantially, which they have, and two, that the Islamic Republic of Iran, which has killed 81,000 protestors as of today, will grow more agg As everyone remembers, I predicted two things concerning the November 3rd Midterm Elections. One, that if the Democrats win, the Stock Markets would go down, substantially, which they have, and two, that the Islamic Republic of Iran, which has killed 81,000 protestors as of today, will grow more aggressive in their attacks, which has also occurred. Iran has launched more drones and missiles in the last week than at any time for over a year. Don’t worry, they’ve all been knocked down, and done no damage. Iranian leaders consider the Democrats weak, ineffective, and Country destroying, but I won’t let that happen! Both the Dems and Iran fought like hell to keep the Oil price up as long as possible and, since the Election, the Oil price has dropped by a record level. Too bad the Voters didn’t understand this before they pulled the trigger, but the whole Election was very “strange.” In the end, America will win! Thank you for your attention to this matter. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T21:49:01.126458+00:00",
+      "event_id": "c465dfe433a2d7a1d89ad14a",
+      "action_reaction": {
+        "event_id": "c465dfe433a2d7a1d89ad14a",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "95453e67d9e254ef795108a7": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA",
+        "RATES_MACRO"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 22, 2026, 4:47 PM Original Post As everyone remembers, I predicted two things concerning the November 3rd Midterm Elections. One, that if the Democrats win, the Stock Markets would go down, substantially, which they have, and two, that the Islamic Republic of Iran, which has killed 81,000 protestors as of today, will grow more aggressive in their attacks, which has also occurred. Iran has launched more drones and missiles in the last week than at any time for over a year. Don’t worry, they’ve all been knocked down, and done no damage. Iranian leaders consider the Democrats weak, ineffective, and Country destroying, but I won’t let that happen! Both the Dems and Iran fought like hell to keep the Oil price up as long as possible and, since the Election, the Oil price has dropped by a record level. Too bad the Voters didn’t understand this before they pulled the trigger, but the whole Election was very “strange.” I",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T21:49:00.477170+00:00",
+      "event_id": "95453e67d9e254ef795108a7",
+      "action_reaction": {
+        "event_id": "95453e67d9e254ef795108a7",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "a67a7236c1dc273acb1da05a": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8043,52 +8092,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "97e0a62479ab6aca9f512184": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43262",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548977793751232",
-      "title": "Congressman Brian Jack, who has been with us from the very beginning, is a MAGA Warrior and Tremendous Champion of Georgia's 3rd Congressional District! In my First Term, Brian strongly advocated for our America First Agenda as White House Political Director. Now, Brian has distinguished himself as",
-      "published": "Mon, 02 Nov 2026 21:30:56 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Brian Jack, who has been with us from the very beginning, is a MAGA Warrior and Tremendous Champion of Georgia's 3rd Congressional District! In my First Term, Brian strongly advocated for our America First Agenda as White House Political Director. Now, Brian has distinguished himself as Congressman Brian Jack, who has been with us from the very beginning, is a MAGA Warrior and Tremendous Champion of Georgia's 3rd Congressional District! In my First Term, Brian strongly advocated for our America First Agenda as White House Political Director. Now, Brian has distinguished himself as a Highly Respected Congressman, who is fighting tirelessly to Protect Georgia Values, Safeguard our Elections, Champion our Amazing Farmers and Ranchers, Promote MADE IN THE U.S.A., Cut Taxes and Regulations, Advance American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Support our Brave Military, Veterans, and Law Enforcement, and Defend our always under siege Second Amendment. Brian's opponent, Maura Keller, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Maura Keller is Reckless, Radical, and Dangerous! Brian Jack is a very good friend, fighter, and WINNER, and has my Complete and Total Endorsement for",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.998013+00:00",
-      "event_id": "97e0a62479ab6aca9f512184",
-      "action_reaction": {
-        "event_id": "97e0a62479ab6aca9f512184",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "15a4cd2d2ed3b85bc6cd4ee6": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43214",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548978479214934",
-      "title": "It is my Great Honor to endorse MAGA Warrior, Jim Kingston, who is running to represent the fantastic people of Georgia's 1st Congressional District! A very successful Businessman, Civic Leader, and Conservative Activist, Jim has dedicated his life to serving his Community. Jim's father is the GREAT",
-      "published": "Mon, 02 Nov 2026 21:31:07 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse MAGA Warrior, Jim Kingston, who is running to represent the fantastic people of Georgia's 1st Congressional District! A very successful Businessman, Civic Leader, and Conservative Activist, Jim has dedicated his life to serving his Community. Jim's father is the GREAT It is my Great Honor to endorse MAGA Warrior, Jim Kingston, who is running to represent the fantastic people of Georgia's 1st Congressional District! A very successful Businessman, Civic Leader, and Conservative Activist, Jim has dedicated his life to serving his Community. Jim's father is the GREAT Former Congressman from Georgia, Jack Kingston – He and his family are fierce advocates for our Movement to, MAKE AMERICA GREAT AGAIN! His opponent, Amanda Hollowell, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Amanda Hollowell is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Jim will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Champion School Choice, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Jim Kingston has my ",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.997339+00:00",
-      "event_id": "15a4cd2d2ed3b85bc6cd4ee6",
-      "action_reaction": {
-        "event_id": "15a4cd2d2ed3b85bc6cd4ee6",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13170,7 +13173,8 @@
     "c7ce282738a1eea429c21cc7": "2026-11-22T15:19:21.049265+00:00",
     "4389bb33aefe8a886b22dfe0": "2026-11-22T15:19:21.049387+00:00",
     "8f2feb3f9d61a07a22adee5c": "2026-11-22T15:26:10.014648+00:00",
-    "4b4bb37a65be7cfed382b163": "2026-11-22T17:25:32.476531+00:00"
+    "4b4bb37a65be7cfed382b163": "2026-11-22T17:25:32.476531+00:00",
+    "c465dfe433a2d7a1d89ad14a": "2026-11-22T21:49:01.126444+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18234,7 +18238,7 @@
   "analyst_brief_date": "2026-11-22",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 7
+    "Trump": 8
   },
   "analyst_report_week": "2026-W47"
 }
