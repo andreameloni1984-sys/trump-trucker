@@ -1691,22 +1691,6 @@
       "title": "Can stocks bounce back after a brutal week? This timing model says history is on the market’s side.",
       "url": "https://www.marketwatch.com/story/can-stocks-bounce-back-after-a-brutal-week-this-timing-model-says-history-is-on-the-markets-side-beff1753"
     },
-    "https://www.marketwatch.com/story/chip-stocks-see-2-3-trillion-weekly-wipeout-as-panic-grips-the-ai-trade-371f2f03": {
-      "acquired": "2026-11-20T22:48:44.049914+00:00",
-      "acquisition_seconds": 284.049914,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "industrial-tech",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T22:44:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Chip stocks see $2.3 trillion weekly wipeout as panic grips the AI trade",
-      "url": "https://www.marketwatch.com/story/chip-stocks-see-2-3-trillion-weekly-wipeout-as-panic-grips-the-ai-trade-371f2f03"
-    },
     "https://www.marketwatch.com/story/corporate-america-hunts-for-generational-growth-in-ai-trading-cards-and-the-l-a-airport-3072eb1a": {
       "acquired": "2026-11-22T15:07:18.416998+00:00",
       "acquisition_seconds": 378.416998,
@@ -2026,22 +2010,6 @@
       "status": "SCARTARE",
       "title": "These little-known investments could be among the best bargains in a crash",
       "url": "https://www.marketwatch.com/story/these-little-known-investments-could-be-among-the-best-bargains-in-a-crash-78a379b4"
-    },
-    "https://www.marketwatch.com/story/these-stocks-were-crushed-the-most-this-week-as-the-tech-wreck-accelerated-8d6f7323": {
-      "acquired": "2026-11-20T22:48:44.049914+00:00",
-      "acquisition_seconds": 284.049914,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T22:44:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "These stocks were crushed the most this week as the tech wreck accelerated",
-      "url": "https://www.marketwatch.com/story/these-stocks-were-crushed-the-most-this-week-as-the-tech-wreck-accelerated-8d6f7323"
     },
     "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240": {
       "acquired": "2026-11-22T16:34:51.423457+00:00",
