@@ -707,6 +707,22 @@
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660691191971810",
       "url": "https://truthsocial.com/@realDonaldTrump/117660692611602783"
     },
+    "https://truthsocial.com/@realDonaldTrump/117660715234270781": {
+      "acquired": "2026-11-22T16:08:13.834739+00:00",
+      "acquisition_seconds": 3659.834739,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-22T15:07:14+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Video post from November 22, 2026",
+      "url": "https://truthsocial.com/@realDonaldTrump/117660715234270781"
+    },
     "https://truthsocial.com/@realDonaldTrump/117660716526739941": {
       "acquired": "2026-11-22T15:19:32.169160+00:00",
       "acquisition_seconds": 718.661534,
@@ -723,6 +739,22 @@
       "status": "SCARTARE",
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660715234270781",
       "url": "https://truthsocial.com/@realDonaldTrump/117660716526739941"
+    },
+    "https://truthsocial.com/@realDonaldTrump/117660722020393630": {
+      "acquired": "2026-11-22T16:08:13.834739+00:00",
+      "acquisition_seconds": 3555.834739,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-22T15:08:58+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Video post from November 22, 2026",
+      "url": "https://truthsocial.com/@realDonaldTrump/117660722020393630"
     },
     "https://truthsocial.com/@realDonaldTrump/117660723274437760": {
       "acquired": "2026-11-22T15:19:32.169160+00:00",
@@ -741,6 +773,22 @@
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660722020393630",
       "url": "https://truthsocial.com/@realDonaldTrump/117660723274437760"
     },
+    "https://truthsocial.com/@realDonaldTrump/117660724070925141": {
+      "acquired": "2026-11-22T16:08:13.834739+00:00",
+      "acquisition_seconds": 3524.834739,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-22T15:09:29+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Video post from November 22, 2026",
+      "url": "https://truthsocial.com/@realDonaldTrump/117660724070925141"
+    },
     "https://truthsocial.com/@realDonaldTrump/117660725477492021": {
       "acquired": "2026-11-22T15:19:32.169160+00:00",
       "acquisition_seconds": 582.662773,
@@ -757,6 +805,22 @@
       "status": "SCARTARE",
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660724070925141",
       "url": "https://truthsocial.com/@realDonaldTrump/117660725477492021"
+    },
+    "https://truthsocial.com/@realDonaldTrump/117660771450282590": {
+      "acquired": "2026-11-22T16:08:13.834739+00:00",
+      "acquisition_seconds": 2801.834739,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-22T15:21:32+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Video post from November 22, 2026",
+      "url": "https://truthsocial.com/@realDonaldTrump/117660771450282590"
     },
     "https://truthsocial.com/@realDonaldTrump/117660772187019609": {
       "acquired": "2026-11-22T15:34:45.143820+00:00",
@@ -790,22 +854,6 @@
       "status": "SCARTARE",
       "title": "Federal Reserve announces College Fed Challenge winners",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/20/3407665/0/en/national-advertising-division-found-shark-supported-more-features-claim-recommended-incentivized-reviews-be-discontinued.html": {
-      "acquired": "2026-11-20T17:48:46.873293+00:00",
-      "acquisition_seconds": 6526.873293,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-20T16:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "National Advertising Division Found Shark Supported “More Features” Claim; Recommended Incentivized Reviews be Discontinued",
-      "url": "https://www.globenewswire.com/news-release/2026/11/20/3407665/0/en/national-advertising-division-found-shark-supported-more-features-claim-recommended-incentivized-reviews-be-discontinued.html"
     },
     "https://www.globenewswire.com/news-release/2026/11/20/3407708/0/en/edible-garden-partners-with-walmart-hannaford-kroger-meijer-target-and-wakefern-shoprite-to-help-keep-fresh-herbs-affordable-this-thanksgiving.html": {
       "acquired": "2026-11-20T17:48:46.873293+00:00",
@@ -2214,22 +2262,6 @@
       "status": "SCARTARE",
       "title": "‘I’m sick of flying’: I paid for priority boarding, but the overhead bins were full. Was I duped?",
       "url": "https://www.marketwatch.com/story/im-sick-of-flying-i-paid-for-priority-boarding-but-the-overhead-bins-were-full-was-i-duped-0badcc80"
-    },
-    "https://www.marketwatch.com/story/investors-fled-to-healthcare-stocks-for-safety-now-insurance-and-hospital-shares-are-plunging-9cb6a96c": {
-      "acquired": "2026-11-20T16:08:23.659839+00:00",
-      "acquisition_seconds": 923.659839,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T15:53:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Investors fled to healthcare stocks for safety. Now insurance and hospital shares are plunging.",
-      "url": "https://www.marketwatch.com/story/investors-fled-to-healthcare-stocks-for-safety-now-insurance-and-hospital-shares-are-plunging-9cb6a96c"
     },
     "https://www.marketwatch.com/story/it-is-heartbreaking-exhausting-and-downright-dirty-my-brother-took-over-our-ailing-mothers-life-and-finances-what-can-i-do-b4d48817": {
       "acquired": "2026-11-21T20:19:23.591994+00:00",
