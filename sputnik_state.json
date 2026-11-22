@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-22T21:51:53.554220+00:00",
+  "updated_at": "2026-11-22T21:59:10.821506+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1102,6 +1102,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "a4a7ab7773e86d913c9e425b": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43708",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117662311303966632",
+      "title": "It’s incredible that Somalians have been able to completely take over the once great State of Minnesota. They own it, “lock, stock, and barrel” and, almost 95% are on some form of welfare. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP",
+      "published": "Sun, 22 Nov 2026 21:53:08 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "It’s incredible that Somalians have been able to completely take over the once great State of Minnesota. They own it, “lock, stock, and barrel” and, almost 95% are on some form of welfare. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP It’s incredible that Somalians have been able to completely take over the once great State of Minnesota. They own it, “lock, stock, and barrel” and, almost 95% are on some form of welfare. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T21:59:10.420126+00:00",
+      "event_id": "a4a7ab7773e86d913c9e425b",
+      "action_reaction": {
+        "event_id": "a4a7ab7773e86d913c9e425b",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "e6d097d93d8738d434a5743d": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8070,29 +8093,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "0c337c0d9474bb684703ada7": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43264",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548976366946170",
-      "title": "Congressman Austin Scott is doing a truly fantastic job representing the wonderful people of Georgia's 8th Congressional District! As Vice Chairman of the House Agriculture Committee, Austin is a strong and effective Voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress,",
-      "published": "Mon, 02 Nov 2026 21:30:34 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Austin Scott is doing a truly fantastic job representing the wonderful people of Georgia's 8th Congressional District! As Vice Chairman of the House Agriculture Committee, Austin is a strong and effective Voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, Congressman Austin Scott is doing a truly fantastic job representing the wonderful people of Georgia's 8th Congressional District! As Vice Chairman of the House Agriculture Committee, Austin is a strong and effective Voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, he is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Austin's opponent, Kelly Esti, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Kelly Esti is Reckless, Radical, and Dangerous! Austin Scott has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR AUSTIN — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/georgia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.999398+00:00",
-      "event_id": "0c337c0d9474bb684703ada7",
-      "action_reaction": {
-        "event_id": "0c337c0d9474bb684703ada7",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13176,7 +13176,8 @@
     "8f2feb3f9d61a07a22adee5c": "2026-11-22T15:26:10.014648+00:00",
     "4b4bb37a65be7cfed382b163": "2026-11-22T17:25:32.476531+00:00",
     "c465dfe433a2d7a1d89ad14a": "2026-11-22T21:49:01.126444+00:00",
-    "e6d097d93d8738d434a5743d": "2026-11-22T21:51:52.992955+00:00"
+    "e6d097d93d8738d434a5743d": "2026-11-22T21:51:52.992955+00:00",
+    "a4a7ab7773e86d913c9e425b": "2026-11-22T21:59:10.420112+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18240,7 +18241,7 @@
   "analyst_brief_date": "2026-11-22",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 9
+    "Trump": 10
   },
   "analyst_report_week": "2026-W47"
 }
