@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-22T15:34:37.838642+00:00",
+  "updated_at": "2026-11-22T17:25:33.016554+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1102,6 +1102,30 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "4b4bb37a65be7cfed382b163": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43701",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117661238591305263",
+      "title": "The Market is down more than 6 Trillion Dollars since the Democrats’ rather strange “win” on November 3rd. NASDAQ, by itself, is down 20%. This is 100% due to the fact that the Democrats are “BAD” due to their Anti Growth, and Retribution Only, Policies, and worse. If they don't change, FAST, it wil",
+      "published": "Sun, 22 Nov 2026 17:20:20 +0000",
+      "domains": [
+        "AI_TECH",
+        "RATES_MACRO"
+      ],
+      "text": "The Market is down more than 6 Trillion Dollars since the Democrats’ rather strange “win” on November 3rd. NASDAQ, by itself, is down 20%. This is 100% due to the fact that the Democrats are “BAD” due to their Anti Growth, and Retribution Only, Policies, and worse. If they don't change, FAST, it wil The Market is down more than 6 Trillion Dollars since the Democrats’ rather strange “win” on November 3rd. NASDAQ, by itself, is down 20%. This is 100% due to the fact that the Democrats are “BAD” due to their Anti Growth, and Retribution Only, Policies, and worse. If they don't change, FAST, it will only get worse. But fear not, our Country will soon be STRONG AGAIN — Lots of good things happening! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T17:25:32.476546+00:00",
+      "event_id": "4b4bb37a65be7cfed382b163",
+      "action_reaction": {
+        "event_id": "4b4bb37a65be7cfed382b163",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "5218385b162ce83315196fa7": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8065,29 +8089,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "672abd86e8e5fc9873465463": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43209",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548981791269542",
-      "title": "It is my Great Honor to endorse “MAGA” Mike Collins, a Highly Respected Congressman who has been with me from the very beginning, and is running for the United States Senate in Georgia, a very special place to me, and where we just had a BIG Presidential Election Win with the Most Votes Received by",
-      "published": "Mon, 02 Nov 2026 21:31:57 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse “MAGA” Mike Collins, a Highly Respected Congressman who has been with me from the very beginning, and is running for the United States Senate in Georgia, a very special place to me, and where we just had a BIG Presidential Election Win with the Most Votes Received by It is my Great Honor to endorse “MAGA” Mike Collins, a Highly Respected Congressman who has been with me from the very beginning, and is running for the United States Senate in Georgia, a very special place to me, and where we just had a BIG Presidential Election Win with the Most Votes Received by any single Candidate in Georgia's History, for any Election! A very successful Businessman prior to becoming a distinguished U.S. Congressman, Mike has brilliantly served his Community, during a career loaded with accolades and wins, always fighting tirelessly for our America First Agenda. His opponent, Jon Ossoff, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender for Everybody. Jon Ossoff is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Mike will continue to work hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Strengthen our incredible Military/Veterans, Advance Election Integrity, Keep o",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.994167+00:00",
-      "event_id": "672abd86e8e5fc9873465463",
-      "action_reaction": {
-        "event_id": "672abd86e8e5fc9873465463",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13168,7 +13169,8 @@
     "82cce27ae4b2687822bcc2bb": "2026-11-22T15:19:21.049097+00:00",
     "c7ce282738a1eea429c21cc7": "2026-11-22T15:19:21.049265+00:00",
     "4389bb33aefe8a886b22dfe0": "2026-11-22T15:19:21.049387+00:00",
-    "8f2feb3f9d61a07a22adee5c": "2026-11-22T15:26:10.014648+00:00"
+    "8f2feb3f9d61a07a22adee5c": "2026-11-22T15:26:10.014648+00:00",
+    "4b4bb37a65be7cfed382b163": "2026-11-22T17:25:32.476531+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18232,7 +18234,7 @@
   "analyst_brief_date": "2026-11-22",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 6
+    "Trump": 7
   },
   "analyst_report_week": "2026-W47"
 }
