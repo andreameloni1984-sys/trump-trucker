@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-22T15:19:22.481149+00:00",
+  "updated_at": "2026-11-22T15:26:10.466983+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1102,6 +1102,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "8f2feb3f9d61a07a22adee5c": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43698",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117660772187019609",
+      "title": "Quote post from November 22, 2026",
+      "published": "Sun, 22 Nov 2026 15:21:43 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Quote post from November 22, 2026 RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660771450282590 View image Quoted Donald J. Trump View video",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-22T15:26:10.014659+00:00",
+      "event_id": "8f2feb3f9d61a07a22adee5c",
+      "action_reaction": {
+        "event_id": "8f2feb3f9d61a07a22adee5c",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "4389bb33aefe8a886b22dfe0": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8067,29 +8090,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "79a9679a6413def16cb0813a": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43261",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549205796683792",
-      "title": "Congressman Nick Begich is doing an incredible job representing the Great People of Alaska, a State I love, and WON BIG THREE TIMES, in 2016, 2020, and 2024! A very successful Businessman, Nick knows the America First Policies required to Create Great Jobs, Cut Taxes, Strengthen our Economy, and Eli",
-      "published": "Mon, 02 Nov 2026 22:28:55 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Nick Begich is doing an incredible job representing the Great People of Alaska, a State I love, and WON BIG THREE TIMES, in 2016, 2020, and 2024! A very successful Businessman, Nick knows the America First Policies required to Create Great Jobs, Cut Taxes, Strengthen our Economy, and Eli Congressman Nick Begich is doing an incredible job representing the Great People of Alaska, a State I love, and WON BIG THREE TIMES, in 2016, 2020, and 2024! A very successful Businessman, Nick knows the America First Policies required to Create Great Jobs, Cut Taxes, Strengthen our Economy, and Eliminate Government Waste. He will never stop fighting to Secure our Border, Stop Migrant Crime, Halt the Flow of Illegal Drugs, Strengthen our Military/Vets, Champion American Energy DOMINANCE, and Defend our always under siege Second Amendment. Nick's opponent, Bill Hill, is a Radical Left Lunatic who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Bill Hill is Reckless, Radical, and Dangerous! Nick Begich has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR NICK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/alaska/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:13.992775+00:00",
-      "event_id": "79a9679a6413def16cb0813a",
-      "action_reaction": {
-        "event_id": "79a9679a6413def16cb0813a",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13169,7 +13169,8 @@
     "8e95ff1095606d785ab17db6": "2026-11-22T15:07:09.912351+00:00",
     "82cce27ae4b2687822bcc2bb": "2026-11-22T15:19:21.049097+00:00",
     "c7ce282738a1eea429c21cc7": "2026-11-22T15:19:21.049265+00:00",
-    "4389bb33aefe8a886b22dfe0": "2026-11-22T15:19:21.049387+00:00"
+    "4389bb33aefe8a886b22dfe0": "2026-11-22T15:19:21.049387+00:00",
+    "8f2feb3f9d61a07a22adee5c": "2026-11-22T15:26:10.014648+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18233,7 +18234,7 @@
   "analyst_brief_date": "2026-11-22",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 5
+    "Trump": 6
   },
   "analyst_report_week": "2026-W47"
 }
