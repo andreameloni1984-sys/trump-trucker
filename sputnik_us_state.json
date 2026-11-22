@@ -674,21 +674,22 @@
       "title": "It is going to be very hard for me to work with Chuck Schumer should he become Senate Majority Leader. He failed badly as “Leader” once before, one of the worst history, and I have little doubt that he will fail again. All he did was perpetuate the Russia, Russia, Russia Hoax, and many other Hoaxes ",
       "url": "https://truthsocial.com/@realDonaldTrump/117660378819768000"
     },
-    "https://www.federalreserve.gov/newsevents/pressreleases/other20261120a.htm": {
-      "acquired": "2026-11-20T15:08:04.538774+00:00",
-      "acquisition_seconds": 484.538774,
+    "https://truthsocial.com/@realDonaldTrump/117660692611602783": {
+      "acquired": "2026-11-22T15:07:18.375117+00:00",
+      "acquisition_seconds": 350.206162,
       "beneficiaries": [],
       "bias": null,
-      "category": "fed",
+      "category": "presidential",
       "evidence": "direzione o conferma insufficiente",
       "issuer": "",
-      "kind": "fed",
+      "kind": "truth",
       "penalized": [],
-      "published": "2026-11-20T15:00:00+00:00",
-      "source": "Federal Reserve",
+      "primary_verified": true,
+      "published": "2026-11-22T15:01:29.507000+00:00",
+      "source": "Donald Trump / Truth Social",
       "status": "SCARTARE",
-      "title": "Federal Reserve Board releases results from survey of senior financial officers at banks about their strategies and practices for managing reserve balances",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261120a.htm"
+      "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660691191971810",
+      "url": "https://truthsocial.com/@realDonaldTrump/117660692611602783"
     },
     "https://www.federalreserve.gov/newsevents/pressreleases/other20261120b.htm": {
       "acquired": "2026-11-20T21:18:46.376041+00:00",
@@ -2001,6 +2002,22 @@
       "status": "SCARTARE",
       "title": "Chip stocks see $2.3 trillion weekly wipeout as panic grips the AI trade",
       "url": "https://www.marketwatch.com/story/chip-stocks-see-2-3-trillion-weekly-wipeout-as-panic-grips-the-ai-trade-371f2f03"
+    },
+    "https://www.marketwatch.com/story/corporate-america-hunts-for-generational-growth-in-ai-trading-cards-and-the-l-a-airport-3072eb1a": {
+      "acquired": "2026-11-22T15:07:18.416998+00:00",
+      "acquisition_seconds": 378.416998,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-22T15:01:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Corporate America hunts for ‘generational’ growth in AI, trading cards and the L.A. airport",
+      "url": "https://www.marketwatch.com/story/corporate-america-hunts-for-generational-growth-in-ai-trading-cards-and-the-l-a-airport-3072eb1a"
     },
     "https://www.marketwatch.com/story/dow-s-p-500-enter-correction-as-nasdaq-suffers-worst-week-since-2020-bd74dadf": {
       "acquired": "2026-11-20T22:19:07.750618+00:00",
