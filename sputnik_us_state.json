@@ -1,21 +1,5 @@
 {
   "invest_events": {
-    "https://truthsocial.com/@realDonaldTrump/117648902586194402": {
-      "acquired": "2026-11-20T13:48:57.207997+00:00",
-      "acquisition_seconds": 2750.207997,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-20T13:03:07+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "RT @SchoenlawBy engaging in an unprecedented tripartite summit with the leaders of China and Russia, countries with which we have profound differences, President Trump not only continues his well-founded policy of always seeking to keep dialogue open, but that policy is consistent with the great sta",
-      "url": "https://truthsocial.com/@realDonaldTrump/117648902586194402"
-    },
     "https://truthsocial.com/@realDonaldTrump/117656257101704992": {
       "acquired": "2026-11-21T21:07:09.636368+00:00",
       "acquisition_seconds": 3221.636368,
@@ -2208,22 +2192,6 @@
       "title": "‘I’m sick of flying’: I paid for priority boarding, but the overhead bins were full. Was I duped?",
       "url": "https://www.marketwatch.com/story/im-sick-of-flying-i-paid-for-priority-boarding-but-the-overhead-bins-were-full-was-i-duped-0badcc80"
     },
-    "https://www.marketwatch.com/story/intuits-downbeat-outlook-deepens-wall-streets-anxiety-about-software-companies-15b878e5": {
-      "acquired": "2026-11-20T13:08:13.364250+00:00",
-      "acquisition_seconds": 553.36425,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-20T12:59:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Intuit’s downbeat outlook deepens Wall Street’s anxiety about software companies",
-      "url": "https://www.marketwatch.com/story/intuits-downbeat-outlook-deepens-wall-streets-anxiety-about-software-companies-15b878e5"
-    },
     "https://www.marketwatch.com/story/investors-fled-to-healthcare-stocks-for-safety-now-insurance-and-hospital-shares-are-plunging-9cb6a96c": {
       "acquired": "2026-11-20T16:08:23.659839+00:00",
       "acquisition_seconds": 923.659839,
@@ -2481,8 +2449,8 @@
       "url": "https://www.marketwatch.com/story/the-tech-wreck-is-one-stock-trade-trump-cant-taco-away-516b3883"
     },
     "https://www.marketwatch.com/story/the-thought-of-living-to-100-terrifies-me-is-social-security-a-giant-ponzi-scheme-84a64e7e": {
-      "acquired": "2026-11-20T13:08:13.364250+00:00",
-      "acquisition_seconds": 493.36425,
+      "acquired": "2026-11-22T13:07:15.789124+00:00",
+      "acquisition_seconds": 73035.789124,
       "beneficiaries": [],
       "bias": null,
       "category": "other",
@@ -2490,7 +2458,7 @@
       "issuer": "",
       "kind": "press",
       "penalized": [],
-      "published": "2026-11-20T13:00:00+00:00",
+      "published": "2026-11-21T16:50:00+00:00",
       "source": "MarketWatch / Dow Jones",
       "status": "SCARTARE",
       "title": "Is Social Security a Ponzi scheme? No. Don’t get carried away with 1930s-era prophecies of doom.",
