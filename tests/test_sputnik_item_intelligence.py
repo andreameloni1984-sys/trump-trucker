@@ -472,7 +472,9 @@ class SputnikItemIntelligenceTests(unittest.TestCase):
         self.assertIn("queue: max", workflow)
         self.assertIn("cancel-in-progress: false", workflow)
         self.assertNotIn("cancel-in-progress: true", workflow)
-        self.assertIn("    - cron: '2-59/15 * * * *'", workflow)
+        # Riserva oraria: i giri ogni 15 minuti li avvia la sveglia Cloudflare (workflow_dispatch).
+        self.assertIn("    - cron: '9 * * * *'", workflow)
+        self.assertIn("workflow_dispatch:", workflow)
 
     def test_scheduled_workflow_fails_closed_without_telegram_chat_id(self):
         workflow_path = (

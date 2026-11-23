@@ -34,6 +34,9 @@ jobs:
       # PAC mensile 80/10/10 sul conto demo (SPUTNIK_PAC=0 lo spegne)
       SPUTNIK_PAC: ${{ vars.SPUTNIK_PAC }}
       SPUTNIK_PAC_MONTHLY: ${{ vars.SPUTNIK_PAC_MONTHLY }}
+      # Trend lento con ETF (SPUTNIK_TREND=0 lo spegne; importo per ETF in SPUTNIK_TREND_EUR)
+      SPUTNIK_TREND: ${{ vars.SPUTNIK_TREND }}
+      SPUTNIK_TREND_EUR: ${{ vars.SPUTNIK_TREND_EUR }}
       # Acquisto automatico dopo gli inviti di Trump a comprare (SPUTNIK_TRUMP_TRADE=0 lo spegne)
       SPUTNIK_TRUMP_TRADE: ${{ vars.SPUTNIK_TRUMP_TRADE }}
       SPUTNIK_TRUMP_TRADE_EUR: ${{ vars.SPUTNIK_TRUMP_TRADE_EUR }}
@@ -43,12 +46,22 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install requests
-      - name: Esegui i segnali sul conto demo
+      - name: Esegui i segnali sul conto demo (trader a 5 giorni, spento di default)
+        # Sostituito dal trend lento: si riaccende con la variabile SPUTNIK_SWING=1.
+        if: vars.SPUTNIK_SWING == '1'
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             python -m sputnik_demo.trader --dry-run
           else
             python -m sputnik_demo.trader
+          fi
+      - name: Trend lento con ETF, controllo mensile (conto demo)
+        if: always()
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m sputnik_demo.slow_trend --dry-run
+          else
+            python -m sputnik_demo.slow_trend
           fi
       - name: PAC mensile con ribilanciamento (conto demo)
         if: always()
