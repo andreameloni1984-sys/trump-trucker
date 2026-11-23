@@ -39,5 +39,11 @@
     "ticker": "BTCEd_EQ"
    }
   }
+ },
+ "trump_trades": {
+  "seen": [],
+  "open": null,
+  "closed": [],
+  "ticker": "SXR8d_EQ"
  }
 }
