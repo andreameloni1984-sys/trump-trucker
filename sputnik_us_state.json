@@ -1362,6 +1362,22 @@
       "title": "I’ve been married for 58 years. It’s ‘our’ money, not ‘his’ and ‘hers.’ Why don’t others feel the same?",
       "url": "https://www.marketwatch.com/story/ive-been-married-for-58-years-its-our-money-not-his-and-hers-why-dont-others-feel-the-same-c5745889"
     },
+    "https://www.marketwatch.com/story/ive-paid-for-long-term-care-insurance-for-20-years-is-it-still-worth-it-1b2cd52d": {
+      "acquired": "2026-11-23T19:47:25.299606+00:00",
+      "acquisition_seconds": 925.299606,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T19:32:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "I’ve paid for long-term-care insurance for 20 years. Is it still worth it?",
+      "url": "https://www.marketwatch.com/story/ive-paid-for-long-term-care-insurance-for-20-years-is-it-still-worth-it-1b2cd52d"
+    },
     "https://www.marketwatch.com/story/james-bond-films-were-shot-all-over-the-world-here-are-5-properties-made-famous-by-007-dabafbe6": {
       "acquired": "2026-11-23T10:08:41.353705+00:00",
       "acquisition_seconds": 401.353705,
@@ -1681,6 +1697,22 @@
       "status": "SCARTARE",
       "title": "These little-known investments could be among the best bargains in a crash",
       "url": "https://www.marketwatch.com/story/these-little-known-investments-could-be-among-the-best-bargains-in-a-crash-78a379b4"
+    },
+    "https://www.marketwatch.com/story/these-stocks-are-the-biggest-gainers-after-jensen-huangs-return-to-nvidia-bb886140": {
+      "acquired": "2026-11-23T19:47:25.299606+00:00",
+      "acquisition_seconds": 205.299606,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T19:44:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "These stocks are the biggest gainers after Jensen Huang’s return to Nvidia",
+      "url": "https://www.marketwatch.com/story/these-stocks-are-the-biggest-gainers-after-jensen-huangs-return-to-nvidia-bb886140"
     },
     "https://www.marketwatch.com/story/trump-is-open-to-capping-credit-card-interest-rates-but-holiday-shoppers-shouldnt-bank-on-it-yet-34260705": {
       "acquired": "2026-11-23T19:02:44.236739+00:00",
