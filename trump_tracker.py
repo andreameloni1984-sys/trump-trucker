@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any
 
 from sputnik_action_reaction import build_action_reaction_record
+import sputnik_market_call
 from sputnik_public_sources import parse_public_feed
 from sputnik_catalyst import directional_news_candidates
 from telegram_delivery import confirmed_message_id
@@ -621,6 +622,10 @@ def intelligence_snapshot(state: dict[str, Any], feeds_only: bool = False) -> li
             title = str(row.get("title") or "").strip()
             body = " ".join(part for part in (title, str(row.get("text") or "").strip()) if part)
             domains = _domains_for_public_text(body)
+            # Le "chiamate al mercato" (es. "GREAT TIME TO BUY") non contengono parole su dazi o
+            # materie prime ma muovono la borsa: vanno tenute anche senza altri temi.
+            if sputnik_market_call.detect(body):
+                domains = list(dict.fromkeys([*domains, sputnik_market_call.DOMAIN]))
             if not domains:
                 continue
             identity = str(row.get("id") or row.get("url") or (title + "|" + str(row.get("published") or "")))
