@@ -1091,9 +1091,23 @@
       "evidence": "PRIMARY_DOCUMENT",
       "status": "CONFIRMED",
       "transaction_type": "DISCLOSURE_ONLY"
+    },
+    "3dab20357182a7c0d4804d4f": {
+      "source": "SEC_EDGAR",
+      "cik": "0001849635",
+      "accession": "0001437749-26-038086",
+      "form": "4",
+      "filed_at": "2026-11-23",
+      "primary_document": "xslF345X06/rdgdoc.xml",
+      "company": "Trump Media & Technology Group Corp.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1849635/000143774926038086/xslF345X06/rdgdoc.xml",
+      "event_id": "3dab20357182a7c0d4804d4f",
+      "evidence": "PRIMARY_DOCUMENT",
+      "status": "CONFIRMED",
+      "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-23T19:30:11.688973+00:00",
+  "updated_at": "2026-11-23T21:47:13.486475+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -17918,7 +17932,8 @@
     "ee96d130f2d6155027377272": "2026-11-21T16:52:14.330835+00:00",
     "7007f4e14a7bc7b421810201": "2026-11-21T16:52:14.330835+00:00",
     "e30b4b6599f4bb3b408d2dda": "2026-11-21T16:52:14.330835+00:00",
-    "40731f1f7da0d5a8258a8f32": "2026-11-21T16:52:14.330835+00:00"
+    "40731f1f7da0d5a8258a8f32": "2026-11-21T16:52:14.330835+00:00",
+    "3dab20357182a7c0d4804d4f": "2026-11-23T21:47:11.904064+00:00"
   },
   "analyst_seeded_ciks": {
     "0001494730": "2026-11-21T16:52:14.330835+00:00",
