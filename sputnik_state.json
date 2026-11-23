@@ -1093,15 +1093,63 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-23T11:35:07.329503+00:00",
+  "updated_at": "2026-11-23T14:09:04.239695+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "ea1279af08e3e0c508a69d4b",
+    "TRUTH_ARCHIVE": "bc9ceb04038d5627effbd91a",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "30ea34cb62f0d7ffdacc246f": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43714",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117666141823845971",
+      "title": "The NVIDIA Board of Directors has made the correct and proper decision to return Jensen Huang to the position of CEO. The Country needs Jensen’s leadership at NVIDIA in order to ensure the Success and Prosperity of not only the Company, but the American Economy. The United States Government has no r",
+      "published": "Mon, 23 Nov 2026 14:07:17 +0000",
+      "domains": [
+        "TRADE_POLICY"
+      ],
+      "text": "The NVIDIA Board of Directors has made the correct and proper decision to return Jensen Huang to the position of CEO. The Country needs Jensen’s leadership at NVIDIA in order to ensure the Success and Prosperity of not only the Company, but the American Economy. The United States Government has no r The NVIDIA Board of Directors has made the correct and proper decision to return Jensen Huang to the position of CEO. The Country needs Jensen’s leadership at NVIDIA in order to ensure the Success and Prosperity of not only the Company, but the American Economy. The United States Government has no reason to believe that Jensen’s return to NVIDIA poses any risk to National Security. The Attorney General of the United States has confirmed that the U.S. Government does not possess evidence that he has engaged in any unlawful conduct. On a personal note, I have gotten to know Jensen, and he is a Great Patriot and National Treasure. Separately, NVIDIA should continue its thorough internal investigation of the Company’s compliance with U.S. export controls in order to ensure that it is fulfilling its legal obligations and Patriotic Duty to protect U.S. National Security. Congratulations to Jensen, the NVIDIA Board, to the People of the United States — and, indeed, the World! Thank you for your attention to this matter. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-23T14:09:03.616453+00:00",
+      "event_id": "30ea34cb62f0d7ffdacc246f",
+      "action_reaction": {
+        "event_id": "30ea34cb62f0d7ffdacc246f",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "bc9ceb04038d5627effbd91a": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA",
+        "TRADE_POLICY"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 23, 2026, 9:07 AM Original Post The NVIDIA Board of Directors has made the correct and proper decision to return Jensen Huang to the position of CEO. The Country needs Jensen’s leadership at NVIDIA in order to ensure the Success and Prosperity of not only the Company, but the American Economy. The United States Government has no reason to believe that Jensen’s return to NVIDIA poses any risk to National Security. The Attorney General of the United States has confirmed that the U.S. Government does not possess evidence that he has engaged in any unlawful conduct. On a personal note, I have gotten to know Jensen, and he is a Great Patriot and National Treasure. Separately, NVIDIA should continue its thorough internal investigation of the Company’s compliance with U.S. export controls in order to ensure that it is fulfilling its legal obligations and Patriotic Duty to protect U.S. National Security. Congratulations",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-23T14:09:02.966979+00:00",
+      "event_id": "bc9ceb04038d5627effbd91a",
+      "action_reaction": {
+        "event_id": "bc9ceb04038d5627effbd91a",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "2faeb222c0fc729f46e04b58": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8053,52 +8101,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "b9689cc1d2909eae12065317": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43200",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548727340768491",
-      "title": "It is my Great Honor to endorse America First Patriot and Highly Respected Jenny Costa Honeycutt, who is running to represent the fantastic people of South Carolina's 1st Congressional District! A very successful Business Owner, Attorney, Civic Leader, and Loving Wife and Mother, Jenny has dedicated",
-      "published": "Mon, 02 Nov 2026 20:27:15 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot and Highly Respected Jenny Costa Honeycutt, who is running to represent the fantastic people of South Carolina's 1st Congressional District! A very successful Business Owner, Attorney, Civic Leader, and Loving Wife and Mother, Jenny has dedicated It is my Great Honor to endorse America First Patriot and Highly Respected Jenny Costa Honeycutt, who is running to represent the fantastic people of South Carolina's 1st Congressional District! A very successful Business Owner, Attorney, Civic Leader, and Loving Wife and Mother, Jenny has dedicated her life to serving her Community. As your next Congresswoman, Jenny will fight tirelessly to Grow our Economy, Cut Taxes and Regulations, Create GREAT Jobs, Keep our Border SECURE, Support our Incredible Military/Veterans, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., and Defend our always under siege Second Amendment. Jenny's opponent, Nancy Lacore, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Nancy Lacore is Reckless, Radical, and Dangerous! Jenny Costa Honeycutt has my Complete and Total Endorsement to be the next Representative from South Carolina's 1st Congressional District. GET OUT AND VOTE F",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:14.003824+00:00",
-      "event_id": "b9689cc1d2909eae12065317",
-      "action_reaction": {
-        "event_id": "b9689cc1d2909eae12065317",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "55c407e870a3d2f0ead40d65": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43199",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548728664861707",
-      "title": "Highly Respected MAGA Warrior, Cody Simpson, is running for Commissioner of Agriculture in the wonderful State of South Carolina, which I won in 2016, 2020, and 2024, with the Highest Vote in History! Cody is a Fifth Generation Farmer, and Former Agriculture Advisor and Chief Executive Assistant to",
-      "published": "Mon, 02 Nov 2026 20:27:35 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Highly Respected MAGA Warrior, Cody Simpson, is running for Commissioner of Agriculture in the wonderful State of South Carolina, which I won in 2016, 2020, and 2024, with the Highest Vote in History! Cody is a Fifth Generation Farmer, and Former Agriculture Advisor and Chief Executive Assistant to Highly Respected MAGA Warrior, Cody Simpson, is running for Commissioner of Agriculture in the wonderful State of South Carolina, which I won in 2016, 2020, and 2024, with the Highest Vote in History! Cody is a Fifth Generation Farmer, and Former Agriculture Advisor and Chief Executive Assistant to GREAT Governor Henry McMaster. As South Carolina State Executive Director of the USDA Farm Service Agency, he has continued to serve the Palmetto State with distinction, delivering outstanding results. A true America First Patriot, who has been with us from the very beginning, Cody is an incredibly effective Voice for South Carolina Agriculture, and our amazing Farmers and Ranchers. As your next Agriculture Commissioner, Cody will work tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Murderers, and other Criminals from illegally entering our Country, Ensure LAW AND ORDER, Support our Military/Veterans, and Defend our always under siege Second Amendment. Cody Simpson has my Complete and Total Endorsement to be the next South Carolina Commissioner of Agriculture. Election D",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:14.003210+00:00",
-      "event_id": "55c407e870a3d2f0ead40d65",
-      "action_reaction": {
-        "event_id": "55c407e870a3d2f0ead40d65",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13185,7 +13187,8 @@
     "e6d097d93d8738d434a5743d": "2026-11-22T21:51:52.992955+00:00",
     "a4a7ab7773e86d913c9e425b": "2026-11-22T21:59:10.420112+00:00",
     "11f7d39b735e5ecbbcd55032": "2026-11-23T05:09:40.224134+00:00",
-    "2faeb222c0fc729f46e04b58": "2026-11-23T11:35:06.938400+00:00"
+    "2faeb222c0fc729f46e04b58": "2026-11-23T11:35:06.938400+00:00",
+    "30ea34cb62f0d7ffdacc246f": "2026-11-23T14:09:03.616436+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18245,11 +18248,13 @@
     }
   },
   "analyst_started_at": "2026-11-21T16:33:10.411603+00:00",
-  "analyst_outbox": [],
+  "analyst_outbox": [
+    "🇺🇸 SPUTNIK — TRUMP\n📰 The NVIDIA Board of Directors has made the correct and proper decision to return Jensen Huang to the position of CEO. The Country needs Jensen’s leadership at NVIDIA in order to ensure the Success and Prosperity of not only the Company, but the American Economy. The United States\n📡 Truth Social (Trump) · 🕒 Mon, 23 Nov 2026 14:07:17 +0000\n🧩 Temi: dazi/commercio\n\n💰 Miliardari già esposti a questi temi (ultimi 90 giorni):\n• Warren Buffett · Berkshire Hathaway: portafoglio trimestrale (89 titoli; primi: AMERICAN EXPRESS CO COM, APPLE INC COM, COCA COLA CO COM) · 2026-11-16\n• Stanley Druckenmiller · Duquesne: portafoglio trimestrale (65 titoli; primi: Natera Inc COM, Seagate Technology Hldngs Pl ORD SHS, Amazon Com Inc COM) · 2026-11-16\n• John Paulson · Paulson & Co: portafoglio trimestrale (9 titoli; primi: MADRIGAL PHARMACEUTICALS INC COM, PERPETUA RESOURCES CORP COM, ACADIAN ASSET MANAGEMENT INC COM) · 2026-11-16\n• David Tepper · Appaloosa: portafoglio trimestrale (24 titoli; primi: MICRON TECHNOLOGY INC COM, AMAZON COM INC COM, TAIWAN SEMICONDUCTOR MANUFAC SPONSORED ADS) · 2026-11-16\n\n🔗 https://www.trumpstruth.org/statuses/43714\nℹ️ Analisi informativa da fonti pubbliche, non è un segnale operativo né una consulenza."
+  ],
   "analyst_brief_date": "2026-11-23",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 12,
+    "Trump": 13,
     "chiamate al mercato": 0
   },
   "analyst_report_week": "2026-W47"
