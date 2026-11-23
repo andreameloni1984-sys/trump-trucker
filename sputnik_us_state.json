@@ -3986,6 +3986,22 @@
       "title": "ZIEGLER CLOSES $41,755,000 FINANCING FOR FLEET LANDING AT RIVERSIDE",
       "url": "https://www.prnewswire.com/news-releases/ziegler-closes-41-755-000-financing-for-fleet-landing-at-riverside-302947277.html"
     },
+    "https://www.whitehouse.gov/briefings-statements/2026/11/congressional-bills-h-r-1550-h-r-4930-and-h-r-8552-signed-into-law": {
+      "acquired": "2026-11-23T23:47:21.715259+00:00",
+      "acquisition_seconds": 449.715259,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "policy",
+      "penalized": [],
+      "published": "2026-11-23T23:39:52+00:00",
+      "source": "Casa Bianca – comunicati",
+      "status": "SCARTARE",
+      "title": "Congressional Bills H.R. 1550, H.R. 4930, and H.R. 8552 Signed into Law",
+      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/congressional-bills-h-r-1550-h-r-4930-and-h-r-8552-signed-into-law"
+    },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-hails-americas-armed-forces": {
       "acquired": "2026-11-23T19:32:23.073475+00:00",
       "acquisition_seconds": 731.073475,
@@ -4001,6 +4017,22 @@
       "status": "SCARTARE",
       "title": "First Lady Melania Trump Hails America’s Armed Forces",
       "url": "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-hails-americas-armed-forces"
+    },
+    "https://www.whitehouse.gov/presidential-actions/2026/11/expeditious-enforcement-of-capital-sentences-and-the-pursuit-of-justice-for-victims-of-heinous-crimes": {
+      "acquired": "2026-11-23T23:47:21.721933+00:00",
+      "acquisition_seconds": 669.721933,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "policy",
+      "penalized": [],
+      "published": "2026-11-23T23:36:12+00:00",
+      "source": "Casa Bianca – azioni",
+      "status": "SCARTARE",
+      "title": "Expeditious Enforcement of Capital Sentences and the Pursuit of Justice for Victims of Heinous Crimes",
+      "url": "https://www.whitehouse.gov/presidential-actions/2026/11/expeditious-enforcement-of-capital-sentences-and-the-pursuit-of-justice-for-victims-of-heinous-crimes"
     }
   },
   "pravda": [],
