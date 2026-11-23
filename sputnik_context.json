@@ -2,6 +2,17 @@
  "version": 1,
  "trump": [
   {
+   "title": "First Lady Melania Trump Hails America’s Armed Forces",
+   "published": "2026-11-23T19:20:12+00:00",
+   "url": "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-hails-americas-armed-forces/",
+   "source": "Casa Bianca",
+   "domains": [
+    "DEFENSE",
+    "AI_TECH"
+   ],
+   "bias": []
+  },
+  {
    "title": "Iowa is a very special place to me, a place that I won, by substantial margins, in all three Elections but, whether I won or lost, would never deter me from making a correct decision. As everyone know",
    "published": "2026-11-23T18:00:54+00:00",
    "url": "https://www.trumpstruth.org/statuses/43717",
@@ -207,5 +218,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-23T18:05:53.772364+00:00"
+ "updated_at": "2026-11-23T19:30:11.676339+00:00"
 }

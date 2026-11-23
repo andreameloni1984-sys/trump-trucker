@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-23T19:02:34.146871+00:00",
+  "updated_at": "2026-11-23T19:30:11.688973+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1102,6 +1102,30 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "fe8819f08272f9829e320c4a": {
+      "source": "WHITE_HOUSE_RSS",
+      "feed_url": "https://www.whitehouse.gov/feed/",
+      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-hails-americas-armed-forces/",
+      "primary_url": "",
+      "title": "First Lady Melania Trump Hails America’s Armed Forces",
+      "published": "Mon, 23 Nov 2026 19:20:12 +0000",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH"
+      ],
+      "text": "First Lady Melania Trump Hails America’s Armed Forces Declaring precision and mental strength the foundation of global military superiority As families across American prepare to celebrate Thanksgiving, First Lady Melania Trump addressed members of America’s armed forces at Joint Base Andrews, “The US military is the most powerful military in the world because of its people. Our warriors train relentlessly, pushing the boundaries […] The post First Lady Melania Trump Hails America’s Armed Forces appeared first on The White House.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-23T19:30:11.438164+00:00",
+      "event_id": "fe8819f08272f9829e320c4a",
+      "action_reaction": {
+        "event_id": "fe8819f08272f9829e320c4a",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "f1e7782edfffd9845409f4f9": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8107,30 +8131,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "ed783835eb6c2c94d5afd8d2": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43274",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549834474544371",
-      "title": "RT @realDonaldTrumpI am pleased to inform you that I will be doing the Great Sean Hannity Show tonight at 9 PM ET. This is the Golden Age of America with 25 Trillion Dollars of Growth and Wealth being created just since my Election — A very short period of time. There has never been anything like it",
-      "published": "Tue, 03 Nov 2026 01:08:48 +0000",
-      "domains": [
-        "METALS",
-        "RATES_MACRO"
-      ],
-      "text": "RT @realDonaldTrumpI am pleased to inform you that I will be doing the Great Sean Hannity Show tonight at 9 PM ET. This is the Golden Age of America with 25 Trillion Dollars of Growth and Wealth being created just since my Election — A very short period of time. There has never been anything like it RT @ realDonaldTrump I am pleased to inform you that I will be doing the Great Sean Hannity Show tonight at 9 PM ET. This is the Golden Age of America with 25 Trillion Dollars of Growth and Wealth being created just since my Election — A very short period of time. There has never been anything like it in World History, nor has there been anything close. Additionally, NO TAX ON TIPS, NO TAX ON OVERTIME, NO TAX ON SOCIAL SECURITY FOR OUR GREAT SENIORS! It has all been a BLESSING for our Country. It is my Great Honor to be your President during this Great Time in American History! President DONALD J. TRUMP Reposted Donald J. Trump I am pleased to inform you that I will be doing the Great Sean Hannity Show tonight at 9 PM ET. This is the Golden Age of America with 25 Trillion Dollars of Growth and Wealth being created just since my Election — A very short period of time. There has never been anything like it in World History, nor has there been anything close. Additionally, NO TAX ON TIPS, NO TAX ON OVERTIME, NO TAX ON SOCIAL SECURITY FOR OUR GREAT SENIORS! It has all been a BLESSING for our Country. It is my Great Honor to be your President during this Great Time in American History!",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.613035+00:00",
-      "event_id": "ed783835eb6c2c94d5afd8d2",
-      "action_reaction": {
-        "event_id": "ed783835eb6c2c94d5afd8d2",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13221,7 +13221,8 @@
     "30ea34cb62f0d7ffdacc246f": "2026-11-23T14:09:03.616436+00:00",
     "ad7e92a49ccdcfe239aac748": "2026-11-23T14:57:00.143847+00:00",
     "eb290bb915ae61eb8d59cfe6": "2026-11-23T16:24:39.863086+00:00",
-    "b1fe6bd3d161953055134648": "2026-11-23T18:05:53.762637+00:00"
+    "b1fe6bd3d161953055134648": "2026-11-23T18:05:53.762637+00:00",
+    "fe8819f08272f9829e320c4a": "2026-11-23T19:30:11.438149+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
