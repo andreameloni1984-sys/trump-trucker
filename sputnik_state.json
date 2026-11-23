@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-23T23:02:15.753226+00:00",
+  "updated_at": "2026-11-23T23:51:12.167896+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "6cc1023ced4d239cb3926168": {
+      "source": "WHITE_HOUSE_RSS",
+      "feed_url": "https://www.whitehouse.gov/feed/",
+      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/congressional-bills-h-r-1550-h-r-4930-and-h-r-8552-signed-into-law/",
+      "primary_url": "",
+      "title": "Congressional Bills H.R. 1550, H.R. 4930, and H.R. 8552 Signed into Law",
+      "published": "Mon, 23 Nov 2026 23:39:52 +0000",
+      "domains": [
+        "REAL_ESTATE"
+      ],
+      "text": "Congressional Bills H.R. 1550, H.R. 4930, and H.R. 8552 Signed into Law On Monday, November 23, 2026, the President signed into law: H.R. 1550, the “Strengthening America’s Turning Point Act,” which redesignates the Saratoga National Historical Park as the Saratoga National Battlefield Park; H.R. 4930, which expands U.S. Customs and Border Protection’s authority to share information about imports suspected of violating United States intellectual-property-rights with the rights holders, online […] The post Congressional Bills H.R. 1550, H.R. 4930, and H.R. 8552 Signed into Law appeared first on The White House.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-23T23:51:12.079528+00:00",
+      "event_id": "6cc1023ced4d239cb3926168",
+      "action_reaction": {
+        "event_id": "6cc1023ced4d239cb3926168",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "fe8819f08272f9829e320c4a": {
       "source": "WHITE_HOUSE_RSS",
       "feed_url": "https://www.whitehouse.gov/feed/",
@@ -8122,29 +8145,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "7ee571b74169b7439d49684c": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43275",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549834242650471",
-      "title": "RT @realDonaldTrumpOil Prices are DROPPING LIKE A ROCK, down almost $10 a Barrel, A RECORD, because people feel that there will not be a War with Iran. Iran wants a settlement, as soon as possible. It could happen! President DONALD J. TRUMP",
-      "published": "Tue, 03 Nov 2026 01:08:45 +0000",
-      "domains": [
-        "ENERGY"
-      ],
-      "text": "RT @realDonaldTrumpOil Prices are DROPPING LIKE A ROCK, down almost $10 a Barrel, A RECORD, because people feel that there will not be a War with Iran. Iran wants a settlement, as soon as possible. It could happen! President DONALD J. TRUMP RT @ realDonaldTrump Oil Prices are DROPPING LIKE A ROCK, down almost $10 a Barrel, A RECORD, because people feel that there will not be a War with Iran. Iran wants a settlement, as soon as possible. It could happen! President DONALD J. TRUMP Reposted Donald J. Trump Oil Prices are DROPPING LIKE A ROCK, down almost $10 a Barrel, A RECORD, because people feel that there will not be a War with Iran. Iran wants a settlement, as soon as possible. It could happen! President DONALD J. TRUMP",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.613229+00:00",
-      "event_id": "7ee571b74169b7439d49684c",
-      "action_reaction": {
-        "event_id": "7ee571b74169b7439d49684c",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13236,7 +13236,8 @@
     "ad7e92a49ccdcfe239aac748": "2026-11-23T14:57:00.143847+00:00",
     "eb290bb915ae61eb8d59cfe6": "2026-11-23T16:24:39.863086+00:00",
     "b1fe6bd3d161953055134648": "2026-11-23T18:05:53.762637+00:00",
-    "fe8819f08272f9829e320c4a": "2026-11-23T19:30:11.438149+00:00"
+    "fe8819f08272f9829e320c4a": "2026-11-23T19:30:11.438149+00:00",
+    "6cc1023ced4d239cb3926168": "2026-11-23T23:51:12.079518+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
