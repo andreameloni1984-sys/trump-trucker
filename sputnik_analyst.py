@@ -349,6 +349,35 @@ def _source_name(item: dict) -> str:
     return str(item.get("source") or "fonte pubblica")
 
 
+# Avvisi Trump: solo post con testo vero che parlano di ciò che muove i mercati. Le parole sono
+# cercate intere ("gold" sì, "Golden Dome" no; "ai" non scatta dentro "said"). I post scartati
+# restano nello stato, nel riepilogo delle 7:00 e nelle statistiche.
+EMPTY_POST = re.compile(r"^\s*(quote post|repost|retruth|video|photo|image)\b(?:\s+from\b.*)?\s*$", re.I)
+MARKET_WORDS = re.compile(r"\b(?:" + "|".join([
+    r"oil", r"crude", r"brent", r"wti", r"natural gas", r"lng", r"gasoline", r"opec", r"drill(?:ing)?", r"petroleum",
+    r"energy prices?", r"gold", r"silver", r"copper", r"alumin(?:um|ium)", r"steel", r"uranium",
+    r"tariffs?", r"trade (?:deal|agreement|war)", r"sanctions?", r"export controls?", r"import dut(?:y|ies)",
+    r"federal reserve", r"the fed", r"powell", r"interest rates?", r"rate cuts?", r"inflation", r"treasur(?:y|ies)",
+    r"bond yields?", r"dollar", r"stock market", r"stocks?", r"the market", r"markets", r"wall street", r"dow",
+    r"s&p", r"nasdaq", r"401\(?k\)?", r"bitcoin", r"crypto(?:currency|currencies)?", r"ethereum", r"stablecoins?",
+    r"war", r"invasion", r"missiles?", r"ceasefire", r"nuclear", r"military strikes?",
+    r"corn", r"wheat", r"soybeans?", r"recession", r"gdp", r"jobs report",
+]) + r")\b", re.I)
+
+
+IDIOMS = re.compile(r"lock,? stock,? (?:and|&) barrel|taking stock|war (?:on|against) (?:crime|drugs|christmas)", re.I)
+
+
+def market_relevant(item: dict) -> bool:
+    title = str(item.get("title") or "").strip()
+    if not title or EMPTY_POST.match(title):
+        return False
+    if "MARKET_CALL" in (item.get("domains") or []):
+        return True
+    text = IDIOMS.sub(" ", " ".join([title, str(item.get("text") or "")]))
+    return bool(MARKET_WORDS.search(text))
+
+
 def trump_message(item: dict, state: dict[str, Any], now: datetime | None = None) -> str:
     now = now or _now()
     domains = item.get("domains") or []
@@ -505,7 +534,8 @@ def deliver(state: dict[str, Any], trump_findings: list[dict], alert_events: lis
             call = sputnik_market_call.message(item)
             if call:
                 urgent.append(call)
-            messages.append(trump_message(item, state, now))
+            if call or market_relevant(item):
+                messages.append(trump_message(item, state, now))
         trade_events = {m.get("url") for m in new_moves}
         for m in new_moves:
             if m["kind"] == "TRADE" and m.get("filed") and (_parse_day(m["filed"]) or date.min) < now.date() - timedelta(days=MAX_FILING_AGE_DAYS):
