@@ -1250,6 +1250,22 @@
       "title": "Trump’s push to reinstate Jensen Huang signals Nvidia’s CEO is too big to fail",
       "url": "https://www.marketwatch.com/story/trumps-push-to-reinstate-jensen-huang-signals-nvidias-ceo-is-too-big-to-fail-10709210"
     },
+    "https://www.marketwatch.com/story/u-s-stocks-see-best-day-in-more-than-a-year-as-return-of-jensen-huang-revives-ai-enthusiasm-c3b9d274": {
+      "acquired": "2026-11-23T22:02:20.338129+00:00",
+      "acquisition_seconds": 680.338129,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T21:51:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "U.S. stocks see best day in more than a year, as return of Jensen Huang revives AI enthusiasm",
+      "url": "https://www.marketwatch.com/story/u-s-stocks-see-best-day-in-more-than-a-year-as-return-of-jensen-huang-revives-ai-enthusiasm-c3b9d274"
+    },
     "https://www.marketwatch.com/story/unitedhealth-humana-and-cvs-stocks-slide-as-u-s-targets-medicare-advantage-ratings-6c2be5bb": {
       "acquired": "2026-11-23T13:48:46.059207+00:00",
       "acquisition_seconds": 826.059207,
@@ -3345,6 +3361,22 @@
       "status": "SCARTARE",
       "title": "Shore Bancshares, Inc. Reports Quarterly Dividend of $0.14 Per Share",
       "url": "https://www.prnewswire.com/news-releases/shore-bancshares-inc-reports-quarterly-dividend-of-0-14-per-share-302948452.html"
+    },
+    "https://www.prnewswire.com/news-releases/simon-property-group-sells-1-0-billion-of-senior-notes-302948691.html": {
+      "acquired": "2026-11-23T22:02:20.373695+00:00",
+      "acquisition_seconds": 920.373695,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T21:47:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Simon Property Group Sells $1.0 Billion of Senior Notes",
+      "url": "https://www.prnewswire.com/news-releases/simon-property-group-sells-1-0-billion-of-senior-notes-302948691.html"
     },
     "https://www.prnewswire.com/news-releases/summit-hotel-properties-publishes-2026-corporate-responsibility-report-302947826.html": {
       "acquired": "2026-11-23T13:34:49.421897+00:00",
