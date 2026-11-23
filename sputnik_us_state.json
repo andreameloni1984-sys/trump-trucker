@@ -1037,6 +1037,22 @@
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117664020137490731",
       "url": "https://truthsocial.com/@realDonaldTrump/117664023227213831"
     },
+    "https://truthsocial.com/@realDonaldTrump/117665528575591688": {
+      "acquired": "2026-11-23T12:27:01.578832+00:00",
+      "acquisition_seconds": 3341.578832,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-23T11:31:20+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Video post from November 23, 2026",
+      "url": "https://truthsocial.com/@realDonaldTrump/117665528575591688"
+    },
     "https://truthsocial.com/@realDonaldTrump/117665529427047942": {
       "acquired": "2026-11-23T11:35:15.778885+00:00",
       "acquisition_seconds": 223.383806,
@@ -1133,6 +1149,22 @@
       "status": "SCARTARE",
       "title": "Corporate America hunts for ‘generational’ growth in AI, trading cards and the L.A. airport",
       "url": "https://www.marketwatch.com/story/corporate-america-hunts-for-generational-growth-in-ai-trading-cards-and-the-l-a-airport-3072eb1a"
+    },
+    "https://www.marketwatch.com/story/cybersecurity-stocks-have-been-hot-and-now-crowdstrike-inks-deal-to-buy-zscaler-df8fd163": {
+      "acquired": "2026-11-23T12:27:01.623160+00:00",
+      "acquisition_seconds": 661.62316,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T12:16:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Cybersecurity stocks have been hot — and now CrowdStrike inks deal to buy Zscaler",
+      "url": "https://www.marketwatch.com/story/cybersecurity-stocks-have-been-hot-and-now-crowdstrike-inks-deal-to-buy-zscaler-df8fd163"
     },
     "https://www.marketwatch.com/story/google-co-founder-sergey-brin-and-ex-wife-nicole-shanahan-list-malibu-home-for-33-5-million-0121adcd": {
       "acquired": "2026-11-23T10:08:41.353705+00:00",
@@ -1565,6 +1597,22 @@
       "status": "SCARTARE",
       "title": "I’m terrified of a market crash. Should I put $400,000 of my $1 million retirement savings into an annuity?",
       "url": "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240"
+    },
+    "https://www.prnewswire.com/news-releases/2027-cruise-forecast-calls-for-22-4-million-us-ocean-cruisers-up-3-6-302948106.html": {
+      "acquired": "2026-11-23T12:27:01.662210+00:00",
+      "acquisition_seconds": 721.66221,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:15:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "2027 Cruise Forecast Calls for 22.4 Million U.S. Ocean Cruisers, Up 3.6%",
+      "url": "https://www.prnewswire.com/news-releases/2027-cruise-forecast-calls-for-22-4-million-us-ocean-cruisers-up-3-6-302948106.html"
     },
     "https://www.prnewswire.com/news-releases/american-bitcoin-secures-150-million-credit-facility-with-falconx-to-support-strategic-growth-302945891.html": {
       "acquired": "2026-11-23T11:48:49.954086+00:00",
