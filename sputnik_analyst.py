@@ -18,6 +18,8 @@ from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from typing import Any, Callable, Iterable
 
+import sputnik_market_call
+
 
 @dataclass(frozen=True)
 class Watched:
@@ -59,7 +61,7 @@ THEME_LABELS = {
     "DEFENSE": "difesa", "AI_TECH": "tecnologia/AI", "SPACE": "spazio", "CRYPTO": "cripto",
     "MEDIA": "media", "REAL_ESTATE": "immobiliare", "TRADE_POLICY": "dazi/commercio",
     "RATES_MACRO": "tassi/dollaro", "FINANCE": "banche/finanza", "PHARMA": "farmaceutico",
-    "AUTO": "auto",
+    "AUTO": "auto", "MARKET_CALL": "chiamata al mercato",
 }
 
 # Parole chiave nel nome del titolo → tema (stessi codici dei temi delle notizie).
@@ -493,12 +495,16 @@ def deliver(state: dict[str, Any], trump_findings: list[dict], alert_events: lis
         ]))
     else:
         messages: list[str] = []
+        urgent: list[str] = []   # allarmi ⚡: in testa e mai tagliati dal limite di messaggi
         for item in trump_findings:
             if item.get("evidence") != "PUBLIC_RSS_ITEM":
                 continue
             t = _parse_time(item.get("published"))
             if t is None or now - t > timedelta(hours=TRUMP_MAX_AGE_HOURS):
                 continue
+            call = sputnik_market_call.message(item)
+            if call:
+                urgent.append(call)
             messages.append(trump_message(item, state, now))
         trade_events = {m.get("url") for m in new_moves}
         for m in new_moves:
@@ -517,7 +523,8 @@ def deliver(state: dict[str, Any], trump_findings: list[dict], alert_events: lis
             extra = len(messages) - (MAX_ALERTS_PER_RUN - 1)
             messages = messages[:MAX_ALERTS_PER_RUN - 1] + [
                 f"🛰️ SPUTNIK — altre {extra} novità in questo giro: le trovi nel riepilogo di domani mattina."]
-        outbox += messages
+        counts["chiamate al mercato"] = counts.get("chiamate al mercato", 0) + len(urgent)
+        outbox = urgent + outbox + messages
 
     brief_hour = int(os.getenv("SPUTNIK_BRIEF_HOUR_ROME", "7"))
     try:
