@@ -2,6 +2,16 @@
  "version": 1,
  "trump": [
   {
+   "title": "Iowa is a very special place to me, a place that I won, by substantial margins, in all three Elections but, whether I won or lost, would never deter me from making a correct decision. As everyone know",
+   "published": "2026-11-23T18:00:54+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43717",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "DEFENSE"
+   ],
+   "bias": []
+  },
+  {
    "title": "ICYMI: “White House Convenes Elite Team To Prevent Air Traffic Outages Ahead Of Thanksgiving”",
    "published": "2026-11-23T16:11:31+00:00",
    "url": "https://www.whitehouse.gov/releases/2026/11/icymi-white-house-convenes-elite-team-to-prevent-air-traffic-outages-ahead-of-thanksgiving/",
@@ -197,5 +207,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-23T17:23:53.662275+00:00"
+ "updated_at": "2026-11-23T18:05:53.772364+00:00"
 }
