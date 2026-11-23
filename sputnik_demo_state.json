@@ -17,5 +17,25 @@
   "nasdaq": "SXRVd_EQ",
   "wti": "CRUDl_EQ"
  },
- "outbox": []
+ "outbox": [],
+ "pac": {
+  "months": [],
+  "invested": 0.0,
+  "instruments": {
+   "_date": "2026-11-23",
+   "_missing": [],
+   "mondo": {
+    "isin": "IE00BK5BQT80",
+    "ticker": "VWCEd_EQ"
+   },
+   "oro": {
+    "isin": "IE00B579F325",
+    "ticker": "SGLDm_EQ"
+   },
+   "bitcoin": {
+    "isin": "DE000A27Z304",
+    "ticker": "BTCEd_EQ"
+   }
+  }
+ }
 }
