@@ -1037,6 +1037,23 @@
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117664020137490731",
       "url": "https://truthsocial.com/@realDonaldTrump/117664023227213831"
     },
+    "https://truthsocial.com/@realDonaldTrump/117665529427047942": {
+      "acquired": "2026-11-23T11:35:15.778885+00:00",
+      "acquisition_seconds": 223.383806,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-23T11:31:33.453000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117665528575591688",
+      "url": "https://truthsocial.com/@realDonaldTrump/117665529427047942"
+    },
     "https://www.govinfo.gov/app/details/BILLS-114hr5132ih": {
       "acquired": "2026-11-21T16:08:07.148770+00:00",
       "acquisition_seconds": 607.14877,
