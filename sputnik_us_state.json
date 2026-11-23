@@ -1346,6 +1346,22 @@
       "title": "Stocks are serving up a ‘fat pitch’ for investors right now, as Morgan Stanley’s top strategist",
       "url": "https://www.marketwatch.com/story/stocks-are-serving-up-a-fat-pitch-for-investors-right-now-as-morgan-stanleys-top-strategist-19abe30a"
     },
+    "https://www.marketwatch.com/story/the-newest-addition-to-the-s-p-500-is-a-maker-of-viral-ice-cream-machines-5c6e209a": {
+      "acquired": "2026-11-23T23:32:28.364866+00:00",
+      "acquisition_seconds": 868.364866,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T23:18:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The newest addition to the S&P 500 is a maker of viral ice-cream machines",
+      "url": "https://www.marketwatch.com/story/the-newest-addition-to-the-s-p-500-is-a-maker-of-viral-ice-cream-machines-5c6e209a"
+    },
     "https://www.marketwatch.com/story/the-number-of-401-k-millionaires-drops-amid-stock-market-swings-23939b94": {
       "acquired": "2026-11-23T05:09:50.910852+00:00",
       "acquisition_seconds": 530.910852,
@@ -3601,6 +3617,22 @@
       "status": "SCARTARE",
       "title": "SHAREHOLDER ALERT: Purcell & Lefkowitz LLP Announces Shareholder Investigation of Tevogen Bio Holdings Inc. (NASDAQ: TVGN)",
       "url": "https://www.prnewswire.com/news-releases/shareholder-alert-purcell--lefkowitz-llp-announces-shareholder-investigation-of-tevogen-bio-holdings-inc-nasdaq-tvgn-302947866.html"
+    },
+    "https://www.prnewswire.com/news-releases/sharkninja-set-to-join-sp-500-others-to-join-sp-midcap-400-and-sp-smallcap-600-302948731.html": {
+      "acquired": "2026-11-23T23:32:28.433816+00:00",
+      "acquisition_seconds": 568.433816,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T23:23:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "SharkNinja Set to Join S&P 500; Others to Join S&P MidCap 400 and S&P SmallCap 600",
+      "url": "https://www.prnewswire.com/news-releases/sharkninja-set-to-join-sp-500-others-to-join-sp-midcap-400-and-sp-smallcap-600-302948731.html"
     },
     "https://www.prnewswire.com/news-releases/shore-bancshares-inc-reports-quarterly-dividend-of-0-14-per-share-302948452.html": {
       "acquired": "2026-11-23T20:02:30.468414+00:00",
