@@ -1794,6 +1794,22 @@
       "title": "I’m terrified of a market crash. Should I put $400,000 of my $1 million retirement savings into an annuity?",
       "url": "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240"
     },
+    "https://www.marketwatch.com/story/why-mondays-huge-stock-market-rally-is-actually-a-warning-sign-for-bulls-49d227a8": {
+      "acquired": "2026-11-23T20:02:30.446662+00:00",
+      "acquisition_seconds": 510.446662,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T19:54:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Why Monday’s huge stock-market rally is actually a warning sign for bulls",
+      "url": "https://www.marketwatch.com/story/why-mondays-huge-stock-market-rally-is-actually-a-warning-sign-for-bulls-49d227a8"
+    },
     "https://www.prnewswire.com/news-releases/2027-cruise-forecast-calls-for-22-4-million-us-ocean-cruisers-up-3-6-302948106.html": {
       "acquired": "2026-11-23T12:27:01.662210+00:00",
       "acquisition_seconds": 721.66221,
@@ -3585,6 +3601,22 @@
       "status": "SCARTARE",
       "title": "SHAREHOLDER ALERT: Purcell & Lefkowitz LLP Announces Shareholder Investigation of Tevogen Bio Holdings Inc. (NASDAQ: TVGN)",
       "url": "https://www.prnewswire.com/news-releases/shareholder-alert-purcell--lefkowitz-llp-announces-shareholder-investigation-of-tevogen-bio-holdings-inc-nasdaq-tvgn-302947866.html"
+    },
+    "https://www.prnewswire.com/news-releases/shore-bancshares-inc-reports-quarterly-dividend-of-0-14-per-share-302948452.html": {
+      "acquired": "2026-11-23T20:02:30.468414+00:00",
+      "acquisition_seconds": 150.468414,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T20:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Shore Bancshares, Inc. Reports Quarterly Dividend of $0.14 Per Share",
+      "url": "https://www.prnewswire.com/news-releases/shore-bancshares-inc-reports-quarterly-dividend-of-0-14-per-share-302948452.html"
     },
     "https://www.prnewswire.com/news-releases/summit-hotel-properties-publishes-2026-corporate-responsibility-report-302947826.html": {
       "acquired": "2026-11-23T13:34:49.421897+00:00",
