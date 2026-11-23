@@ -1,0 +1,21 @@
+{
+ "positions": {},
+ "pending": {},
+ "closed": [],
+ "last_eval": {
+  "oro": "2026-11-20",
+  "sp500": "2026-11-20",
+  "nasdaq": "2026-11-20",
+  "wti": "2026-11-20"
+ },
+ "start_value": 200.0,
+ "halted": false,
+ "tickers": {
+  "_date": "2026-11-23",
+  "oro": "4GLDd_EQ",
+  "sp500": "VUAAm_EQ",
+  "nasdaq": "SXRVd_EQ",
+  "wti": "CRUDl_EQ"
+ },
+ "outbox": []
+}
