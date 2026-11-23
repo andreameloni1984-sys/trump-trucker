@@ -1136,6 +1136,23 @@
       "title": "Image post from November 23, 2026",
       "url": "https://truthsocial.com/@realDonaldTrump/117666713950631493"
     },
+    "https://truthsocial.com/@realDonaldTrump/117667060434959655": {
+      "acquired": "2026-11-23T18:10:06.821019+00:00",
+      "acquisition_seconds": 552.682973,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-23T18:00:54.781000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Iowa is a very special place to me, a place that I won, by substantial margins, in all three Elections but, whether I won or lost, would never deter me from making a correct decision. As everyone knows, there is a Military “clean up” operation, without which, a very dangerous situation exists. In 20",
+      "url": "https://truthsocial.com/@realDonaldTrump/117667060434959655"
+    },
     "https://www.globenewswire.com/news-release/2026/11/23/3408212/0/en/chaince-digital-subsidiary-signs-joint-venture-framework-agreement-to-develop-an-ai-data-center-with-potential-for-up-to-25-mw-of-power-capacity-in-big-lake-texas.html": {
       "acquired": "2026-11-23T12:39:12.014726+00:00",
       "acquisition_seconds": 2352.014726,
@@ -1183,6 +1200,22 @@
       "status": "SCARTARE",
       "title": "Can stocks bounce back after a brutal week? This timing model says history is on the market’s side.",
       "url": "https://www.marketwatch.com/story/can-stocks-bounce-back-after-a-brutal-week-this-timing-model-says-history-is-on-the-markets-side-beff1753"
+    },
+    "https://www.marketwatch.com/story/consumer-stocks-seen-as-safe-bet-amid-cracks-in-ai-trade-are-among-the-s-p-500s-biggest-losers-monday-80cf8f81": {
+      "acquired": "2026-11-23T18:10:06.628391+00:00",
+      "acquisition_seconds": 966.628391,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T17:54:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Consumer stocks, seen as safe bet amid cracks in AI trade, are among the S&P 500’s biggest losers Monday",
+      "url": "https://www.marketwatch.com/story/consumer-stocks-seen-as-safe-bet-amid-cracks-in-ai-trade-are-among-the-s-p-500s-biggest-losers-monday-80cf8f81"
     },
     "https://www.marketwatch.com/story/corporate-america-hunts-for-generational-growth-in-ai-trading-cards-and-the-l-a-airport-3072eb1a": {
       "acquired": "2026-11-22T15:07:18.416998+00:00",
