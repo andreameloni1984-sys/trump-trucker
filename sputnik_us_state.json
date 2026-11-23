@@ -1118,22 +1118,6 @@
       "title": "A 66-year-old nurse faces retirement with just $500 saved. Who’s to blame?",
       "url": "https://www.marketwatch.com/story/a-66-year-old-nurse-faces-retirement-with-just-500-saved-whos-to-blame-4249a0fd"
     },
-    "https://www.marketwatch.com/story/america-is-definitely-rich-enough-to-fix-social-security-and-medicare-heres-how-30678aa5": {
-      "acquired": "2026-11-21T13:06:53.102992+00:00",
-      "acquisition_seconds": 413.102992,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-21T13:00:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "America is definitely rich enough to fix Social Security and Medicare. Here’s how.",
-      "url": "https://www.marketwatch.com/story/america-is-definitely-rich-enough-to-fix-social-security-and-medicare-heres-how-30678aa5"
-    },
     "https://www.marketwatch.com/story/can-stocks-bounce-back-after-a-brutal-week-this-timing-model-says-history-is-on-the-markets-side-beff1753": {
       "acquired": "2026-11-22T12:34:45.737562+00:00",
       "acquisition_seconds": 285.737562,
@@ -1630,6 +1614,22 @@
       "title": "2027 Cruise Forecast Calls for 22.4 Million U.S. Ocean Cruisers, Up 3.6%",
       "url": "https://www.prnewswire.com/news-releases/2027-cruise-forecast-calls-for-22-4-million-us-ocean-cruisers-up-3-6-302948106.html"
     },
+    "https://www.prnewswire.com/news-releases/77-of-cfos-and-finance-leaders-report-unexpected-agentic-ai-costs-but-only-17-are-highly-concernedbain--company-302947677.html": {
+      "acquired": "2026-11-23T13:09:10.751985+00:00",
+      "acquisition_seconds": 550.751985,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "77% of CFOs and finance leaders report unexpected agentic AI costs, but only 17% are highly concerned--Bain & Company",
+      "url": "https://www.prnewswire.com/news-releases/77-of-cfos-and-finance-leaders-report-unexpected-agentic-ai-costs-but-only-17-are-highly-concernedbain--company-302947677.html"
+    },
     "https://www.prnewswire.com/news-releases/alliancebernstein-launches-ab-equity-income-etf-302947704.html": {
       "acquired": "2026-11-23T12:39:10.736634+00:00",
       "acquisition_seconds": 550.736634,
@@ -1854,6 +1854,38 @@
       "title": "Die Taiwan Weeks 2026 verzeichnen fast 40.000 Besucher und stärken die Verbindungen zu den globalen Kapitalmärkten",
       "url": "https://www.prnewswire.com/news-releases/die-taiwan-weeks-2026-verzeichnen-fast-40-000-besucher-und-starken-die-verbindungen-zu-den-globalen-kapitalmarkten-302948129.html"
     },
+    "https://www.prnewswire.com/news-releases/dividend-hikes-of-up-to-16-roll-in-from-payments-and-payroll-to-oil-302948120.html": {
+      "acquired": "2026-11-23T13:09:10.751985+00:00",
+      "acquisition_seconds": 550.751985,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Dividend Hikes of Up to 16% Roll In, From Payments and Payroll to Oil",
+      "url": "https://www.prnewswire.com/news-releases/dividend-hikes-of-up-to-16-roll-in-from-payments-and-payroll-to-oil-302948120.html"
+    },
+    "https://www.prnewswire.com/news-releases/element-wins-two-2026-autotech-breakthrough-awards-for-delivering-ai-powered-fleet-solutions-302947416.html": {
+      "acquired": "2026-11-23T13:09:10.751985+00:00",
+      "acquisition_seconds": 550.751985,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Element wins two 2026 AutoTech Breakthrough Awards for delivering AI powered fleet solutions",
+      "url": "https://www.prnewswire.com/news-releases/element-wins-two-2026-autotech-breakthrough-awards-for-delivering-ai-powered-fleet-solutions-302947416.html"
+    },
     "https://www.prnewswire.com/news-releases/expertai-introduces-its-new-identity-to-the-market-vertical-ai-at-the-heart-of-competitiveness-in-regulated-industries-302948066.html": {
       "acquired": "2026-11-23T09:25:03.998140+00:00",
       "acquisition_seconds": 543.99814,
@@ -1869,6 +1901,22 @@
       "status": "SCARTARE",
       "title": "Expert.ai introduces its new identity to the market: Vertical AI at the heart of competitiveness in regulated industries",
       "url": "https://www.prnewswire.com/news-releases/expertai-introduces-its-new-identity-to-the-market-vertical-ai-at-the-heart-of-competitiveness-in-regulated-industries-302948066.html"
+    },
+    "https://www.prnewswire.com/news-releases/griffis-residential-announces-sale-of-griffis-cherry-creek-highlighting-strong-operational-performance-302947444.html": {
+      "acquired": "2026-11-23T13:09:10.751985+00:00",
+      "acquisition_seconds": 550.751985,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Griffis Residential Announces Sale of Griffis Cherry Creek, Highlighting Strong Operational Performance",
+      "url": "https://www.prnewswire.com/news-releases/griffis-residential-announces-sale-of-griffis-cherry-creek-highlighting-strong-operational-performance-302947444.html"
     },
     "https://www.prnewswire.com/news-releases/harel-insurance-investments-and-financial-services-reports-third-quarter-and-nine--month-2026-financial-results-achieves-record-quarterly-core-profit-302947955.html": {
       "acquired": "2026-11-23T05:48:14.024738+00:00",
@@ -2174,6 +2222,22 @@
       "title": "New report shows New York State's deteriorating local roads need a significant investment increase",
       "url": "https://www.prnewswire.com/news-releases/new-report-shows-new-york-states-deteriorating-local-roads-need-a-significant-investment-increase-302947275.html"
     },
+    "https://www.prnewswire.com/news-releases/number-of-high-intent-home-shoppers-dropped-to-a-new-low-last-quarter-as-stubborn-mortgage-rates-stymied-demand-302947740.html": {
+      "acquired": "2026-11-23T13:09:10.751985+00:00",
+      "acquisition_seconds": 550.751985,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Number of high-intent home shoppers dropped to a new low last quarter as stubborn mortgage rates stymied demand",
+      "url": "https://www.prnewswire.com/news-releases/number-of-high-intent-home-shoppers-dropped-to-a-new-low-last-quarter-as-stubborn-mortgage-rates-stymied-demand-302947740.html"
+    },
     "https://www.prnewswire.com/news-releases/patients-gain-new-treatment-options-in-a-busy-month-for-drug-approvals-302948100.html": {
       "acquired": "2026-11-23T12:39:10.736634+00:00",
       "acquisition_seconds": 550.736634,
@@ -2206,6 +2270,22 @@
       "title": "PropStream Showcases the Modern Real Estate Entrepreneur's Toolkit on \"All Access with Andy Garcia\"",
       "url": "https://www.prnewswire.com/news-releases/propstream-showcases-the-modern-real-estate-entrepreneurs-toolkit-on-all-access-with-andy-garcia-302940235.html"
     },
+    "https://www.prnewswire.com/news-releases/rare-beauty-brands-and-jcpenney-announce-three-winners-of-the-2026-lift-beauty-accelerator-302947360.html": {
+      "acquired": "2026-11-23T13:09:10.751985+00:00",
+      "acquisition_seconds": 70.751985,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T13:08:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Rare Beauty Brands and JCPenney Announce Three Winners of the 2026 LIFT Beauty Accelerator",
+      "url": "https://www.prnewswire.com/news-releases/rare-beauty-brands-and-jcpenney-announce-three-winners-of-the-2026-lift-beauty-accelerator-302947360.html"
+    },
     "https://www.prnewswire.com/news-releases/renaud-champion-rejoint-cartesia-en-tant-que-senior-portfolio-manager-302947697.html": {
       "acquired": "2026-11-23T09:11:43.170337+00:00",
       "acquisition_seconds": 703.170337,
@@ -2221,6 +2301,22 @@
       "status": "SCARTARE",
       "title": "Renaud Champion rejoint Cartesia en tant que Senior Portfolio Manager",
       "url": "https://www.prnewswire.com/news-releases/renaud-champion-rejoint-cartesia-en-tant-que-senior-portfolio-manager-302947697.html"
+    },
+    "https://www.prnewswire.com/news-releases/research-solutions-to-join-knowledgeworks-global-ltd-a-cjk-group-company-in-all-cash-acquisition-302947935.html": {
+      "acquired": "2026-11-23T13:09:10.751985+00:00",
+      "acquisition_seconds": 550.751985,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Research Solutions to Join KnowledgeWorks Global Ltd., a CJK Group Company in All-Cash Acquisition",
+      "url": "https://www.prnewswire.com/news-releases/research-solutions-to-join-knowledgeworks-global-ltd-a-cjk-group-company-in-all-cash-acquisition-302947935.html"
     },
     "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-build-a-bear-workshop-inc-nyse-bbw--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946384.html": {
       "acquired": "2026-11-22T17:06:33.628817+00:00",
