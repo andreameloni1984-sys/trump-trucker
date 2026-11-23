@@ -33,6 +33,9 @@ jobs:
       # PAC mensile 80/10/10 sul conto demo (SPUTNIK_PAC=0 lo spegne)
       SPUTNIK_PAC: ${{ vars.SPUTNIK_PAC }}
       SPUTNIK_PAC_MONTHLY: ${{ vars.SPUTNIK_PAC_MONTHLY }}
+      # Acquisto automatico dopo gli inviti di Trump a comprare (SPUTNIK_TRUMP_TRADE=0 lo spegne)
+      SPUTNIK_TRUMP_TRADE: ${{ vars.SPUTNIK_TRUMP_TRADE }}
+      SPUTNIK_TRUMP_TRADE_EUR: ${{ vars.SPUTNIK_TRUMP_TRADE_EUR }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -53,6 +56,14 @@ jobs:
             python -m sputnik_demo.pac --dry-run
           else
             python -m sputnik_demo.pac
+          fi
+      - name: Acquisto dopo gli inviti di Trump (conto demo)
+        if: always()
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m sputnik_demo.trump_trade --dry-run
+          else
+            python -m sputnik_demo.trump_trade
           fi
       - name: Salva lo stato delle operazioni demo
         if: always() && inputs.dry_run != true
