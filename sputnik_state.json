@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-23T14:21:00.054043+00:00",
+  "updated_at": "2026-11-23T14:57:00.473941+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1102,6 +1102,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "ad7e92a49ccdcfe239aac748": {
+      "source": "WHITE_HOUSE_RSS",
+      "feed_url": "https://www.whitehouse.gov/feed/",
+      "url": "https://www.whitehouse.gov/releases/2026/11/voting-begins-for-the-2026-national-thanksgiving-turkey-pardon-ceremony/",
+      "primary_url": "",
+      "title": "Voting Begins for the 2026 National Thanksgiving Turkey Pardon Ceremony",
+      "published": "Mon, 23 Nov 2026 14:47:18 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Voting Begins for the 2026 National Thanksgiving Turkey Pardon Ceremony President Donald J. Trump will celebrate a uniquely American Thanksgiving tradition as the White House hosts the 79th National Thanksgiving Turkey presentation and pardoning ceremony on Tuesday, November 24, 2026. This year’s turkeys, named Freedom and Feathers by the American people via an online poll last week, were raised in West Virginia, under the direction of […] The post Voting Begins for the 2026 National Thanksgiving Turkey Pardon Ceremony appeared first on The White House.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-23T14:57:00.143864+00:00",
+      "event_id": "ad7e92a49ccdcfe239aac748",
+      "action_reaction": {
+        "event_id": "ad7e92a49ccdcfe239aac748",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "30ea34cb62f0d7ffdacc246f": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8078,29 +8101,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "7a35782bc8e12c28c49168a8": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43201",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548726413357011",
-      "title": "Congressman Joe Wilson, who has been with us from the very beginning, is a Tremendous Champion of South Carolina's 2nd Congressional District! A retired Colonel from the South Carolina Army National Guard, and Member of the House Armed Services Committee, Joe knows the Wisdom and Courage that is req",
-      "published": "Mon, 02 Nov 2026 20:27:00 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Joe Wilson, who has been with us from the very beginning, is a Tremendous Champion of South Carolina's 2nd Congressional District! A retired Colonel from the South Carolina Army National Guard, and Member of the House Armed Services Committee, Joe knows the Wisdom and Courage that is req Congressman Joe Wilson, who has been with us from the very beginning, is a Tremendous Champion of South Carolina's 2nd Congressional District! A retired Colonel from the South Carolina Army National Guard, and Member of the House Armed Services Committee, Joe knows the Wisdom and Courage that is required to Defend our Country, Support our Incredible Military/Veterans, and Champion PEACE THROUGH STRENGTH. In Congress, Joe is working hard to Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Advance Election Integrity, and Defend our always under siege Second Amendment. Joe Wilson has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JOE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/south-caro lina/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:14.004358+00:00",
-      "event_id": "7a35782bc8e12c28c49168a8",
-      "action_reaction": {
-        "event_id": "7a35782bc8e12c28c49168a8",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13188,7 +13188,8 @@
     "a4a7ab7773e86d913c9e425b": "2026-11-22T21:59:10.420112+00:00",
     "11f7d39b735e5ecbbcd55032": "2026-11-23T05:09:40.224134+00:00",
     "2faeb222c0fc729f46e04b58": "2026-11-23T11:35:06.938400+00:00",
-    "30ea34cb62f0d7ffdacc246f": "2026-11-23T14:09:03.616436+00:00"
+    "30ea34cb62f0d7ffdacc246f": "2026-11-23T14:09:03.616436+00:00",
+    "ad7e92a49ccdcfe239aac748": "2026-11-23T14:57:00.143847+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
