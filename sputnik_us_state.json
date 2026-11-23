@@ -1504,6 +1504,22 @@
       "title": "The number of 401(k) millionaires drops amid stock-market swings",
       "url": "https://www.marketwatch.com/story/the-number-of-401-k-millionaires-drops-amid-stock-market-swings-23939b94"
     },
+    "https://www.marketwatch.com/story/the-return-of-jensen-huang-has-saved-the-u-s-stock-market-for-now-why-the-rebound-may-not-last-f72656ce": {
+      "acquired": "2026-11-23T16:49:01.173668+00:00",
+      "acquisition_seconds": 301.173668,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T16:44:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The return of Jensen Huang has saved the U.S. stock market — for now. Why the rebound may not last.",
+      "url": "https://www.marketwatch.com/story/the-return-of-jensen-huang-has-saved-the-u-s-stock-market-for-now-why-the-rebound-may-not-last-f72656ce"
+    },
     "https://www.marketwatch.com/story/the-surprising-reason-businesses-cant-keep-up-with-customer-demand-hint-its-not-just-a-strong-u-s-economy-70be4a01": {
       "acquired": "2026-11-23T16:08:38.882962+00:00",
       "acquisition_seconds": 338.882962,
@@ -2240,6 +2256,38 @@
       "title": "Dividend Hikes of Up to 16% Roll In, From Payments and Payroll to Oil",
       "url": "https://www.prnewswire.com/news-releases/dividend-hikes-of-up-to-16-roll-in-from-payments-and-payroll-to-oil-302948120.html"
     },
+    "https://www.prnewswire.com/news-releases/dominican-government-highlights-progress-on-larimar-city--resort-which-now-involves-nearly-3-000-people-302948443.html": {
+      "acquired": "2026-11-23T16:49:01.154126+00:00",
+      "acquisition_seconds": 841.154126,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T16:35:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Dominican government highlights progress on Larimar City & Resort, which now involves nearly 3,000 people",
+      "url": "https://www.prnewswire.com/news-releases/dominican-government-highlights-progress-on-larimar-city--resort-which-now-involves-nearly-3-000-people-302948443.html"
+    },
+    "https://www.prnewswire.com/news-releases/drip-capital-ranks-in-top-100-on-the-2026-deloitte-technology-fast-500-302948445.html": {
+      "acquired": "2026-11-23T16:49:01.154126+00:00",
+      "acquisition_seconds": 661.154126,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T16:38:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Drip Capital Ranks in Top 100 on the 2026 Deloitte Technology Fast 500™",
+      "url": "https://www.prnewswire.com/news-releases/drip-capital-ranks-in-top-100-on-the-2026-deloitte-technology-fast-500-302948445.html"
+    },
     "https://www.prnewswire.com/news-releases/ea-series-trust-and-empowered-funds-llc-announces-exchange-listing-transfer-for-strive-etfs-302947246.html": {
       "acquired": "2026-11-23T14:35:13.856308+00:00",
       "acquisition_seconds": 373.856308,
@@ -2896,22 +2944,6 @@
       "title": "Kinvard Bio Announces Receiving Non-Dilutive Funding From PACE and Changes To Kinvard's Management Team",
       "url": "https://www.prnewswire.com/news-releases/kinvard-bio-announces-receiving-non-dilutive-funding-from-pace-and-changes-to-kinvards-management-team-302948285.html"
     },
-    "https://www.prnewswire.com/news-releases/ladfw-2026-devoile-son-programme-le-plus-ambitieux-jamais-concu-en-collaboration-avec-ses-partenaires-avec-limad-en-tete-daffiche-302947558.html": {
-      "acquired": "2026-11-21T16:50:30.240861+00:00",
-      "acquisition_seconds": 330.240861,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-21T16:45:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "L'ADFW 2026 dévoile son programme le plus ambitieux jamais conçu en collaboration avec ses partenaires, avec L'IMAD en tête d'affiche",
-      "url": "https://www.prnewswire.com/news-releases/ladfw-2026-devoile-son-programme-le-plus-ambitieux-jamais-concu-en-collaboration-avec-ses-partenaires-avec-limad-en-tete-daffiche-302947558.html"
-    },
     "https://www.prnewswire.com/news-releases/les-taiwan-weeks-2026-enregistrent-pres-de-40-000-participants-et-renforce-les-liens-avec-les-marches-financiers-mondiaux-302948306.html": {
       "acquired": "2026-11-23T14:35:13.856308+00:00",
       "acquisition_seconds": 913.856308,
@@ -2975,6 +3007,22 @@
       "status": "SCARTARE",
       "title": "Nationwide Foundation announces $11 million contribution to provide critical food, shelter needs",
       "url": "https://www.prnewswire.com/news-releases/nationwide-foundation-announces-11-million-contribution-to-provide-critical-food-shelter-needs-302948355.html"
+    },
+    "https://www.prnewswire.com/news-releases/ne-property-management-announces-the-opening-of-silo-29-apartments-in-midwest-city-featuring-private-garages-walking-trails-and-a-short-commute-to-downtown-oklahoma-city-302948356.html": {
+      "acquired": "2026-11-23T16:49:01.154126+00:00",
+      "acquisition_seconds": 661.154126,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T16:38:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "NE Property Management Announces the Opening of Silo 29 Apartments in Midwest City, Featuring Private Garages, Walking Trails and a Short Commute to Downtown Oklahoma City",
+      "url": "https://www.prnewswire.com/news-releases/ne-property-management-announces-the-opening-of-silo-29-apartments-in-midwest-city-featuring-private-garages-walking-trails-and-a-short-commute-to-downtown-oklahoma-city-302948356.html"
     },
     "https://www.prnewswire.com/news-releases/neo-names-neo-a-long-term-priority-for-its-presence-on-the-web-302948253.html": {
       "acquired": "2026-11-23T13:34:49.421897+00:00",
