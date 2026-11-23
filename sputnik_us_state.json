@@ -1389,6 +1389,22 @@
       "title": "Stocks are in a correction heading into the Thanksgiving holiday. What to brace for next.",
       "url": "https://www.marketwatch.com/story/stocks-are-in-a-correction-heading-into-the-thanksgiving-holiday-what-to-brace-for-next-a1e82491"
     },
+    "https://www.marketwatch.com/story/stocks-are-serving-up-a-fat-pitch-for-investors-right-now-as-morgan-stanleys-top-strategist-19abe30a": {
+      "acquired": "2026-11-23T09:48:56.215932+00:00",
+      "acquisition_seconds": 536.215932,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T09:40:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Stocks are serving up a ‘fat pitch’ for investors right now, as Morgan Stanley’s top strategist",
+      "url": "https://www.marketwatch.com/story/stocks-are-serving-up-a-fat-pitch-for-investors-right-now-as-morgan-stanleys-top-strategist-19abe30a"
+    },
     "https://www.marketwatch.com/story/the-number-of-401-k-millionaires-drops-amid-stock-market-swings-23939b94": {
       "acquired": "2026-11-23T05:09:50.910852+00:00",
       "acquisition_seconds": 530.910852,
@@ -1804,6 +1820,22 @@
       "status": "SCARTARE",
       "title": "Utility Spending Plans Grow as Large New Power Customers Sign On",
       "url": "https://www.prnewswire.com/news-releases/utility-spending-plans-grow-as-large-new-power-customers-sign-on-302948041.html"
+    },
+    "https://www.prnewswire.com/news-releases/wooshpay-unveils-agentic-payments-demo-achieving-first-product-milestone-with-yunfeng-financials-alphatoken-302948082.html": {
+      "acquired": "2026-11-23T09:48:56.279153+00:00",
+      "acquisition_seconds": 536.279153,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T09:40:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "WooshPay Unveils Agentic Payments Demo, Achieving First Product Milestone with Yunfeng Financial's AlphaToken",
+      "url": "https://www.prnewswire.com/news-releases/wooshpay-unveils-agentic-payments-demo-achieving-first-product-milestone-with-yunfeng-financials-alphatoken-302948082.html"
     },
     "https://www.prnewswire.com/news-releases/yeepay-prasentiert-sein-zentrales-zahlungsnetzwerk-und-erweitert-strategische-partnerschaften-auf-dem-singapore-fintech-festival-2026-302947973.html": {
       "acquired": "2026-11-23T06:19:26.514768+00:00",
