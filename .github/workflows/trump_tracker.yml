@@ -2,7 +2,8 @@ name: SPUTNIK
 
 on:
   schedule:
-    - cron: '2-59/15 * * * *'
+    # Riserva: la sveglia Cloudflare lo avvia ogni 15 minuti.
+    - cron: '9 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
