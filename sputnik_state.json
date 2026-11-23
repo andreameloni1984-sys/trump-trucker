@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-23T14:09:04.239695+00:00",
+  "updated_at": "2026-11-23T14:21:00.054043+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -18248,9 +18248,7 @@
     }
   },
   "analyst_started_at": "2026-11-21T16:33:10.411603+00:00",
-  "analyst_outbox": [
-    "🇺🇸 SPUTNIK — TRUMP\n📰 The NVIDIA Board of Directors has made the correct and proper decision to return Jensen Huang to the position of CEO. The Country needs Jensen’s leadership at NVIDIA in order to ensure the Success and Prosperity of not only the Company, but the American Economy. The United States\n📡 Truth Social (Trump) · 🕒 Mon, 23 Nov 2026 14:07:17 +0000\n🧩 Temi: dazi/commercio\n\n💰 Miliardari già esposti a questi temi (ultimi 90 giorni):\n• Warren Buffett · Berkshire Hathaway: portafoglio trimestrale (89 titoli; primi: AMERICAN EXPRESS CO COM, APPLE INC COM, COCA COLA CO COM) · 2026-11-16\n• Stanley Druckenmiller · Duquesne: portafoglio trimestrale (65 titoli; primi: Natera Inc COM, Seagate Technology Hldngs Pl ORD SHS, Amazon Com Inc COM) · 2026-11-16\n• John Paulson · Paulson & Co: portafoglio trimestrale (9 titoli; primi: MADRIGAL PHARMACEUTICALS INC COM, PERPETUA RESOURCES CORP COM, ACADIAN ASSET MANAGEMENT INC COM) · 2026-11-16\n• David Tepper · Appaloosa: portafoglio trimestrale (24 titoli; primi: MICRON TECHNOLOGY INC COM, AMAZON COM INC COM, TAIWAN SEMICONDUCTOR MANUFAC SPONSORED ADS) · 2026-11-16\n\n🔗 https://www.trumpstruth.org/statuses/43714\nℹ️ Analisi informativa da fonti pubbliche, non è un segnale operativo né una consulenza."
-  ],
+  "analyst_outbox": [],
   "analyst_brief_date": "2026-11-23",
   "analyst_predictions": {},
   "analyst_counts": {
