@@ -16,22 +16,6 @@
       "title": "Merry Making: Play, Build and Create With NVIDIA Technologies This Holiday Season",
       "url": "https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117656498566433746": {
-      "acquired": "2026-11-21T22:07:27.921666+00:00",
-      "acquisition_seconds": 3154.921666,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-21T21:14:53+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Image post from November 21, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117656498566433746"
-    },
     "https://truthsocial.com/@realDonaldTrump/117660247395378881": {
       "acquired": "2026-11-22T13:18:47.922847+00:00",
       "acquisition_seconds": 632.457495,
@@ -2130,6 +2114,22 @@
       "title": "Fannie Mae Releases October 2026 Monthly Summary",
       "url": "https://www.prnewswire.com/news-releases/fannie-mae-releases-october-2026-monthly-summary-302947323.html"
     },
+    "https://www.prnewswire.com/news-releases/fidelity-national-financial-ceo-mike-nolan-and-cfo-tony-park-to-speak-at-the-kbw-2026-title-insurance-day-302948513.html": {
+      "acquired": "2026-11-23T21:17:26.028390+00:00",
+      "acquisition_seconds": 146.02839,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "management",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T21:15:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Fidelity National Financial CEO Mike Nolan and CFO Tony Park to Speak at the KBW 2026 Title Insurance Day",
+      "url": "https://www.prnewswire.com/news-releases/fidelity-national-financial-ceo-mike-nolan-and-cfo-tony-park-to-speak-at-the-kbw-2026-title-insurance-day-302948513.html"
+    },
     "https://www.prnewswire.com/news-releases/first-financial-announces-promotion-of-frank-gioia-to-chief-digital-and-innovation-officer-302948485.html": {
       "acquired": "2026-11-23T21:14:39.818857+00:00",
       "acquisition_seconds": 579.818857,
@@ -2626,6 +2626,22 @@
       "title": "International Paper Board of Directors Approves Spin-off of EMEA Packaging Business (DS Smith plc)",
       "url": "https://www.prnewswire.com/news-releases/international-paper-board-of-directors-approves-spin-off-of-emea-packaging-business-ds-smith-plc-302947820.html"
     },
+    "https://www.prnewswire.com/news-releases/jack-henry-announces-regular-quarterly-dividend-302948462.html": {
+      "acquired": "2026-11-23T21:17:26.028390+00:00",
+      "acquisition_seconds": 146.02839,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T21:15:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Jack Henry Announces Regular Quarterly Dividend",
+      "url": "https://www.prnewswire.com/news-releases/jack-henry-announces-regular-quarterly-dividend-302948462.html"
+    },
     "https://www.prnewswire.com/news-releases/jp-morgan-nextlist-turns-10-the-books-stages-and-destinations-defining-whats-next-in-2027-302947579.html": {
       "acquired": "2026-11-23T14:09:14.217212+00:00",
       "acquisition_seconds": 554.217212,
@@ -2929,6 +2945,22 @@
       "status": "SCARTARE",
       "title": "Oasis Management Releases Video Introducing Director Nominees and Outlining Opportunities to Unlock Value at Vail Resorts",
       "url": "https://www.prnewswire.com/news-releases/oasis-management-releases-video-introducing-director-nominees-and-outlining-opportunities-to-unlock-value-at-vail-resorts-302948547.html"
+    },
+    "https://www.prnewswire.com/news-releases/oppfi-to-participate-in-nyse-financials-virtual-investor-access-day-302948659.html": {
+      "acquired": "2026-11-23T21:17:26.028390+00:00",
+      "acquisition_seconds": 146.02839,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T21:15:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "OppFi to Participate in NYSE Financials Virtual Investor Access Day",
+      "url": "https://www.prnewswire.com/news-releases/oppfi-to-participate-in-nyse-financials-virtual-investor-access-day-302948659.html"
     },
     "https://www.prnewswire.com/news-releases/patients-gain-new-treatment-options-in-a-busy-month-for-drug-approvals-302948100.html": {
       "acquired": "2026-11-23T12:39:10.736634+00:00",
