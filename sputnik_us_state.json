@@ -1216,22 +1216,6 @@
       "title": "Grocery stores have ‘staggering deals’ for Thanksgiving — but don’t get used to these lower prices just yet",
       "url": "https://www.marketwatch.com/story/grocery-stores-have-staggering-deals-for-thanksgiving-but-dont-get-used-to-these-lower-prices-just-yet-7adfc7f5"
     },
-    "https://www.marketwatch.com/story/im-sick-of-flying-i-paid-for-priority-boarding-but-the-overhead-bins-were-full-was-i-duped-0badcc80": {
-      "acquired": "2026-11-21T16:52:28.080402+00:00",
-      "acquisition_seconds": 148.080402,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-21T16:50:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "‘I’m sick of flying’: I paid for priority boarding, but the overhead bins were full. Was I duped?",
-      "url": "https://www.marketwatch.com/story/im-sick-of-flying-i-paid-for-priority-boarding-but-the-overhead-bins-were-full-was-i-duped-0badcc80"
-    },
     "https://www.marketwatch.com/story/it-is-heartbreaking-exhausting-and-downright-dirty-my-brother-took-over-our-ailing-mothers-life-and-finances-what-can-i-do-b4d48817": {
       "acquired": "2026-11-21T20:19:23.591994+00:00",
       "acquisition_seconds": 263.591994,
@@ -1535,22 +1519,6 @@
       "status": "SCARTARE",
       "title": "The surprising reason businesses can’t keep up with customer demand. Hint: It’s not just a strong U.S. economy.",
       "url": "https://www.marketwatch.com/story/the-surprising-reason-businesses-cant-keep-up-with-customer-demand-hint-its-not-just-a-strong-u-s-economy-70be4a01"
-    },
-    "https://www.marketwatch.com/story/the-thought-of-living-to-100-terrifies-me-is-social-security-a-giant-ponzi-scheme-84a64e7e": {
-      "acquired": "2026-11-22T13:07:15.789124+00:00",
-      "acquisition_seconds": 73035.789124,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-21T16:50:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Is Social Security a Ponzi scheme? No. Don’t get carried away with 1930s-era prophecies of doom.",
-      "url": "https://www.marketwatch.com/story/the-thought-of-living-to-100-terrifies-me-is-social-security-a-giant-ponzi-scheme-84a64e7e"
     },
     "https://www.marketwatch.com/story/the-u-s-may-enter-a-recession-if-the-fed-raises-rates-hedge-fund-manager-bill-ackman-says-16738971": {
       "acquired": "2026-11-23T11:07:15.822096+00:00",
@@ -2992,6 +2960,38 @@
       "title": "Lock in the 2026-2027 ezAccounting Bundle (Now with 2026 W2 Form Support!)",
       "url": "https://www.prnewswire.com/news-releases/lock-in-the-2026-2027-ezaccounting-bundle-now-with-2026-w2-form-support-302944194.html"
     },
+    "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948213.html": {
+      "acquired": "2026-11-23T17:08:04.265705+00:00",
+      "acquisition_seconds": 484.265705,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T17:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Madison Dearborn Partners to Acquire Peli BioThermal, a Trusted Cold Chain Solutions Provider, from Pelican Products and Platinum Equity",
+      "url": "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948213.html"
+    },
+    "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948222.html": {
+      "acquired": "2026-11-23T17:08:04.265705+00:00",
+      "acquisition_seconds": 484.265705,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T17:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Madison Dearborn Partners to Acquire Peli BioThermal, a Trusted Cold Chain Solutions Provider, from Pelican Products and Platinum Equity",
+      "url": "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948222.html"
+    },
     "https://www.prnewswire.com/news-releases/nationwide-foundation-announces-11-million-contribution-to-provide-critical-food-shelter-needs-302948355.html": {
       "acquired": "2026-11-23T15:35:22.589117+00:00",
       "acquisition_seconds": 322.589117,
@@ -3263,6 +3263,22 @@
       "status": "SCARTARE",
       "title": "Roofing Expert Ryan Pacheco of Roanoke, VA Explains What Virginia Homeowners Should Do Before a Roof Claim for HelloNation",
       "url": "https://www.prnewswire.com/news-releases/roofing-expert-ryan-pacheco-of-roanoke-va-explains-what-virginia-homeowners-should-do-before-a-roof-claim-for-hellonation-302947419.html"
+    },
+    "https://www.prnewswire.com/news-releases/securitize-serves-as-tokenization-provider-for-okxices-newly-launched-247-securities-trading-venue-302947862.html": {
+      "acquired": "2026-11-23T17:08:04.265705+00:00",
+      "acquisition_seconds": 484.265705,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T17:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Securitize Serves as Tokenization Provider for OKXICE's Newly Launched 24/7 Securities Trading Venue",
+      "url": "https://www.prnewswire.com/news-releases/securitize-serves-as-tokenization-provider-for-okxices-newly-launched-247-securities-trading-venue-302947862.html"
     },
     "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-build-a-bear-workshop-inc-nyse-bbw--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946384.html": {
       "acquired": "2026-11-22T17:06:33.628817+00:00",
