@@ -1093,15 +1093,40 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-22T23:07:01.890742+00:00",
+  "updated_at": "2026-11-23T03:10:29.538199+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "93d2c5a6e8df0351543a0cfd",
+    "TRUTH_ARCHIVE": "d844fc8f59b9aaff9f2d4d52",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "d844fc8f59b9aaff9f2d4d52": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA",
+        "RATES_MACRO"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 22, 2026, 9:54 PM Original Post I hope the Board of Nvidia rehires Jensen Huang. It would be the best thing for the Company, and also, for the U.S.A. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 22, 2026, 4:53 PM Original Post It’s incredible that Somalians have been able to completely take over the once great State of Minnesota. They own it, “lock, stock, and barrel” and, almost 95% are on some form of welfare. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 22, 2026, 4:49 PM Original Post Isn’t it interesting that Oil prices have dropped precipitously after the Midterm Elections? I said that was going to happen. The whole thing is a Giant Hoax! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 22, 2026, 4:47 PM Original Post As everyone remembers, I predicted two things concerning the November 3rd Midterm Elections. On",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-23T03:10:28.675810+00:00",
+      "event_id": "d844fc8f59b9aaff9f2d4d52",
+      "action_reaction": {
+        "event_id": "d844fc8f59b9aaff9f2d4d52",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "93d2c5a6e8df0351543a0cfd": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8068,29 +8093,6 @@
       "action_reaction": {
         "event_id": "21860204e32dd75f040480cb",
         "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "68db771dd1d41125eb6ce5dc": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43266",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548974816443609",
-      "title": "It is my Great Honor to endorse Highly Respected State Representative Houston Gaines, who is running to represent the Incredible People of Georgia's 10th Congressional District! An Eighth-Generation Georgian, Houston has served as a State Representative since 2019, authoring more than 20 bills that",
-      "published": "Mon, 02 Nov 2026 21:30:11 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse Highly Respected State Representative Houston Gaines, who is running to represent the Incredible People of Georgia's 10th Congressional District! An Eighth-Generation Georgian, Houston has served as a State Representative since 2019, authoring more than 20 bills that It is my Great Honor to endorse Highly Respected State Representative Houston Gaines, who is running to represent the Incredible People of Georgia's 10th Congressional District! An Eighth-Generation Georgian, Houston has served as a State Representative since 2019, authoring more than 20 bills that have passed the Georgia Legislature, and championing our AMERICA FIRST Policies. His opponent, Pamela DeLancy, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Pamela DeLancy is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, Houston will fight tirelessly to Promote our Great Farmers and American Agriculture, Cut Taxes and Regulations, Advance American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, and Protect our always under siege Second Amendment. Houston Gaines has my Complete and Total Endorsement to be the next",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:14.000674+00:00",
-      "event_id": "68db771dd1d41125eb6ce5dc",
-      "action_reaction": {
-        "event_id": "68db771dd1d41125eb6ce5dc",
-        "event_type": "OTHER",
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
