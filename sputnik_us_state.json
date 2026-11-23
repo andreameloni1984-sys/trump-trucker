@@ -1166,22 +1166,6 @@
       "title": "Grocery stores have ‘staggering deals’ for Thanksgiving — but don’t get used to these lower prices just yet",
       "url": "https://www.marketwatch.com/story/grocery-stores-have-staggering-deals-for-thanksgiving-but-dont-get-used-to-these-lower-prices-just-yet-7adfc7f5"
     },
-    "https://www.marketwatch.com/story/how-a-brutal-week-for-stocks-almost-wiped-out-their-gains-for-the-entire-year-ae6773c3": {
-      "acquired": "2026-11-21T12:10:35.247771+00:00",
-      "acquisition_seconds": 635.247771,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-21T12:00:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "How a brutal week for stocks almost wiped out their gains for the entire year",
-      "url": "https://www.marketwatch.com/story/how-a-brutal-week-for-stocks-almost-wiped-out-their-gains-for-the-entire-year-ae6773c3"
-    },
     "https://www.marketwatch.com/story/im-sick-of-flying-i-paid-for-priority-boarding-but-the-overhead-bins-were-full-was-i-duped-0badcc80": {
       "acquired": "2026-11-21T16:52:28.080402+00:00",
       "acquisition_seconds": 148.080402,
@@ -1614,6 +1598,22 @@
       "title": "ANUU, ANDD, and ANSS Now Trading: Leverage Shares by Themes Launches 2X Leveraged & Short Anthropic (ANT) ETFs on Cboe",
       "url": "https://www.prnewswire.com/news-releases/anuu-andd-and-anss-now-trading-leverage-shares-by-themes-launches-2x-leveraged--short-anthropic-ant-etfs-on-cboe-302947482.html"
     },
+    "https://www.prnewswire.com/news-releases/burford-capital-appoints-jim-kilman-as-non-executive-director-302947135.html": {
+      "acquired": "2026-11-23T12:12:41.737131+00:00",
+      "acquisition_seconds": 761.737131,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Burford Capital appoints Jim Kilman as non-executive director",
+      "url": "https://www.prnewswire.com/news-releases/burford-capital-appoints-jim-kilman-as-non-executive-director-302947135.html"
+    },
     "https://www.prnewswire.com/news-releases/cartesia-appoints-renaud-champion-as-senior-portfolio-manager-302945997.html": {
       "acquired": "2026-11-23T09:11:43.170337+00:00",
       "acquisition_seconds": 703.170337,
@@ -1678,6 +1678,22 @@
       "title": "Cartesia nombra a Renaud Champion gestor sénior de carteras",
       "url": "https://www.prnewswire.com/news-releases/cartesia-nombra-a-renaud-champion-gestor-senior-de-carteras-302946714.html"
     },
+    "https://www.prnewswire.com/news-releases/cdr-appoints-greg-pasqua-as-chief-financial-officer-302947710.html": {
+      "acquired": "2026-11-23T12:12:41.737131+00:00",
+      "acquisition_seconds": 761.737131,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "management",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "CD&R Appoints Greg Pasqua as Chief Financial Officer",
+      "url": "https://www.prnewswire.com/news-releases/cdr-appoints-greg-pasqua-as-chief-financial-officer-302947710.html"
+    },
     "https://www.prnewswire.com/news-releases/copenhagen-infrastructure-partners-announces-its-first-rated-multi-fund-infrastructure-backed-notes-programme-302948164.html": {
       "acquired": "2026-11-23T11:48:49.954086+00:00",
       "acquisition_seconds": 649.954086,
@@ -1709,6 +1725,22 @@
       "status": "SCARTARE",
       "title": "Copenhagen Infrastructure Partners announces its first rated, multi-fund Infrastructure Backed Notes programme",
       "url": "https://www.prnewswire.com/news-releases/copenhagen-infrastructure-partners-announces-its-first-rated-multi-fund-infrastructure-backed-notes-programme-302948170.html"
+    },
+    "https://www.prnewswire.com/news-releases/cytosorbents-announces-closing-of-6-25-million-common-stock-financing-and-concurrent-restructuring-of-avenue-credit-facility-302947958.html": {
+      "acquired": "2026-11-23T12:12:41.737131+00:00",
+      "acquisition_seconds": 761.737131,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "CytoSorbents Announces Closing of $6.25 Million Common Stock Financing and Concurrent Restructuring of Avenue Credit Facility",
+      "url": "https://www.prnewswire.com/news-releases/cytosorbents-announces-closing-of-6-25-million-common-stock-financing-and-concurrent-restructuring-of-avenue-credit-facility-302947958.html"
     },
     "https://www.prnewswire.com/news-releases/die-taiwan-weeks-2026-verzeichnen-fast-40-000-besucher-und-starken-die-verbindungen-zu-den-globalen-kapitalmarkten-302948129.html": {
       "acquired": "2026-11-23T10:48:57.523431+00:00",
@@ -1838,6 +1870,22 @@
       "title": "H.I.G. WhiteHorse treedt op als mede-arrangeur bij herfinanciering van 374 miljoen euro voor Astek",
       "url": "https://www.prnewswire.com/news-releases/hig-whitehorse-treedt-op-als-mede-arrangeur-bij-herfinanciering-van-374-miljoen-euro-voor-astek-302947626.html"
     },
+    "https://www.prnewswire.com/news-releases/holiday-sales-forecast-tops-1-trillion-as-big-retailers-raise-outlooks-302948083.html": {
+      "acquired": "2026-11-23T12:12:41.737131+00:00",
+      "acquisition_seconds": 761.737131,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Holiday Sales Forecast Tops $1 Trillion as Big Retailers Raise Outlooks",
+      "url": "https://www.prnewswire.com/news-releases/holiday-sales-forecast-tops-1-trillion-as-big-retailers-raise-outlooks-302948083.html"
+    },
     "https://www.prnewswire.com/news-releases/how-to-go-2x-long-anthropic-ant-leverage-shares-by-themes-explains-anuu-the-2x-leveraged-anthropic-etf-launching-monday-302947477.html": {
       "acquired": "2026-11-21T19:06:31.090522+00:00",
       "acquisition_seconds": 391.090522,
@@ -1886,6 +1934,22 @@
       "title": "Huawei svela le capacità di scalabilità dell'IA finanziaria al FinTech Festival 2026 di Singapore",
       "url": "https://www.prnewswire.com/news-releases/huawei-svela-le-capacita-di-scalabilita-dellia-finanziaria-al-fintech-festival-2026-di-singapore-302947587.html"
     },
+    "https://www.prnewswire.com/news-releases/hybrid-grading-approach-launches-hga-glass-the-most-advanced-card-grade-made-from-aerospace-aluminum-and-glass-302947648.html": {
+      "acquired": "2026-11-23T12:12:41.737131+00:00",
+      "acquisition_seconds": 761.737131,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Hybrid Grading Approach Launches HGA Glass, The Most Advanced Card Grade Made from Aerospace Aluminum and Glass",
+      "url": "https://www.prnewswire.com/news-releases/hybrid-grading-approach-launches-hga-glass-the-most-advanced-card-grade-made-from-aerospace-aluminum-and-glass-302947648.html"
+    },
     "https://www.prnewswire.com/news-releases/hyperscale-data-names-william-b-horne-co-executive-chairman-alongside-milton-todd-ault-iii-302947700.html": {
       "acquired": "2026-11-23T09:11:43.170337+00:00",
       "acquisition_seconds": 703.170337,
@@ -1917,6 +1981,22 @@
       "status": "SCARTARE",
       "title": "Hyperscale Data Reaffirms 2027 Guidance of $300 Million to $350 Million in Revenue as Well as $60 Million to $80 Million in Adjusted EBITDA and Invites Stockholders to Today's Conference Call",
       "url": "https://www.prnewswire.com/news-releases/hyperscale-data-reaffirms-2027-guidance-of-300-million-to-350-million-in-revenue-as-well-as-60-million-to-80-million-in-adjusted-ebitda-and-invites-stockholders-to-todays-conference-call-302947702.html"
+    },
+    "https://www.prnewswire.com/news-releases/international-paper-board-of-directors-approves-spin-off-of-emea-packaging-business-ds-smith-plc-302947820.html": {
+      "acquired": "2026-11-23T12:12:41.737131+00:00",
+      "acquisition_seconds": 761.737131,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "International Paper Board of Directors Approves Spin-off of EMEA Packaging Business (DS Smith plc)",
+      "url": "https://www.prnewswire.com/news-releases/international-paper-board-of-directors-approves-spin-off-of-emea-packaging-business-ds-smith-plc-302947820.html"
     },
     "https://www.prnewswire.com/news-releases/js-held-mobilise-une-expertise-multidisciplinaire-face-aux-litiges-et-reclamations-lies-a-lia-physique-302947307.html": {
       "acquired": "2026-11-23T08:12:41.966929+00:00",
