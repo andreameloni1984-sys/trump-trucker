@@ -2,6 +2,16 @@
  "version": 1,
  "trump": [
   {
+   "title": "Quote post from November 23, 2026",
+   "published": "2026-11-23T05:08:30+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43711",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "MEDIA"
+   ],
+   "bias": []
+  },
+  {
    "title": "It’s incredible that Somalians have been able to completely take over the once great State of Minnesota. They own it, “lock, stock, and barrel” and, almost 95% are on some form of welfare. MAKE AMERIC",
    "published": "2026-11-22T21:53:08+00:00",
    "url": "https://www.trumpstruth.org/statuses/43708",
@@ -218,5 +228,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-22T21:59:10.428818+00:00"
+ "updated_at": "2026-11-23T05:09:40.261707+00:00"
 }
