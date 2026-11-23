@@ -1186,6 +1186,22 @@
       "title": "Chaince Digital Subsidiary Signs Joint Venture Framework Agreement to Develop an AI Data Center with Potential for Up to 25 MW of Power Capacity in Big Lake, Texas",
       "url": "https://www.globenewswire.com/news-release/2026/11/23/3408212/0/en/chaince-digital-subsidiary-signs-joint-venture-framework-agreement-to-develop-an-ai-data-center-with-potential-for-up-to-25-mw-of-power-capacity-in-big-lake-texas.html"
     },
+    "https://www.govinfo.gov/app/details/PLAW-119publ119": {
+      "acquired": "2026-11-23T19:32:23.118206+00:00",
+      "acquisition_seconds": 143.118206,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "policy",
+      "penalized": [],
+      "published": "2026-11-23T19:30:00+00:00",
+      "source": "Leggi federali / GovInfo",
+      "status": "SCARTARE",
+      "title": "Public Law 119 - 119 - Improving Social Security's Service to Victims of Identity Theft Act",
+      "url": "https://www.govinfo.gov/app/details/PLAW-119publ119"
+    },
     "https://www.marketwatch.com/story/a-66-year-old-nurse-faces-retirement-with-just-500-saved-whos-to-blame-4249a0fd": {
       "acquired": "2026-11-23T10:20:17.662674+00:00",
       "acquisition_seconds": 317.662674,
@@ -1393,22 +1409,6 @@
       "status": "SCARTARE",
       "title": "More AI jobs are coming. That’s one of the big hiring trends in 2027.",
       "url": "https://www.marketwatch.com/story/more-ai-jobs-are-coming-thats-one-of-the-big-hiring-trends-in-2027-3d810209"
-    },
-    "https://www.marketwatch.com/story/my-husband-is-happily-retired-at-64-and-thinks-i-should-keep-working-is-he-being-fair-325c5f38": {
-      "acquired": "2026-11-21T19:34:40.784456+00:00",
-      "acquisition_seconds": 700.784456,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-21T19:23:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "My husband is happily retired at 64 and thinks I should keep working. Is he being fair?",
-      "url": "https://www.marketwatch.com/story/my-husband-is-happily-retired-at-64-and-thinks-i-should-keep-working-is-he-being-fair-325c5f38"
     },
     "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a": {
       "acquired": "2026-11-22T16:19:09.432368+00:00",
@@ -3841,6 +3841,22 @@
       "status": "SCARTARE",
       "title": "Yidu Tech Posts RMB 61.3 Million in Profit, Sustaining Growth Momentum in H1 FY2027",
       "url": "https://www.prnewswire.com/news-releases/yidu-tech-posts-rmb-61-3-million-in-profit-sustaining-growth-momentum-in-h1-fy2027--302947938.html"
+    },
+    "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-hails-americas-armed-forces": {
+      "acquired": "2026-11-23T19:32:23.073475+00:00",
+      "acquisition_seconds": 731.073475,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "policy",
+      "penalized": [],
+      "published": "2026-11-23T19:20:12+00:00",
+      "source": "Casa Bianca – comunicati",
+      "status": "SCARTARE",
+      "title": "First Lady Melania Trump Hails America’s Armed Forces",
+      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-hails-americas-armed-forces"
     }
   },
   "pravda": [],
