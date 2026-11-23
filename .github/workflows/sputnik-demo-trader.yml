@@ -30,6 +30,9 @@ jobs:
       SPUTNIK_INVEST_DEMO_API_SECRET: ${{ secrets.SPUTNIK_INVEST_DEMO_API_SECRET }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      # PAC mensile 80/10/10 sul conto demo (SPUTNIK_PAC=0 lo spegne)
+      SPUTNIK_PAC: ${{ vars.SPUTNIK_PAC }}
+      SPUTNIK_PAC_MONTHLY: ${{ vars.SPUTNIK_PAC_MONTHLY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,6 +45,14 @@ jobs:
             python -m sputnik_demo.trader --dry-run
           else
             python -m sputnik_demo.trader
+          fi
+      - name: PAC mensile con ribilanciamento (conto demo)
+        if: always()
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m sputnik_demo.pac --dry-run
+          else
+            python -m sputnik_demo.pac
           fi
       - name: Salva lo stato delle operazioni demo
         if: always() && inputs.dry_run != true
