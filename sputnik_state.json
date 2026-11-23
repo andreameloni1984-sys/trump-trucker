@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-23T05:09:40.801616+00:00",
+  "updated_at": "2026-11-23T06:19:14.508376+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -18244,7 +18244,7 @@
   },
   "analyst_started_at": "2026-11-21T16:33:10.411603+00:00",
   "analyst_outbox": [],
-  "analyst_brief_date": "2026-11-22",
+  "analyst_brief_date": "2026-11-23",
   "analyst_predictions": {},
   "analyst_counts": {
     "Trump": 11
