@@ -2044,22 +2044,6 @@
       "title": "I’m terrified of a market crash. Should I put $400,000 of my $1 million retirement savings into an annuity?",
       "url": "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240"
     },
-    "https://www.marketwatch.com/story/why-are-these-tech-outages-rattling-americans-so-much-that-theyre-stockpiling-cash-and-supplies-07516bdd": {
-      "acquired": "2026-11-21T03:34:50.005169+00:00",
-      "acquisition_seconds": 890.005169,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-21T03:20:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Tech outages are rattling Americans so much that they’re stockpiling cash and supplies",
-      "url": "https://www.marketwatch.com/story/why-are-these-tech-outages-rattling-americans-so-much-that-theyre-stockpiling-cash-and-supplies-07516bdd"
-    },
     "https://www.prnewswire.com/news-releases/how-to-go-2x-long-anthropic-ant-leverage-shares-by-themes-explains-anuu-the-2x-leveraged-anthropic-etf-launching-monday-302947477.html": {
       "acquired": "2026-11-21T19:06:31.090522+00:00",
       "acquisition_seconds": 391.090522,
@@ -2155,6 +2139,22 @@
       "status": "SCARTARE",
       "title": "SHAREHOLDER ALERT: Bronstein Gewirtz & Grossman, LLC Announces Class Action Against EyePoint, Inc. (NASDAQ: EYPT) -- Investors Who Suffered Losses Are Encouraged to Contact the Firm.",
       "url": "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-eyepoint-inc-nasdaq-eypt--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946397.html"
+    },
+    "https://www.prnewswire.com/news-releases/yeepay-showcases-one-stop-payment-network-and-expands-strategic-partnerships-at-singapore-fintech-festival-2026-302947875.html": {
+      "acquired": "2026-11-23T03:23:58.216414+00:00",
+      "acquisition_seconds": 838.216414,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T03:10:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "YeePay Showcases One-Stop Payment Network and Expands Strategic Partnerships at Singapore FinTech Festival 2026",
+      "url": "https://www.prnewswire.com/news-releases/yeepay-showcases-one-stop-payment-network-and-expands-strategic-partnerships-at-singapore-fintech-festival-2026-302947875.html"
     }
   },
   "pravda": [],
