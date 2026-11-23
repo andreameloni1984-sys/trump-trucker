@@ -14,6 +14,7 @@ import urllib.request
 from typing import Any
 
 DEMO_BASE = "https://demo.trading212.com/api/v0"
+RETRY_WAITS = (15.0, 65.0)   # secondi di attesa prima di ripetere una lettura rifiutata con 429
 
 
 class T212Error(RuntimeError):
@@ -38,17 +39,22 @@ class DemoClient:
         req.add_unredirected_header("Authorization", self._auth)
         req.add_header("Content-Type", "application/json")
         req.add_header("User-Agent", "Sputnik-demo-trader")
-        time.sleep(self.pause)
-        try:
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                raw = resp.read().decode("utf-8")
-                return json.loads(raw) if raw else {}
-        except urllib.error.HTTPError as exc:
+        # 429 = troppe richieste: alcune letture (es. il catalogo) sono ammesse una volta al minuto
+        for wait in RETRY_WAITS + (None,):
+            time.sleep(self.pause)
             try:
-                detail = exc.read().decode("utf-8", errors="replace")[:200]
-            except Exception:  # noqa: BLE001
-                detail = ""
-            raise T212Error(exc.code, " ".join(detail.split())) from None
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    raw = resp.read().decode("utf-8")
+                    return json.loads(raw) if raw else {}
+            except urllib.error.HTTPError as exc:
+                try:
+                    detail = exc.read().decode("utf-8", errors="replace")[:200]
+                except Exception:  # noqa: BLE001
+                    detail = ""
+                if exc.code == 429 and wait is not None and method == "GET":
+                    time.sleep(wait)
+                    continue
+                raise T212Error(exc.code, " ".join(detail.split())) from None
 
     # lettura
     def cash(self) -> dict:
