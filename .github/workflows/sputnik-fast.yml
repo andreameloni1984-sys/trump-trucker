@@ -2,7 +2,8 @@ name: SPUTNIK veloce (post di Trump ogni 5 minuti)
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    # Riserva: la sveglia Cloudflare avvia questo workflow ogni 3 minuti.
+    - cron: "29 * * * *"
   workflow_dispatch:
 
 permissions:

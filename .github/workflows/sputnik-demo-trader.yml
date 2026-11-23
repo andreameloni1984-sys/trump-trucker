@@ -3,7 +3,8 @@ name: SPUTNIK DEMO trader (Trading 212 Invest demo)
 on:
   schedule:
     # ogni 15 minuti, lun-ven, 07:00-16:59 UTC (copre gli orari di Xetra e Londra)
-    - cron: "7,22,37,52 7-16 * * 1-5"
+    # Riserva: la sveglia Cloudflare lo avvia ogni 5 minuti in orario di borsa.
+    - cron: "11 7-16 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
