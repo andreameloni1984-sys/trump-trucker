@@ -1070,6 +1070,22 @@
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117665528575591688",
       "url": "https://truthsocial.com/@realDonaldTrump/117665529427047942"
     },
+    "https://www.globenewswire.com/news-release/2026/11/23/3408212/0/en/chaince-digital-subsidiary-signs-joint-venture-framework-agreement-to-develop-an-ai-data-center-with-potential-for-up-to-25-mw-of-power-capacity-in-big-lake-texas.html": {
+      "acquired": "2026-11-23T12:39:12.014726+00:00",
+      "acquisition_seconds": 2352.014726,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:00:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Chaince Digital Subsidiary Signs Joint Venture Framework Agreement to Develop an AI Data Center with Potential for Up to 25 MW of Power Capacity in Big Lake, Texas",
+      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408212/0/en/chaince-digital-subsidiary-signs-joint-venture-framework-agreement-to-develop-an-ai-data-center-with-potential-for-up-to-25-mw-of-power-capacity-in-big-lake-texas.html"
+    },
     "https://www.govinfo.gov/app/details/BILLS-114hr5132ih": {
       "acquired": "2026-11-21T16:08:07.148770+00:00",
       "acquisition_seconds": 607.14877,
@@ -1261,22 +1277,6 @@
       "status": "SCARTARE",
       "title": "James Bond films were shot all over the world. Here are 5 properties made famous by 007.",
       "url": "https://www.marketwatch.com/story/james-bond-films-were-shot-all-over-the-world-here-are-5-properties-made-famous-by-007-dabafbe6"
-    },
-    "https://www.marketwatch.com/story/larry-mcdonald-survived-lehmans-collapse-now-he-warns-the-credit-market-is-signaling-a-growth-shock-for-stocks-5c3a62ef": {
-      "acquired": "2026-11-21T12:34:17.346234+00:00",
-      "acquisition_seconds": 197.346234,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-21T12:31:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Larry McDonald survived Lehman’s collapse. Now he warns the credit market is signaling a growth shock for stocks.",
-      "url": "https://www.marketwatch.com/story/larry-mcdonald-survived-lehmans-collapse-now-he-warns-the-credit-market-is-signaling-a-growth-shock-for-stocks-5c3a62ef"
     },
     "https://www.marketwatch.com/story/medicare-beneficiaries-could-skip-the-nursing-home-for-cheaper-care-at-home-under-new-bill-e289c8d0": {
       "acquired": "2026-11-22T19:34:33.056127+00:00",
@@ -1582,6 +1582,22 @@
       "title": "These little-known investments could be among the best bargains in a crash",
       "url": "https://www.marketwatch.com/story/these-little-known-investments-could-be-among-the-best-bargains-in-a-crash-78a379b4"
     },
+    "https://www.marketwatch.com/story/trump-wants-jensen-huang-back-at-nvidia-what-will-it-take-to-stop-the-tech-selloff-3f6b091f": {
+      "acquired": "2026-11-23T12:39:10.662524+00:00",
+      "acquisition_seconds": 790.662524,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "annuncio futuro",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-23T12:26:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Trump wants Jensen Huang back at Nvidia. What will it take to stop the tech selloff?",
+      "url": "https://www.marketwatch.com/story/trump-wants-jensen-huang-back-at-nvidia-what-will-it-take-to-stop-the-tech-selloff-3f6b091f"
+    },
     "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240": {
       "acquired": "2026-11-22T16:34:51.423457+00:00",
       "acquisition_seconds": 171.423457,
@@ -1613,6 +1629,22 @@
       "status": "SCARTARE",
       "title": "2027 Cruise Forecast Calls for 22.4 Million U.S. Ocean Cruisers, Up 3.6%",
       "url": "https://www.prnewswire.com/news-releases/2027-cruise-forecast-calls-for-22-4-million-us-ocean-cruisers-up-3-6-302948106.html"
+    },
+    "https://www.prnewswire.com/news-releases/alliancebernstein-launches-ab-equity-income-etf-302947704.html": {
+      "acquired": "2026-11-23T12:39:10.736634+00:00",
+      "acquisition_seconds": 550.736634,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "AllianceBernstein Launches AB Equity Income ETF",
+      "url": "https://www.prnewswire.com/news-releases/alliancebernstein-launches-ab-equity-income-etf-302947704.html"
     },
     "https://www.prnewswire.com/news-releases/american-bitcoin-secures-150-million-credit-facility-with-falconx-to-support-strategic-growth-302945891.html": {
       "acquired": "2026-11-23T11:48:49.954086+00:00",
@@ -1789,6 +1821,22 @@
       "status": "SCARTARE",
       "title": "CytoSorbents Announces Closing of $6.25 Million Common Stock Financing and Concurrent Restructuring of Avenue Credit Facility",
       "url": "https://www.prnewswire.com/news-releases/cytosorbents-announces-closing-of-6-25-million-common-stock-financing-and-concurrent-restructuring-of-avenue-credit-facility-302947958.html"
+    },
+    "https://www.prnewswire.com/news-releases/deloitte-participation-in-black-friday-cyber-monday-shopping-expected-to-hit-10-year-high-302947335.html": {
+      "acquired": "2026-11-23T12:39:10.736634+00:00",
+      "acquisition_seconds": 550.736634,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "annuncio futuro",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Deloitte: Participation in Black Friday-Cyber Monday Shopping Expected to Hit 10-year High",
+      "url": "https://www.prnewswire.com/news-releases/deloitte-participation-in-black-friday-cyber-monday-shopping-expected-to-hit-10-year-high-302947335.html"
     },
     "https://www.prnewswire.com/news-releases/die-taiwan-weeks-2026-verzeichnen-fast-40-000-besucher-und-starken-die-verbindungen-zu-den-globalen-kapitalmarkten-302948129.html": {
       "acquired": "2026-11-23T10:48:57.523431+00:00",
@@ -2125,6 +2173,22 @@
       "status": "SCARTARE",
       "title": "New report shows New York State's deteriorating local roads need a significant investment increase",
       "url": "https://www.prnewswire.com/news-releases/new-report-shows-new-york-states-deteriorating-local-roads-need-a-significant-investment-increase-302947275.html"
+    },
+    "https://www.prnewswire.com/news-releases/patients-gain-new-treatment-options-in-a-busy-month-for-drug-approvals-302948100.html": {
+      "acquired": "2026-11-23T12:39:10.736634+00:00",
+      "acquisition_seconds": 550.736634,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-23T12:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Patients Gain New Treatment Options in a Busy Month for Drug Approvals",
+      "url": "https://www.prnewswire.com/news-releases/patients-gain-new-treatment-options-in-a-busy-month-for-drug-approvals-302948100.html"
     },
     "https://www.prnewswire.com/news-releases/propstream-showcases-the-modern-real-estate-entrepreneurs-toolkit-on-all-access-with-andy-garcia-302940235.html": {
       "acquired": "2026-11-23T08:12:41.966929+00:00",
