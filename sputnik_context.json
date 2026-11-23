@@ -2,6 +2,16 @@
  "version": 1,
  "trump": [
   {
+   "title": "ICYMI: “White House Convenes Elite Team To Prevent Air Traffic Outages Ahead Of Thanksgiving”",
+   "published": "2026-11-23T16:11:31+00:00",
+   "url": "https://www.whitehouse.gov/releases/2026/11/icymi-white-house-convenes-elite-team-to-prevent-air-traffic-outages-ahead-of-thanksgiving/",
+   "source": "Casa Bianca",
+   "domains": [
+    "AI_TECH"
+   ],
+   "bias": []
+  },
+  {
    "title": "Voting Begins for the 2026 National Thanksgiving Turkey Pardon Ceremony",
    "published": "2026-11-23T14:47:18+00:00",
    "url": "https://www.whitehouse.gov/releases/2026/11/voting-begins-for-the-2026-national-thanksgiving-turkey-pardon-ceremony/",
@@ -198,5 +208,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-23T15:27:43.103158+00:00"
+ "updated_at": "2026-11-23T16:24:40.420141+00:00"
 }

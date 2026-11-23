@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-23T15:08:29.552948+00:00",
+  "updated_at": "2026-11-23T16:24:40.433016+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1102,6 +1102,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "eb290bb915ae61eb8d59cfe6": {
+      "source": "WHITE_HOUSE_RSS",
+      "feed_url": "https://www.whitehouse.gov/feed/",
+      "url": "https://www.whitehouse.gov/releases/2026/11/icymi-white-house-convenes-elite-team-to-prevent-air-traffic-outages-ahead-of-thanksgiving/",
+      "primary_url": "",
+      "title": "ICYMI: “White House Convenes Elite Team To Prevent Air Traffic Outages Ahead Of Thanksgiving”",
+      "published": "Mon, 23 Nov 2026 16:11:31 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "ICYMI: “White House Convenes Elite Team To Prevent Air Traffic Outages Ahead Of Thanksgiving” As millions of Americans prepare to travel for the Thanksgiving holiday, President Donald J. Trump is making sure the skies stay open and the systems run smoothly. Under President Trump’s leadership, the White House has assembled an elite, interagency team to keep America’s air traffic control systems strong and reliable throughout the holiday season. From […] The post ICYMI: “White House Convenes Elite Team To Prevent Air Traffic Outages Ahead Of Thanksgiving” appeared first on The White House.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-23T16:24:39.863100+00:00",
+      "event_id": "eb290bb915ae61eb8d59cfe6",
+      "action_reaction": {
+        "event_id": "eb290bb915ae61eb8d59cfe6",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "e42d0d5c3e4a85621cbf81b4": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8080,29 +8103,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "9d83ab86e444ddbd5c80ab79": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43205",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548722241141969",
-      "title": "Congressman William Timmons is doing a truly fantastic job representing the wonderful people of South Carolina's 4th Congressional District! A Captain in the South Carolina Air National Guard, and former Criminal Prosecutor, William knows what it takes to ensure LAW AND ORDER, and strongly support o",
-      "published": "Mon, 02 Nov 2026 20:25:57 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman William Timmons is doing a truly fantastic job representing the wonderful people of South Carolina's 4th Congressional District! A Captain in the South Carolina Air National Guard, and former Criminal Prosecutor, William knows what it takes to ensure LAW AND ORDER, and strongly support o Congressman William Timmons is doing a truly fantastic job representing the wonderful people of South Carolina's 4th Congressional District! A Captain in the South Carolina Air National Guard, and former Criminal Prosecutor, William knows what it takes to ensure LAW AND ORDER, and strongly support our incredible Law Enforcement, Military, and Veterans. In Congress, he is fighting tirelessly to Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, and Protect our always under siege Second Amendment. William Timmons has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR WILLIAM — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/south-caro lina/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T01:53:14.005440+00:00",
-      "event_id": "9d83ab86e444ddbd5c80ab79",
-      "action_reaction": {
-        "event_id": "9d83ab86e444ddbd5c80ab79",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13191,7 +13191,8 @@
     "11f7d39b735e5ecbbcd55032": "2026-11-23T05:09:40.224134+00:00",
     "2faeb222c0fc729f46e04b58": "2026-11-23T11:35:06.938400+00:00",
     "30ea34cb62f0d7ffdacc246f": "2026-11-23T14:09:03.616436+00:00",
-    "ad7e92a49ccdcfe239aac748": "2026-11-23T14:57:00.143847+00:00"
+    "ad7e92a49ccdcfe239aac748": "2026-11-23T14:57:00.143847+00:00",
+    "eb290bb915ae61eb8d59cfe6": "2026-11-23T16:24:39.863086+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
