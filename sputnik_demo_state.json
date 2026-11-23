@@ -19,8 +19,10 @@
  },
  "outbox": [],
  "pac": {
-  "months": [],
-  "invested": 0.0,
+  "months": [
+   "2026-11"
+  ],
+  "invested": 99.95,
   "instruments": {
    "_date": "2026-11-23",
    "_missing": [],
