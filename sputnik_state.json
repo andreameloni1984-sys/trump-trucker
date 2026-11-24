@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-24T17:47:17.434349+00:00",
+  "updated_at": "2026-11-24T19:21:10.772473+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "bf43b62c670f27d948292354": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43722",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117672947522305995",
+      "title": "Judge Ana C. Reyes, who was appointed by Crooked Joe Biden, and is handling the East Potomac Golf Course, referred to as Trash Island because it has been in such bad shape for so many years, is doing everything in her power to stop the Department of the Interior from bringing an old, decrepit, and v",
+      "published": "Tue, 24 Nov 2026 18:58:04 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Judge Ana C. Reyes, who was appointed by Crooked Joe Biden, and is handling the East Potomac Golf Course, referred to as Trash Island because it has been in such bad shape for so many years, is doing everything in her power to stop the Department of the Interior from bringing an old, decrepit, and v Judge Ana C. Reyes, who was appointed by Crooked Joe Biden, and is handling the East Potomac Golf Course, referred to as Trash Island because it has been in such bad shape for so many years, is doing everything in her power to stop the Department of the Interior from bringing an old, decrepit, and very unsafe Golf Course from being built into a Course that Washington and, indeed, the U.S.A., can be proud of. The new Course will be open to the Public, and for residents of Washington, D.C., at a substantially reduced rate. It will also be a Course designed to the Highest Standards of Golf. The Department of the Interior has an absolute right to renovate the Course, but the judge is not allowing them to do so, at great danger and peril to the Public. She wants to become a Golf Course Designer and approve every move we make — And it just doesn’t work that way. This Project can be done easily and quickly. We are simply replacing a dangerous and bad Golf Course with a safe and good Golf Course, one that will be GREAT for the area. Time is of the essence — This is a Project that must be started, IMMEDIATELY, or many Seasons will be missed, and the costs will only continue to rise! Thank ",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-24T19:21:10.746123+00:00",
+      "event_id": "bf43b62c670f27d948292354",
+      "action_reaction": {
+        "event_id": "bf43b62c670f27d948292354",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "0fdb03403e508620889e6e6e": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8137,29 +8160,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "15a633967276a3c41d2bdf84": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43281",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549820408877420",
-      "title": "Congressman Mike Johnson is a Great Man, an outstanding Representative for the wonderful people of Louisiana's 4th Congressional District, and a strong and fearless Speaker of the United States House of Representatives. He is able to get things done when nobody else can! As Speaker, Mike is working",
-      "published": "Tue, 03 Nov 2026 01:05:13 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Mike Johnson is a Great Man, an outstanding Representative for the wonderful people of Louisiana's 4th Congressional District, and a strong and fearless Speaker of the United States House of Representatives. He is able to get things done when nobody else can! As Speaker, Mike is working Congressman Mike Johnson is a Great Man, an outstanding Representative for the wonderful people of Louisiana's 4th Congressional District, and a strong and fearless Speaker of the United States House of Representatives. He is able to get things done when nobody else can! As Speaker, Mike is working tirelessly to deliver and codify our very successful America First and Make America Great Again Agenda. He is fighting hard to Grow our Economy, Cut Taxes and Regulations, Champion our Great Farmers and American Agriculture, Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Ensure LAW AND ORDER, Strengthen our Brave Military/Veterans, Safeguard our Elections, and Defend our always under siege Second Amendment. Mike Johnson is a true friend, fighter, and WINNER, and has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR MIKE — HE IS A GREAT PATRIOT WHO WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/louisiana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.614513+00:00",
-      "event_id": "15a633967276a3c41d2bdf84",
-      "action_reaction": {
-        "event_id": "15a633967276a3c41d2bdf84",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13253,7 +13253,8 @@
     "b1fe6bd3d161953055134648": "2026-11-23T18:05:53.762637+00:00",
     "fe8819f08272f9829e320c4a": "2026-11-23T19:30:11.438149+00:00",
     "6cc1023ced4d239cb3926168": "2026-11-23T23:51:12.079518+00:00",
-    "14b48b05bb9668c79391e185": "2026-11-24T17:39:10.453248+00:00"
+    "14b48b05bb9668c79391e185": "2026-11-24T17:39:10.453248+00:00",
+    "bf43b62c670f27d948292354": "2026-11-24T19:21:10.746103+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
