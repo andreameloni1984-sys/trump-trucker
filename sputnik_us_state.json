@@ -2418,6 +2418,22 @@
       "title": "Stocks are serving up a ‘fat pitch’ for investors right now, as Morgan Stanley’s top strategist",
       "url": "https://www.marketwatch.com/story/stocks-are-serving-up-a-fat-pitch-for-investors-right-now-as-morgan-stanleys-top-strategist-19abe30a"
     },
+    "https://www.marketwatch.com/story/sundays-pot-roast-now-costs-more-than-a-thanksgiving-feast-why-beef-wont-get-cheaper-for-years-7daa1b3f": {
+      "acquired": "2026-11-24T13:02:26.176873+00:00",
+      "acquisition_seconds": 386.176873,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T12:56:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Sunday’s pot roast now costs more than a Thanksgiving feast. Why beef won’t get cheaper for years.",
+      "url": "https://www.marketwatch.com/story/sundays-pot-roast-now-costs-more-than-a-thanksgiving-feast-why-beef-wont-get-cheaper-for-years-7daa1b3f"
+    },
     "https://www.marketwatch.com/story/the-biggest-biotech-deal-in-nearly-three-years-carries-a-hefty-41-billion-price-tag-dd7fa228": {
       "acquired": "2026-11-24T09:17:22.073751+00:00",
       "acquisition_seconds": 202.073751,
@@ -2786,6 +2802,22 @@
       "title": "À l'occasion du Singapore FinTech Festival 2026, YeePay présente son réseau de paiement intégré et étend ses partenariats stratégiques",
       "url": "https://www.prnewswire.com/news-releases/a-loccasion-du-singapore-fintech-festival-2026-yeepay-presente-son-reseau-de-paiement-integre-et-etend-ses-partenariats-strategiques-302948815.html"
     },
+    "https://www.prnewswire.com/news-releases/a-new-chapter-for-magnolia-landing-tranzon-driggers-seeks-buyer-to-revitalize-north-fort-myers-championship-18-hole-golf-course-on-december-29-online-auction-302948553.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "A New Chapter for Magnolia Landing: Tranzon Driggers Seeks Buyer to Revitalize North Fort Myers Championship 18-hole Golf Course on December 2-9 Online Auction",
+      "url": "https://www.prnewswire.com/news-releases/a-new-chapter-for-magnolia-landing-tranzon-driggers-seeks-buyer-to-revitalize-north-fort-myers-championship-18-hole-golf-course-on-december-29-online-auction-302948553.html"
+    },
     "https://www.prnewswire.com/news-releases/abu-dhabi-delegation-develops-new-us-investment-partnerships-during-new-york-visit-302948364.html": {
       "acquired": "2026-11-23T17:34:49.031589+00:00",
       "acquisition_seconds": 289.031589,
@@ -2897,6 +2929,70 @@
       "status": "SCARTARE",
       "title": "Allocators Face a Persistent Gap in Impact Due Diligence for Private Market Funds",
       "url": "https://www.prnewswire.com/news-releases/allocators-face-a-persistent-gap-in-impact-due-diligence-for-private-market-funds-302948290.html"
+    },
+    "https://www.prnewswire.com/news-releases/alterra-acquiert-les-activites-de-developpement-de-pryme-et-leve-de-nouveaux-capitaux-pour-accelerer-son-expansion-europeenne-302948782.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Alterra acquiert les activités de développement de Pryme et lève de nouveaux capitaux pour accélérer son expansion européenne",
+      "url": "https://www.prnewswire.com/news-releases/alterra-acquiert-les-activites-de-developpement-de-pryme-et-leve-de-nouveaux-capitaux-pour-accelerer-son-expansion-europeenne-302948782.html"
+    },
+    "https://www.prnewswire.com/news-releases/alterra-acquires-prymes-development-business-and-secures-new-capital-to-accelerate-european-expansion-302948535.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Alterra Acquires Pryme's Development Business and Secures New Capital to Accelerate European Expansion",
+      "url": "https://www.prnewswire.com/news-releases/alterra-acquires-prymes-development-business-and-secures-new-capital-to-accelerate-european-expansion-302948535.html"
+    },
+    "https://www.prnewswire.com/news-releases/alterra-acquires-prymes-development-business-and-secures-new-capital-to-accelerate-european-expansion-302948714.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Alterra Acquires Pryme's Development Business and Secures New Capital to Accelerate European Expansion",
+      "url": "https://www.prnewswire.com/news-releases/alterra-acquires-prymes-development-business-and-secures-new-capital-to-accelerate-european-expansion-302948714.html"
+    },
+    "https://www.prnewswire.com/news-releases/alterra-adquiere-el-negocio-de-desarrollo-de-pryme-y-obtiene-nuevo-capital-para-acelerar-su-expansion-europea-302949388.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Alterra adquiere el negocio de desarrollo de Pryme y obtiene nuevo capital para acelerar su expansión europea",
+      "url": "https://www.prnewswire.com/news-releases/alterra-adquiere-el-negocio-de-desarrollo-de-pryme-y-obtiene-nuevo-capital-para-acelerar-su-expansion-europea-302949388.html"
     },
     "https://www.prnewswire.com/news-releases/american-bitcoin-secures-150-million-credit-facility-with-falconx-to-support-strategic-growth-302945891.html": {
       "acquired": "2026-11-23T11:48:49.954086+00:00",
@@ -3073,6 +3169,38 @@
       "status": "SCARTARE",
       "title": "Asphalt Expert Robert Stewart Details Parking Lot Paving Considerations for Property Managers",
       "url": "https://www.prnewswire.com/news-releases/asphalt-expert-robert-stewart-details-parking-lot-paving-considerations-for-property-managers-302948323.html"
+    },
+    "https://www.prnewswire.com/news-releases/automation-anywhere-completes-boostai-acquisition-challenges-saas-giants-in-the-race-for-autonomous-customer-service-operations-302949013.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Automation Anywhere Completes Boost.ai Acquisition, Challenges SaaS Giants in the Race for Autonomous Customer Service Operations",
+      "url": "https://www.prnewswire.com/news-releases/automation-anywhere-completes-boostai-acquisition-challenges-saas-giants-in-the-race-for-autonomous-customer-service-operations-302949013.html"
+    },
+    "https://www.prnewswire.com/news-releases/automation-anywhere-completes-boostai-acquisition-challenges-saas-giants-in-the-race-for-autonomous-customer-service-operations-302949044.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Automation Anywhere Completes Boost.ai Acquisition, Challenges SaaS Giants in the Race for Autonomous Customer Service Operations",
+      "url": "https://www.prnewswire.com/news-releases/automation-anywhere-completes-boostai-acquisition-challenges-saas-giants-in-the-race-for-autonomous-customer-service-operations-302949044.html"
     },
     "https://www.prnewswire.com/news-releases/banner-ridge-partners-announces-strategic-growth-investment-from-bisonti-partners-and-bonaccord-capital-partners-302947321.html": {
       "acquired": "2026-11-23T21:02:30.254318+00:00",
@@ -3298,6 +3426,22 @@
       "title": "Black Friday Returns to dxFeed: Save Up to 50% on Market Data",
       "url": "https://www.prnewswire.com/news-releases/black-friday-returns-to-dxfeed-save-up-to-50-on-market-data-302947874.html"
     },
+    "https://www.prnewswire.com/news-releases/blue-owl-to-present-at-goldman-sachs-2026-financial-services-conference-302948692.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Blue Owl to Present at Goldman Sachs 2026 Financial Services Conference",
+      "url": "https://www.prnewswire.com/news-releases/blue-owl-to-present-at-goldman-sachs-2026-financial-services-conference-302948692.html"
+    },
     "https://www.prnewswire.com/news-releases/blulabs-secures-80-million-credit-facility-from-wells-fargo-302948123.html": {
       "acquired": "2026-11-23T14:09:14.217212+00:00",
       "acquisition_seconds": 554.217212,
@@ -3345,6 +3489,22 @@
       "status": "SCARTARE",
       "title": "Brennan Investment Group's Opportunity Fund Acquires 100,790 Square-Foot Industrial Facility in Bethlehem, Pennsylvania",
       "url": "https://www.prnewswire.com/news-releases/brennan-investment-groups-opportunity-fund-acquires-100-790-square-foot-industrial-facility-in-bethlehem-pennsylvania-302949122.html"
+    },
+    "https://www.prnewswire.com/news-releases/broadridge-to-host-investor-day-on-december-8-2026-302948908.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Broadridge to Host Investor Day on December 8, 2026",
+      "url": "https://www.prnewswire.com/news-releases/broadridge-to-host-investor-day-on-december-8-2026-302948908.html"
     },
     "https://www.prnewswire.com/news-releases/burford-capital-appoints-jim-kilman-as-non-executive-director-302947135.html": {
       "acquired": "2026-11-23T12:12:41.737131+00:00",
@@ -3937,6 +4097,22 @@
       "status": "SCARTARE",
       "title": "FirstService Residential Illinois President Brian Butler Receives CAI Illinois Andrea Sorgani President's Award",
       "url": "https://www.prnewswire.com/news-releases/firstservice-residential-illinois-president-brian-butler-receives-cai-illinois-andrea-sorgani-presidents-award-302947685.html"
+    },
+    "https://www.prnewswire.com/news-releases/fortune-announces-speakers-and-partners-for-brainstorm-ai-2026-in-san-francisco-dec-7-and-8-302948797.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Fortune Announces Speakers and Partners for Brainstorm AI 2026 in San Francisco Dec. 7 and 8",
+      "url": "https://www.prnewswire.com/news-releases/fortune-announces-speakers-and-partners-for-brainstorm-ai-2026-in-san-francisco-dec-7-and-8-302948797.html"
     },
     "https://www.prnewswire.com/news-releases/foundation-source-names-marissa-fox-foley-chief-marketing-officer-302947348.html": {
       "acquired": "2026-11-23T13:34:49.421897+00:00",
@@ -4834,6 +5010,22 @@
       "title": "Newmark Arranges $305 Million Construction Loan for Luxury Condominium Development at 101 Franklin in Tribeca",
       "url": "https://www.prnewswire.com/news-releases/newmark-arranges-305-million-construction-loan-for-luxury-condominium-development-at-101-franklin-in-tribeca-302948665.html"
     },
+    "https://www.prnewswire.com/news-releases/noah-opens-19th-global-black-diamond-summit-to-explore-new-approaches-to-wealth-security-in-the-ai-era-302949431.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 386.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T12:56:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Noah Opens 19th Global Black Diamond Summit to Explore New Approaches to Wealth Security in the AI Era",
+      "url": "https://www.prnewswire.com/news-releases/noah-opens-19th-global-black-diamond-summit-to-explore-new-approaches-to-wealth-security-in-the-ai-era-302949431.html"
+    },
     "https://www.prnewswire.com/news-releases/nordstrom-rack-to-open-new-location-in-crestview-hills-kentucky-302947325.html": {
       "acquired": "2026-11-23T15:08:39.316302+00:00",
       "acquisition_seconds": 519.316302,
@@ -5138,6 +5330,22 @@
       "title": "Research Solutions to Join KnowledgeWorks Global Ltd., a CJK Group Company in All-Cash Acquisition",
       "url": "https://www.prnewswire.com/news-releases/research-solutions-to-join-knowledgeworks-global-ltd-a-cjk-group-company-in-all-cash-acquisition-302947935.html"
     },
+    "https://www.prnewswire.com/news-releases/rich-family-foundation-introduces-niagara-neighbor-fund-investing-250-000-in-local-nonprofits-302948606.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Rich Family Foundation Introduces Niagara Neighbor Fund, investing $250,000 in Local Nonprofits",
+      "url": "https://www.prnewswire.com/news-releases/rich-family-foundation-introduces-niagara-neighbor-fund-investing-250-000-in-local-nonprofits-302948606.html"
+    },
     "https://www.prnewswire.com/news-releases/roofing-expert-ryan-pacheco-of-roanoke-va-explains-what-virginia-homeowners-should-do-before-a-roof-claim-for-hellonation-302947419.html": {
       "acquired": "2026-11-23T15:08:39.316302+00:00",
       "acquisition_seconds": 819.316302,
@@ -5394,6 +5602,22 @@
       "title": "Take Profit Trader Launches End-of-Day Drawdown in Funded Accounts, With True Daily Payouts: Now Offers Three Plan Options",
       "url": "https://www.prnewswire.com/news-releases/take-profit-trader-launches-end-of-day-drawdown-in-funded-accounts-with-true-daily-payouts-now-offers-three-plan-options-302945604.html"
     },
+    "https://www.prnewswire.com/news-releases/tase-continues-to-enhance-the-israeli-capital-market-and-align-it-with-international-standards-302949430.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 386.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T12:56:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "TASE Continues to Enhance the Israeli Capital Market and Align it with International Standards",
+      "url": "https://www.prnewswire.com/news-releases/tase-continues-to-enhance-the-israeli-capital-market-and-align-it-with-international-standards-302949430.html"
+    },
     "https://www.prnewswire.com/news-releases/the9-limited-announces-rescheduling-of-annual-general-meeting-to-december-24-2026-and-addition-of-proposals-for-shareholder-approval-302948231.html": {
       "acquired": "2026-11-23T13:34:49.421897+00:00",
       "acquisition_seconds": 229.421897,
@@ -5553,6 +5777,22 @@
       "status": "SCARTARE",
       "title": "Vanguard Announces Advisory Changes to Vanguard International Explorer Fund",
       "url": "https://www.prnewswire.com/news-releases/vanguard-announces-advisory-changes-to-vanguard-international-explorer-fund-302948266.html"
+    },
+    "https://www.prnewswire.com/news-releases/velocity-trade-international-streamlines-multi-jurisdictional-reporting-with-bloomberg-rhub-302947916.html": {
+      "acquired": "2026-11-24T13:02:26.294018+00:00",
+      "acquisition_seconds": 146.294018,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Velocity Trade International Streamlines Multi-Jurisdictional Reporting with Bloomberg RHUB",
+      "url": "https://www.prnewswire.com/news-releases/velocity-trade-international-streamlines-multi-jurisdictional-reporting-with-bloomberg-rhub-302947916.html"
     },
     "https://www.prnewswire.com/news-releases/vero-beach-luxury-market-divides-at-2-million-heading-into-winter-302947294.html": {
       "acquired": "2026-11-23T13:48:46.079925+00:00",
