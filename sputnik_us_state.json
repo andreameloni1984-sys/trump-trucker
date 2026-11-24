@@ -2354,6 +2354,22 @@
       "title": "Stocks are serving up a ‘fat pitch’ for investors right now, as Morgan Stanley’s top strategist",
       "url": "https://www.marketwatch.com/story/stocks-are-serving-up-a-fat-pitch-for-investors-right-now-as-morgan-stanleys-top-strategist-19abe30a"
     },
+    "https://www.marketwatch.com/story/the-biggest-biotech-deal-in-nearly-three-years-carries-a-hefty-41-billion-price-tag-dd7fa228": {
+      "acquired": "2026-11-24T09:17:22.073751+00:00",
+      "acquisition_seconds": 202.073751,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T09:14:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The biggest biotech deal in nearly three years carries a hefty $41 billion price tag",
+      "url": "https://www.marketwatch.com/story/the-biggest-biotech-deal-in-nearly-three-years-carries-a-hefty-41-billion-price-tag-dd7fa228"
+    },
     "https://www.marketwatch.com/story/the-newest-addition-to-the-s-p-500-is-a-maker-of-viral-ice-cream-machines-5c6e209a": {
       "acquired": "2026-11-23T23:32:28.364866+00:00",
       "acquisition_seconds": 868.364866,
@@ -3713,6 +3729,22 @@
       "status": "SCARTARE",
       "title": "FOUNDATION SOURCE NAMES MARISSA FOX-FOLEY CHIEF MARKETING OFFICER",
       "url": "https://www.prnewswire.com/news-releases/foundation-source-names-marissa-fox-foley-chief-marketing-officer-302947348.html"
+    },
+    "https://www.prnewswire.com/news-releases/from-bordeaux-to-china-jdcom-expands-direct-sourcing-partnerships-with-leading-french-wine-producers-302949175.html": {
+      "acquired": "2026-11-24T09:17:22.071236+00:00",
+      "acquisition_seconds": 142.071236,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T09:15:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "From Bordeaux to China: JD.com Expands Direct Sourcing Partnerships with Leading French Wine Producers",
+      "url": "https://www.prnewswire.com/news-releases/from-bordeaux-to-china-jdcom-expands-direct-sourcing-partnerships-with-leading-french-wine-producers-302949175.html"
     },
     "https://www.prnewswire.com/news-releases/future-standard-and-liberty-mutual-investments-expand-strategic-relationship-targeting-over-1-billion-across-digital-infrastructure-platform-302948267.html": {
       "acquired": "2026-11-23T13:48:46.079925+00:00",
