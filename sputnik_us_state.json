@@ -48,22 +48,6 @@
       "title": "Lilly to host Innovation Day 2026",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117661447235607485": {
-      "acquired": "2026-11-22T19:06:18.418984+00:00",
-      "acquisition_seconds": 3174.418984,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-22T18:13:24+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Image post from November 22, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117661447235607485"
-    },
     "https://truthsocial.com/@realDonaldTrump/117662086130550876": {
       "acquired": "2026-11-22T21:49:11.121680+00:00",
       "acquisition_seconds": 3199.12168,
@@ -2492,6 +2476,22 @@
       "status": "SCARTARE",
       "title": "The U.S. may enter a recession if the Fed raises rates, hedge-fund manager Bill Ackman says",
       "url": "https://www.marketwatch.com/story/the-u-s-may-enter-a-recession-if-the-fed-raises-rates-hedge-fund-manager-bill-ackman-says-16738971"
+    },
+    "https://www.marketwatch.com/story/the-wealthiest-10-of-americans-are-pulling-ahead-of-everyone-else-this-is-whats-making-them-richer-bd83c2f6": {
+      "acquired": "2026-11-24T18:17:21.444282+00:00",
+      "acquisition_seconds": 201.444282,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T18:14:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The wealthiest 10% of Americans are pulling ahead of everyone else. This is what’s making them richer.",
+      "url": "https://www.marketwatch.com/story/the-wealthiest-10-of-americans-are-pulling-ahead-of-everyone-else-this-is-whats-making-them-richer-bd83c2f6"
     },
     "https://www.marketwatch.com/story/these-little-known-investments-could-be-among-the-best-bargains-in-a-crash-78a379b4": {
       "acquired": "2026-11-22T18:34:49.179951+00:00",
