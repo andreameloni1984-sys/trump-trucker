@@ -45,5 +45,10 @@
   "open": null,
   "closed": [],
   "ticker": "SXR8d_EQ"
+ },
+ "trend": {
+  "months": [],
+  "holdings": {},
+  "history": []
  }
 }
