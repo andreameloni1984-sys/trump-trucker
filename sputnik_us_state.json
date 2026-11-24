@@ -2109,6 +2109,22 @@
       "title": "Medicare beneficiaries could skip the nursing home for cheaper care at home under new bill",
       "url": "https://www.marketwatch.com/story/medicare-beneficiaries-could-skip-the-nursing-home-for-cheaper-care-at-home-under-new-bill-e289c8d0"
     },
+    "https://www.marketwatch.com/story/microns-stock-falls-as-an-analyst-warns-about-a-future-supply-glut-f7fbeefb": {
+      "acquired": "2026-11-24T18:47:25.182715+00:00",
+      "acquisition_seconds": 865.182715,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T18:33:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Micron’s stock falls as an analyst warns about a future supply glut",
+      "url": "https://www.marketwatch.com/story/microns-stock-falls-as-an-analyst-warns-about-a-future-supply-glut-f7fbeefb"
+    },
     "https://www.marketwatch.com/story/more-ai-jobs-are-coming-thats-one-of-the-big-hiring-trends-in-2027-3d810209": {
       "acquired": "2026-11-23T17:49:18.097087+00:00",
       "acquisition_seconds": 738.097087,
@@ -4044,6 +4060,22 @@
       "status": "SCARTARE",
       "title": "CME Group Sets New Daily Volume Record of 71.5 Million Contracts, Driven by Strong Interest Rates Volume",
       "url": "https://www.prnewswire.com/news-releases/cme-group-sets-new-daily-volume-record-of-71-5-million-contracts-driven-by-strong-interest-rates-volume-302949619.html"
+    },
+    "https://www.prnewswire.com/news-releases/convr-adds-federal-judicial-center-court-data-to-its-data-lake-surfacing-hard-to-find-legal-and-financial-signals-for-underwriters-302949765.html": {
+      "acquired": "2026-11-24T18:47:25.233885+00:00",
+      "acquisition_seconds": 325.233885,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T18:42:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Convr® Adds Federal Judicial Center Court Data to Its Data Lake, Surfacing Hard-to-Find Legal and Financial Signals for Underwriters",
+      "url": "https://www.prnewswire.com/news-releases/convr-adds-federal-judicial-center-court-data-to-its-data-lake-surfacing-hard-to-find-legal-and-financial-signals-for-underwriters-302949765.html"
     },
     "https://www.prnewswire.com/news-releases/copenhagen-infrastructure-partners-announces-its-first-rated-multi-fund-infrastructure-backed-notes-programme-302948164.html": {
       "acquired": "2026-11-23T11:48:49.954086+00:00",
