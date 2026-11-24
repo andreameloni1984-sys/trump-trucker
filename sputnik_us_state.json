@@ -2091,22 +2091,6 @@
       "title": "My husband secretly sends his ex-wife $1,500 a month after she lost her job. We have $2.4 million saved. Has he lied by omission?",
       "url": "https://www.marketwatch.com/story/my-husband-secretly-sends-his-ex-wife-1-500-a-month-after-she-lost-her-job-we-have-2-4-million-saved-has-he-lied-by-omission-ede1972a"
     },
-    "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a": {
-      "acquired": "2026-11-22T16:19:09.432368+00:00",
-      "acquisition_seconds": 549.432368,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-22T16:10:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "My husband spent $80,000 on a boat, yet says my plans for a $100,000 pottery studio are irresponsible. Who’s right?",
-      "url": "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a"
-    },
     "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6": {
       "acquired": "2026-11-22T17:06:33.553440+00:00",
       "acquisition_seconds": 393.55344,
@@ -4459,6 +4443,22 @@
       "title": "FIRST FINANCIAL ANNOUNCES PROMOTION OF FRANK GIOIA TO CHIEF DIGITAL AND INNOVATION OFFICER",
       "url": "https://www.prnewswire.com/news-releases/first-financial-announces-promotion-of-frank-gioia-to-chief-digital-and-innovation-officer-302948485.html"
     },
+    "https://www.prnewswire.com/news-releases/first-horizon-foundation-announces-naming-of-endowed-chair-in-translational-neuroscience-at-st-jude-childrens-research-hospital-302949638.html": {
+      "acquired": "2026-11-24T16:17:19.390371+00:00",
+      "acquisition_seconds": 139.390371,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T16:15:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "First Horizon Foundation Announces Naming of Endowed Chair in Translational Neuroscience at St. Jude Children's Research Hospital",
+      "url": "https://www.prnewswire.com/news-releases/first-horizon-foundation-announces-naming-of-endowed-chair-in-translational-neuroscience-at-st-jude-childrens-research-hospital-302949638.html"
+    },
     "https://www.prnewswire.com/news-releases/firstservice-residential-illinois-president-brian-butler-receives-cai-illinois-andrea-sorgani-presidents-award-302947685.html": {
       "acquired": "2026-11-23T15:08:39.316302+00:00",
       "acquisition_seconds": 519.316302,
@@ -5067,6 +5067,22 @@
       "title": "InComm Payments Launches The Gift Card Shop on TikTok Shop",
       "url": "https://www.prnewswire.com/news-releases/incomm-payments-launches-the-gift-card-shop-on-tiktok-shop-302948688.html"
     },
+    "https://www.prnewswire.com/news-releases/insurance-agent-mara-geraghty-explains-hurricane-deductibles-in-florida-homeowners-insurance-in-hellonation-302949634.html": {
+      "acquired": "2026-11-24T16:17:19.390371+00:00",
+      "acquisition_seconds": 859.390371,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T16:03:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Insurance Agent Mara Geraghty Explains Hurricane Deductibles in Florida Homeowners Insurance in HelloNation",
+      "url": "https://www.prnewswire.com/news-releases/insurance-agent-mara-geraghty-explains-hurricane-deductibles-in-florida-homeowners-insurance-in-hellonation-302949634.html"
+    },
     "https://www.prnewswire.com/news-releases/insurance-expert-jeremy-fitzsimmons-explains-homeowners-insurance-coverage-in-hellonation-302948525.html": {
       "acquired": "2026-11-24T16:02:30.265747+00:00",
       "acquisition_seconds": 150.265747,
@@ -5322,6 +5338,22 @@
       "status": "SCARTARE",
       "title": "Les Taiwan Weeks 2026 enregistrent près de 40 000 participants et renforce les liens avec les marchés financiers mondiaux.",
       "url": "https://www.prnewswire.com/news-releases/les-taiwan-weeks-2026-enregistrent-pres-de-40-000-participants-et-renforce-les-liens-avec-les-marches-financiers-mondiaux-302948306.html"
+    },
+    "https://www.prnewswire.com/news-releases/leverage-shares-by-themes-anthropic-ant-etfs-among-the-most-traded-on-first-day-of-trading-302949642.html": {
+      "acquired": "2026-11-24T16:17:19.390371+00:00",
+      "acquisition_seconds": 199.390371,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T16:14:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Leverage Shares by Themes Anthropic (ANT) ETFs Among the Most Traded on First Day of Trading",
+      "url": "https://www.prnewswire.com/news-releases/leverage-shares-by-themes-anthropic-ant-etfs-among-the-most-traded-on-first-day-of-trading-302949642.html"
     },
     "https://www.prnewswire.com/news-releases/lifesecure-launches-starscape-administrators-an-end-to-end-tpa-solution-for-the-insurance-industry-302947359.html": {
       "acquired": "2026-11-23T15:08:39.316302+00:00",
