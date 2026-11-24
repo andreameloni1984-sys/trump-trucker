@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-24T19:32:13.449786+00:00",
+  "updated_at": "2026-11-24T23:02:35.090764+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -12493,7 +12493,7 @@
       "ticker": ""
     }
   },
-  "morning_brief_date": "2026-11-24",
+  "morning_brief_date": "2026-11-25",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
