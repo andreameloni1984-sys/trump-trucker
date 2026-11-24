@@ -48,39 +48,6 @@
       "title": "Lilly to host Innovation Day 2026",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117660771450282590": {
-      "acquired": "2026-11-22T16:08:13.834739+00:00",
-      "acquisition_seconds": 2801.834739,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-22T15:21:32+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Video post from November 22, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117660771450282590"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117660772187019609": {
-      "acquired": "2026-11-22T15:34:45.143820+00:00",
-      "acquisition_seconds": 785.560691,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-22T15:21:43.731000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660771450282590",
-      "url": "https://truthsocial.com/@realDonaldTrump/117660772187019609"
-    },
     "https://truthsocial.com/@realDonaldTrump/117661238591305263": {
       "acquired": "2026-11-22T17:34:45.012788+00:00",
       "acquisition_seconds": 865.188198,
@@ -3180,6 +3147,22 @@
       "title": "Asphalt Expert Robert Stewart Details Parking Lot Paving Considerations for Property Managers",
       "url": "https://www.prnewswire.com/news-releases/asphalt-expert-robert-stewart-details-parking-lot-paving-considerations-for-property-managers-302948323.html"
     },
+    "https://www.prnewswire.com/news-releases/associated-bank-invests-1-5-million-in-northeast-wisconsin-health-care-housing-and-startups-in-2026--302949560.html": {
+      "acquired": "2026-11-24T15:32:19.576945+00:00",
+      "acquisition_seconds": 979.576945,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:16:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Associated Bank Invests $1.5 Million in Northeast Wisconsin Health Care, Housing and Startups in 2026",
+      "url": "https://www.prnewswire.com/news-releases/associated-bank-invests-1-5-million-in-northeast-wisconsin-health-care-housing-and-startups-in-2026--302949560.html"
+    },
     "https://www.prnewswire.com/news-releases/automation-anywhere-completes-boostai-acquisition-challenges-saas-giants-in-the-race-for-autonomous-customer-service-operations-302949013.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
       "acquisition_seconds": 146.294018,
@@ -3211,6 +3194,22 @@
       "status": "SCARTARE",
       "title": "Automation Anywhere Completes Boost.ai Acquisition, Challenges SaaS Giants in the Race for Autonomous Customer Service Operations",
       "url": "https://www.prnewswire.com/news-releases/automation-anywhere-completes-boostai-acquisition-challenges-saas-giants-in-the-race-for-autonomous-customer-service-operations-302949044.html"
+    },
+    "https://www.prnewswire.com/news-releases/banking-in-2027-ai-rewrites-the-terms-banks-still-carry-the-risk-302949578.html": {
+      "acquired": "2026-11-24T15:32:19.576945+00:00",
+      "acquisition_seconds": 439.576945,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:25:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Banking in 2027: AI rewrites the terms. Banks still carry the risk.",
+      "url": "https://www.prnewswire.com/news-releases/banking-in-2027-ai-rewrites-the-terms-banks-still-carry-the-risk-302949578.html"
     },
     "https://www.prnewswire.com/news-releases/banner-ridge-partners-announces-strategic-growth-investment-from-bisonti-partners-and-bonaccord-capital-partners-302947321.html": {
       "acquired": "2026-11-23T21:02:30.254318+00:00",
@@ -4956,6 +4955,22 @@
       "title": "Insurance Expert Kathy Powell Highlights What Determines How Much Home or Renters Insurance You Need",
       "url": "https://www.prnewswire.com/news-releases/insurance-expert-kathy-powell-highlights-what-determines-how-much-home-or-renters-insurance-you-need-302948366.html"
     },
+    "https://www.prnewswire.com/news-releases/insurance-expert-shonie-christensen-explains-homeowners-insurance-coverage-and-exclusions-in-hellonation-302948710.html": {
+      "acquired": "2026-11-24T15:32:19.576945+00:00",
+      "acquisition_seconds": 379.576945,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:26:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Insurance Expert Shonie Christensen Explains Homeowners Insurance Coverage and Exclusions in HelloNation",
+      "url": "https://www.prnewswire.com/news-releases/insurance-expert-shonie-christensen-explains-homeowners-insurance-coverage-and-exclusions-in-hellonation-302948710.html"
+    },
     "https://www.prnewswire.com/news-releases/international-paper-board-of-directors-approves-spin-off-of-emea-packaging-business-ds-smith-plc-302947820.html": {
       "acquired": "2026-11-23T12:12:41.737131+00:00",
       "acquisition_seconds": 761.737131,
@@ -5771,6 +5786,22 @@
       "status": "SCARTARE",
       "title": "RBC Capital Markets Hosts Global TIMT Conference Featuring 100 Technology, Internet, Media and Telecom Leaders",
       "url": "https://www.prnewswire.com/news-releases/rbc-capital-markets-hosts-global-timt-conference-featuring-100-technology-internet-media-and-telecom-leaders-302947604.html"
+    },
+    "https://www.prnewswire.com/news-releases/real-estate-experts-sherri-and-tim-groves-explain-home-sale-preparation-in-hellonation-302947364.html": {
+      "acquired": "2026-11-24T15:32:19.576945+00:00",
+      "acquisition_seconds": 739.576945,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:20:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Real Estate Experts Sherri and Tim Groves Explain Home Sale Preparation in HelloNation",
+      "url": "https://www.prnewswire.com/news-releases/real-estate-experts-sherri-and-tim-groves-explain-home-sale-preparation-in-hellonation-302947364.html"
     },
     "https://www.prnewswire.com/news-releases/recast-capital-announces-fourth-cohort-for-accelerate-program-including-the-first-managers-from-latin-america-and-the-caribbean-302948834.html": {
       "acquired": "2026-11-24T13:47:27.513216+00:00",
