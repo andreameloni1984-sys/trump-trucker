@@ -2414,22 +2414,6 @@
       "title": "Short sellers get smoked as Nvidia tallies biggest one-day gain in stock-market history",
       "url": "https://www.marketwatch.com/story/short-sellers-get-smoked-as-nvidia-tallies-biggest-one-day-gain-in-stock-market-history-e9dc6e9c"
     },
-    "https://www.marketwatch.com/story/social-security-should-be-shut-down-this-republican-senator-says-8f7fef81": {
-      "acquired": "2026-11-22T20:34:50.285129+00:00",
-      "acquisition_seconds": 530.285129,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-22T20:26:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Social Security should be shut down, this Republican senator says",
-      "url": "https://www.marketwatch.com/story/social-security-should-be-shut-down-this-republican-senator-says-8f7fef81"
-    },
     "https://www.marketwatch.com/story/stock-market-slides-this-steep-and-fast-trigger-a-rebound-91-of-the-time-over-the-last-decade-798bd2c2": {
       "acquired": "2026-11-23T08:49:23.176419+00:00",
       "acquisition_seconds": 743.176419,
@@ -3390,6 +3374,22 @@
       "title": "Associated Bank Invests $1.5 Million in Northeast Wisconsin Health Care, Housing and Startups in 2026",
       "url": "https://www.prnewswire.com/news-releases/associated-bank-invests-1-5-million-in-northeast-wisconsin-health-care-housing-and-startups-in-2026--302949560.html"
     },
+    "https://www.prnewswire.com/news-releases/augustar-life-insurance-company-announces-pricing-terms-of-its-cash-tender-offer-for-constellation-insurance-incs-outstanding-5-550-senior-notes-due-2030-currently-bearing-interest-at-a-rate-of-5-800-and-6-625-senior-notes-302949842.html": {
+      "acquired": "2026-11-24T20:32:20.666335+00:00",
+      "acquisition_seconds": 800.666335,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T20:19:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "AuguStar Life Insurance Company Announces Pricing Terms of its Cash Tender Offer for Constellation Insurance, Inc.'s Outstanding 5.550% Senior Notes due 2030 (Currently Bearing Interest at a Rate of 5.800%) and 6.625% Senior Notes due 2031",
+      "url": "https://www.prnewswire.com/news-releases/augustar-life-insurance-company-announces-pricing-terms-of-its-cash-tender-offer-for-constellation-insurance-incs-outstanding-5-550-senior-notes-due-2030-currently-bearing-interest-at-a-rate-of-5-800-and-6-625-senior-notes-302949842.html"
+    },
     "https://www.prnewswire.com/news-releases/automation-anywhere-completes-boostai-acquisition-challenges-saas-giants-in-the-race-for-autonomous-customer-service-operations-302949013.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
       "acquisition_seconds": 146.294018,
@@ -3469,6 +3469,22 @@
       "status": "SCARTARE",
       "title": "Bayesline Closes $4 Million Institutional Fundraising Round, Led by Nyca Partners",
       "url": "https://www.prnewswire.com/news-releases/bayesline-closes-4-million-institutional-fundraising-round-led-by-nyca-partners-302948761.html"
+    },
+    "https://www.prnewswire.com/news-releases/because-were-billmanns-tv-series-highlights-real-estate-lifestyle-and-community-across-pittsburgh-on-real-shows-network-302949840.html": {
+      "acquired": "2026-11-24T20:32:20.666335+00:00",
+      "acquisition_seconds": 980.666335,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T20:16:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Because We're Billmann's TV Series Highlights Real Estate, Lifestyle and Community Across Pittsburgh on REAL Shows Network",
+      "url": "https://www.prnewswire.com/news-releases/because-were-billmanns-tv-series-highlights-real-estate-lifestyle-and-community-across-pittsburgh-on-real-shows-network-302949840.html"
     },
     "https://www.prnewswire.com/news-releases/berger-montague-pc-investigating-claims-on-behalf-of-investors-in-fervo-energy-company-nasdaq-frvo-after-class-action-filing-302947817.html": {
       "acquired": "2026-11-23T14:49:07.800893+00:00",
@@ -6413,6 +6429,22 @@
       "status": "SCARTARE",
       "title": "Real Estate Experts Sherri and Tim Groves Explain Home Sale Preparation in HelloNation",
       "url": "https://www.prnewswire.com/news-releases/real-estate-experts-sherri-and-tim-groves-explain-home-sale-preparation-in-hellonation-302947364.html"
+    },
+    "https://www.prnewswire.com/news-releases/realty-meets-reality-tv-series-spotlights-texas-real-estate-and-lifestyle-on-real-shows-network-302949841.html": {
+      "acquired": "2026-11-24T20:32:20.666335+00:00",
+      "acquisition_seconds": 920.666335,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T20:17:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Realty Meets Reality TV Series Spotlights Texas Real Estate and Lifestyle on REAL Shows Network",
+      "url": "https://www.prnewswire.com/news-releases/realty-meets-reality-tv-series-spotlights-texas-real-estate-and-lifestyle-on-real-shows-network-302949841.html"
     },
     "https://www.prnewswire.com/news-releases/recast-capital-announces-fourth-cohort-for-accelerate-program-including-the-first-managers-from-latin-america-and-the-caribbean-302948834.html": {
       "acquired": "2026-11-24T13:47:27.513216+00:00",
