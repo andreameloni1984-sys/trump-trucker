@@ -2350,22 +2350,6 @@
       "title": "Oracle and CoreWeave stocks stage big gains as investors bet the AI cash will keep flowing",
       "url": "https://www.marketwatch.com/story/oracle-and-coreweave-stocks-stage-big-gains-as-investors-bet-the-ai-cash-will-keep-flowing-eeb1aa85"
     },
-    "https://www.marketwatch.com/story/ron-johnsons-social-security-gaffe-buried-important-news-b96e0ce8": {
-      "acquired": "2026-11-22T21:34:37.864784+00:00",
-      "acquisition_seconds": 397.864784,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-22T21:28:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Ron Johnson’s Social Security gaffe buried important news",
-      "url": "https://www.marketwatch.com/story/ron-johnsons-social-security-gaffe-buried-important-news-b96e0ce8"
-    },
     "https://www.marketwatch.com/story/roth-ira-conversions-arent-free-money-watch-out-for-these-5-costly-mistakes-39b182d3": {
       "acquired": "2026-11-24T12:17:19.691819+00:00",
       "acquisition_seconds": 979.691819,
@@ -2589,6 +2573,22 @@
       "status": "SCARTARE",
       "title": "The return of Jensen Huang has saved the U.S. stock market — for now. Why the rebound may not last.",
       "url": "https://www.marketwatch.com/story/the-return-of-jensen-huang-has-saved-the-u-s-stock-market-for-now-why-the-rebound-may-not-last-f72656ce"
+    },
+    "https://www.marketwatch.com/story/the-stock-market-is-hardly-cheap-even-taking-recent-declines-into-account-fe0a7989": {
+      "acquired": "2026-11-24T21:32:21.837961+00:00",
+      "acquisition_seconds": 621.837961,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T21:22:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The stock market is hardly cheap, even taking recent declines into account",
+      "url": "https://www.marketwatch.com/story/the-stock-market-is-hardly-cheap-even-taking-recent-declines-into-account-fe0a7989"
     },
     "https://www.marketwatch.com/story/the-surprising-reason-businesses-cant-keep-up-with-customer-demand-hint-its-not-just-a-strong-u-s-economy-70be4a01": {
       "acquired": "2026-11-23T16:08:38.882962+00:00",
@@ -6093,6 +6093,22 @@
       "status": "SCARTARE",
       "title": "NNS: Results of the Post-Closing Acceptance Period for the cash offer for OCI",
       "url": "https://www.prnewswire.com/news-releases/nns-results-of-the-post-closing-acceptance-period-for-the-cash-offer-for-oci-302949792.html"
+    },
+    "https://www.prnewswire.com/news-releases/noah-holdings-limited-announces-unaudited-financial-results-for-the-third-quarter-of-2026-302949558.html": {
+      "acquired": "2026-11-24T21:32:21.908621+00:00",
+      "acquisition_seconds": 141.908621,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "earnings",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T21:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "NOAH HOLDINGS LIMITED ANNOUNCES UNAUDITED FINANCIAL RESULTS FOR THE THIRD QUARTER OF 2026",
+      "url": "https://www.prnewswire.com/news-releases/noah-holdings-limited-announces-unaudited-financial-results-for-the-third-quarter-of-2026-302949558.html"
     },
     "https://www.prnewswire.com/news-releases/noah-opens-19th-global-black-diamond-summit-to-explore-new-approaches-to-wealth-security-in-the-ai-era-302949431.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
