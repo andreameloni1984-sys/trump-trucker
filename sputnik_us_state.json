@@ -48,39 +48,6 @@
       "title": "Lilly to host Innovation Day 2026",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117660691191971810": {
-      "acquired": "2026-11-22T15:48:37.567831+00:00",
-      "acquisition_seconds": 2850.567831,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-22T15:01:07+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Video post from November 22, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117660691191971810"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117660692611602783": {
-      "acquired": "2026-11-22T15:07:18.375117+00:00",
-      "acquisition_seconds": 350.206162,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-22T15:01:29.507000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117660691191971810",
-      "url": "https://truthsocial.com/@realDonaldTrump/117660692611602783"
-    },
     "https://truthsocial.com/@realDonaldTrump/117660715234270781": {
       "acquired": "2026-11-22T16:08:13.834739+00:00",
       "acquisition_seconds": 3659.834739,
@@ -2000,6 +1967,22 @@
       "title": "Amazon may have just found a ‘cheap’ way to get a lot more out of its chips",
       "url": "https://www.marketwatch.com/story/amazon-may-have-just-found-a-cheap-way-to-get-a-lot-more-out-of-its-chips-bd822bd5"
     },
+    "https://www.marketwatch.com/story/anthropics-stock-just-broke-below-its-ipo-price-for-the-first-time-5dc82668": {
+      "acquired": "2026-11-24T15:02:29.258847+00:00",
+      "acquisition_seconds": 449.258847,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T14:55:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Anthropic’s stock just broke below its IPO price for the first time",
+      "url": "https://www.marketwatch.com/story/anthropics-stock-just-broke-below-its-ipo-price-for-the-first-time-5dc82668"
+    },
     "https://www.marketwatch.com/story/consumer-stocks-seen-as-safe-bet-amid-cracks-in-ai-trade-are-among-the-s-p-500s-biggest-losers-monday-80cf8f81": {
       "acquired": "2026-11-23T18:10:06.628391+00:00",
       "acquisition_seconds": 966.628391,
@@ -2015,22 +1998,6 @@
       "status": "SCARTARE",
       "title": "Consumer stocks, seen as safe bet amid cracks in AI trade, are among the S&P 500’s biggest losers Monday",
       "url": "https://www.marketwatch.com/story/consumer-stocks-seen-as-safe-bet-amid-cracks-in-ai-trade-are-among-the-s-p-500s-biggest-losers-monday-80cf8f81"
-    },
-    "https://www.marketwatch.com/story/corporate-america-hunts-for-generational-growth-in-ai-trading-cards-and-the-l-a-airport-3072eb1a": {
-      "acquired": "2026-11-22T15:07:18.416998+00:00",
-      "acquisition_seconds": 378.416998,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-22T15:01:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Corporate America hunts for ‘generational’ growth in AI, trading cards and the L.A. airport",
-      "url": "https://www.marketwatch.com/story/corporate-america-hunts-for-generational-growth-in-ai-trading-cards-and-the-l-a-airport-3072eb1a"
     },
     "https://www.marketwatch.com/story/cybersecurity-stocks-have-been-hot-and-now-crowdstrike-inks-deal-to-buy-zscaler-df8fd163": {
       "acquired": "2026-11-23T12:27:01.623160+00:00",
@@ -2752,6 +2719,22 @@
       "title": "I’m terrified of a market crash. Should I put $400,000 of my $1 million retirement savings into an annuity?",
       "url": "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240"
     },
+    "https://www.marketwatch.com/story/what-to-do-if-your-thanksgiving-flight-gets-delayed-especially-with-a-noreaster-brewing-566fe933": {
+      "acquired": "2026-11-24T15:02:29.258847+00:00",
+      "acquisition_seconds": 389.258847,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T14:56:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "What to do if your Thanksgiving flight gets delayed — especially with a nor’easter brewing",
+      "url": "https://www.marketwatch.com/story/what-to-do-if-your-thanksgiving-flight-gets-delayed-especially-with-a-noreaster-brewing-566fe933"
+    },
     "https://www.marketwatch.com/story/why-mondays-huge-stock-market-rally-is-actually-a-warning-sign-for-bulls-49d227a8": {
       "acquired": "2026-11-23T20:02:30.446662+00:00",
       "acquisition_seconds": 510.446662,
@@ -2912,6 +2895,22 @@
       "title": "ADP National Employment Report Preliminary Estimate for November 7, 2026",
       "url": "https://www.prnewswire.com/news-releases/adp-national-employment-report-preliminary-estimate-for-november-7-2026-302948539.html"
     },
+    "https://www.prnewswire.com/news-releases/alkami-digital-sales--service-platform-named-gold-winner-in-merit-awards-2026-technology-awards-302948708.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Alkami Digital Sales & Service Platform Named Gold Winner in Merit Awards' 2026 Technology Awards",
+      "url": "https://www.prnewswire.com/news-releases/alkami-digital-sales--service-platform-named-gold-winner-in-merit-awards-2026-technology-awards-302948708.html"
+    },
     "https://www.prnewswire.com/news-releases/alliancebernstein-closed-end-funds-announce-distribution-rates-302948610.html": {
       "acquired": "2026-11-23T21:14:39.818857+00:00",
       "acquisition_seconds": 519.818857,
@@ -2991,6 +2990,22 @@
       "status": "SCARTARE",
       "title": "Allocators Face a Persistent Gap in Impact Due Diligence for Private Market Funds",
       "url": "https://www.prnewswire.com/news-releases/allocators-face-a-persistent-gap-in-impact-due-diligence-for-private-market-funds-302948290.html"
+    },
+    "https://www.prnewswire.com/news-releases/ally-financial-to-present-at-the-goldman-sachs-us-financials-conference-302948557.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Ally Financial to present at the Goldman Sachs US Financials Conference",
+      "url": "https://www.prnewswire.com/news-releases/ally-financial-to-present-at-the-goldman-sachs-us-financials-conference-302948557.html"
     },
     "https://www.prnewswire.com/news-releases/alterra-acquiert-les-activites-de-developpement-de-pryme-et-leve-de-nouveaux-capitaux-pour-accelerer-son-expansion-europeenne-302948782.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
@@ -3151,6 +3166,22 @@
       "status": "SCARTARE",
       "title": "Arthur J. Gallagher & Co. To Webcast Investor Meeting With Management",
       "url": "https://www.prnewswire.com/news-releases/arthur-j-gallagher--co-to-webcast-investor-meeting-with-management-302948675.html"
+    },
+    "https://www.prnewswire.com/news-releases/artificial-intelligence-risk-inc-has-rebranded-to-verapath-302948414.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Artificial Intelligence Risk, Inc. Has Rebranded to Verapath",
+      "url": "https://www.prnewswire.com/news-releases/artificial-intelligence-risk-inc-has-rebranded-to-verapath-302948414.html"
     },
     "https://www.prnewswire.com/news-releases/as-hr-weighs-ais-risks-financial-finesses-human-backed-platform-wins-personal-finance-tech-of-the-year-302948401.html": {
       "acquired": "2026-11-23T16:20:39.346917+00:00",
@@ -3760,6 +3791,22 @@
       "title": "Cboe Global Markets to Present at the Goldman Sachs Financial Services Conference on December 9",
       "url": "https://www.prnewswire.com/news-releases/cboe-global-markets-to-present-at-the-goldman-sachs-financial-services-conference-on-december-9-302948630.html"
     },
+    "https://www.prnewswire.com/news-releases/cboe-launches-kpi-binary-options-a-new-way-to-trade-the-numbers-behind-earnings-302949514.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "earnings",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Cboe Launches KPI Binary Options, a New Way to Trade the Numbers Behind Earnings",
+      "url": "https://www.prnewswire.com/news-releases/cboe-launches-kpi-binary-options-a-new-way-to-trade-the-numbers-behind-earnings-302949514.html"
+    },
     "https://www.prnewswire.com/news-releases/cdr-appoints-greg-pasqua-as-chief-financial-officer-302947710.html": {
       "acquired": "2026-11-23T12:12:41.737131+00:00",
       "acquisition_seconds": 761.737131,
@@ -4224,6 +4271,22 @@
       "title": "EQ Bank's Chadwick Westlake named New CEO of the Year by The Globe and Mail's Report on Business Magazine",
       "url": "https://www.prnewswire.com/news-releases/eq-banks-chadwick-westlake-named-new-ceo-of-the-year-by-the-globe-and-mails-report-on-business-magazine-302949405.html"
     },
+    "https://www.prnewswire.com/news-releases/euler-foundation-appoints-euler-technologies-to-lead-next-phase-of-growth-and-adoption-302943727.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Euler Foundation appoints Euler Technologies to lead next phase of growth and adoption",
+      "url": "https://www.prnewswire.com/news-releases/euler-foundation-appoints-euler-technologies-to-lead-next-phase-of-growth-and-adoption-302943727.html"
+    },
     "https://www.prnewswire.com/news-releases/every-bottle-has-a-story-vnyrd-launches-a-new-digital-home-for-wine-lovers-302948277.html": {
       "acquired": "2026-11-23T15:20:11.642711+00:00",
       "acquisition_seconds": 671.642711,
@@ -4592,6 +4655,22 @@
       "title": "Harel Insurance Investments and Financial Services Reports Third Quarter and Nine- Month 2026 Financial Results; Achieves Record Quarterly Core Profit",
       "url": "https://www.prnewswire.com/news-releases/harel-insurance-investments-and-financial-services-reports-third-quarter-and-nine--month-2026-financial-results-achieves-record-quarterly-core-profit-302947955.html"
     },
+    "https://www.prnewswire.com/news-releases/heading-south-for-the-winter-units-moving-and-portable-storage-ceo-shares-what-seasonal-movers-need-to-know-302949548.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 329.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "management",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T14:57:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Heading South for the Winter? UNITS® Moving and Portable Storage CEO Shares What Seasonal Movers Need to Know",
+      "url": "https://www.prnewswire.com/news-releases/heading-south-for-the-winter-units-moving-and-portable-storage-ceo-shares-what-seasonal-movers-need-to-know-302949548.html"
+    },
     "https://www.prnewswire.com/news-releases/hellonation-article-explains-the-appraisal-process-featuring-real-estate-experts-ray-and-peggy-pierce-302887683.html": {
       "acquired": "2026-11-23T16:08:38.990427+00:00",
       "acquisition_seconds": 578.990427,
@@ -4848,6 +4927,22 @@
       "title": "In HelloNation, Insurance Expert Ellie Mills of Boca Raton, FL Explains How Part-Time Occupancy Impacts Home Insurance",
       "url": "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-ellie-mills-of-boca-raton-fl-explains-how-part-time-occupancy-impacts-home-insurance-302948380.html"
     },
+    "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-ellie-mills-of-cutler-bay-fl-explains-loss-of-use-coverage-for-renters-302948484.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 449.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T14:55:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "In HelloNation, Insurance Expert Ellie Mills of Cutler Bay, FL Explains Loss of Use Coverage for Renters",
+      "url": "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-ellie-mills-of-cutler-bay-fl-explains-loss-of-use-coverage-for-renters-302948484.html"
+    },
     "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-kelli-palmquist-of-roseau-mn-explains-how-seasonal-insurance-risks-affect-coverage-302948341.html": {
       "acquired": "2026-11-23T16:35:33.612455+00:00",
       "acquisition_seconds": 333.612455,
@@ -4959,6 +5054,22 @@
       "status": "SCARTARE",
       "title": "Jack Henry Announces Regular Quarterly Dividend",
       "url": "https://www.prnewswire.com/news-releases/jack-henry-announces-regular-quarterly-dividend-302948462.html"
+    },
+    "https://www.prnewswire.com/news-releases/jdcom-amplia-sus-acuerdos-de-abastecimiento-directo-con-los-principales-productores-de-vino-franceses-302949534.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 869.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T14:48:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "JD.com amplía sus acuerdos de abastecimiento directo con los principales productores de vino franceses",
+      "url": "https://www.prnewswire.com/news-releases/jdcom-amplia-sus-acuerdos-de-abastecimiento-directo-con-los-principales-productores-de-vino-franceses-302949534.html"
     },
     "https://www.prnewswire.com/news-releases/jianzhi-education-signs-non-binding-comprehensive-cross-border-e-commerce-cooperation-framework-agreement-with-diandian-easy-pay-exploring-new-opportunities-in-ai-enabled-cross-border-commerce-302949373.html": {
       "acquired": "2026-11-24T13:32:33.573919+00:00",
@@ -5776,6 +5887,22 @@
       "title": "Rentec Direct Wins Globee® Award for Achievement in Real Estate",
       "url": "https://www.prnewswire.com/news-releases/rentec-direct-wins-globee-award-for-achievement-in-real-estate-302947543.html"
     },
+    "https://www.prnewswire.com/news-releases/republic-business-credit-promotes-melissa-baines-to-evp-head-of-compliance-and-christy-morgan-to-svp-head-of-legal-302946701.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Republic Business Credit Promotes Melissa Baines to EVP, Head of Compliance and Christy Morgan to SVP, Head of Legal",
+      "url": "https://www.prnewswire.com/news-releases/republic-business-credit-promotes-melissa-baines-to-evp-head-of-compliance-and-christy-morgan-to-svp-head-of-legal-302946701.html"
+    },
     "https://www.prnewswire.com/news-releases/research-solutions-to-join-knowledgeworks-global-ltd-a-cjk-group-company-in-all-cash-acquisition-302947935.html": {
       "acquired": "2026-11-23T13:09:10.751985+00:00",
       "acquisition_seconds": 550.751985,
@@ -5983,6 +6110,22 @@
       "status": "SCARTARE",
       "title": "SharkNinja Set to Join S&P 500; Others to Join S&P MidCap 400 and S&P SmallCap 600",
       "url": "https://www.prnewswire.com/news-releases/sharkninja-set-to-join-sp-500-others-to-join-sp-midcap-400-and-sp-smallcap-600-302948731.html"
+    },
+    "https://www.prnewswire.com/news-releases/shay-capital-calls-for-strategic-review-of-nxh-spin-out-overstock-into-standalone-public-company--distribute-tzero-spac-shares-302949526.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Shay Capital calls for Strategic Review of NXH, Spin out Overstock into standalone public company & Distribute tZero SPAC shares",
+      "url": "https://www.prnewswire.com/news-releases/shay-capital-calls-for-strategic-review-of-nxh-spin-out-overstock-into-standalone-public-company--distribute-tzero-spac-shares-302949526.html"
     },
     "https://www.prnewswire.com/news-releases/shore-bancshares-inc-reports-quarterly-dividend-of-0-14-per-share-302948452.html": {
       "acquired": "2026-11-23T20:02:30.468414+00:00",
@@ -6336,6 +6479,22 @@
       "title": "UP Fintech: Q3 Net Income Rises 16.4% QoQ, Client Assets Reach Record US$64.8 Billion",
       "url": "https://www.prnewswire.com/news-releases/up-fintech-q3-net-income-rises-16-4-qoq-client-assets-reach-record-us64-8-billion-302949196.html"
     },
+    "https://www.prnewswire.com/news-releases/us-consumer-confidence-surged-in-november-302949447.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "US Consumer Confidence Surged in November",
+      "url": "https://www.prnewswire.com/news-releases/us-consumer-confidence-surged-in-november-302949447.html"
+    },
     "https://www.prnewswire.com/news-releases/utility-spending-plans-grow-as-large-new-power-customers-sign-on-302948041.html": {
       "acquired": "2026-11-23T08:27:01.368405+00:00",
       "acquisition_seconds": 541.368405,
@@ -6495,6 +6654,22 @@
       "status": "SCARTARE",
       "title": "Why Haven't You Bought a House Yet? Realtor.com® Analysis Reveals Why Today's Buyers Face a Steep Climb to Homeownership",
       "url": "https://www.prnewswire.com/news-releases/why-havent-you-bought-a-house-yet-realtorcom-analysis-reveals-why-todays-buyers-face-a-steep-climb-to-homeownership-302948667.html"
+    },
+    "https://www.prnewswire.com/news-releases/woodforest-national-bank-opens-a-new-branch-302948832.html": {
+      "acquired": "2026-11-24T15:02:29.312273+00:00",
+      "acquisition_seconds": 149.312273,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "WOODFOREST NATIONAL BANK OPENS A NEW BRANCH",
+      "url": "https://www.prnewswire.com/news-releases/woodforest-national-bank-opens-a-new-branch-302948832.html"
     },
     "https://www.prnewswire.com/news-releases/wooshpay-unveils-agentic-payments-demo-achieving-first-product-milestone-with-yunfeng-financials-alphatoken-302948082.html": {
       "acquired": "2026-11-23T09:48:56.279153+00:00",
