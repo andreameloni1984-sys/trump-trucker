@@ -2349,6 +2349,22 @@
       "title": "Sunday’s pot roast now costs more than a Thanksgiving feast. Why beef won’t get cheaper for years.",
       "url": "https://www.marketwatch.com/story/sundays-pot-roast-now-costs-more-than-a-thanksgiving-feast-why-beef-wont-get-cheaper-for-years-7daa1b3f"
     },
+    "https://www.marketwatch.com/story/the-ai-debt-market-isnt-convinced-the-worst-is-over-for-investors-c70eaede": {
+      "acquired": "2026-11-24T18:02:22.704565+00:00",
+      "acquisition_seconds": 862.704565,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T17:48:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The AI debt market isn’t convinced the worst is over for investors",
+      "url": "https://www.marketwatch.com/story/the-ai-debt-market-isnt-convinced-the-worst-is-over-for-investors-c70eaede"
+    },
     "https://www.marketwatch.com/story/the-biggest-biotech-deal-in-nearly-three-years-carries-a-hefty-41-billion-price-tag-dd7fa228": {
       "acquired": "2026-11-24T09:17:22.073751+00:00",
       "acquisition_seconds": 202.073751,
@@ -3516,6 +3532,22 @@
       "status": "SCARTARE",
       "title": "Blue Owl to Present at Goldman Sachs 2026 Financial Services Conference",
       "url": "https://www.prnewswire.com/news-releases/blue-owl-to-present-at-goldman-sachs-2026-financial-services-conference-302948692.html"
+    },
+    "https://www.prnewswire.com/news-releases/blue-ridge-georgia-vacation-rental-creekside-mountain-manor-launches-new-website-for-its-creekfront-mountain-home-302949549.html": {
+      "acquired": "2026-11-24T18:02:22.812310+00:00",
+      "acquisition_seconds": 22.81231,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T18:02:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Blue Ridge, Georgia Vacation Rental Creekside Mountain Manor Launches New Website for Its Creekfront Mountain Home",
+      "url": "https://www.prnewswire.com/news-releases/blue-ridge-georgia-vacation-rental-creekside-mountain-manor-launches-new-website-for-its-creekfront-mountain-home-302949549.html"
     },
     "https://www.prnewswire.com/news-releases/blulabs-secures-80-million-credit-facility-from-wells-fargo-302948123.html": {
       "acquired": "2026-11-23T14:09:14.217212+00:00",
