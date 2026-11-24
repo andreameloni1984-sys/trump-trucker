@@ -1851,6 +1851,22 @@
       "title": "Amazon may have just found a ‘cheap’ way to get a lot more out of its chips",
       "url": "https://www.marketwatch.com/story/amazon-may-have-just-found-a-cheap-way-to-get-a-lot-more-out-of-its-chips-bd822bd5"
     },
+    "https://www.marketwatch.com/story/americans-dont-like-trumps-tariffs-hes-doubling-down-anyway-as-soon-as-this-week-74c8bed5": {
+      "acquired": "2026-11-24T16:32:28.064633+00:00",
+      "acquisition_seconds": 508.064633,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "tariffs",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T16:24:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Americans don’t like Trump’s tariffs. He’s doubling down anyway — as soon as this week.",
+      "url": "https://www.marketwatch.com/story/americans-dont-like-trumps-tariffs-hes-doubling-down-anyway-as-soon-as-this-week-74c8bed5"
+    },
     "https://www.marketwatch.com/story/anthropics-stock-just-broke-below-its-ipo-price-for-the-first-time-5dc82668": {
       "acquired": "2026-11-24T15:02:29.258847+00:00",
       "acquisition_seconds": 449.258847,
@@ -1866,6 +1882,22 @@
       "status": "SCARTARE",
       "title": "Anthropic’s stock just broke below its IPO price for the first time",
       "url": "https://www.marketwatch.com/story/anthropics-stock-just-broke-below-its-ipo-price-for-the-first-time-5dc82668"
+    },
+    "https://www.marketwatch.com/story/coming-next-year-medicare-advantage-plans-without-drug-coverage-for-almost-640-000-people-and-fewer-choices-for-the-rest-25242d69": {
+      "acquired": "2026-11-24T16:32:28.064633+00:00",
+      "acquisition_seconds": 868.064633,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T16:18:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Coming next year: Medicare Advantage plans without drug coverage for almost 640,000 people and fewer choices for the rest",
+      "url": "https://www.marketwatch.com/story/coming-next-year-medicare-advantage-plans-without-drug-coverage-for-almost-640-000-people-and-fewer-choices-for-the-rest-25242d69"
     },
     "https://www.marketwatch.com/story/consumer-stocks-seen-as-safe-bet-amid-cracks-in-ai-trade-are-among-the-s-p-500s-biggest-losers-monday-80cf8f81": {
       "acquired": "2026-11-23T18:10:06.628391+00:00",
@@ -2571,22 +2603,6 @@
       "title": "UnitedHealth, Humana and CVS stocks slide as U.S targets Medicare Advantage ratings",
       "url": "https://www.marketwatch.com/story/unitedhealth-humana-and-cvs-stocks-slide-as-u-s-targets-medicare-advantage-ratings-6c2be5bb"
     },
-    "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240": {
-      "acquired": "2026-11-22T16:34:51.423457+00:00",
-      "acquisition_seconds": 171.423457,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-22T16:32:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "I’m terrified of a market crash. Should I put $400,000 of my $1 million retirement savings into an annuity?",
-      "url": "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240"
-    },
     "https://www.marketwatch.com/story/what-to-do-if-your-thanksgiving-flight-gets-delayed-especially-with-a-noreaster-brewing-566fe933": {
       "acquired": "2026-11-24T15:02:29.258847+00:00",
       "acquisition_seconds": 389.258847,
@@ -3050,6 +3066,22 @@
       "status": "SCARTARE",
       "title": "Artificial Intelligence Risk, Inc. Has Rebranded to Verapath",
       "url": "https://www.prnewswire.com/news-releases/artificial-intelligence-risk-inc-has-rebranded-to-verapath-302948414.html"
+    },
+    "https://www.prnewswire.com/news-releases/aryza-selected-to-transform-joe-duffy-groups-financial-services-company-jdm-services-limited-and-ai-driven-customer-conversations-302949645.html": {
+      "acquired": "2026-11-24T16:32:27.983701+00:00",
+      "acquisition_seconds": 807.983701,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T16:19:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Aryza Selected to Transform Joe Duffy Group's Financial Services Company, JDM Services Limited, and AI-Driven Customer Conversations",
+      "url": "https://www.prnewswire.com/news-releases/aryza-selected-to-transform-joe-duffy-groups-financial-services-company-jdm-services-limited-and-ai-driven-customer-conversations-302949645.html"
     },
     "https://www.prnewswire.com/news-releases/as-hr-weighs-ais-risks-financial-finesses-human-backed-platform-wins-personal-finance-tech-of-the-year-302948401.html": {
       "acquired": "2026-11-23T16:20:39.346917+00:00",
@@ -5162,6 +5194,22 @@
       "status": "SCARTARE",
       "title": "JD.com amplía sus acuerdos de abastecimiento directo con los principales productores de vino franceses",
       "url": "https://www.prnewswire.com/news-releases/jdcom-amplia-sus-acuerdos-de-abastecimiento-directo-con-los-principales-productores-de-vino-franceses-302949534.html"
+    },
+    "https://www.prnewswire.com/news-releases/jg-wentworth-names-jason-tepperman-as-chief-executive-officer-302949653.html": {
+      "acquired": "2026-11-24T16:32:27.983701+00:00",
+      "acquisition_seconds": 507.983701,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "management",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T16:24:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "JG Wentworth Names Jason Tepperman as Chief Executive Officer",
+      "url": "https://www.prnewswire.com/news-releases/jg-wentworth-names-jason-tepperman-as-chief-executive-officer-302949653.html"
     },
     "https://www.prnewswire.com/news-releases/jianzhi-education-signs-non-binding-comprehensive-cross-border-e-commerce-cooperation-framework-agreement-with-diandian-easy-pay-exploring-new-opportunities-in-ai-enabled-cross-border-commerce-302949373.html": {
       "acquired": "2026-11-24T13:32:33.573919+00:00",
