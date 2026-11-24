@@ -2,6 +2,15 @@ from datetime import datetime, timedelta, timezone
 
 from sputnik_demo import trump_trade as tt
 
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def _importo(monkeypatch):
+    # i test verificano la logica con importi tondi; i valori predefiniti del conto demo sono più bassi
+    monkeypatch.setenv("SPUTNIK_TRUMP_TRADE_EUR", "50")
+
 POST = datetime(2025, 4, 9, 13, 37, tzinfo=timezone.utc)          # mercoledì, 15:37 a Francoforte
 CTX = {"trump": [{"title": "THIS IS A GREAT TIME TO BUY!!! DJT", "published": POST.isoformat(), "url": "p1"},
                  {"title": "Somalians own Minnesota", "published": POST.isoformat(), "url": "p2"}]}

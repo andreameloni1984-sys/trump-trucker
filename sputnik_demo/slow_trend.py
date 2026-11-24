@@ -10,7 +10,7 @@ di oro, S&P 500 e Nasdaq 100 e la confronta con quella di 3, 6 e 12 mesi prima:
 
 Studio (S&P 500 1927-2026): stesso rendimento del compra e tieni ma peggior crollo −51%
 invece di −86%; circa 1-2 cambi l'anno. Prende il posto del trader "a 5 giorni", che
-replicava i segnali di Gagarin. Importo fisso per ETF: SPUTNIK_TREND_EUR (predefinito 200 €).
+replicava i segnali di Gagarin. Importo fisso per ETF: SPUTNIK_TREND_EUR (predefinito 30 €, conto demo da 200 €).
 """
 from __future__ import annotations
 
@@ -36,9 +36,9 @@ FOOTER = "Trend lento sul conto DEMO Trading 212 — nessun denaro reale."
 
 def budget() -> float:
     try:
-        return max(float(os.getenv("SPUTNIK_TREND_EUR", "").replace(",", ".") or 200), 0.0)
+        return max(float(os.getenv("SPUTNIK_TREND_EUR", "").replace(",", ".") or 30), 0.0)
     except ValueError:
-        return 200.0
+        return 30.0
 
 
 def month_ends(bars, before: datetime) -> list[float]:
@@ -79,13 +79,54 @@ def resolve(client, st: dict) -> dict[str, str]:
     return found
 
 
+def trim(client, st: dict, now: datetime, send: Callable[[str], bool], dry_run: bool) -> None:
+    """Una volta al giorno: riporta all'importo previsto le posizioni del trend oltre 2 volte l'importo
+    (es. dopo un abbassamento di SPUTNIK_TREND_EUR), per liberare liquidità alle altre gestioni demo."""
+    tr = st["trend"]
+    today = now.date().isoformat()
+    if tr.get("trim_date") == today or not tr.get("holdings"):
+        return
+    tr["trim_date"] = today
+    tickers = resolve(client, st)
+    held = {p.get("ticker"): p for p in client.portfolio()}
+    lines = []
+    for a in ASSETS:
+        pos = held.get(tickers.get(a.key, ""))
+        if a.key not in tr["holdings"] or not pos:
+            continue
+        qty, price = float(pos.get("quantity") or 0), float(pos.get("currentPrice") or 0)
+        if not price or qty * price <= 2 * budget():
+            continue
+        sell = floor_qty((qty * price - budget()) / price, 1)
+        if sell <= 0:
+            continue
+        if not dry_run:
+            try:
+                client.market(tickers[a.key], -sell)
+            except Exception as exc:  # noqa: BLE001
+                log.warning("Riduzione %s non riuscita: %s", a.name, exc)
+                continue
+        lines.append(f"• {a.name}: venduto {sell:g} quote (circa {eur(sell * price)}), "
+                     f"resta circa {eur((qty - sell) * price)}")
+    if lines:
+        text = "\n".join(["✂️ SPUTNIK TREND LENTO — posizioni riportate all'importo previsto "
+                          f"({eur(budget())} per ETF) per liberare liquidità", "", *lines, "", FOOTER])
+        if dry_run:
+            print(text)
+        elif not send(text):
+            log.warning("Messaggio riduzione non inviato")
+
+
 def run(client, now: datetime | None = None, fetcher: Callable = fetch, send: Callable[[str], bool] = lambda t: False,
         st: dict | None = None, dry_run: bool = False) -> dict:
     now = now or datetime.now(timezone.utc)
     st = st if st is not None else load_state()
     tr = st.setdefault("trend", {"months": [], "holdings": {}, "history": []})
     month = now.strftime("%Y-%m")
-    if month in tr["months"] or not all(market_open(a, now) for a in ASSETS):
+    if not all(market_open(a, now) for a in ASSETS):
+        return st
+    trim(client, st, now, send, dry_run)
+    if month in tr["months"]:
         return st
     tickers = resolve(client, st)
     held = {p.get("ticker"): p for p in client.portfolio()}

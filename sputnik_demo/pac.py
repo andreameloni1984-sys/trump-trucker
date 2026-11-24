@@ -4,7 +4,7 @@
     python -m sputnik_demo.pac --dry-run  # mostra cosa farebbe, senza ordini
 
 * Una volta al mese (il primo giorno di borsa utile, in orario Xetra) investe la cifra
-  mensile (variabile SPUTNIK_PAC_MONTHLY, predefinita 100 €) con i pesi obiettivo
+  mensile (variabile SPUTNIK_PAC_MONTHLY, predefinita 20 €) con i pesi obiettivo
   80% ETF azionario mondiale · 10% oro fisico · 10% bitcoin fisico.
 * I soldi nuovi vanno prima alle parti sotto peso, così il portafoglio si riequilibra
   senza vendere. Se una parte si allontana dall'obiettivo di oltre 5 punti, il bot
@@ -26,9 +26,9 @@ from .trader import eur, floor_qty, load_state, market_open, save_state, Etf
 
 log = logging.getLogger("sputnik.pac")
 
-DEFAULT_MONTHLY = 100.0
+DEFAULT_MONTHLY = 20.0      # conto demo da 200 EUR: importi piccoli
 DRIFT_LIMIT = 0.05          # 5 punti percentuali dall'obiettivo → ribilanciamento
-MIN_ORDER_EUR = 3.0
+MIN_ORDER_EUR = 1.0
 FOOTER = "PAC sul conto DEMO Trading 212 — nessun denaro reale."
 
 
