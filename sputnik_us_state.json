@@ -48,23 +48,6 @@
       "title": "Lilly to host Innovation Day 2026",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117660378819768000": {
-      "acquired": "2026-11-22T13:49:33.045337+00:00",
-      "acquisition_seconds": 471.883991,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-22T13:41:41.423000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "It is going to be very hard for me to work with Chuck Schumer should he become Senate Majority Leader. He failed badly as “Leader” once before, one of the worst history, and I have little doubt that he will fail again. All he did was perpetuate the Russia, Russia, Russia Hoax, and many other Hoaxes ",
-      "url": "https://truthsocial.com/@realDonaldTrump/117660378819768000"
-    },
     "https://truthsocial.com/@realDonaldTrump/117660691191971810": {
       "acquired": "2026-11-22T15:48:37.567831+00:00",
       "acquisition_seconds": 2850.567831,
@@ -3937,6 +3920,22 @@
       "title": "Drip Capital Ranks in Top 100 on the 2026 Deloitte Technology Fast 500™",
       "url": "https://www.prnewswire.com/news-releases/drip-capital-ranks-in-top-100-on-the-2026-deloitte-technology-fast-500-302948445.html"
     },
+    "https://www.prnewswire.com/news-releases/dxfeed-wins-best-ai-trading-technology-award-for-dxscript-at-2026-sell-side-technology-awards-302948599.html": {
+      "acquired": "2026-11-24T13:47:27.513216+00:00",
+      "acquisition_seconds": 567.513216,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:38:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "dxFeed Wins Best AI Trading Technology Award for dxScript at 2026 Sell-Side Technology Awards",
+      "url": "https://www.prnewswire.com/news-releases/dxfeed-wins-best-ai-trading-technology-award-for-dxscript-at-2026-sell-side-technology-awards-302948599.html"
+    },
     "https://www.prnewswire.com/news-releases/ea-series-trust-and-empowered-funds-llc-announces-exchange-listing-transfer-for-strive-etfs-302947246.html": {
       "acquired": "2026-11-23T14:35:13.856308+00:00",
       "acquisition_seconds": 373.856308,
@@ -3968,6 +3967,22 @@
       "status": "SCARTARE",
       "title": "Element wins two 2026 AutoTech Breakthrough Awards for delivering AI powered fleet solutions",
       "url": "https://www.prnewswire.com/news-releases/element-wins-two-2026-autotech-breakthrough-awards-for-delivering-ai-powered-fleet-solutions-302947416.html"
+    },
+    "https://www.prnewswire.com/news-releases/eq-banks-chadwick-westlake-named-new-ceo-of-the-year-by-the-globe-and-mails-report-on-business-magazine-302949405.html": {
+      "acquired": "2026-11-24T13:47:27.513216+00:00",
+      "acquisition_seconds": 747.513216,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "management",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:35:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "EQ Bank's Chadwick Westlake named New CEO of the Year by The Globe and Mail's Report on Business Magazine",
+      "url": "https://www.prnewswire.com/news-releases/eq-banks-chadwick-westlake-named-new-ceo-of-the-year-by-the-globe-and-mails-report-on-business-magazine-302949405.html"
     },
     "https://www.prnewswire.com/news-releases/every-bottle-has-a-story-vnyrd-launches-a-new-digital-home-for-wine-lovers-302948277.html": {
       "acquired": "2026-11-23T15:20:11.642711+00:00",
@@ -5041,6 +5056,22 @@
       "title": "Newmark Arranges $305 Million Construction Loan for Luxury Condominium Development at 101 Franklin in Tribeca",
       "url": "https://www.prnewswire.com/news-releases/newmark-arranges-305-million-construction-loan-for-luxury-condominium-development-at-101-franklin-in-tribeca-302948665.html"
     },
+    "https://www.prnewswire.com/news-releases/nil-club-partners-with-stash-to-help-student-athletes-start-investing-302948359.html": {
+      "acquired": "2026-11-24T13:47:27.513216+00:00",
+      "acquisition_seconds": 687.513216,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:36:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "NIL Club Partners With Stash to Help Student-Athletes Start Investing",
+      "url": "https://www.prnewswire.com/news-releases/nil-club-partners-with-stash-to-help-student-athletes-start-investing-302948359.html"
+    },
     "https://www.prnewswire.com/news-releases/noah-opens-19th-global-black-diamond-summit-to-explore-new-approaches-to-wealth-security-in-the-ai-era-302949431.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
       "acquisition_seconds": 386.294018,
@@ -5153,6 +5184,22 @@
       "title": "Options on Tradr's 2X Long and Short Anthropic ETFs List Today",
       "url": "https://www.prnewswire.com/news-releases/options-on-tradrs-2x-long-and-short-anthropic-etfs-list-today-302948724.html"
     },
+    "https://www.prnewswire.com/news-releases/organic-payment-gateways-gives-healthie-practices-another-way-to-accept-credit-cards-302948615.html": {
+      "acquired": "2026-11-24T13:47:27.513216+00:00",
+      "acquisition_seconds": 267.513216,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:43:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Organic Payment Gateways Gives Healthie Practices Another Way to Accept Credit Cards",
+      "url": "https://www.prnewswire.com/news-releases/organic-payment-gateways-gives-healthie-practices-another-way-to-accept-credit-cards-302948615.html"
+    },
     "https://www.prnewswire.com/news-releases/paribu-and-circle-sign-mou-to-explore-usdc-access-and-onchain-finance-in-turkiye-302948171.html": {
       "acquired": "2026-11-24T11:16:22.230759+00:00",
       "acquisition_seconds": 982.230759,
@@ -5168,6 +5215,22 @@
       "status": "SCARTARE",
       "title": "Paribu and Circle Sign MOU to Explore USDC Access and Onchain Finance in Türkiye",
       "url": "https://www.prnewswire.com/news-releases/paribu-and-circle-sign-mou-to-explore-usdc-access-and-onchain-finance-in-turkiye-302948171.html"
+    },
+    "https://www.prnewswire.com/news-releases/parks-associates-releases-state-of-multifamily-2026-report-highlighting-ai-connectivity-and-technology-roi-302948833.html": {
+      "acquired": "2026-11-24T13:47:27.513216+00:00",
+      "acquisition_seconds": 327.513216,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:42:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Parks Associates Releases State of Multifamily 2026 Report Highlighting AI, Connectivity, and Technology ROI",
+      "url": "https://www.prnewswire.com/news-releases/parks-associates-releases-state-of-multifamily-2026-report-highlighting-ai-connectivity-and-technology-roi-302948833.html"
     },
     "https://www.prnewswire.com/news-releases/patients-gain-new-treatment-options-in-a-busy-month-for-drug-approvals-302948100.html": {
       "acquired": "2026-11-23T12:39:10.736634+00:00",
@@ -5345,6 +5408,22 @@
       "title": "RBC Capital Markets Hosts Global TIMT Conference Featuring 100 Technology, Internet, Media and Telecom Leaders",
       "url": "https://www.prnewswire.com/news-releases/rbc-capital-markets-hosts-global-timt-conference-featuring-100-technology-internet-media-and-telecom-leaders-302947604.html"
     },
+    "https://www.prnewswire.com/news-releases/recast-capital-announces-fourth-cohort-for-accelerate-program-including-the-first-managers-from-latin-america-and-the-caribbean-302948834.html": {
+      "acquired": "2026-11-24T13:47:27.513216+00:00",
+      "acquisition_seconds": 207.513216,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:44:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Recast Capital Announces Fourth Cohort for Accelerate Program, Including the First Managers from Latin America and the Caribbean",
+      "url": "https://www.prnewswire.com/news-releases/recast-capital-announces-fourth-cohort-for-accelerate-program-including-the-first-managers-from-latin-america-and-the-caribbean-302948834.html"
+    },
     "https://www.prnewswire.com/news-releases/renaud-champion-rejoint-cartesia-en-tant-que-senior-portfolio-manager-302947697.html": {
       "acquired": "2026-11-23T09:11:43.170337+00:00",
       "acquisition_seconds": 703.170337,
@@ -5440,6 +5519,22 @@
       "status": "SCARTARE",
       "title": "Securitize Serves as Tokenization Provider for OKXICE's Newly Launched 24/7 Securities Trading Venue",
       "url": "https://www.prnewswire.com/news-releases/securitize-serves-as-tokenization-provider-for-okxices-newly-launched-247-securities-trading-venue-302947862.html"
+    },
+    "https://www.prnewswire.com/news-releases/sellforte-mcp-now-generally-available-bringing-incrementality-to-ad-optimization-agents-302948340.html": {
+      "acquired": "2026-11-24T13:47:27.513216+00:00",
+      "acquisition_seconds": 267.513216,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T13:43:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Sellforte MCP Now Generally Available, Bringing Incrementality to Ad Optimization Agents",
+      "url": "https://www.prnewswire.com/news-releases/sellforte-mcp-now-generally-available-bringing-incrementality-to-ad-optimization-agents-302948340.html"
     },
     "https://www.prnewswire.com/news-releases/sentinel-capital-partners-acquires-gsi-group-holdings-302948842.html": {
       "acquired": "2026-11-24T12:32:28.811204+00:00",
