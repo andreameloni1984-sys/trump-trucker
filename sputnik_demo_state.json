@@ -47,8 +47,24 @@
   "ticker": "SXR8d_EQ"
  },
  "trend": {
-  "months": [],
-  "holdings": {},
+  "months": [
+   "2026-11"
+  ],
+  "holdings": {
+   "sp500": {
+    "since": "2026-11-24T08:05:11.311869+00:00",
+    "entry": 128.77
+   },
+   "nasdaq": {
+    "since": "2026-11-24T08:05:11.311869+00:00",
+    "entry": 1411.4
+   }
+  },
   "history": []
+ },
+ "tickers_trend": {
+  "oro": "4GLDd_EQ",
+  "sp500": "VUAAm_EQ",
+  "nasdaq": "SXRVd_EQ"
  }
 }
