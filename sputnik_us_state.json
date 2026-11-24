@@ -48,22 +48,6 @@
       "title": "Lilly to host Innovation Day 2026",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117662138213122537": {
-      "acquired": "2026-11-22T22:07:52.495391+00:00",
-      "acquisition_seconds": 3525.495391,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-22T21:09:07+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Video post from November 22, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117662138213122537"
-    },
     "https://truthsocial.com/@realDonaldTrump/117662290160182921": {
       "acquired": "2026-11-22T21:49:11.121680+00:00",
       "acquisition_seconds": 86.1664,
@@ -2045,6 +2029,22 @@
       "status": "SCARTARE",
       "title": "Cybersecurity stocks have been hot — and now CrowdStrike inks deal to buy Zscaler",
       "url": "https://www.marketwatch.com/story/cybersecurity-stocks-have-been-hot-and-now-crowdstrike-inks-deal-to-buy-zscaler-df8fd163"
+    },
+    "https://www.marketwatch.com/story/dells-stock-rises-as-the-ai-boom-helps-sales-more-than-double-cfb8cf65": {
+      "acquired": "2026-11-24T21:16:04.774458+00:00",
+      "acquisition_seconds": 124.774458,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T21:14:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Dell’s stock rises as the AI boom helps sales more than double",
+      "url": "https://www.marketwatch.com/story/dells-stock-rises-as-the-ai-boom-helps-sales-more-than-double-cfb8cf65"
     },
     "https://www.marketwatch.com/story/feeling-tired-and-losing-your-hair-you-might-have-low-iron-even-if-youve-tested-normal-before-96fe0d29": {
       "acquired": "2026-11-24T19:14:33.227505+00:00",
@@ -4222,6 +4222,22 @@
       "title": "Clapp Finance lanza Crypto Card con 0 % de comisiones por transacción",
       "url": "https://www.prnewswire.com/news-releases/clapp-finance-lanza-crypto-card-con-0--de-comisiones-por-transaccion-302948617.html"
     },
+    "https://www.prnewswire.com/news-releases/cleanspark-reports-fiscal-fourth-quarter-and-full-year-2026-financial-and-operating-results-302949861.html": {
+      "acquired": "2026-11-24T21:16:04.853354+00:00",
+      "acquisition_seconds": 664.853354,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T21:05:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "CleanSpark Reports Fiscal Fourth Quarter and Full Year 2026 Financial and Operating Results",
+      "url": "https://www.prnewswire.com/news-releases/cleanspark-reports-fiscal-fourth-quarter-and-full-year-2026-financial-and-operating-results-302949861.html"
+    },
     "https://www.prnewswire.com/news-releases/cme-group-announces-strong-european-dairy-volumes-on-first-day-of-trading-302949679.html": {
       "acquired": "2026-11-24T17:02:20.773305+00:00",
       "acquisition_seconds": 920.773305,
@@ -5805,6 +5821,22 @@
       "status": "SCARTARE",
       "title": "Madison Dearborn Partners to Acquire Peli BioThermal, a Trusted Cold Chain Solutions Provider, from Pelican Products and Platinum Equity",
       "url": "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948222.html"
+    },
+    "https://www.prnewswire.com/news-releases/magyar-bancorp-inc-declares-special-cash-dividend-302949810.html": {
+      "acquired": "2026-11-24T21:16:04.853354+00:00",
+      "acquisition_seconds": 844.853354,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T21:02:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "MAGYAR BANCORP, INC. DECLARES SPECIAL CASH DIVIDEND",
+      "url": "https://www.prnewswire.com/news-releases/magyar-bancorp-inc-declares-special-cash-dividend-302949810.html"
     },
     "https://www.prnewswire.com/news-releases/medtronic-reports-second-quarter-fiscal-2027-results-performance-reflects-consistent-execution-across-the-portfolio-302948866.html": {
       "acquired": "2026-11-24T11:32:30.214779+00:00",
