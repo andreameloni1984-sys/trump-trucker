@@ -2123,22 +2123,6 @@
       "title": "My husband secretly sends his ex-wife $1,500 a month after she lost her job. We have $2.4 million saved. Has he lied by omission?",
       "url": "https://www.marketwatch.com/story/my-husband-secretly-sends-his-ex-wife-1-500-a-month-after-she-lost-her-job-we-have-2-4-million-saved-has-he-lied-by-omission-ede1972a"
     },
-    "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6": {
-      "acquired": "2026-11-22T17:06:33.553440+00:00",
-      "acquisition_seconds": 393.55344,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-22T17:00:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "‘Nvidia’s turmoil has me spooked’: Is it time to sell my stocks and buy real estate?",
-      "url": "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6"
-    },
     "https://www.marketwatch.com/story/nvidia-stock-bounces-as-trump-administration-pushes-for-rehiring-of-jensen-huang-08057c29": {
       "acquired": "2026-11-23T11:07:15.822096+00:00",
       "acquisition_seconds": 675.822096,
@@ -2874,6 +2858,22 @@
       "status": "SCARTARE",
       "title": "Allocators Face a Persistent Gap in Impact Due Diligence for Private Market Funds",
       "url": "https://www.prnewswire.com/news-releases/allocators-face-a-persistent-gap-in-impact-due-diligence-for-private-market-funds-302948290.html"
+    },
+    "https://www.prnewswire.com/news-releases/allstate-wuerffel-trophy-announces-2026-finalists-for-college-footballs-premier-community-service-award-302946074.html": {
+      "acquired": "2026-11-24T17:02:20.773305+00:00",
+      "acquisition_seconds": 140.773305,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T17:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Allstate Wuerffel Trophy announces 2026 finalists for college football's premier community service award",
+      "url": "https://www.prnewswire.com/news-releases/allstate-wuerffel-trophy-announces-2026-finalists-for-college-footballs-premier-community-service-award-302946074.html"
     },
     "https://www.prnewswire.com/news-releases/ally-financial-to-present-at-the-goldman-sachs-us-financials-conference-302948557.html": {
       "acquired": "2026-11-24T15:02:29.312273+00:00",
@@ -3930,6 +3930,22 @@
       "status": "SCARTARE",
       "title": "Clapp Finance lanza Crypto Card con 0 % de comisiones por transacción",
       "url": "https://www.prnewswire.com/news-releases/clapp-finance-lanza-crypto-card-con-0--de-comisiones-por-transaccion-302948617.html"
+    },
+    "https://www.prnewswire.com/news-releases/cme-group-announces-strong-european-dairy-volumes-on-first-day-of-trading-302949679.html": {
+      "acquired": "2026-11-24T17:02:20.773305+00:00",
+      "acquisition_seconds": 920.773305,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T16:47:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "CME Group Announces Strong European Dairy Volumes on First Day of Trading",
+      "url": "https://www.prnewswire.com/news-releases/cme-group-announces-strong-european-dairy-volumes-on-first-day-of-trading-302949679.html"
     },
     "https://www.prnewswire.com/news-releases/cme-group-sets-new-daily-volume-record-of-71-5-million-contracts-driven-by-strong-interest-rates-volume-302949619.html": {
       "acquired": "2026-11-24T16:02:30.265747+00:00",
@@ -5803,6 +5819,22 @@
       "title": "Organic Payment Gateways Gives Healthie Practices Another Way to Accept Credit Cards",
       "url": "https://www.prnewswire.com/news-releases/organic-payment-gateways-gives-healthie-practices-another-way-to-accept-credit-cards-302948615.html"
     },
+    "https://www.prnewswire.com/news-releases/over-1-200-celebrate-west-usa-realtys-40th-anniversary-gala-with-a-40-000-car-giveaway-and-ima-reveal-302948922.html": {
+      "acquired": "2026-11-24T17:02:20.773305+00:00",
+      "acquisition_seconds": 140.773305,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T17:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Over 1,200 Celebrate West USA Realty's 40th Anniversary Gala With a $40,000 Car Giveaway and IMA™ Reveal",
+      "url": "https://www.prnewswire.com/news-releases/over-1-200-celebrate-west-usa-realtys-40th-anniversary-gala-with-a-40-000-car-giveaway-and-ima-reveal-302948922.html"
+    },
     "https://www.prnewswire.com/news-releases/paribu-and-circle-sign-mou-to-explore-usdc-access-and-onchain-finance-in-turkiye-302948171.html": {
       "acquired": "2026-11-24T11:16:22.230759+00:00",
       "acquisition_seconds": 982.230759,
@@ -6250,38 +6282,6 @@
       "status": "SCARTARE",
       "title": "Sentinel Capital Partners Acquires GSI Group Holdings",
       "url": "https://www.prnewswire.com/news-releases/sentinel-capital-partners-acquires-gsi-group-holdings-302948842.html"
-    },
-    "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-build-a-bear-workshop-inc-nyse-bbw--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946384.html": {
-      "acquired": "2026-11-22T17:06:33.628817+00:00",
-      "acquisition_seconds": 393.628817,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-22T17:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "SHAREHOLDER ALERT: Bronstein Gewirtz & Grossman, LLC Announces Class Action Against Build-A-Bear Workshop, Inc. (NYSE: BBW) -- Investors Who Suffered Losses Are Encouraged to Contact the Firm",
-      "url": "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-build-a-bear-workshop-inc-nyse-bbw--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946384.html"
-    },
-    "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-eyepoint-inc-nasdaq-eypt--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946397.html": {
-      "acquired": "2026-11-22T17:06:33.628817+00:00",
-      "acquisition_seconds": 393.628817,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-22T17:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "SHAREHOLDER ALERT: Bronstein Gewirtz & Grossman, LLC Announces Class Action Against EyePoint, Inc. (NASDAQ: EYPT) -- Investors Who Suffered Losses Are Encouraged to Contact the Firm.",
-      "url": "https://www.prnewswire.com/news-releases/shareholder-alert-bronstein-gewirtz--grossman-llc-announces-class-action-against-eyepoint-inc-nasdaq-eypt--investors-who-suffered-losses-are-encouraged-to-contact-the-firm-302946397.html"
     },
     "https://www.prnewswire.com/news-releases/shareholder-alert-purcell--lefkowitz-llp-announces-shareholder-investigation-of-evommune-inc-nyse-evmn-302947873.html": {
       "acquired": "2026-11-23T14:09:14.217212+00:00",
