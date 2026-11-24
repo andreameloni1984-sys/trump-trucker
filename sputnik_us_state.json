@@ -381,6 +381,22 @@
       "title": "FDA Approves First Treatment for Limb-Girdle Muscular Dystrophy Type 2I/R9",
       "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-treatment-limb-girdle-muscular-dystrophy-type-2ir9"
     },
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm": {
+      "acquired": "2026-11-24T19:02:30.877503+00:00",
+      "acquisition_seconds": 150.877503,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "fed",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "fed",
+      "penalized": [],
+      "published": "2026-11-24T19:00:00+00:00",
+      "source": "Federal Reserve",
+      "status": "SCARTARE",
+      "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm"
+    },
     "https://www.globenewswire.com/news-release/2026/11/23/3408212/0/en/chaince-digital-subsidiary-signs-joint-venture-framework-agreement-to-develop-an-ai-data-center-with-potential-for-up-to-25-mw-of-power-capacity-in-big-lake-texas.html": {
       "acquired": "2026-11-23T12:39:12.014726+00:00",
       "acquisition_seconds": 2352.014726,
@@ -2636,6 +2652,22 @@
       "status": "SCARTARE",
       "title": "UnitedHealth, Humana and CVS stocks slide as U.S targets Medicare Advantage ratings",
       "url": "https://www.marketwatch.com/story/unitedhealth-humana-and-cvs-stocks-slide-as-u-s-targets-medicare-advantage-ratings-6c2be5bb"
+    },
+    "https://www.marketwatch.com/story/visiting-las-vegas-is-getting-too-expensive-but-dont-blame-airfares-12e2c588": {
+      "acquired": "2026-11-24T19:02:30.975296+00:00",
+      "acquisition_seconds": 870.975296,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-24T18:48:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Visiting Las Vegas is getting too expensive — but don’t blame airfares",
+      "url": "https://www.marketwatch.com/story/visiting-las-vegas-is-getting-too-expensive-but-dont-blame-airfares-12e2c588"
     },
     "https://www.marketwatch.com/story/what-to-do-if-your-thanksgiving-flight-gets-delayed-especially-with-a-noreaster-brewing-566fe933": {
       "acquired": "2026-11-24T15:02:29.258847+00:00",
@@ -5037,22 +5069,6 @@
       "title": "Holiday Sales Forecast Tops $1 Trillion as Big Retailers Raise Outlooks",
       "url": "https://www.prnewswire.com/news-releases/holiday-sales-forecast-tops-1-trillion-as-big-retailers-raise-outlooks-302948083.html"
     },
-    "https://www.prnewswire.com/news-releases/how-to-short-anthropic-ant-leverage-shares-by-themes-explains-andd-and-anss-inverse-anthropic-etfs-short-selling-and-put-options-302947480.html": {
-      "acquired": "2026-11-22T19:06:18.564496+00:00",
-      "acquisition_seconds": 378.564496,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-22T19:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "How to Short Anthropic (ANT): Leverage Shares by Themes Explains ANDD and ANSS Inverse Anthropic ETFs, Short Selling and Put Options",
-      "url": "https://www.prnewswire.com/news-releases/how-to-short-anthropic-ant-leverage-shares-by-themes-explains-andd-and-anss-inverse-anthropic-etfs-short-selling-and-put-options-302947480.html"
-    },
     "https://www.prnewswire.com/news-releases/hybrid-grading-approach-launches-hga-glass-the-most-advanced-card-grade-made-from-aerospace-aluminum-and-glass-302947648.html": {
       "acquired": "2026-11-23T12:12:41.737131+00:00",
       "acquisition_seconds": 761.737131,
@@ -5789,6 +5805,38 @@
       "title": "NIL Club Partners With Stash to Help Student-Athletes Start Investing",
       "url": "https://www.prnewswire.com/news-releases/nil-club-partners-with-stash-to-help-student-athletes-start-investing-302948359.html"
     },
+    "https://www.prnewswire.com/news-releases/nns-results-of-the-post-closing-acceptance-period-for-the-cash-offer-for-oci-302949791.html": {
+      "acquired": "2026-11-24T19:02:31.006936+00:00",
+      "acquisition_seconds": 871.006936,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T18:48:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "NNS: Results of the Post-Closing Acceptance Period for the cash offer for OCI",
+      "url": "https://www.prnewswire.com/news-releases/nns-results-of-the-post-closing-acceptance-period-for-the-cash-offer-for-oci-302949791.html"
+    },
+    "https://www.prnewswire.com/news-releases/nns-results-of-the-post-closing-acceptance-period-for-the-cash-offer-for-oci-302949792.html": {
+      "acquired": "2026-11-24T19:02:31.006936+00:00",
+      "acquisition_seconds": 571.006936,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T18:53:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "NNS: Results of the Post-Closing Acceptance Period for the cash offer for OCI",
+      "url": "https://www.prnewswire.com/news-releases/nns-results-of-the-post-closing-acceptance-period-for-the-cash-offer-for-oci-302949792.html"
+    },
     "https://www.prnewswire.com/news-releases/noah-opens-19th-global-black-diamond-summit-to-explore-new-approaches-to-wealth-security-in-the-ai-era-302949431.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
       "acquisition_seconds": 386.294018,
@@ -6221,6 +6269,22 @@
       "title": "Recast Capital Announces Fourth Cohort for Accelerate Program, Including the First Managers from Latin America and the Caribbean",
       "url": "https://www.prnewswire.com/news-releases/recast-capital-announces-fourth-cohort-for-accelerate-program-including-the-first-managers-from-latin-america-and-the-caribbean-302948834.html"
     },
+    "https://www.prnewswire.com/news-releases/redfin-reports-us-home-prices-ticked-up-0-14-in-october-302949794.html": {
+      "acquired": "2026-11-24T19:02:31.006936+00:00",
+      "acquisition_seconds": 211.006936,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T18:59:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Redfin Reports U.S. Home Prices Ticked Up 0.14% in October",
+      "url": "https://www.prnewswire.com/news-releases/redfin-reports-us-home-prices-ticked-up-0-14-in-october-302949794.html"
+    },
     "https://www.prnewswire.com/news-releases/renaud-champion-rejoint-cartesia-en-tant-que-senior-portfolio-manager-302947697.html": {
       "acquired": "2026-11-23T09:11:43.170337+00:00",
       "acquisition_seconds": 703.170337,
@@ -6525,6 +6589,38 @@
       "title": "S&P Cotality Case-Shiller Index Reports Annual Gain in September 2026",
       "url": "https://www.prnewswire.com/news-releases/sp-cotality-case-shiller-index-reports-annual-gain-in-september-2026-302949528.html"
     },
+    "https://www.prnewswire.com/news-releases/steering-committee-of-ad-hoc-group-of-braskem-creditors-reaches-agreement-in-principle-with-braskem-and-its-main-shareholders-302949786.html": {
+      "acquired": "2026-11-24T19:02:31.006936+00:00",
+      "acquisition_seconds": 991.006936,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T18:46:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Steering Committee of Ad Hoc Group of Braskem Creditors Reaches Agreement in Principle with Braskem and Its Main Shareholders",
+      "url": "https://www.prnewswire.com/news-releases/steering-committee-of-ad-hoc-group-of-braskem-creditors-reaches-agreement-in-principle-with-braskem-and-its-main-shareholders-302949786.html"
+    },
+    "https://www.prnewswire.com/news-releases/steering-committee-of-ad-hoc-group-of-braskem-creditors-reaches-agreement-in-principle-with-braskem-and-its-main-shareholders-302949787.html": {
+      "acquired": "2026-11-24T19:02:31.006936+00:00",
+      "acquisition_seconds": 991.006936,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T18:46:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Steering Committee of Ad Hoc Group of Braskem Creditors Reaches Agreement in Principle with Braskem and Its Main Shareholders",
+      "url": "https://www.prnewswire.com/news-releases/steering-committee-of-ad-hoc-group-of-braskem-creditors-reaches-agreement-in-principle-with-braskem-and-its-main-shareholders-302949787.html"
+    },
     "https://www.prnewswire.com/news-releases/stifel-highlights-40-years-as-listed-company-nyse-content-update-302949461.html": {
       "acquired": "2026-11-24T14:02:20.796541+00:00",
       "acquisition_seconds": 440.796541,
@@ -6668,6 +6764,22 @@
       "status": "SCARTARE",
       "title": "TASE Continues to Enhance the Israeli Capital Market and Align it with International Standards",
       "url": "https://www.prnewswire.com/news-releases/tase-continues-to-enhance-the-israeli-capital-market-and-align-it-with-international-standards-302949430.html"
+    },
+    "https://www.prnewswire.com/news-releases/tellus-raises-boost-account-base-rate-to-5-50-apy-to-help-savers-fight-inflation-302949705.html": {
+      "acquired": "2026-11-24T19:02:31.006936+00:00",
+      "acquisition_seconds": 151.006936,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T19:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Tellus Raises Boost Account Base Rate to 5.50% APY to Help Savers Fight Inflation",
+      "url": "https://www.prnewswire.com/news-releases/tellus-raises-boost-account-base-rate-to-5-50-apy-to-help-savers-fight-inflation-302949705.html"
     },
     "https://www.prnewswire.com/news-releases/teneo-appoints-elder-marques-as-a-senior-managing-director-will-lead-the-firms-expansion-into-ottawa-302949443.html": {
       "acquired": "2026-11-24T14:02:20.796541+00:00",
