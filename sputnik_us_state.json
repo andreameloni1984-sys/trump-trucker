@@ -48,22 +48,6 @@
       "title": "Lilly to host Innovation Day 2026",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117662086130550876": {
-      "acquired": "2026-11-22T21:49:11.121680+00:00",
-      "acquisition_seconds": 3199.12168,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-22T20:55:52+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Image post from November 22, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117662086130550876"
-    },
     "https://truthsocial.com/@realDonaldTrump/117662138213122537": {
       "acquired": "2026-11-22T22:07:52.495391+00:00",
       "acquisition_seconds": 3525.495391,
@@ -3149,6 +3133,22 @@
       "status": "SCARTARE",
       "title": "Alterra adquiere el negocio de desarrollo de Pryme y obtiene nuevo capital para acelerar su expansión europea",
       "url": "https://www.prnewswire.com/news-releases/alterra-adquiere-el-negocio-de-desarrollo-de-pryme-y-obtiene-nuevo-capital-para-acelerar-su-expansion-europea-302949388.html"
+    },
+    "https://www.prnewswire.com/news-releases/alterra-ubernimmt-entwicklungsgeschaft-von-pryme-und-sichert-sich-neues-kapital-zur-beschleunigung-der-europaischen-expansion-302949869.html": {
+      "acquired": "2026-11-24T21:02:20.974004+00:00",
+      "acquisition_seconds": 380.974004,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T20:56:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Alterra übernimmt Entwicklungsgeschäft von Pryme und sichert sich neues Kapital zur Beschleunigung der europäischen Expansion",
+      "url": "https://www.prnewswire.com/news-releases/alterra-ubernimmt-entwicklungsgeschaft-von-pryme-und-sichert-sich-neues-kapital-zur-beschleunigung-der-europaischen-expansion-302949869.html"
     },
     "https://www.prnewswire.com/news-releases/american-bitcoin-secures-150-million-credit-facility-with-falconx-to-support-strategic-growth-302945891.html": {
       "acquired": "2026-11-23T11:48:49.954086+00:00",
@@ -7438,6 +7438,22 @@
       "title": "WooshPay Unveils Agentic Payments Demo, Achieving First Product Milestone with Yunfeng Financial's AlphaToken",
       "url": "https://www.prnewswire.com/news-releases/wooshpay-unveils-agentic-payments-demo-achieving-first-product-milestone-with-yunfeng-financials-alphatoken-302948082.html"
     },
+    "https://www.prnewswire.com/news-releases/workday-announces-fiscal-2027-third-quarter-financial-results-302949793.html": {
+      "acquired": "2026-11-24T21:02:20.974004+00:00",
+      "acquisition_seconds": 80.974004,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "earnings",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T21:01:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Workday Announces Fiscal 2027 Third Quarter Financial Results",
+      "url": "https://www.prnewswire.com/news-releases/workday-announces-fiscal-2027-third-quarter-financial-results-302949793.html"
+    },
     "https://www.prnewswire.com/news-releases/worldline-relaunches-global-collect-a-dedicated-cross-border-payments-brand-for-travel-and-digital-commerce-302948697.html": {
       "acquired": "2026-11-24T07:02:20.429811+00:00",
       "acquisition_seconds": 140.429811,
@@ -7549,6 +7565,22 @@
       "status": "SCARTARE",
       "title": "Zentist Introduces Agentic AI for Dental Payment Posting with New Autoposting Skills",
       "url": "https://www.prnewswire.com/news-releases/zentist-introduces-agentic-ai-for-dental-payment-posting-with-new-autoposting-skills-302949021.html"
+    },
+    "https://www.prnewswire.com/news-releases/ziegler-closes-259-180-490-financing-for-willow-valley-communities-pa-302947894.html": {
+      "acquired": "2026-11-24T21:02:20.974004+00:00",
+      "acquisition_seconds": 140.974004,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T21:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "ZIEGLER CLOSES $259,180,490 FINANCING FOR WILLOW VALLEY COMMUNITIES (PA)",
+      "url": "https://www.prnewswire.com/news-releases/ziegler-closes-259-180-490-financing-for-willow-valley-communities-pa-302947894.html"
     },
     "https://www.prnewswire.com/news-releases/ziegler-closes-41-755-000-financing-for-fleet-landing-at-riverside-302947277.html": {
       "acquired": "2026-11-23T21:14:39.818857+00:00",
