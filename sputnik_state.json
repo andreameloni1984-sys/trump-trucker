@@ -1107,15 +1107,47 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-24T17:39:10.472155+00:00",
+  "updated_at": "2026-11-24T17:47:17.434349+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "d867611cd2946024648f544d",
+    "TRUTH_ARCHIVE": "0fdb03403e508620889e6e6e",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "0fdb03403e508620889e6e6e": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA",
+        "TRADE_POLICY"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 24, 2026, 12:40 PM Original Post I am pleased to nominate Jim O’Neill to serve as Judge on the United States District Court for the Middle District of North Carolina. Jim has the strong support of both North Carolina Senators, Ted Budd and Thom Tillis. Jim has served as the District Attorney of Forsyth County since 2009, and has been a prosecutor in that office since 1997. He has a deep track record of being tough on crime, and preserving Law and Order. Jim is a graduate of Duke University (where he played varsity lacrosse), and New York Law School. The people of North Carolina are lucky to have a dedicated public servant like Jim who will be a fantastic Judge. Congratulations Jim. Now, let’s get him confirmed! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 24, 2026, 12:34 PM Original Post I want to thank Uzbekistan's Highly Respected President, Shavkat Mirziyoyev, for the beautiful Uzbek ",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-24T17:47:16.586148+00:00",
+      "event_id": "0fdb03403e508620889e6e6e",
+      "action_reaction": {
+        "event_id": "0fdb03403e508620889e6e6e",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
     "14b48b05bb9668c79391e185": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8124,31 +8156,6 @@
       "action_reaction": {
         "event_id": "15a633967276a3c41d2bdf84",
         "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "4c1b7826b95b43a34ec7aafd": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43280",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549822570920008",
-      "title": "It is my Great Honor to endorse Highly Respected America First Congresswoman, Julia Letlow, of the wonderful State of Louisiana, who is running for the United States Senate in Louisiana, a place I love and WON BIG, six times, including Primaries, in 2016, 2020, and 2024! Julia is a Great Star, has b",
-      "published": "Tue, 03 Nov 2026 01:05:46 +0000",
-      "domains": [
-        "ENERGY",
-        "DEFENSE",
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse Highly Respected America First Congresswoman, Julia Letlow, of the wonderful State of Louisiana, who is running for the United States Senate in Louisiana, a place I love and WON BIG, six times, including Primaries, in 2016, 2020, and 2024! Julia is a Great Star, has b It is my Great Honor to endorse Highly Respected America First Congresswoman, Julia Letlow, of the wonderful State of Louisiana, who is running for the United States Senate in Louisiana, a place I love and WON BIG, six times, including Primaries, in 2016, 2020, and 2024! Julia is a Great Star, has been from the very beginning, and only gets better! I know Julia well, have seen her tested at the highest and most difficult levels, and she is a TOTAL WINNER! A Proud Mother of two children, Julia is a wonderful person, and has ALWAYS delivered for Louisiana. Her opponent, Jamie Davis, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Jamie Davis is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Julia will work tirelessly to Grow our Economy, Cut Taxes and Regulations, Support our Amazing Farmers and Fishermen, Champion Louisiana Oil & Gas, Unleash American Energy DOMINANCE, Promote MADE IN THE U",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.614101+00:00",
-      "event_id": "4c1b7826b95b43a34ec7aafd",
-      "action_reaction": {
-        "event_id": "4c1b7826b95b43a34ec7aafd",
-        "event_type": "ENERGY",
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
