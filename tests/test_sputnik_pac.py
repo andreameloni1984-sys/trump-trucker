@@ -2,6 +2,15 @@ from datetime import datetime, timezone
 
 from sputnik_demo import pac
 
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def _importo(monkeypatch):
+    # i test verificano la logica con importi tondi; i valori predefiniti del conto demo sono più bassi
+    monkeypatch.setenv("SPUTNIK_PAC_MONTHLY", "100")
+
 # Lunedì 23/11/2026, 10:00 a Francoforte: Xetra aperta
 NOW = datetime(2026, 11, 23, 9, 0, tzinfo=timezone.utc)
 CATALOG = [

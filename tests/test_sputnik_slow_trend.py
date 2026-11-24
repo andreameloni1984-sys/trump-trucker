@@ -2,6 +2,15 @@ from datetime import datetime, timedelta, timezone
 
 from sputnik_demo import slow_trend as st_mod
 
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def _importo(monkeypatch):
+    # i test verificano la logica con importi tondi; i valori predefiniti del conto demo sono più bassi
+    monkeypatch.setenv("SPUTNIK_TREND_EUR", "200")
+
 NOW = datetime(2026, 12, 1, 9, 30, tzinfo=timezone.utc)      # martedì, Xetra aperta
 
 
@@ -68,3 +77,15 @@ def test_holds_when_nothing_changes_and_waits_when_closed():
     c2 = Client()
     st_mod.run(c2, sunday, fetcher({"GC=F": True, "^GSPC": True, "^NDX": True}), st={})
     assert c2.orders == []
+
+
+def test_trim_oversized_position_once_a_day(monkeypatch):
+    monkeypatch.setenv("SPUTNIK_TREND_EUR", "30")
+    client = Client(held={"VUAA": 0.7})           # 0,7 quote × 110 € = 77 € > 2 × 30 €
+    st = {"trend": {"months": ["2026-12"], "holdings": {"sp500": {"entry": 100.0}}, "history": []}}
+    sent = []
+    st_mod.run(client, NOW, fetcher({"GC=F": True, "^GSPC": True, "^NDX": True}),
+               send=lambda t: sent.append(t) or True, st=st)
+    assert client.orders == [("VUAA", -0.4)] and sent[0].startswith("✂️")
+    st_mod.run(client, NOW + timedelta(hours=1), fetcher({"GC=F": True, "^GSPC": True, "^NDX": True}), st=st)
+    assert len(client.orders) == 1

@@ -9,7 +9,7 @@ sputnik_market_call), Sputnik compra un ETF sull'S&P 500 sul conto demo:
 * legge i post delle ultime 18 ore da sputnik_context.json (scritto dalla corsia veloce);
 * se la borsa è chiusa (notte, weekend) compra alla riapertura, ma salta l'acquisto se
   il future sull'S&P 500 è già salito di oltre il 3% dal momento del post (movimento già fatto);
-* importo fisso (SPUTNIK_TRUMP_TRADE_EUR, predefinito 50 €), stop −3% inserito su
+* importo fisso (SPUTNIK_TRUMP_TRADE_EUR, predefinito 10 €), stop −3% inserito su
   Trading 212, uscita a +6% o dopo 3 giorni di borsa;
 * gli inviti a vendere restano solo un avviso: sul conto Invest non si può vendere allo scoperto.
 
@@ -48,9 +48,9 @@ BERLIN = ZoneInfo("Europe/Berlin")
 
 def amount() -> float:
     try:
-        return max(float(os.getenv("SPUTNIK_TRUMP_TRADE_EUR", "").replace(",", ".") or 50), 0.0)
+        return max(float(os.getenv("SPUTNIK_TRUMP_TRADE_EUR", "").replace(",", ".") or 10), 0.0)
     except ValueError:
-        return 50.0
+        return 10.0
 
 
 def _time(value: str) -> datetime | None:
