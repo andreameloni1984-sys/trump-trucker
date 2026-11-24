@@ -132,8 +132,10 @@ def run(client, now: datetime | None = None, fetcher: Callable = fetch, send: Ca
                     continue
             changes += 1
             tr["holdings"][a.key] = {"since": now.isoformat(), "entry": price}
-            lines.append(f"• {a.name}: {state} → 🟢 COMPRATO {q or amount / price:g} quote a {price:,.2f} € "
-                         f"(circa {eur(amount)})")
+            shares = q or amount / price
+            short = " — liquidità insufficiente per l'importo pieno" if shares * price < budget() - 1 else ""
+            lines.append(f"• {a.name}: {state} → 🟢 COMPRATO {shares:g} quote a {price:,.2f} € "
+                         f"(circa {eur(shares * price)}){short}")
         elif not long_ and qty > 0:
             if not dry_run:
                 try:
