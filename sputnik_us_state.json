@@ -1122,22 +1122,6 @@
       "title": "My husband spent $80,000 on a boat, yet says my plans for a $100,000 pottery studio are irresponsible. Who’s right?",
       "url": "https://www.marketwatch.com/story/my-husband-spent-80-000-on-a-boat-yet-says-my-plans-for-a-100-000-pottery-studio-are-irresponsible-whos-right-1a69436a"
     },
-    "https://www.marketwatch.com/story/my-wife-pays-thousands-of-dollars-for-her-family-to-visit-from-argentina-how-can-i-convince-her-to-stop-9381351c": {
-      "acquired": "2026-11-22T00:21:42.280945+00:00",
-      "acquisition_seconds": 1122.280945,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-22T00:03:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "My wife is bankrolling her family’s trips to New York and it’s draining our savings. Should I ask her to stop?",
-      "url": "https://www.marketwatch.com/story/my-wife-pays-thousands-of-dollars-for-her-family-to-visit-from-argentina-how-can-i-convince-her-to-stop-9381351c"
-    },
     "https://www.marketwatch.com/story/nvidia-spooked-me-should-i-sell-my-stocks-or-ride-out-the-market-turmoil-560583c6": {
       "acquired": "2026-11-22T17:06:33.553440+00:00",
       "acquisition_seconds": 393.55344,
@@ -3170,6 +3154,22 @@
       "title": "Madison Dearborn Partners to Acquire Peli BioThermal, a Trusted Cold Chain Solutions Provider, from Pelican Products and Platinum Equity",
       "url": "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948222.html"
     },
+    "https://www.prnewswire.com/news-releases/moneyminder-solo-brings-23-years-of-simple-bookkeeping-to-self-employed-business-owners-302948758.html": {
+      "acquired": "2026-11-24T00:17:24.761739+00:00",
+      "acquisition_seconds": 384.761739,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T00:11:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "MoneyMinder Solo Brings 23 Years of Simple Bookkeeping to Self-Employed Business Owners",
+      "url": "https://www.prnewswire.com/news-releases/moneyminder-solo-brings-23-years-of-simple-bookkeeping-to-self-employed-business-owners-302948758.html"
+    },
     "https://www.prnewswire.com/news-releases/nationwide-foundation-announces-11-million-contribution-to-provide-critical-food-shelter-needs-302948355.html": {
       "acquired": "2026-11-23T15:35:22.589117+00:00",
       "acquisition_seconds": 322.589117,
@@ -3441,6 +3441,22 @@
       "status": "SCARTARE",
       "title": "Rare Beauty Brands and JCPenney Announce Three Winners of the 2026 LIFT Beauty Accelerator",
       "url": "https://www.prnewswire.com/news-releases/rare-beauty-brands-and-jcpenney-announce-three-winners-of-the-2026-lift-beauty-accelerator-302947360.html"
+    },
+    "https://www.prnewswire.com/news-releases/rates-are-shifting-gift-a-cd-that-locks-in-at-least-5-10-apy-before-year-end-302948752.html": {
+      "acquired": "2026-11-24T00:17:24.761739+00:00",
+      "acquisition_seconds": 804.761739,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-24T00:04:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Rates Are Shifting: Gift a CD That Locks In At Least 5.10% APY Before Year-End",
+      "url": "https://www.prnewswire.com/news-releases/rates-are-shifting-gift-a-cd-that-locks-in-at-least-5-10-apy-before-year-end-302948752.html"
     },
     "https://www.prnewswire.com/news-releases/rbc-capital-markets-hosts-global-timt-conference-featuring-100-technology-internet-media-and-telecom-leaders-302947604.html": {
       "acquired": "2026-11-23T14:09:14.217212+00:00",
