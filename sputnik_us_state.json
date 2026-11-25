@@ -2312,22 +2312,6 @@
       "title": "S. Res. 974 (IS) - Designating November 29, 2026, as \"Drive Safer Sunday\".",
       "url": "https://www.govinfo.gov/app/details/BILLS-119sres974is"
     },
-    "https://www.govinfo.gov/app/details/PLAW-119publ119": {
-      "acquired": "2026-11-23T19:32:23.118206+00:00",
-      "acquisition_seconds": 143.118206,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "policy",
-      "penalized": [],
-      "published": "2026-11-23T19:30:00+00:00",
-      "source": "Leggi federali / GovInfo",
-      "status": "SCARTARE",
-      "title": "Public Law 119 - 119 - Improving Social Security's Service to Victims of Identity Theft Act",
-      "url": "https://www.govinfo.gov/app/details/PLAW-119publ119"
-    },
     "https://www.govinfo.gov/app/details/PLAW-119publ129": {
       "acquired": "2026-11-23T20:47:25.105982+00:00",
       "acquisition_seconds": 265.105982,
@@ -2696,22 +2680,6 @@
       "title": "I’ve been married for 58 years. It’s ‘our’ money, not ‘his’ and ‘hers.’ Why do so many couples keep their finances separate?",
       "url": "https://www.marketwatch.com/story/ive-been-married-for-58-years-its-our-money-not-his-and-hers-why-dont-others-feel-the-same-c5745889"
     },
-    "https://www.marketwatch.com/story/ive-paid-for-long-term-care-insurance-for-20-years-is-it-still-worth-it-1b2cd52d": {
-      "acquired": "2026-11-23T19:47:25.299606+00:00",
-      "acquisition_seconds": 925.299606,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T19:32:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "I’ve paid for long-term-care insurance for 20 years. Is it still worth it?",
-      "url": "https://www.marketwatch.com/story/ive-paid-for-long-term-care-insurance-for-20-years-is-it-still-worth-it-1b2cd52d"
-    },
     "https://www.marketwatch.com/story/jensen-huangs-return-was-worth-nearly-950-billion-to-nvidia-how-much-of-the-stock-market-should-ride-on-one-man-c7129e95": {
       "acquired": "2026-11-24T12:23:45.519402+00:00",
       "acquisition_seconds": 165.519402,
@@ -2855,6 +2823,22 @@
       "status": "SCARTARE",
       "title": "NBA star Kevin Durant lists Arizona mansion for $13.9 million, a year after trade to Houston",
       "url": "https://www.marketwatch.com/story/nba-star-kevin-durant-lists-arizona-mansion-for-13-9-million-a-year-after-trade-to-houston-1b0ae57e"
+    },
+    "https://www.marketwatch.com/story/new-home-sales-just-hit-a-2026-high-as-builders-dangle-low-mortgages-and-black-friday-deals-291a3b62": {
+      "acquired": "2026-11-25T19:32:24.103164+00:00",
+      "acquisition_seconds": 744.103164,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T19:20:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "New-home sales just hit a 2026 high as builders dangle low mortgages and Black Friday deals",
+      "url": "https://www.marketwatch.com/story/new-home-sales-just-hit-a-2026-high-as-builders-dangle-low-mortgages-and-black-friday-deals-291a3b62"
     },
     "https://www.marketwatch.com/story/nvidias-stock-drops-as-these-major-questions-loom-over-jensen-huangs-return-9096636f": {
       "acquired": "2026-11-24T15:17:01.395763+00:00",
@@ -3351,6 +3335,22 @@
       "status": "SCARTARE",
       "title": "What to do if your Thanksgiving flight gets delayed — especially with a nor’easter brewing",
       "url": "https://www.marketwatch.com/story/what-to-do-if-your-thanksgiving-flight-gets-delayed-especially-with-a-noreaster-brewing-566fe933"
+    },
+    "https://www.marketwatch.com/story/why-macro-investor-raoul-pal-says-the-dollar-is-the-signal-to-watch-for-stocks-and-crypto-d36f3c49": {
+      "acquired": "2026-11-25T19:32:24.103164+00:00",
+      "acquisition_seconds": 984.103164,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T19:16:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Why macro investor Raoul Pal says the dollar is the signal to watch for stocks and crypto",
+      "url": "https://www.marketwatch.com/story/why-macro-investor-raoul-pal-says-the-dollar-is-the-signal-to-watch-for-stocks-and-crypto-d36f3c49"
     },
     "https://www.marketwatch.com/story/why-mondays-huge-stock-market-rally-is-actually-a-warning-sign-for-bulls-49d227a8": {
       "acquired": "2026-11-23T20:02:30.446662+00:00",
@@ -4600,6 +4600,22 @@
       "title": "CIBC plans Middle East expansion with new capital markets presence in Abu Dhabi",
       "url": "https://www.prnewswire.com/news-releases/cibc-plans-middle-east-expansion-with-new-capital-markets-presence-in-abu-dhabi-302950496.html"
     },
+    "https://www.prnewswire.com/news-releases/cibc-plant-expansion-im-nahen-osten-mit-neuer-kapitalmarktprasenz-in-abu-dhabi-302950800.html": {
+      "acquired": "2026-11-25T19:32:24.134190+00:00",
+      "acquisition_seconds": 144.13419,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "industrial-tech",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T19:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "CIBC plant Expansion im Nahen Osten mit neuer Kapitalmarktpräsenz in Abu Dhabi",
+      "url": "https://www.prnewswire.com/news-releases/cibc-plant-expansion-im-nahen-osten-mit-neuer-kapitalmarktprasenz-in-abu-dhabi-302950800.html"
+    },
     "https://www.prnewswire.com/news-releases/cibc-prevoit-de-simplanter-au-moyen-orient-avec-une-nouvelle-presence-sur-les-marches-de-capitaux-a-abou-dhabi-302950690.html": {
       "acquired": "2026-11-25T17:02:22.031632+00:00",
       "acquisition_seconds": 442.031632,
@@ -5655,6 +5671,22 @@
       "status": "SCARTARE",
       "title": "Huawei a CMA společně představily národní platební řešení, které má urychlit globální transformaci platebního styku",
       "url": "https://www.prnewswire.com/news-releases/huawei-a-cma-spolen-pedstavily-narodni-platebni-eeni-ktere-ma-urychlit-globalni-transformaci-platebniho-styku-302950412.html"
+    },
+    "https://www.prnewswire.com/news-releases/huawei-a-cma-spolone-spuaju-narodne-platobne-rieenie-na-urychlenie-transformacie-globalnych-platieb-302950796.html": {
+      "acquired": "2026-11-25T19:32:24.134190+00:00",
+      "acquisition_seconds": 384.13419,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T19:26:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Huawei a CMA spoločne spúšťajú národné platobné riešenie na urýchlenie transformácie globálnych platieb",
+      "url": "https://www.prnewswire.com/news-releases/huawei-a-cma-spolone-spuaju-narodne-platobne-rieenie-na-urychlenie-transformacie-globalnych-platieb-302950796.html"
     },
     "https://www.prnewswire.com/news-releases/huawei-and-cma-jointly-launch-national-payment-solution-to-accelerate-global-payments-transformation-302950220.html": {
       "acquired": "2026-11-25T06:17:29.162948+00:00",
@@ -7799,22 +7831,6 @@
       "status": "SCARTARE",
       "title": "Congressional Bills H.R. 1550, H.R. 4930, and H.R. 8552 Signed into Law",
       "url": "https://www.whitehouse.gov/briefings-statements/2026/11/congressional-bills-h-r-1550-h-r-4930-and-h-r-8552-signed-into-law"
-    },
-    "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-hails-americas-armed-forces": {
-      "acquired": "2026-11-23T19:32:23.073475+00:00",
-      "acquisition_seconds": 731.073475,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "policy",
-      "penalized": [],
-      "published": "2026-11-23T19:20:12+00:00",
-      "source": "Casa Bianca – comunicati",
-      "status": "SCARTARE",
-      "title": "First Lady Melania Trump Hails America’s Armed Forces",
-      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-hails-americas-armed-forces"
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families": {
       "acquired": "2026-11-25T12:02:24.960239+00:00",
