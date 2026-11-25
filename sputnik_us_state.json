@@ -314,22 +314,6 @@
       "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/23/3408341/0/en/ambulance-services-market-to-reach-us-81-99-billion-by-2034-at-5-36-cagr-driven-by-rising-emergency-healthcare-demand-and-advancements-in-prehospital-care-exclusive-report-by-the-i.html": {
-      "acquired": "2026-11-23T23:16:32.866411+00:00",
-      "acquisition_seconds": 35972.866411,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:17:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Ambulance Services Market to Reach US$81.99 Billion by 2034 at 5.36% CAGR, Driven by Rising Emergency Healthcare Demand and Advancements in Prehospital Care | Exclusive Report by The Insight Partners",
-      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408341/0/en/ambulance-services-market-to-reach-us-81-99-billion-by-2034-at-5-36-cagr-driven-by-rising-emergency-healthcare-demand-and-advancements-in-prehospital-care-exclusive-report-by-the-i.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/23/3408346/0/en/stratum-holdings-corp-completes-sale-of-legacy-real-estate-businesses-eliminating-1-88-million-in-liabilities-and-ongoing-monthly-operating-deficit.html": {
       "acquired": "2026-11-23T23:16:32.866411+00:00",
       "acquisition_seconds": 35192.866411,
@@ -2906,6 +2890,22 @@
       "title": "Kylie Jenner again relists concrete mansion in L.A. for $38 million",
       "url": "https://www.marketwatch.com/story/kylie-jenner-again-relists-concrete-mansion-in-l-a-for-38-million-2e5143e5"
     },
+    "https://www.marketwatch.com/story/liquidity-peaked-first-bitcoin-fell-then-gold-and-now-stocks-how-long-the-downturn-will-last-according-to-this-veteran-strategist-bb91d6c4": {
+      "acquired": "2026-11-25T13:17:22.812572+00:00",
+      "acquisition_seconds": 742.812572,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "annuncio futuro",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T13:05:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Liquidity peaked. First bitcoin fell, then gold and now stocks. How long the downturn will last, according to this veteran strategist.",
+      "url": "https://www.marketwatch.com/story/liquidity-peaked-first-bitcoin-fell-then-gold-and-now-stocks-how-long-the-downturn-will-last-according-to-this-veteran-strategist-bb91d6c4"
+    },
     "https://www.marketwatch.com/story/many-people-overlook-this-crucial-piece-of-retirement-planning-and-it-isnt-money-a7cf6f2d": {
       "acquired": "2026-11-24T19:32:22.399513+00:00",
       "acquisition_seconds": 682.399513,
@@ -3065,6 +3065,22 @@
       "status": "SCARTARE",
       "title": "Roth IRA conversions aren’t free money. Watch out for these 5 costly mistakes.",
       "url": "https://www.marketwatch.com/story/roth-ira-conversions-arent-free-money-watch-out-for-these-5-costly-mistakes-39b182d3"
+    },
+    "https://www.marketwatch.com/story/s-p-500s-slide-through-a-key-trendline-again-is-an-ominous-sign-history-suggests-def8b99f": {
+      "acquired": "2026-11-25T13:17:22.812572+00:00",
+      "acquisition_seconds": 502.812572,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T13:09:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "S&P 500’s slide through a key trendline — again — is an ominous sign, history suggests",
+      "url": "https://www.marketwatch.com/story/s-p-500s-slide-through-a-key-trendline-again-is-an-ominous-sign-history-suggests-def8b99f"
     },
     "https://www.marketwatch.com/story/see-how-much-more-money-the-richest-americans-are-spending-on-the-holidays-compared-to-everyone-else-f0ff3f4b": {
       "acquired": "2026-11-23T18:21:20.701370+00:00",
@@ -4602,22 +4618,6 @@
       "title": "Bybit Introduces Strategy Backtesting for Spot Grid and Futures Grid Bots",
       "url": "https://www.prnewswire.com/news-releases/bybit-introduces-strategy-backtesting-for-spot-grid-and-futures-grid-bots-302950442.html"
     },
-    "https://www.prnewswire.com/news-releases/bybit-trading-bots-and-copy-trading-now-support-antusdt-tradfi-perpetual-contract-302948236.html": {
-      "acquired": "2026-11-23T13:21:33.294031+00:00",
-      "acquisition_seconds": 333.294031,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "contract",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:16:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Bybit Trading Bots and Copy Trading Now Support ANTUSDT TradFi Perpetual Contract",
-      "url": "https://www.prnewswire.com/news-releases/bybit-trading-bots-and-copy-trading-now-support-antusdt-tradfi-perpetual-contract-302948236.html"
-    },
     "https://www.prnewswire.com/news-releases/bybits-peter-loo-trust-is-key-to-the-future-of-programmable-money-302949272.html": {
       "acquired": "2026-11-24T10:02:21.525951+00:00",
       "acquisition_seconds": 141.525951,
@@ -5193,6 +5193,22 @@
       "status": "SCARTARE",
       "title": "DataGroomr Introduces MCP Server to Bring Salesforce Data Quality Management into AI Assistants",
       "url": "https://www.prnewswire.com/news-releases/datagroomr-introduces-mcp-server-to-bring-salesforce-data-quality-management-into-ai-assistants-302948239.html"
+    },
+    "https://www.prnewswire.com/news-releases/datavault-ai-founder-opposes-proposed-reverse-split-seeks-board-changes-302950277.html": {
+      "acquired": "2026-11-25T13:17:22.952816+00:00",
+      "acquisition_seconds": 922.952816,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T13:02:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Datavault AI Founder Opposes Proposed Reverse Split, Seeks Board Changes",
+      "url": "https://www.prnewswire.com/news-releases/datavault-ai-founder-opposes-proposed-reverse-split-seeks-board-changes-302950277.html"
     },
     "https://www.prnewswire.com/news-releases/dauch-to-present-at-the-bofa-securities-2026-leveraged-finance-conference-on-december-1-302948779.html": {
       "acquired": "2026-11-25T13:02:21.872766+00:00",
@@ -5962,6 +5978,22 @@
       "title": "Huawei and CMA Jointly Launch National Payment Solution to Accelerate Global Payments Transformation",
       "url": "https://www.prnewswire.com/news-releases/huawei-and-cma-jointly-launch-national-payment-solution-to-accelerate-global-payments-transformation-302950220.html"
     },
+    "https://www.prnewswire.com/news-releases/huawei-e-cma-lanciano-congiuntamente-una-soluzione-per-i-sistemi-di-pagamento-nazionali-per-accelerare-la-trasformazione-dei-pagamenti-a-livello-globale-302950527.html": {
+      "acquired": "2026-11-25T13:17:22.952816+00:00",
+      "acquisition_seconds": 622.952816,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T13:07:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Huawei e CMA lanciano congiuntamente una soluzione per i sistemi di pagamento nazionali per accelerare la trasformazione dei pagamenti a livello globale",
+      "url": "https://www.prnewswire.com/news-releases/huawei-e-cma-lanciano-congiuntamente-una-soluzione-per-i-sistemi-di-pagamento-nazionali-per-accelerare-la-trasformazione-dei-pagamenti-a-livello-globale-302950527.html"
+    },
     "https://www.prnewswire.com/news-releases/huawei-en-cma-lanceren-gezamenlijk-een-oplossing-voor-nationale-betalingssystemen-om-de-wereldwijde-transformatie-van-het-betalingsverkeer-te-versnellen-302950461.html": {
       "acquired": "2026-11-25T12:02:25.076941+00:00",
       "acquisition_seconds": 205.076941,
@@ -6650,6 +6682,22 @@
       "title": "MoneyMinder Solo Brings 23 Years of Simple Bookkeeping to Self-Employed Business Owners",
       "url": "https://www.prnewswire.com/news-releases/moneyminder-solo-brings-23-years-of-simple-bookkeeping-to-self-employed-business-owners-302948758.html"
     },
+    "https://www.prnewswire.com/news-releases/mongolias-mobicom-joins-telcoin-network-as-launch-validator-302950181.html": {
+      "acquired": "2026-11-25T13:17:22.952816+00:00",
+      "acquisition_seconds": 262.952816,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T13:13:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Mongolia's Mobicom Joins Telcoin Network as Launch Validator",
+      "url": "https://www.prnewswire.com/news-releases/mongolias-mobicom-joins-telcoin-network-as-launch-validator-302950181.html"
+    },
     "https://www.prnewswire.com/news-releases/nationwide-foundation-announces-11-million-contribution-to-provide-critical-food-shelter-needs-302948355.html": {
       "acquired": "2026-11-23T15:35:22.589117+00:00",
       "acquisition_seconds": 322.589117,
@@ -7098,9 +7146,9 @@
       "title": "Platinum Equity Completes Acquisition of EDP",
       "url": "https://www.prnewswire.com/news-releases/platinum-equity-completes-acquisition-of-edp-302948762.html"
     },
-    "https://www.prnewswire.com/news-releases/pnc-elects-mark-wiedman-to-board-of-directors-302948227.html": {
-      "acquired": "2026-11-23T13:21:33.294031+00:00",
-      "acquisition_seconds": 753.294031,
+    "https://www.prnewswire.com/news-releases/pnc-executives-to-speak-at-goldman-sachs-financial-services-conference-302949509.html": {
+      "acquired": "2026-11-25T13:17:22.952816+00:00",
+      "acquisition_seconds": 142.952816,
       "beneficiaries": [],
       "bias": null,
       "category": "other",
@@ -7108,11 +7156,11 @@
       "issuer": "",
       "kind": "wire",
       "penalized": [],
-      "published": "2026-11-23T13:09:00+00:00",
+      "published": "2026-11-25T13:15:00+00:00",
       "source": "PR Newswire / comunicati societari",
       "status": "SCARTARE",
-      "title": "PNC Elects Mark Wiedman to Board of Directors",
-      "url": "https://www.prnewswire.com/news-releases/pnc-elects-mark-wiedman-to-board-of-directors-302948227.html"
+      "title": "PNC Executives to Speak at Goldman Sachs Financial Services Conference",
+      "url": "https://www.prnewswire.com/news-releases/pnc-executives-to-speak-at-goldman-sachs-financial-services-conference-302949509.html"
     },
     "https://www.prnewswire.com/news-releases/pnc-names-brian-leblanc-chief-economist-302949446.html": {
       "acquired": "2026-11-24T13:32:33.573919+00:00",
@@ -7193,22 +7241,6 @@
       "status": "SCARTARE",
       "title": "Quantum Space Announces Completion of Business Combination with Inflection Point Acquisition Corp. VI",
       "url": "https://www.prnewswire.com/news-releases/quantum-space-announces-completion-of-business-combination-with-inflection-point-acquisition-corp-vi-302948270.html"
-    },
-    "https://www.prnewswire.com/news-releases/rare-beauty-brands-and-jcpenney-announce-three-winners-of-the-2026-lift-beauty-accelerator-302947360.html": {
-      "acquired": "2026-11-23T13:09:10.751985+00:00",
-      "acquisition_seconds": 70.751985,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:08:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Rare Beauty Brands and JCPenney Announce Three Winners of the 2026 LIFT Beauty Accelerator",
-      "url": "https://www.prnewswire.com/news-releases/rare-beauty-brands-and-jcpenney-announce-three-winners-of-the-2026-lift-beauty-accelerator-302947360.html"
     },
     "https://www.prnewswire.com/news-releases/rates-are-shifting-gift-a-cd-that-locks-in-at-least-5-10-apy-before-year-end-302948752.html": {
       "acquired": "2026-11-24T00:17:24.761739+00:00",
