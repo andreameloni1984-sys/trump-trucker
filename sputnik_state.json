@@ -1107,15 +1107,46 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-24T23:02:35.090764+00:00",
+  "updated_at": "2026-11-25T01:02:13.236091+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "bdf6fcc37fa048cd5b50c531",
+    "TRUTH_ARCHIVE": "72ad5b0ee269ff88b430a0d8",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "72ad5b0ee269ff88b430a0d8": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "DEFENSE",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 24, 2026, 7:58 PM Original Post Donald J. Trump ReTruthed Schoenlaw @Schoenlaw · November 24, 2026, 7:08 PM Original Post Regarding Newsom’s wholesale commutations and an avenue for challenging at least some of them based on the California Constitution. https://www. dropbox.com/scl/fi/92yu855x4cf bdb9ki6ajx/2-SCHOEN.mp4?rlkey=jsw56tbxxhutu1cbo9jzxp4fm&st=kqcljs98&dl=0 www.dropbox.com 2 SCHOEN.mp4 Shared with Dropbox Donald J. Trump @realDonaldTrump · November 24, 2026, 7:57 PM Original Post Ilhan Omar’s legal reckoning is looming, and redactions can't hide it: https://www. foxnews.com/opinion/ilhan-omar s-legal-reckoning-looming-redactions-cant-hide www.foxnews.com Ilhan Omar’s legal reckoning is looming, and redactions can't hide it The DOJ says Rep. Ilhan Omar committed crimes over decades, and newly released search warrant documents hint at fraud charges or denaturalization ahead. Donald J. Trump @realDonaldT",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-25T01:02:12.610943+00:00",
+      "event_id": "72ad5b0ee269ff88b430a0d8",
+      "action_reaction": {
+        "event_id": "72ad5b0ee269ff88b430a0d8",
+        "event_type": "TRADE_ESCALATION",
+        "historical_matches": [
+          "china_tariff_escalation_2025_10"
+        ],
+        "historical_directions": {
+          "US_EQUITIES": "DOWN",
+          "NASDAQ": "DOWN",
+          "USD": "DOWN",
+          "TREASURY_YIELDS": "DOWN",
+          "OIL": "DOWN"
+        },
+        "evidence": "HISTORICAL_ANALOGUE"
+      }
+    },
     "bdf6fcc37fa048cd5b50c531": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8142,29 +8173,6 @@
       "action_reaction": {
         "event_id": "763f57fbe092fe229a92da72",
         "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "109df3cb1773d3b513db73ef": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43283",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549816681363206",
-      "title": "Congressman Clay Higgins is a MAGA Warrior who is doing a tremendous job representing the wonderful people of Louisiana's 3rd Congressional District! A tough Law Enforcement Officer, and brave U.S. Army Veteran, Clay strongly supports our incredible Law Enforcement, Military, and Veterans, and knows",
-      "published": "Tue, 03 Nov 2026 01:04:17 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Clay Higgins is a MAGA Warrior who is doing a tremendous job representing the wonderful people of Louisiana's 3rd Congressional District! A tough Law Enforcement Officer, and brave U.S. Army Veteran, Clay strongly supports our incredible Law Enforcement, Military, and Veterans, and knows Congressman Clay Higgins is a MAGA Warrior who is doing a tremendous job representing the wonderful people of Louisiana's 3rd Congressional District! A tough Law Enforcement Officer, and brave U.S. Army Veteran, Clay strongly supports our incredible Law Enforcement, Military, and Veterans, and knows the Wisdom and Courage it takes to Ensure LAW AND ORDER. An America First Patriot, who has been with us from the very beginning, Clay is fighting tirelessly to Grow our Economy, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Advance Election Integrity, and Defend our always under siege Second Amendment. Clay Higgins has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR CLAY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/louisiana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.615291+00:00",
-      "event_id": "109df3cb1773d3b513db73ef",
-      "action_reaction": {
-        "event_id": "109df3cb1773d3b513db73ef",
-        "event_type": "GEOPOLITICAL_ESCALATION",
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
