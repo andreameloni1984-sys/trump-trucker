@@ -2604,22 +2604,6 @@
       "title": "The newest addition to the S&P 500 is a maker of viral ice-cream machines",
       "url": "https://www.marketwatch.com/story/the-newest-addition-to-the-s-p-500-is-a-maker-of-viral-ice-cream-machines-5c6e209a"
     },
-    "https://www.marketwatch.com/story/the-number-of-401-k-millionaires-drops-amid-stock-market-swings-23939b94": {
-      "acquired": "2026-11-23T05:09:50.910852+00:00",
-      "acquisition_seconds": 530.910852,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T05:01:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "The number of 401(k) millionaires drops amid stock-market swings",
-      "url": "https://www.marketwatch.com/story/the-number-of-401-k-millionaires-drops-amid-stock-market-swings-23939b94"
-    },
     "https://www.marketwatch.com/story/the-return-of-jensen-huang-has-saved-the-u-s-stock-market-for-now-why-the-rebound-may-not-last-f72656ce": {
       "acquired": "2026-11-23T16:49:01.173668+00:00",
       "acquisition_seconds": 301.173668,
@@ -7867,22 +7851,6 @@
       "status": "SCARTARE",
       "title": "YeePay presenteert one-stop betaalnetwerk en breidt strategische partnerschappen uit op Singapore FinTech Festival 2026",
       "url": "https://www.prnewswire.com/news-releases/yeepay-presenteert-one-stop-betaalnetwerk-en-breidt-strategische-partnerschappen-uit-op-singapore-fintech-festival-2026-302948817.html"
-    },
-    "https://www.prnewswire.com/news-releases/yidu-tech-posts-rmb-61-3-million-in-profit-sustaining-growth-momentum-in-h1-fy2027--302947938.html": {
-      "acquired": "2026-11-23T05:09:51.005412+00:00",
-      "acquisition_seconds": 711.005412,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T04:58:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Yidu Tech Posts RMB 61.3 Million in Profit, Sustaining Growth Momentum in H1 FY2027",
-      "url": "https://www.prnewswire.com/news-releases/yidu-tech-posts-rmb-61-3-million-in-profit-sustaining-growth-momentum-in-h1-fy2027--302947938.html"
     },
     "https://www.prnewswire.com/news-releases/zentist-introduces-agentic-ai-for-dental-payment-posting-with-new-autoposting-skills-302949021.html": {
       "acquired": "2026-11-24T13:17:28.359094+00:00",
