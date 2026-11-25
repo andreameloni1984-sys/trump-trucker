@@ -2840,6 +2840,22 @@
       "title": "New-home sales just hit a 2026 high as builders dangle low mortgages and Black Friday deals",
       "url": "https://www.marketwatch.com/story/new-home-sales-just-hit-a-2026-high-as-builders-dangle-low-mortgages-and-black-friday-deals-291a3b62"
     },
+    "https://www.marketwatch.com/story/nvidia-is-heading-for-its-first-death-cross-since-march-2025-as-stock-continues-to-struggle-a611b99c": {
+      "acquired": "2026-11-25T19:47:18.678578+00:00",
+      "acquisition_seconds": 258.678578,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T19:43:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Nvidia is heading for its first ‘death cross’ since March 2025 as stock continues to struggle",
+      "url": "https://www.marketwatch.com/story/nvidia-is-heading-for-its-first-death-cross-since-march-2025-as-stock-continues-to-struggle-a611b99c"
+    },
     "https://www.marketwatch.com/story/nvidias-stock-drops-as-these-major-questions-loom-over-jensen-huangs-return-9096636f": {
       "acquired": "2026-11-24T15:17:01.395763+00:00",
       "acquisition_seconds": 1081.395763,
@@ -3080,6 +3096,22 @@
       "title": "The ‘epic’ buying of retail investors paid off after Nvidia’s 31% stock surge, says strategist",
       "url": "https://www.marketwatch.com/story/the-epic-buying-of-retail-investors-paid-off-after-nvidias-31-stock-surge-says-strategist-c8f9a502"
     },
+    "https://www.marketwatch.com/story/the-fed-says-inflation-hasnt-gotten-any-better-ahead-of-its-key-december-vote-to-raise-rates-65024d33": {
+      "acquired": "2026-11-25T19:47:18.678578+00:00",
+      "acquisition_seconds": 498.678578,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T19:39:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The Fed says inflation hasn’t gotten any better ahead of its key December vote to raise rates",
+      "url": "https://www.marketwatch.com/story/the-fed-says-inflation-hasnt-gotten-any-better-ahead-of-its-key-december-vote-to-raise-rates-65024d33"
+    },
     "https://www.marketwatch.com/story/the-latest-stock-market-drop-could-lower-your-tax-bill-over-your-lifetime-99420b97": {
       "acquired": "2026-11-25T17:02:21.960150+00:00",
       "acquisition_seconds": 561.96015,
@@ -3175,22 +3207,6 @@
       "status": "SCARTARE",
       "title": "The wealthiest 10% of Americans are pulling ahead of everyone else. This is what’s making them richer.",
       "url": "https://www.marketwatch.com/story/the-wealthiest-10-of-americans-are-pulling-ahead-of-everyone-else-this-is-whats-making-them-richer-bd83c2f6"
-    },
-    "https://www.marketwatch.com/story/these-stocks-are-the-biggest-gainers-after-jensen-huangs-return-to-nvidia-bb886140": {
-      "acquired": "2026-11-23T19:47:25.299606+00:00",
-      "acquisition_seconds": 205.299606,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T19:44:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "These stocks are the biggest gainers after Jensen Huang’s return to Nvidia",
-      "url": "https://www.marketwatch.com/story/these-stocks-are-the-biggest-gainers-after-jensen-huangs-return-to-nvidia-bb886140"
     },
     "https://www.marketwatch.com/story/third-quarter-gdp-already-looked-great-now-it-looks-even-better-12057da5": {
       "acquired": "2026-11-25T13:47:19.719783+00:00",
@@ -4919,6 +4935,22 @@
       "status": "SCARTARE",
       "title": "Cohen & Steers Total Return Realty Fund, Inc. (RFI) Notification of Sources of Distribution Under Section 19(a)",
       "url": "https://www.prnewswire.com/news-releases/cohen--steers-total-return-realty-fund-inc-rfi-notification-of-sources-of-distribution-under-section-19a-302949949.html"
+    },
+    "https://www.prnewswire.com/news-releases/come-home-to-south-jersey-tv-series-spotlights-real-estate-lifestyle-and-community-across-south-jersey-new-jersey-on-real-shows-network-302950805.html": {
+      "acquired": "2026-11-25T19:47:18.705355+00:00",
+      "acquisition_seconds": 618.705355,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T19:37:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Come Home to South Jersey TV Series Spotlights Real Estate, Lifestyle and Community Across South Jersey, New Jersey on REAL Shows Network",
+      "url": "https://www.prnewswire.com/news-releases/come-home-to-south-jersey-tv-series-spotlights-real-estate-lifestyle-and-community-across-south-jersey-new-jersey-on-real-shows-network-302950805.html"
     },
     "https://www.prnewswire.com/news-releases/convr-adds-federal-judicial-center-court-data-to-its-data-lake-surfacing-hard-to-find-legal-and-financial-signals-for-underwriters-302949765.html": {
       "acquired": "2026-11-24T18:47:25.233885+00:00",
