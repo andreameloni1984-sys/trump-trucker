@@ -3003,22 +3003,6 @@
       "title": "Short sellers get smoked as Nvidia tallies biggest one-day gain in stock-market history",
       "url": "https://www.marketwatch.com/story/short-sellers-get-smoked-as-nvidia-tallies-biggest-one-day-gain-in-stock-market-history-e9dc6e9c"
     },
-    "https://www.marketwatch.com/story/stocks-are-serving-up-a-fat-pitch-for-investors-right-now-as-morgan-stanleys-top-strategist-19abe30a": {
-      "acquired": "2026-11-23T09:48:56.215932+00:00",
-      "acquisition_seconds": 536.215932,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T09:40:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Stocks are serving up a ‘fat pitch’ for investors right now, as Morgan Stanley’s top strategist",
-      "url": "https://www.marketwatch.com/story/stocks-are-serving-up-a-fat-pitch-for-investors-right-now-as-morgan-stanleys-top-strategist-19abe30a"
-    },
     "https://www.marketwatch.com/story/sundays-pot-roast-now-costs-more-than-a-thanksgiving-feast-why-beef-wont-get-cheaper-for-years-7daa1b3f": {
       "acquired": "2026-11-24T13:02:26.176873+00:00",
       "acquisition_seconds": 386.176873,
@@ -3466,6 +3450,22 @@
       "status": "SCARTARE",
       "title": "A New Chapter for Magnolia Landing: Tranzon Driggers Seeks Buyer to Revitalize North Fort Myers Championship 18-hole Golf Course on December 2-9 Online Auction",
       "url": "https://www.prnewswire.com/news-releases/a-new-chapter-for-magnolia-landing-tranzon-driggers-seeks-buyer-to-revitalize-north-fort-myers-championship-18-hole-golf-course-on-december-29-online-auction-302948553.html"
+    },
+    "https://www.prnewswire.com/news-releases/abich-financial-services-named-to-financial-plannings-best-rias-to-work-for-list-for-second-consecutive-year-302949975.html": {
+      "acquired": "2026-11-25T09:47:23.087215+00:00",
+      "acquisition_seconds": 623.087215,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T09:37:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Abich Financial Services Named to Financial Planning's Best RIAs to Work For List for Second Consecutive Year",
+      "url": "https://www.prnewswire.com/news-releases/abich-financial-services-named-to-financial-plannings-best-rias-to-work-for-list-for-second-consecutive-year-302949975.html"
     },
     "https://www.prnewswire.com/news-releases/abu-dhabi-delegation-develops-new-us-investment-partnerships-during-new-york-visit-302948364.html": {
       "acquired": "2026-11-23T17:34:49.031589+00:00",
@@ -6411,6 +6411,22 @@
       "title": "KuCoin Opens Its Australian Programme with Adam Scott, Highlighting Global Infrastructure and Local Accountability",
       "url": "https://www.prnewswire.com/news-releases/kucoin-opens-its-australian-programme-with-adam-scott-highlighting-global-infrastructure-and-local-accountability-302950334.html"
     },
+    "https://www.prnewswire.com/news-releases/kucoin-opens-its-australian-programme-with-adam-scott-highlighting-global-infrastructure-and-local-accountability-302950359.html": {
+      "acquired": "2026-11-25T09:47:23.087215+00:00",
+      "acquisition_seconds": 983.087215,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T09:31:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "KuCoin Opens Its Australian Programme with Adam Scott, Highlighting Global Infrastructure and Local Accountability",
+      "url": "https://www.prnewswire.com/news-releases/kucoin-opens-its-australian-programme-with-adam-scott-highlighting-global-infrastructure-and-local-accountability-302950359.html"
+    },
     "https://www.prnewswire.com/news-releases/lazard-global-total-return-and-income-fund-declares-monthly-distribution-and-issues-estimated-sources-of-the-distribution-announced-in-october-302949838.html": {
       "acquired": "2026-11-24T21:17:19.286259+00:00",
       "acquisition_seconds": 139.286259,
@@ -8138,22 +8154,6 @@
       "status": "SCARTARE",
       "title": "WOODFOREST NATIONAL BANK OPENS A NEW BRANCH",
       "url": "https://www.prnewswire.com/news-releases/woodforest-national-bank-opens-a-new-branch-302948832.html"
-    },
-    "https://www.prnewswire.com/news-releases/wooshpay-unveils-agentic-payments-demo-achieving-first-product-milestone-with-yunfeng-financials-alphatoken-302948082.html": {
-      "acquired": "2026-11-23T09:48:56.279153+00:00",
-      "acquisition_seconds": 536.279153,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T09:40:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "WooshPay Unveils Agentic Payments Demo, Achieving First Product Milestone with Yunfeng Financial's AlphaToken",
-      "url": "https://www.prnewswire.com/news-releases/wooshpay-unveils-agentic-payments-demo-achieving-first-product-milestone-with-yunfeng-financials-alphatoken-302948082.html"
     },
     "https://www.prnewswire.com/news-releases/workday-announces-fiscal-2027-third-quarter-financial-results-302949793.html": {
       "acquired": "2026-11-24T21:02:20.974004+00:00",
