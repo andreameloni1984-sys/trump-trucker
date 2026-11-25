@@ -216,6 +216,23 @@
       "title": "https:// vimeo.com/1249782646/7e27022b5 4",
       "url": "https://truthsocial.com/@realDonaldTrump/117674380753944672"
     },
+    "https://truthsocial.com/@realDonaldTrump/117677755116150581": {
+      "acquired": "2026-11-25T15:32:20.384251+00:00",
+      "acquisition_seconds": 698.307171,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-25T15:20:42.664000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Early reports from Iowa are that the Army’s mitigation efforts have far exceeded expectations.",
+      "url": "https://truthsocial.com/@realDonaldTrump/117677755116150581"
+    },
     "https://www.fda.gov/news-events/press-announcements/fda-approves-first-new-hormone-therapy-early-stage-breast-cancer-more-20-years": {
       "acquired": "2026-11-24T00:34:14.854015+00:00",
       "acquisition_seconds": 31117.854015,
@@ -4424,22 +4441,6 @@
       "title": "Cango Inc. to Report Third Quarter 2026 Financial Results on November 30, 2026, Eastern Time",
       "url": "https://www.prnewswire.com/news-releases/cango-inc-to-report-third-quarter-2026-financial-results-on-november-30-2026-eastern-time-302950366.html"
     },
-    "https://www.prnewswire.com/news-releases/capline-dental-services-cuts-insurance-eligibility-verification-time-by-75-using-ai-driven-checks-302948212.html": {
-      "acquired": "2026-11-23T15:35:22.589117+00:00",
-      "acquisition_seconds": 322.589117,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Capline Dental Services Cuts Insurance Eligibility Verification Time by 75% Using AI-Driven Checks",
-      "url": "https://www.prnewswire.com/news-releases/capline-dental-services-cuts-insurance-eligibility-verification-time-by-75-using-ai-driven-checks-302948212.html"
-    },
     "https://www.prnewswire.com/news-releases/car-insurance-costs-and-discounts-explained-in-hellonation-featuring-insurance-agent-mike-oboyle-302949921.html": {
       "acquired": "2026-11-25T15:02:23.218335+00:00",
       "acquisition_seconds": 443.218335,
@@ -5448,6 +5449,22 @@
       "title": "First Horizon Foundation Announces Naming of Endowed Chair in Translational Neuroscience at St. Jude Children's Research Hospital",
       "url": "https://www.prnewswire.com/news-releases/first-horizon-foundation-announces-naming-of-endowed-chair-in-translational-neuroscience-at-st-jude-childrens-research-hospital-302949638.html"
     },
+    "https://www.prnewswire.com/news-releases/firstsource-named-a-leader-in-bfs-agentic-business-operations-and-a-major-contender-and-star-performer-in-fcc-operations-services-by-everest-group-302950614.html": {
+      "acquired": "2026-11-25T15:32:20.544518+00:00",
+      "acquisition_seconds": 260.544518,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:28:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Firstsource named a Leader in BFS Agentic Business Operations and a Major Contender and Star Performer in FCC Operations Services by Everest Group",
+      "url": "https://www.prnewswire.com/news-releases/firstsource-named-a-leader-in-bfs-agentic-business-operations-and-a-major-contender-and-star-performer-in-fcc-operations-services-by-everest-group-302950614.html"
+    },
     "https://www.prnewswire.com/news-releases/fortune-announces-speakers-and-partners-for-brainstorm-ai-2026-in-san-francisco-dec-7-and-8-302948797.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
       "acquisition_seconds": 146.294018,
@@ -5960,6 +5977,22 @@
       "title": "Insurance Agent Mara Geraghty Explains Hurricane Deductibles in Florida Homeowners Insurance in HelloNation",
       "url": "https://www.prnewswire.com/news-releases/insurance-agent-mara-geraghty-explains-hurricane-deductibles-in-florida-homeowners-insurance-in-hellonation-302949634.html"
     },
+    "https://www.prnewswire.com/news-releases/insurance-agent-matt-orr-clarifies-term-life-insurance-and-whole-life-coverage-differences-302950610.html": {
+      "acquired": "2026-11-25T15:32:20.544518+00:00",
+      "acquisition_seconds": 620.544518,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:22:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Insurance Agent Matt Orr Clarifies Term Life Insurance and Whole Life Coverage Differences",
+      "url": "https://www.prnewswire.com/news-releases/insurance-agent-matt-orr-clarifies-term-life-insurance-and-whole-life-coverage-differences-302950610.html"
+    },
     "https://www.prnewswire.com/news-releases/insurance-expert-chris-winkelmann-helps-families-calculate-their-life-insurance-coverage-amount-302950604.html": {
       "acquired": "2026-11-25T15:17:19.748039+00:00",
       "acquisition_seconds": 319.748039,
@@ -6392,22 +6425,6 @@
       "title": "Mongolia's Mobicom Joins Telcoin Network as Launch Validator",
       "url": "https://www.prnewswire.com/news-releases/mongolias-mobicom-joins-telcoin-network-as-launch-validator-302950181.html"
     },
-    "https://www.prnewswire.com/news-releases/nationwide-foundation-announces-11-million-contribution-to-provide-critical-food-shelter-needs-302948355.html": {
-      "acquired": "2026-11-23T15:35:22.589117+00:00",
-      "acquisition_seconds": 322.589117,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Nationwide Foundation announces $11 million contribution to provide critical food, shelter needs",
-      "url": "https://www.prnewswire.com/news-releases/nationwide-foundation-announces-11-million-contribution-to-provide-critical-food-shelter-needs-302948355.html"
-    },
     "https://www.prnewswire.com/news-releases/natural-launches-voice-enabling-ai-agents-to-accept-card-payments-during-live-calls-302947981.html": {
       "acquired": "2026-11-23T17:34:49.031589+00:00",
       "acquisition_seconds": 289.031589,
@@ -6647,6 +6664,22 @@
       "status": "SCARTARE",
       "title": "OppFi to Participate in NYSE Financials Virtual Investor Access Day",
       "url": "https://www.prnewswire.com/news-releases/oppfi-to-participate-in-nyse-financials-virtual-investor-access-day-302948659.html"
+    },
+    "https://www.prnewswire.com/news-releases/options-now-available-on-anuu-andd--anss-leverage-shares-by-themes-2x-long-2x-short-and-1x-short-anthropic-ant-etfs-302950613.html": {
+      "acquired": "2026-11-25T15:32:20.544518+00:00",
+      "acquisition_seconds": 260.544518,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:28:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Options Now Available on ANUU, ANDD & ANSS: Leverage Shares by Themes 2X Long, 2X Short and 1X Short Anthropic (ANT) ETFs",
+      "url": "https://www.prnewswire.com/news-releases/options-now-available-on-anuu-andd--anss-leverage-shares-by-themes-2x-long-2x-short-and-1x-short-anthropic-ant-etfs-302950613.html"
     },
     "https://www.prnewswire.com/news-releases/options-on-tradrs-2x-long-and-short-anthropic-etfs-list-today-302948724.html": {
       "acquired": "2026-11-24T11:47:20.184185+00:00",
@@ -7847,6 +7880,22 @@
       "status": "SCARTARE",
       "title": "ZIONS BANCORPORATION TO PRESENT AT THE GOLDMAN SACHS FINANCIAL SERVICES CONFERENCE",
       "url": "https://www.prnewswire.com/news-releases/zions-bancorporation-to-present-at-the-goldman-sachs-financial-services-conference-302949661.html"
+    },
+    "https://www.sec.gov/newsroom/press-releases/2026-118-sec-investor-advisory-committee-host-dec-3-virtual-meeting": {
+      "acquired": "2026-11-25T15:32:20.702621+00:00",
+      "acquisition_seconds": 4916.702621,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "sec",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "agency",
+      "penalized": [],
+      "published": "2026-11-25T14:10:24+00:00",
+      "source": "SEC",
+      "status": "SCARTARE",
+      "title": "SEC Investor Advisory Committee to Host Dec. 3 Virtual Meeting",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-118-sec-investor-advisory-committee-host-dec-3-virtual-meeting"
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/congressional-bills-h-r-1550-h-r-4930-and-h-r-8552-signed-into-law": {
       "acquired": "2026-11-23T23:47:21.715259+00:00",
