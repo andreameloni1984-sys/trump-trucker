@@ -250,22 +250,6 @@
       "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/23/3408800/0/fr/financi%C3%A8re-agache-communiqu%C3%A9-relatif-%C3%A0-un-changement-d-%C3%A9metteur.html": {
-      "acquired": "2026-11-23T23:16:32.866411+00:00",
-      "acquisition_seconds": 20072.866411,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T17:42:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Financière Agache: communiqué relatif à un changement d'émetteur",
-      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408800/0/fr/financi%C3%A8re-agache-communiqu%C3%A9-relatif-%C3%A0-un-changement-d-%C3%A9metteur.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/23/3408871/0/en/exyn-technologies-reports-third-quarter-2026-results-with-28-sequential-revenue-growth-and-69-year-over-year-gross-profit-growth.html": {
       "acquired": "2026-11-23T23:16:32.866411+00:00",
       "acquisition_seconds": 7892.866411,
@@ -2890,22 +2874,6 @@
       "title": "Micron’s stock falls as an analyst warns about a future supply glut",
       "url": "https://www.marketwatch.com/story/microns-stock-falls-as-an-analyst-warns-about-a-future-supply-glut-f7fbeefb"
     },
-    "https://www.marketwatch.com/story/more-ai-jobs-are-coming-thats-one-of-the-big-hiring-trends-in-2027-3d810209": {
-      "acquired": "2026-11-23T17:49:18.097087+00:00",
-      "acquisition_seconds": 738.097087,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T17:37:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "More AI jobs are coming. That’s one of the big hiring trends in 2027.",
-      "url": "https://www.marketwatch.com/story/more-ai-jobs-are-coming-thats-one-of-the-big-hiring-trends-in-2027-3d810209"
-    },
     "https://www.marketwatch.com/story/my-husband-secretly-sends-his-ex-wife-1-500-a-month-after-she-lost-her-job-we-have-2-4-million-saved-has-he-lied-by-omission-ede1972a": {
       "acquired": "2026-11-24T14:32:26.138057+00:00",
       "acquisition_seconds": 926.138057,
@@ -3513,6 +3481,22 @@
       "status": "SCARTARE",
       "title": "Why Monday’s huge stock-market rally is actually a warning sign for bulls",
       "url": "https://www.marketwatch.com/story/why-mondays-huge-stock-market-rally-is-actually-a-warning-sign-for-bulls-49d227a8"
+    },
+    "https://www.marketwatch.com/story/why-this-stock-market-selloff-is-probably-going-to-get-worse-before-it-gets-better-fce63a89": {
+      "acquired": "2026-11-25T17:47:22.825235+00:00",
+      "acquisition_seconds": 502.825235,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T17:39:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Why this stock-market selloff is probably going to get worse before it gets better",
+      "url": "https://www.marketwatch.com/story/why-this-stock-market-selloff-is-probably-going-to-get-worse-before-it-gets-better-fce63a89"
     },
     "https://www.marketwatch.com/story/zendaya-and-tom-holland-buy-a-home-on-1-acre-in-london-for-10-million-a433e7cd": {
       "acquired": "2026-11-24T10:02:21.453762+00:00",
