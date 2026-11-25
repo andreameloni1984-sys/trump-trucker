@@ -1107,15 +1107,37 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-25T14:42:09.676941+00:00",
+  "updated_at": "2026-11-25T15:32:12.078742+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "feeb003b7977b3f1fd1c0e1c",
+    "TRUTH_ARCHIVE": "10edef05ad693ecf86080cee",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "10edef05ad693ecf86080cee": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 25, 2026, 10:20 AM Original Post Early reports from Iowa are that the Army’s mitigation efforts have far exceeded expectations. Donald J. Trump @realDonaldTrump · November 24, 2026, 8:02 PM Original Post https:// vimeo.com/1249782646/7e27022b5 4 vimeo.com Dr. Robert Jeffress | Brian Kilmeade Show 11.24.26 This is &quot;Dr. Robert Jeffress | Brian Kilmeade Show 11.24.26&quot; by First Dallas on Vimeo, the home for high quality videos and the people who love them. Donald J. Trump @realDonaldTrump · November 24, 2026, 7:58 PM Original Post Donald J. Trump ReTruthed Schoenlaw @Schoenlaw · November 24, 2026, 7:08 PM Original Post Regarding Newsom’s wholesale commutations and an avenue for challenging at least some of them based on the California Constitution. https://www. dropbox.com/scl/fi/92yu855x4cf bdb9ki6ajx/2-SCHOEN.mp4?rlkey=jsw56tbxxhutu1cbo9jzxp4fm&st=kqcljs98&dl=0 www.dropbox.com 2 SCHOEN.mp4 Shared with Dr",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-25T15:32:11.700431+00:00",
+      "event_id": "10edef05ad693ecf86080cee",
+      "action_reaction": {
+        "event_id": "10edef05ad693ecf86080cee",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "49c53ee02b203ecf7772301e": {
       "source": "WHITE_HOUSE_RSS",
       "feed_url": "https://www.whitehouse.gov/feed/",
@@ -8150,29 +8172,6 @@
       "event_id": "cbd197cf402e10579dfacae6",
       "action_reaction": {
         "event_id": "cbd197cf402e10579dfacae6",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "6e69154190a193033a6b2c69": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43288",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549615227190064",
-      "title": "Congressman Rudy Yakym is a Fantastic Advocate for Indiana's 2nd Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Rudy knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.",
-      "published": "Tue, 03 Nov 2026 00:13:03 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Rudy Yakym is a Fantastic Advocate for Indiana's 2nd Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Rudy knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U. Congressman Rudy Yakym is a Fantastic Advocate for Indiana's 2nd Congressional District! As a Member of the POWERFUL House Ways & Means Committee, Rudy knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, Unleash American Energy DOMINANCE, Promote MADE IN THE U.S.A., and Champion our Nation's Golden Age. He is also fighting tirelessly to Keep our Border SECURE, Stop Migrant Crime, Support our Brave Military/Veterans, Advance Election Integrity, and Defend our always under siege Second Amendment. Rudy's opponent, Jamee Decio, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Jamee Decio is Reckless, Radical, and Dangerous! Rudy Yakym has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR RUDY — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/indiana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.616965+00:00",
-      "event_id": "6e69154190a193033a6b2c69",
-      "action_reaction": {
-        "event_id": "6e69154190a193033a6b2c69",
         "event_type": "OTHER",
         "historical_matches": [],
         "historical_directions": {},
