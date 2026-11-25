@@ -233,22 +233,6 @@
       "title": "Early reports from Iowa are that the Army’s mitigation efforts have far exceeded expectations.",
       "url": "https://truthsocial.com/@realDonaldTrump/117677755116150581"
     },
-    "https://www.fda.gov/news-events/press-announcements/fda-approves-first-new-hormone-therapy-early-stage-breast-cancer-more-20-years": {
-      "acquired": "2026-11-24T00:34:14.854015+00:00",
-      "acquisition_seconds": 31117.854015,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "fda",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "fda",
-      "penalized": [],
-      "published": "2026-11-23T15:55:37+00:00",
-      "source": "FDA",
-      "status": "SCARTARE",
-      "title": "FDA Approves First New Hormone Therapy for Early-Stage Breast Cancer in More Than 20 Years",
-      "url": "https://www.fda.gov/news-events/press-announcements/fda-approves-first-new-hormone-therapy-early-stage-breast-cancer-more-20-years"
-    },
     "https://www.fda.gov/news-events/press-announcements/fda-approves-first-treatment-limb-girdle-muscular-dystrophy-type-2ir9": {
       "acquired": "2026-11-24T00:34:14.854015+00:00",
       "acquisition_seconds": 22146.854015,
@@ -280,22 +264,6 @@
       "status": "SCARTARE",
       "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/23/3408651/0/en/building-the-village-you-deserve-why-every-parent-needs-a-community.html": {
-      "acquired": "2026-11-23T23:16:32.866411+00:00",
-      "acquisition_seconds": 27092.866411,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:45:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Building the Village You Deserve: Why Every Parent Needs a Community",
-      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408651/0/en/building-the-village-you-deserve-why-every-parent-needs-a-community.html"
     },
     "https://www.globenewswire.com/news-release/2026/11/23/3408755/0/en/child-custody-in-california-jurisdiction-first-how-international-child-custody-matters-in-california-are-decided-before-the-parenting-question-is-reached.html": {
       "acquired": "2026-11-23T23:16:32.866411+00:00",
@@ -2889,6 +2857,22 @@
       "title": "Nvidia’s stock drops as these major questions loom over Jensen Huang’s return",
       "url": "https://www.marketwatch.com/story/nvidias-stock-drops-as-these-major-questions-loom-over-jensen-huangs-return-9096636f"
     },
+    "https://www.marketwatch.com/story/nvidias-stock-is-giving-back-more-than-half-of-mondays-rally-as-dip-buyers-cash-in-ee4fa52c": {
+      "acquired": "2026-11-25T16:21:34.165488+00:00",
+      "acquisition_seconds": 2314.165488,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T15:43:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Nvidia’s stock is giving back more than half of Monday’s rally as dip buyers cash in",
+      "url": "https://www.marketwatch.com/story/nvidias-stock-is-giving-back-more-than-half-of-mondays-rally-as-dip-buyers-cash-in-ee4fa52c"
+    },
     "https://www.marketwatch.com/story/nvidias-stock-is-surging-again-what-to-know-before-chasing-the-ai-rally-226688d7": {
       "acquired": "2026-11-23T22:14:35.697621+00:00",
       "acquisition_seconds": 635.697621,
@@ -3176,22 +3160,6 @@
       "status": "SCARTARE",
       "title": "The stock market is hardly cheap, even taking recent declines into account",
       "url": "https://www.marketwatch.com/story/the-stock-market-is-hardly-cheap-even-taking-recent-declines-into-account-fe0a7989"
-    },
-    "https://www.marketwatch.com/story/the-surprising-reason-businesses-cant-keep-up-with-customer-demand-hint-its-not-just-a-strong-u-s-economy-70be4a01": {
-      "acquired": "2026-11-23T16:08:38.882962+00:00",
-      "acquisition_seconds": 338.882962,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T16:03:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "The surprising reason businesses can’t keep up with customer demand. Hint: It’s not just a strong U.S. economy.",
-      "url": "https://www.marketwatch.com/story/the-surprising-reason-businesses-cant-keep-up-with-customer-demand-hint-its-not-just-a-strong-u-s-economy-70be4a01"
     },
     "https://www.marketwatch.com/story/the-wealthiest-10-of-americans-are-pulling-ahead-of-everyone-else-this-is-whats-making-them-richer-bd83c2f6": {
       "acquired": "2026-11-24T18:17:21.444282+00:00",
@@ -3737,6 +3705,22 @@
       "title": "Amphastar Pharmaceuticals to Present at the Piper Sandler 38th Annual Healthcare Conference",
       "url": "https://www.prnewswire.com/news-releases/amphastar-pharmaceuticals-to-present-at-the-piper-sandler-38th-annual-healthcare-conference-302948870.html"
     },
+    "https://www.prnewswire.com/news-releases/andd-leads-again-leverage-shares-by-themes-anthropic-ant-etfs-top-anthropic-etf-trading-for-a-second-straight-day-302950625.html": {
+      "acquired": "2026-11-25T16:21:34.252823+00:00",
+      "acquisition_seconds": 2494.252823,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:40:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "ANDD Leads Again: Leverage Shares by Themes Anthropic (ANT) ETFs Top Anthropic ETF Trading for a Second Straight Day",
+      "url": "https://www.prnewswire.com/news-releases/andd-leads-again-leverage-shares-by-themes-anthropic-ant-etfs-top-anthropic-etf-trading-for-a-second-straight-day-302950625.html"
+    },
     "https://www.prnewswire.com/news-releases/andover-lending-originates-54-million-loan-on-12-site-car-wash-portfolio-302949852.html": {
       "acquired": "2026-11-24T20:47:21.990136+00:00",
       "acquisition_seconds": 681.990136,
@@ -3752,22 +3736,6 @@
       "status": "SCARTARE",
       "title": "Andover Lending Originates $54 Million Loan on 12-Site Car Wash Portfolio",
       "url": "https://www.prnewswire.com/news-releases/andover-lending-originates-54-million-loan-on-12-site-car-wash-portfolio-302949852.html"
-    },
-    "https://www.prnewswire.com/news-releases/apolonia-capital-granted-category-2-license-by-the-uae-capital-market-authority-302948376.html": {
-      "acquired": "2026-11-23T16:08:38.990427+00:00",
-      "acquisition_seconds": 1118.990427,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:50:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Apolonia Capital Granted Category 2 License by the UAE Capital Market Authority",
-      "url": "https://www.prnewswire.com/news-releases/apolonia-capital-granted-category-2-license-by-the-uae-capital-market-authority-302948376.html"
     },
     "https://www.prnewswire.com/news-releases/arthur-j-gallagher--co-to-webcast-investor-meeting-with-management-302948675.html": {
       "acquired": "2026-11-23T21:32:41.823409+00:00",
@@ -3832,22 +3800,6 @@
       "status": "SCARTARE",
       "title": "Aryza Selected to Transform Joe Duffy Group's Financial Services Company, JDM Services Limited, and AI-Driven Customer Conversations",
       "url": "https://www.prnewswire.com/news-releases/aryza-selected-to-transform-joe-duffy-groups-financial-services-company-jdm-services-limited-and-ai-driven-customer-conversations-302949645.html"
-    },
-    "https://www.prnewswire.com/news-releases/as-hr-weighs-ais-risks-financial-finesses-human-backed-platform-wins-personal-finance-tech-of-the-year-302948401.html": {
-      "acquired": "2026-11-23T16:20:39.346917+00:00",
-      "acquisition_seconds": 699.346917,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T16:09:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "As HR Weighs AI's Risks, Financial Finesse's Human-Backed Platform Wins Personal Finance Tech of the Year",
-      "url": "https://www.prnewswire.com/news-releases/as-hr-weighs-ais-risks-financial-finesses-human-backed-platform-wins-personal-finance-tech-of-the-year-302948401.html"
     },
     "https://www.prnewswire.com/news-releases/ascentium-acquires-statura-expanding-its-private-client-business-across-europe-and-the-middle-east-302948130.html": {
       "acquired": "2026-11-24T07:02:20.429811+00:00",
@@ -4793,6 +4745,22 @@
       "title": "CleanSpark Reports Fiscal Fourth Quarter and Full Year 2026 Financial and Operating Results",
       "url": "https://www.prnewswire.com/news-releases/cleanspark-reports-fiscal-fourth-quarter-and-full-year-2026-financial-and-operating-results-302949861.html"
     },
+    "https://www.prnewswire.com/news-releases/client-reviews-keep-accredited-debt-relief-best-overall-in-finders-debt-relief-rankings-302950638.html": {
+      "acquired": "2026-11-25T16:21:34.252823+00:00",
+      "acquisition_seconds": 1714.252823,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:53:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Client Reviews Keep Accredited Debt Relief Best Overall in Finder's Debt Relief Rankings",
+      "url": "https://www.prnewswire.com/news-releases/client-reviews-keep-accredited-debt-relief-best-overall-in-finders-debt-relief-rankings-302950638.html"
+    },
     "https://www.prnewswire.com/news-releases/cloudmargin-wins-risknet-markets-technology-award-2027-for-collateral-management-and-optimisation-product-of-the-year-302950026.html": {
       "acquired": "2026-11-25T12:02:25.076941+00:00",
       "acquisition_seconds": 145.076941,
@@ -5657,22 +5625,6 @@
       "title": "Heading South for the Winter? UNITS® Moving and Portable Storage CEO Shares What Seasonal Movers Need to Know",
       "url": "https://www.prnewswire.com/news-releases/heading-south-for-the-winter-units-moving-and-portable-storage-ceo-shares-what-seasonal-movers-need-to-know-302949548.html"
     },
-    "https://www.prnewswire.com/news-releases/hellonation-article-explains-the-appraisal-process-featuring-real-estate-experts-ray-and-peggy-pierce-302887683.html": {
-      "acquired": "2026-11-23T16:08:38.990427+00:00",
-      "acquisition_seconds": 578.990427,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:59:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "HelloNation Article Explains the Appraisal Process, Featuring Real Estate Experts Ray and Peggy Pierce",
-      "url": "https://www.prnewswire.com/news-releases/hellonation-article-explains-the-appraisal-process-featuring-real-estate-experts-ray-and-peggy-pierce-302887683.html"
-    },
     "https://www.prnewswire.com/news-releases/hellonation-examines-what-buyers-often-miss-during-luxury-home-tours-featuring-luxury-real-estate-expert-kim-nicols-302911290.html": {
       "acquired": "2026-11-23T19:13:13.240208+00:00",
       "acquisition_seconds": 673.240208,
@@ -6025,22 +5977,6 @@
       "title": "Insurance Expert Jeremy Fitzsimmons Explains Homeowners Insurance Coverage in HelloNation",
       "url": "https://www.prnewswire.com/news-releases/insurance-expert-jeremy-fitzsimmons-explains-homeowners-insurance-coverage-in-hellonation-302948525.html"
     },
-    "https://www.prnewswire.com/news-releases/insurance-expert-kathy-powell-highlights-what-determines-how-much-home-or-renters-insurance-you-need-302948366.html": {
-      "acquired": "2026-11-23T15:49:11.818406+00:00",
-      "acquisition_seconds": 731.818406,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:37:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Insurance Expert Kathy Powell Highlights What Determines How Much Home or Renters Insurance You Need",
-      "url": "https://www.prnewswire.com/news-releases/insurance-expert-kathy-powell-highlights-what-determines-how-much-home-or-renters-insurance-you-need-302948366.html"
-    },
     "https://www.prnewswire.com/news-releases/insurance-expert-shonie-christensen-explains-homeowners-insurance-coverage-and-exclusions-in-hellonation-302948710.html": {
       "acquired": "2026-11-24T15:32:19.576945+00:00",
       "acquisition_seconds": 379.576945,
@@ -6056,6 +5992,22 @@
       "status": "SCARTARE",
       "title": "Insurance Expert Shonie Christensen Explains Homeowners Insurance Coverage and Exclusions in HelloNation",
       "url": "https://www.prnewswire.com/news-releases/insurance-expert-shonie-christensen-explains-homeowners-insurance-coverage-and-exclusions-in-hellonation-302948710.html"
+    },
+    "https://www.prnewswire.com/news-releases/intelligrc-launches-trust-center-giving-msps-and-mssps-a-controlled-way-to-share-security-documentation-for-every-client-302950650.html": {
+      "acquired": "2026-11-25T16:21:34.252823+00:00",
+      "acquisition_seconds": 634.252823,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T16:11:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "IntelliGRC Launches Trust Center, Giving MSPs and MSSPs a Controlled Way to Share Security Documentation for Every Client",
+      "url": "https://www.prnewswire.com/news-releases/intelligrc-launches-trust-center-giving-msps-and-mssps-a-controlled-way-to-share-security-documentation-for-every-client-302950650.html"
     },
     "https://www.prnewswire.com/news-releases/intrafi-cofounder-and-ceo-mark-jacobsen-named-ey-entrepreneur-of-the-year-in-financial-services-302949889.html": {
       "acquired": "2026-11-24T21:47:21.377244+00:00",
@@ -7496,22 +7448,6 @@
       "status": "SCARTARE",
       "title": "Third Coast Bank Names Liz Eber Chief Legal and Operating Officer",
       "url": "https://www.prnewswire.com/news-releases/third-coast-bank-names-liz-eber-chief-legal-and-operating-officer-302949870.html"
-    },
-    "https://www.prnewswire.com/news-releases/this-pennsylvania-real-estate-brokerage-is-doubling-down-for-the-changing-market-302947314.html": {
-      "acquired": "2026-11-23T15:49:11.818406+00:00",
-      "acquisition_seconds": 131.818406,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:47:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "This Pennsylvania Real Estate Brokerage Is Doubling Down for the Changing Market",
-      "url": "https://www.prnewswire.com/news-releases/this-pennsylvania-real-estate-brokerage-is-doubling-down-for-the-changing-market-302947314.html"
     },
     "https://www.prnewswire.com/news-releases/tradr-to-launch-six-new-leveraged-etfs-302949924.html": {
       "acquired": "2026-11-25T11:47:19.193241+00:00",
