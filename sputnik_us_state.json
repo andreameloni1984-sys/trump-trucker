@@ -48,39 +48,6 @@
       "title": "Lilly to host Innovation Day 2026",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117664020137490731": {
-      "acquired": "2026-11-23T06:19:26.511636+00:00",
-      "acquisition_seconds": 4303.511636,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-23T05:07:43+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Video post from November 23, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117664020137490731"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117664023227213831": {
-      "acquired": "2026-11-23T05:09:51.056959+00:00",
-      "acquisition_seconds": 81.295883,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-23T05:08:30.668000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117664020137490731",
-      "url": "https://truthsocial.com/@realDonaldTrump/117664023227213831"
-    },
     "https://truthsocial.com/@realDonaldTrump/117665528575591688": {
       "acquired": "2026-11-23T12:27:01.578832+00:00",
       "acquisition_seconds": 3341.578832,
@@ -6443,6 +6410,22 @@
       "status": "SCARTARE",
       "title": "Oasis Management Releases Video Introducing Director Nominees and Outlining Opportunities to Unlock Value at Vail Resorts",
       "url": "https://www.prnewswire.com/news-releases/oasis-management-releases-video-introducing-director-nominees-and-outlining-opportunities-to-unlock-value-at-vail-resorts-302948547.html"
+    },
+    "https://www.prnewswire.com/news-releases/oci-global-announces-closing-of-orascom-construction-transaction-and-confirms-key-dates-for-oci-shareholders-302950189.html": {
+      "acquired": "2026-11-25T05:17:26.561229+00:00",
+      "acquisition_seconds": 326.561229,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T05:12:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "OCI GLOBAL ANNOUNCES CLOSING OF ORASCOM CONSTRUCTION TRANSACTION AND CONFIRMS KEY DATES FOR OCI SHAREHOLDERS",
+      "url": "https://www.prnewswire.com/news-releases/oci-global-announces-closing-of-orascom-construction-transaction-and-confirms-key-dates-for-oci-shareholders-302950189.html"
     },
     "https://www.prnewswire.com/news-releases/oppfi-to-participate-in-nyse-financials-virtual-investor-access-day-302948659.html": {
       "acquired": "2026-11-23T21:17:26.028390+00:00",
