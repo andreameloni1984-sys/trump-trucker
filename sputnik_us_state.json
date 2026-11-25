@@ -554,6 +554,22 @@
       "title": "LeagueShares Files SEC Registration Statements for NBA Basketball Team Performance ETFs",
       "url": "https://www.globenewswire.com/news-release/2026/11/25/3410315/0/en/leagueshares-files-sec-registration-statements-for-nba-basketball-team-performance-etfs.html"
     },
+    "https://www.globenewswire.com/news-release/2026/11/25/3410484/0/en/new-business-formations-running-at-half-a-million-applications-a-month-yet-new-business-phone-setup-still-takes-weeks-why.html": {
+      "acquired": "2026-11-25T17:32:26.473982+00:00",
+      "acquisition_seconds": 1946.473982,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T17:00:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "New Business Formations Running at Half a Million Applications a Month. Yet New Business Phone Setup Still Takes Weeks. Why?",
+      "url": "https://www.globenewswire.com/news-release/2026/11/25/3410484/0/en/new-business-formations-running-at-half-a-million-applications-a-month-yet-new-business-phone-setup-still-takes-weeks-why.html"
+    },
     "https://www.govinfo.gov/app/details/BILLS-116hres916ih": {
       "acquired": "2026-11-23T21:02:30.174583+00:00",
       "acquisition_seconds": 570.174583,
@@ -2682,6 +2698,22 @@
       "title": "HPE just posted its strongest growth ever — but its stock is wavering",
       "url": "https://www.marketwatch.com/story/hpe-just-posted-its-strongest-growth-ever-and-its-stock-is-tacking-on-more-big-gains-4421cebb"
     },
+    "https://www.marketwatch.com/story/hps-stock-is-a-standout-gainer-in-the-tech-rout-as-an-earnings-beat-still-matters-8f6c76ad": {
+      "acquired": "2026-11-25T17:32:26.095223+00:00",
+      "acquisition_seconds": 506.095223,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "earnings",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T17:24:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "HP’s stock is a standout gainer in the tech rout, as an earnings beat still matters",
+      "url": "https://www.marketwatch.com/story/hps-stock-is-a-standout-gainer-in-the-tech-rout-as-an-earnings-beat-still-matters-8f6c76ad"
+    },
     "https://www.marketwatch.com/story/i-hate-that-jensen-huang-is-back-at-nvidia-but-i-love-what-its-done-for-my-401-k-am-i-a-hypocrite-f63c0303": {
       "acquired": "2026-11-25T10:17:16.827873+00:00",
       "acquisition_seconds": 736.827873,
@@ -3545,22 +3577,6 @@
       "status": "SCARTARE",
       "title": "Abich Financial Services Named to Financial Planning's Best RIAs to Work For List for Second Consecutive Year",
       "url": "https://www.prnewswire.com/news-releases/abich-financial-services-named-to-financial-plannings-best-rias-to-work-for-list-for-second-consecutive-year-302949975.html"
-    },
-    "https://www.prnewswire.com/news-releases/abu-dhabi-delegation-develops-new-us-investment-partnerships-during-new-york-visit-302948364.html": {
-      "acquired": "2026-11-23T17:34:49.031589+00:00",
-      "acquisition_seconds": 289.031589,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T17:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Abu Dhabi delegation develops new US investment partnerships during New York visit",
-      "url": "https://www.prnewswire.com/news-releases/abu-dhabi-delegation-develops-new-us-investment-partnerships-during-new-york-visit-302948364.html"
     },
     "https://www.prnewswire.com/news-releases/adp-national-employment-report-preliminary-estimate-for-november-7-2026-302948539.html": {
       "acquired": "2026-11-24T13:17:28.359094+00:00",
@@ -6457,22 +6473,6 @@
       "status": "SCARTARE",
       "title": "Mongolia's Mobicom Joins Telcoin Network as Launch Validator",
       "url": "https://www.prnewswire.com/news-releases/mongolias-mobicom-joins-telcoin-network-as-launch-validator-302950181.html"
-    },
-    "https://www.prnewswire.com/news-releases/natural-launches-voice-enabling-ai-agents-to-accept-card-payments-during-live-calls-302947981.html": {
-      "acquired": "2026-11-23T17:34:49.031589+00:00",
-      "acquisition_seconds": 289.031589,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T17:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Natural Launches Voice, Enabling AI Agents to Accept Card Payments During Live Calls",
-      "url": "https://www.prnewswire.com/news-releases/natural-launches-voice-enabling-ai-agents-to-accept-card-payments-during-live-calls-302947981.html"
     },
     "https://www.prnewswire.com/news-releases/newmark-arranges-305-million-construction-loan-for-luxury-condominium-development-at-101-franklin-in-tribeca-302948665.html": {
       "acquired": "2026-11-23T21:32:41.823409+00:00",
