@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-25T23:00:09.188596+00:00",
+  "updated_at": "2026-11-25T23:02:18.375037+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -12497,7 +12497,7 @@
       "ticker": ""
     }
   },
-  "morning_brief_date": "2026-11-25",
+  "morning_brief_date": "2026-11-26",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
@@ -18341,15 +18341,15 @@
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-25T23:00:09.178297+00:00",
+      "at": "2026-11-25T23:02:18.367181+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
-      "at": "2026-11-25T23:00:09.178297+00:00",
+      "at": "2026-11-25T23:02:18.367181+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-25T23:00:09.178297+00:00",
+      "at": "2026-11-25T23:02:18.367181+00:00",
       "market": false
     }
   }
