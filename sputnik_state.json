@@ -1107,15 +1107,37 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-25T17:17:13.849972+00:00",
+  "updated_at": "2026-11-25T20:16:21.928144+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "f177b0fb4e19630a9fe62e22",
+    "TRUTH_ARCHIVE": "db5d4e37c4ea6cb69c579712",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "db5d4e37c4ea6cb69c579712": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 25, 2026, 3:03 PM Original Post Great job by the Army, and others, in Iowa!!! President DJT Donald J. Trump @realDonaldTrump · November 25, 2026, 12:14 PM Original Post Stocks are down sharply because of the November Third Election results. I wasn’t on the Ballot, but if I was, the results, just like all three times before, would have been much different, and the Stock Market, and your 401-k’s, would be BOOMING. I told you so!!! President DJT Donald J. Trump @realDonaldTrump · November 25, 2026, 10:20 AM Original Post Early reports from Iowa are that the Army’s mitigation efforts have far exceeded expectations. Donald J. Trump @realDonaldTrump · November 24, 2026, 8:02 PM Original Post https:// vimeo.com/1249782646/7e27022b5 4 vimeo.com Dr. Robert Jeffress | Brian Kilmeade Show 11.24.26 This is &quot;Dr. Robert Jeffress | Brian Kilmeade Show 11.24.26&quot; by First Dallas on Vimeo, the home for high quality vide",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-25T20:16:21.191632+00:00",
+      "event_id": "db5d4e37c4ea6cb69c579712",
+      "action_reaction": {
+        "event_id": "db5d4e37c4ea6cb69c579712",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "f177b0fb4e19630a9fe62e22": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8149,29 +8171,6 @@
       "action_reaction": {
         "event_id": "f65d998555885d5d10713ed7",
         "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "dda0de215e13be82b14c16d6": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43290",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549613219184388",
-      "title": "Congressman Jim Baird is a Tremendous Champion for the Great People of Indiana's 4th Congressional District! A recipient of the Bronze Star and Purple Heart, Jim bravely served in the Vietnam War, and brings that same Fighting Spirit to Congress. Jim is working tirelessly to Grow our Economy, Cut Ta",
-      "published": "Tue, 03 Nov 2026 00:12:32 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Jim Baird is a Tremendous Champion for the Great People of Indiana's 4th Congressional District! A recipient of the Bronze Star and Purple Heart, Jim bravely served in the Vietnam War, and brings that same Fighting Spirit to Congress. Jim is working tirelessly to Grow our Economy, Cut Ta Congressman Jim Baird is a Tremendous Champion for the Great People of Indiana's 4th Congressional District! A recipient of the Bronze Star and Purple Heart, Jim bravely served in the Vietnam War, and brings that same Fighting Spirit to Congress. Jim is working tirelessly to Grow our Economy, Cut Taxes and Regulations, Advocate for our Great Farmers and American Agriculture, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Strengthen our Military, Care for our Veterans, Stand with our Brave Law Enforcement, Ensure LAW AND ORDER, Keep our Border SECURE, Stop Migrant Crime, and Protect our always under siege Second Amendment. Jim's opponent, Drew Cox, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Drew Cox is Reckless, Radical, and Dangerous! Jim Baird has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR JIM — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthev",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.617758+00:00",
-      "event_id": "dda0de215e13be82b14c16d6",
-      "action_reaction": {
-        "event_id": "dda0de215e13be82b14c16d6",
-        "event_type": "GEOPOLITICAL_ESCALATION",
         "historical_matches": [],
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
