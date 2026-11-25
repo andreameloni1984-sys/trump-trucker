@@ -1,21 +1,5 @@
 {
   "invest_events": {
-    "https://investor.lilly.com/news-releases/news-release-details/lilly-highlights-strength-breast-cancer-portfolio-new-data": {
-      "acquired": "2026-11-23T23:16:32.780119+00:00",
-      "acquisition_seconds": 6392.780119,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "LLY",
-      "kind": "issuer",
-      "penalized": [],
-      "published": "2026-11-23T21:30:00+00:00",
-      "source": "Eli Lilly Investor Relations",
-      "status": "SCARTARE",
-      "title": "Lilly highlights strength of breast cancer portfolio with new data across validated drivers of hormone receptor-positive disease at the 2026 San Antonio Breast Cancer Symposium",
-      "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-highlights-strength-breast-cancer-portfolio-new-data"
-    },
     "https://truthsocial.com/@realDonaldTrump/117672518077966619": {
       "acquired": "2026-11-24T17:16:31.967455+00:00",
       "acquisition_seconds": 460.730698,
@@ -2363,22 +2347,6 @@
       "title": "S. Res. 974 (IS) - Designating November 29, 2026, as \"Drive Safer Sunday\".",
       "url": "https://www.govinfo.gov/app/details/BILLS-119sres974is"
     },
-    "https://www.govinfo.gov/app/details/PLAW-119publ133": {
-      "acquired": "2026-11-23T21:32:41.818526+00:00",
-      "acquisition_seconds": 641.818526,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "policy",
-      "penalized": [],
-      "published": "2026-11-23T21:22:00+00:00",
-      "source": "Leggi federali / GovInfo",
-      "status": "SCARTARE",
-      "title": "Public Law 119 - 133 - Chiricahua National Park Act",
-      "url": "https://www.govinfo.gov/app/details/PLAW-119publ133"
-    },
     "https://www.marketwatch.com/story/12-days-of-sardines-and-croc-charms-are-advent-calendars-getting-out-of-control-81f24548": {
       "acquired": "2026-11-24T14:02:20.699001+00:00",
       "acquisition_seconds": 740.699001,
@@ -2587,9 +2555,9 @@
       "title": "Here’s your chance to bid on Alex Trebek’s former $6.45 million California ranch and winery",
       "url": "https://www.marketwatch.com/story/heres-your-chance-to-bid-on-alex-trebeks-former-6-45-million-california-ranch-and-winery-0f0cd4f5"
     },
-    "https://www.marketwatch.com/story/hpe-just-posted-its-strongest-growth-ever-and-its-stock-is-tacking-on-more-big-gains-4421cebb": {
-      "acquired": "2026-11-23T21:32:41.761986+00:00",
-      "acquisition_seconds": 281.761986,
+    "https://www.marketwatch.com/story/how-to-spot-bogus-boutiques-and-other-black-friday-shopping-scams-86cc182d": {
+      "acquired": "2026-11-25T21:32:29.566997+00:00",
+      "acquisition_seconds": 209.566997,
       "beneficiaries": [],
       "bias": null,
       "category": "other",
@@ -2597,11 +2565,11 @@
       "issuer": "",
       "kind": "press",
       "penalized": [],
-      "published": "2026-11-23T21:28:00+00:00",
+      "published": "2026-11-25T21:29:00+00:00",
       "source": "MarketWatch / Dow Jones",
       "status": "SCARTARE",
-      "title": "HPE just posted its strongest growth ever — but its stock is wavering",
-      "url": "https://www.marketwatch.com/story/hpe-just-posted-its-strongest-growth-ever-and-its-stock-is-tacking-on-more-big-gains-4421cebb"
+      "title": "How to spot ‘bogus boutiques’ and other Black Friday shopping scams",
+      "url": "https://www.marketwatch.com/story/how-to-spot-bogus-boutiques-and-other-black-friday-shopping-scams-86cc182d"
     },
     "https://www.marketwatch.com/story/hps-stock-is-a-standout-gainer-in-the-tech-rout-as-an-earnings-beat-still-matters-8f6c76ad": {
       "acquired": "2026-11-25T17:32:26.095223+00:00",
@@ -3659,22 +3627,6 @@
       "title": "Applications Now Open for the Jacob Frydman Scholarship for Real Estate Education",
       "url": "https://www.prnewswire.com/news-releases/applications-now-open-for-the-jacob-frydman-scholarship-for-real-estate-education-302950821.html"
     },
-    "https://www.prnewswire.com/news-releases/arthur-j-gallagher--co-to-webcast-investor-meeting-with-management-302948675.html": {
-      "acquired": "2026-11-23T21:32:41.823409+00:00",
-      "acquisition_seconds": 401.823409,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T21:26:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Arthur J. Gallagher & Co. To Webcast Investor Meeting With Management",
-      "url": "https://www.prnewswire.com/news-releases/arthur-j-gallagher--co-to-webcast-investor-meeting-with-management-302948675.html"
-    },
     "https://www.prnewswire.com/news-releases/arthur-tang-and-artta-concept-studio-redefine-commercial-real-estate-landscapes-with-luxury-interiors-that-set-every-projects-standard-302950341.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
       "acquisition_seconds": 143.040313,
@@ -4330,22 +4282,6 @@
       "status": "SCARTARE",
       "title": "Cboe Clear Europe Sets Annual Record for Client Equity Trades Cleared",
       "url": "https://www.prnewswire.com/news-releases/cboe-clear-europe-sets-annual-record-for-client-equity-trades-cleared-302949882.html"
-    },
-    "https://www.prnewswire.com/news-releases/cboe-global-markets-to-present-at-the-goldman-sachs-financial-services-conference-on-december-9-302948630.html": {
-      "acquired": "2026-11-23T21:32:41.823409+00:00",
-      "acquisition_seconds": 161.823409,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T21:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Cboe Global Markets to Present at the Goldman Sachs Financial Services Conference on December 9",
-      "url": "https://www.prnewswire.com/news-releases/cboe-global-markets-to-present-at-the-goldman-sachs-financial-services-conference-on-december-9-302948630.html"
     },
     "https://www.prnewswire.com/news-releases/cboe-launches-kpi-binary-options-a-new-way-to-trade-the-numbers-behind-earnings-302949514.html": {
       "acquired": "2026-11-24T15:02:29.312273+00:00",
@@ -5979,22 +5915,6 @@
       "title": "Jianzhi Education Signs Non-Binding Comprehensive Cross-Border E-Commerce Cooperation Framework Agreement with DIANDIAN EASY PAY, Exploring New Opportunities in AI-Enabled Cross-Border Commerce",
       "url": "https://www.prnewswire.com/news-releases/jianzhi-education-signs-non-binding-comprehensive-cross-border-e-commerce-cooperation-framework-agreement-with-diandian-easy-pay-exploring-new-opportunities-in-ai-enabled-cross-border-commerce-302949373.html"
     },
-    "https://www.prnewswire.com/news-releases/jp-morgan-asset-management-to-transfer-jpmorgan-active-bond-etf-jbnd-to-nyse-arca-from-nyse-302948671.html": {
-      "acquired": "2026-11-23T21:32:41.823409+00:00",
-      "acquisition_seconds": 161.823409,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T21:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "J.P. Morgan Asset Management to Transfer JPMorgan Active Bond ETF (JBND) to NYSE Arca from NYSE",
-      "url": "https://www.prnewswire.com/news-releases/jp-morgan-asset-management-to-transfer-jpmorgan-active-bond-etf-jbnd-to-nyse-arca-from-nyse-302948671.html"
-    },
     "https://www.prnewswire.com/news-releases/justa-crm-launches-to-transform-how-residential-property-management-companies-win-new-business-302948434.html": {
       "acquired": "2026-11-24T14:02:20.796541+00:00",
       "acquisition_seconds": 680.796541,
@@ -6266,22 +6186,6 @@
       "status": "SCARTARE",
       "title": "Mongolia's Mobicom Joins Telcoin Network as Launch Validator",
       "url": "https://www.prnewswire.com/news-releases/mongolias-mobicom-joins-telcoin-network-as-launch-validator-302950181.html"
-    },
-    "https://www.prnewswire.com/news-releases/newmark-arranges-305-million-construction-loan-for-luxury-condominium-development-at-101-franklin-in-tribeca-302948665.html": {
-      "acquired": "2026-11-23T21:32:41.823409+00:00",
-      "acquisition_seconds": 161.823409,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T21:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Newmark Arranges $305 Million Construction Loan for Luxury Condominium Development at 101 Franklin in Tribeca",
-      "url": "https://www.prnewswire.com/news-releases/newmark-arranges-305-million-construction-loan-for-luxury-condominium-development-at-101-franklin-in-tribeca-302948665.html"
     },
     "https://www.prnewswire.com/news-releases/nil-club-partners-with-stash-to-help-student-athletes-start-investing-302948359.html": {
       "acquired": "2026-11-24T13:47:27.513216+00:00",
