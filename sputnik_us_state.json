@@ -2794,6 +2794,22 @@
       "title": "Grocery stores have ‘staggering deals’ for Thanksgiving — but don’t get used to these lower prices just yet",
       "url": "https://www.marketwatch.com/story/grocery-stores-have-staggering-deals-for-thanksgiving-but-dont-get-used-to-these-lower-prices-just-yet-7adfc7f5"
     },
+    "https://www.marketwatch.com/story/heres-how-to-find-value-in-cybersecurity-stocks-after-a-strong-year-7fbe1f80": {
+      "acquired": "2026-11-25T12:32:40.027291+00:00",
+      "acquisition_seconds": 160.027291,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T12:30:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Here’s how to find value in cybersecurity stocks after a strong year",
+      "url": "https://www.marketwatch.com/story/heres-how-to-find-value-in-cybersecurity-stocks-after-a-strong-year-7fbe1f80"
+    },
     "https://www.marketwatch.com/story/heres-your-chance-to-bid-on-alex-trebeks-former-6-45-million-california-ranch-and-winery-0f0cd4f5": {
       "acquired": "2026-11-24T10:02:21.453762+00:00",
       "acquisition_seconds": 261.453762,
@@ -3370,22 +3386,6 @@
       "title": "Trump is open to capping credit-card interest rates — but holiday shoppers shouldn’t bank on it yet",
       "url": "https://www.marketwatch.com/story/trump-is-open-to-capping-credit-card-interest-rates-but-holiday-shoppers-shouldnt-bank-on-it-yet-34260705"
     },
-    "https://www.marketwatch.com/story/trump-wants-jensen-huang-back-at-nvidia-what-will-it-take-to-stop-the-tech-selloff-3f6b091f": {
-      "acquired": "2026-11-23T12:39:10.662524+00:00",
-      "acquisition_seconds": 790.662524,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T12:26:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Trump wants Jensen Huang back at Nvidia. What will it take to stop the tech selloff?",
-      "url": "https://www.marketwatch.com/story/trump-wants-jensen-huang-back-at-nvidia-what-will-it-take-to-stop-the-tech-selloff-3f6b091f"
-    },
     "https://www.marketwatch.com/story/trumps-push-to-reinstate-jensen-huang-signals-nvidias-ceo-is-too-big-to-fail-10709210": {
       "acquired": "2026-11-23T18:47:19.575244+00:00",
       "acquisition_seconds": 259.575244,
@@ -3673,22 +3673,6 @@
       "status": "SCARTARE",
       "title": "AllianceBernstein Global High Income Fund, Inc. RELEASES MONTHLY PORTFOLIO UPDATE",
       "url": "https://www.prnewswire.com/news-releases/alliancebernstein-global-high-income-fund-inc-releases-monthly-portfolio-update-302948635.html"
-    },
-    "https://www.prnewswire.com/news-releases/alliancebernstein-launches-ab-equity-income-etf-302947704.html": {
-      "acquired": "2026-11-23T12:39:10.736634+00:00",
-      "acquisition_seconds": 550.736634,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T12:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "AllianceBernstein Launches AB Equity Income ETF",
-      "url": "https://www.prnewswire.com/news-releases/alliancebernstein-launches-ab-equity-income-etf-302947704.html"
     },
     "https://www.prnewswire.com/news-releases/alliancebernstein-national-municipal-income-fund-inc-releases-monthly-portfolio-update-302948652.html": {
       "acquired": "2026-11-23T21:14:39.818857+00:00",
@@ -5177,22 +5161,6 @@
       "status": "SCARTARE",
       "title": "DataGroomr Introduces MCP Server to Bring Salesforce Data Quality Management into AI Assistants",
       "url": "https://www.prnewswire.com/news-releases/datagroomr-introduces-mcp-server-to-bring-salesforce-data-quality-management-into-ai-assistants-302948239.html"
-    },
-    "https://www.prnewswire.com/news-releases/deloitte-participation-in-black-friday-cyber-monday-shopping-expected-to-hit-10-year-high-302947335.html": {
-      "acquired": "2026-11-23T12:39:10.736634+00:00",
-      "acquisition_seconds": 550.736634,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T12:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Deloitte: Participation in Black Friday-Cyber Monday Shopping Expected to Hit 10-year High",
-      "url": "https://www.prnewswire.com/news-releases/deloitte-participation-in-black-friday-cyber-monday-shopping-expected-to-hit-10-year-high-302947335.html"
     },
     "https://www.prnewswire.com/news-releases/denver-broncos-foundation-and-college-track-announce-four-year-partnership-to-expand-opportunities-for-denver-scholars-302948505.html": {
       "acquired": "2026-11-24T16:02:30.265747+00:00",
@@ -7049,22 +7017,6 @@
       "status": "SCARTARE",
       "title": "Parks Associates Releases State of Multifamily 2026 Report Highlighting AI, Connectivity, and Technology ROI",
       "url": "https://www.prnewswire.com/news-releases/parks-associates-releases-state-of-multifamily-2026-report-highlighting-ai-connectivity-and-technology-roi-302948833.html"
-    },
-    "https://www.prnewswire.com/news-releases/patients-gain-new-treatment-options-in-a-busy-month-for-drug-approvals-302948100.html": {
-      "acquired": "2026-11-23T12:39:10.736634+00:00",
-      "acquisition_seconds": 550.736634,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T12:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Patients Gain New Treatment Options in a Busy Month for Drug Approvals",
-      "url": "https://www.prnewswire.com/news-releases/patients-gain-new-treatment-options-in-a-busy-month-for-drug-approvals-302948100.html"
     },
     "https://www.prnewswire.com/news-releases/permian-basin-royalty-trust-announces-results-of-special-meeting-called-by-softvest-302948651.html": {
       "acquired": "2026-11-23T21:14:39.818857+00:00",
