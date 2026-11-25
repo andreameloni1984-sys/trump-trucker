@@ -3001,22 +3001,6 @@
       "title": "S&P 500’s slide through a key trendline — again — is an ominous sign, history suggests",
       "url": "https://www.marketwatch.com/story/s-p-500s-slide-through-a-key-trendline-again-is-an-ominous-sign-history-suggests-def8b99f"
     },
-    "https://www.marketwatch.com/story/see-how-much-more-money-the-richest-americans-are-spending-on-the-holidays-compared-to-everyone-else-f0ff3f4b": {
-      "acquired": "2026-11-23T18:21:20.701370+00:00",
-      "acquisition_seconds": 440.70137,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T18:14:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "See how much more money the richest Americans are spending on the holidays compared to everyone else",
-      "url": "https://www.marketwatch.com/story/see-how-much-more-money-the-richest-americans-are-spending-on-the-holidays-compared-to-everyone-else-f0ff3f4b"
-    },
     "https://www.marketwatch.com/story/short-sellers-get-smoked-as-nvidia-tallies-biggest-one-day-gain-in-stock-market-history-e9dc6e9c": {
       "acquired": "2026-11-23T20:47:25.154430+00:00",
       "acquisition_seconds": 445.15443,
@@ -5192,6 +5176,22 @@
       "status": "SCARTARE",
       "title": "Ecer.com Expands EcerClaw AI Ecosystem with Lobster CRM for End-to-End B2B Sales Management",
       "url": "https://www.prnewswire.com/news-releases/ecercom-expands-ecerclaw-ai-ecosystem-with-lobster-crm-for-end-to-end-b2b-sales-management-302950570.html"
+    },
+    "https://www.prnewswire.com/news-releases/egan-jones-notes-higher-borrowing-costs-alongside-steady-credit-fundamentals-302950756.html": {
+      "acquired": "2026-11-25T18:17:22.289342+00:00",
+      "acquisition_seconds": 262.289342,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T18:13:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Egan-Jones Notes Higher Borrowing Costs Alongside Steady Credit Fundamentals",
+      "url": "https://www.prnewswire.com/news-releases/egan-jones-notes-higher-borrowing-costs-alongside-steady-credit-fundamentals-302950756.html"
     },
     "https://www.prnewswire.com/news-releases/elie-saab-amplia-su-cartera-residencial-global-con-maison-171-en-el-upper-east-side-de-manhattan-302949393.html": {
       "acquired": "2026-11-24T14:02:20.796541+00:00",
