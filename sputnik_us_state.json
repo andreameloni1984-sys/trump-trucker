@@ -48,39 +48,6 @@
       "title": "Lilly to host Innovation Day 2026",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
     },
-    "https://truthsocial.com/@realDonaldTrump/117665528575591688": {
-      "acquired": "2026-11-23T12:27:01.578832+00:00",
-      "acquisition_seconds": 3341.578832,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-23T11:31:20+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Video post from November 23, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117665528575591688"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117665529427047942": {
-      "acquired": "2026-11-23T11:35:15.778885+00:00",
-      "acquisition_seconds": 223.383806,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-23T11:31:33.453000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117665528575591688",
-      "url": "https://truthsocial.com/@realDonaldTrump/117665529427047942"
-    },
     "https://truthsocial.com/@realDonaldTrump/117666141823845971": {
       "acquired": "2026-11-23T14:09:14.342194+00:00",
       "acquisition_seconds": 116.801354,
@@ -3291,6 +3258,22 @@
       "title": "The return of Jensen Huang has saved the U.S. stock market — for now. Why the rebound may not last.",
       "url": "https://www.marketwatch.com/story/the-return-of-jensen-huang-has-saved-the-u-s-stock-market-for-now-why-the-rebound-may-not-last-f72656ce"
     },
+    "https://www.marketwatch.com/story/the-s-p-500-is-headed-to-8-200-and-downturns-like-this-one-are-actually-part-of-the-reason-why-says-jpmorgan-b6acae4b": {
+      "acquired": "2026-11-25T11:32:18.417280+00:00",
+      "acquisition_seconds": 318.41728,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T11:27:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The S&P 500 is headed to 8,200 — and downturns like this one are actually part of the reason why, says JPMorgan",
+      "url": "https://www.marketwatch.com/story/the-s-p-500-is-headed-to-8-200-and-downturns-like-this-one-are-actually-part-of-the-reason-why-says-jpmorgan-b6acae4b"
+    },
     "https://www.marketwatch.com/story/the-stock-market-is-hardly-cheap-even-taking-recent-declines-into-account-fe0a7989": {
       "acquired": "2026-11-24T21:32:21.837961+00:00",
       "acquisition_seconds": 621.837961,
@@ -4650,6 +4633,22 @@
       "status": "SCARTARE",
       "title": "Burford Capital appoints Jim Kilman as non-executive director",
       "url": "https://www.prnewswire.com/news-releases/burford-capital-appoints-jim-kilman-as-non-executive-director-302947135.html"
+    },
+    "https://www.prnewswire.com/news-releases/bybit-introduces-strategy-backtesting-for-spot-grid-and-futures-grid-bots-302950442.html": {
+      "acquired": "2026-11-25T11:32:18.438643+00:00",
+      "acquisition_seconds": 618.438643,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T11:22:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Bybit Introduces Strategy Backtesting for Spot Grid and Futures Grid Bots",
+      "url": "https://www.prnewswire.com/news-releases/bybit-introduces-strategy-backtesting-for-spot-grid-and-futures-grid-bots-302950442.html"
     },
     "https://www.prnewswire.com/news-releases/bybit-trading-bots-and-copy-trading-now-support-antusdt-tradfi-perpetual-contract-302948236.html": {
       "acquired": "2026-11-23T13:21:33.294031+00:00",
@@ -6123,6 +6122,22 @@
       "title": "Huawei und CMA führen gemeinsam die nationale Zahlungslösung ein, um die Transformation des globalen Zahlungsverkehrs zu beschleunigen.",
       "url": "https://www.prnewswire.com/news-releases/huawei-und-cma-fuhren-gemeinsam-die-nationale-zahlungslosung-ein-um-die-transformation-des-globalen-zahlungsverkehrs-zu-beschleunigen-302950391.html"
     },
+    "https://www.prnewswire.com/news-releases/huawei-y-cma-lanzan-conjuntamente-una-solucion-nacional-de-pagos-302950449.html": {
+      "acquired": "2026-11-25T11:32:18.438643+00:00",
+      "acquisition_seconds": 198.438643,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T11:29:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Huawei y CMA lanzan conjuntamente una solución nacional de pagos",
+      "url": "https://www.prnewswire.com/news-releases/huawei-y-cma-lanzan-conjuntamente-una-solucion-nacional-de-pagos-302950449.html"
+    },
     "https://www.prnewswire.com/news-releases/hybrid-grading-approach-launches-hga-glass-the-most-advanced-card-grade-made-from-aerospace-aluminum-and-glass-302947648.html": {
       "acquired": "2026-11-23T12:12:41.737131+00:00",
       "acquisition_seconds": 761.737131,
@@ -6906,6 +6921,22 @@
       "status": "SCARTARE",
       "title": "Noah Opens 19th Global Black Diamond Summit to Explore New Approaches to Wealth Security in the AI Era",
       "url": "https://www.prnewswire.com/news-releases/noah-opens-19th-global-black-diamond-summit-to-explore-new-approaches-to-wealth-security-in-the-ai-era-302949431.html"
+    },
+    "https://www.prnewswire.com/news-releases/noah-reports-q3-results-international-aum-up-10-7-in-usd-terms--platform-model-expands-across-more-channels-and-markets-302950441.html": {
+      "acquired": "2026-11-25T11:32:18.438643+00:00",
+      "acquisition_seconds": 678.438643,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T11:21:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Noah Reports Q3 Results: International AUM Up 10.7% in USD Terms -- Platform model expands across more channels and markets",
+      "url": "https://www.prnewswire.com/news-releases/noah-reports-q3-results-international-aum-up-10-7-in-usd-terms--platform-model-expands-across-more-channels-and-markets-302950441.html"
     },
     "https://www.prnewswire.com/news-releases/nordstrom-rack-to-open-new-location-in-crestview-hills-kentucky-302947325.html": {
       "acquired": "2026-11-23T15:08:39.316302+00:00",
