@@ -2457,22 +2457,6 @@
       "title": "A bipartisan backlash is hitting Nvidia in Washington in the wake of Trump’s push for Huang’s return",
       "url": "https://www.marketwatch.com/story/a-bipartisan-backlash-is-hitting-nvidia-in-washington-in-the-wake-of-trumps-push-for-huangs-return-565626f2"
     },
-    "https://www.marketwatch.com/story/amazon-may-have-just-found-a-cheap-way-to-get-a-lot-more-out-of-its-chips-bd822bd5": {
-      "acquired": "2026-11-23T19:02:44.236739+00:00",
-      "acquisition_seconds": 944.236739,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T18:47:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Amazon may have just found a ‘cheap’ way to get a lot more out of its chips",
-      "url": "https://www.marketwatch.com/story/amazon-may-have-just-found-a-cheap-way-to-get-a-lot-more-out-of-its-chips-bd822bd5"
-    },
     "https://www.marketwatch.com/story/americans-dont-like-trumps-tariffs-hes-doubling-down-anyway-as-soon-as-this-week-74c8bed5": {
       "acquired": "2026-11-24T16:32:28.064633+00:00",
       "acquisition_seconds": 508.064633,
@@ -3288,22 +3272,6 @@
       "status": "SCARTARE",
       "title": "Trump is open to capping credit-card interest rates — but holiday shoppers shouldn’t bank on it yet",
       "url": "https://www.marketwatch.com/story/trump-is-open-to-capping-credit-card-interest-rates-but-holiday-shoppers-shouldnt-bank-on-it-yet-34260705"
-    },
-    "https://www.marketwatch.com/story/trumps-push-to-reinstate-jensen-huang-signals-nvidias-ceo-is-too-big-to-fail-10709210": {
-      "acquired": "2026-11-23T18:47:19.575244+00:00",
-      "acquisition_seconds": 259.575244,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "management",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T18:43:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Trump’s push to reinstate Jensen Huang signals Nvidia’s CEO is too big to fail",
-      "url": "https://www.marketwatch.com/story/trumps-push-to-reinstate-jensen-huang-signals-nvidias-ceo-is-too-big-to-fail-10709210"
     },
     "https://www.marketwatch.com/story/u-s-proposes-fresh-tariffs-on-china-others-as-trump-doubles-down-on-his-favorite-trade-weapon-cd9a1df9": {
       "acquired": "2026-11-25T13:32:19.426169+00:00",
