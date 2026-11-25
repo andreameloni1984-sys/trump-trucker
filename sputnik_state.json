@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-25T06:02:14.453376+00:00",
+  "updated_at": "2026-11-25T12:12:13.148346+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "fceacbe4f6105c445469b43b": {
+      "source": "WHITE_HOUSE_RSS",
+      "feed_url": "https://www.whitehouse.gov/feed/",
+      "url": "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/",
+      "primary_url": "",
+      "title": "First Lady Melania Trump Secures Reunification of Nine Additional Children with their Families",
+      "published": "Wed, 25 Nov 2026 12:01:00 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "First Lady Melania Trump Secures Reunification of Nine Additional Children with their Families Bringing Total to 43 Amid Russia-Ukraine War First Lady Melania Trump has successfully facilitated her seventh reunion of Russian and Ukrainian children with their families, bringing the total number of children reunited through her humanitarian efforts to 43. “We can heal the world through peace, and peace begins with our children. Every child reunited with […] The post First Lady Melania Trump Secures Reunification of Nine Additional Children with their Families appeared first on The White House.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-25T12:12:10.538825+00:00",
+      "event_id": "fceacbe4f6105c445469b43b",
+      "action_reaction": {
+        "event_id": "fceacbe4f6105c445469b43b",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "feeb003b7977b3f1fd1c0e1c": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8162,29 +8185,6 @@
         },
         "evidence": "HISTORICAL_ANALOGUE"
       }
-    },
-    "77255e3c78eee46d6cbedfcb": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43286",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549616885070091",
-      "title": "It is my Great Honor to endorse America First Patriot, Max Engling, who is running to be the next Secretary of State of the wonderful State of Indiana! A lifelong Hoosier, very successful Civic Leader, and former Staffer to GREAT U.S. Senator Jim Banks, Max has dedicated his life to serving the Comm",
-      "published": "Tue, 03 Nov 2026 00:13:28 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Max Engling, who is running to be the next Secretary of State of the wonderful State of Indiana! A lifelong Hoosier, very successful Civic Leader, and former Staffer to GREAT U.S. Senator Jim Banks, Max has dedicated his life to serving the Comm It is my Great Honor to endorse America First Patriot, Max Engling, who is running to be the next Secretary of State of the wonderful State of Indiana! A lifelong Hoosier, very successful Civic Leader, and former Staffer to GREAT U.S. Senator Jim Banks, Max has dedicated his life to serving the Community which he loves so much. Max has an incredible wife, Kelcey, and four beautiful children. A true MAGA Warrior, Max understands that, ALL VOTERS MUST SHOW PHOTO VOTER I.D. (IDENTIFICATION!) AND, ALL VOTERS MUST SHOW PROOF OF CITIZENSHIP IN ORDER TO VOTE! The Dumocrats love to CHEAT, and Max will work tirelessly to Safeguard Indiana's Elections. Max will also focus on helping us continue to Grow the Economy, Champion our Amazing Farmers and Agriculture, Stop Migrant Crime, Keep Men out of Women's Sports, and Protect our always under siege Second Amendment. Max Engling has my Complete and Total Endorsement to be the next Secretary of State of Indiana. GET OUT AND VOTE FOR MAX — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/indiana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.616126+00:00",
-      "event_id": "77255e3c78eee46d6cbedfcb",
-      "action_reaction": {
-        "event_id": "77255e3c78eee46d6cbedfcb",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13279,7 +13279,8 @@
     "fe8819f08272f9829e320c4a": "2026-11-23T19:30:11.438149+00:00",
     "6cc1023ced4d239cb3926168": "2026-11-23T23:51:12.079518+00:00",
     "14b48b05bb9668c79391e185": "2026-11-24T17:39:10.453248+00:00",
-    "bf43b62c670f27d948292354": "2026-11-24T19:21:10.746103+00:00"
+    "bf43b62c670f27d948292354": "2026-11-24T19:21:10.746103+00:00",
+    "fceacbe4f6105c445469b43b": "2026-11-25T12:12:10.538812+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18344,7 +18345,7 @@
   "analyst_brief_date": "2026-11-25",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 13,
+    "Trump": 14,
     "chiamate al mercato": 0
   },
   "analyst_report_week": "2026-W47"
