@@ -16,23 +16,6 @@
       "title": "Lilly highlights strength of breast cancer portfolio with new data across validated drivers of hormone receptor-positive disease at the 2026 San Antonio Breast Cancer Symposium",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-highlights-strength-breast-cancer-portfolio-new-data"
     },
-    "https://truthsocial.com/@realDonaldTrump/117667060434959655": {
-      "acquired": "2026-11-23T18:10:06.821019+00:00",
-      "acquisition_seconds": 552.682973,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-23T18:00:54.781000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Iowa is a very special place to me, a place that I won, by substantial margins, in all three Elections but, whether I won or lost, would never deter me from making a correct decision. As everyone knows, there is a Military “clean up” operation, without which, a very dangerous situation exists. In 20",
-      "url": "https://truthsocial.com/@realDonaldTrump/117667060434959655"
-    },
     "https://truthsocial.com/@realDonaldTrump/117667276373895254": {
       "acquired": "2026-11-23T19:02:44.354372+00:00",
       "acquisition_seconds": 415.193833,
@@ -2569,22 +2552,6 @@
       "status": "SCARTARE",
       "title": "Coming next year: Medicare Advantage plans without drug coverage for almost 640,000 people and fewer choices for the rest",
       "url": "https://www.marketwatch.com/story/coming-next-year-medicare-advantage-plans-without-drug-coverage-for-almost-640-000-people-and-fewer-choices-for-the-rest-25242d69"
-    },
-    "https://www.marketwatch.com/story/consumer-stocks-seen-as-safe-bet-amid-cracks-in-ai-trade-are-among-the-s-p-500s-biggest-losers-monday-80cf8f81": {
-      "acquired": "2026-11-23T18:10:06.628391+00:00",
-      "acquisition_seconds": 966.628391,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T17:54:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Consumer stocks, seen as safe bet amid cracks in AI trade, are among the S&P 500’s biggest losers Monday",
-      "url": "https://www.marketwatch.com/story/consumer-stocks-seen-as-safe-bet-amid-cracks-in-ai-trade-are-among-the-s-p-500s-biggest-losers-monday-80cf8f81"
     },
     "https://www.marketwatch.com/story/dells-stock-rises-as-the-ai-boom-helps-sales-more-than-double-cfb8cf65": {
       "acquired": "2026-11-24T21:16:04.774458+00:00",
@@ -7689,6 +7656,22 @@
       "status": "SCARTARE",
       "title": "West Virginia National Auto Insurance Company Names Insurance Veteran Stephen Peters, CPCU, CIC, ARe, CLCS, State Marketing Manager",
       "url": "https://www.prnewswire.com/news-releases/west-virginia-national-auto-insurance-company-names-insurance-veteran-stephen-peters-cpcu-cic-are-clcs-state-marketing-manager-302948712.html"
+    },
+    "https://www.prnewswire.com/news-releases/westwood-financial-announces-third-quarter-2026-results-302950749.html": {
+      "acquired": "2026-11-25T18:02:27.883892+00:00",
+      "acquisition_seconds": 87.883892,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T18:01:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "WESTWOOD FINANCIAL ANNOUNCES THIRD QUARTER 2026 RESULTS",
+      "url": "https://www.prnewswire.com/news-releases/westwood-financial-announces-third-quarter-2026-results-302950749.html"
     },
     "https://www.prnewswire.com/news-releases/what-your-homeowners-policy-brings-to-the-table-302948897.html": {
       "acquired": "2026-11-24T14:17:23.028790+00:00",
