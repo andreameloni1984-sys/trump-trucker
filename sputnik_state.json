@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-25T20:27:10.577331+00:00",
+  "updated_at": "2026-11-25T20:29:49.328663+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "67a3c33843e1bdc463216857": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43731",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117678961891442355",
+      "title": "Rob Sands, the new future Governor of Iowa, is obviously unhappy that the Obama created (2009!) mess was so perfectly handled by the U.S. Army through a flawless detonation, that he’s now complaining about the lead up to the event. He hurt and delayed the process. Was absolutely no help. Just anothe",
+      "published": "Wed, 25 Nov 2026 20:27:36 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Rob Sands, the new future Governor of Iowa, is obviously unhappy that the Obama created (2009!) mess was so perfectly handled by the U.S. Army through a flawless detonation, that he’s now complaining about the lead up to the event. He hurt and delayed the process. Was absolutely no help. Just anothe Rob Sands, the new future Governor of Iowa, is obviously unhappy that the Obama created (2009!) mess was so perfectly handled by the U.S. Army through a flawless detonation, that he’s now complaining about the lead up to the event. He hurt and delayed the process. Was absolutely no help. Just another politician. He should rejoice at this great success, not nitpick and issue phony complaints on “transparency.” I will remember! President DJT",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-25T20:29:49.305601+00:00",
+      "event_id": "67a3c33843e1bdc463216857",
+      "action_reaction": {
+        "event_id": "67a3c33843e1bdc463216857",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "db5d4e37c4ea6cb69c579712": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8152,29 +8175,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "f65d998555885d5d10713ed7": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43291",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549612344709600",
-      "title": "Congresswoman Victoria Spartz is doing a fantastic job representing Indiana's 5th Congressional District! A Successful Businesswoman, Civic Leader, and Highly Respected State Senator, prior to becoming a distinguished Congresswoman, Victoria has dedicated her life to serving her Community. Her oppon",
-      "published": "Tue, 03 Nov 2026 00:12:19 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congresswoman Victoria Spartz is doing a fantastic job representing Indiana's 5th Congressional District! A Successful Businesswoman, Civic Leader, and Highly Respected State Senator, prior to becoming a distinguished Congresswoman, Victoria has dedicated her life to serving her Community. Her oppon Congresswoman Victoria Spartz is doing a fantastic job representing Indiana's 5th Congressional District! A Successful Businesswoman, Civic Leader, and Highly Respected State Senator, prior to becoming a distinguished Congresswoman, Victoria has dedicated her life to serving her Community. Her opponent, JD Ford, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. JD Ford is Reckless, Radical, and Dangerous! On the other hand, in Congress, Victoria is fighting hard to Grow our Economy, Cut Taxes and Regulations, Champion American Energy DOMINANCE, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Strengthen our Brave Military/Veterans, Ensure PEACE THROUGH STRENGTH, and Defend our always under siege Second Amendment. Victoria Spartz has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR VICTORIA — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.618120+00:00",
-      "event_id": "f65d998555885d5d10713ed7",
-      "action_reaction": {
-        "event_id": "f65d998555885d5d10713ed7",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13271,7 +13271,8 @@
     "14b48b05bb9668c79391e185": "2026-11-24T17:39:10.453248+00:00",
     "bf43b62c670f27d948292354": "2026-11-24T19:21:10.746103+00:00",
     "fceacbe4f6105c445469b43b": "2026-11-25T12:12:10.538812+00:00",
-    "49c53ee02b203ecf7772301e": "2026-11-25T14:42:09.556745+00:00"
+    "49c53ee02b203ecf7772301e": "2026-11-25T14:42:09.556745+00:00",
+    "67a3c33843e1bdc463216857": "2026-11-25T20:29:49.305584+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18342,11 +18343,15 @@
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-25T20:27:10.564412+00:00",
+      "at": "2026-11-25T20:29:49.315351+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
-      "at": "2026-11-25T20:27:10.564412+00:00",
+      "at": "2026-11-25T20:29:49.315351+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43731": {
+      "at": "2026-11-25T20:29:49.315351+00:00",
       "market": false
     }
   }
