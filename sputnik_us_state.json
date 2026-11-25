@@ -2730,22 +2730,6 @@
       "title": "Consumer stocks, seen as safe bet amid cracks in AI trade, are among the S&P 500’s biggest losers Monday",
       "url": "https://www.marketwatch.com/story/consumer-stocks-seen-as-safe-bet-amid-cracks-in-ai-trade-are-among-the-s-p-500s-biggest-losers-monday-80cf8f81"
     },
-    "https://www.marketwatch.com/story/cybersecurity-stocks-have-been-hot-and-now-crowdstrike-inks-deal-to-buy-zscaler-df8fd163": {
-      "acquired": "2026-11-23T12:27:01.623160+00:00",
-      "acquisition_seconds": 661.62316,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T12:16:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Cybersecurity stocks have been hot — and now CrowdStrike inks deal to buy Zscaler",
-      "url": "https://www.marketwatch.com/story/cybersecurity-stocks-have-been-hot-and-now-crowdstrike-inks-deal-to-buy-zscaler-df8fd163"
-    },
     "https://www.marketwatch.com/story/dells-stock-rises-as-the-ai-boom-helps-sales-more-than-double-cfb8cf65": {
       "acquired": "2026-11-24T21:16:04.774458+00:00",
       "acquisition_seconds": 124.774458,
@@ -3497,22 +3481,6 @@
       "status": "SCARTARE",
       "title": "Zendaya and Tom Holland buy a home on 1 acre in London for $10 million",
       "url": "https://www.marketwatch.com/story/zendaya-and-tom-holland-buy-a-home-on-1-acre-in-london-for-10-million-a433e7cd"
-    },
-    "https://www.prnewswire.com/news-releases/2027-cruise-forecast-calls-for-22-4-million-us-ocean-cruisers-up-3-6-302948106.html": {
-      "acquired": "2026-11-23T12:27:01.662210+00:00",
-      "acquisition_seconds": 721.66221,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T12:15:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "2027 Cruise Forecast Calls for 22.4 Million U.S. Ocean Cruisers, Up 3.6%",
-      "url": "https://www.prnewswire.com/news-releases/2027-cruise-forecast-calls-for-22-4-million-us-ocean-cruisers-up-3-6-302948106.html"
     },
     "https://www.prnewswire.com/news-releases/76-of-us-companies-plan-to-reskill-employees-up-from-64-a-year-ago-302946271.html": {
       "acquired": "2026-11-23T13:48:46.079925+00:00",
@@ -4441,6 +4409,22 @@
       "status": "SCARTARE",
       "title": "Bizcap launches in Poland, accelerating European expansion",
       "url": "https://www.prnewswire.com/news-releases/bizcap-launches-in-poland-accelerating-european-expansion-302950066.html"
+    },
+    "https://www.prnewswire.com/news-releases/bizcap-start-activiteiten-in-polen-en-versnelt-europese-expansie-302950467.html": {
+      "acquired": "2026-11-25T12:17:21.128587+00:00",
+      "acquisition_seconds": 741.128587,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T12:05:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Bizcap start activiteiten in Polen en versnelt Europese expansie",
+      "url": "https://www.prnewswire.com/news-releases/bizcap-start-activiteiten-in-polen-en-versnelt-europese-expansie-302950467.html"
     },
     "https://www.prnewswire.com/news-releases/black-friday-returns-to-dxfeed-save-up-to-50-on-market-data-302947874.html": {
       "acquired": "2026-11-23T14:09:14.217212+00:00",
