@@ -32,22 +32,6 @@
       "title": "Lilly highlights strength of breast cancer portfolio with new data across validated drivers of hormone receptor-positive disease at the 2026 San Antonio Breast Cancer Symposium",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-highlights-strength-breast-cancer-portfolio-new-data"
     },
-    "https://truthsocial.com/@realDonaldTrump/117666713950631493": {
-      "acquired": "2026-11-23T17:19:30.334981+00:00",
-      "acquisition_seconds": 2803.334981,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-23T16:32:47+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Image post from November 23, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117666713950631493"
-    },
     "https://truthsocial.com/@realDonaldTrump/117667060434959655": {
       "acquired": "2026-11-23T18:10:06.821019+00:00",
       "acquisition_seconds": 552.682973,
@@ -520,6 +504,70 @@
       "status": "SCARTARE",
       "title": "Fort Worth Magazine Names Seven Goranson Bain Ausley Lawyers to Its 2026 Top Attorneys List",
       "url": "https://www.globenewswire.com/news-release/2026/11/25/3410067/0/en/fort-worth-magazine-names-seven-goranson-bain-ausley-lawyers-to-its-2026-top-attorneys-list.html"
+    },
+    "https://www.globenewswire.com/news-release/2026/11/25/3410165/0/en/royaland-rlndf-adds-regalia-crazy-8-card-game-to-google-play-its-second-mobile-game-now-available.html": {
+      "acquired": "2026-11-25T16:47:26.741188+00:00",
+      "acquisition_seconds": 13646.741188,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T13:00:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "RoyaLand (RLNDF) Adds Regalia Crazy 8 Card Game to Google Play, Its Second Mobile Game Now Available",
+      "url": "https://www.globenewswire.com/news-release/2026/11/25/3410165/0/en/royaland-rlndf-adds-regalia-crazy-8-card-game-to-google-play-its-second-mobile-game-now-available.html"
+    },
+    "https://www.globenewswire.com/news-release/2026/11/25/3410225/0/en/thread-lifts-in-nyc-thread-count-is-the-wrong-unit-to-shop-on-and-the-technique-variables-that-decide-the-result-are-not-the-ones-patients-are-quoted.html": {
+      "acquired": "2026-11-25T16:47:26.741188+00:00",
+      "acquisition_seconds": 10046.741188,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T14:00:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Thread Lifts in NYC: Thread Count Is the Wrong Unit to Shop On, and the Technique Variables That Decide the Result Are Not the Ones Patients Are Quoted",
+      "url": "https://www.globenewswire.com/news-release/2026/11/25/3410225/0/en/thread-lifts-in-nyc-thread-count-is-the-wrong-unit-to-shop-on-and-the-technique-variables-that-decide-the-result-are-not-the-ones-patients-are-quoted.html"
+    },
+    "https://www.globenewswire.com/news-release/2026/11/25/3410261/0/en/locafy-announces-termination-of-proposed-map-labs-acquisition.html": {
+      "acquired": "2026-11-25T16:47:26.741188+00:00",
+      "acquisition_seconds": 9146.741188,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T14:15:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Locafy Announces Termination of Proposed Map Labs Acquisition",
+      "url": "https://www.globenewswire.com/news-release/2026/11/25/3410261/0/en/locafy-announces-termination-of-proposed-map-labs-acquisition.html"
+    },
+    "https://www.globenewswire.com/news-release/2026/11/25/3410315/0/en/leagueshares-files-sec-registration-statements-for-nba-basketball-team-performance-etfs.html": {
+      "acquired": "2026-11-25T16:47:26.741188+00:00",
+      "acquisition_seconds": 7046.741188,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "sec",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T14:50:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "LeagueShares Files SEC Registration Statements for NBA Basketball Team Performance ETFs",
+      "url": "https://www.globenewswire.com/news-release/2026/11/25/3410315/0/en/leagueshares-files-sec-registration-statements-for-nba-basketball-team-performance-etfs.html"
     },
     "https://www.govinfo.gov/app/details/BILLS-116hres916ih": {
       "acquired": "2026-11-23T21:02:30.174583+00:00",
@@ -2425,6 +2473,22 @@
       "title": "12 days of sardines and Croc charms: Are Advent calendars getting out of control?",
       "url": "https://www.marketwatch.com/story/12-days-of-sardines-and-croc-charms-are-advent-calendars-getting-out-of-control-81f24548"
     },
+    "https://www.marketwatch.com/story/a-66-year-old-nurse-faces-retirement-with-just-500-saved-whos-to-blame-4249a0fd": {
+      "acquired": "2026-11-25T16:47:26.139519+00:00",
+      "acquisition_seconds": 1046.139519,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T16:30:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "A 66-year-old nurse is facing down retirement with just $500 saved. Who’s to blame?",
+      "url": "https://www.marketwatch.com/story/a-66-year-old-nurse-faces-retirement-with-just-500-saved-whos-to-blame-4249a0fd"
+    },
     "https://www.marketwatch.com/story/a-bipartisan-backlash-is-hitting-nvidia-in-washington-in-the-wake-of-trumps-push-for-huangs-return-565626f2": {
       "acquired": "2026-11-24T20:47:21.954878+00:00",
       "acquisition_seconds": 321.954878,
@@ -2680,6 +2744,22 @@
       "status": "SCARTARE",
       "title": "Inflation gets worse. Now the Fed no choice but to raise U.S. interest rates.",
       "url": "https://www.marketwatch.com/story/inflation-gets-worse-now-the-fed-no-choice-but-to-raise-u-s-interest-rates-8b0c2c1f"
+    },
+    "https://www.marketwatch.com/story/ive-been-married-for-58-years-its-our-money-not-his-and-hers-why-dont-others-feel-the-same-c5745889": {
+      "acquired": "2026-11-25T16:47:26.139519+00:00",
+      "acquisition_seconds": 146.139519,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T16:45:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "I’ve been married for 58 years. It’s ‘our’ money, not ‘his’ and ‘hers.’ Why do so many couples keep their finances separate?",
+      "url": "https://www.marketwatch.com/story/ive-been-married-for-58-years-its-our-money-not-his-and-hers-why-dont-others-feel-the-same-c5745889"
     },
     "https://www.marketwatch.com/story/ive-paid-for-long-term-care-insurance-for-20-years-is-it-still-worth-it-1b2cd52d": {
       "acquired": "2026-11-23T19:47:25.299606+00:00",
@@ -3112,22 +3192,6 @@
       "status": "SCARTARE",
       "title": "The real price of Jensen Huang’s return to Nvidia: Higher regulatory costs for the company — and the entire AI industry",
       "url": "https://www.marketwatch.com/story/the-real-price-of-jensen-huangs-return-to-nvidia-higher-regulatory-costs-for-the-company-and-the-entire-ai-industry-982002d4"
-    },
-    "https://www.marketwatch.com/story/the-return-of-jensen-huang-has-saved-the-u-s-stock-market-for-now-why-the-rebound-may-not-last-f72656ce": {
-      "acquired": "2026-11-23T16:49:01.173668+00:00",
-      "acquisition_seconds": 301.173668,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T16:44:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "The return of Jensen Huang has saved the U.S. stock market — for now. Why the rebound may not last.",
-      "url": "https://www.marketwatch.com/story/the-return-of-jensen-huang-has-saved-the-u-s-stock-market-for-now-why-the-rebound-may-not-last-f72656ce"
     },
     "https://www.marketwatch.com/story/the-s-p-500-is-headed-to-8-200-and-downturns-like-this-one-are-actually-part-of-the-reason-why-says-jpmorgan-b6acae4b": {
       "acquired": "2026-11-25T11:32:18.417280+00:00",
@@ -5017,6 +5081,22 @@
       "title": "Denver Broncos Foundation and College Track Announce Four-Year Partnership to Expand Opportunities for Denver Scholars",
       "url": "https://www.prnewswire.com/news-releases/denver-broncos-foundation-and-college-track-announce-four-year-partnership-to-expand-opportunities-for-denver-scholars-302948505.html"
     },
+    "https://www.prnewswire.com/news-releases/difc-bericht-future-of-finance-dubai-setzt-weltweit-maWstabe-durch-die-integration-von-funf-saulen-der-wettbewerbsfahigkeit-und-verbessert-den-zugang-zu-unternehmen-kapital-und-fachkraften-302950674.html": {
+      "acquired": "2026-11-25T16:47:26.203539+00:00",
+      "acquisition_seconds": 866.203539,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T16:33:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "DIFC-Bericht „Future of Finance\": Dubai setzt weltweit Maßstäbe durch die Integration von fünf Säulen der Wettbewerbsfähigkeit und verbessert den Zugang zu Unternehmen, Kapital und Fachkräften",
+      "url": "https://www.prnewswire.com/news-releases/difc-bericht-future-of-finance-dubai-setzt-weltweit-maWstabe-durch-die-integration-von-funf-saulen-der-wettbewerbsfahigkeit-und-verbessert-den-zugang-zu-unternehmen-kapital-und-fachkraften-302950674.html"
+    },
     "https://www.prnewswire.com/news-releases/difc-future-of-finance-report-dubai-sets-global-benchmark-integrating-five-pillars-of-competitiveness-deepening-access-to-businesses-capital-and-talent-302950419.html": {
       "acquired": "2026-11-25T11:02:21.354829+00:00",
       "acquisition_seconds": 381.354829,
@@ -5033,22 +5113,6 @@
       "title": "DIFC Future of Finance Report: Dubai sets global benchmark integrating five pillars of competitiveness, deepening access to businesses, capital and talent",
       "url": "https://www.prnewswire.com/news-releases/difc-future-of-finance-report-dubai-sets-global-benchmark-integrating-five-pillars-of-competitiveness-deepening-access-to-businesses-capital-and-talent-302950419.html"
     },
-    "https://www.prnewswire.com/news-releases/dominican-government-highlights-progress-on-larimar-city--resort-which-now-involves-nearly-3-000-people-302948443.html": {
-      "acquired": "2026-11-23T16:49:01.154126+00:00",
-      "acquisition_seconds": 841.154126,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T16:35:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Dominican government highlights progress on Larimar City & Resort, which now involves nearly 3,000 people",
-      "url": "https://www.prnewswire.com/news-releases/dominican-government-highlights-progress-on-larimar-city--resort-which-now-involves-nearly-3-000-people-302948443.html"
-    },
     "https://www.prnewswire.com/news-releases/dow-reclaims-50-000-as-inflation-and-gdp-data-land-before-thanksgiving-302950361.html": {
       "acquired": "2026-11-25T12:02:25.076941+00:00",
       "acquisition_seconds": 145.076941,
@@ -5064,22 +5128,6 @@
       "status": "SCARTARE",
       "title": "Dow Reclaims 50,000 as Inflation and GDP Data Land Before Thanksgiving",
       "url": "https://www.prnewswire.com/news-releases/dow-reclaims-50-000-as-inflation-and-gdp-data-land-before-thanksgiving-302950361.html"
-    },
-    "https://www.prnewswire.com/news-releases/drip-capital-ranks-in-top-100-on-the-2026-deloitte-technology-fast-500-302948445.html": {
-      "acquired": "2026-11-23T16:49:01.154126+00:00",
-      "acquisition_seconds": 661.154126,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T16:38:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Drip Capital Ranks in Top 100 on the 2026 Deloitte Technology Fast 500™",
-      "url": "https://www.prnewswire.com/news-releases/drip-capital-ranks-in-top-100-on-the-2026-deloitte-technology-fast-500-302948445.html"
     },
     "https://www.prnewswire.com/news-releases/dxfeed-wins-best-ai-trading-technology-award-for-dxscript-at-2026-sell-side-technology-awards-302948599.html": {
       "acquired": "2026-11-24T13:47:27.513216+00:00",
@@ -6360,22 +6408,6 @@
       "status": "SCARTARE",
       "title": "Natural Launches Voice, Enabling AI Agents to Accept Card Payments During Live Calls",
       "url": "https://www.prnewswire.com/news-releases/natural-launches-voice-enabling-ai-agents-to-accept-card-payments-during-live-calls-302947981.html"
-    },
-    "https://www.prnewswire.com/news-releases/ne-property-management-announces-the-opening-of-silo-29-apartments-in-midwest-city-featuring-private-garages-walking-trails-and-a-short-commute-to-downtown-oklahoma-city-302948356.html": {
-      "acquired": "2026-11-23T16:49:01.154126+00:00",
-      "acquisition_seconds": 661.154126,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T16:38:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "NE Property Management Announces the Opening of Silo 29 Apartments in Midwest City, Featuring Private Garages, Walking Trails and a Short Commute to Downtown Oklahoma City",
-      "url": "https://www.prnewswire.com/news-releases/ne-property-management-announces-the-opening-of-silo-29-apartments-in-midwest-city-featuring-private-garages-walking-trails-and-a-short-commute-to-downtown-oklahoma-city-302948356.html"
     },
     "https://www.prnewswire.com/news-releases/newmark-arranges-305-million-construction-loan-for-luxury-condominium-development-at-101-franklin-in-tribeca-302948665.html": {
       "acquired": "2026-11-23T21:32:41.823409+00:00",
