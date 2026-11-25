@@ -1,3 +1,4 @@
+import pytest
 from datetime import datetime, timezone
 
 import sputnik_analyst
@@ -28,6 +29,26 @@ def test_ordinary_posts_are_not_market_calls():
                  "Oil prices have dropped precipitously after the Midterm Elections",
                  "Great rally in Pennsylvania tonight, buy tickets at the link"):
         assert mc.detect(text) is None, text
+
+
+@pytest.fixture(autouse=True)
+def no_network(monkeypatch):
+    monkeypatch.setattr(mc, "_prices", lambda: (None, None))
+
+
+def test_message_levels_long_and_short():
+    item = {"title": "THIS IS A GREAT TIME TO BUY!!! DJT", "published": "2025-04-09T13:37:00+00:00"}
+    text = mc.message(item, prices=lambda: (6000.0, 1.0))
+    assert "🟢 LONG (compra)" in text
+    assert "🛑 Stop loss: 180 punti sotto" in text and "🎯 Take profit: 360 punti sopra" in text
+    assert "perdi circa 4,00 €" in text and "guadagni circa 8,00 €" in text
+    short = mc.message({"title": "The stock market is going to crash", "published": ""}, prices=lambda: (6000.0, None))
+    assert "🔴 SHORT (vendi)" in short and "180 punti sopra" in short and "€" not in short
+
+
+def test_message_without_prices_has_no_levels():
+    text = mc.message({"title": "THIS IS A GREAT TIME TO BUY!!! DJT", "published": ""})
+    assert "Stop loss" not in text
 
 
 def test_message_has_direction_time_and_no_order():

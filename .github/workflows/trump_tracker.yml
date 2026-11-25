@@ -53,6 +53,8 @@ jobs:
           # Lista miliardari in sputnik_analyst.WATCHLIST; qui eventuali CIK aggiuntivi.
           SPUTNIK_CIKS: ${{ vars.SPUTNIK_EXTRA_CIKS }}
           SPUTNIK_ANALYST_TELEGRAM: ${{ vars.SPUTNIK_ANALYST_TELEGRAM || '1' }}
+          ACCOUNT_SIZE: ${{ vars.ACCOUNT_SIZE }}
+          RISK_PCT: ${{ vars.RISK_PCT }}
           SPUTNIK_BRIEF_HOUR_ROME: "7"
           SPUTNIK_SOCIAL_ENABLED: "1"
           GAGARIN_CLOUD_API_URL: ${{ secrets.GAGARIN_CLOUD_API_URL }}
