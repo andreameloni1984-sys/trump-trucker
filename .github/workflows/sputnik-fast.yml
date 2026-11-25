@@ -27,6 +27,8 @@ jobs:
       - name: Post di Trump e Casa Bianca
         env:
           SPUTNIK_ANALYST_TELEGRAM: ${{ vars.SPUTNIK_ANALYST_TELEGRAM || '1' }}
+          ACCOUNT_SIZE: ${{ vars.ACCOUNT_SIZE }}
+          RISK_PCT: ${{ vars.RISK_PCT }}
           SPUTNIK_SOCIAL_ENABLED: "1"
           SPUTNIK_TELEGRAM_POLLING: "0"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
