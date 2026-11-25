@@ -3336,6 +3336,22 @@
       "title": "Visiting Las Vegas is getting too expensive — but don’t blame airfares",
       "url": "https://www.marketwatch.com/story/visiting-las-vegas-is-getting-too-expensive-but-dont-blame-airfares-12e2c588"
     },
+    "https://www.marketwatch.com/story/we-are-living-in-perilous-times-if-nvidias-jensen-huang-dictates-your-401-k-balance-e0942d1e": {
+      "acquired": "2026-11-25T15:17:19.598056+00:00",
+      "acquisition_seconds": 859.598056,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T15:03:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "We are living in perilous times if Nvidia’s Jensen Huang dictates your 401(k) balance",
+      "url": "https://www.marketwatch.com/story/we-are-living-in-perilous-times-if-nvidias-jensen-huang-dictates-your-401-k-balance-e0942d1e"
+    },
     "https://www.marketwatch.com/story/what-the-options-market-says-to-do-with-nvidias-stock-and-the-rest-of-the-stock-market-de9584ae": {
       "acquired": "2026-11-25T13:32:19.426169+00:00",
       "acquisition_seconds": 979.426169,
@@ -3719,22 +3735,6 @@
       "status": "SCARTARE",
       "title": "Andover Lending Originates $54 Million Loan on 12-Site Car Wash Portfolio",
       "url": "https://www.prnewswire.com/news-releases/andover-lending-originates-54-million-loan-on-12-site-car-wash-portfolio-302949852.html"
-    },
-    "https://www.prnewswire.com/news-releases/anthropic-goes-public-direxion-goes-2x-long-or-short-302948339.html": {
-      "acquired": "2026-11-23T15:20:11.642711+00:00",
-      "acquisition_seconds": 851.642711,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:06:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Anthropic Goes Public. Direxion Goes 2X, Long or Short.",
-      "url": "https://www.prnewswire.com/news-releases/anthropic-goes-public-direxion-goes-2x-long-or-short-302948339.html"
     },
     "https://www.prnewswire.com/news-releases/apolonia-capital-granted-category-2-license-by-the-uae-capital-market-authority-302948376.html": {
       "acquired": "2026-11-23T16:08:38.990427+00:00",
@@ -5240,22 +5240,6 @@
       "title": "Euler Foundation appoints Euler Technologies to lead next phase of growth and adoption",
       "url": "https://www.prnewswire.com/news-releases/euler-foundation-appoints-euler-technologies-to-lead-next-phase-of-growth-and-adoption-302943727.html"
     },
-    "https://www.prnewswire.com/news-releases/every-bottle-has-a-story-vnyrd-launches-a-new-digital-home-for-wine-lovers-302948277.html": {
-      "acquired": "2026-11-23T15:20:11.642711+00:00",
-      "acquisition_seconds": 671.642711,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:09:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Every Bottle Has a Story: VNYRD Launches a New Digital Home for Wine Lovers",
-      "url": "https://www.prnewswire.com/news-releases/every-bottle-has-a-story-vnyrd-launches-a-new-digital-home-for-wine-lovers-302948277.html"
-    },
     "https://www.prnewswire.com/news-releases/expert-consumers-names-melio-its-best-small-business-payment-solution2026-melio-recognized-by-expert-consumers-for-helping-businesses-pay-vendors-302949283.html": {
       "acquired": "2026-11-24T10:32:27.458222+00:00",
       "acquisition_seconds": 147.458222,
@@ -5975,6 +5959,22 @@
       "status": "SCARTARE",
       "title": "Insurance Agent Mara Geraghty Explains Hurricane Deductibles in Florida Homeowners Insurance in HelloNation",
       "url": "https://www.prnewswire.com/news-releases/insurance-agent-mara-geraghty-explains-hurricane-deductibles-in-florida-homeowners-insurance-in-hellonation-302949634.html"
+    },
+    "https://www.prnewswire.com/news-releases/insurance-expert-chris-winkelmann-helps-families-calculate-their-life-insurance-coverage-amount-302950604.html": {
+      "acquired": "2026-11-25T15:17:19.748039+00:00",
+      "acquisition_seconds": 319.748039,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:12:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Insurance Expert Chris Winkelmann Helps Families Calculate Their Life Insurance Coverage Amount",
+      "url": "https://www.prnewswire.com/news-releases/insurance-expert-chris-winkelmann-helps-families-calculate-their-life-insurance-coverage-amount-302950604.html"
     },
     "https://www.prnewswire.com/news-releases/insurance-expert-jeremy-fitzsimmons-explains-homeowners-insurance-coverage-in-hellonation-302948525.html": {
       "acquired": "2026-11-24T16:02:30.265747+00:00",
@@ -7272,6 +7272,22 @@
       "title": "Stifel Highlights 40 Years as Listed Company: NYSE Content Update",
       "url": "https://www.prnewswire.com/news-releases/stifel-highlights-40-years-as-listed-company-nyse-content-update-302949461.html"
     },
+    "https://www.prnewswire.com/news-releases/stirlingshire-investments-appoints-daniel-gicklhorn-as-chief-technology-officer-302950605.html": {
+      "acquired": "2026-11-25T15:17:19.748039+00:00",
+      "acquisition_seconds": 259.748039,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:13:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Stirlingshire Investments Appoints Daniel Gicklhorn as Chief Technology Officer",
+      "url": "https://www.prnewswire.com/news-releases/stirlingshire-investments-appoints-daniel-gicklhorn-as-chief-technology-officer-302950605.html"
+    },
     "https://www.prnewswire.com/news-releases/sun-sand-and-serenity-new-connectivity-brings-turks-and-caicos-island-paradise-even-closer-302949435.html": {
       "acquired": "2026-11-24T13:17:28.359094+00:00",
       "acquisition_seconds": 988.359094,
@@ -7463,22 +7479,6 @@
       "status": "SCARTARE",
       "title": "This Pennsylvania Real Estate Brokerage Is Doubling Down for the Changing Market",
       "url": "https://www.prnewswire.com/news-releases/this-pennsylvania-real-estate-brokerage-is-doubling-down-for-the-changing-market-302947314.html"
-    },
-    "https://www.prnewswire.com/news-releases/topgum-reports-eleventh-consecutive-record-quarter-q3-revenue-exceeds-40-million-driven-by-approximately-52-growth-in-dietary-supplements-302948345.html": {
-      "acquired": "2026-11-23T15:20:11.642711+00:00",
-      "acquisition_seconds": 311.642711,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:15:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "TopGum Reports Eleventh Consecutive Record Quarter: Q3 Revenue Exceeds $40 Million, Driven by Approximately 52% Growth in Dietary Supplements",
-      "url": "https://www.prnewswire.com/news-releases/topgum-reports-eleventh-consecutive-record-quarter-q3-revenue-exceeds-40-million-driven-by-approximately-52-growth-in-dietary-supplements-302948345.html"
     },
     "https://www.prnewswire.com/news-releases/tradr-to-launch-six-new-leveraged-etfs-302949924.html": {
       "acquired": "2026-11-25T11:47:19.193241+00:00",
@@ -7767,22 +7767,6 @@
       "status": "SCARTARE",
       "title": "Worldline relaunches Global Collect: a dedicated cross-border payments brand for Travel and Digital commerce",
       "url": "https://www.prnewswire.com/news-releases/worldline-relaunches-global-collect-a-dedicated-cross-border-payments-brand-for-travel-and-digital-commerce-302948697.html"
-    },
-    "https://www.prnewswire.com/news-releases/wps-health-launches-medicare-supplement-high-deductible-plan-for-wisconsin-seniors-as-some-medicare-advantage-plans-exit-302947716.html": {
-      "acquired": "2026-11-23T15:08:39.316302+00:00",
-      "acquisition_seconds": 219.316302,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:05:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "WPS Health Launches Medicare Supplement High-Deductible Plan for Wisconsin Seniors as Some Medicare Advantage Plans Exit",
-      "url": "https://www.prnewswire.com/news-releases/wps-health-launches-medicare-supplement-high-deductible-plan-for-wisconsin-seniors-as-some-medicare-advantage-plans-exit-302947716.html"
     },
     "https://www.prnewswire.com/news-releases/yeepay-presenteert-one-stop-betaalnetwerk-en-breidt-strategische-partnerschappen-uit-op-singapore-fintech-festival-2026-302948817.html": {
       "acquired": "2026-11-24T02:03:02.843221+00:00",
