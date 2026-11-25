@@ -659,6 +659,16 @@ def _default_price(symbol: str) -> float | None:
         return None
 
 
+def _market_call(title: str) -> str | None:
+    """"RIALZO"/"RIBASSO" se il post è un invito esplicito a comprare/vendere (es. "GREAT TIME TO BUY")."""
+    try:
+        import sputnik_market_call
+        found = sputnik_market_call.detect(title)
+    except Exception:
+        return None
+    return found[0] if found else None
+
+
 def track_predictions(state: dict[str, Any], now: datetime | None = None,
                       price: Callable[[str], float | None] = _default_price) -> int:
     """Registra le ipotesi nate dalle notizie di Trump e le verifica dopo 24 ore.
@@ -678,8 +688,15 @@ def track_predictions(state: dict[str, Any], now: datetime | None = None,
             cache[symbol] = price(symbol)
         return cache[symbol]
 
+    seen = state.setdefault("analyst_posts_seen", {})
     for item in export_context(state, now)["trump"]:
-        for b in item.get("bias") or []:
+        biases = list(item.get("bias") or [])
+        call = _market_call(item.get("title", ""))
+        if call and not any(str(b.get("instrument", "")).upper() == "NASDAQ100" for b in biases):
+            biases.append({"instrument": "NASDAQ100", "bias": "LONG_BIAS" if call == "RIALZO" else "SHORT_BIAS"})
+        if item.get("url"):
+            seen[item["url"]] = {"at": now.isoformat(), "market": bool(biases)}
+        for b in biases:
             inst = str(b.get("instrument", "")).upper()
             key = f"{item.get('url')}|{inst}"
             if key in preds or inst not in PRICE_SYMBOLS:
@@ -699,6 +716,8 @@ def track_predictions(state: dict[str, Any], now: datetime | None = None,
         sign = 1 if "LONG" in str(p["bias"]).upper() else -1
         p.update({"exit": last, "move": round(move, 5), "correct": move * sign > 0, "checked_at": now.isoformat()})
         checked += 1
+    cutoff = now - timedelta(days=30)
+    state["analyst_posts_seen"] = {u: v for u, v in seen.items() if datetime.fromisoformat(v["at"]) >= cutoff}
     if len(preds) > 1000:
         state["analyst_predictions"] = dict(sorted(preds.items(), key=lambda kv: kv[1]["first_seen"])[-1000:])
     return checked
@@ -739,6 +758,12 @@ def report_message(state: dict[str, Any], now: datetime | None = None) -> str:
              "🇺🇸 Ipotesi dalle notizie di Trump, verificate dopo 24 ore:",
              f"• Ultimi 7 giorni: {line(week)}",
              f"• Da quando è attivo: {line(preds)}"]
+    posts = [v for v in (state.get("analyst_posts_seen") or {}).values()
+             if now - datetime.fromisoformat(v["at"]) <= timedelta(days=7)]
+    if posts:
+        market = sum(1 for v in posts if v.get("market"))
+        lines.append(f"• Post di Trump letti in 7 giorni: {len(posts)}, con effetto sui mercati: {market}"
+                     + (" (nessuno parlava di dazi, petrolio, tassi o borsa)" if not market else ""))
     by_inst: dict[str, list[dict]] = {}
     for p in preds:
         by_inst.setdefault(p["instrument"], []).append(p)
