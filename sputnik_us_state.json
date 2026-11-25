@@ -32,39 +32,6 @@
       "title": "Lilly highlights strength of breast cancer portfolio with new data across validated drivers of hormone receptor-positive disease at the 2026 San Antonio Breast Cancer Symposium",
       "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-highlights-strength-breast-cancer-portfolio-new-data"
     },
-    "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026": {
-      "acquired": "2026-11-23T23:16:32.780119+00:00",
-      "acquisition_seconds": 29792.780119,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "LLY",
-      "kind": "issuer",
-      "penalized": [],
-      "published": "2026-11-23T15:00:00+00:00",
-      "source": "Eli Lilly Investor Relations",
-      "status": "SCARTARE",
-      "title": "Lilly to host Innovation Day 2026",
-      "url": "https://investor.lilly.com/news-releases/news-release-details/lilly-host-innovation-day-2026"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117666313179684854": {
-      "acquired": "2026-11-23T15:08:39.297385+00:00",
-      "acquisition_seconds": 1067.060645,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-23T14:50:52.569000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Congratulations to NVIDIA on having made, what I consider to be, an absolutely GREAT decision! President DONALD J. TRUMP",
-      "url": "https://truthsocial.com/@realDonaldTrump/117666313179684854"
-    },
     "https://truthsocial.com/@realDonaldTrump/117666713950631493": {
       "acquired": "2026-11-23T17:19:30.334981+00:00",
       "acquisition_seconds": 2803.334981,
@@ -4473,6 +4440,22 @@
       "title": "Capline Dental Services Cuts Insurance Eligibility Verification Time by 75% Using AI-Driven Checks",
       "url": "https://www.prnewswire.com/news-releases/capline-dental-services-cuts-insurance-eligibility-verification-time-by-75-using-ai-driven-checks-302948212.html"
     },
+    "https://www.prnewswire.com/news-releases/car-insurance-costs-and-discounts-explained-in-hellonation-featuring-insurance-agent-mike-oboyle-302949921.html": {
+      "acquired": "2026-11-25T15:02:23.218335+00:00",
+      "acquisition_seconds": 443.218335,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T14:55:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Car Insurance Costs and Discounts Explained in HelloNation Featuring Insurance Agent Mike O'Boyle",
+      "url": "https://www.prnewswire.com/news-releases/car-insurance-costs-and-discounts-explained-in-hellonation-featuring-insurance-agent-mike-oboyle-302949921.html"
+    },
     "https://www.prnewswire.com/news-releases/cboe-clear-europe-sets-annual-record-for-client-equity-trades-cleared-302949882.html": {
       "acquired": "2026-11-25T08:02:27.694309+00:00",
       "acquisition_seconds": 147.694309,
@@ -5481,22 +5464,6 @@
       "title": "First Horizon Foundation Announces Naming of Endowed Chair in Translational Neuroscience at St. Jude Children's Research Hospital",
       "url": "https://www.prnewswire.com/news-releases/first-horizon-foundation-announces-naming-of-endowed-chair-in-translational-neuroscience-at-st-jude-childrens-research-hospital-302949638.html"
     },
-    "https://www.prnewswire.com/news-releases/firstservice-residential-illinois-president-brian-butler-receives-cai-illinois-andrea-sorgani-presidents-award-302947685.html": {
-      "acquired": "2026-11-23T15:08:39.316302+00:00",
-      "acquisition_seconds": 519.316302,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "FirstService Residential Illinois President Brian Butler Receives CAI Illinois Andrea Sorgani President's Award",
-      "url": "https://www.prnewswire.com/news-releases/firstservice-residential-illinois-president-brian-butler-receives-cai-illinois-andrea-sorgani-presidents-award-302947685.html"
-    },
     "https://www.prnewswire.com/news-releases/fortune-announces-speakers-and-partners-for-brainstorm-ai-2026-in-san-francisco-dec-7-and-8-302948797.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
       "acquisition_seconds": 146.294018,
@@ -5608,6 +5575,22 @@
       "status": "SCARTARE",
       "title": "Golden 1 Credit Union Opens 2027 Annual Scholarship Program, Offering $500,000 in Scholarships",
       "url": "https://www.prnewswire.com/news-releases/golden-1-credit-union-opens-2027-annual-scholarship-program-offering-500-000-in-scholarships-302948719.html"
+    },
+    "https://www.prnewswire.com/news-releases/gse-worldwide-expands-strategic-partnership-with-bc-partners-credit-302949978.html": {
+      "acquired": "2026-11-25T15:02:23.218335+00:00",
+      "acquisition_seconds": 143.218335,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "GSE Worldwide Expands Strategic Partnership with BC Partners Credit",
+      "url": "https://www.prnewswire.com/news-releases/gse-worldwide-expands-strategic-partnership-with-bc-partners-credit-302949978.html"
     },
     "https://www.prnewswire.com/news-releases/hakluyt-celebrates-inaugural-essay-prize-302950533.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
@@ -5881,6 +5864,22 @@
       "title": "In HelloNation, Insurance Expert Ellie Mills of Cutler Bay, FL Explains Loss of Use Coverage for Renters",
       "url": "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-ellie-mills-of-cutler-bay-fl-explains-loss-of-use-coverage-for-renters-302948484.html"
     },
+    "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-ellie-mills-of-deerfield-beach-fl-explains-what-renters-insurance-really-covers-302948493.html": {
+      "acquired": "2026-11-25T15:02:23.218335+00:00",
+      "acquisition_seconds": 443.218335,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T14:55:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "In HelloNation, Insurance Expert Ellie Mills of Deerfield Beach, FL Explains What Renters Insurance Really Covers",
+      "url": "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-ellie-mills-of-deerfield-beach-fl-explains-what-renters-insurance-really-covers-302948493.html"
+    },
     "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-kelli-palmquist-of-roseau-mn-explains-how-seasonal-insurance-risks-affect-coverage-302948341.html": {
       "acquired": "2026-11-23T16:35:33.612455+00:00",
       "acquisition_seconds": 333.612455,
@@ -5928,6 +5927,22 @@
       "status": "SCARTARE",
       "title": "InComm Payments Launches The Gift Card Shop on TikTok Shop",
       "url": "https://www.prnewswire.com/news-releases/incomm-payments-launches-the-gift-card-shop-on-tiktok-shop-302948688.html"
+    },
+    "https://www.prnewswire.com/news-releases/informe-sobre-el-futuro-de-las-finanzas-del-difc-302950593.html": {
+      "acquired": "2026-11-25T15:02:23.218335+00:00",
+      "acquisition_seconds": 983.218335,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T14:46:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Informe sobre el futuro de las finanzas del DIFC",
+      "url": "https://www.prnewswire.com/news-releases/informe-sobre-el-futuro-de-las-finanzas-del-difc-302950593.html"
     },
     "https://www.prnewswire.com/news-releases/infrastructure-capital-announces-dividends-for-its-bond-income-etf-bnds-equity-income-etf-icap-small-cap-income-etf-scap-and-nasdaq-option-income-etf-qvol-302950203.html": {
       "acquired": "2026-11-25T11:47:19.193241+00:00",
@@ -6217,22 +6232,6 @@
       "title": "Leverage Shares by Themes Anthropic (ANT) ETFs Among the Most Traded on First Day of Trading",
       "url": "https://www.prnewswire.com/news-releases/leverage-shares-by-themes-anthropic-ant-etfs-among-the-most-traded-on-first-day-of-trading-302949642.html"
     },
-    "https://www.prnewswire.com/news-releases/lifesecure-launches-starscape-administrators-an-end-to-end-tpa-solution-for-the-insurance-industry-302947359.html": {
-      "acquired": "2026-11-23T15:08:39.316302+00:00",
-      "acquisition_seconds": 519.316302,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "LifeSecure Launches Starscape Administrators, an End-to-End TPA Solution for the Insurance Industry",
-      "url": "https://www.prnewswire.com/news-releases/lifesecure-launches-starscape-administrators-an-end-to-end-tpa-solution-for-the-insurance-industry-302947359.html"
-    },
     "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948213.html": {
       "acquired": "2026-11-23T17:08:04.265705+00:00",
       "acquisition_seconds": 484.265705,
@@ -6280,6 +6279,22 @@
       "status": "SCARTARE",
       "title": "MAGYAR BANCORP, INC. DECLARES SPECIAL CASH DIVIDEND",
       "url": "https://www.prnewswire.com/news-releases/magyar-bancorp-inc-declares-special-cash-dividend-302949810.html"
+    },
+    "https://www.prnewswire.com/news-releases/matkahuolto-selects-aurionpro-to-advance-seamless-sustainable-public-transport-payments-across-finland-302950344.html": {
+      "acquired": "2026-11-25T15:02:23.218335+00:00",
+      "acquisition_seconds": 143.218335,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Matkahuolto selects Aurionpro to advance seamless, sustainable public transport payments across Finland",
+      "url": "https://www.prnewswire.com/news-releases/matkahuolto-selects-aurionpro-to-advance-seamless-sustainable-public-transport-payments-across-finland-302950344.html"
     },
     "https://www.prnewswire.com/news-releases/medtronic-reports-second-quarter-fiscal-2027-results-performance-reflects-consistent-execution-across-the-portfolio-302948866.html": {
       "acquired": "2026-11-24T11:32:30.214779+00:00",
@@ -6536,22 +6551,6 @@
       "status": "SCARTARE",
       "title": "Noah Reports Q3 Results: International AUM Up 10.7% in USD Terms -- Platform model expands across more channels and markets",
       "url": "https://www.prnewswire.com/news-releases/noah-reports-q3-results-international-aum-up-10-7-in-usd-terms--platform-model-expands-across-more-channels-and-markets-302950441.html"
-    },
-    "https://www.prnewswire.com/news-releases/nordstrom-rack-to-open-new-location-in-crestview-hills-kentucky-302947325.html": {
-      "acquired": "2026-11-23T15:08:39.316302+00:00",
-      "acquisition_seconds": 519.316302,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Nordstrom Rack to Open New Location in Crestview Hills, Kentucky",
-      "url": "https://www.prnewswire.com/news-releases/nordstrom-rack-to-open-new-location-in-crestview-hills-kentucky-302947325.html"
     },
     "https://www.prnewswire.com/news-releases/northern-virginia-housing-market-adjusts-more-sharply-than-national-market-in-october-302949832.html": {
       "acquired": "2026-11-24T20:16:15.295993+00:00",
@@ -7001,22 +7000,6 @@
       "title": "Rob Lowe Surprises California Teachers as Accredited Debt Relief Helps Pay Off Their Remaining $48K in Debt",
       "url": "https://www.prnewswire.com/news-releases/rob-lowe-surprises-california-teachers-as-accredited-debt-relief-helps-pay-off-their-remaining-48k-in-debt-302948461.html"
     },
-    "https://www.prnewswire.com/news-releases/roofing-expert-ryan-pacheco-of-roanoke-va-explains-what-virginia-homeowners-should-do-before-a-roof-claim-for-hellonation-302947419.html": {
-      "acquired": "2026-11-23T15:08:39.316302+00:00",
-      "acquisition_seconds": 819.316302,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T14:55:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Roofing Expert Ryan Pacheco of Roanoke, VA Explains What Virginia Homeowners Should Do Before a Roof Claim for HelloNation",
-      "url": "https://www.prnewswire.com/news-releases/roofing-expert-ryan-pacheco-of-roanoke-va-explains-what-virginia-homeowners-should-do-before-a-roof-claim-for-hellonation-302947419.html"
-    },
     "https://www.prnewswire.com/news-releases/rosemurgy-13th-floor-giles-schmier-and-rockpoint-form-joint-venture-and-secure-construction-financing-to-develop-lutea-at-mainstreet-in-coconut-creek-florida-302949830.html": {
       "acquired": "2026-11-24T20:02:29.172617+00:00",
       "acquisition_seconds": 149.172617,
@@ -7352,22 +7335,6 @@
       "status": "SCARTARE",
       "title": "Taiwan Weeks 2026 trekt bijna 40.000 bezoekers en versterkt de banden met internationale kapitaalmarkten",
       "url": "https://www.prnewswire.com/news-releases/taiwan-weeks-2026-trekt-bijna-40-000-bezoekers-en-versterkt-de-banden-met-internationale-kapitaalmarkten-302949072.html"
-    },
-    "https://www.prnewswire.com/news-releases/take-profit-trader-launches-end-of-day-drawdown-in-funded-accounts-with-true-daily-payouts-now-offers-three-plan-options-302945604.html": {
-      "acquired": "2026-11-23T15:08:39.316302+00:00",
-      "acquisition_seconds": 519.316302,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T15:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Take Profit Trader Launches End-of-Day Drawdown in Funded Accounts, With True Daily Payouts: Now Offers Three Plan Options",
-      "url": "https://www.prnewswire.com/news-releases/take-profit-trader-launches-end-of-day-drawdown-in-funded-accounts-with-true-daily-payouts-now-offers-three-plan-options-302945604.html"
     },
     "https://www.prnewswire.com/news-releases/tase-continues-to-enhance-the-israeli-capital-market-and-align-it-with-international-standards-302949430.html": {
       "acquired": "2026-11-24T13:02:26.294018+00:00",
