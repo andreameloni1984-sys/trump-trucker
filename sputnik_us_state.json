@@ -1419,6 +1419,54 @@
       "title": "H.R. 11144 (IH) - Research Security Act of 2026",
       "url": "https://www.govinfo.gov/app/details/BILLS-119hr11144ih"
     },
+    "https://www.govinfo.gov/app/details/BILLS-119hr11149ih": {
+      "acquired": "2026-11-25T10:02:22.390633+00:00",
+      "acquisition_seconds": 442.390633,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-25T09:55:00+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "H.R. 11149 (IH) - Correctional Facilities Occupational Safety and Health Act of 2026",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119hr11149ih"
+    },
+    "https://www.govinfo.gov/app/details/BILLS-119hr11151ih": {
+      "acquired": "2026-11-25T10:02:22.390633+00:00",
+      "acquisition_seconds": 442.390633,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-25T09:55:00+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "H.R. 11151 (IH) - Smarter Pretrial Detention for Drug Charges Act of 2026",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119hr11151ih"
+    },
+    "https://www.govinfo.gov/app/details/BILLS-119hr11152ih": {
+      "acquired": "2026-11-25T10:02:22.390633+00:00",
+      "acquisition_seconds": 442.390633,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-25T09:55:00+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "H.R. 11152 (IH) - ERISA Health Plan Anti-Kickback Act",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119hr11152ih"
+    },
     "https://www.govinfo.gov/app/details/BILLS-119hr11156ih": {
       "acquired": "2026-11-25T07:02:19.634199+00:00",
       "acquisition_seconds": 557.634199,
@@ -2667,22 +2715,6 @@
       "title": "GameStop has been saved by trading cards and even Rolex watches, say Wall Street’s newest bulls",
       "url": "https://www.marketwatch.com/story/gamestop-has-been-saved-by-trading-cards-and-even-rolex-watches-say-wall-streets-newest-bulls-a932d74c"
     },
-    "https://www.marketwatch.com/story/google-co-founder-sergey-brin-and-ex-wife-nicole-shanahan-list-malibu-home-for-33-5-million-0121adcd": {
-      "acquired": "2026-11-23T10:08:41.353705+00:00",
-      "acquisition_seconds": 461.353705,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T10:01:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Google co-founder Sergey Brin and ex-wife Nicole Shanahan list Malibu home for $33.5 million",
-      "url": "https://www.marketwatch.com/story/google-co-founder-sergey-brin-and-ex-wife-nicole-shanahan-list-malibu-home-for-33-5-million-0121adcd"
-    },
     "https://www.marketwatch.com/story/grocery-stores-have-staggering-deals-for-thanksgiving-but-dont-get-used-to-these-lower-prices-just-yet-7adfc7f5": {
       "acquired": "2026-11-23T14:21:08.460301+00:00",
       "acquisition_seconds": 428.460301,
@@ -2778,22 +2810,6 @@
       "status": "SCARTARE",
       "title": "I’ve paid for long-term-care insurance for 20 years. Is it still worth it?",
       "url": "https://www.marketwatch.com/story/ive-paid-for-long-term-care-insurance-for-20-years-is-it-still-worth-it-1b2cd52d"
-    },
-    "https://www.marketwatch.com/story/james-bond-films-were-shot-all-over-the-world-here-are-5-properties-made-famous-by-007-dabafbe6": {
-      "acquired": "2026-11-23T10:08:41.353705+00:00",
-      "acquisition_seconds": 401.353705,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T10:02:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "James Bond films were shot all over the world. Here are 5 properties made famous by 007.",
-      "url": "https://www.marketwatch.com/story/james-bond-films-were-shot-all-over-the-world-here-are-5-properties-made-famous-by-007-dabafbe6"
     },
     "https://www.marketwatch.com/story/jensen-huangs-return-was-worth-nearly-950-billion-to-nvidia-how-much-of-the-stock-market-should-ride-on-one-man-c7129e95": {
       "acquired": "2026-11-24T12:23:45.519402+00:00",
@@ -6490,22 +6506,6 @@
       "status": "SCARTARE",
       "title": "LifeSecure Launches Starscape Administrators, an End-to-End TPA Solution for the Insurance Industry",
       "url": "https://www.prnewswire.com/news-releases/lifesecure-launches-starscape-administrators-an-end-to-end-tpa-solution-for-the-insurance-industry-302947359.html"
-    },
-    "https://www.prnewswire.com/news-releases/lock-in-the-2026-2027-ezaccounting-bundle-now-with-2026-w2-form-support-302944194.html": {
-      "acquired": "2026-11-23T10:08:41.421520+00:00",
-      "acquisition_seconds": 521.42152,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T10:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Lock in the 2026-2027 ezAccounting Bundle (Now with 2026 W2 Form Support!)",
-      "url": "https://www.prnewswire.com/news-releases/lock-in-the-2026-2027-ezaccounting-bundle-now-with-2026-w2-form-support-302944194.html"
     },
     "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948213.html": {
       "acquired": "2026-11-23T17:08:04.265705+00:00",
