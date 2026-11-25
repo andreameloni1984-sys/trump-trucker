@@ -2475,6 +2475,22 @@
       "title": "Dell’s stock rises as the AI boom helps sales more than double",
       "url": "https://www.marketwatch.com/story/dells-stock-rises-as-the-ai-boom-helps-sales-more-than-double-cfb8cf65"
     },
+    "https://www.marketwatch.com/story/elon-musk-and-spacex-to-donate-roughly-17-8-billion-to-trump-accounts-071c12e1": {
+      "acquired": "2026-11-25T22:02:23.522569+00:00",
+      "acquisition_seconds": 743.522569,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T21:50:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Elon Musk and SpaceX to donate roughly $17.8 billion to ‘Trump accounts’",
+      "url": "https://www.marketwatch.com/story/elon-musk-and-spacex-to-donate-roughly-17-8-billion-to-trump-accounts-071c12e1"
+    },
     "https://www.marketwatch.com/story/feeling-tired-and-losing-your-hair-you-might-have-low-iron-even-if-youve-tested-normal-before-96fe0d29": {
       "acquired": "2026-11-24T19:14:33.227505+00:00",
       "acquisition_seconds": 753.227505,
@@ -3210,22 +3226,6 @@
       "status": "SCARTARE",
       "title": "U.S. proposes fresh tariffs on China, others as Trump doubles down on his favorite trade weapon",
       "url": "https://www.marketwatch.com/story/u-s-proposes-fresh-tariffs-on-china-others-as-trump-doubles-down-on-his-favorite-trade-weapon-cd9a1df9"
-    },
-    "https://www.marketwatch.com/story/u-s-stocks-see-best-day-in-more-than-a-year-as-return-of-jensen-huang-revives-ai-enthusiasm-c3b9d274": {
-      "acquired": "2026-11-23T22:02:20.338129+00:00",
-      "acquisition_seconds": 680.338129,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T21:51:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "U.S. stocks see best day in more than a year, as return of Jensen Huang revives AI enthusiasm",
-      "url": "https://www.marketwatch.com/story/u-s-stocks-see-best-day-in-more-than-a-year-as-return-of-jensen-huang-revives-ai-enthusiasm-c3b9d274"
     },
     "https://www.marketwatch.com/story/visiting-las-vegas-is-getting-too-expensive-but-dont-blame-airfares-12e2c588": {
       "acquired": "2026-11-24T19:02:30.975296+00:00",
@@ -4810,6 +4810,22 @@
       "status": "SCARTARE",
       "title": "Convr® Adds Federal Judicial Center Court Data to Its Data Lake, Surfacing Hard-to-Find Legal and Financial Signals for Underwriters",
       "url": "https://www.prnewswire.com/news-releases/convr-adds-federal-judicial-center-court-data-to-its-data-lake-surfacing-hard-to-find-legal-and-financial-signals-for-underwriters-302949765.html"
+    },
+    "https://www.prnewswire.com/news-releases/cowork-frederick-foundation-announces-2026-gala-fundraiser-302950792.html": {
+      "acquired": "2026-11-25T22:02:23.665903+00:00",
+      "acquisition_seconds": 443.665903,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T21:55:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Cowork Frederick Foundation Announces 2026 Gala Fundraiser",
+      "url": "https://www.prnewswire.com/news-releases/cowork-frederick-foundation-announces-2026-gala-fundraiser-302950792.html"
     },
     "https://www.prnewswire.com/news-releases/credit-saint-launches-redesigned-credit-repair-website-with-nico-a-revolutionary-ai-assistant-that-answers-credit-questions-302949839.html": {
       "acquired": "2026-11-24T20:16:15.295993+00:00",
