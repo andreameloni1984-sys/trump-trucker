@@ -1,21 +1,5 @@
 {
   "invest_events": {
-    "https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026": {
-      "acquired": "2026-11-23T17:19:30.636761+00:00",
-      "acquisition_seconds": 1162.636761,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "NVDA",
-      "kind": "issuer",
-      "penalized": [],
-      "published": "2026-11-23T17:00:08+00:00",
-      "source": "NVIDIA Blog",
-      "status": "SCARTARE",
-      "title": "Merry Making: Play, Build and Create With NVIDIA Technologies This Holiday Season",
-      "url": "https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026"
-    },
     "https://investor.lilly.com/news-releases/news-release-details/lilly-highlights-strength-breast-cancer-portfolio-new-data": {
       "acquired": "2026-11-23T23:16:32.780119+00:00",
       "acquisition_seconds": 6392.780119,
@@ -248,22 +232,6 @@
       "status": "SCARTARE",
       "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/23/3408755/0/en/child-custody-in-california-jurisdiction-first-how-international-child-custody-matters-in-california-are-decided-before-the-parenting-question-is-reached.html": {
-      "acquired": "2026-11-23T23:16:32.866411+00:00",
-      "acquisition_seconds": 22592.866411,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T17:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Child Custody in California: Jurisdiction First - How International Child Custody Matters in California Are Decided Before the Parenting Question Is Reached",
-      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408755/0/en/child-custody-in-california-jurisdiction-first-how-international-child-custody-matters-in-california-are-decided-before-the-parenting-question-is-reached.html"
     },
     "https://www.globenewswire.com/news-release/2026/11/23/3408800/0/fr/financi%C3%A8re-agache-communiqu%C3%A9-relatif-%C3%A0-un-changement-d-%C3%A9metteur.html": {
       "acquired": "2026-11-23T23:16:32.866411+00:00",
@@ -2905,6 +2873,22 @@
       "title": "My husband secretly sends his ex-wife $1,500 a month after she lost her job. We have $2.4 million saved. Has he lied by omission?",
       "url": "https://www.marketwatch.com/story/my-husband-secretly-sends-his-ex-wife-1-500-a-month-after-she-lost-her-job-we-have-2-4-million-saved-has-he-lied-by-omission-ede1972a"
     },
+    "https://www.marketwatch.com/story/my-life-is-in-the-stock-market-recent-volatility-is-shaking-up-holiday-spending-plans-for-these-shoppers-bd9485b3": {
+      "acquired": "2026-11-25T17:02:21.960150+00:00",
+      "acquisition_seconds": 801.96015,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T16:49:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "‘My life is in the stock market’: Recent volatility is shaking up holiday spending plans for these shoppers",
+      "url": "https://www.marketwatch.com/story/my-life-is-in-the-stock-market-recent-volatility-is-shaking-up-holiday-spending-plans-for-these-shoppers-bd9485b3"
+    },
     "https://www.marketwatch.com/story/nba-star-kevin-durant-lists-arizona-mansion-for-13-9-million-a-year-after-trade-to-houston-1b0ae57e": {
       "acquired": "2026-11-25T10:17:16.827873+00:00",
       "acquisition_seconds": 976.827873,
@@ -2984,6 +2968,22 @@
       "status": "SCARTARE",
       "title": "Oracle and CoreWeave stocks stage big gains as investors bet the AI cash will keep flowing",
       "url": "https://www.marketwatch.com/story/oracle-and-coreweave-stocks-stage-big-gains-as-investors-bet-the-ai-cash-will-keep-flowing-eeb1aa85"
+    },
+    "https://www.marketwatch.com/story/oracles-stock-sinks-toward-a-3-year-low-as-the-ai-trade-continues-to-unravel-d4698d77": {
+      "acquired": "2026-11-25T17:02:21.960150+00:00",
+      "acquisition_seconds": 621.96015,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T16:52:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Oracle’s stock sinks toward a 3-year low as the AI trade continues to unravel",
+      "url": "https://www.marketwatch.com/story/oracles-stock-sinks-toward-a-3-year-low-as-the-ai-trade-continues-to-unravel-d4698d77"
     },
     "https://www.marketwatch.com/story/roth-ira-conversions-arent-free-money-watch-out-for-these-5-costly-mistakes-39b182d3": {
       "acquired": "2026-11-24T12:17:19.691819+00:00",
@@ -3160,6 +3160,22 @@
       "status": "SCARTARE",
       "title": "The ‘epic’ buying of retail investors paid off after Nvidia’s 31% stock surge, says strategist",
       "url": "https://www.marketwatch.com/story/the-epic-buying-of-retail-investors-paid-off-after-nvidias-31-stock-surge-says-strategist-c8f9a502"
+    },
+    "https://www.marketwatch.com/story/the-latest-stock-market-drop-could-lower-your-tax-bill-over-your-lifetime-99420b97": {
+      "acquired": "2026-11-25T17:02:21.960150+00:00",
+      "acquisition_seconds": 561.96015,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T16:53:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The latest stock-market drop could lower your tax bill over your lifetime",
+      "url": "https://www.marketwatch.com/story/the-latest-stock-market-drop-could-lower-your-tax-bill-over-your-lifetime-99420b97"
     },
     "https://www.marketwatch.com/story/the-newest-addition-to-the-s-p-500-is-a-maker-of-viral-ice-cream-machines-5c6e209a": {
       "acquired": "2026-11-23T23:32:28.364866+00:00",
@@ -4649,6 +4665,22 @@
       "title": "Chilton County Home Buying Costs Explained in HelloNation Article Featuring Real Estate Expert Nathan Oldroyd",
       "url": "https://www.prnewswire.com/news-releases/chilton-county-home-buying-costs-explained-in-hellonation-article-featuring-real-estate-expert-nathan-oldroyd-302832270.html"
     },
+    "https://www.prnewswire.com/news-releases/cibc-planea-expandirse-en-oriente-medio-con-una-nueva-presencia-en-los-mercados-de-capitales-en-abu-dabi-302950699.html": {
+      "acquired": "2026-11-25T17:02:22.031632+00:00",
+      "acquisition_seconds": 142.031632,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T17:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "CIBC planea expandirse en Oriente Medio con una nueva presencia en los mercados de capitales en Abu Dabi",
+      "url": "https://www.prnewswire.com/news-releases/cibc-planea-expandirse-en-oriente-medio-con-una-nueva-presencia-en-los-mercados-de-capitales-en-abu-dabi-302950699.html"
+    },
     "https://www.prnewswire.com/news-releases/cibc-plans-middle-east-expansion-with-new-capital-markets-presence-in-abu-dhabi-302950496.html": {
       "acquired": "2026-11-25T12:47:19.828189+00:00",
       "acquisition_seconds": 379.828189,
@@ -4664,6 +4696,22 @@
       "status": "SCARTARE",
       "title": "CIBC plans Middle East expansion with new capital markets presence in Abu Dhabi",
       "url": "https://www.prnewswire.com/news-releases/cibc-plans-middle-east-expansion-with-new-capital-markets-presence-in-abu-dhabi-302950496.html"
+    },
+    "https://www.prnewswire.com/news-releases/cibc-prevoit-de-simplanter-au-moyen-orient-avec-une-nouvelle-presence-sur-les-marches-de-capitaux-a-abou-dhabi-302950690.html": {
+      "acquired": "2026-11-25T17:02:22.031632+00:00",
+      "acquisition_seconds": 442.031632,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T16:55:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "CIBC prévoit de s'implanter au Moyen-Orient avec une nouvelle présence sur les marchés de capitaux à Abou Dhabi.",
+      "url": "https://www.prnewswire.com/news-releases/cibc-prevoit-de-simplanter-au-moyen-orient-avec-une-nouvelle-presence-sur-les-marches-de-capitaux-a-abou-dhabi-302950690.html"
     },
     "https://www.prnewswire.com/news-releases/cii-statement-on-jensen-huangs-reappointment-302948823.html": {
       "acquired": "2026-11-24T02:18:02.061527+00:00",
@@ -6233,25 +6281,25 @@
       "title": "Leverage Shares by Themes Anthropic (ANT) ETFs Among the Most Traded on First Day of Trading",
       "url": "https://www.prnewswire.com/news-releases/leverage-shares-by-themes-anthropic-ant-etfs-among-the-most-traded-on-first-day-of-trading-302949642.html"
     },
-    "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948213.html": {
-      "acquired": "2026-11-23T17:08:04.265705+00:00",
-      "acquisition_seconds": 484.265705,
+    "https://www.prnewswire.com/news-releases/lseg-finance-plc-announces-pricing-of-its-tender-offer-302950693.html": {
+      "acquired": "2026-11-25T17:02:22.031632+00:00",
+      "acquisition_seconds": 382.031632,
       "beneficiaries": [],
       "bias": null,
-      "category": "m-and-a",
+      "category": "other",
       "evidence": "direzione o conferma insufficiente",
       "issuer": "",
       "kind": "wire",
       "penalized": [],
-      "published": "2026-11-23T17:00:00+00:00",
+      "published": "2026-11-25T16:56:00+00:00",
       "source": "PR Newswire / comunicati societari",
       "status": "SCARTARE",
-      "title": "Madison Dearborn Partners to Acquire Peli BioThermal, a Trusted Cold Chain Solutions Provider, from Pelican Products and Platinum Equity",
-      "url": "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948213.html"
+      "title": "LSEG Finance plc announces pricing of its tender offer",
+      "url": "https://www.prnewswire.com/news-releases/lseg-finance-plc-announces-pricing-of-its-tender-offer-302950693.html"
     },
-    "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948222.html": {
-      "acquired": "2026-11-23T17:08:04.265705+00:00",
-      "acquisition_seconds": 484.265705,
+    "https://www.prnewswire.com/news-releases/luminate-bank-acquires-select-assets-of-real-genius-expanding-consumer-direct-mortgage-capabilities-302950008.html": {
+      "acquired": "2026-11-25T17:02:22.031632+00:00",
+      "acquisition_seconds": 142.031632,
       "beneficiaries": [],
       "bias": null,
       "category": "m-and-a",
@@ -6259,11 +6307,11 @@
       "issuer": "",
       "kind": "wire",
       "penalized": [],
-      "published": "2026-11-23T17:00:00+00:00",
+      "published": "2026-11-25T17:00:00+00:00",
       "source": "PR Newswire / comunicati societari",
       "status": "SCARTARE",
-      "title": "Madison Dearborn Partners to Acquire Peli BioThermal, a Trusted Cold Chain Solutions Provider, from Pelican Products and Platinum Equity",
-      "url": "https://www.prnewswire.com/news-releases/madison-dearborn-partners-to-acquire-peli-biothermal-a-trusted-cold-chain-solutions-provider-from-pelican-products-and-platinum-equity-302948222.html"
+      "title": "Luminate Bank Acquires Select Assets of Real Genius, Expanding Consumer-Direct Mortgage Capabilities",
+      "url": "https://www.prnewswire.com/news-releases/luminate-bank-acquires-select-assets-of-real-genius-expanding-consumer-direct-mortgage-capabilities-302950008.html"
     },
     "https://www.prnewswire.com/news-releases/magyar-bancorp-inc-declares-special-cash-dividend-302949810.html": {
       "acquired": "2026-11-24T21:16:04.853354+00:00",
@@ -6713,6 +6761,22 @@
       "title": "Parks Associates Releases State of Multifamily 2026 Report Highlighting AI, Connectivity, and Technology ROI",
       "url": "https://www.prnewswire.com/news-releases/parks-associates-releases-state-of-multifamily-2026-report-highlighting-ai-connectivity-and-technology-roi-302948833.html"
     },
+    "https://www.prnewswire.com/news-releases/paykings-offers-free-statement-analyzer-that-shows-high-risk-merchants-the-rate-they-actually-pay-302950687.html": {
+      "acquired": "2026-11-25T17:02:22.031632+00:00",
+      "acquisition_seconds": 622.031632,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T16:52:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "PayKings Offers Free Statement Analyzer That Shows High-Risk Merchants the Rate They Actually Pay",
+      "url": "https://www.prnewswire.com/news-releases/paykings-offers-free-statement-analyzer-that-shows-high-risk-merchants-the-rate-they-actually-pay-302950687.html"
+    },
     "https://www.prnewswire.com/news-releases/permian-basin-royalty-trust-announces-results-of-special-meeting-called-by-softvest-302948651.html": {
       "acquired": "2026-11-23T21:14:39.818857+00:00",
       "acquisition_seconds": 579.818857,
@@ -7032,22 +7096,6 @@
       "status": "SCARTARE",
       "title": "Santa at NYSE Ahead of Macy's Thanksgiving Day Parade: NYSE Content Update",
       "url": "https://www.prnewswire.com/news-releases/santa-at-nyse-ahead-of-macys-thanksgiving-day-parade-nyse-content-update-302950546.html"
-    },
-    "https://www.prnewswire.com/news-releases/securitize-serves-as-tokenization-provider-for-okxices-newly-launched-247-securities-trading-venue-302947862.html": {
-      "acquired": "2026-11-23T17:08:04.265705+00:00",
-      "acquisition_seconds": 484.265705,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T17:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Securitize Serves as Tokenization Provider for OKXICE's Newly Launched 24/7 Securities Trading Venue",
-      "url": "https://www.prnewswire.com/news-releases/securitize-serves-as-tokenization-provider-for-okxices-newly-launched-247-securities-trading-venue-302947862.html"
     },
     "https://www.prnewswire.com/news-releases/sellforte-mcp-now-generally-available-bringing-incrementality-to-ad-optimization-agents-302948340.html": {
       "acquired": "2026-11-24T13:47:27.513216+00:00",
