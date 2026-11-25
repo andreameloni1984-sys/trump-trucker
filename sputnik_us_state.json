@@ -603,22 +603,6 @@
       "title": "Beyond the Show Floor: 41caijing to Connect Global Media with Chinese Technology Brands at CES 2027",
       "url": "https://www.globenewswire.com/news-release/2026/11/25/3410524/0/en/beyond-the-show-floor-41caijing-to-connect-global-media-with-chinese-technology-brands-at-ces-2027.html"
     },
-    "https://www.govinfo.gov/app/details/BILLS-116hres916ih": {
-      "acquired": "2026-11-23T21:02:30.174583+00:00",
-      "acquisition_seconds": 570.174583,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "bills",
-      "penalized": [],
-      "published": "2026-11-23T20:53:00+00:00",
-      "source": "Congresso / GovInfo",
-      "status": "SCARTARE",
-      "title": "H. Res. 916 (IH) - Recognizing the heroism of our Nation’s health care workers and first responders, including doctors, nurses, emergency medical services (EMS) professionals, medical staff, pharmacists, law enforcement personnel, and military personnel, during the COVID–19 pandemic.",
-      "url": "https://www.govinfo.gov/app/details/BILLS-116hres916ih"
-    },
     "https://www.govinfo.gov/app/details/BILLS-119hr10234rh": {
       "acquired": "2026-11-25T07:02:19.634199+00:00",
       "acquisition_seconds": 319.634199,
@@ -2395,22 +2379,6 @@
       "title": "S. Res. 974 (IS) - Designating November 29, 2026, as \"Drive Safer Sunday\".",
       "url": "https://www.govinfo.gov/app/details/BILLS-119sres974is"
     },
-    "https://www.govinfo.gov/app/details/PLAW-119publ131": {
-      "acquired": "2026-11-23T21:02:30.197696+00:00",
-      "acquisition_seconds": 870.197696,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "policy",
-      "penalized": [],
-      "published": "2026-11-23T20:48:00+00:00",
-      "source": "Leggi federali / GovInfo",
-      "status": "SCARTARE",
-      "title": "Public Law 119 - 131 - Enhancing Detection of Human Trafficking Act",
-      "url": "https://www.govinfo.gov/app/details/PLAW-119publ131"
-    },
     "https://www.govinfo.gov/app/details/PLAW-119publ133": {
       "acquired": "2026-11-23T21:32:41.818526+00:00",
       "acquisition_seconds": 641.818526,
@@ -3978,22 +3946,6 @@
       "status": "SCARTARE",
       "title": "Banking in 2027: AI rewrites the terms. Banks still carry the risk.",
       "url": "https://www.prnewswire.com/news-releases/banking-in-2027-ai-rewrites-the-terms-banks-still-carry-the-risk-302949578.html"
-    },
-    "https://www.prnewswire.com/news-releases/banner-ridge-partners-announces-strategic-growth-investment-from-bisonti-partners-and-bonaccord-capital-partners-302947321.html": {
-      "acquired": "2026-11-23T21:02:30.254318+00:00",
-      "acquisition_seconds": 150.254318,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T21:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Banner Ridge Partners Announces Strategic Growth Investment from Bisonti Partners and Bonaccord Capital Partners",
-      "url": "https://www.prnewswire.com/news-releases/banner-ridge-partners-announces-strategic-growth-investment-from-bisonti-partners-and-bonaccord-capital-partners-302947321.html"
     },
     "https://www.prnewswire.com/news-releases/baseline-integrates-with-elementix-to-bring-borrower-intelligence-directly-into-its-loan-management-platform-302949985.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
@@ -7194,6 +7146,22 @@
       "status": "SCARTARE",
       "title": "Skyline To Shoreline, Discovering Greater Philadelphia TV Series Spotlights Real Estate, Lifestyle and Community Across South Jersey and Greater Philadelphia on REAL Shows Network",
       "url": "https://www.prnewswire.com/news-releases/skyline-to-shoreline-discovering-greater-philadelphia-tv-series-spotlights-real-estate-lifestyle-and-community-across-south-jersey-and-greater-philadelphia-on-real-shows-network-302949954.html"
+    },
+    "https://www.prnewswire.com/news-releases/small-caps-and-blue-chips-outpace-broader-market-through-midweek-session-302950847.html": {
+      "acquired": "2026-11-25T21:02:22.641223+00:00",
+      "acquisition_seconds": 442.641223,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T20:55:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Small Caps and Blue Chips Outpace Broader Market Through Midweek Session",
+      "url": "https://www.prnewswire.com/news-releases/small-caps-and-blue-chips-outpace-broader-market-through-midweek-session-302950847.html"
     },
     "https://www.prnewswire.com/news-releases/south-atlantic-bank-secures-360-000-in-fhlbank-atlanta-funding-to-support-affordable-homeownership-in-horry-county-302949686.html": {
       "acquired": "2026-11-24T19:14:33.287118+00:00",
