@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-25T23:15:09.579859+00:00",
+  "updated_at": "2026-11-25T23:15:26.944193+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "a33aa1d5e327f89a9d213aa9": {
+      "source": "WHITE_HOUSE_RSS",
+      "feed_url": "https://www.whitehouse.gov/feed/",
+      "url": "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/",
+      "primary_url": "",
+      "title": "Trump Administration Leads Whole-of-Government Effort to Safely Neutralize Obama-Era Explosives Threat in Iowa",
+      "published": "Wed, 25 Nov 2026 23:10:56 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Trump Administration Leads Whole-of-Government Effort to Safely Neutralize Obama-Era Explosives Threat in Iowa Under President Donald J. Trump’s leadership, the U.S. Army this morning safely destroyed nearly five tons of degraded explosives at the Iowa Army Ammunition Plant. All initial indications show the controlled detonation to be highly successful, with EPA monitors reporting zero detection of airborne lead and no secondary explosions or infrastructure damage. This is what […] The post Trump Administration Leads Whole-of-Government Effort to Safely Neutralize Obama-Era Explosives Threat in Iowa appeared first on The White House.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-25T23:15:26.845716+00:00",
+      "event_id": "a33aa1d5e327f89a9d213aa9",
+      "action_reaction": {
+        "event_id": "a33aa1d5e327f89a9d213aa9",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "baad8b4747b4ce83e6328638": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8150,29 +8173,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "996cfc3f3825cbd26226a94c": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43294",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549597886057774",
-      "title": "Congresswoman Erin Houchin is a Tireless Advocate for the Great People of Indiana's 9th Congressional District! As the Secretary of the House Republican Conference, Erin is doing a truly fantastic job advancing our America First Agenda. In Congress, she is working hard to Grow our Economy, Cut Taxes",
-      "published": "Tue, 03 Nov 2026 00:08:38 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congresswoman Erin Houchin is a Tireless Advocate for the Great People of Indiana's 9th Congressional District! As the Secretary of the House Republican Conference, Erin is doing a truly fantastic job advancing our America First Agenda. In Congress, she is working hard to Grow our Economy, Cut Taxes Congresswoman Erin Houchin is a Tireless Advocate for the Great People of Indiana's 9th Congressional District! As the Secretary of the House Republican Conference, Erin is doing a truly fantastic job advancing our America First Agenda. In Congress, she is working hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Strengthen our Brave Military/Veterans, Ensure LAW AND ORDER, and Defend our always under siege Second Amendment. Erin's opponent, Brad Meyer, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Brad Meyer is Reckless, Radical, and Dangerous! Erin Houchin has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR ERIN — SHE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/indiana/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.619289+00:00",
-      "event_id": "996cfc3f3825cbd26226a94c",
-      "action_reaction": {
-        "event_id": "996cfc3f3825cbd26226a94c",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13270,7 +13270,8 @@
     "bf43b62c670f27d948292354": "2026-11-24T19:21:10.746103+00:00",
     "fceacbe4f6105c445469b43b": "2026-11-25T12:12:10.538812+00:00",
     "49c53ee02b203ecf7772301e": "2026-11-25T14:42:09.556745+00:00",
-    "67a3c33843e1bdc463216857": "2026-11-25T20:29:49.305584+00:00"
+    "67a3c33843e1bdc463216857": "2026-11-25T20:29:49.305584+00:00",
+    "a33aa1d5e327f89a9d213aa9": "2026-11-25T23:15:26.845704+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18341,15 +18342,19 @@
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-25T23:15:09.568469+00:00",
+      "at": "2026-11-25T23:15:26.931400+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
-      "at": "2026-11-25T23:15:09.568469+00:00",
+      "at": "2026-11-25T23:15:26.931400+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-25T23:15:09.568469+00:00",
+      "at": "2026-11-25T23:15:26.931400+00:00",
+      "market": false
+    },
+    "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
+      "at": "2026-11-25T23:15:26.931400+00:00",
       "market": false
     }
   }
