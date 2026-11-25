@@ -314,54 +314,6 @@
       "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/23/3408346/0/en/stratum-holdings-corp-completes-sale-of-legacy-real-estate-businesses-eliminating-1-88-million-in-liabilities-and-ongoing-monthly-operating-deficit.html": {
-      "acquired": "2026-11-23T23:16:32.866411+00:00",
-      "acquisition_seconds": 35192.866411,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:30:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Stratum Holdings Corp. Completes Sale of Legacy Real Estate Businesses, Eliminating $1.88 Million in Liabilities and Ongoing Monthly Operating Deficit",
-      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408346/0/en/stratum-holdings-corp-completes-sale-of-legacy-real-estate-businesses-eliminating-1-88-million-in-liabilities-and-ongoing-monthly-operating-deficit.html"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/23/3408347/0/en/reliance-global-group-chairman-and-senior-executives-personally-acquire-approximately-11-of-the-company-s-outstanding-shares.html": {
-      "acquired": "2026-11-23T23:16:32.866411+00:00",
-      "acquisition_seconds": 35192.866411,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "m-and-a",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:30:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Reliance Global Group Chairman and Senior Executives Personally Acquire Approximately 11% of the Company’s Outstanding Shares",
-      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408347/0/en/reliance-global-group-chairman-and-senior-executives-personally-acquire-approximately-11-of-the-company-s-outstanding-shares.html"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/23/3408364/0/en/pharmaceutical-excipients-market-to-reach-us-17-60-billion-by-2034-at-6-5-cagr-driven-by-advancements-in-drug-delivery-technologies-and-growing-demand-for-specialized-formulations-.html": {
-      "acquired": "2026-11-23T23:16:32.866411+00:00",
-      "acquisition_seconds": 35252.866411,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:29:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Pharmaceutical Excipients Market to Reach US$17.60 Billion by 2034 at 6.5% CAGR, Driven by Advancements in Drug Delivery Technologies and Growing Demand for Specialized Formulations | Exclusive Report by The Insight Partners.",
-      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408364/0/en/pharmaceutical-excipients-market-to-reach-us-17-60-billion-by-2034-at-6-5-cagr-driven-by-advancements-in-drug-delivery-technologies-and-growing-demand-for-specialized-formulations-.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/23/3408367/0/en/veteran-trial-attorney-hyram-m-montero-joins-upchurch-watson-white-max-mediation-group.html": {
       "acquired": "2026-11-23T23:16:32.866411+00:00",
       "acquisition_seconds": 34892.866411,
@@ -3242,6 +3194,22 @@
       "title": "The newest addition to the S&P 500 is a maker of viral ice-cream machines",
       "url": "https://www.marketwatch.com/story/the-newest-addition-to-the-s-p-500-is-a-maker-of-viral-ice-cream-machines-5c6e209a"
     },
+    "https://www.marketwatch.com/story/the-real-price-of-jensen-huangs-return-to-nvidia-higher-regulatory-costs-for-the-company-and-the-entire-ai-industry-982002d4": {
+      "acquired": "2026-11-25T13:32:19.426169+00:00",
+      "acquisition_seconds": 139.426169,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T13:30:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The real price of Jensen Huang’s return to Nvidia: Higher regulatory costs for the company — and the entire AI industry",
+      "url": "https://www.marketwatch.com/story/the-real-price-of-jensen-huangs-return-to-nvidia-higher-regulatory-costs-for-the-company-and-the-entire-ai-industry-982002d4"
+    },
     "https://www.marketwatch.com/story/the-return-of-jensen-huang-has-saved-the-u-s-stock-market-for-now-why-the-rebound-may-not-last-f72656ce": {
       "acquired": "2026-11-23T16:49:01.173668+00:00",
       "acquisition_seconds": 301.173668,
@@ -3402,6 +3370,22 @@
       "title": "Trump’s push to reinstate Jensen Huang signals Nvidia’s CEO is too big to fail",
       "url": "https://www.marketwatch.com/story/trumps-push-to-reinstate-jensen-huang-signals-nvidias-ceo-is-too-big-to-fail-10709210"
     },
+    "https://www.marketwatch.com/story/u-s-proposes-fresh-tariffs-on-china-others-as-trump-doubles-down-on-his-favorite-trade-weapon-cd9a1df9": {
+      "acquired": "2026-11-25T13:32:19.426169+00:00",
+      "acquisition_seconds": 139.426169,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "tariffs",
+      "evidence": "annuncio futuro",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T13:30:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "U.S. proposes fresh tariffs on China, others as Trump doubles down on his favorite trade weapon",
+      "url": "https://www.marketwatch.com/story/u-s-proposes-fresh-tariffs-on-china-others-as-trump-doubles-down-on-his-favorite-trade-weapon-cd9a1df9"
+    },
     "https://www.marketwatch.com/story/u-s-stocks-see-best-day-in-more-than-a-year-as-return-of-jensen-huang-revives-ai-enthusiasm-c3b9d274": {
       "acquired": "2026-11-23T22:02:20.338129+00:00",
       "acquisition_seconds": 680.338129,
@@ -3449,6 +3433,22 @@
       "status": "SCARTARE",
       "title": "Visiting Las Vegas is getting too expensive — but don’t blame airfares",
       "url": "https://www.marketwatch.com/story/visiting-las-vegas-is-getting-too-expensive-but-dont-blame-airfares-12e2c588"
+    },
+    "https://www.marketwatch.com/story/what-the-options-market-says-to-do-with-nvidias-stock-and-the-rest-of-the-stock-market-de9584ae": {
+      "acquired": "2026-11-25T13:32:19.426169+00:00",
+      "acquisition_seconds": 979.426169,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T13:16:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "What the options market says to do with Nvidia’s stock — and the rest of the stock market",
+      "url": "https://www.marketwatch.com/story/what-the-options-market-says-to-do-with-nvidias-stock-and-the-rest-of-the-stock-market-de9584ae"
     },
     "https://www.marketwatch.com/story/what-to-do-if-your-thanksgiving-flight-gets-delayed-especially-with-a-noreaster-brewing-566fe933": {
       "acquired": "2026-11-24T15:02:29.258847+00:00",
@@ -4314,6 +4314,38 @@
       "title": "Bit Digital, Inc. Reduces Secured Borrowings from Galaxy Through Partial Sale of ETH Holdings",
       "url": "https://www.prnewswire.com/news-releases/bit-digital-inc-reduces-secured-borrowings-from-galaxy-through-partial-sale-of-eth-holdings-302950497.html"
     },
+    "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-announces-cash-dividend-of-0-01-per-share-of-common-stock-302950029.html": {
+      "acquired": "2026-11-25T13:32:19.549553+00:00",
+      "acquisition_seconds": 139.549553,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T13:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Bitmine Immersion Technologies Announces Cash Dividend of $0.01 per Share of Common Stock",
+      "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-announces-cash-dividend-of-0-01-per-share-of-common-stock-302950029.html"
+    },
+    "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-anuncia-un-dividendo-en-efectivo-de-0-01--por-accion-ordinaria-302950357.html": {
+      "acquired": "2026-11-25T13:32:19.549553+00:00",
+      "acquisition_seconds": 139.549553,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T13:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Bitmine Immersion Technologies anuncia un dividendo en efectivo de 0,01 $ por acción ordinaria",
+      "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-anuncia-un-dividendo-en-efectivo-de-0-01--por-accion-ordinaria-302950357.html"
+    },
     "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-annonce-que-ses-avoirs-en-eth-atteignent-6-09-millions-de-jetons-et-que-ses-avoirs-totaux-en-cryptomonnaies-ainsi-quen-liquidites-et-titres-negociables-selevent-a-11-1-milliards-de-dollars-302949098.html": {
       "acquired": "2026-11-24T05:32:29.134374+00:00",
       "acquisition_seconds": 809.134374,
@@ -4330,22 +4362,6 @@
       "title": "Bitmine Immersion Technologies (BMNR) annonce que ses avoirs en ETH atteignent 6,09 millions de jetons, et que ses avoirs totaux en cryptomonnaies ainsi qu'en liquidités et titres négociables s'élèvent à 11,1 milliards de dollars",
       "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-annonce-que-ses-avoirs-en-eth-atteignent-6-09-millions-de-jetons-et-que-ses-avoirs-totaux-en-cryptomonnaies-ainsi-quen-liquidites-et-titres-negociables-selevent-a-11-1-milliards-de-dollars-302949098.html"
     },
-    "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-announces-eth-holdings-reach-6-09-million-tokens-and-total-crypto-and-total-cash--marketable-securities-holdings-of-11-1-billion-302947714.html": {
-      "acquired": "2026-11-23T13:34:49.421897+00:00",
-      "acquisition_seconds": 289.421897,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Bitmine Immersion Technologies (BMNR) Announces ETH Holdings Reach 6.09 Million Tokens, and Total Crypto and Total Cash & Marketable Securities Holdings of $11.1 Billion",
-      "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-announces-eth-holdings-reach-6-09-million-tokens-and-total-crypto-and-total-cash--marketable-securities-holdings-of-11-1-billion-302947714.html"
-    },
     "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-annuncia-che-le-partecipazioni-in-eth-hanno-raggiunto-6-09-milioni-di-token-e-che-il-valore-complessivo-delle-criptovalute-della-liquidita-e-dei-titoli-negoziabili-detenuti-ammonta-a-11-1-mil-302948713.html": {
       "acquired": "2026-11-23T22:47:19.620219+00:00",
       "acquisition_seconds": 919.620219,
@@ -4361,22 +4377,6 @@
       "status": "SCARTARE",
       "title": "Bitmine Immersion Technologies (BMNR) annuncia che le partecipazioni in ETH hanno raggiunto 6,09 milioni di token e che il valore complessivo delle criptovalute, della liquidità e dei titoli negoziabili detenuti ammonta a 11,1 miliardi di dollari",
       "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-annuncia-che-le-partecipazioni-in-eth-hanno-raggiunto-6-09-milioni-di-token-e-che-il-valore-complessivo-delle-criptovalute-della-liquidita-e-dei-titoli-negoziabili-detenuti-ammonta-a-11-1-mil-302948713.html"
-    },
-    "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-anuncia-que-sus-tenencias-de-eth-alcanzan-los-6-09-millones-de-tokens-302948145.html": {
-      "acquired": "2026-11-23T13:34:49.421897+00:00",
-      "acquisition_seconds": 289.421897,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Bitmine Immersion Technologies (BMNR) anuncia que sus tenencias de ETH alcanzan los 6,09 millones de tokens",
-      "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-anuncia-que-sus-tenencias-de-eth-alcanzan-los-6-09-millones-de-tokens-302948145.html"
     },
     "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-gibt-bekannt-dass-die-eth-bestande-6-09-millionen-token-erreicht-haben-und-sich-die-gesamtbestande-an-kryptowahrungen-sowie-an-barmitteln-und-marktfahigen-wertpapieren-auf-11-1-milliarden-us--302949113.html": {
       "acquired": "2026-11-24T05:32:29.134374+00:00",
@@ -4778,6 +4778,22 @@
       "title": "Chase Properties and Tru Arrow Complete More Than $148 Million in Final Fund Closings for Open-Air Retail",
       "url": "https://www.prnewswire.com/news-releases/chase-properties-and-tru-arrow-complete-more-than-148-million-in-final-fund-closings-for-open-air-retail-302948684.html"
     },
+    "https://www.prnewswire.com/news-releases/cheche-group-announces-results-of-extraordinary-general-meeting-302950531.html": {
+      "acquired": "2026-11-25T13:32:19.549553+00:00",
+      "acquisition_seconds": 139.549553,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T13:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Cheche Group Announces Results of Extraordinary General Meeting",
+      "url": "https://www.prnewswire.com/news-releases/cheche-group-announces-results-of-extraordinary-general-meeting-302950531.html"
+    },
     "https://www.prnewswire.com/news-releases/childrens-miracle-network-welcomes-chuck-e-cheese-as-national-partner-launching-checkout-giving-at-450-plus-locations-302948543.html": {
       "acquired": "2026-11-23T20:47:25.169933+00:00",
       "acquisition_seconds": 445.169933,
@@ -5177,22 +5193,6 @@
       "status": "SCARTARE",
       "title": "CyberFOX Highlights Pair of Recent Acquisitions: NYSE Content Update",
       "url": "https://www.prnewswire.com/news-releases/cyberfox-highlights-pair-of-recent-acquisitions-nyse-content-update-302948275.html"
-    },
-    "https://www.prnewswire.com/news-releases/datagroomr-introduces-mcp-server-to-bring-salesforce-data-quality-management-into-ai-assistants-302948239.html": {
-      "acquired": "2026-11-23T13:21:33.294031+00:00",
-      "acquisition_seconds": 213.294031,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:18:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "DataGroomr Introduces MCP Server to Bring Salesforce Data Quality Management into AI Assistants",
-      "url": "https://www.prnewswire.com/news-releases/datagroomr-introduces-mcp-server-to-bring-salesforce-data-quality-management-into-ai-assistants-302948239.html"
     },
     "https://www.prnewswire.com/news-releases/datavault-ai-founder-opposes-proposed-reverse-split-seeks-board-changes-302950277.html": {
       "acquired": "2026-11-25T13:17:22.952816+00:00",
@@ -5690,22 +5690,6 @@
       "title": "Fortune Announces Speakers and Partners for Brainstorm AI 2026 in San Francisco Dec. 7 and 8",
       "url": "https://www.prnewswire.com/news-releases/fortune-announces-speakers-and-partners-for-brainstorm-ai-2026-in-san-francisco-dec-7-and-8-302948797.html"
     },
-    "https://www.prnewswire.com/news-releases/foundation-source-names-marissa-fox-foley-chief-marketing-officer-302947348.html": {
-      "acquired": "2026-11-23T13:34:49.421897+00:00",
-      "acquisition_seconds": 289.421897,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "FOUNDATION SOURCE NAMES MARISSA FOX-FOLEY CHIEF MARKETING OFFICER",
-      "url": "https://www.prnewswire.com/news-releases/foundation-source-names-marissa-fox-foley-chief-marketing-officer-302947348.html"
-    },
     "https://www.prnewswire.com/news-releases/from-bordeaux-to-china-jdcom-expands-direct-sourcing-partnerships-with-leading-french-wine-producers-302949175.html": {
       "acquired": "2026-11-24T09:17:22.071236+00:00",
       "acquisition_seconds": 142.071236,
@@ -5721,6 +5705,22 @@
       "status": "SCARTARE",
       "title": "From Bordeaux to China: JD.com Expands Direct Sourcing Partnerships with Leading French Wine Producers",
       "url": "https://www.prnewswire.com/news-releases/from-bordeaux-to-china-jdcom-expands-direct-sourcing-partnerships-with-leading-french-wine-producers-302949175.html"
+    },
+    "https://www.prnewswire.com/news-releases/fundstrat-capital-announces-november-2026-monthly-distribution-for-the-fundstrat-granny-shots-us-large-cap--income-etf-nyse-grni-302950472.html": {
+      "acquired": "2026-11-25T13:32:19.549553+00:00",
+      "acquisition_seconds": 139.549553,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-25T13:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Fundstrat Capital Announces November 2026 Monthly Distribution for the Fundstrat Granny Shots US Large Cap & Income ETF (NYSE: GRNI)",
+      "url": "https://www.prnewswire.com/news-releases/fundstrat-capital-announces-november-2026-monthly-distribution-for-the-fundstrat-granny-shots-us-large-cap--income-etf-nyse-grni-302950472.html"
     },
     "https://www.prnewswire.com/news-releases/future-standard-and-liberty-mutual-investments-expand-strategic-relationship-targeting-over-1-billion-across-digital-infrastructure-platform-302948267.html": {
       "acquired": "2026-11-23T13:48:46.079925+00:00",
@@ -5753,38 +5753,6 @@
       "status": "SCARTARE",
       "title": "FutureSports to Develop First-Ever Broad-Based Basketball Performance Indexes",
       "url": "https://www.prnewswire.com/news-releases/futuresports-to-develop-first-ever-broad-based-basketball-performance-indexes-302948904.html"
-    },
-    "https://www.prnewswire.com/news-releases/gallagher--hagopian-secures-711-068-jury-verdict-against-progressive-insurance-302947590.html": {
-      "acquired": "2026-11-23T13:34:49.421897+00:00",
-      "acquisition_seconds": 289.421897,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Gallagher & Hagopian Secures $711,068 Jury Verdict Against Progressive Insurance",
-      "url": "https://www.prnewswire.com/news-releases/gallagher--hagopian-secures-711-068-jury-verdict-against-progressive-insurance-302947590.html"
-    },
-    "https://www.prnewswire.com/news-releases/gallagher-amp-hagopian-obtiene-un-veredicto-del-jurado-por-711-068-contra-progressive-insurance-878857894.html": {
-      "acquired": "2026-11-23T13:34:49.421897+00:00",
-      "acquisition_seconds": 289.421897,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Gallagher & Hagopian obtiene un veredicto del jurado por $711,068 contra Progressive Insurance",
-      "url": "https://www.prnewswire.com/news-releases/gallagher-amp-hagopian-obtiene-un-veredicto-del-jurado-por-711-068-contra-progressive-insurance-878857894.html"
     },
     "https://www.prnewswire.com/news-releases/global-clean-energy-reports-q3-2026-revenue-growth-and-continued-ai-commercial-momentum-as-flamelit-marks-five-years-of-applied-ai-delivery-302948279.html": {
       "acquired": "2026-11-23T14:35:13.856308+00:00",
@@ -6746,22 +6714,6 @@
       "title": "NE Property Management Announces the Opening of Silo 29 Apartments in Midwest City, Featuring Private Garages, Walking Trails and a Short Commute to Downtown Oklahoma City",
       "url": "https://www.prnewswire.com/news-releases/ne-property-management-announces-the-opening-of-silo-29-apartments-in-midwest-city-featuring-private-garages-walking-trails-and-a-short-commute-to-downtown-oklahoma-city-302948356.html"
     },
-    "https://www.prnewswire.com/news-releases/neo-names-neo-a-long-term-priority-for-its-presence-on-the-web-302948253.html": {
-      "acquired": "2026-11-23T13:34:49.421897+00:00",
-      "acquisition_seconds": 469.421897,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:27:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Neo names.neo a long-term priority for its presence on the web",
-      "url": "https://www.prnewswire.com/news-releases/neo-names-neo-a-long-term-priority-for-its-presence-on-the-web-302948253.html"
-    },
     "https://www.prnewswire.com/news-releases/newcastle-systems-releases-latest-industry-trend-report-unlocking-human-centric-workflows-shaping-material-handling-302948262.html": {
       "acquired": "2026-11-23T13:48:46.079925+00:00",
       "acquisition_seconds": 766.079925,
@@ -7690,22 +7642,6 @@
       "title": "Stifel Highlights 40 Years as Listed Company: NYSE Content Update",
       "url": "https://www.prnewswire.com/news-releases/stifel-highlights-40-years-as-listed-company-nyse-content-update-302949461.html"
     },
-    "https://www.prnewswire.com/news-releases/summit-hotel-properties-publishes-2026-corporate-responsibility-report-302947826.html": {
-      "acquired": "2026-11-23T13:34:49.421897+00:00",
-      "acquisition_seconds": 289.421897,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "SUMMIT HOTEL PROPERTIES PUBLISHES 2026 CORPORATE RESPONSIBILITY REPORT",
-      "url": "https://www.prnewswire.com/news-releases/summit-hotel-properties-publishes-2026-corporate-responsibility-report-302947826.html"
-    },
     "https://www.prnewswire.com/news-releases/sun-sand-and-serenity-new-connectivity-brings-turks-and-caicos-island-paradise-even-closer-302949435.html": {
       "acquired": "2026-11-24T13:17:28.359094+00:00",
       "acquisition_seconds": 988.359094,
@@ -7849,22 +7785,6 @@
       "status": "SCARTARE",
       "title": "The 2026/27 Cloud Awards Shortlist Announced",
       "url": "https://www.prnewswire.com/news-releases/the-202627-cloud-awards-shortlist-announced-302948386.html"
-    },
-    "https://www.prnewswire.com/news-releases/the9-limited-announces-rescheduling-of-annual-general-meeting-to-december-24-2026-and-addition-of-proposals-for-shareholder-approval-302948231.html": {
-      "acquired": "2026-11-23T13:34:49.421897+00:00",
-      "acquisition_seconds": 229.421897,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:31:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "The9 Limited Announces Rescheduling of Annual General Meeting to December 24, 2026, and Addition of Proposals for Shareholder Approval",
-      "url": "https://www.prnewswire.com/news-releases/the9-limited-announces-rescheduling-of-annual-general-meeting-to-december-24-2026-and-addition-of-proposals-for-shareholder-approval-302948231.html"
     },
     "https://www.prnewswire.com/news-releases/themalimauler-wins-first-main-event-of-acr-pokers-20m-oss-302948632.html": {
       "acquired": "2026-11-24T14:02:20.796541+00:00",
