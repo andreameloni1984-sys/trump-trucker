@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-25T20:16:21.928144+00:00",
+  "updated_at": "2026-11-25T20:24:10.689096+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -18339,5 +18339,15 @@
     "Trump": 14,
     "chiamate al mercato": 0
   },
-  "analyst_report_week": "2026-W47"
+  "analyst_report_week": "2026-W47",
+  "analyst_posts_seen": {
+    "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
+      "at": "2026-11-25T20:24:10.677582+00:00",
+      "market": false
+    },
+    "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
+      "at": "2026-11-25T20:24:10.677582+00:00",
+      "market": false
+    }
+  }
 }
