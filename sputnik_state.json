@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-25T12:12:13.148346+00:00",
+  "updated_at": "2026-11-25T14:42:09.676941+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,30 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "49c53ee02b203ecf7772301e": {
+      "source": "WHITE_HOUSE_RSS",
+      "feed_url": "https://www.whitehouse.gov/feed/",
+      "url": "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/",
+      "primary_url": "",
+      "title": "Thanksgiving Day, 2026",
+      "published": "Wed, 25 Nov 2026 14:30:00 +0000",
+      "domains": [
+        "METALS",
+        "AI_TECH"
+      ],
+      "text": "Thanksgiving Day, 2026 As families and friends gather across our country to celebrate Thanksgiving in this 250th anniversary year of American Independence, we pledge to carry forward the spirit of faith and fellowship that marked the first Thanksgiving feast, and we renew our mission to continue ushering in the Golden Age of America so that every citizen has […] The post Thanksgiving Day, 2026 appeared first on The White House.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-25T14:42:09.556758+00:00",
+      "event_id": "49c53ee02b203ecf7772301e",
+      "action_reaction": {
+        "event_id": "49c53ee02b203ecf7772301e",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "fceacbe4f6105c445469b43b": {
       "source": "WHITE_HOUSE_RSS",
       "feed_url": "https://www.whitehouse.gov/feed/",
@@ -8154,37 +8178,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "f8a1f6c6e0581581d0693f1a": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43287",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117549615985529017",
-      "title": "It is my Great Honor to endorse Porter County Commissioner, Barb Regnitz, who is running to represent the incredible people of Indiana's 1st Congressional District! A very successful Businesswoman, Software Engineer, and Civic Leader, prior to becoming a distinguished Porter County Commissioner, Bar",
-      "published": "Tue, 03 Nov 2026 00:13:14 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse Porter County Commissioner, Barb Regnitz, who is running to represent the incredible people of Indiana's 1st Congressional District! A very successful Businesswoman, Software Engineer, and Civic Leader, prior to becoming a distinguished Porter County Commissioner, Bar It is my Great Honor to endorse Porter County Commissioner, Barb Regnitz, who is running to represent the incredible people of Indiana's 1st Congressional District! A very successful Businesswoman, Software Engineer, and Civic Leader, prior to becoming a distinguished Porter County Commissioner, Barb is a Proven Leader who has dedicated her life to serving her Community. Her opponent, Frank Mrvan, strongly opposed our Great STEEL TARIFFS and Workers that made all of these Jobs, and currently built Factories and Plants that are going up right now, possible. We increased Union Jobs and Votes by numbers never seen before, and Frank Mrvan was a, “NO.” Mrvan also voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender for Everybody. Frank Mrvan is Reckless, Radical, and Dangerous! On the other hand, as your next Congresswoman, Barb will fight hard to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Keep our Border SECURE, Stop Migrant Crime, Strengthen our Brave Mil",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.616554+00:00",
-      "event_id": "f8a1f6c6e0581581d0693f1a",
-      "action_reaction": {
-        "event_id": "f8a1f6c6e0581581d0693f1a",
-        "event_type": "TRADE_ESCALATION",
-        "historical_matches": [
-          "china_tariff_escalation_2025_10"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "DOWN",
-          "NASDAQ": "DOWN",
-          "USD": "DOWN",
-          "TREASURY_YIELDS": "DOWN",
-          "OIL": "DOWN"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13280,7 +13273,8 @@
     "6cc1023ced4d239cb3926168": "2026-11-23T23:51:12.079518+00:00",
     "14b48b05bb9668c79391e185": "2026-11-24T17:39:10.453248+00:00",
     "bf43b62c670f27d948292354": "2026-11-24T19:21:10.746103+00:00",
-    "fceacbe4f6105c445469b43b": "2026-11-25T12:12:10.538812+00:00"
+    "fceacbe4f6105c445469b43b": "2026-11-25T12:12:10.538812+00:00",
+    "49c53ee02b203ecf7772301e": "2026-11-25T14:42:09.556745+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
