@@ -314,22 +314,6 @@
       "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/23/3408367/0/en/veteran-trial-attorney-hyram-m-montero-joins-upchurch-watson-white-max-mediation-group.html": {
-      "acquired": "2026-11-23T23:16:32.866411+00:00",
-      "acquisition_seconds": 34892.866411,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:35:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Veteran Trial Attorney Hyram M. Montero Joins Upchurch Watson White & Max Mediation Group",
-      "url": "https://www.globenewswire.com/news-release/2026/11/23/3408367/0/en/veteran-trial-attorney-hyram-m-montero-joins-upchurch-watson-white-max-mediation-group.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/23/3408395/0/en/greenland-mines-president-to-represent-raw-materials-users-at-euspa-consultation-on-the-future-of-eu-space-services.html": {
       "acquired": "2026-11-23T23:16:32.866411+00:00",
       "acquisition_seconds": 33392.866411,
@@ -2794,6 +2778,22 @@
       "title": "I’m in my 70s and buying a new BMW X1. Should I put my only son on the title?",
       "url": "https://www.marketwatch.com/story/im-in-my-70s-and-buying-a-new-bmw-x1-should-i-put-my-only-son-on-the-title-25731040"
     },
+    "https://www.marketwatch.com/story/inflation-gets-worse-now-the-fed-no-choice-but-to-raise-u-s-interest-rates-8b0c2c1f": {
+      "acquired": "2026-11-25T13:47:19.719783+00:00",
+      "acquisition_seconds": 799.719783,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T13:34:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Inflation gets worse. Now the Fed no choice but to raise U.S. interest rates.",
+      "url": "https://www.marketwatch.com/story/inflation-gets-worse-now-the-fed-no-choice-but-to-raise-u-s-interest-rates-8b0c2c1f"
+    },
     "https://www.marketwatch.com/story/ive-paid-for-long-term-care-insurance-for-20-years-is-it-still-worth-it-1b2cd52d": {
       "acquired": "2026-11-23T19:47:25.299606+00:00",
       "acquisition_seconds": 925.299606,
@@ -3306,6 +3306,22 @@
       "title": "These stocks are the biggest gainers after Jensen Huang’s return to Nvidia",
       "url": "https://www.marketwatch.com/story/these-stocks-are-the-biggest-gainers-after-jensen-huangs-return-to-nvidia-bb886140"
     },
+    "https://www.marketwatch.com/story/third-quarter-gdp-already-looked-great-now-it-looks-even-better-12057da5": {
+      "acquired": "2026-11-25T13:47:19.719783+00:00",
+      "acquisition_seconds": 379.719783,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-25T13:41:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Third-quarter GDP already looked great. Now it looks even better.",
+      "url": "https://www.marketwatch.com/story/third-quarter-gdp-already-looked-great-now-it-looks-even-better-12057da5"
+    },
     "https://www.marketwatch.com/story/this-billionaire-bought-nvidia-in-anticipation-of-jensen-huangs-return-and-warns-the-s-p-500-could-fall-by-a-third-dcff9489": {
       "acquired": "2026-11-24T12:17:19.691819+00:00",
       "acquisition_seconds": 1099.691819,
@@ -3402,22 +3418,6 @@
       "title": "U.S. stocks see best day in more than a year, as return of Jensen Huang revives AI enthusiasm",
       "url": "https://www.marketwatch.com/story/u-s-stocks-see-best-day-in-more-than-a-year-as-return-of-jensen-huang-revives-ai-enthusiasm-c3b9d274"
     },
-    "https://www.marketwatch.com/story/unitedhealth-humana-and-cvs-stocks-slide-as-u-s-targets-medicare-advantage-ratings-6c2be5bb": {
-      "acquired": "2026-11-23T13:48:46.059207+00:00",
-      "acquisition_seconds": 826.059207,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-23T13:35:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "UnitedHealth, Humana and CVS stocks slide as U.S targets Medicare Advantage ratings",
-      "url": "https://www.marketwatch.com/story/unitedhealth-humana-and-cvs-stocks-slide-as-u-s-targets-medicare-advantage-ratings-6c2be5bb"
-    },
     "https://www.marketwatch.com/story/visiting-las-vegas-is-getting-too-expensive-but-dont-blame-airfares-12e2c588": {
       "acquired": "2026-11-24T19:02:30.975296+00:00",
       "acquisition_seconds": 870.975296,
@@ -3497,22 +3497,6 @@
       "status": "SCARTARE",
       "title": "Zendaya and Tom Holland buy a home on 1 acre in London for $10 million",
       "url": "https://www.marketwatch.com/story/zendaya-and-tom-holland-buy-a-home-on-1-acre-in-london-for-10-million-a433e7cd"
-    },
-    "https://www.prnewswire.com/news-releases/76-of-us-companies-plan-to-reskill-employees-up-from-64-a-year-ago-302946271.html": {
-      "acquired": "2026-11-23T13:48:46.079925+00:00",
-      "acquisition_seconds": 226.079925,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:45:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "76% of US Companies Plan to Reskill Employees, Up From 64% a Year Ago",
-      "url": "https://www.prnewswire.com/news-releases/76-of-us-companies-plan-to-reskill-employees-up-from-64-a-year-ago-302946271.html"
     },
     "https://www.prnewswire.com/news-releases/a-loccasion-du-singapore-fintech-festival-2026-yeepay-presente-son-reseau-de-paiement-integre-et-etend-ses-partenariats-strategiques-302948815.html": {
       "acquired": "2026-11-24T02:03:02.843221+00:00",
@@ -5466,22 +5450,6 @@
       "title": "Expert Consumers Names Melio Its Best Small Business Payment Solution(2026): Melio Recognized By Expert Consumers For Helping Businesses Pay Vendors",
       "url": "https://www.prnewswire.com/news-releases/expert-consumers-names-melio-its-best-small-business-payment-solution2026-melio-recognized-by-expert-consumers-for-helping-businesses-pay-vendors-302949283.html"
     },
-    "https://www.prnewswire.com/news-releases/ey-us-announces-hudson-leogrande-of-comfrt-as-an-entrepreneur-of-the-year-2026-national-award-winner-302948274.html": {
-      "acquired": "2026-11-23T13:48:46.079925+00:00",
-      "acquisition_seconds": 106.079925,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:47:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "EY US Announces Hudson Leogrande of Comfrt as an Entrepreneur Of The Year® 2026 National Award winner",
-      "url": "https://www.prnewswire.com/news-releases/ey-us-announces-hudson-leogrande-of-comfrt-as-an-entrepreneur-of-the-year-2026-national-award-winner-302948274.html"
-    },
     "https://www.prnewswire.com/news-releases/facade-systems-market-worth-147-30-billion-by-2031---exclusive-report-by-marketsandmarkets-302949169.html": {
       "acquired": "2026-11-24T11:47:20.184185+00:00",
       "acquisition_seconds": 140.184185,
@@ -5721,22 +5689,6 @@
       "status": "SCARTARE",
       "title": "Fundstrat Capital Announces November 2026 Monthly Distribution for the Fundstrat Granny Shots US Large Cap & Income ETF (NYSE: GRNI)",
       "url": "https://www.prnewswire.com/news-releases/fundstrat-capital-announces-november-2026-monthly-distribution-for-the-fundstrat-granny-shots-us-large-cap--income-etf-nyse-grni-302950472.html"
-    },
-    "https://www.prnewswire.com/news-releases/future-standard-and-liberty-mutual-investments-expand-strategic-relationship-targeting-over-1-billion-across-digital-infrastructure-platform-302948267.html": {
-      "acquired": "2026-11-23T13:48:46.079925+00:00",
-      "acquisition_seconds": 526.079925,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:40:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Future Standard and Liberty Mutual Investments Expand Strategic Relationship Targeting Over $1 Billion Across Digital Infrastructure Platform",
-      "url": "https://www.prnewswire.com/news-releases/future-standard-and-liberty-mutual-investments-expand-strategic-relationship-targeting-over-1-billion-across-digital-infrastructure-platform-302948267.html"
     },
     "https://www.prnewswire.com/news-releases/futuresports-to-develop-first-ever-broad-based-basketball-performance-indexes-302948904.html": {
       "acquired": "2026-11-24T12:02:22.222151+00:00",
@@ -6714,22 +6666,6 @@
       "title": "NE Property Management Announces the Opening of Silo 29 Apartments in Midwest City, Featuring Private Garages, Walking Trails and a Short Commute to Downtown Oklahoma City",
       "url": "https://www.prnewswire.com/news-releases/ne-property-management-announces-the-opening-of-silo-29-apartments-in-midwest-city-featuring-private-garages-walking-trails-and-a-short-commute-to-downtown-oklahoma-city-302948356.html"
     },
-    "https://www.prnewswire.com/news-releases/newcastle-systems-releases-latest-industry-trend-report-unlocking-human-centric-workflows-shaping-material-handling-302948262.html": {
-      "acquired": "2026-11-23T13:48:46.079925+00:00",
-      "acquisition_seconds": 766.079925,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:36:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Newcastle Systems Releases Latest Industry Trend Report: Unlocking Human-Centric Workflows Shaping Material Handling",
-      "url": "https://www.prnewswire.com/news-releases/newcastle-systems-releases-latest-industry-trend-report-unlocking-human-centric-workflows-shaping-material-handling-302948262.html"
-    },
     "https://www.prnewswire.com/news-releases/newmark-arranges-305-million-construction-loan-for-luxury-condominium-development-at-101-franklin-in-tribeca-302948665.html": {
       "acquired": "2026-11-23T21:32:41.823409+00:00",
       "acquisition_seconds": 161.823409,
@@ -7482,22 +7418,6 @@
       "title": "SHAREHOLDER ALERT: Purcell & Lefkowitz LLP Announces Shareholder Investigation of Oramed Pharmaceuticals Inc. (NASDAQ: ORMP)",
       "url": "https://www.prnewswire.com/news-releases/shareholder-alert-purcell--lefkowitz-llp-announces-shareholder-investigation-of-oramed-pharmaceuticals-inc-nasdaq-ormp-302947876.html"
     },
-    "https://www.prnewswire.com/news-releases/shareholder-alert-purcell--lefkowitz-llp-announces-shareholder-investigation-of-tevogen-bio-holdings-inc-nasdaq-tvgn-302947866.html": {
-      "acquired": "2026-11-23T13:48:46.079925+00:00",
-      "acquisition_seconds": 826.079925,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:35:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "SHAREHOLDER ALERT: Purcell & Lefkowitz LLP Announces Shareholder Investigation of Tevogen Bio Holdings Inc. (NASDAQ: TVGN)",
-      "url": "https://www.prnewswire.com/news-releases/shareholder-alert-purcell--lefkowitz-llp-announces-shareholder-investigation-of-tevogen-bio-holdings-inc-nasdaq-tvgn-302947866.html"
-    },
     "https://www.prnewswire.com/news-releases/sharkninja-set-to-join-sp-500-others-to-join-sp-midcap-400-and-sp-smallcap-600-302948731.html": {
       "acquired": "2026-11-23T23:32:28.433816+00:00",
       "acquisition_seconds": 568.433816,
@@ -7993,22 +7913,6 @@
       "status": "SCARTARE",
       "title": "Velocity Trade International Streamlines Multi-Jurisdictional Reporting with Bloomberg RHUB",
       "url": "https://www.prnewswire.com/news-releases/velocity-trade-international-streamlines-multi-jurisdictional-reporting-with-bloomberg-rhub-302947916.html"
-    },
-    "https://www.prnewswire.com/news-releases/vero-beach-luxury-market-divides-at-2-million-heading-into-winter-302947294.html": {
-      "acquired": "2026-11-23T13:48:46.079925+00:00",
-      "acquisition_seconds": 586.079925,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-23T13:39:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Vero Beach Luxury Market Divides at $2 Million Heading Into Winter",
-      "url": "https://www.prnewswire.com/news-releases/vero-beach-luxury-market-divides-at-2-million-heading-into-winter-302947294.html"
     },
     "https://www.prnewswire.com/news-releases/von-bordeaux-nach-china-jdcom-erweitert-direktbeschaffungspartnerschaften-mit-fuhrenden-franzosischen-weinproduzenten-302950235.html": {
       "acquired": "2026-11-25T06:47:19.751002+00:00",
