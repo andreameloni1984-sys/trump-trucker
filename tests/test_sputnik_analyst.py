@@ -234,6 +234,25 @@ class ReportCardTests(unittest.TestCase):
         self.assertIn("1/1 giuste", text)
         self.assertIn("Oro", text)
 
+    def test_market_call_becomes_nasdaq_hypothesis_and_posts_are_counted(self):
+        state = {}
+        fake_ctx = {"trump": [{"title": "THIS IS A GREAT TIME TO BUY!!!", "url": "https://x/1", "bias": []},
+                              {"title": "Happy Thanksgiving!", "url": "https://x/2", "bias": []}], "money": []}
+        with patch.object(an, "export_context", return_value=fake_ctx):
+            an.track_predictions(state, NOW, price=lambda s: 100.0)
+        [p] = state["analyst_predictions"].values()
+        self.assertEqual((p["instrument"], p["bias"]), ("NASDAQ100", "LONG_BIAS"))
+        self.assertIn("Post di Trump letti in 7 giorni: 2, con effetto sui mercati: 1",
+                      an.report_message(state, NOW + timedelta(hours=1)))
+
+    def test_report_explains_weeks_without_market_posts(self):
+        state = {}
+        fake_ctx = {"trump": [{"title": "Happy Thanksgiving!", "url": "https://x/2", "bias": []}], "money": []}
+        with patch.object(an, "export_context", return_value=fake_ctx):
+            an.track_predictions(state, NOW, price=lambda s: 100.0)
+        self.assertEqual(state["analyst_predictions"], {})
+        self.assertIn("nessuno parlava di dazi", an.report_message(state, NOW + timedelta(hours=1)))
+
     def test_report_due_saturday_once(self):
         sat = datetime(2026, 11, 28, 9, 30, tzinfo=timezone.utc)
         state = {}
