@@ -268,6 +268,22 @@
       "title": "RT @MelaniaTrump",
       "url": "https://truthsocial.com/@realDonaldTrump/117681042348270942"
     },
+    "https://truthsocial.com/@realDonaldTrump/117681046599820049": {
+      "acquired": "2026-11-26T06:17:20.935662+00:00",
+      "acquisition_seconds": 3574.935662,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-26T05:17:46+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "RT @WhiteHouseAmerica's Mayor. 🇺🇸President Donald J. Trump presents Rudy Giuliani with the Presidential Medal of Freedom.",
+      "url": "https://truthsocial.com/@realDonaldTrump/117681046599820049"
+    },
     "https://truthsocial.com/@realDonaldTrump/117681161738909385": {
       "acquired": "2026-11-26T06:02:20.869865+00:00",
       "acquisition_seconds": 918.043218,
@@ -2221,6 +2237,22 @@
       "title": "S. 5737 (IS) - Less Bureaucracy, Better International Education Oversight Act",
       "url": "https://www.govinfo.gov/app/details/BILLS-119s5737is"
     },
+    "https://www.govinfo.gov/app/details/BILLS-119s5747is": {
+      "acquired": "2026-11-26T06:17:20.819646+00:00",
+      "acquisition_seconds": 379.819646,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-26T06:11:01+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "S. 5747 (IS) - Protecting America from Seasonal and Pandemic Influenza Act of 2026",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119s5747is"
+    },
     "https://www.govinfo.gov/app/details/BILLS-119s5752is": {
       "acquired": "2026-11-25T07:02:19.634199+00:00",
       "acquisition_seconds": 736.634199,
@@ -2429,6 +2461,22 @@
       "title": "S. 5764 (IS) - Crime Victims Fund Prioritization Act",
       "url": "https://www.govinfo.gov/app/details/BILLS-119s5764is"
     },
+    "https://www.govinfo.gov/app/details/BILLS-119s5765is": {
+      "acquired": "2026-11-26T06:17:20.819646+00:00",
+      "acquisition_seconds": 378.819646,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-26T06:11:02+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "S. 5765 (IS) - Stop Scaring Seniors Act",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119s5765is"
+    },
     "https://www.govinfo.gov/app/details/BILLS-119s5766is": {
       "acquired": "2026-11-25T06:47:19.878753+00:00",
       "acquisition_seconds": 499.878753,
@@ -2477,6 +2525,38 @@
       "title": "S. 5768 (IS) - Student Food Security Act of 2026",
       "url": "https://www.govinfo.gov/app/details/BILLS-119s5768is"
     },
+    "https://www.govinfo.gov/app/details/BILLS-119s5769is": {
+      "acquired": "2026-11-26T06:17:20.819646+00:00",
+      "acquisition_seconds": 378.819646,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-26T06:11:02+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "S. 5769 (IS) - To designate the facility of the United States Postal Service located at 117 West Lovett Street in Charlotte, Michigan, as the \"Francis C. Flaherty Post Office Building\".",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119s5769is"
+    },
+    "https://www.govinfo.gov/app/details/BILLS-119s5770is": {
+      "acquired": "2026-11-26T06:17:20.819646+00:00",
+      "acquisition_seconds": 378.819646,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-26T06:11:02+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "S. 5770 (IS) - To designate the facility of the United States Postal Service located at 324 Washington Avenue, Suite 1 in Grand Haven, Michigan, as the \"Ell Thomas Simantz Post Office Building\".",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119s5770is"
+    },
     "https://www.govinfo.gov/app/details/BILLS-119s5771is": {
       "acquired": "2026-11-25T06:47:19.878753+00:00",
       "acquisition_seconds": 499.878753,
@@ -2509,6 +2589,22 @@
       "title": "S. 5772 (IS) - Military Family Limb Loss Support Act",
       "url": "https://www.govinfo.gov/app/details/BILLS-119s5772is"
     },
+    "https://www.govinfo.gov/app/details/BILLS-119s5774is": {
+      "acquired": "2026-11-26T06:17:20.819646+00:00",
+      "acquisition_seconds": 378.819646,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-26T06:11:02+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "S. 5774 (IS) - Providing Real Opportunities for Growth to Rising Entrepreneurs for Sustained Success (PROGRESS) Act",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119s5774is"
+    },
     "https://www.govinfo.gov/app/details/BILLS-119s5775is": {
       "acquired": "2026-11-25T06:47:19.878753+00:00",
       "acquisition_seconds": 499.878753,
@@ -2540,6 +2636,22 @@
       "status": "SCARTARE",
       "title": "S. 5776 (IS) - Parental Bereavement Leave Expansion Act of 2026",
       "url": "https://www.govinfo.gov/app/details/BILLS-119s5776is"
+    },
+    "https://www.govinfo.gov/app/details/BILLS-119s5777is": {
+      "acquired": "2026-11-26T06:17:20.819646+00:00",
+      "acquisition_seconds": 378.819646,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-26T06:11:02+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "S. 5777 (IS) - Developing Innovative Partnerships and Learning Opportunities that Motivate Achievement Act",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119s5777is"
     },
     "https://www.govinfo.gov/app/details/BILLS-119s5778is": {
       "acquired": "2026-11-25T06:47:19.878753+00:00",
@@ -2588,6 +2700,22 @@
       "status": "SCARTARE",
       "title": "S. 5780 (IS) - To designate the facility of the United States Postal Service located at 501 West Memorial Drive in Muncie, Indiana, as the \"Officer Blake A. Reynolds Post Office Building\".",
       "url": "https://www.govinfo.gov/app/details/BILLS-119s5780is"
+    },
+    "https://www.govinfo.gov/app/details/BILLS-119s5814is": {
+      "acquired": "2026-11-26T06:17:20.819646+00:00",
+      "acquisition_seconds": 378.819646,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "bills",
+      "penalized": [],
+      "published": "2026-11-26T06:11:02+00:00",
+      "source": "Congresso / GovInfo",
+      "status": "SCARTARE",
+      "title": "S. 5814 (IS) - Housing for Homeless Students Act of 2026",
+      "url": "https://www.govinfo.gov/app/details/BILLS-119s5814is"
     },
     "https://www.govinfo.gov/app/details/BILLS-119s69rs": {
       "acquired": "2026-11-24T06:26:00.696983+00:00",
