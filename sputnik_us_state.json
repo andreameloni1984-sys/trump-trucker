@@ -366,38 +366,6 @@
       "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/24/3409257/0/en/stratum-holdings-and-ocean-power-technologies-advance-strategic-collaboration-to-develop-offshore-renewable-powered-ai-data-centers.html": {
-      "acquired": "2026-11-24T14:32:26.500842+00:00",
-      "acquisition_seconds": 3746.500842,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:30:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Stratum Holdings and Ocean Power Technologies Advance Strategic Collaboration to Develop Offshore Renewable-Powered AI Data Centers",
-      "url": "https://www.globenewswire.com/news-release/2026/11/24/3409257/0/en/stratum-holdings-and-ocean-power-technologies-advance-strategic-collaboration-to-develop-offshore-renewable-powered-ai-data-centers.html"
-    },
-    "https://www.globenewswire.com/news-release/2026/11/24/3409269/0/en/edible-garden-and-square-roots-complete-phase-1-of-nutrient-dense-greens-beverage-program-set-sights-on-functional-nutrition-markets.html": {
-      "acquired": "2026-11-24T14:32:26.500842+00:00",
-      "acquisition_seconds": 3686.500842,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:31:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Edible Garden and Square Roots Complete Phase 1 of Nutrient Dense Greens Beverage Program, Set Sights on Functional Nutrition Markets",
-      "url": "https://www.globenewswire.com/news-release/2026/11/24/3409269/0/en/edible-garden-and-square-roots-complete-phase-1-of-nutrient-dense-greens-beverage-program-set-sights-on-functional-nutrition-markets.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/24/3409278/0/en/ethics-approval-for-prrose-trial-in-ovarian-cancer.html": {
       "acquired": "2026-11-24T14:32:26.500842+00:00",
       "acquisition_seconds": 2846.500842,
@@ -2461,6 +2429,22 @@
       "status": "SCARTARE",
       "title": "Oracle’s stock sinks toward a 3-year low as the AI trade continues to unravel",
       "url": "https://www.marketwatch.com/story/oracles-stock-sinks-toward-a-3-year-low-as-the-ai-trade-continues-to-unravel-d4698d77"
+    },
+    "https://www.marketwatch.com/story/roth-ira-conversions-arent-free-money-watch-out-for-these-5-costly-mistakes-39b182d3": {
+      "acquired": "2026-11-26T13:32:21.367051+00:00",
+      "acquisition_seconds": 501.367051,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-26T13:24:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Roth IRA conversions aren’t free money. Watch out for these 5 costly mistakes.",
+      "url": "https://www.marketwatch.com/story/roth-ira-conversions-arent-free-money-watch-out-for-these-5-costly-mistakes-39b182d3"
     },
     "https://www.marketwatch.com/story/s-p-500s-slide-through-a-key-trendline-again-is-an-ominous-sign-history-suggests-def8b99f": {
       "acquired": "2026-11-25T13:17:22.812572+00:00",
@@ -5166,22 +5150,6 @@
       "title": "JG Wentworth Names Jason Tepperman as Chief Executive Officer",
       "url": "https://www.prnewswire.com/news-releases/jg-wentworth-names-jason-tepperman-as-chief-executive-officer-302949653.html"
     },
-    "https://www.prnewswire.com/news-releases/jianzhi-education-signs-non-binding-comprehensive-cross-border-e-commerce-cooperation-framework-agreement-with-diandian-easy-pay-exploring-new-opportunities-in-ai-enabled-cross-border-commerce-302949373.html": {
-      "acquired": "2026-11-24T13:32:33.573919+00:00",
-      "acquisition_seconds": 153.573919,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Jianzhi Education Signs Non-Binding Comprehensive Cross-Border E-Commerce Cooperation Framework Agreement with DIANDIAN EASY PAY, Exploring New Opportunities in AI-Enabled Cross-Border Commerce",
-      "url": "https://www.prnewswire.com/news-releases/jianzhi-education-signs-non-binding-comprehensive-cross-border-e-commerce-cooperation-framework-agreement-with-diandian-easy-pay-exploring-new-opportunities-in-ai-enabled-cross-border-commerce-302949373.html"
-    },
     "https://www.prnewswire.com/news-releases/justa-crm-launches-to-transform-how-residential-property-management-companies-win-new-business-302948434.html": {
       "acquired": "2026-11-24T14:02:20.796541+00:00",
       "acquisition_seconds": 680.796541,
@@ -5517,22 +5485,6 @@
       "status": "SCARTARE",
       "title": "Northwest Bank Executive Leaders Join Central Ohio Community Nonprofit Boards",
       "url": "https://www.prnewswire.com/news-releases/northwest-bank-executive-leaders-join-central-ohio-community-nonprofit-boards-302948668.html"
-    },
-    "https://www.prnewswire.com/news-releases/nvision-global-shortlisted-in-202627-cloud-awards-for-nsure-ai-innovation-in-transportation-financial-intelligence-302948756.html": {
-      "acquired": "2026-11-24T13:32:33.573919+00:00",
-      "acquisition_seconds": 333.573919,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:27:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "nVision Global Shortlisted in 2026/27 Cloud Awards for nSure AI™ Innovation in Transportation Financial Intelligence",
-      "url": "https://www.prnewswire.com/news-releases/nvision-global-shortlisted-in-202627-cloud-awards-for-nsure-ai-innovation-in-transportation-financial-intelligence-302948756.html"
     },
     "https://www.prnewswire.com/news-releases/oci-global-announces-closing-of-orascom-construction-transaction-and-confirms-key-dates-for-oci-shareholders-302950189.html": {
       "acquired": "2026-11-25T05:17:26.561229+00:00",
@@ -6285,22 +6237,6 @@
       "status": "SCARTARE",
       "title": "Von Bordeaux nach China: JD.com erweitert Direktbeschaffungspartnerschaften mit führenden französischen Weinproduzenten",
       "url": "https://www.prnewswire.com/news-releases/von-bordeaux-nach-china-jdcom-erweitert-direktbeschaffungspartnerschaften-mit-fuhrenden-franzosischen-weinproduzenten-302950235.html"
-    },
-    "https://www.prnewswire.com/news-releases/waystar-to-bring-revenue-cycle-intelligence-to-google-clouds-gemini-for-healthcare-302948898.html": {
-      "acquired": "2026-11-24T13:32:33.573919+00:00",
-      "acquisition_seconds": 153.573919,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Waystar to Bring Revenue Cycle Intelligence to Google Cloud's Gemini for healthcare",
-      "url": "https://www.prnewswire.com/news-releases/waystar-to-bring-revenue-cycle-intelligence-to-google-clouds-gemini-for-healthcare-302948898.html"
     },
     "https://www.prnewswire.com/news-releases/westwood-financial-announces-third-quarter-2026-results-302950749.html": {
       "acquired": "2026-11-25T18:02:27.883892+00:00",
