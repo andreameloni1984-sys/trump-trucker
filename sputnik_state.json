@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T14:57:12.910712+00:00",
+  "updated_at": "2026-11-26T15:00:10.482690+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "f817b49bdfbd89a7fcdb90f4": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43745",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117683312242798397",
+      "title": "During my conversations in China with President Vladimir Putin, of Russia, I spent a lot of time talking about the fact that I would like to see President Putin pull back all Military aggression against territories throughout Europe, in the hopes that a Deal can be made between Russia and Ukraine, a",
+      "published": "Thu, 26 Nov 2026 14:53:57 +0000",
+      "domains": [
+        "DEFENSE"
+      ],
+      "text": "During my conversations in China with President Vladimir Putin, of Russia, I spent a lot of time talking about the fact that I would like to see President Putin pull back all Military aggression against territories throughout Europe, in the hopes that a Deal can be made between Russia and Ukraine, a RT: https://truthsocial.com/users/realDonaldTrump/statuses/117683175541431490 During my conversations in China with President Vladimir Putin, of Russia, I spent a lot of time talking about the fact that I would like to see President Putin pull back all Military aggression against territories throughout Europe, in the hopes that a Deal can be made between Russia and Ukraine, and made quickly. I really believe this is a strong possibility — Thousands of people are being killed each and every month, A COMPLETE BLOODBATH — and will be a Great Tribute to everyone! It was an Honor meeting with Secretary General of NATO, Mark Rutte, last night at Mar-a-Lago, where many topics were discussed, and in which I updated him on my talks with President Putin. Thank you for your attention to this matter! President DONALD J. TRUMP Quoted Donald J. Trump A JOINT STATEMENT MADE BY PRESIDENT DONALD J. TRUMP AND SECRETARY GENERAL OF NATO, MARK RUTTE: President Trump and Secretary General Rutte had an outstanding meeting on Wednesday evening, at what is often referred to as the Southern White House — Mar-a-Lago. The meeting was very impactful, with the War between Russia and Ukraine, and the Conflict i",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T15:00:10.452769+00:00",
+      "event_id": "f817b49bdfbd89a7fcdb90f4",
+      "action_reaction": {
+        "event_id": "f817b49bdfbd89a7fcdb90f4",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "7ed5d6fc3748073feeb4e174": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8136,29 +8159,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "f4d9ce15c0284ce373302ec2": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43330",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552759349027685",
-      "title": "TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR: – Jon Husted for U.S. Senate– Vivek Ramaswamy for Governor– Keith Faber for Attorney General– Eric Conroy for U.S. Congress (OH-01)– David Taylor for U.S. Congress (OH-02)– Jim Jordan for U.S. Congress (OH-04)– Bob Latta for U.S. Congress (OH-05)– M",
-      "published": "Tue, 03 Nov 2026 13:32:38 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR: – Jon Husted for U.S. Senate– Vivek Ramaswamy for Governor– Keith Faber for Attorney General– Eric Conroy for U.S. Congress (OH-01)– David Taylor for U.S. Congress (OH-02)– Jim Jordan for U.S. Congress (OH-04)– Bob Latta for U.S. Congress (OH-05)– M TO THE GREAT PEOPLE OF OHIO, GET OUT AND VOTE FOR: – Jon Husted for U.S. Senate – Vivek Ramaswamy for Governor – Keith Faber for Attorney General – Eric Conroy for U.S. Congress (OH-01) – David Taylor for U.S. Congress (OH-02) – Jim Jordan for U.S. Congress (OH-04) – Bob Latta for U.S. Congress (OH-05) – Michael Rulli for U.S. Congress (OH-06) – Max Miller for U.S. Congress (OH-07) – Warren Davidson for U.S. Congress (OH-08) – Derek Merrin for U.S. Congress (OH-09) – Michael Turner for U.S. Congress (OH-10) – Troy Balderson for U.S. Congress (OH-12) – David Joyce for U.S. Congress (OH-14) – Mike Carey for U.S. Congress (OH-15) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/ohio/ View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.107057+00:00",
-      "event_id": "f4d9ce15c0284ce373302ec2",
-      "action_reaction": {
-        "event_id": "f4d9ce15c0284ce373302ec2",
-        "event_type": "GEOPOLITICAL_ESCALATION",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13263,7 +13263,8 @@
     "970a21c88c43d578c166e87a": "2026-11-26T05:15:08.741863+00:00",
     "f234f43617d980df5d581dcc": "2026-11-26T05:48:08.405323+00:00",
     "c2695adb03a2cd5389183d4d": "2026-11-26T12:42:11.086026+00:00",
-    "a6c7b4f3cf70f7c6ffb19c77": "2026-11-26T14:24:09.791113+00:00"
+    "a6c7b4f3cf70f7c6ffb19c77": "2026-11-26T14:24:09.791113+00:00",
+    "f817b49bdfbd89a7fcdb90f4": "2026-11-26T15:00:10.452756+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18342,35 +18343,39 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-26T14:57:12.900910+00:00",
+      "at": "2026-11-26T15:00:10.467561+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T14:57:12.900910+00:00",
+      "at": "2026-11-26T15:00:10.467561+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T14:57:12.900910+00:00",
+      "at": "2026-11-26T15:00:10.467561+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T14:57:12.900910+00:00",
+      "at": "2026-11-26T15:00:10.467561+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T14:57:12.900910+00:00",
+      "at": "2026-11-26T15:00:10.467561+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43740": {
-      "at": "2026-11-26T14:57:12.900910+00:00",
+      "at": "2026-11-26T15:00:10.467561+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43741": {
-      "at": "2026-11-26T14:57:12.900910+00:00",
+      "at": "2026-11-26T15:00:10.467561+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43742": {
-      "at": "2026-11-26T14:57:12.900910+00:00",
+      "at": "2026-11-26T15:00:10.467561+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43745": {
+      "at": "2026-11-26T15:00:10.467561+00:00",
       "market": false
     }
   }
