@@ -1107,15 +1107,38 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T05:15:08.760550+00:00",
+  "updated_at": "2026-11-26T05:17:16.082432+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "baad8b4747b4ce83e6328638",
+    "TRUTH_ARCHIVE": "1c5a5e128933ef305c4e394e",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "1c5a5e128933ef305c4e394e": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump ReTruthed Mark @markkhalil · November 26, 2026, 12:09 AM Original Post Where does @ realDonaldTrump find the strength, energy, mental acuity, and talent?! Oh wait, I know.☝🏽👍🏽🇺🇸 Donald J. Trump @realDonaldTrump · November 26, 2026, 12:08 AM Original Post 0.000% of Obama caused carcinogens were released into beautiful Iowa air after the Perfect detonation. WE ALL WORKED HARD! President DJT Donald J. Trump @realDonaldTrump · November 25, 2026, 3:37 PM Original Post Fake News CNN was hoping for a bad outcome in Iowa. Their pre-coverage was inaccurate and deplorable. When a PERFECT detonation was completed and there for all to see, they went CRAZY with anger. They want our Country to lose. “Another win for Trump!” Donald J. Trump @realDonaldTrump · November 25, 2026, 3:27 PM Original Post Rob Sands, the new future Governor of Iowa, is obviously unhappy that the Obama created (2009!) mess was so perfectly handled by the U.S. Army through a flaw",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T05:17:15.022672+00:00",
+      "event_id": "1c5a5e128933ef305c4e394e",
+      "action_reaction": {
+        "event_id": "1c5a5e128933ef305c4e394e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "970a21c88c43d578c166e87a": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8146,29 +8169,6 @@
       "event_id": "a0140c3660ad6617d016254a",
       "action_reaction": {
         "event_id": "a0140c3660ad6617d016254a",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "42c77d81ff41d979e42d5172": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43269",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548940975730053",
-      "title": "Congressman Rick Allen is an incredible Representative of Georgia's 12th Congressional District! As a Member of the POWERFUL House Energy and Commerce Committee, Rick is working tirelessly to Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Create GREAT Jobs, Cut Taxes and Regulations,",
-      "published": "Mon, 02 Nov 2026 21:21:34 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Congressman Rick Allen is an incredible Representative of Georgia's 12th Congressional District! As a Member of the POWERFUL House Energy and Commerce Committee, Rick is working tirelessly to Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Create GREAT Jobs, Cut Taxes and Regulations, Congressman Rick Allen is an incredible Representative of Georgia's 12th Congressional District! As a Member of the POWERFUL House Energy and Commerce Committee, Rick is working tirelessly to Promote MADE IN THE U.S.A., Advance American Energy DOMINANCE, Create GREAT Jobs, Cut Taxes and Regulations, and Champion our Nation's Golden Age. He is also relentlessly focused on helping us Keep our Border SECURE, Stop Migrant Crime, Support our Brave Military/Veterans, Ensure LAW AND ORDER, and Protect our always under siege Second Amendment. Rick's opponent, Ceretta Smith, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if she and the Dumocrats ever got in, all of these things will be terminated. She wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Ceretta Smith is Reckless, Radical, and Dangerous! Rick Allen has my Complete and Total Endorsement for Re-Election. GET OUT AND VOTE FOR RICK — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP https:// swampthevoteusa.com/georgia/",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.634948+00:00",
-      "event_id": "42c77d81ff41d979e42d5172",
-      "action_reaction": {
-        "event_id": "42c77d81ff41d979e42d5172",
         "event_type": "OTHER",
         "historical_matches": [],
         "historical_directions": {},
@@ -18346,31 +18346,31 @@
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-26T05:15:08.749131+00:00",
+      "at": "2026-11-26T05:17:16.069014+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
-      "at": "2026-11-26T05:15:08.749131+00:00",
+      "at": "2026-11-26T05:17:16.069014+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-26T05:15:08.749131+00:00",
+      "at": "2026-11-26T05:17:16.069014+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T05:15:08.749131+00:00",
+      "at": "2026-11-26T05:17:16.069014+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T05:15:08.749131+00:00",
+      "at": "2026-11-26T05:17:16.069014+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T05:15:08.749131+00:00",
+      "at": "2026-11-26T05:17:16.069014+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T05:15:08.749131+00:00",
+      "at": "2026-11-26T05:17:16.069014+00:00",
       "market": false
     }
   }
