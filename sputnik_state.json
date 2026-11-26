@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T15:48:09.769130+00:00",
+  "updated_at": "2026-11-26T15:51:09.027867+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "686016a0b179d06f0b81b2e2": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43746",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117683512952489451",
+      "title": "HAPPY THANKSGIVING TO ALL AMERICAN PATRIOTS WHO HAVE WORKED SO HARD TO MAKE OUR COUNTRY GREAT! Additionally, I would like to wish a Happy Thanksgiving to even those who issued fake Economic Numbers, just prior to the Election, and corrected them yesterday, three weeks late, showing that the GDP was",
+      "published": "Thu, 26 Nov 2026 15:45:00 +0000",
+      "domains": [
+        "REAL_ESTATE"
+      ],
+      "text": "HAPPY THANKSGIVING TO ALL AMERICAN PATRIOTS WHO HAVE WORKED SO HARD TO MAKE OUR COUNTRY GREAT! Additionally, I would like to wish a Happy Thanksgiving to even those who issued fake Economic Numbers, just prior to the Election, and corrected them yesterday, three weeks late, showing that the GDP was HAPPY THANKSGIVING TO ALL AMERICAN PATRIOTS WHO HAVE WORKED SO HARD TO MAKE OUR COUNTRY GREAT! Additionally, I would like to wish a Happy Thanksgiving to even those who issued fake Economic Numbers, just prior to the Election, and corrected them yesterday, three weeks late, showing that the GDP was actually 4.3%, versus 3.4%, A RECORD SETTING ERROR, and one so grave that it should be immediately investigated. Also, I would like to wish a very Happy Thanksgiving to all of those people that have worked so hard to bring our Country to the Radical Far Left, those that are looking to change our Court System to that of Sharia, those who want to redistribute Property, so that all of the hardworking people that have built up, over a lifetime, a certain Wealth, will now be forced to distribute it throughout the Country, even to those who refuse to work. I want to thank the 2% of our Somalian population that have a job, and are actually willing to work, without receiving Government Assistance. These are wonderful American “citizens,” and should be allowed to stay in our Country, and celebrate Thanksgiving with us. The others should be thrown out, immediately, thereby saving the Great State o",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T15:51:08.620244+00:00",
+      "event_id": "686016a0b179d06f0b81b2e2",
+      "action_reaction": {
+        "event_id": "686016a0b179d06f0b81b2e2",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "b1c32ab52b9d4baca54e6440": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8136,29 +8159,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "b6646307171b483c59e49a4b": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43332",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552756319160893",
-      "title": "TO THE GREAT PEOPLE OF PENNSYLVANIA, GET OUT AND VOTE FOR: – Stacy Garrity for Governor– Ryan Mackenzie for U.S. Congress (PA-07)– Rob Bresnahan for U.S. Congress (PA-08)– Dan Meuser for U.S. Congress (PA-09)– Scott Perry for U.S. Congress (PA-10)– Lloyd Smucker for U.S. Congress (PA-11)– John Joyce",
-      "published": "Tue, 03 Nov 2026 13:31:52 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF PENNSYLVANIA, GET OUT AND VOTE FOR: – Stacy Garrity for Governor– Ryan Mackenzie for U.S. Congress (PA-07)– Rob Bresnahan for U.S. Congress (PA-08)– Dan Meuser for U.S. Congress (PA-09)– Scott Perry for U.S. Congress (PA-10)– Lloyd Smucker for U.S. Congress (PA-11)– John Joyce TO THE GREAT PEOPLE OF PENNSYLVANIA, GET OUT AND VOTE FOR: – Stacy Garrity for Governor – Ryan Mackenzie for U.S. Congress (PA-07) – Rob Bresnahan for U.S. Congress (PA-08) – Dan Meuser for U.S. Congress (PA-09) – Scott Perry for U.S. Congress (PA-10) – Lloyd Smucker for U.S. Congress (PA-11) – John Joyce for U.S. Congress (PA-13) – Guy Reschenthaler for U.S. Congress (PA-14) – Glenn Thompson for U.S. Congress (PA-15) – Mike Kelly for U.S. Congress (PA-16) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/pennsylvania/ View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.107799+00:00",
-      "event_id": "b6646307171b483c59e49a4b",
-      "action_reaction": {
-        "event_id": "b6646307171b483c59e49a4b",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13264,7 +13264,8 @@
     "f234f43617d980df5d581dcc": "2026-11-26T05:48:08.405323+00:00",
     "c2695adb03a2cd5389183d4d": "2026-11-26T12:42:11.086026+00:00",
     "a6c7b4f3cf70f7c6ffb19c77": "2026-11-26T14:24:09.791113+00:00",
-    "f817b49bdfbd89a7fcdb90f4": "2026-11-26T15:00:10.452756+00:00"
+    "f817b49bdfbd89a7fcdb90f4": "2026-11-26T15:00:10.452756+00:00",
+    "686016a0b179d06f0b81b2e2": "2026-11-26T15:51:08.620228+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18329,7 +18330,7 @@
   "analyst_brief_date": "2026-11-26",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 15,
+    "Trump": 16,
     "chiamate al mercato": 0
   },
   "analyst_report_week": "2026-W47",
@@ -18343,39 +18344,43 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43740": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43741": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43742": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43745": {
-      "at": "2026-11-26T15:48:09.757553+00:00",
+      "at": "2026-11-26T15:51:08.636009+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43746": {
+      "at": "2026-11-26T15:51:08.636009+00:00",
       "market": false
     }
   }
