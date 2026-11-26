@@ -2415,6 +2415,22 @@
       "title": "We are living in perilous times if Nvidia’s Jensen Huang dictates your 401(k) balance",
       "url": "https://www.marketwatch.com/story/we-are-living-in-perilous-times-if-nvidias-jensen-huang-dictates-your-401-k-balance-e0942d1e"
     },
+    "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240": {
+      "acquired": "2026-11-26T21:47:23.474500+00:00",
+      "acquisition_seconds": 143.4745,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-26T21:45:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "I’m terrified of a market crash. Should I put $400,000 of my $1 million retirement savings into an annuity?",
+      "url": "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240"
+    },
     "https://www.marketwatch.com/story/what-the-options-market-says-to-do-with-nvidias-stock-and-the-rest-of-the-stock-market-de9584ae": {
       "acquired": "2026-11-25T13:32:19.426169+00:00",
       "acquisition_seconds": 979.426169,
@@ -4702,22 +4718,6 @@
       "status": "SCARTARE",
       "title": "Pomerantz Law Firm Announces the Filing of a Class Action Against The Chemours Company and Certain Officers - CC",
       "url": "https://www.prnewswire.com/news-releases/pomerantz-law-firm-announces-the-filing-of-a-class-action-against-the-chemours-company-and-certain-officers--cc-302948963.html"
-    },
-    "https://www.prnewswire.com/news-releases/preserve-the-pensions-project-to-digitize-war-of-1812-pension-files-is-now-complete-302949902.html": {
-      "acquired": "2026-11-24T22:02:29.706072+00:00",
-      "acquisition_seconds": 929.706072,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T21:47:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Preserve the Pensions Project to Digitize War of 1812 Pension Files is Now Complete",
-      "url": "https://www.prnewswire.com/news-releases/preserve-the-pensions-project-to-digitize-war-of-1812-pension-files-is-now-complete-302949902.html"
     },
     "https://www.prnewswire.com/news-releases/santa-at-nyse-ahead-of-macys-thanksgiving-day-parade-nyse-content-update-302950546.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
