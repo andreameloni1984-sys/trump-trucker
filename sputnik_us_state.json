@@ -415,22 +415,6 @@
       "title": "Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125b.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/24/3409902/0/en/freddie-mac-issues-monthly-volume-summary-for-october-2026.html": {
-      "acquired": "2026-11-24T22:02:30.044679+00:00",
-      "acquisition_seconds": 1890.044679,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T21:31:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Freddie Mac Issues Monthly Volume Summary for October 2026",
-      "url": "https://www.globenewswire.com/news-release/2026/11/24/3409902/0/en/freddie-mac-issues-monthly-volume-summary-for-october-2026.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/24/3409915/0/en/ashland-increases-prices-for-its-1-4-butanediol-intermediates-and-solvents-product-range-globally.html": {
       "acquired": "2026-11-24T22:02:30.044679+00:00",
       "acquisition_seconds": 90.044679,
@@ -2335,22 +2319,6 @@
       "title": "The S&P 500 is headed to 8,200 — and downturns like this one are actually part of the reason why, says JPMorgan",
       "url": "https://www.marketwatch.com/story/the-s-p-500-is-headed-to-8-200-and-downturns-like-this-one-are-actually-part-of-the-reason-why-says-jpmorgan-b6acae4b"
     },
-    "https://www.marketwatch.com/story/the-stock-market-is-hardly-cheap-even-taking-recent-declines-into-account-fe0a7989": {
-      "acquired": "2026-11-24T21:32:21.837961+00:00",
-      "acquisition_seconds": 621.837961,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-24T21:22:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "The stock market is hardly cheap, even taking recent declines into account",
-      "url": "https://www.marketwatch.com/story/the-stock-market-is-hardly-cheap-even-taking-recent-declines-into-account-fe0a7989"
-    },
     "https://www.marketwatch.com/story/the-tech-rout-should-bottom-soon-with-a-25-rally-for-the-s-p-500-to-follow-says-deutsche-bank-c9070bf6": {
       "acquired": "2026-11-26T10:17:16.837785+00:00",
       "acquisition_seconds": 376.837785,
@@ -3983,22 +3951,6 @@
       "title": "IntelliGRC Launches Trust Center, Giving MSPs and MSSPs a Controlled Way to Share Security Documentation for Every Client",
       "url": "https://www.prnewswire.com/news-releases/intelligrc-launches-trust-center-giving-msps-and-mssps-a-controlled-way-to-share-security-documentation-for-every-client-302950650.html"
     },
-    "https://www.prnewswire.com/news-releases/intrafi-cofounder-and-ceo-mark-jacobsen-named-ey-entrepreneur-of-the-year-in-financial-services-302949889.html": {
-      "acquired": "2026-11-24T21:47:21.377244+00:00",
-      "acquisition_seconds": 981.377244,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "management",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T21:31:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "IntraFi Cofounder and CEO Mark Jacobsen Named EY Entrepreneur Of The Year in Financial Services",
-      "url": "https://www.prnewswire.com/news-releases/intrafi-cofounder-and-ceo-mark-jacobsen-named-ey-entrepreneur-of-the-year-in-financial-services-302949889.html"
-    },
     "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-investigates-claims-on-behalf-of-investors-of-alnylam-pharmaceuticals-inc---alny-302949037.html": {
       "acquired": "2026-11-26T15:02:24.570562+00:00",
       "acquisition_seconds": 84.570562,
@@ -4622,22 +4574,6 @@
       "status": "SCARTARE",
       "title": "Mongolia's Mobicom Joins Telcoin Network as Launch Validator",
       "url": "https://www.prnewswire.com/news-releases/mongolias-mobicom-joins-telcoin-network-as-launch-validator-302950181.html"
-    },
-    "https://www.prnewswire.com/news-releases/noah-holdings-limited-announces-unaudited-financial-results-for-the-third-quarter-of-2026-302949558.html": {
-      "acquired": "2026-11-24T21:32:21.908621+00:00",
-      "acquisition_seconds": 141.908621,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "earnings",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T21:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "NOAH HOLDINGS LIMITED ANNOUNCES UNAUDITED FINANCIAL RESULTS FOR THE THIRD QUARTER OF 2026",
-      "url": "https://www.prnewswire.com/news-releases/noah-holdings-limited-announces-unaudited-financial-results-for-the-third-quarter-of-2026-302949558.html"
     },
     "https://www.prnewswire.com/news-releases/noah-reports-q3-results-international-aum-up-10-7-in-usd-terms--platform-model-expands-across-more-channels-and-markets-302950441.html": {
       "acquired": "2026-11-25T11:32:18.438643+00:00",
