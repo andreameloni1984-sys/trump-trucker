@@ -2142,8 +2142,8 @@
       "url": "https://www.marketwatch.com/story/i-hate-that-jensen-huang-is-back-at-nvidia-but-i-love-what-its-done-for-my-401-k-am-i-a-hypocrite-f63c0303"
     },
     "https://www.marketwatch.com/story/im-in-my-70s-and-buying-a-new-bmw-x1-should-i-put-my-only-son-on-the-title-25731040": {
-      "acquired": "2026-11-24T10:17:19.897412+00:00",
-      "acquisition_seconds": 139.897412,
+      "acquired": "2026-11-26T10:17:16.837785+00:00",
+      "acquisition_seconds": 38836.837785,
       "beneficiaries": [],
       "bias": null,
       "category": "other",
@@ -2151,7 +2151,7 @@
       "issuer": "",
       "kind": "press",
       "penalized": [],
-      "published": "2026-11-24T10:15:00+00:00",
+      "published": "2026-11-25T23:30:00+00:00",
       "source": "MarketWatch / Dow Jones",
       "status": "SCARTARE",
       "title": "I’m in my 70s and buying a new BMW X1. Should I put my only son on the title?",
@@ -2620,6 +2620,22 @@
       "status": "SCARTARE",
       "title": "The stock market is hardly cheap, even taking recent declines into account",
       "url": "https://www.marketwatch.com/story/the-stock-market-is-hardly-cheap-even-taking-recent-declines-into-account-fe0a7989"
+    },
+    "https://www.marketwatch.com/story/the-tech-rout-should-bottom-soon-with-a-25-rally-for-the-s-p-500-to-follow-says-deutsche-bank-c9070bf6": {
+      "acquired": "2026-11-26T10:17:16.837785+00:00",
+      "acquisition_seconds": 376.837785,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-26T10:11:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "The tech rout should bottom soon, with a 25% rally for the S&P 500 to follow, says Deutsche Bank",
+      "url": "https://www.marketwatch.com/story/the-tech-rout-should-bottom-soon-with-a-25-rally-for-the-s-p-500-to-follow-says-deutsche-bank-c9070bf6"
     },
     "https://www.marketwatch.com/story/the-wealthiest-10-of-americans-are-pulling-ahead-of-everyone-else-this-is-whats-making-them-richer-bd83c2f6": {
       "acquired": "2026-11-24T18:17:21.444282+00:00",
