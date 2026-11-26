@@ -1,5 +1,21 @@
 {
   "invest_events": {
+    "https://blogs.nvidia.com/blog/geforce-now-thursday-community-war-thunder-reward": {
+      "acquired": "2026-11-26T14:02:22.380515+00:00",
+      "acquisition_seconds": 120.380515,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "NVDA",
+      "kind": "issuer",
+      "penalized": [],
+      "published": "2026-11-26T14:00:22+00:00",
+      "source": "NVIDIA Blog",
+      "status": "SCARTARE",
+      "title": "Come for the Games, Stay for the Community With GeForce NOW",
+      "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-community-war-thunder-reward"
+    },
     "https://truthsocial.com/@realDonaldTrump/117672518077966619": {
       "acquired": "2026-11-24T17:16:31.967455+00:00",
       "acquisition_seconds": 460.730698,
@@ -1854,22 +1870,6 @@
       "title": "S. Res. 722 (IS) - Addressing the politicization of war crimes allegations against allied special operations forces.",
       "url": "https://www.govinfo.gov/app/details/BILLS-119sres722is"
     },
-    "https://www.marketwatch.com/story/12-days-of-sardines-and-croc-charms-are-advent-calendars-getting-out-of-control-81f24548": {
-      "acquired": "2026-11-24T14:02:20.699001+00:00",
-      "acquisition_seconds": 740.699001,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-24T13:50:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "12 days of sardines and Croc charms: Are Advent calendars getting out of control?",
-      "url": "https://www.marketwatch.com/story/12-days-of-sardines-and-croc-charms-are-advent-calendars-getting-out-of-control-81f24548"
-    },
     "https://www.marketwatch.com/story/a-66-year-old-nurse-faces-retirement-with-just-500-saved-whos-to-blame-4249a0fd": {
       "acquired": "2026-11-25T16:47:26.139519+00:00",
       "acquisition_seconds": 1046.139519,
@@ -2349,6 +2349,22 @@
       "status": "SCARTARE",
       "title": "New-home sales just hit a 2026 high as builders dangle low mortgages and Black Friday deals",
       "url": "https://www.marketwatch.com/story/new-home-sales-just-hit-a-2026-high-as-builders-dangle-low-mortgages-and-black-friday-deals-291a3b62"
+    },
+    "https://www.marketwatch.com/story/nvidia-and-the-whole-ai-trade-arent-out-of-the-woods-not-by-a-long-shot-bccc0025": {
+      "acquired": "2026-11-26T14:02:22.148652+00:00",
+      "acquisition_seconds": 142.148652,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-26T14:00:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Nvidia and the whole AI trade aren’t out of the woods — not by a long shot",
+      "url": "https://www.marketwatch.com/story/nvidia-and-the-whole-ai-trade-arent-out-of-the-woods-not-by-a-long-shot-bccc0025"
     },
     "https://www.marketwatch.com/story/nvidia-is-heading-for-its-first-death-cross-since-march-2025-as-stock-continues-to-struggle-a611b99c": {
       "acquired": "2026-11-25T19:47:18.678578+00:00",
@@ -3102,22 +3118,6 @@
       "title": "Baseline Integrates with Elementix to Bring Borrower Intelligence Directly Into Its Loan Management Platform",
       "url": "https://www.prnewswire.com/news-releases/baseline-integrates-with-elementix-to-bring-borrower-intelligence-directly-into-its-loan-management-platform-302949985.html"
     },
-    "https://www.prnewswire.com/news-releases/bayesline-closes-4-million-institutional-fundraising-round-led-by-nyca-partners-302948761.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Bayesline Closes $4 Million Institutional Fundraising Round, Led by Nyca Partners",
-      "url": "https://www.prnewswire.com/news-releases/bayesline-closes-4-million-institutional-fundraising-round-led-by-nyca-partners-302948761.html"
-    },
     "https://www.prnewswire.com/news-releases/because-were-billmanns-tv-series-highlights-real-estate-lifestyle-and-community-across-pittsburgh-on-real-shows-network-302949840.html": {
       "acquired": "2026-11-24T20:32:20.666335+00:00",
       "acquisition_seconds": 980.666335,
@@ -3390,38 +3390,6 @@
       "title": "Booking a Travel Tuesday Deal? Don't Forget to Protect Your Purchase",
       "url": "https://www.prnewswire.com/news-releases/booking-a-travel-tuesday-deal-dont-forget-to-protect-your-purchase-302948416.html"
     },
-    "https://www.prnewswire.com/news-releases/booking-holdings-inc-to-present-at-the-nasdaq-55th-investor-conference-302945101.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Booking Holdings Inc. to Present at the Nasdaq 55th Investor Conference",
-      "url": "https://www.prnewswire.com/news-releases/booking-holdings-inc-to-present-at-the-nasdaq-55th-investor-conference-302945101.html"
-    },
-    "https://www.prnewswire.com/news-releases/budget-season-goes-into-overdrive-6-in-10-finance-teams-still-sending-plans-back-as-year-end-approaches-datarails-research-shows-302949336.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Budget Season Goes Into Overdrive: 6 in 10 Finance Teams Still Sending Plans Back as Year-End Approaches, Datarails Research Shows",
-      "url": "https://www.prnewswire.com/news-releases/budget-season-goes-into-overdrive-6-in-10-finance-teams-still-sending-plans-back-as-year-end-approaches-datarails-research-shows-302949336.html"
-    },
     "https://www.prnewswire.com/news-releases/bybit-introduces-strategy-backtesting-for-spot-grid-and-futures-grid-bots-302950442.html": {
       "acquired": "2026-11-25T11:32:18.438643+00:00",
       "acquisition_seconds": 618.438643,
@@ -3581,22 +3549,6 @@
       "status": "SCARTARE",
       "title": "Centuri Holdings Set to Join S&P SmallCap 600",
       "url": "https://www.prnewswire.com/news-releases/centuri-holdings-set-to-join-sp-smallcap-600-302949933.html"
-    },
-    "https://www.prnewswire.com/news-releases/cerberus-to-acquire-the-us-space-systems-business-of-airbus-302949473.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "m-and-a",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Cerberus to Acquire the U.S. Space Systems Business of Airbus",
-      "url": "https://www.prnewswire.com/news-releases/cerberus-to-acquire-the-us-space-systems-business-of-airbus-302949473.html"
     },
     "https://www.prnewswire.com/news-releases/chase-properties-and-tru-arrow-complete-more-than-148-million-in-final-fund-closings-for-open-air-retail-302948684.html": {
       "acquired": "2026-11-24T15:17:01.507475+00:00",
@@ -4046,22 +3998,6 @@
       "title": "Credit Union Expert Jeanna Costanzo Explains Checking vs. Savings Accounts in HelloNation",
       "url": "https://www.prnewswire.com/news-releases/credit-union-expert-jeanna-costanzo-explains-checking-vs-savings-accounts-in-hellonation-302912620.html"
     },
-    "https://www.prnewswire.com/news-releases/cruise-outbreak-shows-clean-ships-dont-guarantee-healthy-sailings-302949494.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 260.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:58:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Cruise Outbreak Shows Clean Ships Don't Guarantee Healthy Sailings",
-      "url": "https://www.prnewswire.com/news-releases/cruise-outbreak-shows-clean-ships-dont-guarantee-healthy-sailings-302949494.html"
-    },
     "https://www.prnewswire.com/news-releases/datavault-ai-founder-opposes-proposed-reverse-split-seeks-board-changes-302950277.html": {
       "acquired": "2026-11-25T13:17:22.952816+00:00",
       "acquisition_seconds": 922.952816,
@@ -4238,70 +4174,6 @@
       "title": "Egan-Jones Notes Higher Borrowing Costs Alongside Steady Credit Fundamentals",
       "url": "https://www.prnewswire.com/news-releases/egan-jones-notes-higher-borrowing-costs-alongside-steady-credit-fundamentals-302950756.html"
     },
-    "https://www.prnewswire.com/news-releases/elie-saab-amplia-su-cartera-residencial-global-con-maison-171-en-el-upper-east-side-de-manhattan-302949393.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "ELIE SAAB amplía su cartera residencial global con MAISON 171 en el Upper East Side de Manhattan",
-      "url": "https://www.prnewswire.com/news-releases/elie-saab-amplia-su-cartera-residencial-global-con-maison-171-en-el-upper-east-side-de-manhattan-302949393.html"
-    },
-    "https://www.prnewswire.com/news-releases/elie-saab-erweitert-sein-globales-wohnimmobilienportfolio-mit-maison-171-an-der-upper-east-side-von-manhattan-302948938.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "ELIE SAAB erweitert sein globales Wohnimmobilienportfolio mit MAISON 171 an der Upper East Side von Manhattan",
-      "url": "https://www.prnewswire.com/news-releases/elie-saab-erweitert-sein-globales-wohnimmobilienportfolio-mit-maison-171-an-der-upper-east-side-von-manhattan-302948938.html"
-    },
-    "https://www.prnewswire.com/news-releases/elie-saab-etend-son-portefeuille-residentiel-mondial-avec-maison-171-sur-lupper-east-side-de-manhattan-302948945.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "ELIE SAAB étend son portefeuille résidentiel mondial avec MAISON 171 sur l'Upper East Side de Manhattan.",
-      "url": "https://www.prnewswire.com/news-releases/elie-saab-etend-son-portefeuille-residentiel-mondial-avec-maison-171-sur-lupper-east-side-de-manhattan-302948945.html"
-    },
-    "https://www.prnewswire.com/news-releases/elie-saab-expands-its-global-residential-portfolio-with-maison-171-on-manhattans-upper-east-side-302948769.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "ELIE SAAB Expands its Global Residential Portfolio with MAISON 171 on Manhattan's Upper East Side",
-      "url": "https://www.prnewswire.com/news-releases/elie-saab-expands-its-global-residential-portfolio-with-maison-171-on-manhattans-upper-east-side-302948769.html"
-    },
     "https://www.prnewswire.com/news-releases/euler-foundation-appoints-euler-technologies-to-lead-next-phase-of-growth-and-adoption-302943727.html": {
       "acquired": "2026-11-24T15:02:29.312273+00:00",
       "acquisition_seconds": 149.312273,
@@ -4349,22 +4221,6 @@
       "status": "SCARTARE",
       "title": "FCP ACQUIRES 2048 BOLTON DRIVE NW IN UPPER WESTSIDE ATLANTA",
       "url": "https://www.prnewswire.com/news-releases/fcp-acquires-2048-bolton-drive-nw-in-upper-westside-atlanta-302949674.html"
-    },
-    "https://www.prnewswire.com/news-releases/fcp-publishes-2025-corporate-responsibility-report-302948741.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "FCP PUBLISHES 2025 CORPORATE RESPONSIBILITY REPORT",
-      "url": "https://www.prnewswire.com/news-releases/fcp-publishes-2025-corporate-responsibility-report-302948741.html"
     },
     "https://www.prnewswire.com/news-releases/fibra-prologis-recasts-credit-facility-doubling-capacity-to-1-billion-and-reducing-borrowing-spread-302949962.html": {
       "acquired": "2026-11-25T00:02:20.525050+00:00",
@@ -4830,22 +4686,6 @@
       "title": "ICIS completes IOSCO audit for 14th consecutive year",
       "url": "https://www.prnewswire.com/news-releases/icis-completes-iosco-audit-for-14th-consecutive-year-302950776.html"
     },
-    "https://www.prnewswire.com/news-releases/in-hellonation-financial-advisor-ash-toumayants-explains-medicare-coordination-with-employer-coverage-302947158.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 680.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:51:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "In HelloNation, Financial Advisor Ash Toumayants Explains Medicare Coordination With Employer Coverage",
-      "url": "https://www.prnewswire.com/news-releases/in-hellonation-financial-advisor-ash-toumayants-explains-medicare-coordination-with-employer-coverage-302947158.html"
-    },
     "https://www.prnewswire.com/news-releases/in-hellonation-insurance-expert-ellie-mills-of-cutler-bay-fl-explains-loss-of-use-coverage-for-renters-302948484.html": {
       "acquired": "2026-11-24T15:02:29.312273+00:00",
       "acquisition_seconds": 449.312273,
@@ -5101,22 +4941,6 @@
       "status": "SCARTARE",
       "title": "JG Wentworth Names Jason Tepperman as Chief Executive Officer",
       "url": "https://www.prnewswire.com/news-releases/jg-wentworth-names-jason-tepperman-as-chief-executive-officer-302949653.html"
-    },
-    "https://www.prnewswire.com/news-releases/justa-crm-launches-to-transform-how-residential-property-management-companies-win-new-business-302948434.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 680.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:51:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Justa CRM Launches to Transform How Residential Property Management Companies Win New Business",
-      "url": "https://www.prnewswire.com/news-releases/justa-crm-launches-to-transform-how-residential-property-management-companies-win-new-business-302948434.html"
     },
     "https://www.prnewswire.com/news-releases/koppers-management-participating-in-bofa-securities-leveraged-finance-conference-302949923.html": {
       "acquired": "2026-11-25T13:02:21.872766+00:00",
@@ -5406,22 +5230,6 @@
       "title": "Northern Virginia Housing Market Adjusts More Sharply Than National Market in October",
       "url": "https://www.prnewswire.com/news-releases/northern-virginia-housing-market-adjusts-more-sharply-than-national-market-in-october-302949832.html"
     },
-    "https://www.prnewswire.com/news-releases/northwest-bank-executive-leaders-join-central-ohio-community-nonprofit-boards-302948668.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Northwest Bank Executive Leaders Join Central Ohio Community Nonprofit Boards",
-      "url": "https://www.prnewswire.com/news-releases/northwest-bank-executive-leaders-join-central-ohio-community-nonprofit-boards-302948668.html"
-    },
     "https://www.prnewswire.com/news-releases/oci-global-announces-closing-of-orascom-construction-transaction-and-confirms-key-dates-for-oci-shareholders-302950189.html": {
       "acquired": "2026-11-25T05:17:26.561229+00:00",
       "acquisition_seconds": 326.561229,
@@ -5630,22 +5438,6 @@
       "title": "Republic Business Credit Promotes Melissa Baines to EVP, Head of Compliance and Christy Morgan to SVP, Head of Legal",
       "url": "https://www.prnewswire.com/news-releases/republic-business-credit-promotes-melissa-baines-to-evp-head-of-compliance-and-christy-morgan-to-svp-head-of-legal-302946701.html"
     },
-    "https://www.prnewswire.com/news-releases/rob-lowe-surprises-california-teachers-as-accredited-debt-relief-helps-pay-off-their-remaining-48k-in-debt-302948461.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Rob Lowe Surprises California Teachers as Accredited Debt Relief Helps Pay Off Their Remaining $48K in Debt",
-      "url": "https://www.prnewswire.com/news-releases/rob-lowe-surprises-california-teachers-as-accredited-debt-relief-helps-pay-off-their-remaining-48k-in-debt-302948461.html"
-    },
     "https://www.prnewswire.com/news-releases/rosemurgy-13th-floor-giles-schmier-and-rockpoint-form-joint-venture-and-secure-construction-financing-to-develop-lutea-at-mainstreet-in-coconut-creek-florida-302949830.html": {
       "acquired": "2026-11-24T20:02:29.172617+00:00",
       "acquisition_seconds": 149.172617,
@@ -5838,22 +5630,6 @@
       "title": "Steering Committee of Ad Hoc Group of Braskem Creditors Reaches Agreement in Principle with Braskem and Its Main Shareholders",
       "url": "https://www.prnewswire.com/news-releases/steering-committee-of-ad-hoc-group-of-braskem-creditors-reaches-agreement-in-principle-with-braskem-and-its-main-shareholders-302949787.html"
     },
-    "https://www.prnewswire.com/news-releases/stifel-highlights-40-years-as-listed-company-nyse-content-update-302949461.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 440.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:55:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Stifel Highlights 40 Years as Listed Company: NYSE Content Update",
-      "url": "https://www.prnewswire.com/news-releases/stifel-highlights-40-years-as-listed-company-nyse-content-update-302949461.html"
-    },
     "https://www.prnewswire.com/news-releases/stirlingshire-investments-appoints-daniel-gicklhorn-as-chief-technology-officer-302950605.html": {
       "acquired": "2026-11-25T15:17:19.748039+00:00",
       "acquisition_seconds": 259.748039,
@@ -5918,22 +5694,6 @@
       "title": "Tellus Raises Boost Account Base Rate to 5.50% APY to Help Savers Fight Inflation",
       "url": "https://www.prnewswire.com/news-releases/tellus-raises-boost-account-base-rate-to-5-50-apy-to-help-savers-fight-inflation-302949705.html"
     },
-    "https://www.prnewswire.com/news-releases/teneo-appoints-elder-marques-as-a-senior-managing-director-will-lead-the-firms-expansion-into-ottawa-302949443.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "TENEO APPOINTS ELDER MARQUES AS A SENIOR MANAGING DIRECTOR; WILL LEAD THE FIRM'S EXPANSION INTO OTTAWA",
-      "url": "https://www.prnewswire.com/news-releases/teneo-appoints-elder-marques-as-a-senior-managing-director-will-lead-the-firms-expansion-into-ottawa-302949443.html"
-    },
     "https://www.prnewswire.com/news-releases/texas-closes-in-on-california-as-a-top-destination-for-international-home-shoppers-302949823.html": {
       "acquired": "2026-11-25T11:02:21.354829+00:00",
       "acquisition_seconds": 141.354829,
@@ -5949,22 +5709,6 @@
       "status": "SCARTARE",
       "title": "Texas Closes in on California as a Top Destination for International Home Shoppers",
       "url": "https://www.prnewswire.com/news-releases/texas-closes-in-on-california-as-a-top-destination-for-international-home-shoppers-302949823.html"
-    },
-    "https://www.prnewswire.com/news-releases/the-202627-cloud-awards-shortlist-announced-302948386.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 560.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:53:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "The 2026/27 Cloud Awards Shortlist Announced",
-      "url": "https://www.prnewswire.com/news-releases/the-202627-cloud-awards-shortlist-announced-302948386.html"
     },
     "https://www.prnewswire.com/news-releases/third-coast-bank-names-liz-eber-chief-legal-and-operating-officer-302949870.html": {
       "acquired": "2026-11-24T21:17:19.286259+00:00",
@@ -6125,22 +5869,6 @@
       "status": "SCARTARE",
       "title": "What Your Homeowners Policy Brings to the Table",
       "url": "https://www.prnewswire.com/news-releases/what-your-homeowners-policy-brings-to-the-table-302948897.html"
-    },
-    "https://www.prnewswire.com/news-releases/whitley-penn-offers-complimentary-year-end-tax-planning-resources-via-virtual-event-302948860.html": {
-      "acquired": "2026-11-24T14:02:20.796541+00:00",
-      "acquisition_seconds": 140.796541,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Whitley Penn Offers Complimentary Year-End Tax Planning Resources via Virtual Event",
-      "url": "https://www.prnewswire.com/news-releases/whitley-penn-offers-complimentary-year-end-tax-planning-resources-via-virtual-event-302948860.html"
     },
     "https://www.prnewswire.com/news-releases/woodforest-national-bank-opens-a-new-branch-302948832.html": {
       "acquired": "2026-11-24T15:02:29.312273+00:00",
