@@ -2,6 +2,27 @@
  "version": 1,
  "trump": [
   {
+   "title": "RT @markkhalilWhere does @realDonaldTrump find the strength, energy, mental acuity, and talent?! Oh wait, I know.☝🏽👍🏽🇺🇸",
+   "published": "2026-11-26T05:13:05+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43734",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "ENERGY",
+    "AI_TECH"
+   ],
+   "bias": []
+  },
+  {
+   "title": "0.000% of Obama caused carcinogens were released into beautiful Iowa air after the Perfect detonation. WE ALL WORKED HARD! President DJT",
+   "published": "2026-11-26T05:08:57+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43733",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "AI_TECH"
+   ],
+   "bias": []
+  },
+  {
    "title": "President Trump Unleashes Whole-of-Government Effort to Protect America’s Critical Infrastructure",
    "published": "2026-11-26T00:38:59+00:00",
    "url": "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/",
@@ -167,5 +188,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-26T00:45:19.294326+00:00"
+ "updated_at": "2026-11-26T05:15:08.751666+00:00"
 }

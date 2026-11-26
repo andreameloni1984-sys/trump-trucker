@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T05:12:08.469852+00:00",
+  "updated_at": "2026-11-26T05:15:08.760550+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,53 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "970a21c88c43d578c166e87a": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43733",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117681011948883217",
+      "title": "0.000% of Obama caused carcinogens were released into beautiful Iowa air after the Perfect detonation. WE ALL WORKED HARD! President DJT",
+      "published": "Thu, 26 Nov 2026 05:08:57 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "0.000% of Obama caused carcinogens were released into beautiful Iowa air after the Perfect detonation. WE ALL WORKED HARD! President DJT 0.000% of Obama caused carcinogens were released into beautiful Iowa air after the Perfect detonation. WE ALL WORKED HARD! President DJT",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T05:15:08.741869+00:00",
+      "event_id": "970a21c88c43d578c166e87a",
+      "action_reaction": {
+        "event_id": "970a21c88c43d578c166e87a",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "7451b9bc9c0d42ce2165b5b2": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43734",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117681028182445943",
+      "title": "RT @markkhalilWhere does @realDonaldTrump find the strength, energy, mental acuity, and talent?! Oh wait, I know.☝🏽👍🏽🇺🇸",
+      "published": "Thu, 26 Nov 2026 05:13:05 +0000",
+      "domains": [
+        "ENERGY",
+        "AI_TECH"
+      ],
+      "text": "RT @markkhalilWhere does @realDonaldTrump find the strength, energy, mental acuity, and talent?! Oh wait, I know.☝🏽👍🏽🇺🇸 RT @ markkhalil Where does @ realDonaldTrump find the strength, energy, mental acuity, and talent?! Oh wait, I know.☝🏽👍🏽🇺🇸 Reposted Mark Where does @ realDonaldTrump find the strength, energy, mental acuity, and talent?! Oh wait, I know.☝🏽👍🏽🇺🇸 View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T05:15:08.741694+00:00",
+      "event_id": "7451b9bc9c0d42ce2165b5b2",
+      "action_reaction": {
+        "event_id": "7451b9bc9c0d42ce2165b5b2",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "1a2f53181b05a0d60f46ca1f": {
       "source": "WHITE_HOUSE_RSS",
       "feed_url": "https://www.whitehouse.gov/feed/",
@@ -8127,53 +8174,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "131eb95e103f1e6747e6cf0c": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43268",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548968575947811",
-      "title": "I am pleased to inform you that I will be doing the Great Sean Hannity Show tonight at 9 PM ET. This is the Golden Age of America with 25 Trillion Dollars of Growth and Wealth being created just since my Election — A very short period of time. There has never been anything like it in World History,",
-      "published": "Mon, 02 Nov 2026 21:28:36 +0000",
-      "domains": [
-        "METALS",
-        "RATES_MACRO"
-      ],
-      "text": "I am pleased to inform you that I will be doing the Great Sean Hannity Show tonight at 9 PM ET. This is the Golden Age of America with 25 Trillion Dollars of Growth and Wealth being created just since my Election — A very short period of time. There has never been anything like it in World History, I am pleased to inform you that I will be doing the Great Sean Hannity Show tonight at 9 PM ET. This is the Golden Age of America with 25 Trillion Dollars of Growth and Wealth being created just since my Election — A very short period of time. There has never been anything like it in World History, nor has there been anything close. Additionally, NO TAX ON TIPS, NO TAX ON OVERTIME, NO TAX ON SOCIAL SECURITY FOR OUR GREAT SENIORS! It has all been a BLESSING for our Country. It is my Great Honor to be your President during this Great Time in American History! President DONALD J. TRUMP",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.634605+00:00",
-      "event_id": "131eb95e103f1e6747e6cf0c",
-      "action_reaction": {
-        "event_id": "131eb95e103f1e6747e6cf0c",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "0f2a848feb8edebc4c04acec": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43267",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117548973912202629",
-      "title": "It is my Great Honor to endorse America First Patriot, Dr. John Cowan, who is running to represent the Wonderful People of Georgia's 11th Congressional District! A Proven Leader, John has served his Community well as a Highly Respected Neurosurgeon, Small Business Owner, and Civic Leader, prior to r",
-      "published": "Mon, 02 Nov 2026 21:29:57 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Dr. John Cowan, who is running to represent the Wonderful People of Georgia's 11th Congressional District! A Proven Leader, John has served his Community well as a Highly Respected Neurosurgeon, Small Business Owner, and Civic Leader, prior to r It is my Great Honor to endorse America First Patriot, Dr. John Cowan, who is running to represent the Wonderful People of Georgia's 11th Congressional District! A Proven Leader, John has served his Community well as a Highly Respected Neurosurgeon, Small Business Owner, and Civic Leader, prior to running for Congress. His opponent, Chris Harden, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Chris Harden is Reckless, Radical, and Dangerous! On the other hand, as your next Congressman, John will work tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Stop Migrant Crime, Strengthen our Military/Veterans, Advance Election Integrity, and Defend our always under siege Second Amendment. Dr. John Cowan has my Complete and Total Endorsement to be the next Representative from Georgia's 11th Congressional District. GET OUT AND VOTE",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T08:56:22.634400+00:00",
-      "event_id": "0f2a848feb8edebc4c04acec",
-      "action_reaction": {
-        "event_id": "0f2a848feb8edebc4c04acec",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13273,7 +13273,9 @@
     "49c53ee02b203ecf7772301e": "2026-11-25T14:42:09.556745+00:00",
     "67a3c33843e1bdc463216857": "2026-11-25T20:29:49.305584+00:00",
     "a33aa1d5e327f89a9d213aa9": "2026-11-25T23:15:26.845704+00:00",
-    "1a2f53181b05a0d60f46ca1f": "2026-11-26T00:45:19.236102+00:00"
+    "1a2f53181b05a0d60f46ca1f": "2026-11-26T00:45:19.236102+00:00",
+    "7451b9bc9c0d42ce2165b5b2": "2026-11-26T05:15:08.741679+00:00",
+    "970a21c88c43d578c166e87a": "2026-11-26T05:15:08.741863+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18344,23 +18346,31 @@
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-26T05:12:08.455889+00:00",
+      "at": "2026-11-26T05:15:08.749131+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
-      "at": "2026-11-26T05:12:08.455889+00:00",
+      "at": "2026-11-26T05:15:08.749131+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-26T05:12:08.455889+00:00",
+      "at": "2026-11-26T05:15:08.749131+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T05:12:08.455889+00:00",
+      "at": "2026-11-26T05:15:08.749131+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T05:12:08.455889+00:00",
+      "at": "2026-11-26T05:15:08.749131+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43734": {
+      "at": "2026-11-26T05:15:08.749131+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43733": {
+      "at": "2026-11-26T05:15:08.749131+00:00",
       "market": false
     }
   }
