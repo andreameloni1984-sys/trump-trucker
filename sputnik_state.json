@@ -1107,15 +1107,38 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T06:00:09.848125+00:00",
+  "updated_at": "2026-11-26T06:02:13.160519+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "83d0111c35d1257f8a73b899",
+    "TRUTH_ARCHIVE": "7bc67164f4a4e0842ed065ba",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "7bc67164f4a4e0842ed065ba": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 26, 2026, 12:47 AM Original Post David E. Sanger, the mediocre reporter for the Failing New York Times, didn’t mention in his recent story on me the successful closing of the Border, best crime stats in years (lowest murder rate since 1900 - 126 years!), biggest Tax and Regulation Cuts, EVER, the most successful naval blockade in history, the destruction of Iran’s Navy and Air Force (and more!), the ONE DAY WIN against Venezuela, and today’s big success in straightening out the Obama caused mess in Iowa. David Sanger is a lowlife that only writes what he is told to write by his bosses. Also, until the Election, best Market, EVER, 82 days, settled 8 Wars, and the USA is respected again like never before! Donald J. Trump ReTruthed The White House @WhiteHouse · November 25, 2026, 8:08 PM Original Post America's Mayor. 🇺🇸 President Donald J. Trump presents Rudy Giuliani with the Presidential Medal of Freedom. Donald",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T06:02:12.284634+00:00",
+      "event_id": "7bc67164f4a4e0842ed065ba",
+      "action_reaction": {
+        "event_id": "7bc67164f4a4e0842ed065ba",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "f234f43617d980df5d581dcc": {
       "source": "PUBLIC_RSS",
       "feed_url": "https://www.trumpstruth.org/feed",
@@ -8144,29 +8167,6 @@
           "OIL": "DOWN"
         },
         "evidence": "HISTORICAL_ANALOGUE"
-      }
-    },
-    "18596947a20f7196ba7b79a5": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43325",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552767628713850",
-      "title": "TO THE GREAT PEOPLE OF NEW JERSEY, GET OUT AND VOTE FOR: – Jeff Van Drew for U.S. Congress (NJ-02)– Chris Smith for U.S. Congress (NJ-04)– Tom Kean for U.S. Congress (NJ-07) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthev",
-      "published": "Tue, 03 Nov 2026 13:34:44 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF NEW JERSEY, GET OUT AND VOTE FOR: – Jeff Van Drew for U.S. Congress (NJ-02)– Chris Smith for U.S. Congress (NJ-04)– Tom Kean for U.S. Congress (NJ-07) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthev TO THE GREAT PEOPLE OF NEW JERSEY, GET OUT AND VOTE FOR: – Jeff Van Drew for U.S. Congress (NJ-02) – Chris Smith for U.S. Congress (NJ-04) – Tom Kean for U.S. Congress (NJ-07) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/new-jersey/ View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.105262+00:00",
-      "event_id": "18596947a20f7196ba7b79a5",
-      "action_reaction": {
-        "event_id": "18596947a20f7196ba7b79a5",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
       }
     }
   },
@@ -18332,7 +18332,7 @@
   },
   "analyst_started_at": "2026-11-21T16:33:10.411603+00:00",
   "analyst_outbox": [],
-  "analyst_brief_date": "2026-11-25",
+  "analyst_brief_date": "2026-11-26",
   "analyst_predictions": {},
   "analyst_counts": {
     "Trump": 14,
@@ -18341,35 +18341,35 @@
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-26T06:00:09.830976+00:00",
+      "at": "2026-11-26T06:02:12.773151+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
-      "at": "2026-11-26T06:00:09.830976+00:00",
+      "at": "2026-11-26T06:02:12.773151+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-26T06:00:09.830976+00:00",
+      "at": "2026-11-26T06:02:12.773151+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T06:00:09.830976+00:00",
+      "at": "2026-11-26T06:02:12.773151+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T06:00:09.830976+00:00",
+      "at": "2026-11-26T06:02:12.773151+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T06:00:09.830976+00:00",
+      "at": "2026-11-26T06:02:12.773151+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T06:00:09.830976+00:00",
+      "at": "2026-11-26T06:02:12.773151+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43740": {
-      "at": "2026-11-26T06:00:09.830976+00:00",
+      "at": "2026-11-26T06:02:12.773151+00:00",
       "market": false
     }
   }
