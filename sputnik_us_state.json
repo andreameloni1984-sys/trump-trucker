@@ -402,6 +402,23 @@
       "title": "RT: https://truthsocial.com/users/realDonaldTrump/statuses/117683175541431490 During my conversations in China with President Vladimir Putin, of Russia, I spent a lot of time talking about the fact that I would like to see President Putin pull back all Military aggression against territories through",
       "url": "https://truthsocial.com/@realDonaldTrump/117683312242798397"
     },
+    "https://truthsocial.com/@realDonaldTrump/117683512952489451": {
+      "acquired": "2026-11-26T16:02:19.278766+00:00",
+      "acquisition_seconds": 1039.559908,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-26T15:45:00.276000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "HAPPY THANKSGIVING TO ALL AMERICAN PATRIOTS WHO HAVE WORKED SO HARD TO MAKE OUR COUNTRY GREAT! Additionally, I would like to wish a Happy Thanksgiving to even those who issued fake Economic Numbers, just prior to the Election, and corrected them yesterday, three weeks late, showing that the GDP was ",
+      "url": "https://truthsocial.com/@realDonaldTrump/117683512952489451"
+    },
     "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125a.htm": {
       "acquired": "2026-11-25T20:02:26.428513+00:00",
       "acquisition_seconds": 146.428513,
@@ -3426,22 +3443,6 @@
       "title": "Cboe Clear Europe Sets Annual Record for Client Equity Trades Cleared",
       "url": "https://www.prnewswire.com/news-releases/cboe-clear-europe-sets-annual-record-for-client-equity-trades-cleared-302949882.html"
     },
-    "https://www.prnewswire.com/news-releases/celebrating-community-leadership-coty-gould-named-ambassador-of-the-month-302949519.html": {
-      "acquired": "2026-11-24T16:02:30.265747+00:00",
-      "acquisition_seconds": 150.265747,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T16:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Celebrating Community Leadership: Coty Gould Named Ambassador of the Month",
-      "url": "https://www.prnewswire.com/news-releases/celebrating-community-leadership-coty-gould-named-ambassador-of-the-month-302949519.html"
-    },
     "https://www.prnewswire.com/news-releases/centuri-holdings-set-to-join-sp-smallcap-600-302949933.html": {
       "acquired": "2026-11-24T22:47:42.684862+00:00",
       "acquisition_seconds": 942.684862,
@@ -3649,22 +3650,6 @@
       "status": "SCARTARE",
       "title": "CME Group Announces Strong European Dairy Volumes on First Day of Trading",
       "url": "https://www.prnewswire.com/news-releases/cme-group-announces-strong-european-dairy-volumes-on-first-day-of-trading-302949679.html"
-    },
-    "https://www.prnewswire.com/news-releases/cme-group-sets-new-daily-volume-record-of-71-5-million-contracts-driven-by-strong-interest-rates-volume-302949619.html": {
-      "acquired": "2026-11-24T16:02:30.265747+00:00",
-      "acquisition_seconds": 690.265747,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T15:51:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "CME Group Sets New Daily Volume Record of 71.5 Million Contracts, Driven by Strong Interest Rates Volume",
-      "url": "https://www.prnewswire.com/news-releases/cme-group-sets-new-daily-volume-record-of-71-5-million-contracts-driven-by-strong-interest-rates-volume-302949619.html"
     },
     "https://www.prnewswire.com/news-releases/cohen--steers-closed-end-opportunity-fund-inc-fof-notification-of-sources-of-distribution-under-section-19a-302949948.html": {
       "acquired": "2026-11-24T23:14:06.513816+00:00",
@@ -3921,22 +3906,6 @@
       "status": "SCARTARE",
       "title": "DEADLINE APPROACHING: Berger Montague Advises Gildan Activewear Inc. (NYSE: GIL) Investors to Inquire About a Securities Fraud Class Action by December 14, 2026",
       "url": "https://www.prnewswire.com/news-releases/deadline-approaching-berger-montague-advises-gildan-activewear-inc-nyse-gil-investors-to-inquire-about-a-securities-fraud-class-action-by-december-14-2026-302950061.html"
-    },
-    "https://www.prnewswire.com/news-releases/denver-broncos-foundation-and-college-track-announce-four-year-partnership-to-expand-opportunities-for-denver-scholars-302948505.html": {
-      "acquired": "2026-11-24T16:02:30.265747+00:00",
-      "acquisition_seconds": 150.265747,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T16:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Denver Broncos Foundation and College Track Announce Four-Year Partnership to Expand Opportunities for Denver Scholars",
-      "url": "https://www.prnewswire.com/news-releases/denver-broncos-foundation-and-college-track-announce-four-year-partnership-to-expand-opportunities-for-denver-scholars-302948505.html"
     },
     "https://www.prnewswire.com/news-releases/diamond-certified-resource-publishes-new-article-about-how-earning-diamond-certified-for-consecutive-years-increases-a-companys-valuation-302950822.html": {
       "acquired": "2026-11-25T20:16:31.669733+00:00",
@@ -4226,22 +4195,6 @@
       "title": "Genpact Named a Leader in Everest Group's 2026 Financial Crime and Compliance Operations Services PEAK Matrix® Assessment for the Sixth Consecutive Year",
       "url": "https://www.prnewswire.com/news-releases/genpact-named-a-leader-in-everest-groups-2026-financial-crime-and-compliance-operations-services-peak-matrix-assessment-for-the-sixth-consecutive-year-302950146.html"
     },
-    "https://www.prnewswire.com/news-releases/golden-1-credit-union-opens-2027-annual-scholarship-program-offering-500-000-in-scholarships-302948719.html": {
-      "acquired": "2026-11-24T16:02:30.265747+00:00",
-      "acquisition_seconds": 150.265747,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T16:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Golden 1 Credit Union Opens 2027 Annual Scholarship Program, Offering $500,000 in Scholarships",
-      "url": "https://www.prnewswire.com/news-releases/golden-1-credit-union-opens-2027-annual-scholarship-program-offering-500-000-in-scholarships-302948719.html"
-    },
     "https://www.prnewswire.com/news-releases/graywind-architect-manual-sliding-track-blinds-for-flexible-living-spaces-302950816.html": {
       "acquired": "2026-11-26T12:02:20.739870+00:00",
       "acquisition_seconds": 140.73987,
@@ -4289,22 +4242,6 @@
       "status": "SCARTARE",
       "title": "Hakluyt celebrates inaugural Essay Prize",
       "url": "https://www.prnewswire.com/news-releases/hakluyt-celebrates-inaugural-essay-prize-302950533.html"
-    },
-    "https://www.prnewswire.com/news-releases/harbinger-secures-more-than-100-million-in-debt-financing-from-erebor-bank-and-pinegrove-venture-partners-to-support-production-ramp-and-future-growth-302948754.html": {
-      "acquired": "2026-11-24T16:02:30.265747+00:00",
-      "acquisition_seconds": 150.265747,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T16:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Harbinger Secures More Than $100 Million in Debt Financing from Erebor Bank and Pinegrove Venture Partners to Support Production Ramp and Future Growth",
-      "url": "https://www.prnewswire.com/news-releases/harbinger-secures-more-than-100-million-in-debt-financing-from-erebor-bank-and-pinegrove-venture-partners-to-support-production-ramp-and-future-growth-302948754.html"
     },
     "https://www.prnewswire.com/news-releases/huawei--cma----------------302951015.html": {
       "acquired": "2026-11-26T04:47:21.982083+00:00",
@@ -4625,22 +4562,6 @@
       "status": "SCARTARE",
       "title": "Insurance Expert Chris Winkelmann Helps Families Calculate Their Life Insurance Coverage Amount",
       "url": "https://www.prnewswire.com/news-releases/insurance-expert-chris-winkelmann-helps-families-calculate-their-life-insurance-coverage-amount-302950604.html"
-    },
-    "https://www.prnewswire.com/news-releases/insurance-expert-jeremy-fitzsimmons-explains-homeowners-insurance-coverage-in-hellonation-302948525.html": {
-      "acquired": "2026-11-24T16:02:30.265747+00:00",
-      "acquisition_seconds": 150.265747,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T16:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Insurance Expert Jeremy Fitzsimmons Explains Homeowners Insurance Coverage in HelloNation",
-      "url": "https://www.prnewswire.com/news-releases/insurance-expert-jeremy-fitzsimmons-explains-homeowners-insurance-coverage-in-hellonation-302948525.html"
     },
     "https://www.prnewswire.com/news-releases/intelligrc-launches-trust-center-giving-msps-and-mssps-a-controlled-way-to-share-security-documentation-for-every-client-302950650.html": {
       "acquired": "2026-11-25T16:21:34.252823+00:00",
@@ -4978,6 +4899,22 @@
       "title": "INVESTOR ALERT: Pomerantz Law Firm Investigates Claims On Behalf of Investors of Xerox Holdings Corporation - XRX",
       "url": "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-investigates-claims-on-behalf-of-investors-of-xerox-holdings-corporation---xrx-302949053.html"
     },
+    "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-arbor-realty-trust-inc-of-class-action-lawsuit-and-upcoming-deadlines--abr-302948998.html": {
+      "acquired": "2026-11-26T16:02:19.330458+00:00",
+      "acquisition_seconds": 3739.330458,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-26T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "INVESTOR ALERT: Pomerantz Law Firm Reminds Investors with Losses on their Investment in Arbor Realty Trust, Inc. of Class Action Lawsuit and Upcoming Deadlines - ABR",
+      "url": "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-arbor-realty-trust-inc-of-class-action-lawsuit-and-upcoming-deadlines--abr-302948998.html"
+    },
     "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-babcock--wilcox-enterprises-inc-of-class-action-lawsuit---bw-302949045.html": {
       "acquired": "2026-11-26T15:02:24.570562+00:00",
       "acquisition_seconds": 84.570562,
@@ -4993,6 +4930,22 @@
       "status": "SCARTARE",
       "title": "INVESTOR ALERT: Pomerantz Law Firm Reminds Investors with Losses on their Investment in Babcock & Wilcox Enterprises, Inc. of Class Action Lawsuit - BW",
       "url": "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-babcock--wilcox-enterprises-inc-of-class-action-lawsuit---bw-302949045.html"
+    },
+    "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-the-ensign-group-inc-of-class-action-lawsuit-and-upcoming-deadlines--ensg-302948964.html": {
+      "acquired": "2026-11-26T16:02:19.330458+00:00",
+      "acquisition_seconds": 3739.330458,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-26T15:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "INVESTOR ALERT: Pomerantz Law Firm Reminds Investors with Losses on their Investment in The Ensign Group, Inc. of Class Action Lawsuit and Upcoming Deadlines - ENSG",
+      "url": "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-the-ensign-group-inc-of-class-action-lawsuit-and-upcoming-deadlines--ensg-302948964.html"
     },
     "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-yiren-digital-ltd-of-class-action-lawsuit-and-upcoming-deadlines--yrd-302948997.html": {
       "acquired": "2026-11-26T15:02:24.570562+00:00",
@@ -5665,22 +5618,6 @@
       "status": "SCARTARE",
       "title": "Stirlingshire Investments Appoints Daniel Gicklhorn as Chief Technology Officer",
       "url": "https://www.prnewswire.com/news-releases/stirlingshire-investments-appoints-daniel-gicklhorn-as-chief-technology-officer-302950605.html"
-    },
-    "https://www.prnewswire.com/news-releases/superior-healthplan-offers-two-unique-programs-in-texas-to-support-new-moms-and-people-with-disabilities-302949587.html": {
-      "acquired": "2026-11-24T16:02:30.265747+00:00",
-      "acquisition_seconds": 150.265747,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T16:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Superior HealthPlan Offers Two Unique Programs in Texas to Support New Moms and People with Disabilities",
-      "url": "https://www.prnewswire.com/news-releases/superior-healthplan-offers-two-unique-programs-in-texas-to-support-new-moms-and-people-with-disabilities-302949587.html"
     },
     "https://www.prnewswire.com/news-releases/sutisoft-simplifies-garnishment-management-with-intelligent-workflow-automation-302950520.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
