@@ -2045,6 +2045,22 @@
       "title": "Feeling tired and losing your hair? You might have low iron — even if you’ve tested ‘normal’ before.",
       "url": "https://www.marketwatch.com/story/feeling-tired-and-losing-your-hair-you-might-have-low-iron-even-if-youve-tested-normal-before-96fe0d29"
     },
+    "https://www.marketwatch.com/story/futures-point-to-black-friday-gains-for-wall-street-as-global-markets-welcome-u-s-resilience-ad6bcef2": {
+      "acquired": "2026-11-26T10:47:21.442737+00:00",
+      "acquisition_seconds": 621.442737,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-26T10:37:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Futures point to Black Friday gains for Wall Street as global markets welcome U.S. resilience.",
+      "url": "https://www.marketwatch.com/story/futures-point-to-black-friday-gains-for-wall-street-as-global-markets-welcome-u-s-resilience-ad6bcef2"
+    },
     "https://www.marketwatch.com/story/gamestop-has-been-saved-by-trading-cards-and-even-rolex-watches-say-wall-streets-newest-bulls-a932d74c": {
       "acquired": "2026-11-24T20:02:29.130379+00:00",
       "acquisition_seconds": 869.130379,
@@ -5228,6 +5244,22 @@
       "status": "SCARTARE",
       "title": "InComm Payments Launches The Gift Card Shop on TikTok Shop",
       "url": "https://www.prnewswire.com/news-releases/incomm-payments-launches-the-gift-card-shop-on-tiktok-shop-302948688.html"
+    },
+    "https://www.prnewswire.com/news-releases/individual-vision-coverage-during-medicare-open-enrollment-2026-a-look-at-vsps-flexible-vision-benefits-by-expert-consumers-302951088.html": {
+      "acquired": "2026-11-26T10:47:21.485898+00:00",
+      "acquisition_seconds": 141.485898,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-26T10:45:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Individual Vision Coverage During Medicare Open Enrollment (2026): A Look at VSP's Flexible Vision Benefits by Expert Consumers",
+      "url": "https://www.prnewswire.com/news-releases/individual-vision-coverage-during-medicare-open-enrollment-2026-a-look-at-vsps-flexible-vision-benefits-by-expert-consumers-302951088.html"
     },
     "https://www.prnewswire.com/news-releases/informe-sobre-el-futuro-de-las-finanzas-del-difc-302950593.html": {
       "acquired": "2026-11-25T15:02:23.218335+00:00",
