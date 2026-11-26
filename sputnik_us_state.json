@@ -16,23 +16,6 @@
       "title": "Come for the Games, Stay for the Community With GeForce NOW",
       "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-community-war-thunder-reward"
     },
-    "https://truthsocial.com/@realDonaldTrump/117672518077966619": {
-      "acquired": "2026-11-24T17:16:31.967455+00:00",
-      "acquisition_seconds": 460.730698,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-24T17:08:51.804000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "I am proud to announce that the FIFA Women's World Cup 2031 will take place in the United States! After hosting the Most Successful World Cup in History, no Country is better positioned than the United States to be home to the largest Women's Sporting Event in History. The FIFA Women's World Cup 203",
-      "url": "https://truthsocial.com/@realDonaldTrump/117672518077966619"
-    },
     "https://truthsocial.com/@realDonaldTrump/117672619106081295": {
       "acquired": "2026-11-24T17:47:27.426468+00:00",
       "acquisition_seconds": 774.724862,
@@ -1923,22 +1906,6 @@
       "title": "A bipartisan backlash is hitting Nvidia in Washington in the wake of Trump’s push for Huang’s return",
       "url": "https://www.marketwatch.com/story/a-bipartisan-backlash-is-hitting-nvidia-in-washington-in-the-wake-of-trumps-push-for-huangs-return-565626f2"
     },
-    "https://www.marketwatch.com/story/buyers-are-out-for-blood-as-housing-market-finally-hits-rock-bottom-fa5093a6": {
-      "acquired": "2026-11-24T17:16:32.079124+00:00",
-      "acquisition_seconds": 392.079124,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-24T17:10:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "‘Buyers are out for blood’: With home sales at a record low, buyers are calling the shots",
-      "url": "https://www.marketwatch.com/story/buyers-are-out-for-blood-as-housing-market-finally-hits-rock-bottom-fa5093a6"
-    },
     "https://www.marketwatch.com/story/capital-preservation-rather-than-chasing-the-market-higher-is-how-hedge-funds-are-negotiating-market-volatility-f4288b71": {
       "acquired": "2026-11-26T12:47:26.782830+00:00",
       "acquisition_seconds": 626.78283,
@@ -2786,22 +2753,6 @@
       "status": "SCARTARE",
       "title": "Alterra übernimmt Entwicklungsgeschäft von Pryme und sichert sich neues Kapital zur Beschleunigung der europäischen Expansion",
       "url": "https://www.prnewswire.com/news-releases/alterra-ubernimmt-entwicklungsgeschaft-von-pryme-und-sichert-sich-neues-kapital-zur-beschleunigung-der-europaischen-expansion-302949869.html"
-    },
-    "https://www.prnewswire.com/news-releases/ameritas-announces-officer-action-302949688.html": {
-      "acquired": "2026-11-24T17:16:32.186460+00:00",
-      "acquisition_seconds": 692.18646,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T17:05:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Ameritas announces officer action",
-      "url": "https://www.prnewswire.com/news-releases/ameritas-announces-officer-action-302949688.html"
     },
     "https://www.prnewswire.com/news-releases/andd-leads-again-leverage-shares-by-themes-anthropic-ant-etfs-top-anthropic-etf-trading-for-a-second-straight-day-302950625.html": {
       "acquired": "2026-11-25T16:21:34.252823+00:00",
@@ -4818,6 +4769,22 @@
       "status": "SCARTARE",
       "title": "INVESTOR ALERT: Pomerantz Law Firm Reminds Investors with Losses on their Investment in Yiren Digital Ltd. of Class Action Lawsuit and Upcoming Deadlines - YRD",
       "url": "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-yiren-digital-ltd-of-class-action-lawsuit-and-upcoming-deadlines--yrd-302948997.html"
+    },
+    "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-completes-largest-acquisition-in-its-history-302951331.html": {
+      "acquired": "2026-11-26T17:15:24.030359+00:00",
+      "acquisition_seconds": 264.030359,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-26T17:11:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Julius Meinl Coffee Group completes largest acquisition in its history",
+      "url": "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-completes-largest-acquisition-in-its-history-302951331.html"
     },
     "https://www.prnewswire.com/news-releases/koppers-management-participating-in-bofa-securities-leveraged-finance-conference-302949923.html": {
       "acquired": "2026-11-25T13:02:21.872766+00:00",
