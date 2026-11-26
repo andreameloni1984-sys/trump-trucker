@@ -2673,6 +2673,22 @@
       "title": "Third-quarter GDP already looked great. Now it looks even better.",
       "url": "https://www.marketwatch.com/story/third-quarter-gdp-already-looked-great-now-it-looks-even-better-12057da5"
     },
+    "https://www.marketwatch.com/story/this-retired-professor-has-reinvented-himself-as-a-taylor-swift-scholar-88456c8d": {
+      "acquired": "2026-11-26T14:47:21.559519+00:00",
+      "acquisition_seconds": 741.559519,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-26T14:35:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "This retired professor has reinvented himself — as a Taylor Swift scholar",
+      "url": "https://www.marketwatch.com/story/this-retired-professor-has-reinvented-himself-as-a-taylor-swift-scholar-88456c8d"
+    },
     "https://www.marketwatch.com/story/this-strategists-bond-trading-model-is-outperforming-by-a-wide-margin-the-fed-slowing-the-economy-is-a-good-thing-he-argues-f39dfc5f": {
       "acquired": "2026-11-25T10:17:16.827873+00:00",
       "acquisition_seconds": 316.827873,
@@ -5552,22 +5568,6 @@
       "status": "SCARTARE",
       "title": "South Atlantic Bank Secures $360,000 in FHLBank Atlanta Funding to Support Affordable Homeownership in Horry County",
       "url": "https://www.prnewswire.com/news-releases/south-atlantic-bank-secures-360-000-in-fhlbank-atlanta-funding-to-support-affordable-homeownership-in-horry-county-302949686.html"
-    },
-    "https://www.prnewswire.com/news-releases/sp-cotality-case-shiller-index-reports-annual-gain-in-september-2026-302949528.html": {
-      "acquired": "2026-11-24T14:47:22.170476+00:00",
-      "acquisition_seconds": 862.170476,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T14:33:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "S&P Cotality Case-Shiller Index Reports Annual Gain in September 2026",
-      "url": "https://www.prnewswire.com/news-releases/sp-cotality-case-shiller-index-reports-annual-gain-in-september-2026-302949528.html"
     },
     "https://www.prnewswire.com/news-releases/stable-expands-native-pyusd-utility-with-lending-vault-on-morpho-curated-by-galaxy-302950375.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
