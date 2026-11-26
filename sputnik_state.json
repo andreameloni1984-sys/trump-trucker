@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T12:39:09.141808+00:00",
+  "updated_at": "2026-11-26T12:42:11.555019+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "c2695adb03a2cd5389183d4d": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43741",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117682778730108467",
+      "title": "“U.S. Q3 GDP just got revised UP to a massive +4.3% — shattering expert predictions and nearly DOUBLING Q2’s 2.2% growth! The Trump Economy is ROARING, and the mainstream media can’t hide it anymore!”",
+      "published": "Thu, 26 Nov 2026 12:38:16 +0000",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "“U.S. Q3 GDP just got revised UP to a massive +4.3% — shattering expert predictions and nearly DOUBLING Q2’s 2.2% growth! The Trump Economy is ROARING, and the mainstream media can’t hide it anymore!” “U.S. Q3 GDP just got revised UP to a massive +4.3% — shattering expert predictions and nearly DOUBLING Q2’s 2.2% growth! The Trump Economy is ROARING, and the mainstream media can’t hide it anymore!” View image",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T12:42:11.086040+00:00",
+      "event_id": "c2695adb03a2cd5389183d4d",
+      "action_reaction": {
+        "event_id": "c2695adb03a2cd5389183d4d",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "7bc67164f4a4e0842ed065ba": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8137,37 +8160,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "8c8f7eae6041cc3695fcd3e6": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43326",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552766166537382",
-      "title": "TO THE GREAT PEOPLE OF NEW MEXICO, GET OUT AND VOTE FOR: – Greg Cunningham for U.S. Congress (NM-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/new-mexico/",
-      "published": "Tue, 03 Nov 2026 13:34:22 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF NEW MEXICO, GET OUT AND VOTE FOR: – Greg Cunningham for U.S. Congress (NM-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevoteusa.com/new-mexico/ TO THE GREAT PEOPLE OF NEW MEXICO, GET OUT AND VOTE FOR: – Greg Cunningham for U.S. Congress (NM-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/new-mexico/ View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.105548+00:00",
-      "event_id": "8c8f7eae6041cc3695fcd3e6",
-      "action_reaction": {
-        "event_id": "8c8f7eae6041cc3695fcd3e6",
-        "event_type": "TRADE_ESCALATION",
-        "historical_matches": [
-          "china_tariff_escalation_2025_10"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "DOWN",
-          "NASDAQ": "DOWN",
-          "USD": "DOWN",
-          "TREASURY_YIELDS": "DOWN",
-          "OIL": "DOWN"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13270,7 +13262,8 @@
     "1a2f53181b05a0d60f46ca1f": "2026-11-26T00:45:19.236102+00:00",
     "7451b9bc9c0d42ce2165b5b2": "2026-11-26T05:15:08.741679+00:00",
     "970a21c88c43d578c166e87a": "2026-11-26T05:15:08.741863+00:00",
-    "f234f43617d980df5d581dcc": "2026-11-26T05:48:08.405323+00:00"
+    "f234f43617d980df5d581dcc": "2026-11-26T05:48:08.405323+00:00",
+    "c2695adb03a2cd5389183d4d": "2026-11-26T12:42:11.086026+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18335,13 +18328,13 @@
   "analyst_brief_date": "2026-11-26",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 14,
+    "Trump": 15,
     "chiamate al mercato": 0
   },
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-26T12:39:09.127531+00:00",
+      "at": "2026-11-26T12:42:11.096267+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
@@ -18349,27 +18342,31 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-26T12:39:09.127531+00:00",
+      "at": "2026-11-26T12:42:11.096267+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T12:39:09.127531+00:00",
+      "at": "2026-11-26T12:42:11.096267+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T12:39:09.127531+00:00",
+      "at": "2026-11-26T12:42:11.096267+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T12:39:09.127531+00:00",
+      "at": "2026-11-26T12:42:11.096267+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T12:39:09.127531+00:00",
+      "at": "2026-11-26T12:42:11.096267+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43740": {
-      "at": "2026-11-26T12:39:09.127531+00:00",
+      "at": "2026-11-26T12:42:11.096267+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43741": {
+      "at": "2026-11-26T12:42:11.096267+00:00",
       "market": false
     }
   }
