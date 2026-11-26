@@ -2478,6 +2478,22 @@
       "title": "S&P 500’s slide through a key trendline — again — is an ominous sign, history suggests",
       "url": "https://www.marketwatch.com/story/s-p-500s-slide-through-a-key-trendline-again-is-an-ominous-sign-history-suggests-def8b99f"
     },
+    "https://www.marketwatch.com/story/so-sad-and-so-true-has-your-family-talked-about-snls-sister-sketch-yet-19bf9d67": {
+      "acquired": "2026-11-26T13:17:21.550382+00:00",
+      "acquisition_seconds": 681.550382,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-26T13:06:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "‘I felt so seen’: Why families across America are laughing — and crying — over SNL’s ‘Sister’ sketch",
+      "url": "https://www.marketwatch.com/story/so-sad-and-so-true-has-your-family-talked-about-snls-sister-sketch-yet-19bf9d67"
+    },
     "https://www.marketwatch.com/story/techs-slump-is-deepening-are-americans-heading-into-black-friday-with-less-buying-power-7f9da81c": {
       "acquired": "2026-11-25T12:24:01.685369+00:00",
       "acquisition_seconds": 241.685369,
@@ -2797,22 +2813,6 @@
       "status": "SCARTARE",
       "title": "Abich Financial Services Named to Financial Planning's Best RIAs to Work For List for Second Consecutive Year",
       "url": "https://www.prnewswire.com/news-releases/abich-financial-services-named-to-financial-plannings-best-rias-to-work-for-list-for-second-consecutive-year-302949975.html"
-    },
-    "https://www.prnewswire.com/news-releases/adp-national-employment-report-preliminary-estimate-for-november-7-2026-302948539.html": {
-      "acquired": "2026-11-24T13:17:28.359094+00:00",
-      "acquisition_seconds": 148.359094,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:15:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "ADP National Employment Report Preliminary Estimate for November 7, 2026",
-      "url": "https://www.prnewswire.com/news-releases/adp-national-employment-report-preliminary-estimate-for-november-7-2026-302948539.html"
     },
     "https://www.prnewswire.com/news-releases/alkami-digital-sales--service-platform-named-gold-winner-in-merit-awards-2026-technology-awards-302948708.html": {
       "acquired": "2026-11-24T15:02:29.312273+00:00",
@@ -5678,22 +5678,6 @@
       "title": "PNC Executives to Speak at Goldman Sachs Financial Services Conference",
       "url": "https://www.prnewswire.com/news-releases/pnc-executives-to-speak-at-goldman-sachs-financial-services-conference-302949509.html"
     },
-    "https://www.prnewswire.com/news-releases/pnc-names-brian-leblanc-chief-economist-302949446.html": {
-      "acquired": "2026-11-24T13:32:33.573919+00:00",
-      "acquisition_seconds": 933.573919,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:17:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "PNC Names Brian LeBlanc Chief Economist",
-      "url": "https://www.prnewswire.com/news-releases/pnc-names-brian-leblanc-chief-economist-302949446.html"
-    },
     "https://www.prnewswire.com/news-releases/preserve-the-pensions-project-to-digitize-war-of-1812-pension-files-is-now-complete-302949902.html": {
       "acquired": "2026-11-24T22:02:29.706072+00:00",
       "acquisition_seconds": 929.706072,
@@ -6413,22 +6397,6 @@
       "status": "SCARTARE",
       "title": "XTI Aerospace Eliminates Class B Units and Enters into Warrant Exchange Agreement, Simplifying Capital Structure",
       "url": "https://www.prnewswire.com/news-releases/xti-aerospace-eliminates-class-b-units-and-enters-into-warrant-exchange-agreement-simplifying-capital-structure-302950835.html"
-    },
-    "https://www.prnewswire.com/news-releases/zentist-introduces-agentic-ai-for-dental-payment-posting-with-new-autoposting-skills-302949021.html": {
-      "acquired": "2026-11-24T13:17:28.359094+00:00",
-      "acquisition_seconds": 448.359094,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-24T13:10:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Zentist Introduces Agentic AI for Dental Payment Posting with New Autoposting Skills",
-      "url": "https://www.prnewswire.com/news-releases/zentist-introduces-agentic-ai-for-dental-payment-posting-with-new-autoposting-skills-302949021.html"
     },
     "https://www.prnewswire.com/news-releases/ziegler-closes-259-180-490-financing-for-willow-valley-communities-pa-302947894.html": {
       "acquired": "2026-11-24T21:02:20.974004+00:00",
