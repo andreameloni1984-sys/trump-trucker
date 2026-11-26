@@ -1858,22 +1858,6 @@
       "title": "S. 5814 (IS) - Housing for Homeless Students Act of 2026",
       "url": "https://www.govinfo.gov/app/details/BILLS-119s5814is"
     },
-    "https://www.govinfo.gov/app/details/BILLS-119sres722is": {
-      "acquired": "2026-11-24T17:32:21.596566+00:00",
-      "acquisition_seconds": 381.596566,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "bills",
-      "penalized": [],
-      "published": "2026-11-24T17:26:00+00:00",
-      "source": "Congresso / GovInfo",
-      "status": "SCARTARE",
-      "title": "S. Res. 722 (IS) - Addressing the politicization of war crimes allegations against allied special operations forces.",
-      "url": "https://www.govinfo.gov/app/details/BILLS-119sres722is"
-    },
     "https://www.marketwatch.com/story/a-66-year-old-nurse-faces-retirement-with-just-500-saved-whos-to-blame-4249a0fd": {
       "acquired": "2026-11-25T16:47:26.139519+00:00",
       "acquisition_seconds": 1046.139519,
@@ -4786,6 +4770,22 @@
       "title": "Julius Meinl Coffee Group completes largest acquisition in its history",
       "url": "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-completes-largest-acquisition-in-its-history-302951331.html"
     },
+    "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-completes-largest-acquisition-in-its-history-302951333.html": {
+      "acquired": "2026-11-26T17:32:18.188951+00:00",
+      "acquisition_seconds": 978.188951,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "m-and-a",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-26T17:16:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Julius Meinl Coffee Group completes largest acquisition in its history",
+      "url": "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-completes-largest-acquisition-in-its-history-302951333.html"
+    },
     "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-schlieWt-groWte-akquisition-der-unternehmensgeschichte-ab-302951332.html": {
       "acquired": "2026-11-26T17:17:24.564567+00:00",
       "acquisition_seconds": 144.564567,
@@ -4801,6 +4801,22 @@
       "status": "SCARTARE",
       "title": "Julius Meinl Coffee Group schließt größte Akquisition der Unternehmensgeschichte ab",
       "url": "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-schlieWt-groWte-akquisition-der-unternehmensgeschichte-ab-302951332.html"
+    },
+    "https://www.prnewswire.com/news-releases/julius-meinl-kaffee-starkt-internationales-wachstum-mit-rekord-akquisition-302951334.html": {
+      "acquired": "2026-11-26T17:32:18.188951+00:00",
+      "acquisition_seconds": 798.188951,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-26T17:19:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Julius Meinl Kaffee stärkt internationales Wachstum mit Rekord-Akquisition",
+      "url": "https://www.prnewswire.com/news-releases/julius-meinl-kaffee-starkt-internationales-wachstum-mit-rekord-akquisition-302951334.html"
     },
     "https://www.prnewswire.com/news-releases/koppers-management-participating-in-bofa-securities-leveraged-finance-conference-302949923.html": {
       "acquired": "2026-11-25T13:02:21.872766+00:00",
