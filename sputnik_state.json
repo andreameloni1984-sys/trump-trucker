@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T14:21:09.626390+00:00",
+  "updated_at": "2026-11-26T14:24:09.806964+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "a6c7b4f3cf70f7c6ffb19c77": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43742",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117683175541431490",
+      "title": "A JOINT STATEMENT MADE BY PRESIDENT DONALD J. TRUMP AND SECRETARY GENERAL OF NATO, MARK RUTTE: President Trump and Secretary General Rutte had an outstanding meeting on Wednesday evening, at what is often referred to as the Southern White House — Mar-a-Lago.The meeting was very impactful, with the W",
+      "published": "Thu, 26 Nov 2026 14:19:11 +0000",
+      "domains": [
+        "DEFENSE"
+      ],
+      "text": "A JOINT STATEMENT MADE BY PRESIDENT DONALD J. TRUMP AND SECRETARY GENERAL OF NATO, MARK RUTTE: President Trump and Secretary General Rutte had an outstanding meeting on Wednesday evening, at what is often referred to as the Southern White House — Mar-a-Lago.The meeting was very impactful, with the W A JOINT STATEMENT MADE BY PRESIDENT DONALD J. TRUMP AND SECRETARY GENERAL OF NATO, MARK RUTTE: President Trump and Secretary General Rutte had an outstanding meeting on Wednesday evening, at what is often referred to as the Southern White House — Mar-a-Lago. The meeting was very impactful, with the War between Russia and Ukraine, and the Conflict in Iran, being the primary subjects of discussion. Additionally, all of the record setting achievements that the U.S. and NATO have made together at the Summits in the Hague, and Ankara, were discussed. We also talked about, at length, the importance of Russia and Ukraine avoiding any actions that intentionally, or unintentionally, expand the War — and the importance of obtaining a peaceful resolution to the War, as rapidly as possible! Lastly, we discussed Defense Spending, and the Investment in our Industrial Base, both in the United States, and all across NATO. I briefed NATO on the tremendous progress our Defense Companies are making on more than 20 new facilities currently under construction. The focus of these Companies is the building of Patriots, THAAD Systems, Tomahawks, and many new Weapons, both Offensive and Defensive, that ha",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T14:24:09.791123+00:00",
+      "event_id": "a6c7b4f3cf70f7c6ffb19c77",
+      "action_reaction": {
+        "event_id": "a6c7b4f3cf70f7c6ffb19c77",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "e9cd846555df6e5b8a182ad1": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8136,29 +8159,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "f3905a1dceffb4776064843d": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43328",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552762882301089",
-      "title": "TO THE GREAT PEOPLE OF NORTH CAROLINA, GET OUT AND VOTE FOR: – Michael Whatley for U.S. Senate– Laurie Buckhout for U.S. Congress (NC-01)– Greg Murphy for U.S. Congress (NC-03)– Virginia Foxx for U.S. Congress (NC-05)– Addison McDowell for U.S. Congress (NC-06)– David Rouzer for U.S. Congress (NC-07",
-      "published": "Tue, 03 Nov 2026 13:33:32 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF NORTH CAROLINA, GET OUT AND VOTE FOR: – Michael Whatley for U.S. Senate– Laurie Buckhout for U.S. Congress (NC-01)– Greg Murphy for U.S. Congress (NC-03)– Virginia Foxx for U.S. Congress (NC-05)– Addison McDowell for U.S. Congress (NC-06)– David Rouzer for U.S. Congress (NC-07 TO THE GREAT PEOPLE OF NORTH CAROLINA, GET OUT AND VOTE FOR: – Michael Whatley for U.S. Senate – Laurie Buckhout for U.S. Congress (NC-01) – Greg Murphy for U.S. Congress (NC-03) – Virginia Foxx for U.S. Congress (NC-05) – Addison McDowell for U.S. Congress (NC-06) – David Rouzer for U.S. Congress (NC-07) – Mark Harris for U.S. Congress (NC-08) – Richard Hudson for U.S. Congress (NC-09) – Pat Harrigan for U.S. Congress (NC-10) – Jennifer Balkcom for U.S. Congress (NC-11) – Brad Knott for U.S. Congress (NC-13) – Tim Moore for U.S. Congress (NC-14) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/north-carolina/ View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.106374+00:00",
-      "event_id": "f3905a1dceffb4776064843d",
-      "action_reaction": {
-        "event_id": "f3905a1dceffb4776064843d",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13262,7 +13262,8 @@
     "7451b9bc9c0d42ce2165b5b2": "2026-11-26T05:15:08.741679+00:00",
     "970a21c88c43d578c166e87a": "2026-11-26T05:15:08.741863+00:00",
     "f234f43617d980df5d581dcc": "2026-11-26T05:48:08.405323+00:00",
-    "c2695adb03a2cd5389183d4d": "2026-11-26T12:42:11.086026+00:00"
+    "c2695adb03a2cd5389183d4d": "2026-11-26T12:42:11.086026+00:00",
+    "a6c7b4f3cf70f7c6ffb19c77": "2026-11-26T14:24:09.791113+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18333,7 +18334,7 @@
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-26T14:21:09.612039+00:00",
+      "at": "2026-11-26T14:24:09.798314+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
@@ -18341,31 +18342,35 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-26T14:21:09.612039+00:00",
+      "at": "2026-11-26T14:24:09.798314+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T14:21:09.612039+00:00",
+      "at": "2026-11-26T14:24:09.798314+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T14:21:09.612039+00:00",
+      "at": "2026-11-26T14:24:09.798314+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T14:21:09.612039+00:00",
+      "at": "2026-11-26T14:24:09.798314+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T14:21:09.612039+00:00",
+      "at": "2026-11-26T14:24:09.798314+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43740": {
-      "at": "2026-11-26T14:21:09.612039+00:00",
+      "at": "2026-11-26T14:24:09.798314+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43741": {
-      "at": "2026-11-26T14:21:09.612039+00:00",
+      "at": "2026-11-26T14:24:09.798314+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43742": {
+      "at": "2026-11-26T14:24:09.798314+00:00",
       "market": false
     }
   }
