@@ -365,16 +365,22 @@ MARKET_WORDS = re.compile(r"\b(?:" + "|".join([
 ]) + r")\b", re.I)
 
 
-IDIOMS = re.compile(r"lock,? stock,? (?:and|&) barrel|taking stock|war (?:on|against) (?:crime|drugs|christmas)", re.I)
+IDIOMS = re.compile(r"lock,? stock,? (?:and|&) barrel|taking stock|war (?:on|against) (?:crime|drugs|christmas)|"
+                    r"(?:secretary|department|dept\.?) of war|war heroe?s?|warfighters?", re.I)
 
 
 def market_relevant(item: dict) -> bool:
     title = str(item.get("title") or "").strip()
     if not title or EMPTY_POST.match(title):
         return False
-    if "MARKET_CALL" in (item.get("domains") or []):
+    domains = item.get("domains") or []
+    if "MARKET_CALL" in domains:
         return True
-    text = IDIOMS.sub(" ", " ".join([title, str(item.get("text") or "")]))
+    if domains == ["POLITICAL_CAMPAIGN"]:   # appelli al voto e sostegno a candidati
+        return False
+    # Titolo + inizio del testo: nei comunicati lunghi una parola in fondo ("war" citata
+    # di passaggio) non rende il post rilevante per i mercati.
+    text = IDIOMS.sub(" ", " ".join([title, str(item.get("text") or "")[:400]]))
     return bool(MARKET_WORDS.search(text))
 
 
@@ -476,10 +482,14 @@ def disclosure_message(event: Any) -> str:
 
 def brief_message(state: dict[str, Any], now: datetime | None = None) -> str:
     now = now or _now()
-    trump = recent_trump(state, 24, now)
+    posts = recent_trump(state, 24, now)
+    trump = [i for i in posts if market_relevant(i)]   # solo i post con contenuto economico
     moves = recent_moves(state, 7, now)
     lines = ["☀️ SPUTNIK — RIEPILOGO TRUMP & MILIARDARI", ""]
-    lines.append(f"🇺🇸 Trump nelle ultime 24 ore: {len(trump)} comunicati con impatto sui mercati")
+    if trump:
+        lines.append(f"🇺🇸 Trump nelle ultime 24 ore: {len(posts)} post, {len(trump)} con impatto sui mercati")
+    else:
+        lines.append(f"🇺🇸 Trump nelle ultime 24 ore: {len(posts)} post, nessuno con impatto sui mercati")
     counts: dict[str, int] = {}
     for item in trump:
         for d in item.get("domains") or []:

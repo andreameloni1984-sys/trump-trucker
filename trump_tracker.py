@@ -412,7 +412,7 @@ ASSET_KEYWORDS = {
     "AI_TECH": ["artificial intelligence", "ai", "semiconductor", "chip", "data center", "cloud"],
     "SPACE": ["spacex", "rocket", "satellite", "space"],
     "CRYPTO": ["bitcoin", "ethereum", "crypto", "digital asset", "stablecoin"],
-    "MEDIA": ["truth social", "truth", "media", "streaming"],
+    "MEDIA": ["truth social", "media", "streaming"],
     "REAL_ESTATE": ["real estate", "property", "hotel", "resort"],
     # Political and macro catalysts need their own labels; otherwise a tariff
     # headline with no commodity keyword is silently discarded.
@@ -463,11 +463,19 @@ _CONCRETE_COMMODITY_EVENT = re.compile(
 )
 
 
+# Whole words only (plural allowed): "ai" must not match "said"/"air", "oil" not "soil",
+# "corn" not "unicorn", "gold" not "golden".
+_ASSET_PATTERNS = {
+    domain: re.compile(r"\b(?:" + "|".join(re.escape(k) for k in keywords) + r")(?:s|es)?\b")
+    for domain, keywords in ASSET_KEYWORDS.items()
+}
+
+
 def _domains_for_public_text(text: str) -> list[str]:
     normalized = str(text or "").lower()
     domains = [
-        domain for domain, keywords in ASSET_KEYWORDS.items()
-        if any(keyword in normalized for keyword in keywords)
+        domain for domain, pattern in _ASSET_PATTERNS.items()
+        if pattern.search(normalized)
     ]
     # Candidate endorsements and routine praise are political campaign events,
     # not commodity/defense catalysts. Preserve a market tag only when the
