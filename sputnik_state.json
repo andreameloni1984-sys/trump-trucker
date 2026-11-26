@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T05:47:12.866492+00:00",
+  "updated_at": "2026-11-26T05:48:08.429873+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1116,6 +1116,29 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "f234f43617d980df5d581dcc": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43740",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117681161738909385",
+      "title": "David E. Sanger, the mediocre reporter for the Failing New York Times, didn’t mention in his recent story on me the successful closing of the Border, best crime stats in years (lowest murder rate since 1900 - 126 years!), biggest Tax and Regulation Cuts, EVER, the most successful naval blockade in h",
+      "published": "Thu, 26 Nov 2026 05:47:03 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "David E. Sanger, the mediocre reporter for the Failing New York Times, didn’t mention in his recent story on me the successful closing of the Border, best crime stats in years (lowest murder rate since 1900 - 126 years!), biggest Tax and Regulation Cuts, EVER, the most successful naval blockade in h David E. Sanger, the mediocre reporter for the Failing New York Times, didn’t mention in his recent story on me the successful closing of the Border, best crime stats in years (lowest murder rate since 1900 - 126 years!), biggest Tax and Regulation Cuts, EVER, the most successful naval blockade in history, the destruction of Iran’s Navy and Air Force (and more!), the ONE DAY WIN against Venezuela, and today’s big success in straightening out the Obama caused mess in Iowa. David Sanger is a lowlife that only writes what he is told to write by his bosses. Also, until the Election, best Market, EVER, 82 days, settled 8 Wars, and the USA is respected again like never before!",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-26T05:48:08.405337+00:00",
+      "event_id": "f234f43617d980df5d581dcc",
+      "action_reaction": {
+        "event_id": "f234f43617d980df5d581dcc",
+        "event_type": "GEOPOLITICAL_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "83d0111c35d1257f8a73b899": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8145,35 +8168,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "0e3fee17563848c0b9ef55ea": {
-      "source": "TRUTH_ARCHIVE",
-      "url": "https://www.trumpstruth.org/",
-      "title": "",
-      "published": "",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 3, 2026, 8:34 AM Original Post TO THE GREAT PEOPLE OF NEW JERSEY, GET OUT AND VOTE FOR: – Jeff Van Drew for U.S. Congress (NJ-02) – Chris Smith for U.S. Congress (NJ-04) – Tom Kean for U.S. Congress (NJ-07) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/new-jersey/ Donald J. Trump @realDonaldTrump · November 3, 2026, 8:34 AM Original Post TO THE GREAT PEOPLE OF NEW MEXICO, GET OUT AND VOTE FOR: – Greg Cunningham for U.S. Congress (NM-02) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/new-mexico/ Donald J. Trump @realDonaldTrump · November 3, 2026, 8:34 AM Original Post TO THE GREAT PEOPLE OF NEW YORK, GET OUT AND VOTE FOR: – Bruce Blakeman for Governor – Saritha Komatireddy for Attorney General – Nick LaLota for U.S. Congress (NY-01)",
-      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:36.239102+00:00",
-      "event_id": "0e3fee17563848c0b9ef55ea",
-      "action_reaction": {
-        "event_id": "0e3fee17563848c0b9ef55ea",
-        "event_type": "TRADE_ESCALATION",
-        "historical_matches": [
-          "china_tariff_escalation_2025_10"
-        ],
-        "historical_directions": {
-          "US_EQUITIES": "DOWN",
-          "NASDAQ": "DOWN",
-          "USD": "DOWN",
-          "TREASURY_YIELDS": "DOWN",
-          "OIL": "DOWN"
-        },
-        "evidence": "HISTORICAL_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13275,7 +13269,8 @@
     "a33aa1d5e327f89a9d213aa9": "2026-11-25T23:15:26.845704+00:00",
     "1a2f53181b05a0d60f46ca1f": "2026-11-26T00:45:19.236102+00:00",
     "7451b9bc9c0d42ce2165b5b2": "2026-11-26T05:15:08.741679+00:00",
-    "970a21c88c43d578c166e87a": "2026-11-26T05:15:08.741863+00:00"
+    "970a21c88c43d578c166e87a": "2026-11-26T05:15:08.741863+00:00",
+    "f234f43617d980df5d581dcc": "2026-11-26T05:48:08.405323+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18346,31 +18341,35 @@
   "analyst_report_week": "2026-W47",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
-      "at": "2026-11-26T05:47:12.858436+00:00",
+      "at": "2026-11-26T05:48:08.414768+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/briefings-statements/2026/11/first-lady-melania-trump-secures-reunification-of-nine-additional-children-with-their-families/": {
-      "at": "2026-11-26T05:47:12.858436+00:00",
+      "at": "2026-11-26T05:48:08.414768+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43731": {
-      "at": "2026-11-26T05:47:12.858436+00:00",
+      "at": "2026-11-26T05:48:08.414768+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T05:47:12.858436+00:00",
+      "at": "2026-11-26T05:48:08.414768+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T05:47:12.858436+00:00",
+      "at": "2026-11-26T05:48:08.414768+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T05:47:12.858436+00:00",
+      "at": "2026-11-26T05:48:08.414768+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T05:47:12.858436+00:00",
+      "at": "2026-11-26T05:48:08.414768+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43740": {
+      "at": "2026-11-26T05:48:08.414768+00:00",
       "market": false
     }
   }
