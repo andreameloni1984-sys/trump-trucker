@@ -2,6 +2,17 @@
  "version": 1,
  "trump": [
   {
+   "title": "President Trump Unleashes Whole-of-Government Effort to Protect America’s Critical Infrastructure",
+   "published": "2026-11-26T00:38:59+00:00",
+   "url": "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/",
+   "source": "Casa Bianca",
+   "domains": [
+    "DEFENSE",
+    "AI_TECH"
+   ],
+   "bias": []
+  },
+  {
    "title": "Trump Administration Leads Whole-of-Government Effort to Safely Neutralize Obama-Era Explosives Threat in Iowa",
    "published": "2026-11-25T23:10:56+00:00",
    "url": "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/",
@@ -156,5 +167,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-25T23:15:26.933207+00:00"
+ "updated_at": "2026-11-26T00:45:19.294326+00:00"
 }
