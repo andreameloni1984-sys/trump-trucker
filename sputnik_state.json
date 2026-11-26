@@ -1107,7 +1107,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T23:00:08.816758+00:00",
+  "updated_at": "2026-11-26T23:02:12.625329+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -12484,7 +12484,7 @@
       "ticker": ""
     }
   },
-  "morning_brief_date": "2026-11-26",
+  "morning_brief_date": "2026-11-27",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
@@ -18349,39 +18349,39 @@
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/trump-administrations-whole-of-government-effort-safely-neutralizes-obama-era-explosives-threat-in-iowa/": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43740": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43741": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43742": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43745": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43746": {
-      "at": "2026-11-26T23:00:08.800336+00:00",
+      "at": "2026-11-26T23:02:12.614577+00:00",
       "market": false
     }
   }
