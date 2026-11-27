@@ -1470,6 +1470,22 @@
       "title": "SAP reportedly to cut 10,000 jobs. It marks the latest in a brutal year for tech layoffs.",
       "url": "https://www.marketwatch.com/story/sap-reportedly-to-cut-10-000-jobs-it-marks-the-latest-in-a-brutal-year-for-tech-layoffs-c7989744"
     },
+    "https://www.marketwatch.com/story/see-how-much-more-money-the-richest-americans-are-spending-on-the-holidays-compared-to-everyone-else-f0ff3f4b": {
+      "acquired": "2026-11-27T14:32:20.102566+00:00",
+      "acquisition_seconds": 560.102566,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-27T14:23:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "How much more are richest Americans spending on the holidays compared to everyone else?",
+      "url": "https://www.marketwatch.com/story/see-how-much-more-money-the-richest-americans-are-spending-on-the-holidays-compared-to-everyone-else-f0ff3f4b"
+    },
     "https://www.marketwatch.com/story/so-sad-and-so-true-has-your-family-talked-about-snls-sister-sketch-yet-19bf9d67": {
       "acquired": "2026-11-26T13:17:21.550382+00:00",
       "acquisition_seconds": 681.550382,
@@ -2174,22 +2190,6 @@
       "title": "ECARX Announces US$20 million Share Repurchase Program",
       "url": "https://www.prnewswire.com/news-releases/ecarx-announces-us20-million-share-repurchase-program-302951459.html"
     },
-    "https://www.prnewswire.com/news-releases/ecercom-expands-ecerclaw-ai-ecosystem-with-lobster-crm-for-end-to-end-b2b-sales-management-302950570.html": {
-      "acquired": "2026-11-25T14:32:23.088703+00:00",
-      "acquisition_seconds": 743.088703,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T14:20:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Ecer.com Expands EcerClaw AI Ecosystem with Lobster CRM for End-to-End B2B Sales Management",
-      "url": "https://www.prnewswire.com/news-releases/ecercom-expands-ecerclaw-ai-ecosystem-with-lobster-crm-for-end-to-end-b2b-sales-management-302950570.html"
-    },
     "https://www.prnewswire.com/news-releases/egan-jones-notes-higher-borrowing-costs-alongside-steady-credit-fundamentals-302950756.html": {
       "acquired": "2026-11-25T18:17:22.289342+00:00",
       "acquisition_seconds": 262.289342,
@@ -2349,22 +2349,6 @@
       "status": "SCARTARE",
       "title": "Huawei a CMA spoločne spúšťajú národné platobné riešenie na urýchlenie transformácie globálnych platieb",
       "url": "https://www.prnewswire.com/news-releases/huawei-a-cma-spolone-spuaju-narodne-platobne-rieenie-na-urychlenie-transformacie-globalnych-platieb-302950796.html"
-    },
-    "https://www.prnewswire.com/news-releases/huawei-i-cma-wspolnie-prezentuj-rozwizanie-dla-krajowych-systemow-patniczych-ktore-ma-przyspieszy-ich-modernizacj-na-wiecie-302950578.html": {
-      "acquired": "2026-11-25T14:32:23.088703+00:00",
-      "acquisition_seconds": 203.088703,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T14:29:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Huawei i CMA wspólnie prezentują rozwiązanie dla krajowych systemów płatniczych, które ma przyspieszyć ich modernizację na świecie",
-      "url": "https://www.prnewswire.com/news-releases/huawei-i-cma-wspolnie-prezentuj-rozwizanie-dla-krajowych-systemow-patniczych-ktore-ma-przyspieszy-ich-modernizacj-na-wiecie-302950578.html"
     },
     "https://www.prnewswire.com/news-releases/huawei-ve-cma-kuresel-odeme-donuumunu-hzlandrmak-cin-ortaklaa-ulusal-odeme-cozumunu-tantt-302950989.html": {
       "acquired": "2026-11-26T03:32:22.397298+00:00",
@@ -3565,22 +3549,6 @@
       "status": "SCARTARE",
       "title": "XTI Aerospace Eliminates Class B Units and Enters into Warrant Exchange Agreement, Simplifying Capital Structure",
       "url": "https://www.prnewswire.com/news-releases/xti-aerospace-eliminates-class-b-units-and-enters-into-warrant-exchange-agreement-simplifying-capital-structure-302950835.html"
-    },
-    "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026": {
-      "acquired": "2026-11-25T14:32:22.989597+00:00",
-      "acquisition_seconds": 142.989597,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "policy",
-      "penalized": [],
-      "published": "2026-11-25T14:30:00+00:00",
-      "source": "Casa Bianca – azioni",
-      "status": "SCARTARE",
-      "title": "Thanksgiving Day, 2026",
-      "url": "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026"
     }
   },
   "pravda": [],
