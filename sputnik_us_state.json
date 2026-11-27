@@ -332,38 +332,6 @@
       "title": "Image post from November 27, 2026",
       "url": "https://truthsocial.com/@realDonaldTrump/117688960220295521"
     },
-    "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125a.htm": {
-      "acquired": "2026-11-25T20:02:26.428513+00:00",
-      "acquisition_seconds": 146.428513,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "fed",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "fed",
-      "penalized": [],
-      "published": "2026-11-25T20:00:00+00:00",
-      "source": "Federal Reserve",
-      "status": "SCARTARE",
-      "title": "Agencies announce dollar thresholds for smaller loan exemption from appraisal requirements for higher-priced mortgage loans",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125a.htm"
-    },
-    "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125b.htm": {
-      "acquired": "2026-11-25T20:02:26.428513+00:00",
-      "acquisition_seconds": 146.428513,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "fed",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "fed",
-      "penalized": [],
-      "published": "2026-11-25T20:00:00+00:00",
-      "source": "Federal Reserve",
-      "status": "SCARTARE",
-      "title": "Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125b.htm"
-    },
     "https://www.globenewswire.com/news-release/2026/11/25/3410590/0/en/uscb-financial-holdings-inc-announces-securities-portfolio-repositioning.html": {
       "acquired": "2026-11-25T23:17:26.694272+00:00",
       "acquisition_seconds": 6446.694272,
@@ -1132,6 +1100,22 @@
       "title": "Clearing out my parents’ house was a legal nightmare. How can I downsize without putting my children through the same ordeal?",
       "url": "https://www.marketwatch.com/story/clearing-out-my-parents-house-was-a-legal-nightmare-how-can-i-downsize-without-putting-my-children-through-the-same-ordeal-6537d804"
     },
+    "https://www.marketwatch.com/story/coming-next-year-medicare-advantage-plans-without-drug-coverage-for-almost-640-000-people-and-fewer-choices-for-the-rest-25242d69": {
+      "acquired": "2026-11-27T20:02:24.229135+00:00",
+      "acquisition_seconds": 444.229135,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-27T19:55:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Coming next year: Medicare Advantage plans without drug coverage for almost 640,000 people and fewer choices for the rest",
+      "url": "https://www.marketwatch.com/story/coming-next-year-medicare-advantage-plans-without-drug-coverage-for-almost-640-000-people-and-fewer-choices-for-the-rest-25242d69"
+    },
     "https://www.marketwatch.com/story/elon-musk-and-spacex-to-donate-roughly-17-8-billion-to-trump-accounts-071c12e1": {
       "acquired": "2026-11-25T22:02:23.522569+00:00",
       "acquisition_seconds": 743.522569,
@@ -1867,22 +1851,6 @@
       "status": "SCARTARE",
       "title": "COMEUP 2026 Set to Open in December as Its Biggest Edition Yet",
       "url": "https://www.prnewswire.com/news-releases/comeup-2026-set-to-open-in-december-as-its-biggest-edition-yet-302951120.html"
-    },
-    "https://www.prnewswire.com/news-releases/coming-soon-first-horizon-bank-to-open-new-nashville-banking-center-in-the-gulch-302950810.html": {
-      "acquired": "2026-11-25T20:02:26.580675+00:00",
-      "acquisition_seconds": 146.580675,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T20:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Coming Soon: First Horizon Bank to Open New Nashville Banking Center in The Gulch",
-      "url": "https://www.prnewswire.com/news-releases/coming-soon-first-horizon-bank-to-open-new-nashville-banking-center-in-the-gulch-302950810.html"
     },
     "https://www.prnewswire.com/news-releases/cowork-frederick-foundation-announces-2026-gala-fundraiser-302950792.html": {
       "acquired": "2026-11-25T22:02:23.665903+00:00",
