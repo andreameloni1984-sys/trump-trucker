@@ -333,6 +333,22 @@
       "title": "We support Iraqi Prime Minister Ali al-Zaidi’s efforts to assert state authority throughout Iraq, stop the smuggling of Iraqi oil, end corruption, and bring all weapons under the exclusive control of the state. We support Prime Minister al-Zaidi’s efforts to build a united, prosperous, and strong Ir",
       "url": "https://truthsocial.com/@realDonaldTrump/117687912933180934"
     },
+    "https://truthsocial.com/@realDonaldTrump/117688960220295521": {
+      "acquired": "2026-11-27T15:47:24.116937+00:00",
+      "acquisition_seconds": 3426.116937,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "published": "2026-11-27T14:50:18+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Image post from November 27, 2026",
+      "url": "https://truthsocial.com/@realDonaldTrump/117688960220295521"
+    },
     "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125a.htm": {
       "acquired": "2026-11-25T20:02:26.428513+00:00",
       "acquisition_seconds": 146.428513,
@@ -1405,22 +1421,6 @@
       "title": "Nvidia’s stock has tumbled 27% over one chaotic month. The next big test lies in the week ahead",
       "url": "https://www.marketwatch.com/story/nvidias-stock-has-tumbled-27-over-one-chaotic-month-the-next-big-test-lies-in-the-week-ahead-06449777"
     },
-    "https://www.marketwatch.com/story/nvidias-stock-is-giving-back-more-than-half-of-mondays-rally-as-dip-buyers-cash-in-ee4fa52c": {
-      "acquired": "2026-11-25T16:21:34.165488+00:00",
-      "acquisition_seconds": 2314.165488,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-25T15:43:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Nvidia’s stock is giving back more than half of Monday’s rally as dip buyers cash in",
-      "url": "https://www.marketwatch.com/story/nvidias-stock-is-giving-back-more-than-half-of-mondays-rally-as-dip-buyers-cash-in-ee4fa52c"
-    },
     "https://www.marketwatch.com/story/oracles-stock-sinks-toward-a-3-year-low-as-the-ai-trade-continues-to-unravel-d4698d77": {
       "acquired": "2026-11-25T17:02:21.960150+00:00",
       "acquisition_seconds": 621.96015,
@@ -1724,22 +1724,6 @@
       "status": "SCARTARE",
       "title": "Why this stock-market selloff is probably going to get worse before it gets better",
       "url": "https://www.marketwatch.com/story/why-this-stock-market-selloff-is-probably-going-to-get-worse-before-it-gets-better-fce63a89"
-    },
-    "https://www.prnewswire.com/news-releases/andd-leads-again-leverage-shares-by-themes-anthropic-ant-etfs-top-anthropic-etf-trading-for-a-second-straight-day-302950625.html": {
-      "acquired": "2026-11-25T16:21:34.252823+00:00",
-      "acquisition_seconds": 2494.252823,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T15:40:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "ANDD Leads Again: Leverage Shares by Themes Anthropic (ANT) ETFs Top Anthropic ETF Trading for a Second Straight Day",
-      "url": "https://www.prnewswire.com/news-releases/andd-leads-again-leverage-shares-by-themes-anthropic-ant-etfs-top-anthropic-etf-trading-for-a-second-straight-day-302950625.html"
     },
     "https://www.prnewswire.com/news-releases/applications-now-open-for-the-jacob-frydman-scholarship-for-real-estate-education-302950821.html": {
       "acquired": "2026-11-25T20:16:31.669733+00:00",
