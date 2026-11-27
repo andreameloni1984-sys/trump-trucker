@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-27T17:32:12.721673+00:00",
+  "updated_at": "2026-11-27T17:33:08.641241+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -18375,7 +18375,7 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43750": {
-      "at": "2026-11-27T17:32:12.709200+00:00",
+      "at": "2026-11-27T17:33:08.630478+00:00",
       "market": false
     }
   }
