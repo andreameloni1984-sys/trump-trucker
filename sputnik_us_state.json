@@ -1422,6 +1422,22 @@
       "title": "Oracle’s stock sinks toward a 3-year low as the AI trade continues to unravel",
       "url": "https://www.marketwatch.com/story/oracles-stock-sinks-toward-a-3-year-low-as-the-ai-trade-continues-to-unravel-d4698d77"
     },
+    "https://www.marketwatch.com/story/renters-are-now-a-national-political-constituency-that-can-influence-elections-8f028445": {
+      "acquired": "2026-11-27T13:32:27.203440+00:00",
+      "acquisition_seconds": 147.20344,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-27T13:30:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Renters are now a national political constituency that can influence elections",
+      "url": "https://www.marketwatch.com/story/renters-are-now-a-national-political-constituency-that-can-influence-elections-8f028445"
+    },
     "https://www.marketwatch.com/story/roth-ira-conversions-arent-free-money-watch-out-for-these-5-costly-mistakes-39b182d3": {
       "acquired": "2026-11-26T13:32:21.367051+00:00",
       "acquisition_seconds": 501.367051,
@@ -1550,22 +1566,6 @@
       "title": "The latest stock-market drop could lower your tax bill over your lifetime",
       "url": "https://www.marketwatch.com/story/the-latest-stock-market-drop-could-lower-your-tax-bill-over-your-lifetime-99420b97"
     },
-    "https://www.marketwatch.com/story/the-real-price-of-jensen-huangs-return-to-nvidia-higher-regulatory-costs-for-the-company-and-the-entire-ai-industry-982002d4": {
-      "acquired": "2026-11-25T13:32:19.426169+00:00",
-      "acquisition_seconds": 139.426169,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-25T13:30:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "The real price of Jensen Huang’s return to Nvidia: Higher regulatory costs for the company — and the entire AI industry",
-      "url": "https://www.marketwatch.com/story/the-real-price-of-jensen-huangs-return-to-nvidia-higher-regulatory-costs-for-the-company-and-the-entire-ai-industry-982002d4"
-    },
     "https://www.marketwatch.com/story/the-tech-rout-should-bottom-soon-with-a-25-rally-for-the-s-p-500-to-follow-says-deutsche-bank-c9070bf6": {
       "acquired": "2026-11-26T10:17:16.837785+00:00",
       "acquisition_seconds": 376.837785,
@@ -1645,22 +1645,6 @@
       "status": "SCARTARE",
       "title": "A 10% cap on credit-card interest rates? Holiday shoppers shouldn’t bank on it.",
       "url": "https://www.marketwatch.com/story/trump-is-open-to-capping-credit-card-interest-rates-but-holiday-shoppers-shouldnt-bank-on-it-yet-34260705"
-    },
-    "https://www.marketwatch.com/story/u-s-proposes-fresh-tariffs-on-china-others-as-trump-doubles-down-on-his-favorite-trade-weapon-cd9a1df9": {
-      "acquired": "2026-11-25T13:32:19.426169+00:00",
-      "acquisition_seconds": 139.426169,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "tariffs",
-      "evidence": "annuncio futuro",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-25T13:30:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "U.S. proposes fresh tariffs on China, others as Trump doubles down on his favorite trade weapon",
-      "url": "https://www.marketwatch.com/story/u-s-proposes-fresh-tariffs-on-china-others-as-trump-doubles-down-on-his-favorite-trade-weapon-cd9a1df9"
     },
     "https://www.marketwatch.com/story/we-are-living-in-perilous-times-if-nvidias-jensen-huang-dictates-your-401-k-balance-e0942d1e": {
       "acquired": "2026-11-25T15:17:19.598056+00:00",
@@ -1886,22 +1870,6 @@
       "title": "Bitmine Immersion Technologies annonce un dividende en espèces de 0,01 $ par action ordinaire",
       "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-annonce-un-dividende-en-especes-de-0-01--par-action-ordinaire-302950883.html"
     },
-    "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-announces-cash-dividend-of-0-01-per-share-of-common-stock-302950029.html": {
-      "acquired": "2026-11-25T13:32:19.549553+00:00",
-      "acquisition_seconds": 139.549553,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Bitmine Immersion Technologies Announces Cash Dividend of $0.01 per Share of Common Stock",
-      "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-announces-cash-dividend-of-0-01-per-share-of-common-stock-302950029.html"
-    },
     "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-annuncia-un-dividendo-in-contanti-di-0-01-dollari-per-azione-ordinaria-302950884.html": {
       "acquired": "2026-11-25T22:32:23.230088+00:00",
       "acquisition_seconds": 83.230088,
@@ -1917,22 +1885,6 @@
       "status": "SCARTARE",
       "title": "Bitmine Immersion Technologies annuncia un dividendo in contanti di 0,01 dollari per azione ordinaria",
       "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-annuncia-un-dividendo-in-contanti-di-0-01-dollari-per-azione-ordinaria-302950884.html"
-    },
-    "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-anuncia-un-dividendo-en-efectivo-de-0-01--por-accion-ordinaria-302950357.html": {
-      "acquired": "2026-11-25T13:32:19.549553+00:00",
-      "acquisition_seconds": 139.549553,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Bitmine Immersion Technologies anuncia un dividendo en efectivo de 0,01 $ por acción ordinaria",
-      "url": "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-anuncia-un-dividendo-en-efectivo-de-0-01--por-accion-ordinaria-302950357.html"
     },
     "https://www.prnewswire.com/news-releases/bitmine-immersion-technologies-kondigt-een-contant-dividend-van-0-01-dollar-per-gewoon-aandeel-aan-302950887.html": {
       "acquired": "2026-11-25T22:47:42.254216+00:00",
@@ -2077,22 +2029,6 @@
       "status": "SCARTARE",
       "title": "CB&I secures five-year North Sea contract extension with Serica Energy",
       "url": "https://www.prnewswire.com/news-releases/cbi-secures-five-year-north-sea-contract-extension-with-serica-energy-302951114.html"
-    },
-    "https://www.prnewswire.com/news-releases/cheche-group-announces-results-of-extraordinary-general-meeting-302950531.html": {
-      "acquired": "2026-11-25T13:32:19.549553+00:00",
-      "acquisition_seconds": 139.549553,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Cheche Group Announces Results of Extraordinary General Meeting",
-      "url": "https://www.prnewswire.com/news-releases/cheche-group-announces-results-of-extraordinary-general-meeting-302950531.html"
     },
     "https://www.prnewswire.com/news-releases/cheche-group-signs-definitive-agreement-to-acquire-20-interest-in-residential-solar-plus-storage-company-long-way-fortune-with-option-to-increase-stake-to-51-302950548.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
@@ -2302,6 +2238,22 @@
       "title": "DEADLINE APPROACHING: Berger Montague Advises Gildan Activewear Inc. (NYSE: GIL) Investors to Inquire About a Securities Fraud Class Action by December 14, 2026",
       "url": "https://www.prnewswire.com/news-releases/deadline-approaching-berger-montague-advises-gildan-activewear-inc-nyse-gil-investors-to-inquire-about-a-securities-fraud-class-action-by-december-14-2026-302950061.html"
     },
+    "https://www.prnewswire.com/news-releases/delphin-investments-announces-the-launch-of-mycioworkbench-302951750.html": {
+      "acquired": "2026-11-27T13:32:27.225187+00:00",
+      "acquisition_seconds": 687.225187,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T13:21:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Delphin Investments Announces the Launch of MyCIOWorkbench®",
+      "url": "https://www.prnewswire.com/news-releases/delphin-investments-announces-the-launch-of-mycioworkbench-302951750.html"
+    },
     "https://www.prnewswire.com/news-releases/diamond-certified-resource-publishes-new-article-about-how-earning-diamond-certified-for-consecutive-years-increases-a-companys-valuation-302950822.html": {
       "acquired": "2026-11-25T20:16:31.669733+00:00",
       "acquisition_seconds": 391.669733,
@@ -2477,22 +2429,6 @@
       "status": "SCARTARE",
       "title": "Fujian advancing Chinese modernization",
       "url": "https://www.prnewswire.com/news-releases/fujian-advancing-chinese-modernization-302951104.html"
-    },
-    "https://www.prnewswire.com/news-releases/fundstrat-capital-announces-november-2026-monthly-distribution-for-the-fundstrat-granny-shots-us-large-cap--income-etf-nyse-grni-302950472.html": {
-      "acquired": "2026-11-25T13:32:19.549553+00:00",
-      "acquisition_seconds": 139.549553,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T13:30:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Fundstrat Capital Announces November 2026 Monthly Distribution for the Fundstrat Granny Shots US Large Cap & Income ETF (NYSE: GRNI)",
-      "url": "https://www.prnewswire.com/news-releases/fundstrat-capital-announces-november-2026-monthly-distribution-for-the-fundstrat-granny-shots-us-large-cap--income-etf-nyse-grni-302950472.html"
     },
     "https://www.prnewswire.com/news-releases/genie-medicare---is-transforming-medicare-shopping-by-giving-seniors-free-easy-to-use-quote-tools-to-compare-lowest-rates-save-money-find-coverage-and-get-expert-help-at-no-cost-302949819.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
@@ -3229,6 +3165,22 @@
       "status": "SCARTARE",
       "title": "Julius Meinl Kaffee stärkt internationales Wachstum mit Rekord-Akquisition",
       "url": "https://www.prnewswire.com/news-releases/julius-meinl-kaffee-starkt-internationales-wachstum-mit-rekord-akquisition-302951334.html"
+    },
+    "https://www.prnewswire.com/news-releases/leifras-announces-completion-of-additional-investment-by-oriental-land-innovations-302949780.html": {
+      "acquired": "2026-11-27T13:32:27.225187+00:00",
+      "acquisition_seconds": 147.225187,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T13:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "LEIFRAS Announces Completion of Additional Investment by Oriental Land Innovations",
+      "url": "https://www.prnewswire.com/news-releases/leifras-announces-completion-of-additional-investment-by-oriental-land-innovations-302949780.html"
     },
     "https://www.prnewswire.com/news-releases/ls-power-completes-acquisition-of-4-4-gw-natural-gas-generation-assets-from-constellation-302950859.html": {
       "acquired": "2026-11-25T21:47:23.099294+00:00",
