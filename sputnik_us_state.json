@@ -1406,6 +1406,22 @@
       "title": "Nvidia is heading for its first ‘death cross’ since March 2025 as stock continues to struggle",
       "url": "https://www.marketwatch.com/story/nvidia-is-heading-for-its-first-death-cross-since-march-2025-as-stock-continues-to-struggle-a611b99c"
     },
+    "https://www.marketwatch.com/story/nvidias-stock-has-tumbled-27-over-one-chaotic-month-the-next-big-test-lies-in-the-week-ahead-06449777": {
+      "acquired": "2026-11-27T12:17:21.440902+00:00",
+      "acquisition_seconds": 981.440902,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-27T12:01:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Nvidia’s stock has tumbled 27% over one chaotic month. The next big test lies in the week ahead",
+      "url": "https://www.marketwatch.com/story/nvidias-stock-has-tumbled-27-over-one-chaotic-month-the-next-big-test-lies-in-the-week-ahead-06449777"
+    },
     "https://www.marketwatch.com/story/nvidias-stock-is-giving-back-more-than-half-of-mondays-rally-as-dip-buyers-cash-in-ee4fa52c": {
       "acquired": "2026-11-25T16:21:34.165488+00:00",
       "acquisition_seconds": 2314.165488,
@@ -1517,6 +1533,22 @@
       "status": "SCARTARE",
       "title": "Stocks are poised for a Friday jump — right into a $100 billion wave of automated selling, Goldman Sachs warns",
       "url": "https://www.marketwatch.com/story/stocks-are-poised-for-a-friday-jump-right-into-a-100-billion-wave-of-automated-selling-goldman-sachs-warns-aba6440f"
+    },
+    "https://www.marketwatch.com/story/stocks-look-like-a-black-friday-bargain-read-the-fine-print-b6546539": {
+      "acquired": "2026-11-27T12:17:21.440902+00:00",
+      "acquisition_seconds": 981.440902,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-27T12:01:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Stocks look like a Black Friday bargain. Read the fine print.",
+      "url": "https://www.marketwatch.com/story/stocks-look-like-a-black-friday-bargain-read-the-fine-print-b6546539"
     },
     "https://www.marketwatch.com/story/techs-slump-is-deepening-are-americans-heading-into-black-friday-with-less-buying-power-7f9da81c": {
       "acquired": "2026-11-25T12:24:01.685369+00:00",
@@ -2045,22 +2077,6 @@
       "status": "SCARTARE",
       "title": "Bizcap s'implante en Pologne pour accélérer son expansion européenne",
       "url": "https://www.prnewswire.com/news-releases/bizcap-simplante-en-pologne-pour-accelerer-son-expansion-europeenne-302950947.html"
-    },
-    "https://www.prnewswire.com/news-releases/bizcap-start-activiteiten-in-polen-en-versnelt-europese-expansie-302950467.html": {
-      "acquired": "2026-11-25T12:17:21.128587+00:00",
-      "acquisition_seconds": 741.128587,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T12:05:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Bizcap start activiteiten in Polen en versnelt Europese expansie",
-      "url": "https://www.prnewswire.com/news-releases/bizcap-start-activiteiten-in-polen-en-versnelt-europese-expansie-302950467.html"
     },
     "https://www.prnewswire.com/news-releases/bizcap-tritt-in-den-polnischen-markt-ein-und-beschleunigt-damit-seine-expansion-in-europa-302950948.html": {
       "acquired": "2026-11-26T02:02:28.956198+00:00",
