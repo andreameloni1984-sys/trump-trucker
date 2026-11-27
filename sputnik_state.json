@@ -1093,15 +1093,39 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-27T15:00:20.144067+00:00",
+  "updated_at": "2026-11-27T15:02:12.841142+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "ac62628c4d6f20086151cbfc",
+    "TRUTH_ARCHIVE": "1bfc3b46a02686befde07504",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "1bfc3b46a02686befde07504": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "ENERGY",
+        "DEFENSE",
+        "MEDIA",
+        "REAL_ESTATE"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 27, 2026, 9:50 AM Original Post Image Previously posted November 26, 2026 Donald J. Trump @realDonaldTrump · November 27, 2026, 5:23 AM Original Post We support Iraqi Prime Minister Ali al-Zaidi’s efforts to assert state authority throughout Iraq, stop the smuggling of Iraqi oil, end corruption, and bring all weapons under the exclusive control of the state. We support Prime Minister al-Zaidi’s efforts to build a united, prosperous, and strong Iraq that makes its own political decisions. Donald J. Trump @realDonaldTrump · November 26, 2026, 4:29 PM Original Post Image Also posted November 27, 2026 Donald J. Trump @realDonaldTrump · November 26, 2026, 1:58 PM Original Post Donald J. Trump @realDonaldTrump · November 26, 2026, 1:37 PM Original Post Donald J. Trump @realDonaldTrump · November 26, 2026, 10:45 AM Original Post HAPPY THANKSGIVING TO ALL AMERICAN PATRIOTS WHO HAVE WORKED SO HARD TO MAKE OUR COUNTRY GRE",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-27T15:02:12.109902+00:00",
+      "event_id": "1bfc3b46a02686befde07504",
+      "action_reaction": {
+        "event_id": "1bfc3b46a02686befde07504",
+        "event_type": "TRADE_DE_ESCALATION",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "ac62628c4d6f20086151cbfc": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8120,29 +8144,6 @@
       "event_id": "9c080a01cb0a2a9b6ffa9272",
       "action_reaction": {
         "event_id": "9c080a01cb0a2a9b6ffa9272",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "68680125cba5bef8653b0bf1": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43339",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552743510707363",
-      "title": "TO THE GREAT PEOPLE OF WASHINGTON STATE, GET OUT AND VOTE FOR: – John Braun for U.S. Congress (WA-03)– Amanda McKinney for U.S. Congress (WA-04)– Michael Baumgartner for U.S. Congress (WA-05) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD",
-      "published": "Tue, 03 Nov 2026 13:28:36 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF WASHINGTON STATE, GET OUT AND VOTE FOR: – John Braun for U.S. Congress (WA-03)– Amanda McKinney for U.S. Congress (WA-04)– Michael Baumgartner for U.S. Congress (WA-05) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD TO THE GREAT PEOPLE OF WASHINGTON STATE, GET OUT AND VOTE FOR: – John Braun for U.S. Congress (WA-03) – Amanda McKinney for U.S. Congress (WA-04) – Michael Baumgartner for U.S. Congress (WA-05) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/washington/ View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.110447+00:00",
-      "event_id": "68680125cba5bef8653b0bf1",
-      "action_reaction": {
-        "event_id": "68680125cba5bef8653b0bf1",
         "event_type": "OTHER",
         "historical_matches": [],
         "historical_directions": {},
@@ -18370,11 +18371,11 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43746": {
-      "at": "2026-11-27T15:00:20.135434+00:00",
+      "at": "2026-11-27T15:02:12.830963+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43750": {
-      "at": "2026-11-27T15:00:20.135434+00:00",
+      "at": "2026-11-27T15:02:12.830963+00:00",
       "market": false
     }
   }
