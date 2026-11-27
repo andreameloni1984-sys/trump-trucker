@@ -382,22 +382,6 @@
       "title": "Agencies announce dollar thresholds for applicability of truth in lending and consumer leasing rules for consumer credit and lease transactions",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125b.htm"
     },
-    "https://www.globenewswire.com/news-release/2026/11/25/3410067/0/en/fort-worth-magazine-names-seven-goranson-bain-ausley-lawyers-to-its-2026-top-attorneys-list.html": {
-      "acquired": "2026-11-25T11:17:25.207497+00:00",
-      "acquisition_seconds": 1045.207497,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T11:00:00+00:00",
-      "source": "GlobeNewswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Fort Worth Magazine Names Seven Goranson Bain Ausley Lawyers to Its 2026 Top Attorneys List",
-      "url": "https://www.globenewswire.com/news-release/2026/11/25/3410067/0/en/fort-worth-magazine-names-seven-goranson-bain-ausley-lawyers-to-its-2026-top-attorneys-list.html"
-    },
     "https://www.globenewswire.com/news-release/2026/11/25/3410165/0/en/royaland-rlndf-adds-regalia-crazy-8-card-game-to-google-play-its-second-mobile-game-now-available.html": {
       "acquired": "2026-11-25T16:47:26.741188+00:00",
       "acquisition_seconds": 13646.741188,
@@ -1486,6 +1470,22 @@
       "title": "S&P 500’s slide through a key trendline — again — is an ominous sign, history suggests",
       "url": "https://www.marketwatch.com/story/s-p-500s-slide-through-a-key-trendline-again-is-an-ominous-sign-history-suggests-def8b99f"
     },
+    "https://www.marketwatch.com/story/sap-reportedly-to-cut-10-000-jobs-it-marks-the-latest-in-a-brutal-year-for-tech-layoffs-c7989744": {
+      "acquired": "2026-11-27T11:02:27.928436+00:00",
+      "acquisition_seconds": 807.928436,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "layoffs",
+      "evidence": "indiscrezione",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-27T10:49:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "SAP reportedly to cut 10,000 jobs. It marks the latest in a brutal year for tech layoffs.",
+      "url": "https://www.marketwatch.com/story/sap-reportedly-to-cut-10-000-jobs-it-marks-the-latest-in-a-brutal-year-for-tech-layoffs-c7989744"
+    },
     "https://www.marketwatch.com/story/so-sad-and-so-true-has-your-family-talked-about-snls-sister-sketch-yet-19bf9d67": {
       "acquired": "2026-11-26T13:17:21.550382+00:00",
       "acquisition_seconds": 681.550382,
@@ -1501,6 +1501,22 @@
       "status": "SCARTARE",
       "title": "‘I felt so seen’: Why families across America are laughing — and crying — over SNL’s ‘Sister’ sketch",
       "url": "https://www.marketwatch.com/story/so-sad-and-so-true-has-your-family-talked-about-snls-sister-sketch-yet-19bf9d67"
+    },
+    "https://www.marketwatch.com/story/stocks-are-poised-for-a-friday-jump-right-into-a-100-billion-wave-of-automated-selling-goldman-sachs-warns-aba6440f": {
+      "acquired": "2026-11-27T11:02:27.928436+00:00",
+      "acquisition_seconds": 507.928436,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-27T10:54:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "Stocks are poised for a Friday jump — right into a $100 billion wave of automated selling, Goldman Sachs warns",
+      "url": "https://www.marketwatch.com/story/stocks-are-poised-for-a-friday-jump-right-into-a-100-billion-wave-of-automated-selling-goldman-sachs-warns-aba6440f"
     },
     "https://www.marketwatch.com/story/techs-slump-is-deepening-are-americans-heading-into-black-friday-with-less-buying-power-7f9da81c": {
       "acquired": "2026-11-25T12:24:01.685369+00:00",
@@ -2126,22 +2142,6 @@
       "title": "Canaan Inc. Expands Nordic District Heating Footprint with Two New Orders from Repeat Customers",
       "url": "https://www.prnewswire.com/news-releases/canaan-inc-expands-nordic-district-heating-footprint-with-two-new-orders-from-repeat-customers-302950256.html"
     },
-    "https://www.prnewswire.com/news-releases/cango-inc-to-report-third-quarter-2026-financial-results-on-november-30-2026-eastern-time-302950366.html": {
-      "acquired": "2026-11-25T11:02:21.354829+00:00",
-      "acquisition_seconds": 141.354829,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "earnings",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T11:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Cango Inc. to Report Third Quarter 2026 Financial Results on November 30, 2026, Eastern Time",
-      "url": "https://www.prnewswire.com/news-releases/cango-inc-to-report-third-quarter-2026-financial-results-on-november-30-2026-eastern-time-302950366.html"
-    },
     "https://www.prnewswire.com/news-releases/car-insurance-costs-and-discounts-explained-in-hellonation-featuring-insurance-agent-mike-oboyle-302949921.html": {
       "acquired": "2026-11-25T15:02:23.218335+00:00",
       "acquisition_seconds": 443.218335,
@@ -2510,22 +2510,6 @@
       "title": "DIFC-Bericht „Future of Finance\": Dubai setzt weltweit Maßstäbe durch die Integration von fünf Säulen der Wettbewerbsfähigkeit und verbessert den Zugang zu Unternehmen, Kapital und Fachkräften",
       "url": "https://www.prnewswire.com/news-releases/difc-bericht-future-of-finance-dubai-setzt-weltweit-maWstabe-durch-die-integration-von-funf-saulen-der-wettbewerbsfahigkeit-und-verbessert-den-zugang-zu-unternehmen-kapital-und-fachkraften-302950674.html"
     },
-    "https://www.prnewswire.com/news-releases/difc-future-of-finance-report-dubai-sets-global-benchmark-integrating-five-pillars-of-competitiveness-deepening-access-to-businesses-capital-and-talent-302950419.html": {
-      "acquired": "2026-11-25T11:02:21.354829+00:00",
-      "acquisition_seconds": 381.354829,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T10:56:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "DIFC Future of Finance Report: Dubai sets global benchmark integrating five pillars of competitiveness, deepening access to businesses, capital and talent",
-      "url": "https://www.prnewswire.com/news-releases/difc-future-of-finance-report-dubai-sets-global-benchmark-integrating-five-pillars-of-competitiveness-deepening-access-to-businesses-capital-and-talent-302950419.html"
-    },
     "https://www.prnewswire.com/news-releases/dow-reclaims-50-000-as-inflation-and-gdp-data-land-before-thanksgiving-302950361.html": {
       "acquired": "2026-11-25T12:02:25.076941+00:00",
       "acquisition_seconds": 145.076941,
@@ -2541,6 +2525,22 @@
       "status": "SCARTARE",
       "title": "Dow Reclaims 50,000 as Inflation and GDP Data Land Before Thanksgiving",
       "url": "https://www.prnewswire.com/news-releases/dow-reclaims-50-000-as-inflation-and-gdp-data-land-before-thanksgiving-302950361.html"
+    },
+    "https://www.prnewswire.com/news-releases/ecarx-announces-us20-million-share-repurchase-program-302951459.html": {
+      "acquired": "2026-11-27T11:02:27.973712+00:00",
+      "acquisition_seconds": 147.973712,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T11:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "ECARX Announces US$20 million Share Repurchase Program",
+      "url": "https://www.prnewswire.com/news-releases/ecarx-announces-us20-million-share-repurchase-program-302951459.html"
     },
     "https://www.prnewswire.com/news-releases/ecercom-expands-ecerclaw-ai-ecosystem-with-lobster-crm-for-end-to-end-b2b-sales-management-302950570.html": {
       "acquired": "2026-11-25T14:32:23.088703+00:00",
@@ -2813,22 +2813,6 @@
       "status": "SCARTARE",
       "title": "Huawei en CMA lanceren gezamenlijk een oplossing voor nationale betalingssystemen om de wereldwijde transformatie van het betalingsverkeer te versnellen",
       "url": "https://www.prnewswire.com/news-releases/huawei-en-cma-lanceren-gezamenlijk-een-oplossing-voor-nationale-betalingssystemen-om-de-wereldwijde-transformatie-van-het-betalingsverkeer-te-versnellen-302950461.html"
-    },
-    "https://www.prnewswire.com/news-releases/huawei-et-cma-lancent-conjointement-une-solution-de-paiement-nationale-pour-accelerer-la-transformation-des-paiements-mondiaux-302950421.html": {
-      "acquired": "2026-11-25T11:02:21.354829+00:00",
-      "acquisition_seconds": 321.354829,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T10:57:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Huawei et CMA lancent conjointement une solution de paiement nationale pour accélérer la transformation des paiements mondiaux",
-      "url": "https://www.prnewswire.com/news-releases/huawei-et-cma-lancent-conjointement-une-solution-de-paiement-nationale-pour-accelerer-la-transformation-des-paiements-mondiaux-302950421.html"
     },
     "https://www.prnewswire.com/news-releases/huawei-i-cma-wspolnie-prezentuj-rozwizanie-dla-krajowych-systemow-patniczych-ktore-ma-przyspieszy-ich-modernizacj-na-wiecie-302950578.html": {
       "acquired": "2026-11-25T14:32:23.088703+00:00",
@@ -3534,6 +3518,22 @@
       "title": "LSEG Finance plc announces pricing of its tender offer",
       "url": "https://www.prnewswire.com/news-releases/lseg-finance-plc-announces-pricing-of-its-tender-offer-302950693.html"
     },
+    "https://www.prnewswire.com/news-releases/lufax-announces-extraordinary-general-meeting-on-december-22-2026-302951572.html": {
+      "acquired": "2026-11-27T11:02:27.973712+00:00",
+      "acquisition_seconds": 147.973712,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T11:00:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Lufax Announces Extraordinary General Meeting on December 22, 2026",
+      "url": "https://www.prnewswire.com/news-releases/lufax-announces-extraordinary-general-meeting-on-december-22-2026-302951572.html"
+    },
     "https://www.prnewswire.com/news-releases/luminate-bank-acquires-select-assets-of-real-genius-expanding-consumer-direct-mortgage-capabilities-302950008.html": {
       "acquired": "2026-11-25T17:02:22.031632+00:00",
       "acquisition_seconds": 142.031632,
@@ -3918,22 +3918,6 @@
       "title": "SutiSoft Simplifies Garnishment Management with Intelligent Workflow Automation",
       "url": "https://www.prnewswire.com/news-releases/sutisoft-simplifies-garnishment-management-with-intelligent-workflow-automation-302950520.html"
     },
-    "https://www.prnewswire.com/news-releases/texas-closes-in-on-california-as-a-top-destination-for-international-home-shoppers-302949823.html": {
-      "acquired": "2026-11-25T11:02:21.354829+00:00",
-      "acquisition_seconds": 141.354829,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T11:00:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Texas Closes in on California as a Top Destination for International Home Shoppers",
-      "url": "https://www.prnewswire.com/news-releases/texas-closes-in-on-california-as-a-top-destination-for-international-home-shoppers-302949823.html"
-    },
     "https://www.prnewswire.com/news-releases/tradr-to-launch-six-new-leveraged-etfs-302949924.html": {
       "acquired": "2026-11-25T11:47:19.193241+00:00",
       "acquisition_seconds": 79.193241,
@@ -4125,6 +4109,22 @@
       "status": "SCARTARE",
       "title": "WESTWOOD FINANCIAL ANNOUNCES THIRD QUARTER 2026 RESULTS",
       "url": "https://www.prnewswire.com/news-releases/westwood-financial-announces-third-quarter-2026-results-302950749.html"
+    },
+    "https://www.prnewswire.com/news-releases/x-financial-reports-third-quarter-2026-unaudited-financial-results-302951437.html": {
+      "acquired": "2026-11-27T11:02:27.973712+00:00",
+      "acquisition_seconds": 747.973712,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "earnings",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T10:50:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "X Financial Reports Third Quarter 2026 Unaudited Financial Results",
+      "url": "https://www.prnewswire.com/news-releases/x-financial-reports-third-quarter-2026-unaudited-financial-results-302951437.html"
     },
     "https://www.prnewswire.com/news-releases/xti-aerospace-eliminates-class-b-units-and-enters-into-warrant-exchange-agreement-simplifying-capital-structure-302950835.html": {
       "acquired": "2026-11-25T20:32:26.069159+00:00",
