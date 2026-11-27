@@ -333,6 +333,23 @@
       "title": "Image post from November 26, 2026",
       "url": "https://truthsocial.com/@realDonaldTrump/117684866618422751"
     },
+    "https://truthsocial.com/@realDonaldTrump/117687912933180934": {
+      "acquired": "2026-11-27T10:32:20.805187+00:00",
+      "acquisition_seconds": 502.954518,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-27T10:23:58.652000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "We support Iraqi Prime Minister Ali al-Zaidi’s efforts to assert state authority throughout Iraq, stop the smuggling of Iraqi oil, end corruption, and bring all weapons under the exclusive control of the state. We support Prime Minister al-Zaidi’s efforts to build a united, prosperous, and strong Ir",
+      "url": "https://truthsocial.com/@realDonaldTrump/117687912933180934"
+    },
     "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20261125a.htm": {
       "acquired": "2026-11-25T20:02:26.428513+00:00",
       "acquisition_seconds": 146.428513,
@@ -3676,6 +3693,22 @@
       "status": "SCARTARE",
       "title": "Pomerantz Law Firm Announces the Filing of a Class Action Against The Chemours Company and Certain Officers - CC",
       "url": "https://www.prnewswire.com/news-releases/pomerantz-law-firm-announces-the-filing-of-a-class-action-against-the-chemours-company-and-certain-officers--cc-302948963.html"
+    },
+    "https://www.prnewswire.com/news-releases/rapport-du-difc-sur-lavenir-de-la-finance--dubai-simpose-comme-une-reference-mondiale-en-integrant-les-cinq-piliers-de-la-competitivite-et-en-facilitant-lacces-aux-entreprises-aux-capitaux-et-aux-talents-302951684.html": {
+      "acquired": "2026-11-27T10:32:20.964320+00:00",
+      "acquisition_seconds": 200.96432,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T10:29:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Rapport du DIFC sur l'avenir de la finance: Dubaï s'impose comme une référence mondiale en intégrant les cinq piliers de la compétitivité et en facilitant l'accès aux entreprises, aux capitaux et aux talents",
+      "url": "https://www.prnewswire.com/news-releases/rapport-du-difc-sur-lavenir-de-la-finance--dubai-simpose-comme-une-reference-mondiale-en-integrant-les-cinq-piliers-de-la-competitivite-et-en-facilitant-lacces-aux-entreprises-aux-capitaux-et-aux-talents-302951684.html"
     },
     "https://www.prnewswire.com/news-releases/santa-at-nyse-ahead-of-macys-thanksgiving-day-parade-nyse-content-update-302950546.html": {
       "acquired": "2026-11-25T14:02:23.040313+00:00",
