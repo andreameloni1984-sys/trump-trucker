@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-27T06:00:09.881762+00:00",
+  "updated_at": "2026-11-27T06:02:13.263131+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -18314,7 +18314,7 @@
   },
   "analyst_started_at": "2026-11-21T16:33:10.411603+00:00",
   "analyst_outbox": [],
-  "analyst_brief_date": "2026-11-26",
+  "analyst_brief_date": "2026-11-27",
   "analyst_predictions": {},
   "analyst_counts": {
     "Trump": 16,
@@ -18355,19 +18355,19 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43741": {
-      "at": "2026-11-27T06:00:09.868217+00:00",
+      "at": "2026-11-27T06:02:12.809303+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43742": {
-      "at": "2026-11-27T06:00:09.868217+00:00",
+      "at": "2026-11-27T06:02:12.809303+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43745": {
-      "at": "2026-11-27T06:00:09.868217+00:00",
+      "at": "2026-11-27T06:02:12.809303+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43746": {
-      "at": "2026-11-27T06:00:09.868217+00:00",
+      "at": "2026-11-27T06:02:12.809303+00:00",
       "market": false
     }
   }
