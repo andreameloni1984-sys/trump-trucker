@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-27T10:24:10.958648+00:00",
+  "updated_at": "2026-11-27T10:27:09.552308+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -1102,6 +1102,30 @@
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "994b5e21dcb6cc508eecdb78": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43750",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117687912933180934",
+      "title": "We support Iraqi Prime Minister Ali al-Zaidi’s efforts to assert state authority throughout Iraq, stop the smuggling of Iraqi oil, end corruption, and bring all weapons under the exclusive control of the state.We support Prime Minister al-Zaidi’s efforts to build a united, prosperous, and strong Ira",
+      "published": "Fri, 27 Nov 2026 10:23:58 +0000",
+      "domains": [
+        "ENERGY",
+        "DEFENSE"
+      ],
+      "text": "We support Iraqi Prime Minister Ali al-Zaidi’s efforts to assert state authority throughout Iraq, stop the smuggling of Iraqi oil, end corruption, and bring all weapons under the exclusive control of the state.We support Prime Minister al-Zaidi’s efforts to build a united, prosperous, and strong Ira We support Iraqi Prime Minister Ali al-Zaidi’s efforts to assert state authority throughout Iraq, stop the smuggling of Iraqi oil, end corruption, and bring all weapons under the exclusive control of the state. We support Prime Minister al-Zaidi’s efforts to build a united, prosperous, and strong Iraq that makes its own political decisions.",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-27T10:27:09.097248+00:00",
+      "event_id": "994b5e21dcb6cc508eecdb78",
+      "action_reaction": {
+        "event_id": "994b5e21dcb6cc508eecdb78",
+        "event_type": "ENERGY",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "c3a199e804ef9cf1842cf347": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8123,29 +8147,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "890fe6325bff8508e188bb63": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43337",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552746635506211",
-      "title": "TO THE GREAT PEOPLE OF UTAH, GET OUT AND VOTE FOR: – Blake Moore for U.S. Congress (UT-02)– Celeste Maloy for U.S. Congress (UT-03)– Mike Kennedy for U.S. Congress (UT-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevot",
-      "published": "Tue, 03 Nov 2026 13:29:24 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF UTAH, GET OUT AND VOTE FOR: – Blake Moore for U.S. Congress (UT-02)– Celeste Maloy for U.S. Congress (UT-03)– Mike Kennedy for U.S. Congress (UT-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMPswampthevot TO THE GREAT PEOPLE OF UTAH, GET OUT AND VOTE FOR: – Blake Moore for U.S. Congress (UT-02) – Celeste Maloy for U.S. Congress (UT-03) – Mike Kennedy for U.S. Congress (UT-04) These Great Patriots have my Complete and Total Endorsement — They will never let you down! President DONALD J. TRUMP swampthevoteusa.com/utah/ View image",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.109858+00:00",
-      "event_id": "890fe6325bff8508e188bb63",
-      "action_reaction": {
-        "event_id": "890fe6325bff8508e188bb63",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13252,7 +13253,8 @@
     "c2695adb03a2cd5389183d4d": "2026-11-26T12:42:11.086026+00:00",
     "a6c7b4f3cf70f7c6ffb19c77": "2026-11-26T14:24:09.791113+00:00",
     "f817b49bdfbd89a7fcdb90f4": "2026-11-26T15:00:10.452756+00:00",
-    "686016a0b179d06f0b81b2e2": "2026-11-26T15:51:08.620228+00:00"
+    "686016a0b179d06f0b81b2e2": "2026-11-26T15:51:08.620228+00:00",
+    "994b5e21dcb6cc508eecdb78": "2026-11-27T10:27:09.097232+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18317,7 +18319,7 @@
   "analyst_brief_date": "2026-11-27",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 16,
+    "Trump": 17,
     "chiamate al mercato": 0
   },
   "analyst_report_week": "2026-W47",
@@ -18355,19 +18357,23 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43741": {
-      "at": "2026-11-27T10:24:10.948588+00:00",
+      "at": "2026-11-27T10:27:09.110158+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43742": {
-      "at": "2026-11-27T10:24:10.948588+00:00",
+      "at": "2026-11-27T10:27:09.110158+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43745": {
-      "at": "2026-11-27T10:24:10.948588+00:00",
+      "at": "2026-11-27T10:27:09.110158+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43746": {
-      "at": "2026-11-27T10:24:10.948588+00:00",
+      "at": "2026-11-27T10:27:09.110158+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43750": {
+      "at": "2026-11-27T10:27:09.110158+00:00",
       "market": false
     }
   }
