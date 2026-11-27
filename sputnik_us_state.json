@@ -590,6 +590,22 @@
       "title": "MEDIA ADVISORY: Thousands expected on Parliament Hill Saturday, the ‘fight of our lives’ is on to save public health care",
       "url": "https://www.globenewswire.com/news-release/2026/11/26/3411021/0/en/media-advisory-thousands-expected-on-parliament-hill-saturday-the-fight-of-our-lives-is-on-to-save-public-health-care.html"
     },
+    "https://www.globenewswire.com/news-release/2026/11/27/3411162/0/en/media-advisory-thousands-expected-on-parliament-hill-saturday-the-fight-of-our-lives-is-on-to-save-public-health-care.html": {
+      "acquired": "2026-11-27T12:32:25.616676+00:00",
+      "acquisition_seconds": 1945.616676,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T12:00:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "MEDIA ADVISORY: Thousands expected on Parliament Hill Saturday, the ‘fight of our lives’ is on to save public health care",
+      "url": "https://www.globenewswire.com/news-release/2026/11/27/3411162/0/en/media-advisory-thousands-expected-on-parliament-hill-saturday-the-fight-of-our-lives-is-on-to-save-public-health-care.html"
+    },
     "https://www.govinfo.gov/app/details/BILLS-119hr11057ih": {
       "acquired": "2026-11-26T04:47:21.923658+00:00",
       "acquisition_seconds": 561.923658,
@@ -1133,22 +1149,6 @@
       "status": "SCARTARE",
       "title": "Grocery stores have ‘staggering deals’ for Thanksgiving — but don’t get used to these lower prices",
       "url": "https://www.marketwatch.com/story/grocery-stores-have-staggering-deals-for-thanksgiving-but-dont-get-used-to-these-lower-prices-just-yet-7adfc7f5"
-    },
-    "https://www.marketwatch.com/story/heres-how-to-find-value-in-cybersecurity-stocks-after-a-strong-year-7fbe1f80": {
-      "acquired": "2026-11-25T12:32:40.027291+00:00",
-      "acquisition_seconds": 160.027291,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-25T12:30:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Here’s how to find value in cybersecurity stocks after a strong year",
-      "url": "https://www.marketwatch.com/story/heres-how-to-find-value-in-cybersecurity-stocks-after-a-strong-year-7fbe1f80"
     },
     "https://www.marketwatch.com/story/hollywood-hills-home-of-the-late-presley-gerber-listed-for-3-6-million-2-months-after-his-death-92497183": {
       "acquired": "2026-11-27T10:02:23.518607+00:00",
@@ -3309,6 +3309,22 @@
       "status": "SCARTARE",
       "title": "INVESTOR ALERT: Pomerantz Law Firm Reminds Investors with Losses on their Investment in Yiren Digital Ltd. of Class Action Lawsuit and Upcoming Deadlines - YRD",
       "url": "https://www.prnewswire.com/news-releases/investor-alert-pomerantz-law-firm-reminds-investors-with-losses-on-their-investment-in-yiren-digital-ltd-of-class-action-lawsuit-and-upcoming-deadlines--yrd-302948997.html"
+    },
+    "https://www.prnewswire.com/news-releases/jones-soda-co-announces-proposed-voluntary-delisting-from-the-canadian-securities-exchange-302951454.html": {
+      "acquired": "2026-11-27T12:32:25.406329+00:00",
+      "acquisition_seconds": 145.406329,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T12:30:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Jones Soda Co. Announces Proposed Voluntary Delisting from the Canadian Securities Exchange",
+      "url": "https://www.prnewswire.com/news-releases/jones-soda-co-announces-proposed-voluntary-delisting-from-the-canadian-securities-exchange-302951454.html"
     },
     "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-completes-largest-acquisition-in-its-history-302951331.html": {
       "acquired": "2026-11-26T17:15:24.030359+00:00",
