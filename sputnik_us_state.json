@@ -1214,22 +1214,6 @@
       "title": "I’m in my 70s and buying a new BMW X1. Should I put my only son on the title?",
       "url": "https://www.marketwatch.com/story/im-in-my-70s-and-buying-a-new-bmw-x1-should-i-put-my-only-son-on-the-title-25731040"
     },
-    "https://www.marketwatch.com/story/inflation-gets-worse-now-the-fed-no-choice-but-to-raise-u-s-interest-rates-8b0c2c1f": {
-      "acquired": "2026-11-25T13:47:19.719783+00:00",
-      "acquisition_seconds": 799.719783,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-25T13:34:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Inflation gets worse. Now the Fed no choice but to raise U.S. interest rates.",
-      "url": "https://www.marketwatch.com/story/inflation-gets-worse-now-the-fed-no-choice-but-to-raise-u-s-interest-rates-8b0c2c1f"
-    },
     "https://www.marketwatch.com/story/is-the-stock-market-open-for-thanksgiving-the-answer-might-surprise-you-e68114d4": {
       "acquired": "2026-11-26T07:17:23.626340+00:00",
       "acquisition_seconds": 83.62634,
@@ -1581,22 +1565,6 @@
       "status": "SCARTARE",
       "title": "The tech rout should bottom soon, with a 25% rally for the S&P 500 to follow, says Deutsche Bank",
       "url": "https://www.marketwatch.com/story/the-tech-rout-should-bottom-soon-with-a-25-rally-for-the-s-p-500-to-follow-says-deutsche-bank-c9070bf6"
-    },
-    "https://www.marketwatch.com/story/third-quarter-gdp-already-looked-great-now-it-looks-even-better-12057da5": {
-      "acquired": "2026-11-25T13:47:19.719783+00:00",
-      "acquisition_seconds": 379.719783,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-25T13:41:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Third-quarter GDP already looked great. Now it looks even better.",
-      "url": "https://www.marketwatch.com/story/third-quarter-gdp-already-looked-great-now-it-looks-even-better-12057da5"
     },
     "https://www.marketwatch.com/story/this-investment-strategist-is-100-in-cash-and-warns-that-buying-the-nasdaq-dip-is-like-catching-a-falling-knife-64f5b233": {
       "acquired": "2026-11-27T10:47:21.881239+00:00",
@@ -3181,6 +3149,22 @@
       "status": "SCARTARE",
       "title": "LEIFRAS Announces Completion of Additional Investment by Oriental Land Innovations",
       "url": "https://www.prnewswire.com/news-releases/leifras-announces-completion-of-additional-investment-by-oriental-land-innovations-302949780.html"
+    },
+    "https://www.prnewswire.com/news-releases/ligadata-brings-data-flare-and-barq-to-google-cloud-marketplace-302950709.html": {
+      "acquired": "2026-11-27T13:47:25.858507+00:00",
+      "acquisition_seconds": 625.858507,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-27T13:37:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "LigaData Brings Data Flare and Barq to Google Cloud Marketplace",
+      "url": "https://www.prnewswire.com/news-releases/ligadata-brings-data-flare-and-barq-to-google-cloud-marketplace-302950709.html"
     },
     "https://www.prnewswire.com/news-releases/ls-power-completes-acquisition-of-4-4-gw-natural-gas-generation-assets-from-constellation-302950859.html": {
       "acquired": "2026-11-25T21:47:23.099294+00:00",
