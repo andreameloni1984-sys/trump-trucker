@@ -924,20 +924,6 @@
       "status": "CONFIRMED",
       "transaction_type": "DISCLOSURE_ONLY"
     },
-    "4511d5cbd138876a92e7e47e": {
-      "source": "SEC_EDGAR",
-      "cik": "0001536411",
-      "accession": "0000899140-26-000744",
-      "form": "SCHEDULE 13G",
-      "filed_at": "2026-07-29",
-      "primary_document": "xslSCHEDULE_13G_X02/primary_doc.xml",
-      "company": "Duquesne Family Office LLC",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1536411/000089914026000744/xslSCHEDULE_13G_X02/primary_doc.xml",
-      "event_id": "4511d5cbd138876a92e7e47e",
-      "evidence": "PRIMARY_DOCUMENT",
-      "status": "CONFIRMED",
-      "transaction_type": "DISCLOSURE_ONLY"
-    },
     "12a53628f1ddaccd34f41060": {
       "source": "SEC_EDGAR",
       "cik": "0001035674",
@@ -1107,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-26T23:57:09.415396+00:00",
+  "updated_at": "2026-11-27T00:00:09.777766+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -18353,35 +18339,35 @@
       "market": false
     },
     "https://www.whitehouse.gov/releases/2026/11/president-trump-unleashes-whole-of-government-effort-to-protect-americas-critical-infrastructure/": {
-      "at": "2026-11-26T23:57:09.399844+00:00",
+      "at": "2026-11-27T00:00:09.766523+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43734": {
-      "at": "2026-11-26T23:57:09.399844+00:00",
+      "at": "2026-11-27T00:00:09.766523+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43733": {
-      "at": "2026-11-26T23:57:09.399844+00:00",
+      "at": "2026-11-27T00:00:09.766523+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43740": {
-      "at": "2026-11-26T23:57:09.399844+00:00",
+      "at": "2026-11-27T00:00:09.766523+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43741": {
-      "at": "2026-11-26T23:57:09.399844+00:00",
+      "at": "2026-11-27T00:00:09.766523+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43742": {
-      "at": "2026-11-26T23:57:09.399844+00:00",
+      "at": "2026-11-27T00:00:09.766523+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43745": {
-      "at": "2026-11-26T23:57:09.399844+00:00",
+      "at": "2026-11-27T00:00:09.766523+00:00",
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43746": {
-      "at": "2026-11-26T23:57:09.399844+00:00",
+      "at": "2026-11-27T00:00:09.766523+00:00",
       "market": false
     }
   }
