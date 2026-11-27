@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-27T23:00:10.373909+00:00",
+  "updated_at": "2026-11-27T23:02:13.844099+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -12469,7 +12469,7 @@
       "ticker": ""
     }
   },
-  "morning_brief_date": "2026-11-27",
+  "morning_brief_date": "2026-11-28",
   "intelligence_items": {
     "f1f9ff0a5b2a1b688f6edf3f": "2026-10-26T05:00:32.916153+00:00",
     "5ca98c9813fcdbd3ca164bb1": "2026-10-26T05:00:32.916240+00:00",
@@ -18371,7 +18371,7 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43750": {
-      "at": "2026-11-27T23:00:10.363311+00:00",
+      "at": "2026-11-27T23:02:13.835719+00:00",
       "market": false
     }
   }
