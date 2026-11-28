@@ -1093,7 +1093,7 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-28T08:00:09.408623+00:00",
+  "updated_at": "2026-11-28T08:02:12.992068+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
@@ -18320,7 +18320,7 @@
     "Trump": 17,
     "chiamate al mercato": 0
   },
-  "analyst_report_week": "2026-W47",
+  "analyst_report_week": "2026-W48",
   "analyst_posts_seen": {
     "https://www.whitehouse.gov/presidential-actions/2026/11/thanksgiving-day-2026/": {
       "at": "2026-11-26T14:29:46.154159+00:00",
@@ -18371,7 +18371,7 @@
       "market": false
     },
     "https://www.trumpstruth.org/statuses/43750": {
-      "at": "2026-11-28T08:00:09.396462+00:00",
+      "at": "2026-11-28T08:02:12.542995+00:00",
       "market": false
     }
   }
