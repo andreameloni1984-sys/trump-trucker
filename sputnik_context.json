@@ -1,6 +1,27 @@
 {
  "version": 1,
- "trump": [],
+ "trump": [
+  {
+   "title": "Shannon Bream is having a show on what she calls Artificial Intelligence (AI) — She says, “Artificial,” over and over again. Can someone please explain to her that it’s Super Intelligence, not Artific",
+   "published": "2026-11-28T19:03:00+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43771",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "AI_TECH"
+   ],
+   "bias": []
+  },
+  {
+   "title": "FoxNews and The Wall Street Journal never use Super Intelligence (SI). They go out of their way to use Artificial Intelligence (AI), but that’s OK, because Super Intelligence will always win out over ",
+   "published": "2026-11-28T19:02:41+00:00",
+   "url": "https://www.trumpstruth.org/statuses/43772",
+   "source": "Truth Social (Trump)",
+   "domains": [
+    "AI_TECH"
+   ],
+   "bias": []
+  }
+ ],
  "money": [
   {
    "kind": "TRADE",
@@ -114,5 +135,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-28T10:24:09.174287+00:00"
+ "updated_at": "2026-11-28T19:13:40.376034+00:00"
 }

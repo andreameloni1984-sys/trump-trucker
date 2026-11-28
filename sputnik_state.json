@@ -1093,15 +1093,83 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-28T16:16:18.834503+00:00",
+  "updated_at": "2026-11-28T19:13:40.793188+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "0e0988978045279f2cae9b77",
+    "TRUTH_ARCHIVE": "41f2b01eed619788014fbc8e",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "2b747564f4ee7e5962784601": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43772",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117695614932536229",
+      "title": "FoxNews and The Wall Street Journal never use Super Intelligence (SI). They go out of their way to use Artificial Intelligence (AI), but that’s OK, because Super Intelligence will always win out over Artificial Intelligence. It is a far more accurate name — It’s SUPER, not Artificial! President DONA",
+      "published": "Sat, 28 Nov 2026 19:02:41 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "FoxNews and The Wall Street Journal never use Super Intelligence (SI). They go out of their way to use Artificial Intelligence (AI), but that’s OK, because Super Intelligence will always win out over Artificial Intelligence. It is a far more accurate name — It’s SUPER, not Artificial! President DONA FoxNews and The Wall Street Journal never use Super Intelligence (SI). They go out of their way to use Artificial Intelligence (AI), but that’s OK, because Super Intelligence will always win out over Artificial Intelligence. It is a far more accurate name — It’s SUPER, not Artificial! President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-28T19:13:40.344419+00:00",
+      "event_id": "2b747564f4ee7e5962784601",
+      "action_reaction": {
+        "event_id": "2b747564f4ee7e5962784601",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "dcff24261a2ca22ff79ddb01": {
+      "source": "PUBLIC_RSS",
+      "feed_url": "https://www.trumpstruth.org/feed",
+      "url": "https://www.trumpstruth.org/statuses/43771",
+      "primary_url": "https://truthsocial.com/@realDonaldTrump/117695616171059915",
+      "title": "Shannon Bream is having a show on what she calls Artificial Intelligence (AI) — She says, “Artificial,” over and over again. Can someone please explain to her that it’s Super Intelligence, not Artificial Intelligence, and our Great Chairman of the SEC, Paul Atkins, will soon be making that term mand",
+      "published": "Sat, 28 Nov 2026 19:03:00 +0000",
+      "domains": [
+        "AI_TECH"
+      ],
+      "text": "Shannon Bream is having a show on what she calls Artificial Intelligence (AI) — She says, “Artificial,” over and over again. Can someone please explain to her that it’s Super Intelligence, not Artificial Intelligence, and our Great Chairman of the SEC, Paul Atkins, will soon be making that term mand Shannon Bream is having a show on what she calls Artificial Intelligence (AI) — She says, “Artificial,” over and over again. Can someone please explain to her that it’s Super Intelligence, not Artificial Intelligence, and our Great Chairman of the SEC, Paul Atkins, will soon be making that term mandatory. Like me, he likes ACCURACY in language! Thank you for your attention to this matter. President DONALD J. TRUMP",
+      "evidence": "PUBLIC_RSS_ITEM",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-28T19:13:40.344175+00:00",
+      "event_id": "dcff24261a2ca22ff79ddb01",
+      "action_reaction": {
+        "event_id": "dcff24261a2ca22ff79ddb01",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
+    "41f2b01eed619788014fbc8e": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "AI_TECH",
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 28, 2026, 2:03 PM Original Post Shannon Bream is having a show on what she calls Artificial Intelligence (AI) — She says, “Artificial,” over and over again. Can someone please explain to her that it’s Super Intelligence, not Artificial Intelligence, and our Great Chairman of the SEC, Paul Atkins, will soon be making that term mandatory. Like me, he likes ACCURACY in language! Thank you for your attention to this matter. President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 28, 2026, 2:02 PM Original Post FoxNews and The Wall Street Journal never use Super Intelligence (SI). They go out of their way to use Artificial Intelligence (AI), but that’s OK, because Super Intelligence will always win out over Artificial Intelligence. It is a far more accurate name — It’s SUPER, not Artificial! President DONALD J. TRUMP Donald J. Trump @realDonaldTrump · November 28, 2026, 11:10 AM Original Post Donald J. ",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-28T19:13:39.740505+00:00",
+      "event_id": "41f2b01eed619788014fbc8e",
+      "action_reaction": {
+        "event_id": "41f2b01eed619788014fbc8e",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "0e0988978045279f2cae9b77": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8072,75 +8140,6 @@
         "historical_directions": {},
         "evidence": "NO_ANALOGUE"
       }
-    },
-    "297962dea687ee2bb3243690": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43347",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552726968138347",
-      "title": "TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR DAN S. SULLIVAN! Senator Dan S. Sullivan is doing a fantastic job representing the Great State of Alaska! Prior to becoming a very distinguished and Highly Respected Senator, Dan served as State Attorney General and the Commissioner of the Alaska D",
-      "published": "Tue, 03 Nov 2026 13:24:24 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR DAN S. SULLIVAN! Senator Dan S. Sullivan is doing a fantastic job representing the Great State of Alaska! Prior to becoming a very distinguished and Highly Respected Senator, Dan served as State Attorney General and the Commissioner of the Alaska D TO THE GREAT PEOPLE OF ALASKA, GET OUT AND VOTE FOR DAN S. SULLIVAN! Senator Dan S. Sullivan is doing a fantastic job representing the Great State of Alaska! Prior to becoming a very distinguished and Highly Respected Senator, Dan served as State Attorney General and the Commissioner of the Alaska Department of Natural Resources. Dan is a GREAT man, has ALWAYS delivered for Alaska (which I won three times by BIG margins in 2016, 2020, and 2024!), and will continue doing so in the U.S. Senate. No one has done more for Alaska than “TRUMP,” including securing 11 new Arctic Security Cutter Icebreakers, the first such ships bought in more than 40 years, massive Job and Income Producing Pipelines and Economic Development Projects of all shapes and sizes, and Dan Sullivan has been with us all the way. He is fighting hard to Grow our Economy, Lower Taxes, Cut Regulations, Keep our Border SECURE, Champion our Incredible Military/Veterans, Unleash American Energy DOMINANCE, and Defend our always under siege Second Amendment. The Dumocrats are trying to steal this Race by putting a FAKE Daniel J. Sullivan, Jr. on the Ballot. People will not be able to figure it out, and many Votes will be lo",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.114396+00:00",
-      "event_id": "297962dea687ee2bb3243690",
-      "action_reaction": {
-        "event_id": "297962dea687ee2bb3243690",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "4275f9a79ae74893c063d085": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43346",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552727628162432",
-      "title": "It is my Great Honor to endorse America First Patriot, John E. Sununu, who is running to represent the beautiful State of New Hampshire in the U.S. Senate! John is strongly supported by the most Highly Respected Leaders in New Hampshire, and many Republicans in the U.S. Senate. His opponent, Chris P",
-      "published": "Tue, 03 Nov 2026 13:24:34 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, John E. Sununu, who is running to represent the beautiful State of New Hampshire in the U.S. Senate! John is strongly supported by the most Highly Respected Leaders in New Hampshire, and many Republicans in the U.S. Senate. His opponent, Chris P It is my Great Honor to endorse America First Patriot, John E. Sununu, who is running to represent the beautiful State of New Hampshire in the U.S. Senate! John is strongly supported by the most Highly Respected Leaders in New Hampshire, and many Republicans in the U.S. Senate. His opponent, Chris Pappas, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women’s Sports, and Transgender for Everybody. Chris Pappas is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, John will work tirelessly to advance our America First Agenda. He will fight hard to Grow the Economy, Cut Taxes and Regulations, Advance MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Provide Access to Affordable and High Quality Health Care, Champion School Choice, Keep our Border SECURE, Stop Migrant Crime, Support our Brave Military, Veterans, and Law Enforcement, Ensure LAW AND ORDER, and Defend our always under siege Second Amendment. John E. Sununu has my Complete and Total Endorsement to be the next United St",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.113793+00:00",
-      "event_id": "4275f9a79ae74893c063d085",
-      "action_reaction": {
-        "event_id": "4275f9a79ae74893c063d085",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "0981ac9174d66a383f04548a": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43345",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552728427691304",
-      "title": "It is my Great Honor to endorse America First Patriot, Mike Rogers, who is running for U.S. Senate in the Great State of Michigan, a State I love and WON BIG! From the U.S. Army to Congress, Mike has served our Nation with distinction, and will bring that same Fighting Spirit to the U.S. Senate. His",
-      "published": "Tue, 03 Nov 2026 13:24:46 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse America First Patriot, Mike Rogers, who is running for U.S. Senate in the Great State of Michigan, a State I love and WON BIG! From the U.S. Army to Congress, Mike has served our Nation with distinction, and will bring that same Fighting Spirit to the U.S. Senate. His It is my Great Honor to endorse America First Patriot, Mike Rogers, who is running for U.S. Senate in the Great State of Michigan, a State I love and WON BIG! From the U.S. Army to Congress, Mike has served our Nation with distinction, and will bring that same Fighting Spirit to the U.S. Senate. His opponent, Abdul El-Sayed, is a Radical Left Dumocrat who is opposed to NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things will be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender Mutilization of your Children. Abdul El-Sayed is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Mike will work tirelessly to Grow our Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Unleash American Energy DOMINANCE, Keep our Border SECURE, Support our Incredible Military/Veterans, and Defend our always under siege Second Amendment. Mike Rogers has my Complete and Total Endorsement to be the next United States Senator from the Great State of Michigan. GET OUT AND VOTE FOR MIKE — HE WILL NEVER LET YOU DOWN! President DONALD J. TRUMP http",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.113212+00:00",
-      "event_id": "0981ac9174d66a383f04548a",
-      "action_reaction": {
-        "event_id": "0981ac9174d66a383f04548a",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
     }
   },
   "transactions": {
@@ -13248,7 +13247,9 @@
     "a6c7b4f3cf70f7c6ffb19c77": "2026-11-26T14:24:09.791113+00:00",
     "f817b49bdfbd89a7fcdb90f4": "2026-11-26T15:00:10.452756+00:00",
     "686016a0b179d06f0b81b2e2": "2026-11-26T15:51:08.620228+00:00",
-    "994b5e21dcb6cc508eecdb78": "2026-11-27T10:27:09.097232+00:00"
+    "994b5e21dcb6cc508eecdb78": "2026-11-27T10:27:09.097232+00:00",
+    "dcff24261a2ca22ff79ddb01": "2026-11-28T19:13:40.344159+00:00",
+    "2b747564f4ee7e5962784601": "2026-11-28T19:13:40.344415+00:00"
   },
   "intelligence_feed_initialized": {
     "https://www.trumpstruth.org/feed": "2026-11-22T04:20:48.631490+00:00",
@@ -18313,7 +18314,7 @@
   "analyst_brief_date": "2026-11-28",
   "analyst_predictions": {},
   "analyst_counts": {
-    "Trump": 17,
+    "Trump": 18,
     "chiamate al mercato": 0
   },
   "analyst_report_week": "2026-W48",
@@ -18368,6 +18369,14 @@
     },
     "https://www.trumpstruth.org/statuses/43750": {
       "at": "2026-11-28T10:21:08.256007+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43771": {
+      "at": "2026-11-28T19:13:40.374997+00:00",
+      "market": false
+    },
+    "https://www.trumpstruth.org/statuses/43772": {
+      "at": "2026-11-28T19:13:40.374997+00:00",
       "market": false
     }
   }
