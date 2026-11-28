@@ -16,23 +16,6 @@
       "title": "Come for the Games, Stay for the Community With GeForce NOW",
       "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-community-war-thunder-reward"
     },
-    "https://truthsocial.com/@realDonaldTrump/117681161738909385": {
-      "acquired": "2026-11-26T06:02:20.869865+00:00",
-      "acquisition_seconds": 918.043218,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-26T05:47:03.602000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "David E. Sanger, the mediocre reporter for the Failing New York Times, didn’t mention in his recent story on me the successful closing of the Border, best crime stats in years (lowest murder rate since 1900 - 126 years!), biggest Tax and Regulation Cuts, EVER, the most successful naval blockade in h",
-      "url": "https://truthsocial.com/@realDonaldTrump/117681161738909385"
-    },
     "https://truthsocial.com/@realDonaldTrump/117682778730108467": {
       "acquired": "2026-11-26T12:47:24.704590+00:00",
       "acquisition_seconds": 550.021311,
@@ -1463,6 +1446,22 @@
       "status": "SCARTARE",
       "title": "Binance Launches VIP Status Match, Recognizing How High-Value Users Manage Capital Across Platforms",
       "url": "https://www.prnewswire.com/news-releases/binance-launches-vip-status-match-recognizing-how-high-value-users-manage-capital-across-platforms-302951090.html"
+    },
+    "https://www.prnewswire.com/news-releases/binance-secures-in-principle-approval-in-gelephu-mindfulness-city-plans-asia-hub-in-bhutan-302951995.html": {
+      "acquired": "2026-11-28T05:47:18.669587+00:00",
+      "acquisition_seconds": 318.669587,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-28T05:42:00+00:00",
+      "source": "PR Newswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "Binance Secures In-Principle Approval in Gelephu Mindfulness City, Plans Asia Hub in Bhutan",
+      "url": "https://www.prnewswire.com/news-releases/binance-secures-in-principle-approval-in-gelephu-mindfulness-city-plans-asia-hub-in-bhutan-302951995.html"
     },
     "https://www.prnewswire.com/news-releases/bingx-introduces-multiple-cfd-standard-accounts-for-more-flexible-strategy-management-302951710.html": {
       "acquired": "2026-11-27T11:47:18.894063+00:00",
