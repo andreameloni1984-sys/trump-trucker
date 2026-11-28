@@ -230,7 +230,7 @@ class ReportCardTests(unittest.TestCase):
             self.assertEqual(an.track_predictions(state, NOW + timedelta(hours=25), price=lambda s: prices.get(s)), 1)
         p = next(iter(state["analyst_predictions"].values()))
         self.assertTrue(p["correct"])
-        text = an.report_message(state, NOW + timedelta(hours=26))
+        text = an.report_message(state, NOW + timedelta(hours=26), compare=lambda: [])
         self.assertIn("1/1 giuste", text)
         self.assertIn("Oro", text)
 
@@ -243,7 +243,7 @@ class ReportCardTests(unittest.TestCase):
         [p] = state["analyst_predictions"].values()
         self.assertEqual((p["instrument"], p["bias"]), ("NASDAQ100", "LONG_BIAS"))
         self.assertIn("Post di Trump letti in 7 giorni: 2, con effetto sui mercati: 1",
-                      an.report_message(state, NOW + timedelta(hours=1)))
+                      an.report_message(state, NOW + timedelta(hours=1), compare=lambda: []))
 
     def test_report_explains_weeks_without_market_posts(self):
         state = {}
@@ -251,7 +251,7 @@ class ReportCardTests(unittest.TestCase):
         with patch.object(an, "export_context", return_value=fake_ctx):
             an.track_predictions(state, NOW, price=lambda s: 100.0)
         self.assertEqual(state["analyst_predictions"], {})
-        self.assertIn("nessuno parlava di dazi", an.report_message(state, NOW + timedelta(hours=1)))
+        self.assertIn("nessuno parlava di dazi", an.report_message(state, NOW + timedelta(hours=1), compare=lambda: []))
 
     def test_report_due_saturday_once(self):
         sat = datetime(2026, 11, 28, 9, 30, tzinfo=timezone.utc)
@@ -259,3 +259,19 @@ class ReportCardTests(unittest.TestCase):
         self.assertTrue(an.report_due(state, sat))
         self.assertFalse(an.report_due(state, sat + timedelta(hours=1)))
         self.assertFalse(an.report_due({}, sat - timedelta(days=1)))
+
+
+class DemoSectionTests(unittest.TestCase):
+    def test_shows_pac_trend_and_trump_trades(self):
+        import json
+        import tempfile
+        demo = {"pac": {"months": ["2026-11"], "invested": 20.0},
+                "trend": {"months": ["2026-11"], "holdings": {"sp500": {}, "nasdaq": {}}, "history": []},
+                "trump_trades": {"open": None, "closed": [{"result_pct": 4.0}, {"result_pct": -3.0}]}}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump(demo, f)
+        with patch.dict(os.environ, {"SPUTNIK_DEMO_STATE_FILE": f.name}):
+            text = "\n".join(an._demo_section())
+        self.assertIn("versati 20,00 €", text)
+        self.assertIn("investito in S&P 500, Nasdaq 100 · fuori trend oro", text)
+        self.assertIn("Trade Trump chiusi: 2 · vincenti 1 · risultato medio +0.5%", text)
