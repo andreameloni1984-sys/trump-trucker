@@ -1,21 +1,5 @@
 {
   "invest_events": {
-    "https://blogs.nvidia.com/blog/geforce-now-thursday-community-war-thunder-reward": {
-      "acquired": "2026-11-26T14:02:22.380515+00:00",
-      "acquisition_seconds": 120.380515,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "NVDA",
-      "kind": "issuer",
-      "penalized": [],
-      "published": "2026-11-26T14:00:22+00:00",
-      "source": "NVIDIA Blog",
-      "status": "SCARTARE",
-      "title": "Come for the Games, Stay for the Community With GeForce NOW",
-      "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-community-war-thunder-reward"
-    },
     "https://truthsocial.com/@realDonaldTrump/117683175541431490": {
       "acquired": "2026-11-26T14:32:21.088379+00:00",
       "acquisition_seconds": 789.705514,
@@ -917,22 +901,6 @@
       "status": "SCARTARE",
       "title": "My husband secretly sends his ex-wife $1,500 a month after she lost her job. We have $2.4 million saved. Has he lied by omission?",
       "url": "https://www.marketwatch.com/story/my-husband-secretly-sends-his-ex-wife-1-500-a-month-after-she-lost-her-job-we-have-2-4-million-saved-has-he-lied-by-omission-ede1972a"
-    },
-    "https://www.marketwatch.com/story/nvidia-and-the-whole-ai-trade-arent-out-of-the-woods-not-by-a-long-shot-bccc0025": {
-      "acquired": "2026-11-26T14:02:22.148652+00:00",
-      "acquisition_seconds": 142.148652,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "press",
-      "penalized": [],
-      "published": "2026-11-26T14:00:00+00:00",
-      "source": "MarketWatch / Dow Jones",
-      "status": "SCARTARE",
-      "title": "Nvidia and the whole AI trade aren’t out of the woods — not by a long shot",
-      "url": "https://www.marketwatch.com/story/nvidia-and-the-whole-ai-trade-arent-out-of-the-woods-not-by-a-long-shot-bccc0025"
     },
     "https://www.marketwatch.com/story/nvidias-stock-has-tumbled-27-over-one-chaotic-month-the-next-big-test-lies-in-the-week-ahead-06449777": {
       "acquired": "2026-11-27T12:17:21.440902+00:00",
