@@ -1,21 +1,5 @@
 {
   "invest_events": {
-    "https://truthsocial.com/@realDonaldTrump/117684190363972495": {
-      "acquired": "2026-11-26T19:32:19.822649+00:00",
-      "acquisition_seconds": 3303.822649,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "published": "2026-11-26T18:37:16+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "Image post from November 26, 2026",
-      "url": "https://truthsocial.com/@realDonaldTrump/117684190363972495"
-    },
     "https://truthsocial.com/@realDonaldTrump/117684273895653312": {
       "acquired": "2026-11-26T19:47:19.273928+00:00",
       "acquisition_seconds": 2928.273928,
