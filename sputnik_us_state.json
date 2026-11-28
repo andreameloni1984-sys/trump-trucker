@@ -1,56 +1,5 @@
 {
   "invest_events": {
-    "https://truthsocial.com/@realDonaldTrump/117683175541431490": {
-      "acquired": "2026-11-26T14:32:21.088379+00:00",
-      "acquisition_seconds": 789.705514,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-26T14:19:11.791000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "A JOINT STATEMENT MADE BY PRESIDENT DONALD J. TRUMP AND SECRETARY GENERAL OF NATO, MARK RUTTE: President Trump and Secretary General Rutte had an outstanding meeting on Wednesday evening, at what is often referred to as the Southern White House — Mar-a-Lago. The meeting was very impactful, with the ",
-      "url": "https://truthsocial.com/@realDonaldTrump/117683175541431490"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117683194517889136": {
-      "acquired": "2026-11-26T14:32:21.088379+00:00",
-      "acquisition_seconds": 500.214369,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-26T14:24:01.348000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "It was just revealed that the REAL Numbers on the Economy, published before the Election, were FAKE, and a correction was issued yesterday by the people in the Government Agency that does these numbers. The American Economy under The Trump Administration is doing FAR BETTER than the good numbers alr",
-      "url": "https://truthsocial.com/@realDonaldTrump/117683194517889136"
-    },
-    "https://truthsocial.com/@realDonaldTrump/117683199090516818": {
-      "acquired": "2026-11-26T14:32:21.088379+00:00",
-      "acquisition_seconds": 430.48987,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-26T14:25:11.121000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "HAPPY THANKSGIVING TO ALL! President DONALD J. TRUMP",
-      "url": "https://truthsocial.com/@realDonaldTrump/117683199090516818"
-    },
     "https://truthsocial.com/@realDonaldTrump/117683312242798397": {
       "acquired": "2026-11-26T15:02:24.470083+00:00",
       "acquisition_seconds": 508.170914,
@@ -341,6 +290,23 @@
       "status": "SCARTARE",
       "title": "Image post from November 27, 2026",
       "url": "https://truthsocial.com/@realDonaldTrump/117690636694612578"
+    },
+    "https://truthsocial.com/@realDonaldTrump/117694516326406752": {
+      "acquired": "2026-11-28T14:32:23.900783+00:00",
+      "acquisition_seconds": 547.493365,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "presidential",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "truth",
+      "penalized": [],
+      "primary_verified": true,
+      "published": "2026-11-28T14:23:18.436000+00:00",
+      "source": "Donald Trump / Truth Social",
+      "status": "SCARTARE",
+      "title": "Trash Island has been completely destroyed by the Storm! It is totally WIPED OUT, including the already eroding seawalls, which have collapsed along the Potomac, and the road, which has largely followed this wall — Almost everything is submerged and obliterated by the tides. God must have been watch",
+      "url": "https://truthsocial.com/@realDonaldTrump/117694516326406752"
     },
     "https://www.globenewswire.com/news-release/2026/11/26/3410821/0/en/non-surgical-facelift-thread-lift-or-facelift-the-comparison-is-simple-once-both-sides-stop-selling.html": {
       "acquired": "2026-11-26T18:02:28.112964+00:00",
@@ -1141,6 +1107,22 @@
       "status": "SCARTARE",
       "title": "I’m terrified of a market crash. Should I put $400,000 of my $1 million retirement savings into an annuity?",
       "url": "https://www.marketwatch.com/story/were-in-our-50s-and-terrified-of-a-market-crash-should-we-put-400-000-of-our-1-million-retirement-savings-into-an-annuity-1943f240"
+    },
+    "https://www.marketwatch.com/story/whats-the-most-tax-efficient-way-to-donate-to-charity-3f5864bb": {
+      "acquired": "2026-11-28T14:32:24.082555+00:00",
+      "acquisition_seconds": 324.082555,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-28T14:27:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "What’s the most tax-efficient way to donate to charity?",
+      "url": "https://www.marketwatch.com/story/whats-the-most-tax-efficient-way-to-donate-to-charity-3f5864bb"
     },
     "https://www.prnewswire.com/news-releases/94-of-men-feel-pressure-to-financially-support-themselves-and-their-dependents-302949089.html": {
       "acquired": "2026-11-28T12:17:19.642487+00:00",
