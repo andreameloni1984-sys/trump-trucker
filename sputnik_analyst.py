@@ -734,24 +734,61 @@ def track_predictions(state: dict[str, Any], now: datetime | None = None,
 
 
 def _demo_section() -> list[str]:
+    """Le gestioni di Sputnik sul conto DEMO: PAC, trend lento e acquisti dopo i post di Trump."""
     import json
     from pathlib import Path
     path = Path(os.getenv("SPUTNIK_DEMO_STATE_FILE", "sputnik_demo_state.json"))
     try:
         demo = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError):
-        return ["🤖 Trader demo: nessuna operazione ancora registrata"]
-    closed = demo.get("closed") or []
-    total = sum(c.get("pnl_eur", 0) for c in closed)
-    wins = sum(1 for c in closed if c.get("pnl_eur", 0) > 0)
-    lines = [f"🤖 Trader demo: {len(closed)} operazioni chiuse · vincenti {wins} · risultato {total:+.2f} € "
-             f"· posizioni aperte {len(demo.get('positions') or {})}"]
-    if demo.get("halted"):
-        lines.append("   ⚠️ nuovi acquisti sospesi (conto sotto l'85%)")
+        return ["🤖 Conto demo Sputnik: nessuna operazione ancora registrata"]
+    names = {"oro": "oro", "sp500": "S&P 500", "nasdaq": "Nasdaq 100"}
+    lines = ["🤖 Conto demo Sputnik"]
+
+    pac = demo.get("pac") or {}
+    if pac.get("months"):
+        last = pac["months"][-1]
+        invested = f"{pac.get('invested', 0):.2f}".replace(".", ",")
+        lines.append(f"🥧 PAC (mondo 80%, oro 10%, bitcoin 10%): versati {invested} € "
+                     f"· ultimo acquisto {last[5:]}/{last[:4]}")
+    else:
+        lines.append("🥧 PAC: primo acquisto al primo giorno di borsa del mese")
+
+    trend = demo.get("trend") or {}
+    if trend.get("months"):
+        held = [names.get(k, k) for k in trend.get("holdings") or {}]
+        out = [names[k] for k in names if k not in (trend.get("holdings") or {})]
+        lines.append("📈 Trend lento: " + (f"investito in {', '.join(held)}" if held else "tutto liquido")
+                     + (f" · fuori trend {', '.join(out)}" if out else ""))
+        sold = trend.get("history") or []
+        if sold:
+            res = [h["exit"] / h["entry"] - 1 for h in sold if h.get("entry") and h.get("exit")]
+            if res:
+                lines.append(f"   vendite finora: {len(res)} · risultato medio {sum(res) / len(res):+.1%}")
+    else:
+        lines.append("📈 Trend lento: primo controllo al primo giorno di borsa del mese")
+
+    tt = demo.get("trump_trades") or {}
+    closed = tt.get("closed") or []
+    if tt.get("open"):
+        lines.append(f"⚡ Trade Trump: posizione aperta da {tt['open'].get('entry', 0):,.2f} € "
+                     f"(stop {tt['open'].get('stop', 0):,.2f}, obiettivo {tt['open'].get('target', 0):,.2f})")
+    if closed:
+        wins = sum(1 for c in closed if c.get("result_pct", 0) > 0)
+        avg = sum(c.get("result_pct", 0) for c in closed) / len(closed)
+        lines.append(f"⚡ Trade Trump chiusi: {len(closed)} · vincenti {wins} · risultato medio {avg:+.1f}%")
+    elif not tt.get("open"):
+        lines.append("⚡ Trade Trump: nessuna operazione (Trump non ha invitato a comprare)")
+
+    old = demo.get("closed") or []
+    if old:
+        total = sum(c.get("pnl_eur", 0) for c in old)
+        lines.append(f"   (vecchio trader a 5 giorni, spento: {len(old)} operazioni, {total:+.2f} €)")
     return lines
 
 
-def report_message(state: dict[str, Any], now: datetime | None = None) -> str:
+def report_message(state: dict[str, Any], now: datetime | None = None,
+                   compare: Callable[[], list[str]] | None = None) -> str:
     now = now or _now()
     preds = [p for p in (state.get("analyst_predictions") or {}).values() if "move" in p]
     week = [p for p in preds if now - datetime.fromisoformat(p["checked_at"]) <= timedelta(days=7)]
@@ -781,6 +818,15 @@ def report_message(state: dict[str, Any], now: datetime | None = None) -> str:
         lines.append(f"   {INSTRUMENT_NAMES.get(inst, inst)}: {line(rows)}")
     lines += ["", "📨 Avvisi inviati finora: " + (", ".join(f"{k} {v}" for k, v in sorted(counts.items())) or "nessuno"), ""]
     lines += _demo_section()
+    if compare is None:
+        import sputnik_compare
+        compare = sputnik_compare.section
+    try:
+        extra = compare()
+        if extra:
+            lines += [""] + extra
+    except Exception:  # noqa: BLE001
+        pass
     lines += ["", "Una moneta lanciata indovinerebbe ~50%: servono almeno 30 ipotesi verificate per un giudizio.",
               FOOTER]
     return "\n".join(lines)
