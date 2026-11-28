@@ -1273,6 +1273,22 @@
       "title": "I hate that Jensen Huang is back at Nvidia, but I love what it’s done for my 401(k). Am I a hypocrite?",
       "url": "https://www.marketwatch.com/story/i-hate-that-jensen-huang-is-back-at-nvidia-but-i-love-what-its-done-for-my-401-k-am-i-a-hypocrite-f63c0303"
     },
+    "https://www.marketwatch.com/story/im-in-my-70s-and-buying-a-new-bmw-x1-should-i-put-my-only-son-on-the-title-25731040": {
+      "acquired": "2026-11-28T00:02:27.966460+00:00",
+      "acquisition_seconds": 147.96646,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "press",
+      "penalized": [],
+      "published": "2026-11-28T00:00:00+00:00",
+      "source": "MarketWatch / Dow Jones",
+      "status": "SCARTARE",
+      "title": "I’m in my 70s and buying a new BMW X1. Should I put my only son on the title?",
+      "url": "https://www.marketwatch.com/story/im-in-my-70s-and-buying-a-new-bmw-x1-should-i-put-my-only-son-on-the-title-25731040"
+    },
     "https://www.marketwatch.com/story/is-the-stock-market-open-for-thanksgiving-the-answer-might-surprise-you-e68114d4": {
       "acquired": "2026-11-26T07:17:23.626340+00:00",
       "acquisition_seconds": 83.62634,
@@ -1672,22 +1688,6 @@
       "status": "SCARTARE",
       "title": "ALLIANCEBERNSTEIN GLOBAL HIGH INCOME FUND, INC. REPORTS SECOND QUARTER EARNINGS",
       "url": "https://www.prnewswire.com/news-releases/alliancebernstein-global-high-income-fund-inc-reports-second-quarter-earnings-302951846.html"
-    },
-    "https://www.prnewswire.com/news-releases/banco-macro-announces-results-for-the-third-quarter-of-2026-302950900.html": {
-      "acquired": "2026-11-26T00:02:24.146913+00:00",
-      "acquisition_seconds": 744.146913,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-25T23:50:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Banco Macro Announces Results for the Third Quarter of 2026",
-      "url": "https://www.prnewswire.com/news-releases/banco-macro-announces-results-for-the-third-quarter-of-2026-302950900.html"
     },
     "https://www.prnewswire.com/news-releases/bbva-drives-its-international-growth-by-modernizing-its-banking-platform-with-finastra-universal-banking-302950664.html": {
       "acquired": "2026-11-27T09:02:19.464070+00:00",
