@@ -1093,15 +1093,36 @@
       "transaction_type": "DISCLOSURE_ONLY"
     }
   },
-  "updated_at": "2026-11-28T14:32:15.560637+00:00",
+  "updated_at": "2026-11-28T16:16:18.834503+00:00",
   "telegram_update_offset": 275590742,
   "telegram_active": true,
   "intelligence": {
     "WHITE_HOUSE": "6c4adb0397a3be27a41bb454",
-    "TRUTH_ARCHIVE": "35d79c931bcd516a1c37e1bc",
+    "TRUTH_ARCHIVE": "0e0988978045279f2cae9b77",
     "OGE": "2f116fd2ea65816c3b0adaba"
   },
   "intelligence_history": {
+    "0e0988978045279f2cae9b77": {
+      "source": "TRUTH_ARCHIVE",
+      "url": "https://www.trumpstruth.org/",
+      "title": "",
+      "published": "",
+      "domains": [
+        "MEDIA"
+      ],
+      "text": "Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. Menu Submit Search the Archive About the Site FAQ Stats Our site archives all of Donald Trump's TRUTH Social posts, providing a searchable index of his statements, video transcripts, and image descriptions. An independent, searchable archive of Donald Trump’s Truth Social posts, video transcripts, and image descriptions. Latest posts Donald J. Trump @realDonaldTrump · November 28, 2026, 11:10 AM Original Post Donald J. Trump @realDonaldTrump · November 28, 2026, 9:23 AM Original Post Trash Island has been completely destroyed by the Storm! It is totally WIPED OUT, including the already eroding seawalls, which have collapsed along the Potomac, and the road, which has largely followed this wall — Almost everything is submerged and obliterated by the tides. God must have been watching the problems we’ve been having with a judge who did everything politically possible to stop a Great Golf Course from being built. Therefore, this was an Act of God! As we have been stating, the seawall has to be substantially lifted in order to protect the land and trees from floods. The Course is now dangerous and uninhabitable, and has been closed by the Department of the Interior, which is asking Judge Reyes to immediately allow this wonderful Project to proceed, without further delay. In the end, she wi",
+      "evidence": "PUBLIC_SOURCE_TEXT_PAGE_LEVEL",
+      "status": "POTENTIAL_CORRELATION",
+      "detected_at": "2026-11-28T16:16:18.134157+00:00",
+      "event_id": "0e0988978045279f2cae9b77",
+      "action_reaction": {
+        "event_id": "0e0988978045279f2cae9b77",
+        "event_type": "OTHER",
+        "historical_matches": [],
+        "historical_directions": {},
+        "evidence": "NO_ANALOGUE"
+      }
+    },
     "35d79c931bcd516a1c37e1bc": {
       "source": "TRUTH_ARCHIVE",
       "url": "https://www.trumpstruth.org/",
@@ -8115,29 +8136,6 @@
       "event_id": "0981ac9174d66a383f04548a",
       "action_reaction": {
         "event_id": "0981ac9174d66a383f04548a",
-        "event_type": "OTHER",
-        "historical_matches": [],
-        "historical_directions": {},
-        "evidence": "NO_ANALOGUE"
-      }
-    },
-    "6674e67100bce548d567fae5": {
-      "source": "PUBLIC_RSS",
-      "feed_url": "https://www.trumpstruth.org/feed",
-      "url": "https://www.trumpstruth.org/statuses/43344",
-      "primary_url": "https://truthsocial.com/@realDonaldTrump/117552729247556541",
-      "title": "It is my Great Honor to endorse “MAGA” Mike Collins, a Highly Respected Congressman who has been with me from the very beginning, and is running for the United States Senate in Georgia, a very special place to me, and where we just had a BIG Presidential Election Win with the Most Votes Received by",
-      "published": "Tue, 03 Nov 2026 13:24:59 +0000",
-      "domains": [
-        "POLITICAL_CAMPAIGN"
-      ],
-      "text": "It is my Great Honor to endorse “MAGA” Mike Collins, a Highly Respected Congressman who has been with me from the very beginning, and is running for the United States Senate in Georgia, a very special place to me, and where we just had a BIG Presidential Election Win with the Most Votes Received by It is my Great Honor to endorse “MAGA” Mike Collins, a Highly Respected Congressman who has been with me from the very beginning, and is running for the United States Senate in Georgia, a very special place to me, and where we just had a BIG Presidential Election Win with the Most Votes Received by any single Candidate in Georgia's History, for any Election! A very successful Businessman prior to becoming a distinguished U.S. Congressman, Mike has brilliantly served his Community, during a career loaded with accolades and wins, always fighting tirelessly for our America First Agenda. His opponent, Jon Ossoff, voted against NO TAX ON TIPS, NO TAX ON OVERTIME, and NO TAX ON SOCIAL SECURITY and, if he and the Dumocrats ever got in, all of these things would be terminated. He wants massive Tax Increases, Open Borders, Men playing in Women's Sports, and Transgender for Everybody. Jon Ossoff is Reckless, Radical, and Dangerous! On the other hand, as your next Senator, Mike will continue to work hard to Grow the Economy, Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Strengthen our incredible Military/Veterans, Advance Election Integrity, Keep o",
-      "evidence": "PUBLIC_RSS_ITEM",
-      "status": "POTENTIAL_CORRELATION",
-      "detected_at": "2026-11-03T16:52:37.112580+00:00",
-      "event_id": "6674e67100bce548d567fae5",
-      "action_reaction": {
-        "event_id": "6674e67100bce548d567fae5",
         "event_type": "OTHER",
         "historical_matches": [],
         "historical_directions": {},
