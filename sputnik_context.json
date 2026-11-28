@@ -1,18 +1,6 @@
 {
  "version": 1,
- "trump": [
-  {
-   "title": "We support Iraqi Prime Minister Ali al-Zaidi’s efforts to assert state authority throughout Iraq, stop the smuggling of Iraqi oil, end corruption, and bring all weapons under the exclusive control of ",
-   "published": "2026-11-27T10:23:58+00:00",
-   "url": "https://www.trumpstruth.org/statuses/43750",
-   "source": "Truth Social (Trump)",
-   "domains": [
-    "ENERGY",
-    "DEFENSE"
-   ],
-   "bias": []
-  }
- ],
+ "trump": [],
  "money": [
   {
    "kind": "TRADE",
@@ -126,5 +114,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-27T15:45:30.231981+00:00"
+ "updated_at": "2026-11-28T10:24:09.174287+00:00"
 }
