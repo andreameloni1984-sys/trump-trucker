@@ -1426,38 +1426,6 @@
       "title": "Jones Soda Co. Announces Proposed Voluntary Delisting from the Canadian Securities Exchange",
       "url": "https://www.prnewswire.com/news-releases/jones-soda-co-announces-proposed-voluntary-delisting-from-the-canadian-securities-exchange-302951454.html"
     },
-    "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-completes-largest-acquisition-in-its-history-302951333.html": {
-      "acquired": "2026-11-26T17:32:18.188951+00:00",
-      "acquisition_seconds": 978.188951,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "m-and-a",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-26T17:16:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Julius Meinl Coffee Group completes largest acquisition in its history",
-      "url": "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-completes-largest-acquisition-in-its-history-302951333.html"
-    },
-    "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-schlieWt-groWte-akquisition-der-unternehmensgeschichte-ab-302951332.html": {
-      "acquired": "2026-11-26T17:17:24.564567+00:00",
-      "acquisition_seconds": 144.564567,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "other",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "wire",
-      "penalized": [],
-      "published": "2026-11-26T17:15:00+00:00",
-      "source": "PR Newswire / comunicati societari",
-      "status": "SCARTARE",
-      "title": "Julius Meinl Coffee Group schließt größte Akquisition der Unternehmensgeschichte ab",
-      "url": "https://www.prnewswire.com/news-releases/julius-meinl-coffee-group-schlieWt-groWte-akquisition-der-unternehmensgeschichte-ab-302951332.html"
-    },
     "https://www.prnewswire.com/news-releases/julius-meinl-kaffee-starkt-internationales-wachstum-mit-rekord-akquisition-302951334.html": {
       "acquired": "2026-11-26T17:32:18.188951+00:00",
       "acquisition_seconds": 798.188951,
