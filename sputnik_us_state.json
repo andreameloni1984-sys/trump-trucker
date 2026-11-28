@@ -1,22 +1,5 @@
 {
   "invest_events": {
-    "https://truthsocial.com/@realDonaldTrump/117683512952489451": {
-      "acquired": "2026-11-26T16:02:19.278766+00:00",
-      "acquisition_seconds": 1039.559908,
-      "beneficiaries": [],
-      "bias": null,
-      "category": "presidential",
-      "evidence": "direzione o conferma insufficiente",
-      "issuer": "",
-      "kind": "truth",
-      "penalized": [],
-      "primary_verified": true,
-      "published": "2026-11-26T15:45:00.276000+00:00",
-      "source": "Donald Trump / Truth Social",
-      "status": "SCARTARE",
-      "title": "HAPPY THANKSGIVING TO ALL AMERICAN PATRIOTS WHO HAVE WORKED SO HARD TO MAKE OUR COUNTRY GREAT! Additionally, I would like to wish a Happy Thanksgiving to even those who issued fake Economic Numbers, just prior to the Election, and corrected them yesterday, three weeks late, showing that the GDP was ",
-      "url": "https://truthsocial.com/@realDonaldTrump/117683512952489451"
-    },
     "https://truthsocial.com/@realDonaldTrump/117684190363972495": {
       "acquired": "2026-11-26T19:32:19.822649+00:00",
       "acquisition_seconds": 3303.822649,
@@ -594,6 +577,22 @@
       "status": "SCARTARE",
       "title": "Dans « The World Ahead 2027 » de The Economist, He Xiaopeng, PDG de XPENG, explique que les progrès de la robotique humanoïde passeront par l’évolution conjointe du matériel et des logiciels",
       "url": "https://www.globenewswire.com/news-release/2026/11/27/3411424/0/fr/dans-the-world-ahead-2027-de-the-economist-he-xiaopeng-pdg-de-xpeng-explique-que-les-progr%C3%A8s-de-la-robotique-humano%C3%AFde-passeront-par-l-%C3%A9volution-conjointe-du-mat%C3%A9riel-et-des-logici.html"
+    },
+    "https://www.globenewswire.com/news-release/2026/11/28/3411532/0/en/media-advisory-thousands-expected-on-parliament-hill-saturday-the-fight-of-our-lives-is-on-to-save-public-health-care.html": {
+      "acquired": "2026-11-28T15:47:28.181367+00:00",
+      "acquisition_seconds": 13648.181367,
+      "beneficiaries": [],
+      "bias": null,
+      "category": "other",
+      "evidence": "direzione o conferma insufficiente",
+      "issuer": "",
+      "kind": "wire",
+      "penalized": [],
+      "published": "2026-11-28T12:00:00+00:00",
+      "source": "GlobeNewswire / comunicati societari",
+      "status": "SCARTARE",
+      "title": "MEDIA ADVISORY: Thousands expected on Parliament Hill Saturday, the ‘fight of our lives’ is on to save public health care",
+      "url": "https://www.globenewswire.com/news-release/2026/11/28/3411532/0/en/media-advisory-thousands-expected-on-parliament-hill-saturday-the-fight-of-our-lives-is-on-to-save-public-health-care.html"
     },
     "https://www.govinfo.gov/app/details/BILLS-119hr11122ih": {
       "acquired": "2026-11-28T04:17:25.071113+00:00",
